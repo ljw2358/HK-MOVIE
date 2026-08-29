@@ -19,15 +19,14 @@
             flex-direction: column;
             align-items: center;
         }
-        /* 우측 상단 영역: 웹3 로그인 버튼 아래에 언어창이 오도록 세로 정렬 */
+        /* 상단 영역: 좌측에 언어창, 우측에 웹3 로그인 배치 */
         .top-container {
             width: 100%;
             max-width: 1200px;
             padding: 25px 30px;
             display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 10px;
+            justify-content: space-between;
+            align-items: center;
             z-index: 10;
         }
         .lang-select {
@@ -68,7 +67,7 @@
         .hero-container {
             width: 100%;
             max-width: 900px;
-            padding: 20px 20px 10px 20px;
+            padding: 10px 20px 10px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -270,7 +269,6 @@
 <body>
 
     <div class="top-container">
-        <button class="login-btn" onclick="openLoginModal()">웹3 로그인</button>
         <select class="lang-select" id="langDropdown" onchange="switchLang(this.value)">
             <option value="ko">🇰🇷 한국어</option>
             <option value="en">🇺🇸 영어</option>
@@ -295,6 +293,7 @@
             <option value="sd">🇸🇩 수단</option>
             <option value="et">🇪🇹 에티오피아</option>
         </select>
+        <button class="login-btn" onclick="openLoginModal()">웹3 로그인</button>
     </div>
 
     <div class="hero-container">

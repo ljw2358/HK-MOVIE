@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HK-MOVIE</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #1a1a1a;
+            border-bottom: 1px solid #333;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e50914;
+            letter-spacing: 1px;
+        }
+        .language-select {
+            padding: 10px 16px;
+            font-size: 14px;
+            background-color: #2b2b2b;
+            color: #ffffff;
+            border: 1px solid #444;
+            border-radius: 6px;
+            cursor: pointer;
+            outline: none;
+        }
+        .language-select option {
+            background-color: #1f1f1f;
+            color: #ffffff;
+            padding: 10px;
+        }
+        main {
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .intro-box {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .intro-box h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #ff4757;
+        }
+        /* 각 언어별 4줄 이상의 내용이 들어가는 컨테이너 */
+        .language-content-section {
+            display: none;
+            background-color: #181818;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+        .language-content-section.active {
+            display: block;
+        }
+        .lang-block {
+            line-height: 1.8;
+            font-size: 16px;
+            color: #e0e0e0;
+        }
+        .lang-block p {
+            margin: 0 0 12px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">HK-MOVIE</div>
+        <div>
+            <select name="language" id="language-select" class="language-select" aria-label="언어 선택" onchange="changeLanguage(this.value)">
+                <option value="" disabled selected>언어 선택 / Select Language</option>
+                <option value="en">영어 (English)</option>
+                <option value="zh">중국어 (中文)</option>
+                <option value="ar">아랍어 (العربية)</option>
+                <option value="hi">인도어 (हिन्दी)</option>
+                <option value="es">스페인어 (Español)</option>
+                <option value="pt">브라질어 (Português - Brasil)</option>
+                <option value="uk">우크라이나어 (Українська)</option>
+                <option value="ja">일본어 (日本語)</option>
+                <option value="ru">러시아어 (Русский)</option>
+                <option value="vi">베트남어 (Tiếng Việt)</option>
+                <option value="th">태국어 (ภาษาไทย)</option>
+                <option value="id">인도네시아어 (Bahasa Indonesia)</option>
+                <option value="ps">팔레스타인어 (اللهجة الفلسطينية)</option>
+                <option value="de">독일어 (Deutsch)</option>
+                <option value="it">이태리어 (Italiano)</option>
+                <option value="fr">프랑스어 (Français)</option>
+                <option value="ng">나이지리아 (Nigerian English / Pidgin)</option>
+                <option value="cm">카메룬 (Cameroon Pidgin / Français)</option>
+                <option value="za">남아공 (South African English / Zulu)</option>
+            </select>
+        </div>
+    </header>
+
+    <main>
+        <div class="intro-box">
+            <h1>HK-MOVIE에 오신 것을 환영합니다 형님</h1>
+            <p>오른쪽 상단 드롭다운 메뉴에서 원하시는 언어를 선택하시면, 각 언어별로 준비된 상세한 4줄 이상의 안내 및 환영 메시지가 아래에 표시됩니다.</p>
+            <p>형님의 글로벌 플랫폼 HK-MOVIE가 세계 각국의 사용자들과 소통할 수 있도록 완벽하게 구성되었습니다.</p>
+        </div>
+
+        <!-- 1. 영어 -->
+        <div id="content-en" class="language-content-section">
+            <div class="lang-block">
+                <p><strong>[English - Line 1]</strong> Welcome to HK-MOVIE, your ultimate global streaming and entertainment destination.</p>
+                <p><strong>[English - Line 2]</strong> Explore a vast library of blockbusters, indie films, and exclusive original content from around the world.</p>
+                <p><strong>[English - Line 3]</strong> Select your preferred subtitle options, audio tracks, and customized resolution settings seamlessly.</p>
+                <p><strong>[English - Line 4]</strong> Enjoy uninterrupted cinematic experiences powered by cutting-edge Web3 digital infrastructure.</p>
+            </div>
+        </div>
+
+        <!-- 2. 중국어 -->
+        <div id="content-zh" class="language-content-section">
+            <div class="lang-block">
+                <p><strong>[中文 - Line 1]</strong> 欢迎来到 HK-MOVIE，您的顶级全球流媒体与娱乐殿堂。</p>
+                <p><strong>[中文 - Line 2]</strong> 探索来自世界各地的海量大片、独立电影以及独家原创内容。</p>
+                <p><strong>[中文 - Line 3]</strong> 无缝选择您喜爱的字幕选项、音轨以及个性化的高清分辨率设置。</p>
+                <p><strong>[中文 - Line 4]</strong> 依托尖端数字基础设施，尽情享受不间断的顶级视听观影体验。</p>
+            </div>
+        </div>
+
+        <!-- 3. 아랍어 -->
+        <div id="content-ar" class="language-content-section" dir="rtl">
+            <div class="lang-block">
+                <p><strong>[العربية - Line 1]</strong> أهلاً بك في HK-MOVIE، وجهتك العالمية المثلى للبث والترفيه.</p>
+                <p><strong>[العربية - Line 2]</strong> استكشف مكتبة ضخمة من الأفلام الضخمة والأفلام المستقلة والمحتوى الأصلي الحصري.</p>
+                <p><strong>[العربية - Line 3]</strong> اختر خيارات الترجمة المفضلة لديك المسارات الصوتية وإعدادات الجودة بكل سهولة.</p>
+                <p><strong>[العربية - Line 4]</strong> استمتع بتجارب سينمائية متواصلة مدعومة ببنية تحتية رقمية متطورة للغاية.</p>
+            </div>
+        </div>
+
+        <!-- 4. 인도어 -->
+        <div id="content-hi" class="language-content-section">
+            <div class="lang-block">
+                <p><strong>[हिन्दी - Line 1]</strong> HK-MOVIE में आपका स्वागत है, जो आपका परम वैश्विक स्ट्रीमिंग और मनोरंजन गंतव्य है।</p>
+                <p><strong>[हिन्दी - Line 2]</strong> दुनिया भर से ब्लॉकबस्टर, स्वतंत्र फिल्मों और अनन्य मूल सामग्री की एक विशाल लाइब्रेरी का अन्वेषण करें।</p>
+                <p><strong>[हिन्दी - Line 3]</strong> अपनी पसंदीदा उपशीर्षक (सबटाइटल) और ऑडियो ट्रैक विकल्पों को आसानी से कॉन्फ़िगर करें।</p>
+                <p><strong>[हिन्दी - Line 4]</strong> अत्याधुनिक डिजिटल बुनियादी ढांचे द्वारा संचालित निर्बाध और शानदार सिनेमाई अनुभव का आनंद लें。</p>
+            </div>
+        </div>
+
+        <!-- 5. 스페인어 -->
+        <div id="content-es" class="language-content-section">
+            <div class="lang-block">
+                <p><strong>[Español - Line 1]</strong> Bienvenido a HK-MOVIE, tu destino definitivo de streaming y entretenimiento global.</p>
+                <p><strong>[Español - Line 2]</strong> Explora una vasta biblioteca de éxitos de taquilla, cine independiente y contenido original exclusivo.</p>
+                <p><strong>[Español - Line 3]</strong> Selecciona tus opciones de subtítulos, pistas de audio y configuraciones de resolución preferidas.</p>
+                <p><strong>[Español - Line 4]</strong> Disfruta de experiencias cinematográficas ininterrumpidas impulsadas por tecnología de vanguardia.</p>
+            </div>
+        </div>
+
+        <!-- 6. 브라질어 -->
+        <div id="content-pt" class="language-content-section">
+            <div class="lang-block">
+                <p><strong>[Português - Line 1]</strong> Bem-vindo ao HK-MOVIE, o seu destino global definitivo de streaming e entretenimento.</p>
+                <p><strong>[Português - Line 2]</strong> Explore uma vasta biblioteca de sucessos de bilheteria, filmes independentes e conteúdos originais exclusivos.</p>
+                <p><strong>[Português - Line 3]</strong> Selecione facilmente suas legendas favoritas, faixas de áudio e configurações de resolução.</p>
+                <p><strong>[Português - Line 4]</strong> Desfrute de experiências cinematográficas ininterruptas impulsionadas por infraestrutura digital avançada.</p>
+            </div>
+        </div>
+
+        <!-- 7. 우크라이나어 -->
+        <div id="content-uk" class="language-content-section">
+            <div class="lang-block">
+                <p><strong>[Українська - Line 1]</strong> Ласкаво просимо до HK-MOVIE, вашого головного світового стрімінгового та розважального порталу.</p>
+                <p><strong>[Українська - Line 2]</strong> Досліджуйте величезну бібліотеку блокбастерів, незалежних фільмів та ексклюзивного контенту.</p>
+                <p><strong>[Українська - Line 3]</strong> Зручно налаштовуйте улюблені субтитри, аудіодоріжки та параметри роздільної здатності.</p>
+                <p><strong>[Українська - Line 4]</strong> Насолоджуйтеся неперервними кінематографічними враженнями на базі передової платформи.</p>
+            </div>
+        </div>
+
+        <!-- 8. 일본어 -->
+        <div id="content-ja" class="language-content-section">
+            <div class="lang-block">
+                <p><strong>[日本語 - Line 1]</strong> HK-MOVIEへようこそ。ここは最高のグローバルストリーミングおよびエンターテインメントの目的地です。</p>
+                <p><strong>[日本語 - Line 2]</strong> 世界中から集まった大ヒット映画、インディーズ映画、独占オリジナルコンテンツの膨大なライブラリをご覧ください。</p>
+                <p><strong>[日本語 - Line 3]</strong> お好みの字幕オプション、音声トラック、画質設定をスムーズに変更・適用できます。</p>
+                <p><strong>[日本語 - Line 4]</strong> 最先端のデジタルインフラストラクチャに支えられた、途切れることのない極上のシネマ体験をお楽しみください。</p>
+            </div>
+        </div>
+
+        <!-- 9. 러시아어 -->
+        <div id="content-ru" class="language-content-section">
+            <div class="lang-block">
+                <p><strong>[Русский - Line 1]</strong> Добро пожаловать в HK-MOVIE, ваш главный мировой потоковый и развлекательный портал.</p>
+                <p><strong>[Русский - Line 2]</strong> Исследуйте огромную библиотеку блокбастеров, независимых фильмов и эксклюзивного контента.</p>
+                <p><strong>[Русский - Line 3]</strong> Легко настраивайте любимые субтитры, аудиодорожки и параметры разрешения видео.</p>
+                <p><strong>[Русский - Line 4]</strong> Наслаждайтесь бесперебойными кинематографическими впечатлениями на базе передовой платформы.</p>
+            </div>
+        </div>
+
+        <!-- 10. 베트남어 -->
+        <div id="content-vi" class="language-content-section">
+            <div class="lang-block">
+                <p><strong>[Tiếng Việt - Line 1]</strong> Chào mừng bạn đến với HK-MOVIE, nền tảng phát trực tuyến và giải trí toàn cầu hàng đầu.</p>
+                <p><strong>[Tiếng Việt - Line 2]</strong> Khám phá thư viện khổng lồ gồm các bộ phim bom tấn, phim độc lập và nội dung độc quyền.</p>
+                <p><strong>[Tiếng Việt - Line 3]</strong> Dễ dàng tùy chỉnh phụ đề, bản nhạc phim và độ phân giải theo ý muốn của bạn.</p>
+                <p><strong>[Tiếng Việt - Line 4]</strong> Tận hưởng những trải nghiệm điện ảnh mượt mà, không gián đoạn nhờ hạ tầng công nghệ tiên tiến.</p>
+            </div>
+        </div>
+
+        <!-- 11. 태국어 -->
+        <div id="content-th" class="language-content-section">
+            <div class="lang-block">
+                <p><strong>[ภาษาไทย - Line 1]</strong> ยินดีต้อนรับสู่ HK-MOVIE แหล่งรวมความบันเทิงและการสตรีมระดับโลกที่ดีที่สุดของคุณ</p>
+                <p><strong>[ภาษาไทย - Line 2]</strong> สำรวจคลังภาพยนตร์ฟอร์มยักษ์ ภาพยนตร์อินดี้ และเนื้อหาต้นฉบับสุด eksklusif มากมาย</p>
+                <p><strong>[ภาษาไทย - Line 3]</strong> เลือกภาษาคำบรรยาย เสียงพากย์ และการตั้งค่าความละเอียดวิดีโอได้อย่างง่ายดาย</p>
+                <p><strong>[ภาษาไทย - Line 4]</strong> เพลิดเพลินกับประสบการณ์การรับชมภาพยนตร์แบบไร้รอยต่อที่ขับเคลื่อนด้วยโครงสร้างพื้นฐานยุคใหม่</p>
+            </div>
+        </div>
+
+        <!-- 12. 인도네시아어 -->
+        <div id="content-id" class="language-content-section">
+            <div class="lang-block">
+                <p><strong>[Bahasa Indonesia - Line 1]</strong> Selamat datang di HK-MOVIE, destinasi streaming dan hiburan global utama Anda.</p>
+                <p><strong>[Bahasa Indonesia - Line 2]</strong> Jelajahi perpustakaan luas yang berisi film blockbuster, film independen, dan konten asli eksklusif.</p>
+                <p><strong>[Bahasa Indonesia - Line 3]</strong> Pilih opsi subtitle, jalur audio, dan pengaturan resolusi pilihan Anda dengan mudah.</p>
+                <p><strong>[Bahasa Indonesia - Line 4]</strong> Nikmati pengalaman sinematik tanpa gangguan yang didukung oleh infrastruktur digital mutakhir.</p>
+            </div>
+        </div>
+
+        <!-- 13. 팔레스타인어 -->
+        <div id="content-ps" class="language-content-section" dir="rtl">
+            <div class="lang-block">
+                <p><strong>[اللهجة الفلسطينية - Line 1]</strong> أهلاً فيك بـ HK-MOVIE، وجهتك العالمية الأولى للترفيه والأفلام.</p>
+                <p><strong>[اللهجة الفلسطينية - Line 2]</strong> تصفح مكتبة ضخمة بتضم أحدث الأفلام، الأفلام المستقلة، والمحتوى الحصري المميز.</p>
+                <p><strong>[اللهجة الفلسطينية - Line 3]</strong> إختار الترجمة واللغة والوضوح اللي بيناسبك بكل راحة وسهولة تامة.</p>
+                <p><strong>[اللهجة الفلسطينية - Line 4]</strong> استمتع بتجربة مشاهدة سينمائية مذهلة وبدون أي تقطيع مدعومة بأحدث التكنولوجيا.</p>
+            </div>
+        </div>
+
+        <!-- 14. 독일어 -->
+        <div id="content-de" class="language-content-section">
+            <div class="lang-block">
+                <p><strong>[Deutsch - Line 1]</strong> Willkommen bei HK-MOVIE, Ihrer ultimativen globalen Streaming- und Entertainment-Plattform.</p>
+                <p><strong>[Deutsch - Line 2]</strong> Entdecken Sie eine riesige Bibliothek an Blockbustern, Independent-Filmen und exklusiven Originalinhalten.</p>
+                <p><strong>[Deutsch - Line 3]</strong> Passen Sie Untertitel, Audiospuren und Auflösungseinstellungen ganz nach Ihren Wünschen an.</p>
+                <p><strong>[Deutsch - Line 4]</strong> Genießen Sie ununterbrochene Kinoerlebnisse, angetrieben von modernster digitaler Infrastruktur.</p>
+            </div>
+        </div>
+
+        <!-- 15. 이태리어 -->
+        <div id="content-it" class="language-content-section">
+            <div class="lang-block">
+                <p><strong>[Italiano - Line 1]</strong> Benvenuto su HK-MOVIE, la tua destinazione globale definitiva per streaming e intrattenimento.</p>
+                <p><strong>[Italiano - Line 2]</strong> Esplora una vasta libreria di blockbuster, film indipendenti e contenuti originali esclusivi.</p>
+                <p><strong>[Italiano - Line 3]</strong> Seleziona facilmente le tue opzioni di sottotitoli preferite, tracce audio e risoluzione video.</p>
+                <p><strong>[Italiano - Line 4]</strong> Goditi esperienze cinematografiche continue e di altissima qualità grazie a un'infrastruttura all'avanguardia.</p>
+            </div>
+        </div>
+
+        <!-- 16. 프랑스어 -->
+        <div id="content-fr" class="language-content-section">
+            <div class="lang-block">
+                <p><strong>[Français - Line 1]</strong> Bienvenue sur HK-MOVIE, votre destination mondiale ultime pour le streaming et le divertissement.</p>
+                <p><strong>[Français - Line 2]</strong> Explorez une vaste bibliothèque de blockbusters, de films indépendants et de contenus originaux exclusifs.</p>
+                <p><strong>[Français - Line 3]</strong> Sélectionnez facilement vos options de sous-titres, pistes audio et paramètres de résolution préférés.</p>
+                <p><strong>[Français - Line 4]</strong> Profitez d'expériences cinématographiques fluides et immersives propulsées par une infrastructure numérique de pointe.</p>
+            </div>
+        </div>
+
+        <!-- 17. 나이지리아 -->
+        <div id="content-ng" class="language-content-section">
+            <div class="lang-block">
+                <p><strong>[Nigerian Pidgin/English - Line 1]</strong> Welcome to HK-MOVIE, your number one plug for global entertainment and streaming.</p>
+                <p><strong>[Nigerian Pidgin/English - Line 2]</strong> Check out plenty blockbuster movies, indie films, and exclusive original content wey dey ground.</p>
+                <p><strong>[Nigerian Pidgin/English - Line 3]</strong> Select your choice subtitle, audio track, and video quality make e smooth for you.</p>
+                <p><strong>[Nigerian Pidgin/English - Line 4]</strong> Enjoy correct cinema experience without any interruption, powered by strong digital system.</p>
+            </div>
+        </div>
+
+        <!-- 18. 카메룬 -->
+        <div id="content-cm" class="language-content-section">
+            <div class="lang-block">
+                <p><strong>[Cameroon (Pidgin/Français) - Line 1]</strong> Bienvenue na HK-MOVIE, place wey go give you beta entertainment for ground.</p>
+                <p><strong>[Cameroon (Pidgin/Français) - Line 2]</strong> Discover plenty film, blockbuster, and original content wey sweet for eye.</p>
+                <p><strong>[Cameroon (Pidgin/Français) - Line 3]</strong> Choose your subtitle and audio style make everything waka well well.</p>
+                <p><strong>[Cameroon (Pidgin/Français) - Line 4]</strong> Enjoy better cinema experience join with strong technology infrastructure.</p>
+            </div>
+        </div>
+
+        <!-- 19. 남아공 -->
+        <div id="content-za" class="language-content-section">
+            <div class="lang-block">
+                <p><strong>[South Africa - Line 1]</strong> Wamkelekile ku HK-MOVIE, your ultimate global streaming and entertainment home.</p>
+                <p><strong>[South Africa - Line 2]</strong> Explore a massive collection of blockbusters, indie films, and exclusive original local content.</p>
+                <p><strong>[South Africa - Line 3]</strong> Choose your preferred subtitle options, audio tracks, and streaming resolution settings easily.</p>
+                <p><strong>[South Africa - Line 4]</strong> Enjoy uninterrupted cinematic experiences powered by robust and advanced digital technology.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function changeLanguage(val) {
+            // 모든 언어 섹션 숨기기
+            const sections = document.querySelectorAll('.language-content-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+            
+            // 선택한 언어 섹션만 보이기
+            if (val) {
+                const target = document.getElementById('content-' + val);
+                if (target) {
+                    target.classList.add('active');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

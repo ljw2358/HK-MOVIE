@@ -118,7 +118,7 @@
         }
         .movie-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 20px;
         }
         .movie-card {
@@ -136,13 +136,17 @@
         }
         .movie-poster {
             width: 100%;
-            height: 300px;
-            background-color: #262626;
+            height: 280px;
+            background-color: #222;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 50px;
-            color: #555;
+            font-size: 45px;
+            color: #666;
+            position: relative;
+            background-size: cover;
+            background-position: center;
         }
         .movie-info {
             padding: 15px;
@@ -205,7 +209,7 @@
             border: 1px solid #333;
             border-radius: 12px;
             width: 100%;
-            max-width: 800px;
+            max-width: 850px;
             padding: 30px;
             position: relative;
             box-shadow: 0 15px 40px rgba(0,0,0,0.8);
@@ -326,35 +330,35 @@
         <div id="content-cm" class="language-content-section"><div class="lang-block"><p>Bienvenue na HK-MOVIE, place wey go give you beta entertainment.</p></div></div>
         <div id="content-za" class="language-content-section"><div class="lang-block"><p>Wamkelekile ku HK-MOVIE, your ultimate global streaming and entertainment home.</p></div></div>
 
-        <!-- 영화 포스터 그리드 섹션 -->
-        <div class="section-title">트렌딩 오리지널 콘텐츠</div>
+        <!-- 실질 영화 추천 포스터 그리드 -->
+        <div class="section-title">실시간 추천 마스터피스</div>
         <div class="movie-grid">
-            <div class="movie-card" onclick="openVideoModal('HK-MOVIE 오리지널 블록버스터 #1', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
-                <div class="movie-poster">🎬</div>
+            <div class="movie-card" onclick="openVideoModal('인터스텔라 (Interstellar)', 'https://www.youtube.com/embed/zSWdZVtXT7E')">
+                <div class="movie-poster">🌌<span>인터스텔라</span></div>
                 <div class="movie-info">
-                    <div class="movie-title">HK 블록버스터 대작</div>
-                    <div class="movie-genre">SF / 액션 / 웹3</div>
+                    <div class="movie-title">인터스텔라</div>
+                    <div class="movie-genre">SF / 모험 / 드라마</div>
                 </div>
             </div>
-            <div class="movie-card" onclick="openVideoModal('HK-MOVIE 독점 독립영화 #2', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
-                <div class="movie-poster">🎥</div>
+            <div class="movie-card" onclick="openVideoModal('인셉션 (Inception)', 'https://www.youtube.com/embed/YoHD9XEInc0')">
+                <div class="movie-poster">🌀<span>인셉션</span></div>
                 <div class="movie-info">
-                    <div class="movie-title">사이버네틱스 퓨처</div>
-                    <div class="movie-genre">드라마 / 스릴러</div>
+                    <div class="movie-title">인셉션</div>
+                    <div class="movie-genre">액션 / SF / 스릴러</div>
                 </div>
             </div>
-            <div class="movie-card" onclick="openVideoModal('HK-MOVIE 글로벌 시리즈 #3', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
-                <div class="movie-poster">🍿</div>
+            <div class="movie-card" onclick="openVideoModal('아바타: 물의 길 (Avatar: The Way of Water)', 'https://www.youtube.com/embed/d9MyW72ELq0')">
+                <div class="movie-poster">🌊<span>아바타 2</span></div>
                 <div class="movie-info">
-                    <div class="movie-title">월드뱅크 프로젝트</div>
-                    <div class="movie-genre">다큐멘터리 / 경제</div>
+                    <div class="movie-title">아바타: 물의 길</div>
+                    <div class="movie-genre">SF / 액션 / 판타지</div>
                 </div>
             </div>
-            <div class="movie-card" onclick="openVideoModal('HK-MOVIE 시네마틱 쇼케이스 #4', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
-                <div class="movie-poster">🌟</div>
+            <div class="movie-card" onclick="openVideoModal('오펜하이머 (Oppenheimer)', 'https://www.youtube.com/embed/uYPbbksJxIg')">
+                <div class="movie-poster">⚛️<span>오펜하이머</span></div>
                 <div class="movie-info">
-                    <div class="movie-title">디지털 유니버스</div>
-                    <div class="movie-genre">판타지 / 어드벤처</div>
+                    <div class="movie-title">오펜하이머</div>
+                    <div class="movie-genre">전기 / 드라마 / 역사</div>
                 </div>
             </div>
         </div>
@@ -366,7 +370,7 @@
             <a href="https://www.youtube.com/@Hyekong2026" target="_blank">YouTube (@Hyekong2026)</a>
             <a href="https://www.tiktok.com/@hyekong2025" target="_blank">TikTok (@hyekong2026)</a>
         </div>
-        <div class="support-email">Support: support@hkwb.world</div>
+        <div class="support-email">support@hkwb.world</div>
     </footer>
 
     <!-- 동영상 재생 모달 -->
@@ -406,8 +410,8 @@
         }
 
         function openVideoModal(title, url) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalIframe').src = url;
+            document.getElementById('modalTitle').innerText = title + ' 재생 중';
+            document.getElementById('modalIframe').src = url + '?autoplay=1';
             document.getElementById('videoModal').style.display = 'flex';
         }
 

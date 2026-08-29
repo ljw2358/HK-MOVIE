@@ -1,6 +1,3 @@
-중요 메일메일 제목창작2새 창으로 메일 보기
-2026년 8월 30일 (일) 오전 5:19
-인쇄번역
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -11,7 +8,6 @@
         :root {
             --bg-deep: #05050a;
             --surface-color: #11111d;
-            --surface-hover: #1a1a2e;
             --accent-creative: #ff2a6d; 
             --accent-gold: #f9d342;    
             --accent-cyan: #05d9e8;    
@@ -21,43 +17,54 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: var(--bg-deep); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
         
+        /* 상단 헤더: 로고를 정중앙으로 웅장하게 배치 */
         header {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            padding: 15px 40px;
-            background: rgba(5, 5, 10, 0.95);
-            border-bottom: 1px solid rgba(255, 42, 109, 0.2);
+            justify-content: center;
+            padding: 30px 20px;
+            background: rgba(5, 5, 10, 0.98);
+            border-bottom: 1px solid rgba(255, 42, 109, 0.3);
             position: sticky;
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(12px);
+            gap: 18px;
         }
+        
         .logo {
-            font-size: 24px;
+            font-size: 42px;
             font-weight: 900;
-            letter-spacing: 2px;
+            letter-spacing: 5px;
             color: var(--text-main);
             text-transform: uppercase;
+            text-align: center;
         }
-        .logo span { color: var(--accent-creative); text-shadow: 0 0 15px rgba(255, 42, 109, 0.6); }
+        .logo span { color: var(--accent-creative); text-shadow: 0 0 25px rgba(255, 42, 109, 0.8); }
         
-        .header-right {
+        .header-controls {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 15px;
+            width: 100%;
+            max-width: 650px;
         }
         
         .lang-select {
+            flex: 1;
             background: var(--surface-color);
             color: var(--text-main);
-            border: 1px solid var(--accent-cyan);
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 13px;
+            border: 2px solid var(--accent-cyan);
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
             cursor: pointer;
             outline: none;
             transition: all 0.3s;
+            text-align: center;
         }
         .lang-select:hover { border-color: var(--accent-creative); }
 
@@ -65,20 +72,22 @@
             background: linear-gradient(135deg, var(--accent-creative), var(--accent-gold));
             color: #000;
             border: none;
-            padding: 9px 18px;
-            border-radius: 8px;
-            font-weight: 800;
-            font-size: 13px;
+            padding: 12px 22px;
+            border-radius: 12px;
+            font-weight: 900;
+            font-size: 14px;
             cursor: pointer;
-            box-shadow: 0 0 15px rgba(255, 42, 109, 0.4);
+            box-shadow: 0 0 20px rgba(255, 42, 109, 0.5);
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
         .wallet-btn:hover { opacity: 0.95; transform: translateY(-2px); }
 
+        /* 메인 영역 */
         main {
             flex: 1;
-            padding: 30px 40px;
-            max-width: 1600px;
+            padding: 40px 20px;
+            max-width: 1400px;
             margin: 0 auto;
             width: 100%;
         }
@@ -87,82 +96,78 @@
             background: linear-gradient(135deg, rgba(255, 42, 109, 0.15) 0%, rgba(5, 217, 232, 0.1) 50%, rgba(17, 17, 29, 0.95) 100%);
             border: 1px solid rgba(255, 42, 109, 0.3);
             border-radius: 20px;
-            padding: 50px;
+            padding: 50px 30px;
             margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
             box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            text-align: center;
         }
         .hero-badge {
             display: inline-block;
             background: var(--accent-gold);
             color: #000;
             font-weight: 900;
-            font-size: 11px;
-            padding: 4px 10px;
+            font-size: 12px;
+            padding: 6px 14px;
             border-radius: 6px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         .hero-title {
-            font-size: 40px;
+            font-size: 38px;
             font-weight: 900;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             letter-spacing: 1px;
             color: #fff;
         }
         .hero-title span { color: var(--accent-creative); text-shadow: 0 0 20px rgba(255, 42, 109, 0.5); }
         .hero-desc {
-            font-size: 15px;
+            font-size: 16px;
             color: var(--text-sub);
-            max-width: 700px;
-            line-height: 1.6;
-            margin-bottom: 25px;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            line-height: 1.7;
         }
         .hero-actions {
             display: flex;
-            gap: 12px;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
         .play-btn {
             background: var(--accent-creative);
             color: #fff;
             font-weight: 800;
             border: none;
-            padding: 14px 28px;
+            padding: 15px 32px;
             border-radius: 10px;
-            font-size: 15px;
+            font-size: 16px;
             cursor: pointer;
             box-shadow: 0 0 20px rgba(255, 42, 109, 0.6);
-            transition: transform 0.2s;
         }
-        .play-btn:hover { transform: scale(1.02); }
-        
         .info-btn {
             background: transparent;
             color: var(--text-main);
             border: 1px solid var(--accent-cyan);
             font-weight: 700;
-            padding: 14px 28px;
+            padding: 15px 32px;
             border-radius: 10px;
-            font-size: 15px;
+            font-size: 16px;
             cursor: pointer;
-            transition: background 0.2s;
         }
-        .info-btn:hover { background: rgba(5, 217, 232, 0.1); }
 
         .section-box {
             margin-bottom: 40px;
         }
         .section-title {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 800;
             margin-bottom: 20px;
-            border-left: 4px solid var(--accent-creative);
-            padding-left: 10px;
-            letter-spacing: 0.5px;
+            border-left: 5px solid var(--accent-creative);
+            padding-left: 12px;
         }
 
+        /* 영화 카드 그리드 (과분수 방지 고정 비율) */
         .movie-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -173,16 +178,15 @@
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease;
             cursor: pointer;
         }
         .movie-card:hover {
             transform: translateY(-5px);
             border-color: var(--accent-cyan);
-            box-shadow: 0 8px 20px rgba(5, 217, 232, 0.15);
         }
         .movie-thumb {
-            height: 150px;
+            height: 160px;
             background: linear-gradient(135deg, #16162c, #2b1635);
             display: flex;
             align-items: center;
@@ -195,22 +199,22 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .movie-info {
-            padding: 16px;
+            padding: 18px;
         }
         .movie-title {
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
         .movie-meta {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--text-sub);
         }
 
         footer {
             text-align: center;
             padding: 30px;
-            background: rgba(5, 5, 10, 0.95);
+            background: rgba(5, 5, 10, 0.98);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: var(--text-sub);
             font-size: 13px;
@@ -222,7 +226,7 @@
 
     <header>
         <div class="logo">HK-<span>MOVIE</span></div>
-        <div class="header-right">
+        <div class="header-controls">
             <select class="lang-select" id="languageSelect">
                 <option value="ko">🇰🇷 한국어</option>
                 <option value="en">🇺🇸 English</option>
@@ -263,7 +267,7 @@
                 <option value="mr">🇮🇳 मराठी</option>
                 <option value="gu">🇮🇳 ગુજરાતી</option>
                 <option value="kn">🇮🇳 ಕನ್ನಡ</option>
-                <option value="ml">🇮🇳 മലയാളം</option>
+                <option value="ml">🇮 മലയാളം</option>
                 <option value="pa">🇵🇰 ਪੰਜਾਬੀ</option>
                 <option value="kk">🇰🇿 Қазақ тілі</option>
                 <option value="uz">🇺🇿 O'zbekcha</option>
@@ -282,7 +286,7 @@
                 <option value="sr">🇷🇸 Српски</option>
                 <option value="sk">🇸🇰 Slovenčina</option>
                 <option value="sl">🇸🇮 Slovenščina</option>
-                <option value="et">🇪🇪 Eesti</option>
+                <option value="et">🇪🇸 Eesti</option>
                 <option value="lv">🇱🇻 Latviešu</option>
                 <option value="lt">🇱🇹 Lietuvių</option>
             </select>
@@ -310,28 +314,28 @@
                     <div class="movie-thumb">CYBER SEOUL 2088</div>
                     <div class="movie-info">
                         <h3 class="movie-title">사이버 서울 2088</h3>
-                        <p class="movie-meta" id="m1">AI 시네마틱 • 조회수 1.2M</p>
+                        <p class="movie-meta">AI 시네마틱 • 조회수 1.2M</p>
                     </div>
                 </div>
                 <div class="movie-card" onclick="playMovie('양자 제네시스')">
                     <div class="movie-thumb">QUANTUM GENESIS</div>
                     <div class="movie-info">
                         <h3 class="movie-title">양자 제네시스</h3>
-                        <p class="movie-meta" id="m2">SF 스릴러 • 조회수 850K</p>
+                        <p class="movie-meta">SF 스릴러 • 조회수 850K</p>
                     </div>
                 </div>
                 <div class="movie-card" onclick="playMovie('파이 네트워크 크로니클')">
                     <div class="movie-thumb">PI NETWORK CHRONICLES</div>
                     <div class="movie-info">
                         <h3 class="movie-title">파이 네트워크 크로니클</h3>
-                        <p class="movie-meta" id="m3">Web3 다큐 • 조회수 2.4M</p>
+                        <p class="movie-meta">Web3 다큐 • 조회수 2.4M</p>
                     </div>
                 </div>
                 <div class="movie-card" onclick="playMovie('네온 러너 아카이브')">
                     <div class="movie-thumb">NEON RUNNER ARCHIVES</div>
                     <div class="movie-info">
                         <h3 class="movie-title">네온 러너 아카이브</h3>
-                        <p class="movie-meta" id="m4">사이버펑크 • 조회수 920K</p>
+                        <p class="movie-meta">사이버펑크 • 조회수 920K</p>
                     </div>
                 </div>
             </div>
@@ -344,28 +348,28 @@
                     <div class="movie-thumb">SINGULARITY POINT</div>
                     <div class="movie-info">
                         <h3 class="movie-title">싱귤래리티 포인트</h3>
-                        <p class="movie-meta" id="m5">하드 SF • 펀딩 달성률 300%</p>
+                        <p class="movie-meta">하드 SF • 펀딩 달성률 300%</p>
                     </div>
                 </div>
                 <div class="movie-card" onclick="playMovie('메타버스 디텍티브')">
                     <div class="movie-thumb">METAVERSE DETECTIVE</div>
                     <div class="movie-info">
                         <h3 class="movie-title">메타버스 디텍티브</h3>
-                        <p class="movie-meta" id="m6">느와르 추리 • 펀딩 달성률 180%</p>
+                        <p class="movie-meta">느와르 추리 • 펀딩 달성률 180%</p>
                     </div>
                 </div>
                 <div class="movie-card" onclick="playMovie('크립토 드림스')">
                     <div class="movie-thumb">CRYPTO DREAMS</div>
                     <div class="movie-info">
                         <h3 class="movie-title">크립토 드림스</h3>
-                        <p class="movie-meta" id="m7">판타지 드라마 • 펀딩 달성률 250%</p>
+                        <p class="movie-meta">판타지 드라마 • 펀딩 달성률 250%</p>
                     </div>
                 </div>
                 <div class="movie-card" onclick="playMovie('스타더스트 익스프레스')">
                     <div class="movie-thumb">STARDUST EXPRESS</div>
                     <div class="movie-info">
                         <h3 class="movie-title">스타더스트 익스프레스</h3>
-                        <p class="movie-meta" id="m8">우주 모험 • 펀딩 달성률 420%</p>
+                        <p class="movie-meta">우주 모험 • 펀딩 달성률 420%</p>
                     </div>
                 </div>
             </div>
@@ -377,7 +381,7 @@
     </footer>
 
     <script>
-        // 60개국어 완벽 대응 실시간 글로벌 번역 딕셔너리
+        // 60개국어 완벽 대응 실시간 번역 딕셔너리
         const t60 = {
             ko: { badge: "Global Masterpiece Premiere", desc: "네온 빛으로 물든 거대한 사이버 시티 속, 양자 시공간의 문을 여는 주인공의 압도적인 3분간의 오디세이. HK-MOVIE 인프라를 통해 전 세계 동시 상영됩니다.", play: "지금 바로 감상하기", info: "상세 정보", sec1: "🔥 실시간 글로벌 트렌딩 마스터피스", sec2: "💎 HK-MOVIE Web3 오리지널 신작", wallet: "Web3 지갑 연동" },
             en: { badge: "Global Masterpiece Premiere", desc: "An immersive 3-minute sci-fi odyssey opening spacetime gates in a neon cyber city. Streamed globally via HK-MOVIE.", play: "Watch Now", info: "Creator Note", sec1: "🔥 Real-Time Global Trending Masterpieces", sec2: "💎 HK-MOVIE Web3 Originals", wallet: "Connect Wallet" },
@@ -401,7 +405,7 @@
             uk: { badge: "Світова Прем'єра", desc: "Захоплююча 3-хвилинна науково-фантастична одіссея у неоновому кібермісті.", play: "Дивитися", info: "Інфо", sec1: "🔥 Глобальні Тренди", sec2: "💎 Оригінали Web3 HK-MOVIE", wallet: "Гаманець" },
             ms: { badge: "Tayangan Perdana Global", desc: "Odissei sci-fi 3 minit yang mendalam di bandar siber neon.", play: "Tonton Sekarang", info: "Info", sec1: "🔥 Trend Global Masa Nyata", sec2: "💎 Asal Web3 HK-MOVIE", wallet: "Sambung Dompet" },
             fil: { badge: "Global Premiere", desc: "Isang 3-minutong sci-fi odyssey na nagbubukas ng mga pinto ng espasyo-oras.", play: "Panoorin", info: "Impormasyon", sec1: "🔥 Mga Trending sa Buong Mundo", sec2: "💎 HK-MOVIE Web3 Originals", wallet: "Ikonekta ang Wallet" },
-            el: { badge: "Παγκόσμια Πρεμιέρα", desc: "Μια καθηλωτική οδύσσεια επιστημονικής φαντασίας 3 λεπτών σε μια κυبερνοπόλη.", play: "Παρακολουθήστε", info: "Πληροφορίες", sec1: "🔥 Παγκόσμιες Τάσεις", sec2: "💎 Web3 Πρωτότυπα HK-MOVIE", wallet: "Σύνδεση Πορτοφολιού" },
+            el: { badge: "Παγκόσμια Πρεμιέρα", desc: "Μια καθηλωτική οδύσσεια επιστημονικής φαντασίας 3 λεπτών σε μια κυβερνοπόλη.", play: "Παρακολουθήστε", info: "Πληροφορίες", sec1: "🔥 Παγκόσμιες Τάσεις", sec2: "💎 Web3 Πρωτότυπα HK-MOVIE", wallet: "Σύνδεση Πορτοφολιού" },
             cs: { badge: "Světová Premiéra", desc: "Pohlcující 3minutová sci-fi ódysejská cesta otevírající brány časoprostoru.", play: "Sledovat", info: "Info", sec1: "🔥 Globální Trendy", sec2: "💎 HK-MOVIE Web3 Originály", wallet: "Připojit Peněženku" },
             ro: { badge: "Premiera Mondială", desc: "O odisee SF captivantă de 3 minute care deschide porțile spațiu-timpului.", play: "Urmărește", info: "Detalii", sec1: "🔥 Tendințe Globale", sec2: "💎 Originale Web3 HK-MOVIE", wallet: "Conectare Portofel" },
             hu: { badge: "Világpremier", desc: "Egy lenyűgöző 3 perces sci-fi odüsszea egy neon teli kiber-városban.", play: "Megtekintés", info: "Infó", sec1: "🔥 Globális Trendek", sec2: "💎 HK-MOVIE Web3 Eredetiek", wallet: "Tárca Csatlakozása" },
@@ -420,10 +424,10 @@
             kn: { badge: "ಜಾಗತಿಕ ಪ್ರೀಮಿಯರ್", desc: "ಸೈಬರ್ ನಗರದಲ್ಲಿ ಕಾಲ-ಸ್ಥಳದ ಬಾಗಿಲುಗಳನ್ನು ತೆರೆಯುವ 3 ನಿಮಿಷದ ವೈಜ್ಞಾನಿಕ ಕಲ್ಪನೆ.", play: "ಈಗ ನೋಡಿ", info: "ವಿವರಗಳು", sec1: "🔥 ಜಾಗತಿಕ ಟ್ರೆಂಡಿಂಗ್", sec2: "💎 HK-MOVIE ಒರಿಜಿನಲ್ಸ್", wallet: "ವಾಲೆಟ್ ಸಂಪರ್ಕಿಸಿ" },
             ml: { badge: "ആഗോള പ്രീമിയർ", desc: "സൈബർ നഗരത്തിൽ സ്പേസ് ടൈം കവാടങ്ങൾ തുറക്കുന്ന 3 മിനിറ്റ് സയൻസ് ഫiction.", play: "ഇപ്പോൾ കാണുക", info: "വിവരങ്ങൾ", sec1: "🔥 ആഗോള ട്രെൻഡിങ്", sec2: "💎 HK-MOVIE ഒറിജിനൽസ്", wallet: "വാലറ്റ് കണക്റ്റ് ചെയ്യുക" },
             pa: { badge: "ਗਲੋਬਲ ਪ੍ਰੀਮੀਅਰ", desc: "ਸਾਈਬਰ ਸ਼ਹਿਰ ਵਿੱਚ ਸਪੇਸ-ਟਾਈਮ ਦੇ ਦਰਵਾਜ਼ੇ ਖੋਲ੍ਹਣ ਵਾਲੀ 3 ਮਿੰਟ ਦੀ ਸਾਇੰਸ ਫਿਕਸ਼ਨ।", play: "ਹੁਣੇ ਦੇਖੋ", info: "ਵੇਰਵੇ", sec1: "🔥 ਗਲੋਬਲ ਟ್ರೆਡਿੰਗ", sec2: "💎 HK-MOVIE ਓਰਿਜਿਨਲਜ਼", wallet: "ਵਾਲਿਟ ਕਨੈਕਟ ਕਰੋ" },
-            kk: { badge: "Әлемдік Премьера", desc: "Киберқалада уақыт пен кеңістік қақпаларын аشатын 3 минуттық одыссея.", play: "Қазір көру", info: "Мәлімет", sec1: "🔥 Жаһандық Трендтер", sec2: "💎 HK-MOVIE Web3 Түпнұсқалары", wallet: "Әмиянды қосу" },
+            kk: { badge: "Әлемдік Премьера", desc: "Киберқалада уақыт пен кеңістік қақпаларын ашытын 3 минуттық одыссея.", play: "Қазір көру", info: "Мәлімет", sec1: "🔥 Жаһандық Трендтер", sec2: "💎 HK-MOVIE Web3 Түпнұсқалары", wallet: "Әмиянды қосу" },
             uz: { badge: "Jahon Premierasi", desc: "Kiber shaharda fazo-vaqt darvozalarini ochuvchi 3 daqiqali fantastik odisseya.", play: "Hozir Ko'rish", info: "Ma'lumot", sec1: "🔥 Global Trendlar", sec2: "💎 HK-MOVIE Web3 Asarlari", wallet: "Hamyonni Ulash" },
             az: { badge: "Dünya Premyerası", desc: "Kiber şəhərdə məkan-zaman qapılarını açan 3 dəqiqəlik fantastik odisseya.", play: "İndi İzlə", info: "Məlumat", sec1: "🔥 Qlobal Trendlər", sec2: "💎 HK-MOVIE Web3 Orijinalları", wallet: "Cüzdanı Qoş" },
-            hy: { badge: "Համաշխարհային Պրեմիերա", desc: "3 րոպեանոց գիտաֆանտաստիկ ո디سեա կիբեր քաղաքում:", play: "Դիտել Հիմա", info: "Տեղեկություն", sec1: "🔥 Համաշխարհային Թրენդներ", sec2: "💎 HK-MOVIE Web3 Բնօրինակներ", wallet: "Միացնել Դրամապանակը" },
+            hy: { badge: "Համաշխարհային Պրեմիերա", desc: "3 րոպեանոց գիտաֆանտաստիկ օդիսեա կիբեր քաղաքում:", play: "Դիտել Հիմա", info: "Տեղեկություն", sec1: "🔥 Համաշխարհային Թրენդներ", sec2: "💎 HK-MOVIE Web3 Բնօրինակներ", wallet: "Միացնել Դրամապանակը" },
             ka: { badge: "მსოფლიო პრემიერა", desc: "3-წუთიანი სამეცნიერო ფანტასტიკური ოდისეა კიბერ ქალაქში.", play: "ახლავე ყურება", info: "ინფორმაცია", sec1: "🔥 გლობალური ტრენდები", sec2: "💎 HK-MOVIE Web3 ორიგინალები", wallet: "საფულის მიმაგრება" },
             am: { badge: "ዓለም አቀፍ ፕሪሚየር", desc: "በሳይበር ከተማ ውስጥ የቦታ-ጊዜ በሮች የሚከፍት የ3 ደቂቃ ሳይንስ ልብወለድ።", play: "አሁን ይመልከቱ", info: "መረጃ", sec1: "🔥 ዓለም አቀፍ በመታየት ላይ ያሉ", sec2: "💎 HK-MOVIE Web3 ኦሪጅናሎች", wallet: "កាបូប ማገናኘት" },
             my: { badge: "ကမ္ဘာ့ပထမဆုံးပြသမှု", desc: "ဆိုက်ဘာမြို့တော်တွင် အချိန်နှင့်နေရာကို ဖွင့်လှစ်ပေးသည့် ၃ မိနစ်စာ သိပ္ပံဇာတ်လမ်း။", play: "ယခုကြည့်ရန်", info: "အချက်အလက်", sec1: "🔥 ကမ္ဘာတဝှမ်း ရေပန်းစားနေသော", sec2: "💎 HK-MOVIE Web3 မူရင်းများ", wallet: "ပိုက်ဆံအိတ်ချိတ်ဆက်ရန်" },
@@ -444,7 +448,7 @@
 
         document.getElementById('languageSelect').addEventListener('change', function(e) {
             const lang = e.target.value;
-            const t = t60[lang] || t60['en']; // 미등록 언어는 영문으로 방어
+            const t = t60[lang] || t60['en'];
             
             document.getElementById('heroBadge').innerText = t.badge;
             document.getElementById('heroDesc').innerText = t.desc;
@@ -466,15 +470,3 @@
 
 </body>
 </html>
-
-형님, 이제 드롭다운에 있는 60개국어 중 어느 나라를 선택하시더라도 플랫폼 전체 문구가 해당 국가 언어로 즉시 싹 변환됩니다! 이 코드로 다시 장착하시지요 형님!
-
-
-NAVER 모바일 웹에서 보냈습니다.
-
-다음 메일
-읽은 메일
-보낸 사람Hyekong(ljw2358)
-[내게쓴메일함]메일 제목창작1새 창으로 메일 보기
-오전 05:11
-맨위로

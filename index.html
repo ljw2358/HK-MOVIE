@@ -19,77 +19,39 @@
             flex-direction: column;
             align-items: center;
         }
+        /* 우측 상단 언어창 및 웹3 로그인 배치 */
         .top-nav {
             position: absolute;
             top: 25px;
-            width: 100%;
-            padding: 0 40px;
+            right: 40px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 15px;
             z-index: 10;
-        }
-        .login-btn {
-            padding: 10px 16px;
-            font-size: 14px;
-            background-color: #e50914;
-            color: #ffffff;
-            border: none;
-            border-radius: 6px;
-            font-weight: 700;
-            cursor: pointer;
-            outline: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-            transition: opacity 0.3s;
-        }
-        .login-btn:hover {
-            opacity: 0.9;
-        }
-        .hero-container {
-            width: 100%;
-            max-width: 900px;
-            padding: 110px 20px 10px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .logo {
-            font-size: clamp(40px, 8vw, 75px);
-            font-weight: 900;
-            color: #e50914;
-            letter-spacing: 3px;
-            text-shadow: 0 4px 20px rgba(229, 9, 20, 0.4);
-        }
-        /* 다국어 선택 바 스타일 */
-        .language-bar-container {
-            width: 100%;
-            max-width: 1100px;
-            padding: 0 30px;
-            margin: 20px 0 30px 0;
         }
         .language-bar {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             overflow-x: auto;
-            padding-bottom: 10px;
+            max-width: 500px;
             scrollbar-width: thin;
             scrollbar-color: #e50914 #1a1a1a;
+            padding-bottom: 5px;
         }
         .language-bar::-webkit-scrollbar {
-            height: 6px;
+            height: 4px;
         }
         .language-bar::-webkit-scrollbar-thumb {
             background-color: #e50914;
-            border-radius: 3px;
+            border-radius: 2px;
         }
         .lang-tab {
             background-color: #1a1a1a;
             color: #aaa;
             border: 1px solid #333;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 13px;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
             font-weight: 600;
             cursor: pointer;
             white-space: nowrap;
@@ -103,17 +65,49 @@
             background-color: #e50914;
             color: #fff;
             border-color: #e50914;
-            box-shadow: 0 0 12px rgba(229, 9, 20, 0.5);
+            box-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
         }
-        /* 언어별 환영 메시지 박스 */
+        .login-btn {
+            padding: 8px 16px;
+            font-size: 13px;
+            background-color: #e50914;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            transition: opacity 0.3s;
+            white-space: nowrap;
+        }
+        .login-btn:hover {
+            opacity: 0.9;
+        }
+        .hero-container {
+            width: 100%;
+            max-width: 900px;
+            padding: 120px 20px 10px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .logo {
+            font-size: clamp(40px, 8vw, 75px);
+            font-weight: 900;
+            color: #e50914;
+            letter-spacing: 3px;
+            text-shadow: 0 4px 20px rgba(229, 9, 20, 0.4);
+        }
+        /* 환영 메시지 박스 */
         .welcome-box-container {
             width: 100%;
             max-width: 1100px;
             padding: 0 30px;
-            margin-bottom: 40px;
+            margin: 20px 0 30px 0;
         }
         .welcome-content {
-            display: none;
             background-color: #161616;
             border: 1px solid #262626;
             border-radius: 12px;
@@ -121,14 +115,6 @@
             font-size: 15px;
             color: #d1d1d1;
             line-height: 1.6;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        .welcome-content.active {
-            display: block;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         main {
             width: 100%;
@@ -288,17 +274,8 @@
 </head>
 <body>
 
+    <!-- 우측 상단 언어 선택 바 및 로그인 버튼 -->
     <div class="top-nav">
-        <div class="logo" style="font-size: 20px; text-shadow: none;">HK-MOVIE</div>
-        <button class="login-btn" onclick="openLoginModal()">웹3 로그인</button>
-    </div>
-
-    <div class="hero-container">
-        <div class="logo">HK-MOVIE</div>
-    </div>
-
-    <!-- 국가별 언어 선택 바 -->
-    <div class="language-bar-container">
         <div class="language-bar">
             <button class="lang-tab active" onclick="switchLang('ko', this)">🇰🇷 한국어</button>
             <button class="lang-tab" onclick="switchLang('en', this)">🇺🇸 영어</button>
@@ -323,64 +300,51 @@
             <button class="lang-tab" onclick="switchLang('sd', this)">🇸🇩 수단</button>
             <button class="lang-tab" onclick="switchLang('et', this)">🇪🇹 에티오피아</button>
         </div>
+        <button class="login-btn" onclick="openLoginModal()">웹3 로그인</button>
     </div>
 
-    <!-- 국가별 언어 환영 메시지 박스 -->
+    <div class="hero-container">
+        <div class="logo">HK-MOVIE</div>
+    </div>
+
+    <!-- 환영 메시지 박스 -->
     <div class="welcome-box-container">
-        <div id="msg-ko" class="welcome-content active">HK-MOVIE에 오신 것을 환영합니다. 전 세계의 다양한 영화와 콘텐츠를 최첨단 웹3 인프라로 즐겨보세요.</div>
-        <div id="msg-en" class="welcome-content">Welcome to HK-MOVIE. Enjoy global movies and contents powered by cutting-edge Web3 infrastructure.</div>
-        <div id="msg-zh" class="welcome-content">欢迎来到 HK-MOVIE。体验由尖端 Web3 基础设施驱动的全球电影和内容。</div>
-        <div id="msg-ar" class="welcome-content" dir="rtl">أهلاً بك في HK-MOVIE. استمتع بالأفلام والمحتويات العالمية مدعومة ببنية تحتية متطورة لـ Web3.</div>
-        <div id="msg-hi" class="welcome-content">HK-MOVIE मेंआपकास्वागतहै। अत्याधुनिक वेब3 बुनियादी ढांचे द्वारा संचालित वैश्विक फिल्मों और सामग्री का आनंद लें।</div>
-        <div id="msg-es" class="welcome-content">Bienvenido a HK-MOVIE. Disfruta de películas y contenidos globales impulsados por infraestructura Web3 de vanguardia.</div>
-        <div id="msg-br" class="welcome-content">Bem-vindo ao HK-MOVIE. Desfrute de filmes e conteúdos globais alimentados por infraestrutura Web3 de ponta.</div>
-        <div id="msg-uk" class="welcome-content">Ласкаво просимо до HK-MOVIE. Насолоджуйтесь світовими фільмами та контентом на базі передової інфраструктури Web3.</div>
-        <div id="msg-ja" class="welcome-content">HK-MOVIEへようこそ。最先端のWeb3インフラストラク처による世界中の映画やコンテンツをお楽しみください。</div>
-        <div id="msg-ru" class="welcome-content">Добро пожаловать в HK-MOVIE. Наслаждайтесь мировыми фильмами и контентом на базе передовой инфраструктуры Web3.</div>
-        <div id="msg-vi" class="welcome-content">Chào mừng bạn đến với HK-MOVIE. Tận hưởng các bộ phim và nội dung toàn cầu được cung cấp bởi cơ sở hạ tầng Web3 tiên tiến.</div>
-        <div id="msg-th" class="welcome-content">ยินดีต้อนรับสู่ HK-MOVIE เพลิดเพลินกับภาพยนตร์และเนื้อหาระดับโลกที่ขับเคลื่อนด้วยโครงสร้างพื้นฐาน Web3 ที่ล้ำสมัย</div>
-        <div id="msg-id" class="welcome-content">Selamat datang di HK-MOVIE. Nikmati film dan konten global yang didukung oleh infrastruktur Web3 canggih.</div>
-        <div id="msg-ps" class="welcome-content" dir="rtl">أهلاً فيك بـ HK-MOVIE. استمتع بالأفلام والمحتوى العالمي المدعوم ببنية Web3 الرقمية.</div>
-        <div id="msg-de" class="welcome-content">Willkommen bei HK-MOVIE. Genießen Sie globale Filme und Inhalte, die auf modernster Web3-Infrastruktur basieren.</div>
-        <div id="msg-it" class="welcome-content">Benvenuto su HK-MOVIE. Goditi film e contenuti globali supportati da un'infrastruttura Web3 all'avanguardia.</div>
-        <div id="msg-fr" class="welcome-content">Bienvenue sur HK-MOVIE. Profitez de films et de contenus mondiaux propulsés par une infrastructure Web3 de pointe.</div>
-        <div id="msg-ng" class="welcome-content">Welcome to HK-MOVIE. Enjoy global film and entertainment powered by top Web3 tech.</div>
-        <div id="msg-cm" class="welcome-content">Bienvenue na HK-MOVIE. Enjoy beta films and contents wey Web3 network dey carry.</div>
-        <div id="msg-za" class="welcome-content">Wamkelekile ku HK-MOVIE. Jabulela amafilimu nemikhiqizo yomhlaba wonke nge-Web3 esezingeni eliphezulu.</div>
-        <div id="msg-sd" class="welcome-content" dir="rtl">مرحباً بك في HK-MOVIE. استمتع بالأفلام والمحتوى العالمي مدعوم بأحدث تقنيات الويب 3.</div>
-        <div id="msg-et" class="welcome-content">እንኳን ወደ HK-MOVIE በደህና መጡ። በዘመናዊ የዌብ3 መሠረተ ልማት የተደገፉ ዓለም አቀፍ ፊልሞችን እና ይዘቶችን ይደሰቱ።</div>
+        <div id="welcome-msg" class="welcome-content">HK-MOVIE에 오신 것을 환영합니다. 전 세계의 다양한 영화와 콘텐츠를 최첨단 웹3 인프라로 즐겨보세요.</div>
     </div>
 
     <main>
-        <!-- 실질 영화 추천 포스터 그리드 -->
-        <div class="section-title">실시간 추천 마스터피스</div>
+        <div id="section-title" class="section-title">실시간 추천 마스터피스</div>
         <div class="movie-grid">
-            <div class="movie-card" onclick="openVideoModal('인터스텔라 (Interstellar)', 'https://www.youtube.com/embed/zSWdZVtXT7E')">
-                <div class="movie-poster">🌌<span>인터스텔라</span></div>
+            <!-- 인터스텔라 -->
+            <div class="movie-card" onclick="openVideoModal(currentMovieTitles.m1, 'https://www.youtube.com/embed/zSWdZVtXT7E')">
+                <div class="movie-poster">🌌<span id="badge-1">인터스텔라</span></div>
                 <div class="movie-info">
-                    <div class="movie-title">인터스텔라</div>
-                    <div class="movie-genre">SF / 모험 / 드라마</div>
+                    <div id="title-1" class="movie-title">인터스텔라</div>
+                    <div id="genre-1" class="movie-genre">SF / 모험 / 드라마</div>
                 </div>
             </div>
-            <div class="movie-card" onclick="openVideoModal('인셉션 (Inception)', 'https://www.youtube.com/embed/YoHD9XEInc0')">
-                <div class="movie-poster">🌀<span>인셉션</span></div>
+            <!-- 인셉션 -->
+            <div class="movie-card" onclick="openVideoModal(currentMovieTitles.m2, 'https://www.youtube.com/embed/YoHD9XEInc0')">
+                <div class="movie-poster">🌀<span id="badge-2">인셉션</span></div>
                 <div class="movie-info">
-                    <div class="movie-title">인셉션</div>
-                    <div class="movie-genre">액션 / SF / 스릴러</div>
+                    <div id="title-2" class="movie-title">인셉션</div>
+                    <div id="genre-2" class="movie-genre">액션 / SF / 스릴러</div>
                 </div>
             </div>
-            <div class="movie-card" onclick="openVideoModal('아바타: 물의 길 (Avatar: The Way of Water)', 'https://www.youtube.com/embed/d9MyW72ELq0')">
-                <div class="movie-poster">🌊<span>아바타 2</span></div>
+            <!-- 아바타 2 -->
+            <div class="movie-card" onclick="openVideoModal(currentMovieTitles.m3, 'https://www.youtube.com/embed/d9MyW72ELq0')">
+                <div class="movie-poster">🌊<span id="badge-3">아바타 2</span></div>
                 <div class="movie-info">
-                    <div class="movie-title">아바타: 물의 길</div>
-                    <div class="movie-genre">SF / 액션 / 판타지</div>
+                    <div id="title-3" class="movie-title">아바타: 물의 길</div>
+                    <div id="genre-3" class="movie-genre">SF / 액션 / 판타지</div>
                 </div>
             </div>
-            <div class="movie-card" onclick="openVideoModal('오펜하이머 (Oppenheimer)', 'https://www.youtube.com/embed/uYPbbksJxIg')">
-                <div class="movie-poster">⚛️<span>오펜하이머</span></div>
+            <!-- 오펜하이머 -->
+            <div class="movie-card" onclick="openVideoModal(currentMovieTitles.m4, 'https://www.youtube.com/embed/uYPbbksJxIg')">
+                <div class="movie-poster">⚛️<span id="badge-4">오펜하이머</span></div>
                 <div class="movie-info">
-                    <div class="movie-title">오펜하이머</div>
-                    <div class="movie-genre">전기 / 드라마 / 역사</div>
+                    <div id="title-4" class="movie-title">오펜하이머</div>
+                    <div id="genre-4" class="movie-genre">전기 / 드라마 / 역사</div>
                 </div>
             </div>
         </div>
@@ -420,18 +384,217 @@
     </div>
 
     <script>
-        function switchLang(langCode, btnElement) {
-            // 모든 환영 메시지 숨기기
-            const messages = document.querySelectorAll('.welcome-content');
-            messages.forEach(msg => msg.classList.remove('active'));
-
-            // 선택한 언어 메시지 보이기
-            const targetMsg = document.getElementById('msg-' + langCode);
-            if (targetMsg) {
-                targetMsg.classList.add('active');
+        // 언어별 데이터 객체 (환영 메시지, 추천 타이틀, 영화 이름 및 장르)
+        const langData = {
+            ko: {
+                welcome: "HK-MOVIE에 오신 것을 환영합니다. 전 세계의 다양한 영화와 콘텐츠를 최첨단 웹3 인프라로 즐겨보세요.",
+                section: "실시간 추천 마스터피스",
+                m1: "인터스텔라", g1: "SF / 모험 / 드라마",
+                m2: "인셉션", g2: "액션 / SF / 스릴러",
+                m3: "아바타: 물의 길", g3: "SF / 액션 / 판타지",
+                m4: "오펜하이머", g4: "전기 / 드라마 / 역사"
+            },
+            en: {
+                welcome: "Welcome to HK-MOVIE. Enjoy global movies and contents powered by cutting-edge Web3 infrastructure.",
+                section: "Real-time Recommended Masterpieces",
+                m1: "Interstellar", g1: "Sci-Fi / Adventure / Drama",
+                m2: "Inception", g2: "Action / Sci-Fi / Thriller",
+                m3: "Avatar: The Way of Water", g3: "Sci-Fi / Action / Fantasy",
+                m4: "Oppenheimer", g4: "Biography / Drama / History"
+            },
+            zh: {
+                welcome: "欢迎来到 HK-MOVIE。体验由尖端 Web3 基础设施驱动的全球电影和内容。",
+                section: "实时推荐杰作",
+                m1: "星际穿越", g1: "科幻 / 冒险 / 剧情",
+                m2: "盗梦空间", g2: "动作 / 科幻 / 惊悚",
+                m3: "阿凡达：水之道", g3: "科幻 / 动作 / 奇幻",
+                m4: "奥本海默", g4: "传记 / 剧情 / 历史"
+            },
+            ar: {
+                welcome: "أهلاً بك في HK-MOVIE. استمتع بالأفلام والمحتويات العالمية مدعومة ببنية تحتية متطورة لـ Web3.",
+                section: "الروائع الموصى بها في الوقت الفعلي",
+                m1: "إنترستستلار", g1: "خيال علمي / مغامرة / دراما",
+                m2: "إنسبشن", g2: "حركة / خيال علمي / إثارة",
+                m3: "أفاتار: طريق الماء", g3: "خيال علمي / حركة / خيال",
+                m4: "أوبنهايمر", g4: "سيرة ذاتية / دراما / تاريخ"
+            },
+            hi: {
+                welcome: "HK-MOVIE में आपका स्वागत है। अत्याधुनिक वेब3 बुनियादी ढांचे द्वारा संचालित वैश्विक फिल्मों और सामग्री का आनंद लें।",
+                section: "री얼-टाइम अनुशंसित मास्टरपीस",
+                m1: "इंटర్ स्टेलर", g1: "साइंस फिक्शन / एडवेंचर / ड्रामा",
+                m2: "इंसेप्शन", g2: "एक्शन / साइंस फिक्शन / थ्रिलर",
+                m3: "अवतार: द वे ऑफ़ वॉटर", g3: "साइंस फिक्शन / एक्शन / फेंटेसी",
+                m4: "ओपेनहाइमर", g4: "बायोग्राफी / ड्रामा / इतिहास"
+            },
+            es: {
+                welcome: "Bienvenido a HK-MOVIE. Disfruta de películas y contenidos globales impulsados por infraestructura Web3 de vanguardia.",
+                section: "Obras Maestras Recomendadas en Tiempo Real",
+                m1: "Interstellar", g1: "Ciencia ficción / Aventura / Drama",
+                m2: "Inception", g2: "Acción / Ciencia ficción / Suspenso",
+                m3: "Avatar: El camino del agua", g3: "Ciencia ficción / Acción / Fantasía",
+                m4: "Oppenheimer", g4: "Biografía / Drama / Historia"
+            },
+            br: {
+                welcome: "Bem-vindo ao HK-MOVIE. Desfrute de filmes e conteúdos globais alimentados por infraestrutura Web3 de ponta.",
+                section: "Obras-Primas Recomendadas em Tempo Real",
+                m1: "Interstellar", g1: "Ficção Científica / Aventura / Drama",
+                m2: "A Origem", g2: "Ação / Ficção Científica / Suspense",
+                m3: "Avatar: O Caminho da Água", g3: "Ficção Científica / Ação / Fantasia",
+                m4: "Oppenheimer", g4: "Biografia / Drama / História"
+            },
+            uk: {
+                welcome: "Ласкаво просимо до HK-MOVIE. Насолоджуйтесь світовими фільмами та контентом на базі передової інфраструктури Web3.",
+                section: "Рекомендовані шедеври в реальному часі",
+                m1: "Інтерстеллар", g1: "Фантастика / Пригоди / Драматичний",
+                m2: "Початок", g2: "Бойовик / Фантастика / Трилер",
+                m3: "Аватар: Шлях води", g3: "Фантастика / Бойовик / Фентезі",
+                m4: "Оппенгеймер", g4: "Біографія / Драма / Історія"
+            },
+            ja: {
+                welcome: "HK-MOVIEへようこそ。最先端のWeb3インフラによる世界中の映画やコンテンツをお楽しみください。",
+                section: "リアルタイムおすすめマスターピース",
+                m1: "インターステラー", g1: "SF / アドベンチャー / ドラマ",
+                m2: "インception", g2: "アクション / SF / スリラー",
+                m3: "アバター：ウェイ・オブ・ウォーター", g3: "SF / アクション / ファンタジー",
+                m4: "オッペンハイマー", g4: "伝記 / ドラマ / 歴史"
+            },
+            ru: {
+                welcome: "Добро пожаловать в HK-MOVIE. Наслаждайтесь мировыми фильмами и контентом на базе передовой инфраструктуры Web3.",
+                section: "Рекомендуемые шедевры в реальном времени",
+                m1: "Интерстеллар", g1: "Фантастика / Приключения / Драма",
+                m2: "Начало", g2: "Боевик / Фантастика / Триллер",
+                m3: "Аватар: Путь воды", g3: "Фантастика / Боевик / Фэнтези",
+                m4: "Оппенгеймер", g4: "Биография / Драма / История"
+            },
+            vi: {
+                welcome: "Chào mừng bạn đến với HK-MOVIE. Tận hưởng các bộ phim và nội dung toàn cầu được cung cấp bởi cơ sở hạ tầng Web3 tiên tiến.",
+                section: "Kiệt tác được đề xuất thời gian thực",
+                m1: "Hố Đen Tử Thần", g1: "Khoa học viễn tưởng / Phiêu lưu / Tâm lý",
+                m2: "Kẻ Đánh Cắp Giấc Mơ", g2: "Hành động / Khoa học viễn tưởng / Giật gân",
+                m3: "Avatar: Dòng Chảy Của Nước", g3: "Khoa học viễn tưởng / Hành động / Giả tưởng",
+                m4: "Oppenheimer", g4: "Tiểu sử / Chính kịch / Lịch sử"
+            },
+            th: {
+                welcome: "ยินดีต้อนรับสู่ HK-MOVIE เพลิดเพลินกับภาพยนตร์และเนื้อหาระดับโลกที่ขับเคลื่อนด้วยโครงสร้างพื้นฐาน Web3 ที่ล้ำสมัย",
+                section: "ผลงานชิ้นเอกแนะนำแบบเรียลไทม์",
+                m1: "อินเตอร์стелลาร์", g1: "ไซไฟ / ผจญภัย / ดราม่า",
+                m2: "อินเซปชัน", g2: "แอคชั่น / ไซไฟ / ระทึกขวัญ",
+                m3: "อวตาร: วิถีแห่งสายน้ำ", g3: "ไซไฟ / แอคชั่น / แฟนตาซี",
+                m4: "ออป펜하이머", g4: "ชีวประวัติ / ดราม่า / ประวัติศาสตร์"
+            },
+            id: {
+                welcome: "Selamat datang di HK-MOVIE. Nikmati film dan konten global yang didukung oleh infrastruktur Web3 canggih.",
+                section: "Mahakarya Rekomendasi Waktu Nyata",
+                m1: "Interstellar", g1: "Fiksi Ilmiah / Petualangan / Drama",
+                m2: "Inception", g2: "Aksi / Fiksi Ilmiah / Thriller",
+                m3: "Avatar: The Way of Water", g3: "Fiksi Ilmiah / Aksi / Fantasi",
+                m4: "Oppenheimer", g4: "Biografi / Drama / Sejarah"
+            },
+            ps: {
+                welcome: "أهلاً فيك بـ HK-MOVIE. استمتع بالأفلام والمحتوى العالمي المدعوم ببنية Web3 الرقمية.",
+                section: "شاهکار های وړاندیز شوي",
+                m1: "انټرستیلر", g1: "ساینسي / پېښه / ډرامه",
+                m2: "انسیپشن", g2: "عمل / ساینسي / تریلر",
+                m3: "أفاتار: لار د اوبو", g3: "ساینسي / عمل / خیالي",
+                m4: "اوپنهایمر", g4: "ژوندلیک / ډرامه / تاریخ"
+            },
+            de: {
+                welcome: "Willkommen bei HK-MOVIE. Genießen Sie globale Filme und Inhalte, die auf modernster Web3-Infrastruktur basieren.",
+                section: "Echtzeit-Empfohlene Meisterwerke",
+                m1: "Interstellar", g1: "Sci-Fi / Abenteuer / Drama",
+                m2: "Inception", g2: "Action / Sci-Fi / Thriller",
+                m3: "Avatar: The Way of Water", g3: "Sci-Fi / Action / Fantasy",
+                m4: "Oppenheimer", g4: "Biografie / Drama / Geschichte"
+            },
+            it: {
+                welcome: "Benvenuto su HK-MOVIE. Goditi film e contenuti globali supportati da un'infrastruttura Web3 all'avanguardia.",
+                section: "Capolavori consigliati in tempo reale",
+                m1: "Interstellar", g1: "Fantascienza / Avventura / Drammatico",
+                m2: "Inception", g2: "Azione / Fantascienza / Thriller",
+                m3: "Avatar: La via dell'acqua", g3: "Fantascienza / Azione / Fantasy",
+                m4: "Oppenheimer", g4: "Biografico / Drammatico / Storico"
+            },
+            fr: {
+                welcome: "Bienvenue sur HK-MOVIE. Profitez de films et de contenus mondiaux propulsés par une infrastructure Web3 de pointe.",
+                section: "Chefs-d'œuvre recommandés en temps réel",
+                m1: "Interstellar", g1: "Science-fiction / Aventure / Drame",
+                m2: "Inception", g2: "Action / Science-fiction / Thriller",
+                m3: "Avatar : La Voie de l'eau", g3: "Science-fiction / Action / Fantastique",
+                m4: "Oppenheimer", g4: "Biographique / Drame / Historique"
+            },
+            ng: {
+                welcome: "Welcome to HK-MOVIE. Enjoy global film and entertainment powered by top Web3 tech.",
+                section: "Hot Masterpieces We Recommend",
+                m1: "Interstellar", g1: "Sci-Fi / Adventure / Drama",
+                m2: "Inception", g2: "Action / Sci-Fi / Thriller",
+                m3: "Avatar: The Way of Water", g3: "Sci-Fi / Action / Fantasy",
+                m4: "Oppenheimer", g4: "Biography / Drama / History"
+            },
+            cm: {
+                welcome: "Bienvenue na HK-MOVIE. Enjoy beta films and contents wey Web3 network dey carry.",
+                section: "Better Masterpieces Wey We Recommend",
+                m1: "Interstellar", g1: "Sci-Fi / Adventure / Drama",
+                m2: "Inception", g2: "Action / Sci-Fi / Thriller",
+                m3: "Avatar: The Way of Water", g3: "Sci-Fi / Action / Fantasy",
+                m4: "Oppenheimer", g4: "Biography / Drama / History"
+            },
+            za: {
+                welcome: "Wamkelekile ku HK-MOVIE. Jabulela amafilimu nemikhiqizo yomhlaba wonke nge-Web3 esezingeni eliphezulu.",
+                section: "Ama-Masterpieces Enconywayo",
+                m1: "Interstellar", g1: "Sci-Fi / Adventure / Drama",
+                m2: "Inception", g2: "Action / Sci-Fi / Thriller",
+                m3: "Avatar: The Way of Water", g3: "Sci-Fi / Action / Fantasy",
+                m4: "Oppenheimer", g4: "Biography / Drama / History"
+            },
+            sd: {
+                welcome: "مرحباً بك في HK-MOVIE. استمتع بالأفلام والمحتوى العالمي مدعوم بأحدث تقنيات الويب 3.",
+                section: "الروائع الموصى بها",
+                m1: "إنترستيلر", g1: "خيال علمي / مغامرة / دراما",
+                m2: "إنسبشن", g2: "حركة / خيال علمي / إثارة",
+                m3: "أفاتار: طريق الماء", g3: "خيال علمي / حركة / خيال",
+                m4: "أوبنهايمر", g4: "سيرة ذاتية / دراما / تاريخ"
+            },
+            et: {
+                welcome: "እንኳን ወደ HK-MOVIE በደህና መጡ። በዘመናዊ የዌብ3 መሠረተ ልማት የተደገፉ ዓለም አቀፍ ፊልሞችን እና ይዘቶችን ይደሰቱ።",
+                section: "የተመከሩ ድንቅ ስራዎች",
+                m1: "ኢንተርስቴላር", g1: "ሳይንስ ፍiction / ጀብዱ / ድራማ",
+                m2: "ኢንሴፕሽን", g2: "እርምጃ / ሳይንስ ፍiction / thriller",
+                m3: "አቫታር: የውሃው መንገድ", g3: "ሳይንስ ፍiction / እርምጃ / ቅዠት",
+                m4: "ኦፔንሃይመር", g4: "የህይወት ታሪክ / ድራማ / ታሪክ"
             }
+        };
 
-            // 모든 탭에서 active 제거 후 클릭한 탭에 추가
+        let currentMovieTitles = { m1: "인터스텔라", m2: "인셉션", m3: "아바타: 물의 길", m4: "오펜하이머" };
+
+        function switchLang(langCode, btnElement) {
+            const data = langData[langCode];
+            if (!data) return;
+
+            // 1. 환영 문구 및 섹션 타이틀 변경
+            document.getElementById('welcome-msg').innerText = data.welcome;
+            document.getElementById('section-title').innerText = data.section;
+
+            // 2. 영화 4개 타이틀 및 장르 변경
+            document.getElementById('badge-1').innerText = data.m1;
+            document.getElementById('title-1').innerText = data.m1;
+            document.getElementById('genre-1').innerText = data.g1;
+
+            document.getElementById('badge-2').innerText = data.m2;
+            document.getElementById('title-2').innerText = data.m2;
+            document.getElementById('genre-2').innerText = data.g2;
+
+            document.getElementById('badge-3').innerText = data.m3;
+            document.getElementById('title-3').innerText = data.m3;
+            document.getElementById('genre-3').innerText = data.g3;
+
+            document.getElementById('badge-4').innerText = data.m4;
+            document.getElementById('title-4').innerText = data.m4;
+            document.getElementById('genre-4').innerText = data.g4;
+
+            // 모달 재생 시 전달될 타이틀 글로벌 변수 업데이트
+            currentMovieTitles = { m1: data.m1, m2: data.m2, m3: data.m3, m4: data.m4 };
+
+            // 3. 탭 활성화 UI 처리
             const tabs = document.querySelectorAll('.lang-tab');
             tabs.forEach(tab => tab.classList.remove('active'));
             btnElement.classList.add('active');

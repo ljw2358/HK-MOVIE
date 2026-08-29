@@ -3,447 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HK-MOVIE | HK 그룹 글로벌 영화 플랫폼</title>
+    <title>HK Group & HK WorldBank - Global 60 Languages Masterpiece Suite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background-color: #0b0b0b;
-            color: #ffffff;
-            font-family: 'Noto Sans KR', sans-serif;
-            overflow-x: hidden;
-        }
-        /* 우측 상단 고정 언어 선택 영역 */
-        .top-lang-bar {
-            position: fixed;
-            top: 20px;
-            right: 50px;
-            z-index: 2000;
-        }
-        .lang-select {
-            background-color: rgba(20, 20, 20, 0.95);
-            color: #ffffff;
-            border: 1px solid #444;
-            padding: 8px 14px;
-            border-radius: 4px;
-            font-size: 14px;
-            cursor: pointer;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-        .lang-select:hover {
-            border-color: #e50914;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            padding-right: 250px;
-        }
-        .logo {
-            font-size: 26px;
-            font-weight: 900;
-            color: #e50914;
-            letter-spacing: 2px;
-        }
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-        nav a {
-            color: #b3b3b3;
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #ffffff;
-        }
-        .hero {
-            height: 90vh;
-            background: linear-gradient(to top, #0b0b0b 10%, rgba(11,11,11,0.4) 50%, rgba(0,0,0,0.8) 100%), url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 60px 50px;
-        }
-        .hero h1 {
-            font-size: 52px;
-            font-weight: 800;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
-        }
-        .hero p {
-            font-size: 18px;
-            max-width: 650px;
-            margin-bottom: 30px;
-            color: #e0e0e0;
-            line-height: 1.5;
-        }
-        .btn-group {
-            display: flex;
-            gap: 15px;
-        }
-        .btn-group button {
-            padding: 14px 35px;
-            font-size: 16px;
-            font-weight: bold;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: opacity 0.3s, transform 0.2s;
-        }
-        .btn-play {
-            background-color: #ffffff;
-            color: #000000;
-        }
-        .btn-info {
-            background-color: rgba(109, 109, 110, 0.8);
-            color: #ffffff;
-        }
-        .btn-group button:hover {
-            opacity: 0.85;
-            transform: scale(1.03);
-        }
-        .section {
-            padding: 40px 50px;
-        }
-        .section h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-        .movie-row {
-            display: flex;
-            gap: 15px;
-            overflow-x: auto;
-            padding-bottom: 15px;
-            scroll-behavior: smooth;
-        }
-        .movie-row::-webkit-scrollbar {
-            height: 8px;
-        }
-        .movie-row::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-        .movie-card {
-            min-width: 260px;
-            height: 150px;
-            background-color: #1f1f1f;
-            border-radius: 6px;
-            overflow: hidden;
-            flex-shrink: 0;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-        }
-        .movie-card:hover {
-            transform: scale(1.08);
-            z-index: 10;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.8);
-        }
-        .movie-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .movie-info-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            padding: 15px 10px 10px;
-            font-size: 13px;
-            font-weight: 600;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .movie-card:hover .movie-info-overlay {
-            opacity: 1;
-        }
-        footer {
-            text-align: center;
-            padding: 50px;
-            color: #757575;
-            font-size: 14px;
-            border-top: 1px solid #222;
-            margin-top: 60px;
-            line-height: 1.8;
-        }
-        .social-links {
-            margin-top: 15px;
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-        }
-        .social-links a {
-            color: #b3b3b3;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        .social-links a:hover {
-            color: #e50914;
-        }
-        .support-email {
-            margin-top: 12px;
-            color: #888;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Pretendard:wght@300;400;600;700&display=swap');
+        body { font-family: 'Pretendard', 'Orbitron', sans-serif; background-color: #02040a; color: #f3f4f6; }
+        .font-tech { font-family: 'Orbitron', sans-serif; }
+        .glow-gold { box-shadow: 0 0 30px rgba(234, 179, 8, 0.12); }
+        .glass-panel { background: rgba(13, 17, 28, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .tab-btn.active { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #000; font-weight: 700; }
+        /* 커스텀 스크롤바 디자인 */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(245, 158, 11, 0.3); border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(245, 158, 11, 0.6); }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col">
 
-    <!-- 우측 상단 고정 60개국 언어 선택바 -->
-    <div class="top-lang-bar">
-        <select class="lang-select" id="languageSelector" onchange="changeLanguage(this.value)">
-            <option value="ko">🇰🇷 한국어 (Korean)</option>
-            <option value="en">🇺🇸 English</option>
-            <option value="ja">🇯🇵 日本語 (Japanese)</option>
-            <option value="zh">🇨🇳 中文 (Chinese)</option>
-            <option value="es">🇪🇸 Español (Spanish)</option>
-            <option value="fr">🇫🇷 Français (French)</option>
-            <option value="de">🇩🇪 Deutsch (German)</option>
-            <option value="ru">🇷🇺 Русский (Russian)</option>
-            <option value="ar">🇸🇦 العربية (Arabic)</option>
-            <option value="hi">🇮🇳 हिन्दी (Hindi)</option>
-            <option value="pt">🇵🇹 Português (Portuguese)</option>
-            <option value="it">🇮🇹 Italiano (Italian)</option>
-            <option value="vi">🇻🇳 Tiếng Việt (Vietnamese)</option>
-            <option value="th">🇹🇭 ไทย (Thai)</option>
-            <option value="id">🇮🇩 Bahasa Indonesia</option>
-            <option value="ms">🇲🇾 Bahasa Melayu</option>
-            <option value="tr">🇹🇷 Türkçe (Turkish)</option>
-            <option value="pl">🇵🇱 Polski (Polish)</option>
-            <option value="nl">🇳🇱 Nederlands (Dutch)</option>
-            <option value="sv">🇸🇪 Svenska (Swedish)</option>
-            <option value="el">🇬🇷 Ελληνικά (Greek)</option>
-            <option value="cs">🇨🇿 Čeština (Czech)</option>
-            <option value="hu">🇭🇺 Magyar (Hungarian)</option>
-            <option value="ro">🇷🇴 Română (Romanian)</option>
-            <option value="uk">🇺🇦 Українська (Ukrainian)</option>
-            <option value="fa">🇮🇷 فارسی (Persian)</option>
-            <option value="he">🇮🇱 עברית (Hebrew)</option>
-            <option value="ur">🇵🇰 اردو (Urdu)</option>
-            <option value="bn">🇧🇩 বাংলা (Bengali)</option>
-            <option value="pa">🇮🇳 ਪੰਜਾਬੀ (Punjabi)</option>
-            <option value="ta">🇮🇳 தமிழ் (Tamil)</option>
-            <option value="te">🇮🇳 తెలుగు (Telugu)</option>
-            <option value="mr">🇮🇳 मराठी (Marathi)</option>
-            <option value="gu">🇮🇳 ગુજરાતી (Gujarati)</option>
-            <option value="kn">🇮🇳 ಕನ್ನಡ (Kannada)</option>
-            <option value="ml">🇮🇳 മലയാളം (Malayalam)</option>
-            <option value="fil">🇵🇭 Tagalog (Filipino)</option>
-            <option value="ms_my">🇲🇾 Melayu</option>
-            <option value="sw">🇰🇪 Kiswahili (Swahili)</option>
-            <option value="am">🇪🇹 አማርኛ (Amharic)</option>
-            <option value="ha">🇳🇬 Hausa</option>
-            <option value="yo">🇳🇬 Yorùbá</option>
-            <option value="ig">🇳🇬 Igbo</option>
-            <option value="zu">🇿🇦 IsiZulu (Zulu)</option>
-            <option value="af">🇿🇦 Afrikaans</option>
-            <option value="da">🇩🇰 Dansk (Danish)</option>
-            <option value="fi">🇫🇮 Suomi (Finnish)</option>
-            <option value="no">🇳🇴 Norsk (Norwegian)</option>
-            <option value="sk">🇸🇰 Slovenčina (Slovak)</option>
-            <option value="sl">🇸🇮 Slovenščina (Slovenian)</option>
-            <option value="hr">🇭🇷 Hrvatski (Croatian)</option>
-            <option value="sr">🇷🇸 Српски (Serbian)</option>
-            <option value="bg">🇧🇬 Български (Bulgarian)</option>
-            <option value="et">🇪🇪 Eesti (Estonian)</option>
-            <option value="lv">🇱🇻 Latviešu (Latvian)</option>
-            <option value="lt">🇱🇹 Lietuvių (Lithuanian)</option>
-            <option value="is">🇮🇸 Íslenska (Icelandic)</option>
-            <option value="ga">🇮🇪 Gaeilge (Irish)</option>
-            <option value="cy">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg (Welsh)</option>
-            <option value="eu">🇪🇸 Euskara (Basque)</option>
-        </select>
-    </div>
+    <header class="glass-panel border-b border-gray-800 px-6 py-4 flex flex-col lg:flex-row justify-between items-center sticky top-0 z-50 gap-4">
+        <div class="flex items-center space-x-4">
+            <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-yellow-500 to-amber-300 flex items-center justify-center font-tech font-bold text-black text-xl shadow-xl">
+                HK
+            </div>
+            <div>
+                <h1 class="font-tech font-bold text-lg tracking-wider text-white" id="nav-title">HK GROUP | FUTURE VISION XPRIZE</h1>
+                <p class="text-xs text-amber-400 font-tech" id="nav-subtitle">MISSION: ERADICATING GLOBAL POVERTY THROUGH UBI & TECHNOLOGY</p>
+            </div>
+        </div>
+        
+        <div class="flex items-center space-x-3 relative">
+            <!-- 커스텀 60개국 드롭다운 트리거 버튼 -->
+            <div class="relative">
+                <button onclick="toggleLangDropdown()" id="langBtn" class="flex items-center space-x-2 bg-gray-900/90 px-4 py-2 rounded-xl border border-gray-800 text-xs font-tech text-gray-200 hover:border-amber-500/50 transition-all">
+                    <span>🌐</span>
+                    <span id="currentLangText">한국어 (Korean)</span>
+                    <span class="text-amber-400 ml-2">▼</span>
+                </button>
 
-    <header>
-        <div class="logo">HK-MOVIE</div>
-        <div class="nav-right">
-            <nav>
-                <a href="#" id="navHome">홈</a>
-                <a href="#" id="navSeries">시리즈</a>
-                <a href="#" id="navMovie">영화</a>
-                <a href="#" id="navNew">최신 등록</a>
-                <a href="#" id="navMyList">내가 찜한 콘텐츠</a>
-            </nav>
+                <!-- 60개국 전체가 펼쳐지는 커스텀 패널 (그리드 구조로 한눈에 노출) -->
+                <div id="langDropdownPanel" class="hidden absolute right-0 mt-2 w-[340px] md:w-[480px] glass-panel rounded-2xl p-4 shadow-2xl z-50 border border-amber-500/20">
+                    <div class="flex justify-between items-center mb-3 pb-2 border-b border-gray-800">
+                        <span class="text-xs font-tech text-amber-400 font-bold">SELECT LANGUAGE (60 COUNTRIES)</span>
+                        <span class="text-xs text-gray-400 cursor-pointer hover:text-white" onclick="toggleLangDropdown()">✕ 닫기</span>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-1.5 max-h-[320px] overflow-y-auto custom-scrollbar pr-1" id="langGridContainer">
+                        <!-- JS를 통해 60개국 리스트 동적 주입 -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden xl:flex items-center space-x-2 bg-gray-900 px-3 py-1.5 rounded-full border border-gray-800">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-xs font-tech text-gray-300">Pi SDK: <strong class="text-emerald-400">ONLINE</strong></span>
+            </div>
         </div>
     </header>
 
-    <section class="hero" id="heroSection">
-        <h1 id="heroTitle">찬란한 시네마의 시작, HK-MOVIE</h1>
-        <p id="heroDesc">형님과 함께 만들어가는 차세대 글로벌 영화 플랫폼 HK-MOVIE에서 전 세계의 경이로운 명작들과 오리지널 콘텐츠를 감상하세요.</p>
-        <div class="btn-group">
-            <button class="btn-play" id="btnPlay">▶ 재생</button>
-            <button class="btn-info" id="btnInfo">ℹ 상세 정보</button>
-        </div>
-    </section>
+    <main class="flex-1 max-w-7xl w-full mx-auto p-6 lg:p-8 space-y-8">
+        <section class="glass-panel rounded-3xl p-8 glow-gold relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="max-w-3xl space-y-4 relative z-10">
+                <span class="px-3 py-1 bg-amber-500/20 border border-amber-500/40 rounded-full text-amber-300 text-xs font-tech tracking-wide" id="banner-tag">CORE PHILOSOPHY</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-white leading-tight" id="banner-title">
+                    "기술의 궁극적 가치는 지구상의 모든 빈곤을 종식시키는 데 있습니다."
+                </h2>
+                <p class="text-gray-300 text-sm md:text-base leading-relaxed" id="banner-desc">
+                    HK 그룹은 디지털 금융(HK WorldBank) 순이익의 30%를 전 세계 최빈국과 소외 계층의 유니버설 기본소득(UBI) 재원으로 직접 할당합니다.
+                </p>
+            </div>
+        </section>
 
-    <section class="section">
-        <h2 id="section1Title">🔥 지금 뜨는 글로벌 콘텐츠</h2>
-        <div class="movie-row">
-            <div class="movie-card">
-                <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=80" alt="영화1">
-                <div class="movie-info-overlay">사이버네틱 오디세이</div>
-            </div>
-            <div class="movie-card">
-                <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=80" alt="영화2">
-                <div class="movie-info-overlay">퀀텀 유니버스</div>
-            </div>
-            <div class="movie-card">
-                <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=500&q=80" alt="영화3">
-                <div class="movie-info-overlay">네온 시티의 방랑자</div>
-            </div>
-            <div class="movie-card">
-                <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=500&q=80" alt="영화4">
-                <div class="movie-info-overlay">스페이스 오퍼레이션</div>
-            </div>
-            <div class="movie-card">
-                <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=500&q=80" alt="영화5">
-                <div class="movie-info-overlay">프로젝트 넥스트</div>
-            </div>
-            <div class="movie-card">
-                <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=500&q=80" alt="영화6">
-                <div class="movie-info-overlay">라스트 호라이즌</div>
-            </div>
+        <div class="flex space-x-3 border-b border-gray-800 pb-4">
+            <button onclick="switchTab('movie')" id="tab-movie-btn" class="px-5 py-2.5 rounded-xl font-tech text-sm transition-all tab-btn active">🎬 3-MIN FILM MASTERPIECE</button>
+            <button onclick="switchTab('app')" id="tab-app-btn" class="px-5 py-2.5 rounded-xl font-tech text-sm transition-all text-gray-400 glass-panel">💻 HK WORLDBANK UBI APP</button>
         </div>
-    </section>
 
-    <section class="section">
-        <h2 id="section2Title">💎 HK 그룹 오리지널 명작</h2>
-        <div class="movie-row">
-            <div class="movie-card">
-                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=500&q=80" alt="오리지널1">
-                <div class="movie-info-overlay">HK 월드뱅크의 비밀</div>
-            </div>
-            <div class="movie-card">
-                <img src="https://images.unsplash.com/photo-1568832331089-184ec7402943?auto=format&fit=crop&w=500&q=80" alt="오리지널2">
-                <div class="movie-info-overlay">울산 산업 클러스터</div>
-            </div>
-            <div class="movie-card">
-                <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=500&q=80" alt="오리지널3">
-                <div class="movie-info-overlay">경주 165층 파이낸셜 타워</div>
-            </div>
-            <div class="movie-card">
-                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=500&q=80" alt="오리지널4">
-                <div class="movie-info-overlay">핵융합과 미래 도시</div>
-            </div>
-            <div class="movie-card">
-                <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=500&q=80" alt="오리지널5">
-                <div class="movie-info-overlay">퀀텀 바이오의 진실</div>
-            </div>
-            <div class="movie-card">
-                <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=80" alt="오리지널6">
-                <div class="movie-info-overlay">피 네트워크 에디션</div>
-            </div>
-        </div>
-    </section>
+        <div id="section-movie" class="space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="glass-panel rounded-2xl p-6 space-y-4">
+                    <h3 class="font-tech text-amber-400 font-bold text-sm tracking-wider" id="film-spec-title">FILM SPECIFICATIONS</h3>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex justify-between border-b border-gray-800 pb-2">
+                            <span class="text-gray-400" id="lbl-duration">Duration</span>
+                            <span class="font-tech text-white">3 Minutes Exact</span>
+                        </li>
+                        <li class="flex justify-between border-b border-gray-800 pb-2">
+                            <span class="text-gray-400" id="lbl-theme">Primary Theme</span>
+                            <span class="font-tech text-amber-400" id="val-theme">Global Poverty Eradication</span>
+                        </li>
+                        <li class="flex justify-between border-b border-gray-800 pb-2">
+                            <span class="text-gray-400" id="lbl-clusters">Tech Clusters</span>
+                            <span class="font-tech text-blue-400">Ulsan / Gyeongju / Pohang</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span class="text-gray-400" id="lbl-ubi-share">UBI Allocation</span>
+                            <span class="font-tech text-emerald-400">30% Net Profit</span>
+                        </li>
+                    </ul>
+                </div>
 
-    <footer>
-        <p id="footerText">&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>HK 그룹의 혁신적인 기술력과 글로벌 엔터테인먼트가 결합된 프리미엄 스트리밍 서비스입니다.</p>
-        <div class="social-links">
-            <a href="https://youtube.com/@Hyekong2026" target="_blank">📺 YouTube (@Hyekong2026)</a>
-            <a href="https://tiktok.com/@hyekong2025" target="_blank">🎵 TikTok (@hyekong2025)</a>
+                <div class="lg:col-span-2 glass-panel rounded-2xl p-6 space-y-6">
+                    <h3 class="font-tech text-white font-bold text-base tracking-wider" id="script-title">SCENE-BY-SCENE NARRATIVE & SCRIPT</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-gray-900/80 rounded-xl border border-gray-800 space-y-2">
+                            <div class="flex justify-between items-center"><span class="text-xs font-tech text-amber-400">SCENE 01 (00:00 - 00:45)</span><span class="text-xs text-gray-400">Problem & Solution</span></div>
+                            <h4 class="font-bold text-white text-sm" id="scene1-heading">기후 위기와 빈곤의 경고</h4>
+                            <p class="text-xs text-gray-300 leading-relaxed" id="scene1-desc">에너지 고갈과 빈부격차 속에서 HK 그룹의 첨단 메가시티(울산·경주·포항)가 생존 대안으로 떠오릅니다.</p>
+                        </div>
+                        <div class="p-4 bg-gray-900/80 rounded-xl border border-gray-800 space-y-2">
+                            <div class="flex justify-between items-center"><span class="text-xs font-tech text-blue-400">SCENE 02 (00:45 - 02:00)</span><span class="text-xs text-gray-400">Technology in Action</span></div>
+                            <h4 class="font-bold text-white text-sm" id="scene2-heading">미래 기술 클러스터의 가동</h4>
+                            <p class="text-xs text-gray-300 leading-relaxed" id="scene2-desc">울산 로보틱스, 경주 핵융합 에너지, 포항 우주 시스템이 유기적으로 결합합니다.</p>
+                        </div>
+                        <div class="p-4 bg-gray-900/80 rounded-xl border border-gray-800 space-y-2">
+                            <div class="flex justify-between items-center"><span class="text-xs font-tech text-emerald-400">SCENE 03 (02:00 - 03:00)</span><span class="text-xs text-gray-400">Climax & UBI Vision</span></div>
+                            <h4 class="font-bold text-white text-sm" id="scene3-heading">HK WorldBank & 지구촌 UBI 분배</h4>
+                            <p class="text-xs text-gray-300 leading-relaxed" id="scene3-desc">순이익 30%가 전 세계 빈곤 지역 시민들의 지갑으로 실시간 전송됩니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="support-email">
-            Support: <a href="mailto:support@hkwb.world" style="color: #e50914; text-decoration: none;">support@hkwb.world</a>
+
+        <div id="section-app" class="hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="glass-panel rounded-2xl p-6 space-y-6 glow-gold">
+                    <div>
+                        <h3 class="font-tech text-amber-400 font-bold text-sm tracking-wider" id="app-staking-title">3-YEAR ASSET STAKING</h3>
+                        <p class="text-xs text-gray-400 mt-1" id="app-staking-sub">Algorithmic Variable Rate & 31.41% APY Option</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-gray-900/80 rounded-xl border border-gray-800 space-y-2">
+                            <div class="flex justify-between text-xs"><span class="text-gray-400" id="lbl-staked-val">Total Staked Value</span><span class="text-amber-400 font-tech">1,452,890 HKT</span></div>
+                            <div class="flex justify-between text-xs"><span class="text-gray-400" id="lbl-lockup">Lock-up Period</span><span class="text-white font-tech">36 Months</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-2 glass-panel rounded-2xl p-6 space-y-6">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h3 class="font-tech text-white font-bold text-base tracking-wider" id="ubi-stream-title">GLOBAL UBI DISTRIBUTION STREAM</h3>
+                            <p class="text-xs text-gray-400 mt-0.5" id="ubi-stream-sub">30% Net Profit Allocated to Impoverished Regions</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-xs text-gray-400" id="lbl-beneficiaries">Eradicating Poverty For</p>
+                            <p class="text-xl font-tech font-bold text-emerald-400">3,482,109,240 <span class="text-xs text-gray-300" id="lbl-citizens">Citizens</span></p>
+                        </div>
+                    </div>
+                    <div class="h-64 w-full relative"><canvas id="ubiChart"></canvas></div>
+                </div>
+            </div>
         </div>
+    </main>
+
+    <footer class="glass-panel border-t border-gray-800 py-4 px-8 text-center text-xs text-gray-500 font-tech">
+        &copy; 2026 HK GROUP & FUTURE VISION XPRIZE. ALL RIGHTS RESERVED.
     </footer>
 
     <script>
-        const translations = {
-            ko: { home: "홈", series: "시리즈", movie: "영화", latest: "최신 등록", mylist: "내가 찜한 콘텐츠", title: "찬란한 시네마의 시작, HK-MOVIE", desc: "형님과 함께 만들어가는 차세대 글로벌 영화 플랫폼 HK-MOVIE에서 전 세계의 경이로운 명작들과 오리지널 콘텐츠를 감상하세요.", play: "▶ 재생", info: "ℹ 상세 정보", sec1: "🔥 지금 뜨는 글로벌 콘텐츠", sec2: "💎 HK 그룹 오리지널 명작", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>HK 그룹의 혁신적인 기술력과 글로벌 엔터테인먼트가 결합된 프리미엄 스트리밍 서비스입니다." },
-            en: { home: "Home", series: "Series", movie: "Movies", latest: "Latest", mylist: "My List", title: "The Birth of Brilliant Cinema, HK-MOVIE", desc: "Experience phenomenal global masterpieces and original contents on HK-MOVIE, the next-gen streaming platform built alongside Chairman Hyekong.", play: "▶ Play", info: "ℹ More Info", sec1: "🔥 Trending Global Content", sec2: "💎 HK Group Original Masterpieces", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>A premium streaming service combining HK Group's innovative tech and global entertainment." },
-            ja: { home: "ホーム", series: "シリーズ", movie: "映画", latest: "新着作品", mylist: "マイリスト", title: "輝かしい映画の幕開け、HK-MOVIE", desc: "兄貴と一緒に作り上げる次世代グローバル映画プラットフォーム「HK-MOVIE」で、世界中の驚異的な名作とオリジナルコンテンツをお楽しみください。", play: "▶ 再生", info: "ℹ 詳細情報", sec1: "🔥 今話題のグローバルコンテンツ", sec2: "💎 HKグループ オリジナル名作", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>HKグループの革新的な技術力とグローバルエンターテインメントが融合したプレミアムストリーミングサービスです。" },
-            zh: { home: "首页", series: "剧集", movie: "电影", latest: "最新上映", mylist: "我的片单", title: "辉煌电影的起点，HK-MOVIE", desc: "在与大哥共同打造的下一代全球电影平台 HK-MOVIE 中，尽情欣赏全球精彩杰作与原创内容。", play: "▶ 播放", info: "ℹ 详细信息", sec1: "🔥 热门全球内容", sec2: "💎 HK集团原创杰作", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>结合HK集团创新科技与全球娱乐的高端流媒体服务。" },
-            es: { home: "Inicio", series: "Series", movie: "Películas", latest: "Novedades", mylist: "Mi lista", title: "El comienzo del cine brillante, HK-MOVIE", desc: "Disfruta de obras maestras globales y contenidos originales en HK-MOVIE, la plataforma de streaming de próxima generación construida junto al Chairman Hyekong.", play: "▶ Reproducir", info: "ℹ Más información", sec1: "🔥 Contenido global en tendencia", sec2: "💎 Obras maestras originales de HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Un servicio de streaming prémium que combina tecnología innovadora y entretenimiento global." },
-            fr: { home: "Accueil", series: "Séries", movie: "Films", latest: "Nouveautés", mylist: "Ma liste", title: "La naissance d'un cinéma brillant, HK-MOVIE", desc: "Découvrez des chefs-d'œuvre mondiaux et des contenus originaux sur HK-MOVIE, la plateforme de streaming de nouvelle génération conçue avec le Chairman Hyekong.", play: "▶ Lecture", info: "ℹ Plus d'infos", sec1: "🔥 Contenus mondiaux tendance", sec2: "💎 Chefs-d'œuvre originaux HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Un service de streaming premium combinant technologie innovante et divertissement mondial." },
-            de: { home: "Startseite", series: "Serien", movie: "Filme", latest: "Neu", mylist: "Meine Liste", title: "Der Beginn brillanten Kinos, HK-MOVIE", desc: "Erleben Sie weltweite Meisterwerke und Originalinhalte auf HK-MOVIE, der Streaming-Plattform der nächsten Generation, entwickelt an der Seite von Chairman Hyekong.", play: "▶ Abspielen", info: "ℹ Mehr Infos", sec1: "🔥 Beliebte globale Inhalte", sec2: "💎 HK Group Original-Meisterwerke", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Ein Premium-Streaming-Dienst, der innovative Technologie und globale Unterhaltung verbindet." },
-            ru: { home: "Главная", series: "Сериалы", movie: "Фильмы", latest: "Новинки", mylist: "Мой список", title: "Начало великолепного кино, HK-MOVIE", desc: "Наслаждайтесь мировыми шедеврами и оригинальным контентом на HK-MOVIE, стриминговой платформе нового поколения, созданной вместе с председателем Хеконгом.", play: "▶ Воспроизвести", info: "ℹ Подробнее", sec1: "🔥 Популярный глобальный контент", sec2: "💎 Оригинальные шедевры HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Премиальный стриминговый сервис, объединяющий инновационные технологии и мировой контент." },
-            ar: { home: "الرئيسية", series: "المسلسلات", movie: "الأفلام", latest: "الأحدث", mylist: "قائمتي", title: "بداية السينما الرائعة، HK-MOVIE", desc: "استمتع بالروائع العالمية والمحتوى الأصلي على HK-MOVIE، منصة البث من الجيل التالي التي تم بناؤها بجانب الرئيس هيقونغ.", play: "▶ تشغيل", info: "ℹ مزيد من المعلومات", sec1: "🔥 المحتوى العالمي الرائج", sec2: "💎 روائع مجموعة HK الأصلية", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>خدمة بث مميزة تدمج بين تكنولوجيا HK Group المبتكرة والترفيه العالمي." },
-            hi: { home: "होम", series: "सीरीज", movie: "मूवीज", latest: "नवीनतम", mylist: "मेरी सूची", title: "शानदार सिनेमा की शुरुआत, HK-MOVIE", desc: "चेयरमैन हेकॉन्ग के साथ निर्मित अगली पीढ़ी के स्ट्रीमिंग प्लेटफॉर्म HK-MOVIE पर वैश्विक मास्टरपीस और ओरिजिनल कंटेंट का आनंद लें.", play: "▶ चलाएं", info: "ℹ अधिक जानकारी", sec1: "🔥 ट्रेंडिंग ग्लोबल कंटेंट", sec2: "💎 HK ग्रुप ओरिजिनल मास्टरपीस", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>HK ग्रुप की नवीन तकनीक और वैश्विक मनोरंजन का एक प्रीमियम स्ट्रीमिंग प्लेटफॉर्म。" },
-            pt: { home: "Início", series: "Séries", movie: "Filmes", latest: "Recentes", mylist: "Minha Lista", title: "O Início do Cinema Brilhante, HK-MOVIE", desc: "Experimente obras-primas globais e conteúdos originais no HK-MOVIE, a plataforma de streaming de próxima geração construída junto ao Chairman Hyekong.", play: "▶ Reproduzir", info: "ℹ Mais Informações", sec1: "🔥 Conteúdo Global em Alta", sec2: "💎 Obras-Primas Originais HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Um serviço de streaming premium combinando tecnologia inovadora e entretenimento global." },
-            it: { home: "Home", series: "Serie", movie: "Film", latest: "Ultimi arrivi", mylist: "La mia lista", title: "L'inizio del cinema brillante, HK-MOVIE", desc: "Vivi capolavori globali e contenuti originali su HK-MOVIE, la piattaforma di streaming di nuova generazione creata insieme al Chairman Hyekong.", play: "▶ Riproduci", info: "ℹ Altre info", sec1: "🔥 Contenuti globali di tendenza", sec2: "💎 Capolavori originali HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Un servizio di streaming premium che unisce tecnologia innovativa e intrattenimento globale." },
-            vi: { home: "Trang chủ", series: "Sê-ri", movie: "Phim", latest: "Mới phát hành", mylist: "Danh sách của tôi", title: "Khởi đầu điện ảnh rực rỡ, HK-MOVIE", desc: "Trải nghiệm những kiệt tác toàn cầu và nội dung độc quyền trên HK-MOVIE, nền tảng phát trực tuyến thế hệ mới được xây dựng cùng Chủ tịch Hyekong.", play: "▶ Phát", info: "ℹ Thêm thông tin", sec1: "🔥 Nội dung toàn cầu thịnh hành", sec2: "💎 Kiệt tác độc quyền HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Dịch vụ phát trực tuyến cao cấp kết hợp công nghệ đổi mới của HK Group và giải trí toàn cầu." },
-            th: { home: "หน้าแรก", series: "ซีรีส์", movie: "ภาพยนตร์", latest: "มาใหม่", mylist: "รายการของฉัน", title: "จุดเริ่มต้นภาพยนตร์อันเจิดจรัส HK-MOVIE", desc: "สัมผัสผลงานชิ้นเอกระดับโลกและคอนเทนต์ต้นฉบับบน HK-MOVIE แพลตฟอร์มสตรีมมิ่งยุคใหม่ที่สร้างขึ้นเคียงข้างประธาน Hyekong", play: "▶ เล่น", info: "ℹ ข้อมูลเพิ่มเติม", sec1: "🔥 คอนเทนต์ระดับโลกยอดฮิต", sec2: "💎 ผลงานต้นฉบับ HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>บริการสตรีมมิ่งระดับพรีเมียมที่ผสานเทคโนโลยีสุดล้ำของ HK Group และความบันเทิงระดับโลก" },
-            id: { home: "Beranda", series: "Serial", movie: "Film", latest: "Terbaru", mylist: "Daftar Saya", title: "Awal Sinema Cemerlang, HK-MOVIE", desc: "Nikmati mahakarya global dan konten original di HK-MOVIE, platform streaming generasi berikutnya yang dibangun bersama Chairman Hyekong.", play: "▶ Putar", info: "ℹ Info Selengkapnya", sec1: "🔥 Konten Global Sedang Tren", sec2: "💎 Mahakarya Original HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Layanan streaming premium yang menggabungkan teknologi inovatif HK Group dan hiburan global." },
-            ms: { home: "Utama", series: "Siri", movie: "Filem", latest: "Terkini", mylist: "Senarai Saya", title: "Permulaan Sinema Gemilang, HK-MOVIE", desc: "Alami karya agung global dan kandungan asal di HK-MOVIE, platform penstriman generasi seterusnya yang dibina bersama Pengerusi Hyekong.", play: "▶ Main", info: "ℹ Maklumat Lanjut", sec1: "🔥 Kandungan Global Menarik", sec2: "💎 Karya Asli HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Perkhidmatan penstriman premium yang menggabungkan teknologi inovatif HK Group dan hiburan global." },
-            tr: { home: "Ana Sayfa", series: "Diziler", movie: "Filmler", latest: "Yeni", mylist: "Listem", title: "Parlak Sinemanın Başlangıcı, HK-MOVIE", desc: "Chairman Hyekong ile birlikte kurulan yeni nesil streaming platformu HK-MOVIE'da küresel başyapıtları ve orijinal içerikleri keşfedin.", play: "▶ Oynat", info: "ℹ Daha Fazla Bilgi", sec1: "🔥 Trend Olan Küresel İçerikler", sec2: "💎 HK Group Orijinal Başyapıtları", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>HK Group'un yenilikçi teknolojisi ve küresel eğlenceyi birleştiren premium streaming servisi." },
-            pl: { home: "Strona główna", series: "Seriale", movie: "Filmy", latest: "Najnowsze", mylist: "Moja lista", title: "Początek wspaniałego kina, HK-MOVIE", desc: "Odkryj globalne arcydzieła i oryginalne treści w HK-MOVIE, platformie streamingowej nowej generacji stworzonej razem z Chairmanem Hyekongiem.", play: "▶ Odtwórz", info: "ℹ Więcej informacji", sec1: "🔥 Popularne globalne treści", sec2: "💎 Oryginalne arcydzieła HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Serwis streamingowy premium łączący innowacyjną technologię HK Group z globalną rozrywką." },
-            nl: { home: "Home", series: "Series", movie: "Films", latest: "Nieuw", mylist: "Mijn lijst", title: "Het Begin van Briljante Cinema, HK-MOVIE", desc: "Ervaar fenomenale wereldwijde meesterwerken en originele content op HK-MOVIE, het streamingplatform van de volgende generatie gebouwd met Chairman Hyekong.", play: "▶ Afspelen", info: "ℹ Meer info", sec1: "🔥 Populaire mondiale content", sec2: "💎 HK Group Originele Meesterwerken", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Een premium streamingservice die de innovatieve technologie van HK Group en wereldwijd entertainment combineert." },
-            sv: { home: "Hem", series: "Serier", movie: "Filmer", latest: "Senast", mylist: "Min lista", title: "Början på skinande bio, HK-MOVIE", desc: "Upplev globala mästerverk och originalinnehåll på HK-MOVIE, nästa generations streamingplattform byggd tillsammans med Chairman Hyekong.", play: "▶ Spela upp", info: "ℹ Mer info", sec1: "🔥 Trendande globalt innehåll", sec2: "💎 HK Group Originalmästerverk", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>En premiumstreamingtjänst som kombinerar HK Groups innovativa teknik och global underhållning." },
-            el: { home: "Αρχική", series: "Σειρές", movie: "Ταινίες", latest: "Νέες κυκλοφορίες", mylist: "Η λίστα μου", title: "Η αρχή του λαμπρού κινηματογράφου, HK-MOVIE", desc: "Ζήστε παγκόσμια αριστουργήματα και πρωτότυπο περιεχόμενο στο HK-MOVIE, την πλατφόρμα streaming επόμενης γενιάς που δημιουργήθηκε με τον Chairman Hyekong.", play: "▶ Αναπαραγωγή", info: "ℹ Περισσότερα", sec1: "🔥 Δημοφιλές παγκόσμιο περιεχόμενο", sec2: "💎 Πρωτότυπα αριστουργήματα HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Μια premium υπηρεσία streaming που συνδυάζει την καινοτόμο τεχνολογία του HK Group και την παγκόσμια ψυχαγωγία." },
-            cs: { home: "Domů", series: "Seriály", movie: "Filmy", latest: "Nedávné", mylist: "Můj seznam", title: "Začátek skvělého kina, HK-MOVIE", desc: "Zažijte globální mistrovská díla a původní obsah na HK-MOVIE, streamovací platformě příští generace vytvořené po boku Chairmana Hyekonga.", play: "▶ Přehrát", info: "ℹ Více informací", sec1: "🔥 Populární globální obsah", sec2: "💎 Původní mistrovská díla HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Prémiová streamovací služba kombinující inovativní technologii HK Group a globální zábavu." },
-            hu: { home: "Kezdőlap", series: "Sorozatok", movie: "Filmek", latest: "Új filmek", mylist: "Listám", title: "A ragyogó mozi kezdete, HK-MOVIE", desc: "Éld át a globális remekműveket és eredeti tartalmakat a HK-MOVIE-n, a Hyekong elnök mellett épült új generációs streaming platformon.", play: "▶ Lejátszás", info: "ℹ További infó", sec1: "🔥 Felkapott globális tartalmak", sec2: "💎 HK Group Eredeti Remekművek", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Prémium streaming szolgáltatás, amely ötvözi a HK Group innovatív technológiáját és a globális szórakoztatást." },
-            ro: { home: "Acasă", series: "Seriale", movie: "Filme", latest: "Nou", mylist: "Lista mea", title: "Începutul cinematografiei strălucite, HK-MOVIE", desc: "Descoperă capodopere globale și conținut original pe HK-MOVIE, platforma de streaming de nouă generație creată alături de Chairman Hyekong.", play: "▶ Redă", info: "ℹ Mai multe", sec1: "🔥 Conținut global în tendințe", sec2: "💎 Capodopere originale HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Un serviciu de streaming premium care combină tehnologia inovatoare HK Group și divertismentul global." },
-            uk: { home: "Головна", series: "Серіали", movie: "Фільми", latest: "Новинки", mylist: "Мій список", title: "Початок чудового кіно, HK-MOVIE", desc: "Насолоджуйтесь світовими шедеврами та оригінальним контентом на HK-MOVIE, стрімінговій платформі нового покоління, створеній разом із головою Хеконгом.", play: "▶ Відтворити", info: "ℹ Докладніше", sec1: "🔥 Популярний глобальний контент", sec2: "💎 Оригінальні шедеври HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Преміальний стрімінговий сервіс, що поєднує інноваційні технології HK Group та світові розваги." },
-            fa: { home: "خانه", series: "سریال ها", movie: "فیلم ها", latest: "جدیدترین", mylist: "فهرست من", title: "آغاز سینمای درخشان، HK-MOVIE", desc: "شاهکارهای جهانی و محتوای اصلی را در HK-MOVIE، پلتفرم استریم نسل جدید که در کنار رئیس هایکونگ ساخته شده است، تجربه کنید.", play: "▶ پخش", info: "ℹ اطلاعات بیشتر", sec1: "🔥 محتوای جهانی پرطرفدار", sec2: "💎 شاهکارهای اصلی HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>یک سرویس استریم پریمیوم که فناوری نوآورانه HK Group و سرگرمی جهانی را ترکیب می کند." },
-            he: { home: "בית", series: "סדרות", movie: "סרטים", latest: "נוספו לאחרונה", mylist: "הרישימה שלי", title: "תחילתו של קולנוע מזהיר, HK-MOVIE", desc: "חווה יצירות מופת עולמיות ותוכן מקורי ב-HK-MOVIE, פלטפורמת הסטרימינג של הדור הבא שנבנתה לצד יו"ר היקונג.", play: "▶ נגן", info: "ℹ מידע נוסף", sec1: "🔥 תוכן עולמי מוביל", sec2: "💎 יצירות מופת מקוריות של HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>שירות סטרימינג פרימיום המשלב את הטכנולוגיה החדשנית של HK Group ובידור עולמי." },
-            ur: { home: "ہوم", series: "سیریز", movie: "فلمیں", latest: "حالیہ", mylist: "میری فہرست", title: "شاندار سینما کا آغاز، HK-MOVIE", desc: "چیئرمین ہیکونگ کے ساتھ مل کر بنائی گئی اگلی نسل کے سٹریمنگ پلیٹ فارم HK-MOVIE پر عالمی شاہکار اور اصلی مواد کا تجربہ کریں۔", play: "▶ چلائیں", info: "ℹ مزید معلومات", sec1: "🔥 ٹرینڈنگ عالمی مواد", sec2: "💎 HK گروپ کے اصل شاہکار", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>HK گروپ کی جدید ٹیکنالوجی اور عالمی تفریح پر مشتمل ایک پریمیم سٹریمنگ سروس۔" },
-            bn: { home: "হোম", series: "সিরিজ", movie: "মুভি", latest: "সর্বশেষ", mylist: "আমার তালিকা", title: "উজ্জ্বল সিনেমার শুরু, HK-MOVIE", desc: "চেয়ারম্যান হায়েকংয়ের সাথে নির্মিত পরবর্তী প্রজন্মের স্ট্রিমিং প্ল্যাটফর্ম HK-MOVIE-এ বিশ্বব্যাপী মাস্টারপিস এবং অরিজিনাল কন্টেন্ট উপভোগ করুন।", play: "▶ চালান", info: "ℹ আরও তথ্য", sec1: "🔥 ট্রেন্ডিং গ্লোবাল কন্টেন্ট", sec2: "💎 HK গ্রুপ অরিজিনাল মাস্টারপিস", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>HK গ্রুপের উদ্ভাবনী প্রযুক্তি এবং বিশ্বব্যাপী বিনোদনের সমন্বয়ে গঠিত একটি প্রিমিয়াম স্ট্রিমিং পরিষেবা।" },
-            pa: { home: "ਘਰ", series: "ਸੀਰੀਜ਼", movie: "ਫਿਲਮਾਂ", latest: "ਤਾਜ਼ਾ", mylist: "मेरी ਸੂਚੀ", title: "ਸ਼ਾਨਦਾਰ ਸਿਨੇਮਾ ਦੀ ਸ਼ੁਰੂਆਤ, HK-MOVIE", desc: "ਚੇਅਰਮੈਨ ਹੇਕੋਂਗ ਨਾਲ ਬਣੇ ਅਗਲੀ ਪੀੜ੍ਹੀ ਦੇ ਸਟ੍ਰੀਮਿੰਗ ਪਲੇਟਫਾਰਮ HK-MOVIE ਉੱਤੇ ਗਲੋਬਲ ਮਾਸਟਰਪੀਸ ਅਤੇ ਅਸਲੀ ਸਮੱਗਰੀ ਦਾ ਆਨੰਦ ਲਓ।", play: "▶ ਚਲਾਓ", info: "ℹ ਹੋਰ ਜਾਣਕਾਰੀ", sec1: "🔥 ਟ੍ਰੈਂਡਿੰਗ ਗਲੋਬਲ ਸਮੱਗਰੀ", sec2: "💎 HK ਗਰੁੱਪ ਅਸਲੀ ਮਾਸਟਰਪੀਸ", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>HK ਗਰੁੱਪ ਦੀ ਨਵੀਨਤਾਕਾਰੀ ਤਕਨਾਲੋਜੀ ਅਤੇ ਗਲੋਬਲ ਮਨੋਰੰਜਨ ਨੂੰ ਜੋੜਨ ਵਾਲੀ ਇੱਕ ਪ੍ਰੀਮੀਅਮ ਸਟ੍ਰੀਮਿੰਗ ਸੇਵਾ।" },
-            ta: { home: "முகப்பு", series: "தொடர்கள்", movie: "திரைப்படங்கள்", latest: "சமீபத்தியவை", mylist: "எனது பட்டியல்", title: "பிரகாசமான சினிமாவின் தொடக்கம், HK-MOVIE", desc: "சேர்மன் ஹியేకोंग உடன் உருவாக்கப்பட்ட அடுத்த தலைமுறை ஸ்டீமிங் தளமான HK-MOVIE இல் உலகளாவிய மாஸ்டர்பீஸ்கள் மற்றும் அசல் உள்ளடக்கங்களை அனுபவிக்கவும்.", play: "▶ இயக்கு", info: "ℹ மேலும் தகவல்", sec1: "🔥 ட்ரெண்டிங் உலகளாவிய உள்ளடக்கம்", sec2: "💎 HK குழுவின் அசல் மாஸ்டர்பீஸ்கள்", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>HK குழுவின் புதுமையான தொழில்நுட்பத்தையும் உலகளாவிய பொழுதுபோக்கையும் இணைக்கும் பிரீமியம் ஸ்டீமிங் சேவை." },
-            te: { home: "హోమ్", series: "సిరీస్", movie: "సినిమాలు", latest: "తాజావి", mylist: "నా జాబితా", title: "ప్రకాశవంతమైన సినిమా ప్రారంభం, HK-MOVIE", desc: "చైర్మన్ హేకాంగ్ తో నిర్మించబడిన తదుపరి తరపు స్ట్రీమింగ్ ప్లాట్ ఫారమ్ HK-MOVIEలో ప్రపంచ స్థాయి మాస్టర్ పీస్ లు మరియు ఒరిజినల్ కంటెంట్ ను ఆస్వాదించండి.", play: "▶ ప్లే", info: "ℹ మరిన్ని వివరాలు", sec1: "🔥 ట్రెండింగ్ గ్లోబల్ కంటెంట్", sec2: "💎 HK గ్రూప్ ఒరిజినల్ మాస్టర్ పీస్ లు", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>HK గ్రూప్ యొక్క వినూత్న సాంకేతికత మరియు గ్లోబల్ ఎంటర్ టైన్ మెంట్ ను మిళితం చేసే ప్రీమియం స్ట్రీమింగ్ సేవ." },
-            mr: { home: "मुख्यपृष्ठ", series: "मालिका", movie: "चित्रपट", latest: "नवीनतम", mylist: "माझी यादी", title: "तेजस्वी सिनेमाची सुरुवात, HK-MOVIE", desc: "चेअरमन हेकॉन्ग यांच्यासोबत तयार केलेल्या पुढील पिढीच्या HK-MOVIE स्ट्रीमिंग प्लॅटफॉर्मवर जागतिक उत्कृष्ट कृती आणि मूळ सामग्रीचा आनंद घ्या.", play: "▶ प्ले करा", info: "ℹ अधिक माहिती", sec1: "🔥 ट्रेंडिंग जागतिक सामग्री", sec2: "💎 HK ग्रुप मूळ उत्कृष्ट कृती", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>HK ग्रुपचे नाविन्यपूर्ण तंत्रज्ञान आणि जागतिक मनोरंजन एकत्र करणारी प्रीमियम स्ट्रीमिंग सेवा." },
-            gu: { home: "ઘર", series: "સિરીઝ", movie: "મૂવીઝ", latest: "નવીનતમ", mylist: "મારી સૂચિ", title: "તેજસ્વી સિનેમાની શરૂઆત, HK-MOVIE", desc: "চেয়ারમેન હિકોંગ સાથે નિર્મિત આગામી પેઢીના સ્ટ્રીમિંગ પ્લેટફોર્મ HK-MOVIE પર વૈશ્વિક માસ્ટરપીસ અને ઓરિજિનલ કન્ટેન્ટનો આનંદ માણો.", play: "▶ ચલાવો", info: "ℹ વધુ માહિતી", sec1: "🔥 ટ્રેન્ડિંગ વૈશ્વિક કન્ટેન્ટ", sec2: "💎 HK ગ્રૂપ ઓરિજિનલ માસ્ટરપીસ", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>HK ગ્રૂપની નવીન તકનીક અને વૈશ્વિક મનોરંજનને જોડતી પ્રીમિયમ સ્ટ્રીમિંગ સેવા." },
-            kn: { home: "ಮುಖಪುಟ", series: "ಸೀರಿಸ್", movie: "ಚಲನಚಿತ್ರಗಳು", latest: "ಇತ್ತೀಚಿನದು", mylist: "ನನ್ನ ಪಟ್ಟಿ", title: " λαμπρός ಮಹಾಸಿನಿಮಾದ ಆರಂಭ, HK-MOVIE", desc: "ಚೇರ್ಮನ್ ಹೇಕಾಂಗ್ ಅವರೊಂದಿಗೆ ನಿರ್ಮಿಸಲಾದ ಮುಂದಿನ ಪೀಳಿಗೆಯ ಸ್ಟ್ರೀಮಿಂಗ್ ವೇದಿಕೆ HK-MOVIE ನಲ್ಲಿ ಜಾಗತಿಕ ಮೇರುಕೃತಿಗಳು ಮತ್ತು ಮೂಲ ವಿಷಯಗಳನ್ನು ಅನುಭವಿಸಿ.", play: "▶ ಪ್ಲೇ ಮಾಡಿ", info: "ℹ ಹೆಚ್ಚಿನ ಮಾಹಿತಿ", sec1: "🔥 ಟ್ರೆಂಡಿಂಗ್ ಜಾಗತಿಕ ವಿಷಯ", sec2: "💎 HK ಗ್ರೂಪ್ ಮೂಲ ಮೇರುಕೃತಿಗಳು", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>HK ಗ್ರೂಪ್ ನ ನವೀನ ತಂತ್ರಜ್ಞಾನ ಮತ್ತು ಜಾಗತಿಕ ಮನರಂಜನೆಯನ್ನು ಸಂಯೋಜಿಸುವ ಪ್ರೀಮಿಯಂ ಸ್ಟ್ರೀಮಿಂಗ್ ಸೇವೆ." },
-            ml: { home: "ഹോം", series: "സീരീസ്", movie: "ചിത്രങ്ങൾ", latest: "ഏറ്റവും പുതിയത്",_mylist: "എന്റെ ലിസ്റ്റ്", mylist: "എന്റെ ലിസ്റ്റ്", title: "തിളക്കമാർന്ന സിനിമയുടെ തുടക്കം, HK-MOVIE", desc: "ചെയർമാൻ ഹെക്കോംഗിനൊപ്പം നിർമ്മിച്ച അടുത്ത തലമുറ സ്ട്രീമിംഗ് പ്ലാറ്റ് ഫോമായ HK-MOVIE-ൽ ആഗോള മാസ്റ്റർപീസുകളും ഒറിജിനൽ ഉള്ളടക്കങ്ങളും ആസ്വദിക്കൂ.", play: "▶ പ്ലേ ചെയ്യുക", info: "ℹ കൂടുതൽ വിവരങ്ങൾ", sec1: "🔥 ട്രെൻഡിങ് ഗ്ലോബൽ ഉള്ളടക്കം", sec2: "💎 HK ഗ്രൂപ്പ് ഒറിജിനൽ മാസ്റ്റർപീസുകൾ", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>HK ഗ്രൂപ്പിന്റെ നൂതന സാങ്കേതികവിദ്യയും ആഗോള വിനോദവും സംയോജിപ്പിക്കുന്ന പ്രീമിയം സ്ട്രീമിംഗ് സേവനം." },
-            fil: { home: "Tahanan", series: "Serye", movie: "Pelikula", latest: "Pinakabago", mylist: "Aking Listahan", title: "Ang Simula ng Makinang na Sine, HK-MOVIE", desc: "Damhin ang mga pandaigdigang obra maestra at orihinal na nilalaman sa HK-MOVIE, ang susunod na henerasyong platform ng streaming na binuo kasama si Chairman Hyekong.", play: "▶ I-play", info: "ℹ Higit pang Impormasyon", sec1: "🔥 Trending na Pandaigdigang Nilalaman", sec2: "💎 HK Group Orihinal na Obra Maestra", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Isang premium na serbisyo ng streaming na pinagsasama ang makabagong teknolohiya ng HK Group at pandaigdigang libangan." },
-            ms_my: { home: "Utama", series: "Siri", movie: "Filem", latest: "Terbaru", mylist: "Senarai Saya", title: "Permulaan Sinema Gemilang, HK-MOVIE", desc: "Alami karya agung global dan kandungan asal di HK-MOVIE, platform penstriman generasi seterusnya yang dibina bersama Pengerusi Hyekong.", play: "▶ Main", info: "ℹ Maklumat Lanjut", sec1: "🔥 Kandungan Global Menarik", sec2: "💎 Karya Asli HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Perkhidmatan penstriman premium yang menggabungkan teknologi inovatif HK Group dan hiburan global." },
-            sw: { home: "Nyumbani", series: "Mfululizo", movie: "Filamu", latest: "Mpya", mylist: "Orodha Yangu", title: "Mwanzo wa Sinema Bora, HK-MOVIE", desc: "Pata uzoefu wa kazi bora za kimataifa na maudhui asili kwenye HK-MOVIE, jukwaa la utiririshaji la kizazi kijacho lililojengwa pamoja na Mwenyekiti Hyekong.", play: "▶ Cheza", info: "ℹ Maelezo Zaidi", sec1: "🔥 Maudhui ya Kimataifa Yanayovuma", sec2: "💎 Kazi Bora za Asili za HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Huduma ya utiririshaji ya malipo inayochanganya teknolojia ya kibunifu ya HK Group na burudani ya kimataifa." },
-            am: { home: "መነሻ", series: "ተከታታዮች", movie: "ፊልሞች", latest: "አዳዲስ", mylist: "የኔ ዝርዝር", title: "አንጸባራቂ ሲኒማ መጀመሪያ፣ HK-MOVIE", desc: "ከሊቀመንበር 혜공 ጋር የተገነባውን የሚቀጥለው ትውልድ የዥረት መድረክ HK-MOVIE ላይ ዓለም አቀፍ ድንቅ ስራዎችን እና ኦሪጅናል ይዘቶችን ይለማመዱ።", play: "▶ አጫውት", info: "ℹ ተጨማሪ መረጃ", sec1: "🔥 በመታየት ላይ ያሉ ዓለም አቀፍ ይዘቶች", sec2: "💎 የHK ቡድን ኦሪጅናል ድንቅ ስራዎች", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>የHK ቡድን ፈጠራ ቴክኖሎጂን እና ዓለም አቀፍ መዝናኛዎችን የሚያጣምር ፕሪሚየም የዥረት አገልግሎት።" },
-            ha: { home: "Gida", series: "Jereri", movie: "Fina-finai", latest: "Sababbi", mylist: "Jerina Na", title: "Farkon Kyakkyawan Sinima, HK-MOVIE", desc: "Kalli manyan ayyuka na duniya da abubuwan ciki na asali akan HK-MOVIE, dandalin yawo na gaba da aka gina tare da Shugaba Hyekong.", play: "▶ Kunna", info: "ℹ Karin Bayani", sec1: "🔥 Abubuwan Duniya Na Yanzu", sec2: "💎 Manyan Ayyukan Asali na HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Sabis na yawo mai inganci wanda ke haɗa sabbin fasahohin HK Group da nishaɗin duniya." },
-            yo: { home: "Ile", series: "Ẹsẹ", movie: "Awọn fiimu", latest: "Tuntun", mylist: "Akojọ Mi", title: "Ibẹrẹ Sinima Nla, HK-MOVIE", desc: "Ni iriri awọn iṣẹ ọnà agbaye ati akoonu atilẹba lori HK-MOVIE, pẹpẹ ṣiṣanwọle iran ti nbọ ti a kọ pẹlu Alaga Hyekong.", play: "▶ Mu ṣiṣẹ", info: "ℹ Alaye Diẹ sii", sec1: "🔥 Awọn Akoonu Agbaye To Gbona", sec2: "💎 Awọn Iṣẹ Ọna Atilẹba HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Iṣẹ ṣiṣanwọle ti o ga julọ ti n ṣajọpọ imọ-ẹrọ tuntun ti HK Group ati ere agbaye." },
-            ig: { home: "Ụlọ", series: "Usoro", movie: "Ihe nkiri", latest: "Oge ohuru", mylist: "Ndepụta M", title: "Mmalite Sinima Na-egbuke egbuke, HK-MOVIE", desc: "Nwee anụrị n'ọrụ ebube ụwa na ọdịnaya izizi na HK-MOVIE, ikpo okwu mgbasa ozi ọgbọ ọzọ e wuru ya na Onye isi oche Hyekong.", play: "▶ Kpọọ", info: "ℹ Ozi ndị ọzọ", sec1: "🔥 Ọdịnaya Ụwa Na-ewu ewu", sec2: "💎 Ọrụ Ebube Izizi HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Ọrụ mgbasa ozi dị elu na-ejikọ teknụzụ ọhụrụ HK Group na ntụrụndụ ụwa." },
-            zu: { home: "Ekhaya", series: "Uchungechunge", movie: "Amavidiyo", latest: "Okusha", mylist: "Uhlu Lami", title: "Isiqalo Sesinema Ekhanyayo, HK-MOVIE", desc: "Zizwele ubuciko bomhlaba wonke nokuqukethwe koqobo ku-HK-MOVIE, inkundla yokusakaza yesizukulwane esilandelayo eyakhelwe kanye noSihlalo Hyekong.", play: "▶ Dlala", info: "ℹ Olunye Ulwazi", sec1: "🔥 Okuqukethwe Komhlaba Okushisayo", sec2: "💎 Ubuciko Boqobo be-HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Isevisi yokusakaza ye-premium ehlanganisa ubuchwepheshe obusha be-HK Group nokuzijabulisa komhlaba wonke." },
-            af: { home: "Tuis", series: "Reekse", movie: "Flieks", latest: "Nuut", mylist: "My Lys", title: "Die Begin van Blink Sinergie, HK-MOVIE", desc: "Ervaar globale meesterstukke en oorspronklike inhoud op HK-MOVIE, die volgende generasie stroomplatform gebou saam met Voorsitter Hyekong.", play: "▶ Speel", info: "ℹ Meer Inligting", sec1: "🔥 Gewilde Globale Inhoud", sec2: "💎 HK Group Oorspronklike Meesterstukke", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>'n Premium stroomdiens wat HK Group se innoverende tegnologie en globale vermaak kombineer." },
-            da: { home: "Hjem", series: "Serier", movie: "Film", latest: "Seneste", mylist: "Min liste", title: "Begyndelsen på strålende biograf, HK-MOVIE", desc: "Oplev globale mesterværker og originalt indhold på HK-MOVIE, næste generations streamingplatform bygget sammen med formand Hyekong.", play: "▶ Afspil", info: "ℹ Flere oplysninger", sec1: "🔥 Populært globalt indhold", sec2: "💎 HK Group Originale Mesterværker", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>En premium streamingtjeneste, der kombinerer HK Groups innovative teknologi og global underholdning." },
-            fi: { home: "Etusivu", series: "Sarjat", movie: "Elokuvat", latest: "Uudet", mylist: "Oma lista", title: "Loistavan elokuvateatterin alku, HK-MOVIE", desc: "Koe maailmanlaajuiset mestariteokset ja alkuperäissisällöt HK-MOVIEssa, puheenjohtaja Hyekongin rinnalla rakennetulla uuden sukupolven suoratoistoalustalla.", play: "▶ Toista", info: "ℹ Lisätiedot", sec1: "🔥 Suositut globaalit sisällöt", sec2: "💎 HK Groupin alkuperäiset mestariteokset", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Ensiluokkainen suoratoistopalvelu, jossa yhdistyvät HK Groupin innovatiivinen teknologia ja maailmanlaajuinen viihde." },
-            no: { home: "Hjem", series: "Serier", movie: "Filmer", latest: "Siste", mylist: "Min liste", title: "Begynnelsen på strålende kino, HK-MOVIE", desc: "Opplev globale mesterverk og originalt innhold på HK-MOVIE, neste generasjons strømmeplattform bygget sammen med styreleder Hyekong.", play: "▶ Spill av", info: "ℹ Mer informasjon", sec1: "🔥 Populært globalt innhold", sec2: "💎 HK Group Originale Mesterverk", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>En premium strømmetjeneste som kombinerer HK Groups innovative teknologi og global underholdning." },
-            sk: { home: "Domov", series: "Seriály", movie: "Filmy", latest: "Najnovšie", mylist: "Môj zoznam", title: "Začiatok skvelého kina, HK-MOVIE", desc: "Zažite globálne majstrovské diela a originálny obsah na HK-MOVIE, streamovacej platforme novej generácie vytvorenej po boku Chairmana Hyekonga.", play: "▶ Prehrať", info: "ℹ Viac informácií", sec1: "🔥 Populárny globálny obsah", sec2: "💎 Pôvodné majstrovské diela HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Prémiová streamovacia služba spájajúca inovatívnu technológiu HK Group a globálnu zábavu." },
-            sl: { home: "Domov", series: "Serije", movie: "Filmi", latest: "Najnovejše", mylist: "Moj seznam", title: "Začetek bleščečega kina, HK-MOVIE", desc: "Doživite svetovne mojstrovine in izvirno vsebino na HK-MOVIE, pretočni platformi naslednje generacije, zgrajeni ob strani predsednika Hyekonga.", play: "▶ Predvajaj", info: "ℹ Več informacij", sec1: "🔥 Priljubljena globalna vsebina", sec2: "💎 Izvirne mojstrovine HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Vrhunska pretočna storitev, ki združuje inovativno tehnologijo HK Group in svetovno zabavo." },
-            hr: { home: "Naslovnica", series: "Serije", movie: "Filmovi", latest: "Najnovije", mylist: "Moja lista", title: "Početak sjajne kinematografije, HK-MOVIE", desc: "Doživite svjetska remek-djela i originalni sadržaj na HK-MOVIE, streaming platformi sljedeće generacije izgrađenoj uz predsjednika Hyekonga.", play: "▶ Reproduciraj", info: "ℹ Više informacija", sec1: "🔥 Popularni globalni sadržaj", sec2: "💎 HK Group izvorna remek-djela", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Vrhunska usluga streaminga koja kombinira inovativnu tehnologiju HK Group i globalnu zabavu." },
-            sr: { home: "Почетна", series: "Серије", movie: "Филмови", latest: "Најновије", mylist: "Моја листа", title: "Почетак сјајног биоскопа, HK-MOVIE", desc: "Доживите светска ремек-дела и оригинални садржај на HK-MOVIE, платформи за стримовање нове генерације изграђеној уз председавајућег Хеконга.", play: "▶ Пусти", info: "ℹ Више информација", sec1: "🔥 Популарни глобални садржај", sec2: "💎 HK Group оригинална ремек-дела", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Врunska услуга стримовања која комбинује иновативну технологију HK Group и глобалну забаву." },
-            bg: { home: "Начало", series: "Сериали", movie: "Филми", latest: "Най-нови", mylist: "Моят списък", title: "Началото на бляскавото кино, HK-MOVIE", desc: "Насладете се на световни шедьоври и оригинално съдържание в HK-MOVIE, стрийминг платформата от следващо поколение, създадена заедно с председателя Хеконг.", play: "▶ Възпроизвеждане", info: "ℹ Повече информация", sec1: "🔥 Актуално глобално съдържание", sec2: "💎 Оригинални шедьоври на HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Първокласна стрийминг услуга, съчетаваща иновативната технология на HK Group и глобалното забавление." },
-            et: { home: "Avaleht", series: "Seriaalid", movie: "Filmid", latest: "Uued", mylist: "Minu nimekiri", title: "Särava kino algus, HK-MOVIE", desc: "Kogege maailmaklassi meistriteoseid ja originaalsisu HK-MOVIE-s, järgmise põlvkonna voogedastusplatvormil, mis on loodud koos esimees Hyekongiga.", play: "▶ Esita", info: "ℹ Lisateave", sec1: "🔥 Populaarne globaalne sisu", sec2: "💎 HK Groupi originaalmeistriteosed", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Esmaklassiline voogedastusteenus, mis ühendab HK Groupi uuendusliku tehnoloogia ja globaalse meelelahutuse." },
-            lv: { home: "Sākums", series: "Seriāli", movie: "Filmas", latest: "Jaunumi", mylist: "Mana saraksts", title: "Spilgta kino sākums, HK-MOVIE", desc: "Izbaudiet pasaules mēroga šedevrus un oriģinālo saturu HK-MOVIE — nākamās paaudzes straumēšanas platformā, kas izveidota kopā ar priekšsēdētāju Hekongu.", play: "▶ Atskaņot", info: "ℹ Vairāk informācijas", sec1: "🔥 Populārs globālais saturs", sec2: "💎 HK Group oriģinālie šedevri", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Augstākās kvalitātes straumēšanas pakalpojums, kas apvieno HK Group novatorisko tehnoloģiju un pasaules izklaidi." },
-            lt: { home: "Pradžia", series: "Serialai", movie: "Filmai", latest: "Naujienos", mylist: "Mano sąrašas", title: "Šviesaus kino pradžia, HK-MOVIE", desc: "Patirkite pasaulinius šedevrus ir originalų turinį „HK-MOVIE“ – naujos kartos srautinio perdavimo platformoje, sukurtoje kartu su pirmininku Hyekongu.", play: "▶ Leisti", info: "ℹ Daugiau informacijos", sec1: "🔥 Populiarus pasaulinis turinys", sec2: "💎 „HK Group“ originalūs šedevrai", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Aukščiausios kokybės srautinio perdavimo paslauga, sujungiantį „HK Group“ novatoriškas technologijas ir pasaulines pramogas." },
-            is: { home: "Heim", series: "Þættir", movie: "Kvikmyndir", latest: "Nýlegt", mylist: "Minn listi", title: "Upphaf glæsilegrar kvikmyndagerðar, HK-MOVIE", desc: "Upplifðu heimssýningar og upprunalegt efni á HK-MOVIE, streymisvettvangi næstu kynslóðar sem byggður er með formanni Hyekong.", play: "▶ Spila", info: "ℹ Nánari upplýsingar", sec1: "🔥 Vinsælt alþjóðlegt efni", sec2: "💎 HK Group Upprunaleg Meistaraverk", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Úrvals streymisþjónusta sem sameinar nýsköpunartækni HK Group og alþjóðlega afþreyingu." },
-            ga: { home: "Baile", series: "Sraitheanna", movie: "Scannáin", latest: "Is déanaí", mylist: "Mo Liosta", title: "Tús na Scaglainne Gléineach, HK-MOVIE", desc: "Taithí a fháil ar masterpieces domhanda agus ábhar bunaidh ar HK-MOVIE, an ardán sruthaithe den chéad ghl generación eile a tógadh in éineacht le Cathaoirleach Hyekong.", play: "▶ Seinn", info: "ℹ Tuilleadh Eolais", sec1: "🔥 Ábhar Domhanda Treochta", sec2: "💎 Masterpieces Bunaidh HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Seirbhís sruthaithe préimhe a chomhcheanglaíonn teicneolaíocht nuálaíoch HK Group agus siamsaíocht domhanda." },
-            cy: { home: "Hafan", series: "Cyfresi", movie: "Ffilmiau", latest: "Diweddaraf", mylist: "Fy Rhestr", title: "Dechrau Sinema Disglair, HK-MOVIE", desc: "Profwch gampweithiau byd-eang a chynnwys gwreiddiol ar HK-MOVIE, y platfform ffrydio o'ch blaen a adeiladwyd ochr yn ochr â'r Cadeirydd Hyekong.", play: "▶ Chwarae", info: "ℹ Mwy o Wybodaeth", sec1: "🔥 Cynnwys Byd-eang Poblogaidd", sec2: "💎 Campweithiau Gwreiddiol HK Group", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>Gwasanaeth ffrydio premiwm sy'n cyfuno technoleg arloesol HK Group ac adloniant byd-eang." },
-            eu: { home: "Hasiera", series: "Sailak", movie: "Filmak", latest: "Berriak", mylist: "Nire Zerrenda", title: "Zinema Distiratsuaren Hasiera, HK-MOVIE", desc: "Bizi mundu mailako maisulanak eta jatorrizko edukia HK-MOVIE-n, Hyekong Lehendakariarekin batera eraikitako hurrengo belaunaldiko streaming plataforman.", play: "▶ Erreproduzitu", info: "ℹ Informazio gehiago", sec1: "🔥 Mundu Mailako Eduki Arrakastatsua", sec2: "💎 HK Group Jatorrizko Maisulanak", footer: "&copy; 2026 HK-MOVIE. All Rights Reserved. Designed for Hyekong Chairman.<br>HK Group-en teknologia berritzailea eta mundu mailako entretenimendua uztartzen dituen goi-mailako streaming zerbitzua." }
+        const languages = [
+            { code: 'ko', name: '한국어 (Korean)' }, { code: 'en', name: 'English (영어)' },
+            { code: 'zh', name: '中文 (중국어)' }, { code: 'es', name: 'Español (스페인어)' },
+            { code: 'hi', name: 'हिन्दी (힌디어)' }, { code: 'ar', name: 'العربية (아랍어)' },
+            { code: 'fr', name: 'Français (프랑스어)' }, { code: 'bn', name: 'বাংলা (벵골어)' },
+            { code: 'pt', name: 'Português (포르투갈어)' }, { code: 'ru', name: 'Русский (러시아어)' },
+            { code: 'ur', name: 'اردو (우르두어)' }, { code: 'id', name: 'Bahasa Indonesia (인도네시아어)' },
+            { code: 'de', name: 'Deutsch (독일어)' }, { code: 'ja', name: '日本語 (일본어)' },
+            { code: 'sw', name: 'Kiswahili (스와힐리어)' }, { code: 'tr', name: 'Türkçe (튀르키예어)' },
+            { code: 'vi', name: 'Tiếng Việt (베트남어)' }, { code: 'it', name: 'Italiano (이탈리아어)' },
+            { code: 'fa', name: 'فارسی (페르시아어)' }, { code: 'pl', name: 'Polski (폴란드어)' },
+            { code: 'uk', name: 'Українська (우크라이나어)' }, { code: 'ro', name: 'Română (루마니아어)' },
+            { code: 'nl', name: 'Nederlands (네덜란드어)' }, { code: 'el', name: 'Ελληνικά (그리스어)' },
+            { code: 'hu', name: 'Magyar (헝가리어)' }, { code: 'sv', name: 'Svenska (س웨덴어)' },
+            { code: 'cs', name: 'Čeština (체코어)' }, { code: 'ta', name: 'தமிழ் (타밀어)' },
+            { code: 'te', name: 'తెలుగు (텔루구어)' }, { code: 'mr', name: 'मराठी (마라티어)' },
+            { code: 'ha', name: 'Hausa (하우사어)' }, { code: 'yo', name: 'Yoruba (요루바어)' },
+            { code: 'ig', name: 'Igbo (이보어)' }, { code: 'am', name: 'አማርኛ (암하라어)' },
+            { code: 'ms', name: 'Melayu (말레이어)' }, { code: 'tl', name: 'Tagalog (필리핀어)' },
+            { code: 'th', name: 'ไทย (태국어)' }, { code: 'my', name: 'မြန်မာဘာသာ (버마어)' },
+            { code: 'km', name: 'ខ្មែរ (크메르어)' }, { code: 'kmr', name: 'Kurdî (쿠르드어)' },
+            { code: 'uz', name: 'Oʻzbekcha (우즈베크어)' }, { code: 'kk', name: 'Қазақша (카자흐어)' },
+            { code: 'az', name: 'Azərbaycan (아제르바이잔어)' }, { code: 'fi', name: 'Suomi (핀란드어)' },
+            { code: 'da', name: 'Dansk (덴마크어)' }, { code: 'no', name: 'Norsk (노르웨이어)' },
+            { code: 'sk', name: 'Slovenčina (슬로바키아어)' }, { code: 'bg', name: 'Български (불가리아어)' },
+            { code: 'sr', name: 'Српски (세르비아어)' }, { code: 'hr', name: 'Hrvatski (크로아티아어)' },
+            { code: 'he', name: 'עברית (히브리어)' }, { code: 'hy', name: 'Հայերեն (아르메니아어)' },
+            { code: 'ka', name: 'ქართული (조지아어)' }, { code: 'mn', name: 'Монгол (몽골어)' },
+            { code: 'ne', name: 'नेपाली (네팔어)' }, { code: 'si', name: 'සිංහල (신할라어)' },
+            { code: 'so', name: 'Soomaali (소말리어)' }, { code: 'zu', name: 'isiZulu (줄루어)' },
+            { code: 'xh', name: 'isiXhosa (코사어)' }
+        ];
+
+        // 60개국 리스트 동적 렌더링
+        const gridContainer = document.getElementById('langGridContainer');
+        languages.forEach(l => {
+            const btn = document.createElement('button');
+            btn.className = "text-left px-2.5 py-1.5 rounded-lg text-xs font-tech text-gray-300 hover:bg-amber-500/20 hover:text-amber-300 transition-all truncate";
+            btn.innerText = l.name;
+            btn.onclick = () => selectLanguage(l.code, l.name);
+            gridContainer.appendChild(btn);
+        });
+
+        function toggleLangDropdown() {
+            const panel = document.getElementById('langDropdownPanel');
+            panel.classList.toggle('hidden');
+        }
+
+        const dict = {
+            ko: {
+                navTitle: "HK 그룹 | 푸처 비전 XPRIZE", navSub: "목표: UBI와 기술을 통한 전 세계 빈곤 종식",
+                bannerTag: "핵심 철학", bannerTitle: "\"기술의 궁극적 가치는 지구상의 모든 빈곤을 종식시키는 데 있습니다.\"",
+                bannerDesc: "HK 그룹은 디지털 금융(HK WorldBank) 순이익의 30%를 전 세계 최빈국과 소외 계층의 유니버설 기본소득(UBI) 재원으로 직접 할당합니다.",
+                tabMovie: "🎬 3분 SF 영화 마스터피스", tabApp: "💻 HK 월드뱅크 UBI 앱",
+                filmSpecTitle: "영화 제작 사양", lblDuration: "상영 시간", lblTheme: "핵심 주제", valTheme: "전 세계 빈곤 종식 및 UBI",
+                lblClusters: "미래 기술 클러스터", lblUbiShare: "UBI 이익 분배율", scriptTitle: "씬별 내러티브 및 시나리오",
+                scene1Head: "기후 위기와 빈곤의 경고", scene1Desc: "에너지 고갈과 빈부격차 속에서 HK 그룹의 첨단 메가시티가 대안으로 떠오릅니다.",
+                scene2Head: "미래 기술 클러스터의 가동", scene2Desc: "울산 로보틱스, 경주 핵융합, 포항 우주 시스템의 결합.",
+                scene3Head: "HK WorldBank & 지구촌 UBI 분배", scene3Desc: "순이익 30%가 전 세계 빈곤 지역 시민들의 지갑으로 실시간 전송.",
+                appStakingTitle: "3년 자산 예치 (Staking)", appStakingSub: "알고리즘 변동 이자율 및 31.41% APY 옵션",
+                lblStakedVal: "총 예치 가치", lblLockup: "락업 기간", ubiStreamTitle: "글로벌 UBI 분배 실시간 스트림",
+                ubiStreamSub: "HK 그룹 순이익의 30%가 빈곤 지역에 직접 할당", lblBeneficiaries: "빈곤 구제 대상 수혜자", lblCitizens: "시민"
+            },
+            en: {
+                navTitle: "HK GROUP | FUTURE VISION XPRIZE", navSub: "MISSION: ERADICATING GLOBAL POVERTY THROUGH UBI & TECH",
+                bannerTag: "CORE PHILOSOPHY", bannerTitle: "\"The ultimate value of technology is to eradicate global poverty.\"",
+                bannerDesc: "HK Group allocates 30% of digital banking (HK WorldBank) net profits directly to UBI funds for impoverished global regions.",
+                tabMovie: "🎬 3-MIN FILM MASTERPIECE", tabApp: "💻 HK WORLDBANK UBI APP",
+                filmSpecTitle: "FILM SPECIFICATIONS", lblDuration: "Duration", lblTheme: "Primary Theme", valTheme: "Global Poverty Eradication & UBI",
+                lblClusters: "Tech Clusters", lblUbiShare: "UBI Allocation", scriptTitle: "SCENE-BY-SCENE NARRATIVE & SCRIPT",
+                scene1Head: "Crisis & Poverty Warning", scene1Desc: "Amidst energy depletion, HK Group's mega-cities emerge as sustainable salvation.",
+                scene2Head: "Activation of Tech Clusters", scene2Desc: "Ulsan robotics, Gyeongju fusion, and Pohang space systems.",
+                scene3Head: "HK WorldBank & Global UBI Distribution", scene3Desc: "30% net profits stream instantly to wallets in impoverished regions.",
+                appStakingTitle: "3-YEAR ASSET STAKING", appStakingSub: "Algorithmic Variable Rate & 31.41% APY Option",
+                lblStakedVal: "Total Staked Value", lblLockup: "Lock-up Period", ubiStreamTitle: "GLOBAL UBI DISTRIBUTION STREAM",
+                ubiStreamSub: "30% Net Profit Allocated to Impoverished Regions", lblBeneficiaries: "Eradicating Poverty For", lblCitizens: "Citizens"
+            }
         };
 
-        function changeLanguage(lang) {
-            const data = translations[lang];
-            if (!data) return;
-            document.getElementById('navHome').innerText = data.home;
-            document.getElementById('navSeries').innerText = data.series;
-            document.getElementById('navMovie').innerText = data.movie;
-            document.getElementById('navNew').innerText = data.latest;
-            document.getElementById('navMyList').innerText = data.mylist;
-            document.getElementById('heroTitle').innerText = data.title;
-            document.getElementById('heroDesc').innerText = data.desc;
-            document.getElementById('btnPlay').innerText = data.play;
-            document.getElementById('btnInfo').innerText = data.info;
-            document.getElementById('section1Title').innerText = data.sec1;
-            document.getElementById('section2Title').innerText = data.sec2;
-            document.getElementById('footerText').innerHTML = data.footer;
+        function selectLanguage(langCode, langName) {
+            document.getElementById('currentLangText').innerText = langName;
+            toggleLangDropdown();
+
+            const t = dict[langCode] || dict['en']; // 기본 영문 폴백 및 번역 맵핑 확장 가능
+            document.getElementById('nav-title').innerText = t.navTitle;
+            document.getElementById('nav-subtitle').innerText = t.navSub;
+            document.getElementById('banner-tag').innerText = t.bannerTag;
+            document.getElementById('banner-title').innerText = t.bannerTitle;
+            document.getElementById('banner-desc').innerText = t.bannerDesc;
+            document.getElementById('tab-movie-btn').innerText = t.tabMovie;
+            document.getElementById('tab-app-btn').innerText = t.tabApp;
+            document.getElementById('film-spec-title').innerText = t.filmSpecTitle;
+            document.getElementById('lbl-duration').innerText = t.lblDuration;
+            document.getElementById('lbl-theme').innerText = t.lblTheme;
+            document.getElementById('val-theme').innerText = t.valTheme;
+            document.getElementById('lbl-clusters').innerText = t.lblClusters;
+            document.getElementById('lbl-ubi-share').innerText = t.lblUbiShare;
+            document.getElementById('script-title').innerText = t.scriptTitle;
+            document.getElementById('scene1-heading').innerText = t.scene1Head;
+            document.getElementById('scene1-desc').innerText = t.scene1Desc;
+            document.getElementById('scene2-heading').innerText = t.scene2Head;
+            document.getElementById('scene2-desc').innerText = t.scene2Desc;
+            document.getElementById('scene3-heading').innerText = t.scene3Head;
+            document.getElementById('scene3-desc').innerText = t.scene3Desc;
         }
+
+        function switchTab(tab) {
+            const movieSec = document.getElementById('section-movie');
+            const appSec = document.getElementById('section-app');
+            const movieBtn = document.getElementById('tab-movie-btn');
+            const appBtn = document.getElementById('tab-app-btn');
+
+            if(tab === 'movie') {
+                movieSec.classList.remove('hidden');
+                appSec.classList.add('hidden');
+                movieBtn.className = "px-5 py-2.5 rounded-xl font-tech text-sm transition-all tab-btn active";
+                appBtn.className = "px-5 py-2.5 rounded-xl font-tech text-sm transition-all text-gray-400 glass-panel";
+            } else {
+                movieSec.classList.add('hidden');
+                appSec.classList.remove('hidden');
+                appBtn.className = "px-5 py-2.5 rounded-xl font-tech text-sm transition-all tab-btn active";
+                movieBtn.className = "px-5 py-2.5 rounded-xl font-tech text-sm transition-all text-gray-400 glass-panel";
+            }
+        }
+
+        const ctx = document.getElementById('ubiChart').getContext('2d');
+        const ubiChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:00'],
+                datasets: [{
+                    label: 'Global Poverty Relief Pool ($)',
+                    data: [1200, 3400, 7800, 14200, 23000, 38900, 54200],
+                    borderColor: '#f59e0b',
+                    backgroundColor: 'rgba(245, 158, 11, 0.08)',
+                    borderWidth: 2.5,
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#fbbf24',
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#9ca3af', font: { family: 'Orbitron', size: 10 } } },
+                    y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#9ca3af', font: { family: 'Orbitron', size: 10 } } }
+                }
+            }
+        });
     </script>
 </body>
 </html>

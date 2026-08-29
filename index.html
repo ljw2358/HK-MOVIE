@@ -3,35 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HK-MOVIE | Global Web3 Creative Cinema</title>
+    <title>HK-MOVIE | Global 60+ Web3 Cinema Platform</title>
     <style>
         :root {
-            --bg-deep: #070711;
-            --surface-color: #121222;
-            --accent-creative: #ff2a6d; /* 창작의 열정을 담은 네온 핑크/코랄 */
-            --accent-gold: #f9d342; /* 마스터피스 골드 */
-            --accent-cyan: #05d9e8; /* 60개국 글로벌 사이언 */
+            --bg-deep: #05050a;
+            --surface-color: #11111d;
+            --surface-hover: #1a1a2e;
+            --accent-creative: #ff2a6d; 
+            --accent-gold: #f9d342;    
+            --accent-cyan: #05d9e8;    
             --text-main: #ffffff;
             --text-sub: #9494b8;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--bg-deep); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
+        body { background-color: var(--bg-deep); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
         
-        /* 헤더 스타일 */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
-            background: rgba(7, 7, 17, 0.95);
+            padding: 15px 40px;
+            background: rgba(5, 5, 10, 0.95);
             border-bottom: 1px solid rgba(255, 42, 109, 0.2);
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
         }
         .logo {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 900;
             letter-spacing: 2px;
             color: var(--text-main);
@@ -45,14 +45,13 @@
             gap: 15px;
         }
         
-        /* 60개국어 글로벌 셀렉터 박스 (창작 컬러 테두리) */
         .lang-select {
             background: var(--surface-color);
             color: var(--text-main);
             border: 1px solid var(--accent-cyan);
-            padding: 10px 14px;
+            padding: 8px 12px;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
             outline: none;
             transition: all 0.3s;
@@ -63,153 +62,156 @@
             background: linear-gradient(135deg, var(--accent-creative), var(--accent-gold));
             color: #000;
             border: none;
-            padding: 10px 22px;
+            padding: 9px 18px;
             border-radius: 8px;
             font-weight: 800;
+            font-size: 13px;
             cursor: pointer;
             box-shadow: 0 0 15px rgba(255, 42, 109, 0.4);
             transition: all 0.3s ease;
         }
         .wallet-btn:hover { opacity: 0.95; transform: translateY(-2px); }
 
-        /* 메인 콘텐츠 영역 */
         main {
             flex: 1;
-            padding: 40px;
-            max-width: 1400px;
+            padding: 30px 40px;
+            max-width: 1600px;
             margin: 0 auto;
             width: 100%;
         }
 
-        /* 창작 스튜디오 히어로 섹션 */
         .hero-section {
-            background: linear-gradient(135deg, rgba(255, 42, 109, 0.12) 0%, rgba(5, 217, 232, 0.08) 50%, rgba(18, 18, 34, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(255, 42, 109, 0.15) 0%, rgba(5, 217, 232, 0.1) 50%, rgba(17, 17, 29, 0.95) 100%);
             border: 1px solid rgba(255, 42, 109, 0.3);
             border-radius: 20px;
-            padding: 60px;
-            margin-bottom: 50px;
+            padding: 50px;
+            margin-bottom: 40px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
         }
         .hero-badge {
             display: inline-block;
             background: var(--accent-gold);
             color: #000;
             font-weight: 900;
-            font-size: 12px;
-            padding: 5px 12px;
+            font-size: 11px;
+            padding: 4px 10px;
             border-radius: 6px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         .hero-title {
-            font-size: 46px;
+            font-size: 40px;
             font-weight: 900;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             letter-spacing: 1px;
             color: #fff;
         }
         .hero-title span { color: var(--accent-creative); text-shadow: 0 0 20px rgba(255, 42, 109, 0.5); }
         .hero-desc {
-            font-size: 17px;
+            font-size: 15px;
             color: var(--text-sub);
-            max-width: 750px;
-            line-height: 1.7;
-            margin-bottom: 35px;
+            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 25px;
         }
         .hero-actions {
             display: flex;
-            gap: 15px;
+            gap: 12px;
         }
         .play-btn {
             background: var(--accent-creative);
             color: #fff;
             font-weight: 800;
             border: none;
-            padding: 16px 32px;
+            padding: 14px 28px;
             border-radius: 10px;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
-            box-shadow: 0 0 25px rgba(255, 42, 109, 0.6);
+            box-shadow: 0 0 20px rgba(255, 42, 109, 0.6);
             transition: transform 0.2s;
         }
-        .play-btn:hover { transform: scale(1.03); }
+        .play-btn:hover { transform: scale(1.02); }
         
         .info-btn {
             background: transparent;
             color: var(--text-main);
             border: 1px solid var(--accent-cyan);
             font-weight: 700;
-            padding: 16px 32px;
+            padding: 14px 28px;
             border-radius: 10px;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
             transition: background 0.2s;
         }
         .info-btn:hover { background: rgba(5, 217, 232, 0.1); }
 
-        /* 작품 라인업 그리드 */
+        .section-box {
+            margin-bottom: 40px;
+        }
         .section-title {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 800;
-            margin-bottom: 25px;
-            border-left: 5px solid var(--accent-creative);
-            padding-left: 12px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent-creative);
+            padding-left: 10px;
             letter-spacing: 0.5px;
         }
+
         .movie-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
         }
         .movie-card {
             background: var(--surface-color);
-            border-radius: 14px;
+            border-radius: 12px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
         .movie-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-5px);
             border-color: var(--accent-cyan);
-            box-shadow: 0 10px 25px rgba(5, 217, 232, 0.15);
+            box-shadow: 0 8px 20px rgba(5, 217, 232, 0.15);
         }
         .movie-thumb {
-            height: 180px;
-            background: linear-gradient(135deg, #1f1f3a, #3a1f3a);
+            height: 150px;
+            background: linear-gradient(135deg, #16162c, #2b1635);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 15px;
             color: var(--accent-cyan);
             font-weight: 800;
-            letter-spacing: 1px;
+            text-align: center;
+            padding: 0 15px;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .movie-info {
-            padding: 22px;
+            padding: 16px;
         }
         .movie-title {
-            font-size: 19px;
+            font-size: 16px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .movie-meta {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-sub);
         }
 
-        /* 푸터 */
         footer {
             text-align: center;
-            padding: 40px;
-            background: rgba(7, 7, 17, 0.95);
+            padding: 30px;
+            background: rgba(5, 5, 10, 0.95);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: var(--text-sub);
-            font-size: 14px;
-            margin-top: 60px;
+            font-size: 13px;
+            margin-top: auto;
         }
     </style>
 </head>
@@ -218,110 +220,150 @@
     <header>
         <div class="logo">HK-<span>MOVIE</span></div>
         <div class="header-right">
-            <!-- 60개국 글로벌 언어 셀렉터 -->
             <select class="lang-select" id="languageSelect">
-                <option value="ko">🇰🇷 한국어 (Korean)</option>
-                <option value="en">🇺🇸 English (US)</option>
-                <option value="zh">🇨🇳 中文 (Chinese)</option>
-                <option value="ja">🇯🇵 日本語 (Japanese)</option>
-                <option value="es">🇪🇸 Español (Spanish)</option>
-                <option value="fr">🇫🇷 Français (French)</option>
-                <option value="de">🇩🇪 Deutsch (German)</option>
-                <option value="ar">🇸🇦 العربية (Arabic)</option>
-                <option value="hi">🇮🇳 हिन्दी (Hindi)</option>
-                <option value="ru">🇷🇺 Русский (Russian)</option>
-                <option value="pt">🇧🇷 Português (Portuguese)</option>
-                <option value="it">🇮🇹 Italiano (Italian)</option>
-                <option value="vi">🇻🇳 Tiếng Việt (Vietnamese)</option>
-                <option value="th">🇹🇭 ไทย (Thai)</option>
+                <option value="ko">🇰🇷 한국어</option>
+                <option value="en">🇺🇸 English</option>
+                <option value="zh">🇨🇳 中文</option>
+                <option value="ja">🇯🇵 日本語</option>
+                <option value="es">🇪🇸 Español</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="de">🇩🇪 Deutsch</option>
+                <option value="ar">🇸🇦 العربية</option>
+                <option value="hi">🇮🇳 हिन्दी</option>
+                <option value="ru">🇷🇺 Русский</option>
+                <option value="pt">🇧🇷 Português</option>
+                <option value="it">🇮🇹 Italiano</option>
+                <option value="vi">🇻🇳 Tiếng Việt</option>
+                <option value="th">🇹🇭 ไทย</option>
                 <option value="id">🇮🇩 Bahasa Indonesia</option>
-                <option value="tr">🇹🇷 Türkçe (Turkish)</option>
-                <option value="pl">🇵🇱 Polski (Polish)</option>
-                <option value="nl">🇳🇱 Nederlands (Dutch)</option>
-                <option value="sv">🇸🇪 Svenska (Swedish)</option>
-                <option value="uk">🇺🇦 Українська (Ukrainian)</option>
+                <option value="tr">🇹🇷 Türkçe</option>
+                <option value="pl">🇵🇱 Polski</option>
+                <option value="nl">🇳🇱 Nederlands</option>
+                <option value="sv">🇸🇪 Svenska</option>
+                <option value="uk">🇺🇦 Українська</option>
                 <option value="ms">🇲🇾 Bahasa Melayu</option>
-                <option value="fil">🇵🇭 Tagalog (Filipino)</option>
-                <option value="el">🇬🇷 Ελληνικά (Greek)</option>
-                <option value="cs">🇨🇿 Čeština (Czech)</option>
-                <option value="ro">🇷🇴 Română (Romanian)</option>
-                <option value="hu">🇭🇺 Magyar (Hungarian)</option>
-                <option value="he">🇮🇱 עברית (Hebrew)</option>
-                <option value="da">🇩🇰 Dansk (Danish)</option>
-                <option value="fi">🇫🇮 Suomi (Finnish)</option>
-                <option value="no">🇳🇴 Norsk (Norwegian)</option>
-                <option value="bn">🇧🇩 বাংলা (Bengali)</option>
-                <option value="fa">🇮🇷 فارسی (Persian)</option>
-                <option value="ur">🇵🇰 اردو (Urdu)</option>
-                <option value="sw">🇰🇪 Kiswahili (Swahili)</option>
-                <option value="ta">🇮🇳 தமிழ் (Tamil)</option>
-                <option value="te">🇮🇳 తెలుగు (Telugu)</option>
-                <option value="mr">🇮🇳 मराठी (Marathi)</option>
-                <option value="gu">🇮🇳 ગુજરાતી (Gujarati)</option>
-                <option value="kn">🇮🇳 ಕನ್ನಡ (Kannada)</option>
-                <option value="ml">🇮🇳 മലയാളം (Malayalam)</option>
-                <option value="pa">🇵🇰 ਪੰਜਾਬੀ (Punjabi)</option>
-                <option value="kk">🇰🇿 Қазақ тілі (Kazakh)</option>
-                <option value="uz">🇺🇿 O'zbekcha (Uzbek)</option>
-                <option value="az">🇦🇿 Azərbaycanca (Azerbaijani)</option>
-                <option value="hy">🇦🇲 Հայերեն (Armenian)</option>
-                <option value="ka">🇬🇪 ქართული (Georgian)</option>
-                <option value="am">🇪🇹 አማርኛ (Amharic)</option>
-                <option value="my">🇲🇲 မြန်မာဘာသာ (Burmese)</option>
-                <option value="km">🇰🇭 ភាសាខ្មែរ (Khmer)</option>
-                <option value="lo">🇱🇦 ພາສາລາວ (Lao)</option>
-                <option value="si">🇱🇰 සිංහල (Sinhala)</option>
-                <option value="ne">🇳🇵 नेपाली (Nepali)</option>
-                <option value="sq">🇦🇱 Shqip (Albanian)</option>
-                <option value="bs">🇧🇦 Bosanski (Bosnian)</option>
-                <option value="hr">🇭🇷 Hrvatski (Croatian)</option>
-                <option value="sr">🇷🇸 Српски (Serbian)</option>
-                <option value="sk">🇸🇰 Slovenčina (Slovak)</option>
-                <option value="sl">🇸🇮 Slovenščina (Slovenian)</option>
-                <option value="et">🇪🇪 Eesti (Estonian)</option>
-                <option value="lv">🇱🇻 Latviešu (Latvian)</option>
-                <option value="lt">🇱🇹 Lietuvių (Lithuanian)</option>
+                <option value="fil">🇵🇭 Tagalog</option>
+                <option value="el">🇬🇷 Ελληνικά</option>
+                <option value="cs">🇨🇿 Čeština</option>
+                <option value="ro">🇷🇴 Română</option>
+                <option value="hu">🇭🇺 Magyar</option>
+                <option value="he">🇮🇱 עברית</option>
+                <option value="da">🇩🇰 Dansk</option>
+                <option value="fi">🇫🇮 Suomi</option>
+                <option value="no">🇳🇴 Norsk</option>
+                <option value="bn">🇧🇩 বাংলা</option>
+                <option value="fa">🇮🇷 فارسی</option>
+                <option value="ur">🇵🇰 اردو</option>
+                <option value="sw">🇰🇪 Kiswahili</option>
+                <option value="ta">🇮🇳 தமிழ்</option>
+                <option value="te">🇮🇳 తెలుగు</option>
+                <option value="mr">🇮🇳 मराठी</option>
+                <option value="gu">🇮🇳 ગુજરાતી</option>
+                <option value="kn">🇮🇳 ಕನ್ನಡ</option>
+                <option value="ml">🇮🇳 മലയാളം</option>
+                <option value="pa">🇵🇰 ਪੰਜਾਬੀ</option>
+                <option value="kk">🇰🇿 Қазақ тілі</option>
+                <option value="uz">🇺🇿 O'zbekcha</option>
+                <option value="az">🇦🇿 Azərbaycanca</option>
+                <option value="hy">🇦🇲 Հայերեն</option>
+                <option value="ka">🇬🇪 ქართული</option>
+                <option value="am">🇪🇹 አማርኛ</option>
+                <option value="my">🇲🇲 မြန်မာဘာသာ</option>
+                <option value="km">🇰🇭 ភាសាខ្មែរ</option>
+                <option value="lo">🇱🇦 ພາສາລາວ</option>
+                <option value="si">🇱🇰 සිංහල</option>
+                <option value="ne">🇳🇵 नेपाली</option>
+                <option value="sq">🇦🇱 Shqip</option>
+                <option value="bs">🇧🇦 Bosanski</option>
+                <option value="hr">🇭🇷 Hrvatski</option>
+                <option value="sr">🇷🇸 Српски</option>
+                <option value="sk">🇸🇰 Slovenčina</option>
+                <option value="sl">🇸🇮 Slovenščina</option>
+                <option value="et">🇪🇪 Eesti</option>
+                <option value="lv">🇱🇻 Latviešu</option>
+                <option value="lt">🇱🇹 Lietuvių</option>
             </select>
-            <button class="wallet-btn" onclick="alert('Web3 지갑 연동 완료!')">Web3 지갑 연동</button>
+            <button class="wallet-btn" id="walletBtn" onclick="connectWallet()">Web3 지갑 연동</button>
         </div>
     </header>
 
     <main>
-        <!-- 크리에이티브 히어로 섹션 -->
         <section class="hero-section">
-            <div class="hero-badge">Global Masterpiece Premiere</div>
+            <div class="hero-badge" id="heroBadge">Global Masterpiece Premiere</div>
             <h1 class="hero-title">[NEON <span>ODYSSEY</span>]</h1>
-            <p class="hero-desc">
-                네온 빛으로 물든 거대한 사이버 시티 속, 양자 시공간의 문을 여는 주인공의 압도적인 3분간의 오디세이. HK-MOVIE의 창작 스튜디오 인프라를 통해 60개국 언어로 전 세계 동시 상영됩니다.
+            <p class="hero-desc" id="heroDesc">
+                네온 빛으로 물든 거대한 사이버 시티 속, 양자 시공간의 문을 여는 주인공의 압도적인 3분간의 오디세이. HK-MOVIE 인프라를 통해 전 세계 동시 상영됩니다.
             </p>
             <div class="hero-actions">
-                <button class="play-btn" onclick="alert('[NEON ODYSSEY] 글로벌 상영을 시작합니다!')">▶ 지금 바로 감상하기</button>
-                <button class="info-btn" onclick="alert('작품 스토리 및 Web3 펀딩 참여 안내')">크리에이터 노트</button>
+                <button class="play-btn" id="playMainBtn" onclick="alert('▶ [NEON ODYSSEY] 재생을 시작합니다!')">지금 바로 감상하기</button>
+                <button class="info-btn" id="infoMainBtn" onclick="alert('크리에이터 노트 및 펀딩 안내')">상세 정보</button>
             </div>
         </section>
 
-        <!-- 작품 큐레이션 라인업 -->
-        <h2 class="section-title">HK-MOVIE 크리에이티브 라인업</h2>
-        <div class="movie-grid">
-            <div class="movie-card">
-                <div class="movie-thumb">CYBER SEOUL 2088</div>
-                <div class="movie-info">
-                    <h3 class="movie-title">사이버 서울 2088</h3>
-                    <p class="movie-meta">AI 시네마틱 • 글로벌 조회수 1.2M</p>
+        <div class="section-box">
+            <h2 class="section-title" id="section1Title">🔥 실시간 글로벌 트렌딩 마스터피스</h2>
+            <div class="movie-grid">
+                <div class="movie-card" onclick="playMovie('사이버 서울 2088')">
+                    <div class="movie-thumb">CYBER SEOUL 2088</div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">사이버 서울 2088</h3>
+                        <p class="movie-meta" id="m1">AI 시네마틱 • 조회수 1.2M</p>
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('양자 제네시스')">
+                    <div class="movie-thumb">QUANTUM GENESIS</div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">양자 제네시스</h3>
+                        <p class="movie-meta" id="m2">SF 스릴러 • 조회수 850K</p>
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('파이 네트워크 크로니클')">
+                    <div class="movie-thumb">PI NETWORK CHRONICLES</div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">파이 네트워크 크로니클</h3>
+                        <p class="movie-meta" id="m3">Web3 다큐 • 조회수 2.4M</p>
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('네온 러너 아카이브')">
+                    <div class="movie-thumb">NEON RUNNER ARCHIVES</div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">네온 러너 아카이브</h3>
+                        <p class="movie-meta" id="m4">사이버펑크 • 조회수 920K</p>
+                    </div>
                 </div>
             </div>
-            <div class="movie-card">
-                <div class="movie-thumb">QUANTUM GENESIS</div>
-                <div class="movie-info">
-                    <h3 class="movie-title">양자 제네시스</h3>
-                    <p class="movie-meta">SF 스릴러 • 글로벌 조회수 850K</p>
+        </div>
+
+        <div class="section-box">
+            <h2 class="section-title" id="section2Title">💎 HK-MOVIE Web3 오리지널 신작</h2>
+            <div class="movie-grid">
+                <div class="movie-card" onclick="playMovie('싱귤래리티 포인트')">
+                    <div class="movie-thumb">SINGULARITY POINT</div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">싱귤래리티 포인트</h3>
+                        <p class="movie-meta" id="m5">하드 SF • 펀딩 달성률 300%</p>
+                    </div>
                 </div>
-            </div>
-            <div class="movie-card">
-                <div class="movie-thumb">PI NETWORK CHRONICLES</div>
-                <div class="movie-info">
-                    <h3 class="movie-title">파이 네트워크 크로니클</h3>
-                    <p class="movie-meta">Web3 다큐멘터리 • 글로벌 조회수 2.4M</p>
+                <div class="movie-card" onclick="playMovie('메타버스 디텍티브')">
+                    <div class="movie-thumb">METAVERSE DETECTIVE</div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">메타버스 디텍티브</h3>
+                        <p class="movie-meta" id="m6">느와르 추리 • 펀딩 달성률 180%</p>
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('크립토 드림스')">
+                    <div class="movie-thumb">CRYPTO DREAMS</div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">크립토 드림스</h3>
+                        <p class="movie-meta" id="m7">판타지 드라마 • 펀딩 달성률 250%</p>
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('스타더스트 익스프레스')">
+                    <div class="movie-thumb">STARDUST EXPRESS</div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">스타더스트 익스프레스</h3>
+                        <p class="movie-meta" id="m8">우주 모험 • 펀딩 달성률 420%</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -332,10 +374,91 @@
     </footer>
 
     <script>
+        // 60개국어 완벽 대응 실시간 글로벌 번역 딕셔너리
+        const t60 = {
+            ko: { badge: "Global Masterpiece Premiere", desc: "네온 빛으로 물든 거대한 사이버 시티 속, 양자 시공간의 문을 여는 주인공의 압도적인 3분간의 오디세이. HK-MOVIE 인프라를 통해 전 세계 동시 상영됩니다.", play: "지금 바로 감상하기", info: "상세 정보", sec1: "🔥 실시간 글로벌 트렌딩 마스터피스", sec2: "💎 HK-MOVIE Web3 오리지널 신작", wallet: "Web3 지갑 연동" },
+            en: { badge: "Global Masterpiece Premiere", desc: "An immersive 3-minute sci-fi odyssey opening spacetime gates in a neon cyber city. Streamed globally via HK-MOVIE.", play: "Watch Now", info: "Creator Note", sec1: "🔥 Real-Time Global Trending Masterpieces", sec2: "💎 HK-MOVIE Web3 Originals", wallet: "Connect Wallet" },
+            zh: { badge: "全球杰作首映", desc: "在霓虹闪烁的赛博城市中，开启时空之门的3分钟史诗级科幻杰作。通过 HK-MOVIE 全球同步上映。", play: "立即观看", info: "详细信息", sec1: "🔥 实时全球热门杰作", sec2: "💎 HK-MOVIE Web3 原创巨献", wallet: "连接钱包" },
+            ja: { badge: "グローバル・マスターピースプレミア", desc: "ネオンに彩られたサイバーシティで時空の扉を開く、圧倒的な3分間のSFオデッセイ。HK-MOVIEで世界同時配信。", play: "今すぐ視聴する", info: "詳細情報", sec1: "🔥 リアルタイム・グローバルトレンド", sec2: "💎 HK-MOVIE Web3 オリジナル新作", wallet: "ウォレット接続" },
+            es: { badge: "Estreno Mundial", desc: "Una odisea de ciencia ficción de 3 minutos que abre las puertas del espacio-tiempo en una ciudad cibernética.", play: "Ver Ahora", info: "Más Información", sec1: "🔥 Tendencias Globales en Tiempo Real", sec2: "💎 Originales Web3 de HK-MOVIE", wallet: "Conectar Billetera" },
+            fr: { badge: "Première Mondiale", desc: "Une odyssée de science-fiction immersive de 3 minutes ouvrant les portes de l'espace-temps.", play: "Regarder", info: "Notes", sec1: "🔥 Tendances Mondiales en Direct", sec2: "💎 Originaux Web3 HK-MOVIE", wallet: "Connecter le Portefeuille" },
+            de: { badge: "Weltpremiere", desc: "Eine immersive 3-minütige Sci-Fi-Odyssee, die Raum-Zeit-Tore in einer Neon-Cyber-Stadt öffnet.", play: "Jetzt Ansehen", info: "Details", sec1: "🔥 Globale Echtzeit-Trends", sec2: "💎 HK-MOVIE Web3 Originale", wallet: "Wallet Verbinden" },
+            ar: { badge: "العرض الأول العالمي", desc: "ملحمة خيال علمي مدتها 3 دقائق تفتح أبواب الزمكان في مدينة سيبرانية.", play: "شاهد الآن", info: "معلومات", sec1: "🔥 الأعمال الرائجة عالمياً", sec2: "💎 أعمال HK-MOVIE الأصلية", wallet: "ربط المحفظة" },
+            hi: { badge: "वैश्विक मास्टरपीस प्रीमियर", desc: "एक महाकाव्य 3 मिनट की एससी-फाई ओडिसी जो साइबर सिटी में स्पेसटाइम के द्वार खोलती है।", play: "अभी देखें", info: "विवरण", sec1: "🔥 वास्तविक समय वैश्विक रुझान", sec2: "💎 HK-MOVIE ओरिजिनल", wallet: "वॉलेट कनेक्ट करें" },
+            ru: { badge: "Мировая Премьера", desc: "Захватывающая 3-минутная научно-фантастическая одиссея в неоновом кибергороде.", play: "Смотреть Сейчас", info: "Инфо", sec1: "🔥 Глобальные Тренд-Шедевры", sec2: "💎 Оригиналы Web3 HK-MOVIE", wallet: "Кошелек" },
+            pt: { badge: "Estreia Mundial", desc: "Uma odisseia de ficção científica imersiva de 3 minutos em uma cidade cibernética neon.", play: "Assistir Agora", info: "Detalhes", sec1: "🔥 Tendências Globais", sec2: "💎 Originais Web3 HK-MOVIE", wallet: "Conectar Carteira" },
+            it: { badge: "Prima Mondiale", desc: "Un'odissea sci-fi immersiva di 3 minuti che apre le porte dello spaziotempo.", play: "Guarda Ora", info: "Info", sec1: "🔥 Tendenze Globali in Tempo Reale", sec2: "💎 Originali Web3 HK-MOVIE", wallet: "Connetti Wallet" },
+            vi: { badge: "Công chiếu toàn cầu", desc: "Hành trình khoa học viễn tưởng 3 phút mở ra cánh cửa không thời gian.", play: "Xem Ngay", info: "Thông tin", sec1: "🔥 Xu hướng toàn cầu", sec2: "💎 Phim gốc Web3 HK-MOVIE", wallet: "Kết nối ví" },
+            th: { badge: "รอบปฐมทัศน์ระดับโลก", desc: "การผจญภัยไซไฟ 3 นาทีที่เปิดประตูสู่อวกาศและเวลาในเมืองไซเบอร์", play: "รับชมทันที", info: "รายละเอียด", sec1: "🔥 เทรนด์ยอดนิยมระดับโลก", sec2: "💎 อ리지널 Web3 HK-MOVIE", wallet: "เชื่อมต่อกระเป๋าเงิน" },
+            id: { badge: "Pemutaran Perdana Global", desc: "Odisse-fiksi ilmiah 3 menit yang membuka gerbang ruang-waktu di kota siber neon.", play: "Tonton Sekarang", info: "Info", sec1: "🔥 Tren Global Waktu Nyata", sec2: "💎 Asli Web3 HK-MOVIE", wallet: "Hubungkan Dompet" },
+            tr: { badge: "Küresel Galalar", desc: "Neon siber şehirde uzay-zaman kapılarını açan sürükleyici bir 3 dakikalık bilimkurgu.", play: "Şimdi İzle", info: "Bilgi", sec1: "🔥 Gerçek Zamanlı Küresel Trendler", sec2: "💎 HK-MOVIE Web3 Orijinalleri", wallet: "Cüzdanı Bağla" },
+            pl: { badge: "Światowa Premiera", desc: "Wciągająca 3-minutowa odesseja sci-fi otwiera wrota czasoprzestrzeni.", play: "Oglądaj Teraz", info: "Szczegóły", sec1: "🔥 Globalne Trendy", sec2: "💎 Oryginaлы Web3 HK-MOVIE", wallet: "Połącz Portfel" },
+            nl: { badge: "Wereldpremière", desc: "Een meeslepende sci-fi odyssee van 3 minuten in een neon cyberpunkstad.", play: "Nu Bekijken", info: "Info", sec1: "🔥 Wereldwijde Trends", sec2: "💎 HK-MOVIE Web3 Originals", wallet: "Wallet Koppelen" },
+            sv: { badge: "Världspremiär", desc: "En uppslukande 3-minuters sci-fi-odyssé som öppnar rumtidsportar.", play: "Titta Nu", info: "Info", sec1: "🔥 Globala Trender", sec2: "💎 HK-MOVIE Web3 Original", wallet: "Anslut Plånbok" },
+            uk: { badge: "Світова Прем'єра", desc: "Захоплююча 3-хвилинна науково-фантастична одіссея у неоновому кібермісті.", play: "Дивитися", info: "Інфо", sec1: "🔥 Глобальні Тренди", sec2: "💎 Оригінали Web3 HK-MOVIE", wallet: "Гаманець" },
+            ms: { badge: "Tayangan Perdana Global", desc: "Odissei sci-fi 3 minit yang mendalam di bandar siber neon.", play: "Tonton Sekarang", info: "Info", sec1: "🔥 Trend Global Masa Nyata", sec2: "💎 Asal Web3 HK-MOVIE", wallet: "Sambung Dompet" },
+            fil: { badge: "Global Premiere", desc: "Isang 3-minutong sci-fi odyssey na nagbubukas ng mga pinto ng espasyo-oras.", play: "Panoorin", info: "Impormasyon", sec1: "🔥 Mga Trending sa Buong Mundo", sec2: "💎 HK-MOVIE Web3 Originals", wallet: "Ikonekta ang Wallet" },
+            el: { badge: "Παγκόσμια Πρεμιέρα", desc: "Μια καθηλωτική οδύσσεια επιστημονικής φαντασίας 3 λεπτών σε μια κυبερνοπόλη.", play: "Παρακολουθήστε", info: "Πληροφορίες", sec1: "🔥 Παγκόσμιες Τάσεις", sec2: "💎 Web3 Πρωτότυπα HK-MOVIE", wallet: "Σύνδεση Πορτοφολιού" },
+            cs: { badge: "Světová Premiéra", desc: "Pohlcující 3minutová sci-fi ódysejská cesta otevírající brány časoprostoru.", play: "Sledovat", info: "Info", sec1: "🔥 Globální Trendy", sec2: "💎 HK-MOVIE Web3 Originály", wallet: "Připojit Peněženku" },
+            ro: { badge: "Premiera Mondială", desc: "O odisee SF captivantă de 3 minute care deschide porțile spațiu-timpului.", play: "Urmărește", info: "Detalii", sec1: "🔥 Tendințe Globale", sec2: "💎 Originale Web3 HK-MOVIE", wallet: "Conectare Portofel" },
+            hu: { badge: "Világpremier", desc: "Egy lenyűgöző 3 perces sci-fi odüsszea egy neon teli kiber-városban.", play: "Megtekintés", info: "Infó", sec1: "🔥 Globális Trendek", sec2: "💎 HK-MOVIE Web3 Eredetiek", wallet: "Tárca Csatlakozása" },
+            he: { badge: "בכורה עולמית", desc: "אודיסיאת מדע בדיוני סוחפת בת 3 דקות הפותחת את שערי הזמן-מרחב.", play: "צפה עכשיו", info: "מידע", sec1: "🔥 טרנדים עולמיים מובילים", sec2: "💎 מקורות Web3 של HK-MOVIE", wallet: "חיבור ארנק" },
+            da: { badge: "Verdenspremiere", desc: "En 3-minutters sci-fi odyssé, der åbner rumtidsportene i en neonby.", play: "Se Nu", info: "Info", sec1: "🔥 Globale Tendenser", sec2: "💎 HK-MOVIE Web3 Originaler", wallet: "Forbind Wallet" },
+            fi: { badge: "Maailman ensi-ilta", desc: "Mukaansatempaava 3 minuutin scifi-odysseia kyberkaupungissa.", play: "Katso Nyt", info: "Tiedot", sec1: "🔥 Globaalit Trendit", sec2: "💎 HK-MOVIE Web3 Original", wallet: "Yhdistä Lompakko" },
+            no: { badge: "Verdenspremiere", desc: "En oppslukende 3-minutters sci-fi-odyssé i en neonfylgt kyberby.", play: "Se Nå", info: "Info", sec1: "🔥 Globale Trender", sec2: "💎 HK-MOVIE Web3 Originaler", wallet: "Koble til Lommebok" },
+            bn: { badge: "গ্লোবাল মাস্টারপিস প্রিমিয়ার", desc: "একটি নিমগ্ন ৩ মিনিটের সাই-ফাই ওডিসি যা সাইবার সিটিতে স্থান-কাল গেট খোলে।", play: "এখনই দেখুন", info: "বিস্তারিত", sec1: "🔥 লাইভ গ্লোবাল ট্রেন্ডিং", sec2: "💎 HK-MOVIE অরিজিনাল", wallet: "ওয়ালেট কানেক্ট" },
+            fa: { badge: "پیرمیر جهانی", desc: "یک اپرای علمی تخیلی ۳ دقیقه ای غوطه ورکننده در یک شهر سایبری نئونی.", play: "تماشای اکنون", info: "جزئیات", sec1: "🔥 پربازدیدترین های جهانی", sec2: "💎 اصلی های Web3 HK-MOVIE", wallet: "اتصال کیف پول" },
+            ur: { badge: "عالمی پریمیئر", desc: "ایک عمیق 3 منٹ کی سائنس فکشن اوڈیسی جو سائبر سٹی میں گیٹس کھولتی ہے۔", play: "ابھی دیکھیں", info: "معلومات", sec1: "🔥 عالمی رجحانات", sec2: "💎 HK-MOVIE اورینجینلز", wallet: "والٹ کنیکٹ" },
+            sw: { badge: "Onyesho la Kwanza la Dunia", desc: "Safari ya kisayansi ya dakika 3 inayofungua milango ya anga na wakati.", play: "Tazama Sasa", info: "Maelezo", sec1: "🔥 Zinazovuma Duniani", sec2: "💎 Asili za Web3 za HK-MOVIE", wallet: "Unganisha Wallet" },
+            ta: { badge: "உலகளாவிய பிரீமியர்", desc: "சைபர் நகரில் இட-நேர வாயில்களைத் திறக்கும் 3 நிமிட அறிவியல் புனைகதை.", play: "இப்போதே பார்", info: "விவரங்கள்", sec1: "🔥 உலகளாவிய டிரெண்டிங்", sec2: "💎 HK-MOVIE ஒரிஜினல்ஸ்", wallet: "வாலட்டை இணை" },
+            te: { badge: "గ్లోబల్ మాస్టర్ పీస్ ప్రీమియర్", desc: "సైబర్ సిటీలో కాల-స్థల ద్వారాలను తెరిచే 3 నిమిషాల సైన్స్ ఫిక్షన్.", play: "ఇప్పుడే చూడండి", info: "వివరాలు", sec1: "🔥 గ్లోబల్ ట్రెండింగ్", sec2: "💎 HK-MOVIE ఒరిజినల్స్", wallet: "వాలెట్ కనెక్ట్" },
+            mr: { badge: "जागतिक प्रीमियर", desc: "सायबर सिटीमध्ये स्पेसटाईमचे दरवाजे उघडणारी ३ मिनिटांची सायन्स फिक्शन ओडिसी.", play: "आता पहा", info: "माहिती", sec1: "🔥 जागतिक ट्रेंडिंग", sec2: "💎 HK-MOVIE ओरिजिनल", wallet: "वॉलेट जोडा" },
+            gu: { badge: "વૈશ્વિક પ્રીમિયર", desc: "સાયબર શહેરમાં સ્પેસટાઇમના દ્વાર ખોલતી ૩ મિનિટની સાયન્સ ફિક્શન.", play: "હવે જુઓ", info: "વિગત", sec1: "🔥 વૈશ્વિક ટ્રેન્ડિંગ", sec2: "💎 HK-MOVIE ઓરિજિનલ", wallet: "વોલેટ કનેક્ટ" },
+            kn: { badge: "ಜಾಗತಿಕ ಪ್ರೀಮಿಯರ್", desc: "ಸೈಬರ್ ನಗರದಲ್ಲಿ ಕಾಲ-ಸ್ಥಳದ ಬಾಗಿಲುಗಳನ್ನು ತೆರೆಯುವ 3 ನಿಮಿಷದ ವೈಜ್ಞಾನಿಕ ಕಲ್ಪನೆ.", play: "ಈಗ ನೋಡಿ", info: "ವಿವರಗಳು", sec1: "🔥 ಜಾಗತಿಕ ಟ್ರೆಂಡಿಂಗ್", sec2: "💎 HK-MOVIE ಒರಿಜಿನಲ್ಸ್", wallet: "ವಾಲೆಟ್ ಸಂಪರ್ಕಿಸಿ" },
+            ml: { badge: "ആഗോള പ്രീമിയർ", desc: "സൈബർ നഗരത്തിൽ സ്പേസ് ടൈം കവാടങ്ങൾ തുറക്കുന്ന 3 മിനിറ്റ് സയൻസ് ഫiction.", play: "ഇപ്പോൾ കാണുക", info: "വിവരങ്ങൾ", sec1: "🔥 ആഗോള ട്രെൻഡിങ്", sec2: "💎 HK-MOVIE ഒറിജിനൽസ്", wallet: "വാലറ്റ് കണക്റ്റ് ചെയ്യുക" },
+            pa: { badge: "ਗਲੋਬਲ ਪ੍ਰੀਮੀਅਰ", desc: "ਸਾਈਬਰ ਸ਼ਹਿਰ ਵਿੱਚ ਸਪੇਸ-ਟਾਈਮ ਦੇ ਦਰਵਾਜ਼ੇ ਖੋਲ੍ਹਣ ਵਾਲੀ 3 ਮਿੰਟ ਦੀ ਸਾਇੰਸ ਫਿਕਸ਼ਨ।", play: "ਹੁਣੇ ਦੇਖੋ", info: "ਵੇਰਵੇ", sec1: "🔥 ਗਲੋਬਲ ਟ್ರೆਡਿੰਗ", sec2: "💎 HK-MOVIE ਓਰਿਜਿਨਲਜ਼", wallet: "ਵਾਲਿਟ ਕਨੈਕਟ ਕਰੋ" },
+            kk: { badge: "Әлемдік Премьера", desc: "Киберқалада уақыт пен кеңістік қақпаларын аشатын 3 минуттық одыссея.", play: "Қазір көру", info: "Мәлімет", sec1: "🔥 Жаһандық Трендтер", sec2: "💎 HK-MOVIE Web3 Түпнұсқалары", wallet: "Әмиянды қосу" },
+            uz: { badge: "Jahon Premierasi", desc: "Kiber shaharda fazo-vaqt darvozalarini ochuvchi 3 daqiqali fantastik odisseya.", play: "Hozir Ko'rish", info: "Ma'lumot", sec1: "🔥 Global Trendlar", sec2: "💎 HK-MOVIE Web3 Asarlari", wallet: "Hamyonni Ulash" },
+            az: { badge: "Dünya Premyerası", desc: "Kiber şəhərdə məkan-zaman qapılarını açan 3 dəqiqəlik fantastik odisseya.", play: "İndi İzlə", info: "Məlumat", sec1: "🔥 Qlobal Trendlər", sec2: "💎 HK-MOVIE Web3 Orijinalları", wallet: "Cüzdanı Qoş" },
+            hy: { badge: "Համաշխարհային Պրեմիերա", desc: "3 րոպեանոց գիտաֆանտաստիկ ո디سեա կիբեր քաղաքում:", play: "Դիտել Հիմա", info: "Տեղեկություն", sec1: "🔥 Համաշխարհային Թրენդներ", sec2: "💎 HK-MOVIE Web3 Բնօրինակներ", wallet: "Միացնել Դրամապանակը" },
+            ka: { badge: "მსოფლიო პრემიერა", desc: "3-წუთიანი სამეცნიერო ფანტასტიკური ოდისეა კიბერ ქალაქში.", play: "ახლავე ყურება", info: "ინფორმაცია", sec1: "🔥 გლობალური ტრენდები", sec2: "💎 HK-MOVIE Web3 ორიგინალები", wallet: "საფულის მიმაგრება" },
+            am: { badge: "ዓለም አቀፍ ፕሪሚየር", desc: "በሳይበር ከተማ ውስጥ የቦታ-ጊዜ በሮች የሚከፍት የ3 ደቂቃ ሳይንስ ልብወለድ።", play: "አሁን ይመልከቱ", info: "መረጃ", sec1: "🔥 ዓለም አቀፍ በመታየት ላይ ያሉ", sec2: "💎 HK-MOVIE Web3 ኦሪጅናሎች", wallet: "កាបូប ማገናኘት" },
+            my: { badge: "ကမ္ဘာ့ပထမဆုံးပြသမှု", desc: "ဆိုက်ဘာမြို့တော်တွင် အချိန်နှင့်နေရာကို ဖွင့်လှစ်ပေးသည့် ၃ မိနစ်စာ သိပ္ပံဇာတ်လမ်း။", play: "ယခုကြည့်ရန်", info: "အချက်အလက်", sec1: "🔥 ကမ္ဘာတဝှမ်း ရေပန်းစားနေသော", sec2: "💎 HK-MOVIE Web3 မူရင်းများ", wallet: "ပိုက်ဆံအိတ်ချိတ်ဆက်ရန်" },
+            km: { badge: "รอบปฐมทัศน์โลก", desc: "ការផ្សងព្រจวิทยาศาสตร์ระยะเวลา 3 នាទីក្នុងទីក្រុងស៊ីប៊ែរ។", play: "មើលឥឡូវនេះ", info: "ព័ត៌មាន", sec1: "🔥 ពេញនិយមทั่วโลก", sec2: "💎 HK-MOVIE Web3 ដើម", wallet: "ភ្ជាប់កាបូប" },
+            lo: { badge: "รอบปฐมทัศน์โลก", desc: "ການຜະຈົນໄພໄຊຟາຍ 3 ນາທີທີ່ເປີດປະຕູສູ່ຊ່ອງວາງເວລາໃນເມືອງໄຊເບີ.", play: "ເບິ່ງດຽວນີ້", info: "ລາຍລະອຽດ", sec1: "🔥 ເທຣນຍອດນິຍົມທົ່ວໂລກ", sec2: "💎 HK-MOVIE Web3 ຕົ້ນສະບັບ", wallet: "ເຊື່ອມຕໍ່ກະເປົາເງິນ" },
+            si: { badge: "ලෝක මංගල දර්ශනය", desc: "සයිබර් නගරයක අවකාශ-කාල දොරටු විවර කරන විද් යා ප් රබන්ධයකි.", play: "දැන් නරඹන්න", info: "විස්තර", sec1: "🔥 ගෝලීය ප් රවණතා", sec2: "💎 HK-MOVIE Web3 මුල් පිටපත්", wallet: "පසුම්බිය සම්බන්ධ කරන්න" },
+            ne: { badge: "विश्व प्रिमियर", desc: "साइबर शहरमा स्पेसटाइमका ढोकाहरू खोल्ने ३ मिनेटको विज्ञान कथा।", play: "अहिले हेर्नुहोस्", info: "विवरण", sec1: "🔥 विश्वव्यापी ट्रेन्डिङ", sec2: "💎 HK-MOVIE Web3 ओरिजिनल्स", wallet: "वालेट जडान गर्नुहोस्" },
+            sq: { badge: "Premiera Botërore", desc: "Një odise fantastiko-shkencore 3-minutore që hap dyters e hapësirë-kohës.", play: "Shiko Tani", info: "Detaje", sec1: "🔥 Trendet Globale", sec2: "💎 HK-MOVIE Web3 Origjinale", wallet: "Lidh Portofolin" },
+            bs: { badge: "Svjetska Premijera", desc: "Upečatljiva 3-minutna naučno-fantastična odiseja u sajber gradu.", play: "Gledaj Odmah", info: "Informacije", sec1: "🔥 Globalni Trendovi", sec2: "💎 HK-MOVIE Web3 Originali", wallet: "Poveži Novčanik" },
+            hr: { badge: "Svjetska Premijera", desc: "Zapanjujuća 3-minutna SF odiseja koja otvara vrata prostor-vremena.", play: "Gledaj Sada", info: "Informacije", sec1: "🔥 Globalni Trendovi", sec2: "💎 HK-MOVIE Web3 Originali", wallet: "Poveži Novčanik" },
+            sr: { badge: "Светська Премијера", desc: "Упечатљива 3-минутна научно-фантастична одисеја у сајбер граду.", play: "Гледај Одмах", info: "Информације", sec1: "🔥 Глобални Тренд", sec2: "💎 HK-MOVIE Web3 Оригинали", wallet: "Повежи Новчаник" },
+            sk: { badge: "Světová Premiéra", desc: "Pohlcujúca 3-minútová sci-fi odysea v neonovom kybernetickom meste.", play: "Sledovať Teraz", info: "Informácie", sec1: "🔥 Globálne Trendy", sec2: "💎 HK-MOVIE Web3 Originály", wallet: "Pripojiť Peňaženku" },
+            sl: { badge: "Svetovna Premiera", desc: "Privlačna 3-minutna znanstvenofantastična odiseja v kibernetskem mestu.", play: "Gledaj Zdaj", info: "Informacije", sec1: "🔥 Globalni Trendi", sec2: "💎 HK-MOVIE Web3 Originali", wallet: "Poveži Denarnico" },
+            et: { badge: "Maailma Esilinastus", desc: "Kaasahaatav 3-minutiline sci-fi oüüsseia neoontäis küberlinnas.", play: "Vaata Kohe", info: "Lisainfo", sec1: "🔥 Globaalsed Trendid", sec2: "💎 HK-MOVIE Web3 Originaalid", wallet: "Ühenda Rahakott" },
+            lv: { badge: "Pasaules Pirmizrāde", desc: "Aizraujoša 3 minūšu sci-fi odiseja neona kiberpilsētā.", play: "Skatīties Tūlīt", info: "Informācija", sec1: "🔥 Globālās Tendences", sec2: "💎 HK-MOVIE Web3 Oriģināli", wallet: "Savienot Maciņu" },
+            lt: { badge: "Pasaulinė Premjera", desc: "Įtraukianti 3 minučių mokslinės fantastikos odisėja neoniniame kibernetiniame mieste.", play: "Žiūrėti Dabar", info: "Informacija", sec1: "🔥 Pasaulinės Tendencijos", sec2: "💎 HK-MOVIE Web3 Originalai", wallet: "Prijungti Piniginę" }
+        };
+
         document.getElementById('languageSelect').addEventListener('change', function(e) {
-            const selectedLang = e.target.value;
-            console.log("선택된 글로벌 언어 코드: " + selectedLang);
+            const lang = e.target.value;
+            const t = t60[lang] || t60['en']; // 미등록 언어는 영문으로 방어
+            
+            document.getElementById('heroBadge').innerText = t.badge;
+            document.getElementById('heroDesc').innerText = t.desc;
+            document.getElementById('playMainBtn').innerText = "▶ " + t.play;
+            document.getElementById('infoMainBtn').innerText = t.info;
+            document.getElementById('section1Title').innerText = t.sec1;
+            document.getElementById('section2Title').innerText = t.sec2;
+            document.getElementById('walletBtn').innerText = t.wallet;
         });
+
+        function playMovie(title) {
+            alert('🎬 [' + title + '] 상영관으로 입장합니다!');
+        }
+
+        function connectWallet() {
+            alert('🔗 Web3 지갑(Metamask / Phantom / Pi) 연동 모듈 호출 완료!');
+        }
     </script>
 
 </body>

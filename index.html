@@ -19,12 +19,22 @@
             flex-direction: column;
             align-items: center;
         }
-        .top-right-nav {
+        .top-nav {
             position: absolute;
             top: 25px;
-            right: 25px;
+            width: 100%;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
         }
-        .language-select {
+        .nav-right {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .language-select, .login-btn {
             padding: 10px 16px;
             font-size: 14px;
             background-color: #1a1a1a;
@@ -36,8 +46,13 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.5);
             transition: border-color 0.3s;
         }
-        .language-select:hover {
+        .language-select:hover, .login-btn:hover {
             border-color: #e50914;
+        }
+        .login-btn {
+            background-color: #e50914;
+            border: none;
+            font-weight: 700;
         }
         .language-select option {
             background-color: #1a1a1a;
@@ -47,14 +62,14 @@
         .hero-container {
             width: 100%;
             max-width: 900px;
-            padding: 100px 20px 30px 20px;
+            padding: 110px 20px 20px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
         }
         .logo {
-            font-size: clamp(45px, 9vw, 85px);
+            font-size: clamp(40px, 8vw, 75px);
             font-weight: 900;
             color: #e50914;
             letter-spacing: 3px;
@@ -62,15 +77,16 @@
         }
         main {
             width: 100%;
-            max-width: 800px;
-            padding: 0 20px 50px 20px;
+            max-width: 1200px;
+            padding: 0 30px 60px 30px;
         }
         .language-content-section {
             display: none;
             background-color: #161616;
             border: 1px solid #262626;
             border-radius: 12px;
-            padding: 35px;
+            padding: 25px;
+            margin-bottom: 40px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             animation: fadeIn 0.4s ease-in-out;
         }
@@ -83,43 +99,194 @@
         }
         .lang-block {
             line-height: 1.8;
-            font-size: 16px;
+            font-size: 15px;
             color: #d1d1d1;
         }
         .lang-block p {
-            margin: 0 0 16px 0;
+            margin: 0 0 10px 0;
         }
         .lang-block p:last-child {
             margin-bottom: 0;
+        }
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            border-left: 4px solid #e50914;
+            padding-left: 12px;
+        }
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .movie-card {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #2a2a2a;
+        }
+        .movie-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(229, 9, 20, 0.3);
+            border-color: #e50914;
+        }
+        .movie-poster {
+            width: 100%;
+            height: 300px;
+            background-color: #262626;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: #555;
+        }
+        .movie-info {
+            padding: 15px;
+        }
+        .movie-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .movie-genre {
+            font-size: 13px;
+            color: #888;
+        }
+        /* 푸터 스타일 */
+        footer {
+            width: 100%;
+            background-color: #080808;
+            border-top: 1px solid #222;
+            padding: 40px 20px;
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 15px;
+        }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            font-size: 15px;
+        }
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: #e50914;
+        }
+        .support-email {
+            font-size: 14px;
+            color: #666;
+        }
+        /* 모달 스타일 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background-color: #161616;
+            border: 1px solid #333;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 800px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+        }
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #aaa;
+        }
+        .close-btn:hover {
+            color: #fff;
+        }
+        .video-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #000;
+            border-radius: 8px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .login-box input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background-color: #222;
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: #fff;
+            outline: none;
+        }
+        .login-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: #e50914;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
 
-    <div class="top-right-nav">
-        <select name="language" id="language-select" class="language-select" aria-label="언어 선택" onchange="changeLanguage(this.value)">
-            <option value="" disabled selected>언어 선택</option>
-            <option value="ko">한국어 (Korean)</option>
-            <option value="en">영어 (English)</option>
-            <option value="zh">중국어 (中文)</option>
-            <option value="ar">아랍어 (العربية)</option>
-            <option value="hi">인도어 (हिन्दी)</option>
-            <option value="es">스페인어 (Español)</option>
-            <option value="pt">브라질어 (Português - Brasil)</option>
-            <option value="uk">우크라이나어 (Українська)</option>
-            <option value="ja">일본어 (日本語)</option>
-            <option value="ru">러시아어 (Русский)</option>
-            <option value="vi">베트남어 (Tiếng Việt)</option>
-            <option value="th">태국어 (ภาษาไทย)</option>
-            <option value="id">인도네시아어 (Bahasa Indonesia)</option>
-            <option value="ps">팔레스타인어 (اللهجة الفلسطينية)</option>
-            <option value="de">독일어 (Deutsch)</option>
-            <option value="it">이태리어 (Italiano)</option>
-            <option value="fr">프랑스어 (Français)</option>
-            <option value="ng">나이지리아 (Nigerian English / Pidgin)</option>
-            <option value="cm">카메룬 (Cameroon Pidgin / Français)</option>
-            <option value="za">남아공 (South African English / Zulu)</option>
-        </select>
+    <div class="top-nav">
+        <div class="logo" style="font-size: 24px; text-shadow: none;">HK-MOVIE</div>
+        <div class="nav-right">
+            <select name="language" id="language-select" class="language-select" aria-label="언어 선택" onchange="changeLanguage(this.value)">
+                <option value="" disabled selected>언어 선택</option>
+                <option value="ko">한국어 (Korean)</option>
+                <option value="en">영어 (English)</option>
+                <option value="zh">중국어 (中文)</option>
+                <option value="ar">아랍어 (العربية)</option>
+                <option value="hi">인도어 (हिन्दी)</option>
+                <option value="es">스페인어 (Español)</option>
+                <option value="pt">브라질어 (Português - Brasil)</option>
+                <option value="uk">우크라이나어 (Українська)</option>
+                <option value="ja">일본어 (日本語)</option>
+                <option value="ru">러시아어 (Русский)</option>
+                <option value="vi">베트남어 (Tiếng Việt)</option>
+                <option value="th">태국어 (ภาษาไทย)</option>
+                <option value="id">인도네시아어 (Bahasa Indonesia)</option>
+                <option value="ps">팔레스타인어 (اللهجة الفلسطينية)</option>
+                <option value="de">독일어 (Deutsch)</option>
+                <option value="it">이태리어 (Italiano)</option>
+                <option value="fr">프랑스어 (Français)</option>
+                <option value="ng">나이지리아 (Nigerian English / Pidgin)</option>
+                <option value="cm">카메룬 (Cameroon Pidgin / Français)</option>
+                <option value="za">남아공 (South African English / Zulu)</option>
+            </select>
+            <button class="login-btn" onclick="openLoginModal()">웹3 로그인</button>
+        </div>
     </div>
 
     <div class="hero-container">
@@ -127,206 +294,104 @@
     </div>
 
     <main>
-        <!-- 1. 한국어 -->
+        <!-- 언어별 소개 섹션 -->
         <div id="content-ko" class="language-content-section active">
             <div class="lang-block">
                 <p>HK-MOVIE에 오신 것을 환영합니다. 전 세계의 다양한 영화와 콘텐츠를 즐길 수 있는 최고의 글로벌 스트리밍 플랫폼입니다.</p>
-                <p>블록버스터 대작부터 독립영화, 그리고 오직 HK-MOVIE에서만 만나볼 수 있는 독창적인 오리지널 작품들을 지금 바로 탐색해 보세요.</p>
-                <p>자신의 취향에 맞추어 원하는 자막 언어, 오디오 트랙, 그리고 최적의 고화질 해상도 옵션을 손쉽게 설정하실 수 있습니다.</p>
                 <p>최첨단 디지털 웹3 인프라를 바탕으로 끊김 없이 매끄럽고 몰입감 넘치는 최고의 시네마 경험을 만끽하시기 바랍니다.</p>
             </div>
         </div>
-
-        <!-- 2. 영어 -->
         <div id="content-en" class="language-content-section">
             <div class="lang-block">
                 <p>Welcome to HK-MOVIE, your ultimate global streaming and entertainment destination.</p>
-                <p>Explore a vast library of blockbusters, indie films, and exclusive original content from around the world.</p>
-                <p>Select your preferred subtitle options, audio tracks, and customized resolution settings seamlessly.</p>
                 <p>Enjoy uninterrupted cinematic experiences powered by cutting-edge digital infrastructure.</p>
             </div>
         </div>
+        <div id="content-zh" class="language-content-section"><div class="lang-block"><p>欢迎来到 HK-MOVIE，您的顶级全球流媒体与娱乐殿堂。</p></div></div>
+        <div id="content-ar" class="language-content-section" dir="rtl"><div class="lang-block"><p>أهلاً بك في HK-MOVIE، وجهتك العالمية المثلى للبث والترفيه.</p></div></div>
+        <div id="content-hi" class="language-content-section"><div class="lang-block"><p>HK-MOVIE में आपका स्वागत है, जो आपका परम वैश्विक स्ट्रीमिंग और मनोरंजन गंतव्य है。</p></div></div>
+        <div id="content-es" class="language-content-section"><div class="lang-block"><p>Bienvenido a HK-MOVIE, tu destino definitivo de streaming y entretenimiento global.</p></div></div>
+        <div id="content-pt" class="language-content-section"><div class="lang-block"><p>Bem-vindo ao HK-MOVIE, o seu destino global definitivo de streaming e entretenimento.</p></div></div>
+        <div id="content-uk" class="language-content-section"><div class="lang-block"><p>Ласкаво просимо до HK-MOVIE, вашого головного світового стрімінгового та розважального порталу.</p></div></div>
+        <div id="content-ja" class="language-content-section"><div class="lang-block"><p>HK-MOVIEへようこそ。ここは最高のグローバルストリーミングおよびエンターテインメントの目的地です。</p></div></div>
+        <div id="content-ru" class="language-content-section"><div class="lang-block"><p>Добро пожаловать в HK-MOVIE, ваш главный мировой потоковый и развлекательный портал.</p></div></div>
+        <div id="content-vi" class="language-content-section"><div class="lang-block"><p>Chào mừng bạn đến với HK-MOVIE, nền tảng phát trực tuyến và giải trí toàn cầu hàng đầu.</p></div></div>
+        <div id="content-th" class="language-content-section"><div class="lang-block"><p>ยินดีต้อนรับสู่ HK-MOVIE แหล่งรวมความบันเทิงและการสตรีมระดับโลกที่ดีที่สุดของคุณ</p></div></div>
+        <div id="content-id" class="language-content-section"><div class="lang-block"><p>Selamat datang di HK-MOVIE, destinasi streaming dan hiburan global utama Anda.</p></div></div>
+        <div id="content-ps" class="language-content-section" dir="rtl"><div class="lang-block"><p>أهلاً فيك بـ HK-MOVIE، وجهتك العالمية الأولى للترفيه والأفلام.</p></div></div>
+        <div id="content-de" class="language-content-section"><div class="lang-block"><p>Willkommen bei HK-MOVIE, Ihrer ultimativen globalen Streaming- und Entertainment-Plattform.</p></div></div>
+        <div id="content-it" class="language-content-section"><div class="lang-block"><p>Benvenuto su HK-MOVIE, la tua destinazione globale definitiva per intrattenimento.</p></div></div>
+        <div id="content-fr" class="language-content-section"><div class="lang-block"><p>Bienvenue sur HK-MOVIE, votre destination mondiale ultime pour le streaming.</p></div></div>
+        <div id="content-ng" class="language-content-section"><div class="lang-block"><p>Welcome to HK-MOVIE, your number one plug for global entertainment.</p></div></div>
+        <div id="content-cm" class="language-content-section"><div class="lang-block"><p>Bienvenue na HK-MOVIE, place wey go give you beta entertainment.</p></div></div>
+        <div id="content-za" class="language-content-section"><div class="lang-block"><p>Wamkelekile ku HK-MOVIE, your ultimate global streaming and entertainment home.</p></div></div>
 
-        <!-- 3. 중국어 -->
-        <div id="content-zh" class="language-content-section">
-            <div class="lang-block">
-                <p>欢迎来到 HK-MOVIE，您的顶级全球流媒体与娱乐殿堂。</p>
-                <p>探索来自世界各地的海量大片、独立电影以及独家原创内容。</p>
-                <p>无缝选择您喜爱的字幕选项、音轨以及个性化的高清分辨率设置。</p>
-                <p>依托尖端数字基础设施，尽情享受不间断的顶级视听观影体验。</p>
+        <!-- 영화 포스터 그리드 섹션 -->
+        <div class="section-title">트렌딩 오리지널 콘텐츠</div>
+        <div class="movie-grid">
+            <div class="movie-card" onclick="openVideoModal('HK-MOVIE 오리지널 블록버스터 #1', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                <div class="movie-poster">🎬</div>
+                <div class="movie-info">
+                    <div class="movie-title">HK 블록버스터 대작</div>
+                    <div class="movie-genre">SF / 액션 / 웹3</div>
+                </div>
             </div>
-        </div>
-
-        <!-- 4. 아랍어 -->
-        <div id="content-ar" class="language-content-section" dir="rtl">
-            <div class="lang-block">
-                <p>أهلاً بك في HK-MOVIE، وجهتك العالمية المثلى للبث والترفيه.</p>
-                <p>استكشف مكتبة ضخمة من الأفلام الضخمة والأفلام المستقلة والمحتوى الأصلي الحصري.</p>
-                <p>اختر خيارات الترجمة المفضلة لديك المسارات الصوتية وإعدادات الجودة بكل سهولة.</p>
-                <p>استمتع بتجارب سينمائية متواصلة مدعومة ببنية تحتية رقمية متطورة للغاية.</p>
+            <div class="movie-card" onclick="openVideoModal('HK-MOVIE 독점 독립영화 #2', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                <div class="movie-poster">🎥</div>
+                <div class="movie-info">
+                    <div class="movie-title">사이버네틱스 퓨처</div>
+                    <div class="movie-genre">드라마 / 스릴러</div>
+                </div>
             </div>
-        </div>
-
-        <!-- 5. 인도어 -->
-        <div id="content-hi" class="language-content-section">
-            <div class="lang-block">
-                <p>HK-MOVIE में आपका स्वागत है, जो आपका परम वैश्विक स्ट्रीमिंग और मनोरंजन गंतव्य है।</p>
-                <p>दुनिया भर से ब्लॉकबस्टर, स्वतंत्र फिल्मों और अनन्य मूल सामग्री की एक विशाल लाइब्रेरी का अन्वेषण करें।</p>
-                <p>अपनी पसंदीदा उपशीर्षक और ऑडियो ट्रैक विकल्पों को आसानी से कॉन्फ़िगर करें।</p>
-                <p>अत्याधुनिक डिजिटल बुनियादी ढांचे द्वारा संचालित निर्बाध और शानदार सिनेमाई अनुभव का आनंद लें。</p>
+            <div class="movie-card" onclick="openVideoModal('HK-MOVIE 글로벌 시리즈 #3', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                <div class="movie-poster">🍿</div>
+                <div class="movie-info">
+                    <div class="movie-title">월드뱅크 프로젝트</div>
+                    <div class="movie-genre">다큐멘터리 / 경제</div>
+                </div>
             </div>
-        </div>
-
-        <!-- 6. 스페인어 -->
-        <div id="content-es" class="language-content-section">
-            <div class="lang-block">
-                <p>Bienvenido a HK-MOVIE, tu destino definitivo de streaming y entretenimiento global.</p>
-                <p>Explora una vasta biblioteca de éxitos de taquilla, cine independiente y contenido original exclusivo.</p>
-                <p>Selecciona tus opciones de subtítulos, pistas de audio y configuraciones de resolución preferidas.</p>
-                <p>Disfruta de experiencias cinematográficas ininterrumpidas impulsadas por tecnología de vanguardia.</p>
-            </div>
-        </div>
-
-        <!-- 7. 브라질어 -->
-        <div id="content-pt" class="language-content-section">
-            <div class="lang-block">
-                <p>Bem-vindo ao HK-MOVIE, o seu destino global definitivo de streaming e entretenimento.</p>
-                <p>Explore uma vasta biblioteca de sucessos de bilheteria, filmes independentes e conteúdos originais exclusivos.</p>
-                <p>Selecione facilmente suas legendas favoritas, faixas de áudio e configurações de resolução.</p>
-                <p>Desfrute de experiências cinematográficas ininterruptas impulsionadas por infraestrutura digital avançada.</p>
-            </div>
-        </div>
-
-        <!-- 8. 우크라이나어 -->
-        <div id="content-uk" class="language-content-section">
-            <div class="lang-block">
-                <p>Ласкаво просимо до HK-MOVIE, вашого головного світового стрімінгового та розважального порталу.</p>
-                <p>Досліджуйте величезну бібліотеку блокбастерів, незалежних фільмів та ексклюзивного контенту.</p>
-                <p>Зручно налаштовуйте улюблені субтитри, аудіодоріжки та параметри роздільної здатності.</p>
-                <p>Наслалоджуйтеся неперервними кінематографічними враженнями на базі передової платформи.</p>
-            </div>
-        </div>
-
-        <!-- 9. 일본어 -->
-        <div id="content-ja" class="language-content-section">
-            <div class="lang-block">
-                <p>HK-MOVIEへようこそ。ここは最高のグローバルストリーミングおよびエンターテインメントの目的地です。</p>
-                <p>世界中から集まった大ヒット映画、インディーズ映画、独占オリジナルコンテンツの膨大なライブラリをご覧ください。</p>
-                <p>お好みの字幕オプション、音声トラック、画質設定をスムーズに変更・適用できます。</p>
-                <p>最先端のデジタルインフラストラクチャに支えられた、途切れることのない極上のシネマ体験をお楽しみください。</p>
-            </div>
-        </div>
-
-        <!-- 10. 러시아어 -->
-        <div id="content-ru" class="language-content-section">
-            <div class="lang-block">
-                <p>Добро пожаловать в HK-MOVIE, ваш главный мировой потоковый и развлекательный портал.</p>
-                <p>Исследуйте огромную библиотеку блокбастеров, независимых фильмов и эксклюзивного контента.</p>
-                <p>Легко настраивайте любимые субтитры, аудиодорожки и параметры разрешения видео.</p>
-                <p>Наслаждайтесь бесперебойными кинематографическими впечатлениями на базе передовой платформы.</p>
-            </div>
-        </div>
-
-        <!-- 11. 베트남어 -->
-        <div id="content-vi" class="language-content-section">
-            <div class="lang-block">
-                <p>Chào mừng bạn đến với HK-MOVIE, nền tảng phát trực tuyến và giải trí toàn cầu hàng đầu.</p>
-                <p>Khám phá thư viện khổng lồ gồm các bộ phim bom tấn, phim độc lập và nội dung độc quyền.</p>
-                <p>Dễ dàng tùy chỉnh phụ đề, bản nhạc phim và độ phân giải theo ý muốn của bạn.</p>
-                <p>Tận hưởng những trải nghiệm điện ảnh mượt mà, không gián đoạn nhờ hạ tầng công nghệ tiên tiến.</p>
-            </div>
-        </div>
-
-        <!-- 12. 태국어 -->
-        <div id="content-th" class="language-content-section">
-            <div class="lang-block">
-                <p>ยินดีต้อนรับสู่ HK-MOVIE แหล่งรวมความบันเทิงและการสตรีมระดับโลกที่ดีที่สุดของคุณ</p>
-                <p>สำรวจคลังภาพยนตร์ฟอร์มยักษ์ ภาพยนตร์อินดี้ และเนื้อหาต้นฉบับสุดเอ็กซ์คลูซีฟมากมาย</p>
-                <p>เลือกภาษาคำบรรยาย เสียงพากย์ และการตั้งค่าความละเอียดวิดีโอได้อย่างง่ายดาย</p>
-                <p>เพลิดเพลินกับประสบการณ์การรับชมภาพยนตร์แบบไร้รอยต่อที่ขับเคลื่อนด้วยโครงสร้างพื้นฐานยุคใหม่</p>
-            </div>
-        </div>
-
-        <!-- 13. 인도네시아어 -->
-        <div id="content-id" class="language-content-section">
-            <div class="lang-block">
-                <p>Selamat datang di HK-MOVIE, destinasi streaming dan hiburan global utama Anda.</p>
-                <p>Jelajahi perpustakaan luas yang berisi film blockbuster, film independen, dan konten asli eksklusif.</p>
-                <p>Pilih opsi subtitle, jalur audio, dan pengaturan resolusi pilihan Anda dengan mudah.</p>
-                <p>Nikmati pengalaman sinematik tanpa gangguan yang didukung oleh infrastruktur digital mutakhir.</p>
-            </div>
-        </div>
-
-        <!-- 14. 팔레스타인어 -->
-        <div id="content-ps" class="language-content-section" dir="rtl">
-            <div class="lang-block">
-                <p>أهلاً فيك بـ HK-MOVIE، وجهتك العالمية الأولى للترفيه والأفلام.</p>
-                <p>تصفح مكتبة ضخمة بتضم أحدث الأفلام، والأفلام المستقلة، والمحتوى الحصري المميز.</p>
-                <p>إختار الترجمة واللغة والوضوح اللي بيناسبك بكل راحة وسهولة تامة.</p>
-                <p>استمتع بتجربة مشاهدة سينمائية مذهلة وبدون أي تقطيع مدعومة بأحدث التكنولوجيا.</p>
-            </div>
-        </div>
-
-        <!-- 15. 독일어 -->
-        <div id="content-de" class="language-content-section">
-            <div class="lang-block">
-                <p>Willkommen bei HK-MOVIE, Ihrer ultimativen globalen Streaming- und Entertainment-Plattform.</p>
-                <p>Entdecken Sie eine riesige Bibliothek an Blockbustern, Independent-Filmen und exklusiven Originalinhalten.</p>
-                <p>Passen Sie Untertitel, Audiospuren und Auflösungseinstellungen ganz nach Ihren Wünschen an.</p>
-                <p>Genießen Sie ununterbrochene Kinoerlebnisse, angetrieben von modernster digitaler Infrastruktur.</p>
-            </div>
-        </div>
-
-        <!-- 16. 이태리어 -->
-        <div id="content-it" class="language-content-section">
-            <div class="lang-block">
-                <p>Benvenuto su HK-MOVIE, la tua destinazione globale definitiva per streaming e intrattenimento.</p>
-                <p>Esplora una vasta libreria di blockbuster, film indipendenti e contenuti originali esclusivi.</p>
-                <p>Seleziona facilmente le tue opzioni di sottotitoli preferite, tracce audio e risoluzione video.</p>
-                <p>Goditi esperienze cinematografiche continue e di altissima qualità grazie a un'infrastruttura all'avanguardia.</p>
-            </div>
-        </div>
-
-        <!-- 17. 프랑스어 -->
-        <div id="content-fr" class="language-content-section">
-            <div class="lang-block">
-                <p>Bienvenue sur HK-MOVIE, votre destination mondiale ultime pour le streaming et le divertissement.</p>
-                <p>Explorez une vaste bibliothèque de blockbusters, de films indépendants et de contenus originaux exclusifs.</p>
-                <p>Sélectionnez facilement vos options de sous-titres, pistes audio et paramètres de résolution préférés.</p>
-                <p>Profitez d'expériences cinématographiques fluides et immersives propulsées par une infrastructure numérique de pointe.</p>
-            </div>
-        </div>
-
-        <!-- 18. 나이지리아 -->
-        <div id="content-ng" class="language-content-section">
-            <div class="lang-block">
-                <p>Welcome to HK-MOVIE, your number one plug for global entertainment and streaming.</p>
-                <p>Check out plenty blockbuster movies, indie films, and exclusive original content wey dey ground.</p>
-                <p>Select your choice subtitle, audio track, and video quality make e smooth for you.</p>
-                <p>Enjoy correct cinema experience without any interruption, powered by strong digital system.</p>
-            </div>
-        </div>
-
-        <!-- 19. 카메룬 -->
-        <div id="content-cm" class="language-content-section">
-            <div class="lang-block">
-                <p>Bienvenue na HK-MOVIE, place wey go give you beta entertainment for ground.</p>
-                <p>Discover plenty film, blockbuster, and original content wey sweet for eye.</p>
-                <p>Choose your subtitle and audio style make everything waka well well.</p>
-                <p>Enjoy better cinema experience join with strong technology infrastructure.</p>
-            </div>
-        </div>
-
-        <!-- 20. 남아공 -->
-        <div id="content-za" class="language-content-section">
-            <div class="lang-block">
-                <p>Wamkelekile ku HK-MOVIE, your ultimate global streaming and entertainment home.</p>
-                <p>Explore a massive collection of blockbusters, indie films, and exclusive original local content.</p>
-                <p>Choose your preferred subtitle options, audio tracks, and streaming resolution settings easily.</p>
-                <p>Enjoy uninterrupted cinematic experiences powered by robust and advanced digital technology.</p>
+            <div class="movie-card" onclick="openVideoModal('HK-MOVIE 시네마틱 쇼케이스 #4', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                <div class="movie-poster">🌟</div>
+                <div class="movie-info">
+                    <div class="movie-title">디지털 유니버스</div>
+                    <div class="movie-genre">판타지 / 어드벤처</div>
+                </div>
             </div>
         </div>
     </main>
+
+    <!-- 푸터 섹션 -->
+    <footer>
+        <div class="footer-links">
+            <a href="https://www.youtube.com/@Hyekong2026" target="_blank">YouTube (@Hyekong2026)</a>
+            <a href="https://www.tiktok.com/@hyekong2025" target="_blank">TikTok (@hyekong2025)</a>
+        </div>
+        <div class="support-email">Support: support@hkwb.world</div>
+    </footer>
+
+    <!-- 동영상 재생 모달 -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeVideoModal()">&times;</span>
+            <div id="modalTitle" class="section-title" style="margin-bottom: 10px; border-left-color: #e50914;">재생 중</div>
+            <div class="video-container">
+                <iframe id="modalIframe" src="" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- 웹3 로그인 모달 -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content" style="max-width: 400px;">
+            <span class="close-btn" onclick="closeLoginModal()">&times;</span>
+            <div class="section-title" style="margin-bottom: 20px;">HK 웹3 지갑 로그인</div>
+            <div class="login-box">
+                <input type="text" placeholder="지갑 주소 또는 HK ID 입력">
+                <input type="password" placeholder="비밀번호 또는 보안키">
+                <button class="login-submit" onclick="alert('로그인되었습니다 형님!'); closeLoginModal();">접속하기</button>
+            </div>
+        </div>
+    </div>
 
     <script>
         function changeLanguage(val) {
@@ -337,6 +402,32 @@
                 if (target) {
                     target.classList.add('active');
                 }
+            }
+        }
+
+        function openVideoModal(title, url) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalIframe').src = url;
+            document.getElementById('videoModal').style.display = 'flex';
+        }
+
+        function closeVideoModal() {
+            document.getElementById('videoModal').style.display = 'none';
+            document.getElementById('modalIframe').src = '';
+        }
+
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.getElementById('modalIframe').src = '';
             }
         }
     </script>

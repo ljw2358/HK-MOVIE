@@ -12,75 +12,93 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121212;
+            background-color: #0d0d0d;
             color: #ffffff;
             min-height: 100vh;
-        }
-        header {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            padding: 15px 20px;
-            background-color: #1a1a1a;
-            border-bottom: 1px solid #333;
-            flex-wrap: nowrap;
+        }
+        .hero-container {
+            width: 100%;
+            max-width: 900px;
+            padding: 50px 20px 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
         .logo {
-            font-size: 20px;
-            font-weight: bold;
+            font-size: clamp(40px, 8vw, 75px);
+            font-weight: 900;
             color: #e50914;
-            letter-spacing: 1px;
-            white-space: nowrap;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            text-shadow: 0 4px 20px rgba(229, 9, 20, 0.4);
         }
         .language-select {
-            padding: 8px 12px;
-            font-size: 13px;
-            background-color: #2b2b2b;
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #1a1a1a;
             color: #ffffff;
             border: 1px solid #444;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
             outline: none;
-            max-width: 160px;
+            width: 100%;
+            max-width: 320px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            transition: border-color 0.3s;
+        }
+        .language-select:hover {
+            border-color: #e50914;
         }
         .language-select option {
-            background-color: #1f1f1f;
+            background-color: #1a1a1a;
             color: #ffffff;
-            padding: 10px;
+            padding: 12px;
         }
         main {
-            padding: 20px;
-            max-width: 900px;
-            margin: 0 auto;
+            width: 100%;
+            max-width: 800px;
+            padding: 0 20px 50px 20px;
         }
         .language-content-section {
             display: none;
-            background-color: #181818;
-            border: 1px solid #2a2a2a;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 15px;
+            background-color: #161616;
+            border: 1px solid #262626;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            animation: fadeIn 0.4s ease-in-out;
         }
         .language-content-section.active {
             display: block;
         }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         .lang-block {
-            line-height: 1.7;
-            font-size: 15px;
-            color: #e0e0e0;
+            line-height: 1.8;
+            font-size: 16px;
+            color: #d1d1d1;
         }
         .lang-block p {
-            margin: 0 0 10px 0;
+            margin: 0 0 16px 0;
+        }
+        .lang-block p:last-child {
+            margin-bottom: 0;
         }
     </style>
 </head>
 <body>
 
-    <header>
+    <div class="hero-container">
         <div class="logo">HK-MOVIE</div>
         <div>
             <select name="language" id="language-select" class="language-select" aria-label="언어 선택" onchange="changeLanguage(this.value)">
-                <option value="" disabled selected>언어 선택</option>
+                <option value="" disabled selected>언어 선택 / Select Language</option>
                 <option value="ko">한국어 (Korean)</option>
                 <option value="en">영어 (English)</option>
                 <option value="zh">중국어 (中文)</option>
@@ -103,7 +121,7 @@
                 <option value="za">남아공 (South African English / Zulu)</option>
             </select>
         </div>
-    </header>
+    </div>
 
     <main>
         <!-- 1. 한국어 -->

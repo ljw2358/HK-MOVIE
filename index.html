@@ -19,34 +19,20 @@
             flex-direction: column;
             align-items: center;
         }
-        .hero-container {
-            width: 100%;
-            max-width: 900px;
-            padding: 50px 20px 30px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .logo {
-            font-size: clamp(40px, 8vw, 75px);
-            font-weight: 900;
-            color: #e50914;
-            letter-spacing: 3px;
-            margin-bottom: 25px;
-            text-shadow: 0 4px 20px rgba(229, 9, 20, 0.4);
+        .top-left-nav {
+            position: absolute;
+            top: 25px;
+            left: 25px;
         }
         .language-select {
-            padding: 12px 20px;
-            font-size: 16px;
+            padding: 10px 16px;
+            font-size: 14px;
             background-color: #1a1a1a;
             color: #ffffff;
             border: 1px solid #444;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
             outline: none;
-            width: 100%;
-            max-width: 320px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.5);
             transition: border-color 0.3s;
         }
@@ -56,7 +42,23 @@
         .language-select option {
             background-color: #1a1a1a;
             color: #ffffff;
-            padding: 12px;
+            padding: 10px;
+        }
+        .hero-container {
+            width: 100%;
+            max-width: 900px;
+            padding: 100px 20px 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .logo {
+            font-size: clamp(45px, 9vw, 85px);
+            font-weight: 900;
+            color: #e50914;
+            letter-spacing: 3px;
+            text-shadow: 0 4px 20px rgba(229, 9, 20, 0.4);
         }
         main {
             width: 100%;
@@ -94,33 +96,34 @@
 </head>
 <body>
 
+    <div class="top-left-nav">
+        <select name="language" id="language-select" class="language-select" aria-label="언어 선택" onchange="changeLanguage(this.value)">
+            <option value="" disabled selected>언어 선택</option>
+            <option value="ko">한국어 (Korean)</option>
+            <option value="en">영어 (English)</option>
+            <option value="zh">중국어 (中文)</option>
+            <option value="ar">아랍어 (العربية)</option>
+            <option value="hi">인도어 (हिन्दी)</option>
+            <option value="es">스페인어 (Español)</option>
+            <option value="pt">브라질어 (Português - Brasil)</option>
+            <option value="uk">우크라이나어 (Українська)</option>
+            <option value="ja">일본어 (日本語)</option>
+            <option value="ru">러시아어 (Русский)</option>
+            <option value="vi">베트남어 (Tiếng Việt)</option>
+            <option value="th">태국어 (ภาษาไทย)</option>
+            <option value="id">인도네시아어 (Bahasa Indonesia)</option>
+            <option value="ps">팔레스타인어 (اللهجة الفلسطينية)</option>
+            <option value="de">독일어 (Deutsch)</option>
+            <option value="it">이태리어 (Italiano)</option>
+            <option value="fr">프랑스어 (Français)</option>
+            <option value="ng">나이지리아 (Nigerian English / Pidgin)</option>
+            <option value="cm">카메룬 (Cameroon Pidgin / Français)</option>
+            <option value="za">남아공 (South African English / Zulu)</option>
+        </select>
+    </div>
+
     <div class="hero-container">
         <div class="logo">HK-MOVIE</div>
-        <div>
-            <select name="language" id="language-select" class="language-select" aria-label="언어 선택" onchange="changeLanguage(this.value)">
-                <option value="" disabled selected>언어 선택 / Select Language</option>
-                <option value="ko">한국어 (Korean)</option>
-                <option value="en">영어 (English)</option>
-                <option value="zh">중국어 (中文)</option>
-                <option value="ar">아랍어 (العربية)</option>
-                <option value="hi">인도어 (हिन्दी)</option>
-                <option value="es">스페인어 (Español)</option>
-                <option value="pt">브라질어 (Português - Brasil)</option>
-                <option value="uk">우크라이나어 (Українська)</option>
-                <option value="ja">일본어 (日本語)</option>
-                <option value="ru">러시아어 (Русский)</option>
-                <option value="vi">베트남어 (Tiếng Việt)</option>
-                <option value="th">태국어 (ภาษาไทย)</option>
-                <option value="id">인도네시아어 (Bahasa Indonesia)</option>
-                <option value="ps">팔레스타인어 (اللهجة الفلسطينية)</option>
-                <option value="de">독일어 (Deutsch)</option>
-                <option value="it">이태리어 (Italiano)</option>
-                <option value="fr">프랑스어 (Français)</option>
-                <option value="ng">나이지리아 (Nigerian English / Pidgin)</option>
-                <option value="cm">카메룬 (Cameroon Pidgin / Français)</option>
-                <option value="za">남아공 (South African English / Zulu)</option>
-            </select>
-        </div>
     </div>
 
     <main>

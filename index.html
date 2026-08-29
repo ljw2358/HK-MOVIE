@@ -19,57 +19,36 @@
             flex-direction: column;
             align-items: center;
         }
-        /* 우측 상단 언어창 및 웹3 로그인 배치 */
-        .top-nav {
-            position: absolute;
-            top: 25px;
-            right: 40px;
+        /* 우측 상단 드롭다운 및 로그인 버튼 배치 */
+        .top-container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 25px 30px;
             display: flex;
+            justify-content: flex-end;
             align-items: center;
             gap: 15px;
             z-index: 10;
         }
-        .language-bar {
-            display: flex;
-            gap: 6px;
-            overflow-x: auto;
-            max-width: 500px;
-            scrollbar-width: thin;
-            scrollbar-color: #e50914 #1a1a1a;
-            padding-bottom: 5px;
-        }
-        .language-bar::-webkit-scrollbar {
-            height: 4px;
-        }
-        .language-bar::-webkit-scrollbar-thumb {
-            background-color: #e50914;
-            border-radius: 2px;
-        }
-        .lang-tab {
+        .lang-select {
             background-color: #1a1a1a;
-            color: #aaa;
+            color: #ffffff;
             border: 1px solid #333;
-            padding: 6px 12px;
-            border-radius: 15px;
-            font-size: 12px;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.3s;
+            outline: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            transition: border-color 0.3s;
         }
-        .lang-tab:hover {
-            color: #fff;
-            border-color: #777;
-        }
-        .lang-tab.active {
-            background-color: #e50914;
-            color: #fff;
+        .lang-select:hover {
             border-color: #e50914;
-            box-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
         }
         .login-btn {
             padding: 8px 16px;
-            font-size: 13px;
+            font-size: 14px;
             background-color: #e50914;
             color: #ffffff;
             border: none;
@@ -87,7 +66,7 @@
         .hero-container {
             width: 100%;
             max-width: 900px;
-            padding: 120px 20px 10px 20px;
+            padding: 40px 20px 10px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -274,32 +253,31 @@
 </head>
 <body>
 
-    <!-- 우측 상단 언어 선택 바 및 로그인 버튼 -->
-    <div class="top-nav">
-        <div class="language-bar">
-            <button class="lang-tab active" onclick="switchLang('ko', this)">🇰🇷 한국어</button>
-            <button class="lang-tab" onclick="switchLang('en', this)">🇺🇸 영어</button>
-            <button class="lang-tab" onclick="switchLang('zh', this)">🇨🇳 중국어</button>
-            <button class="lang-tab" onclick="switchLang('ar', this)">🇸🇦 아랍어</button>
-            <button class="lang-tab" onclick="switchLang('hi', this)">🇮🇳 인도어</button>
-            <button class="lang-tab" onclick="switchLang('es', this)">🇪🇸 스페인어</button>
-            <button class="lang-tab" onclick="switchLang('br', this)">🇧🇷 브라질어</button>
-            <button class="lang-tab" onclick="switchLang('uk', this)">🇺🇦 우크라이나어</button>
-            <button class="lang-tab" onclick="switchLang('ja', this)">🇯🇵 일본어</button>
-            <button class="lang-tab" onclick="switchLang('ru', this)">🇷🇺 러시아어</button>
-            <button class="lang-tab" onclick="switchLang('vi', this)">🇻🇳 베트남어</button>
-            <button class="lang-tab" onclick="switchLang('th', this)">🇹🇭 태국어</button>
-            <button class="lang-tab" onclick="switchLang('id', this)">🇮🇩 인도네시아어</button>
-            <button class="lang-tab" onclick="switchLang('ps', this)">🇵🇸 팔레스타인어</button>
-            <button class="lang-tab" onclick="switchLang('de', this)">🇩🇪 독일어</button>
-            <button class="lang-tab" onclick="switchLang('it', this)">🇮🇹 이태리어</button>
-            <button class="lang-tab" onclick="switchLang('fr', this)">🇫🇷 프랑스어</button>
-            <button class="lang-tab" onclick="switchLang('ng', this)">🇳🇬 나이지리아</button>
-            <button class="lang-tab" onclick="switchLang('cm', this)">🇨🇲 카메룬</button>
-            <button class="lang-tab" onclick="switchLang('za', this)">🇿🇦 남아공</button>
-            <button class="lang-tab" onclick="switchLang('sd', this)">🇸🇩 수단</button>
-            <button class="lang-tab" onclick="switchLang('et', this)">🇪🇹 에티오피아</button>
-        </div>
+    <div class="top-container">
+        <select class="lang-select" id="langDropdown" onchange="switchLang(this.value)">
+            <option value="ko">🇰🇷 한국어</option>
+            <option value="en">🇺🇸 영어</option>
+            <option value="zh">🇨🇳 중국어</option>
+            <option value="ar">🇸🇦 아랍어</option>
+            <option value="hi">🇮🇳 인도어</option>
+            <option value="es">🇪🇸 스페인어</option>
+            <option value="br">🇧🇷 브라질어</option>
+            <option value="uk">🇺🇦 우크라이나어</option>
+            <option value="ja">🇯🇵 일본어</option>
+            <option value="ru">🇷🇺 러시아어</option>
+            <option value="vi">🇻🇳 베트남어</option>
+            <option value="th">🇹🇭 태국어</option>
+            <option value="id">🇮🇩 인도네시아어</option>
+            <option value="ps">🇵🇸 팔레스타인어</option>
+            <option value="de">🇩🇪 독일어</option>
+            <option value="it">🇮🇹 이태리어</option>
+            <option value="fr">🇫🇷 프랑스어</option>
+            <option value="ng">🇳🇬 나이지리아</option>
+            <option value="cm">🇨🇲 카메룬</option>
+            <option value="za">🇿🇦 남아공</option>
+            <option value="sd">🇸🇩 수단</option>
+            <option value="et">🇪🇹 에티오피아</option>
+        </select>
         <button class="login-btn" onclick="openLoginModal()">웹3 로그인</button>
     </div>
 
@@ -307,7 +285,6 @@
         <div class="logo">HK-MOVIE</div>
     </div>
 
-    <!-- 환영 메시지 박스 -->
     <div class="welcome-box-container">
         <div id="welcome-msg" class="welcome-content">HK-MOVIE에 오신 것을 환영합니다. 전 세계의 다양한 영화와 콘텐츠를 최첨단 웹3 인프라로 즐겨보세요.</div>
     </div>
@@ -315,7 +292,6 @@
     <main>
         <div id="section-title" class="section-title">실시간 추천 마스터피스</div>
         <div class="movie-grid">
-            <!-- 인터스텔라 -->
             <div class="movie-card" onclick="openVideoModal(currentMovieTitles.m1, 'https://www.youtube.com/embed/zSWdZVtXT7E')">
                 <div class="movie-poster">🌌<span id="badge-1">인터스텔라</span></div>
                 <div class="movie-info">
@@ -323,7 +299,6 @@
                     <div id="genre-1" class="movie-genre">SF / 모험 / 드라마</div>
                 </div>
             </div>
-            <!-- 인셉션 -->
             <div class="movie-card" onclick="openVideoModal(currentMovieTitles.m2, 'https://www.youtube.com/embed/YoHD9XEInc0')">
                 <div class="movie-poster">🌀<span id="badge-2">인셉션</span></div>
                 <div class="movie-info">
@@ -331,7 +306,6 @@
                     <div id="genre-2" class="movie-genre">액션 / SF / 스릴러</div>
                 </div>
             </div>
-            <!-- 아바타 2 -->
             <div class="movie-card" onclick="openVideoModal(currentMovieTitles.m3, 'https://www.youtube.com/embed/d9MyW72ELq0')">
                 <div class="movie-poster">🌊<span id="badge-3">아바타 2</span></div>
                 <div class="movie-info">
@@ -339,7 +313,6 @@
                     <div id="genre-3" class="movie-genre">SF / 액션 / 판타지</div>
                 </div>
             </div>
-            <!-- 오펜하이머 -->
             <div class="movie-card" onclick="openVideoModal(currentMovieTitles.m4, 'https://www.youtube.com/embed/uYPbbksJxIg')">
                 <div class="movie-poster">⚛️<span id="badge-4">오펜하이머</span></div>
                 <div class="movie-info">
@@ -350,7 +323,6 @@
         </div>
     </main>
 
-    <!-- 푸터 섹션 -->
     <footer>
         <div class="footer-links">
             <a href="https://www.youtube.com/@Hyekong2026" target="_blank">YouTube (@Hyekong2026)</a>
@@ -359,7 +331,6 @@
         <div class="support-email">support@hkwb.world</div>
     </footer>
 
-    <!-- 동영상 재생 모달 -->
     <div id="videoModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeVideoModal()">&times;</span>
@@ -370,7 +341,6 @@
         </div>
     </div>
 
-    <!-- 웹3 로그인 모달 -->
     <div id="loginModal" class="modal">
         <div class="modal-content" style="max-width: 400px;">
             <span class="close-btn" onclick="closeLoginModal()">&times;</span>
@@ -384,7 +354,6 @@
     </div>
 
     <script>
-        // 언어별 데이터 객체 (환영 메시지, 추천 타이틀, 영화 이름 및 장르)
         const langData = {
             ko: {
                 welcome: "HK-MOVIE에 오신 것을 환영합니다. 전 세계의 다양한 영화와 콘텐츠를 최첨단 웹3 인프라로 즐겨보세요.",
@@ -443,7 +412,7 @@
                 m4: "Oppenheimer", g4: "Biografia / Drama / História"
             },
             uk: {
-                welcome: "Ласкаво просимо до HK-MOVIE. Насолоджуйтесь світовими фільмами та контентом на базі передової інфраструктури Web3.",
+                welcome: "Ласкаво просимо до HK-MOVIE. Насладжуйтесь світовими фільмами та контентом на базі передової інфраструктури Web3.",
                 section: "Рекомендовані шедеври в реальному часі",
                 m1: "Інтерстеллар", g1: "Фантастика / Пригоди / Драматичний",
                 m2: "Початок", g2: "Бойовик / Фантастика / Трилер",
@@ -560,21 +529,19 @@
                 m1: "ኢንተርስቴላር", g1: "ሳይንስ ፍiction / ጀብዱ / ድራማ",
                 m2: "ኢንሴፕሽን", g2: "እርምጃ / ሳይንስ ፍiction / thriller",
                 m3: "አቫታር: የውሃው መንገድ", g3: "ሳይንስ ፍiction / እርምጃ / ቅዠት",
-                m4: "ኦፔንሃይመር", g4: "የህይወት ታሪክ / ድራማ / ታሪክ"
+                m4: "ኦፔን하이መር", g4: "የህይወት ታሪክ / ድራማ / ታሪክ"
             }
         };
 
         let currentMovieTitles = { m1: "인터스텔라", m2: "인셉션", m3: "아바타: 물의 길", m4: "오펜하이머" };
 
-        function switchLang(langCode, btnElement) {
+        function switchLang(langCode) {
             const data = langData[langCode];
             if (!data) return;
 
-            // 1. 환영 문구 및 섹션 타이틀 변경
             document.getElementById('welcome-msg').innerText = data.welcome;
             document.getElementById('section-title').innerText = data.section;
 
-            // 2. 영화 4개 타이틀 및 장르 변경
             document.getElementById('badge-1').innerText = data.m1;
             document.getElementById('title-1').innerText = data.m1;
             document.getElementById('genre-1').innerText = data.g1;
@@ -591,13 +558,7 @@
             document.getElementById('title-4').innerText = data.m4;
             document.getElementById('genre-4').innerText = data.g4;
 
-            // 모달 재생 시 전달될 타이틀 글로벌 변수 업데이트
             currentMovieTitles = { m1: data.m1, m2: data.m2, m3: data.m3, m4: data.m4 };
-
-            // 3. 탭 활성화 UI 처리
-            const tabs = document.querySelectorAll('.lang-tab');
-            tabs.forEach(tab => tab.classList.remove('active'));
-            btnElement.classList.add('active');
         }
 
         function openVideoModal(title, url) {

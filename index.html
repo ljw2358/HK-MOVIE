@@ -3,604 +3,340 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HK-MOVIE</title>
+    <title>HK-MOVIE | Global Web3 Creative Cinema</title>
     <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
+        :root {
+            --bg-deep: #070711;
+            --surface-color: #121222;
+            --accent-creative: #ff2a6d; /* 창작의 열정을 담은 네온 핑크/코랄 */
+            --accent-gold: #f9d342; /* 마스터피스 골드 */
+            --accent-cyan: #05d9e8; /* 60개국 글로벌 사이언 */
+            --text-main: #ffffff;
+            --text-sub: #9494b8;
         }
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0d021a 0%, #1a0b2e 50%, #2d124a 100%);
-            color: #ffffff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        /* 상단 영역: 좌측에 언어창, 우측에 웹3 로그인 배치 */
-        .top-container {
-            width: 100%;
-            max-width: 1200px;
-            padding: 25px 30px;
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-deep); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
+        
+        /* 헤더 스타일 */
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 10;
-        }
-        .lang-select {
-            background-color: #261242;
-            color: #00ffcc;
-            border: 1px solid #7928ca;
-            padding: 8px 14px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            outline: none;
-            box-shadow: 0 0 15px rgba(121, 40, 202, 0.4);
-            transition: all 0.3s;
-        }
-        .lang-select:hover {
-            border-color: #00ffcc;
-            box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
-        }
-        .login-btn {
-            padding: 8px 16px;
-            font-size: 14px;
-            background: linear-gradient(135deg, #fe2c55, #25f4ee);
-            color: #0d021a;
-            border: none;
-            border-radius: 6px;
-            font-weight: 800;
-            cursor: pointer;
-            outline: none;
-            box-shadow: 0 0 15px rgba(37, 244, 238, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
-            white-space: nowrap;
-        }
-        .login-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(254, 44, 85, 0.8);
-        }
-        .hero-container {
-            width: 100%;
-            max-width: 900px;
-            padding: 10px 20px 10px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+            padding: 20px 40px;
+            background: rgba(7, 7, 17, 0.95);
+            border-bottom: 1px solid rgba(255, 42, 109, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
         .logo {
-            font-size: clamp(40px, 8vw, 75px);
+            font-size: 26px;
             font-weight: 900;
-            background: linear-gradient(90deg, #ff0055, #7928ca, #00ffcc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 3px;
-            filter: drop-shadow(0 0 20px rgba(121, 40, 202, 0.8));
+            letter-spacing: 2px;
+            color: var(--text-main);
+            text-transform: uppercase;
         }
-        /* 환영 메시지 박스 */
-        .welcome-box-container {
-            width: 100%;
-            max-width: 1100px;
-            padding: 0 30px;
-            margin: 20px 0 30px 0;
+        .logo span { color: var(--accent-creative); text-shadow: 0 0 15px rgba(255, 42, 109, 0.6); }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
-        .welcome-content {
-            background-color: rgba(30, 15, 50, 0.8);
-            border: 1px solid #7928ca;
-            border-radius: 12px;
-            padding: 20px 25px;
-            font-size: 15px;
-            color: #00ffcc;
-            line-height: 1.6;
-            box-shadow: 0 0 20px rgba(121, 40, 202, 0.2);
-            text-shadow: 0 0 5px rgba(0, 255, 204, 0.3);
+        
+        /* 60개국어 글로벌 셀렉터 박스 (창작 컬러 테두리) */
+        .lang-select {
+            background: var(--surface-color);
+            color: var(--text-main);
+            border: 1px solid var(--accent-cyan);
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s;
         }
+        .lang-select:hover { border-color: var(--accent-creative); }
+
+        .wallet-btn {
+            background: linear-gradient(135deg, var(--accent-creative), var(--accent-gold));
+            color: #000;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 42, 109, 0.4);
+            transition: all 0.3s ease;
+        }
+        .wallet-btn:hover { opacity: 0.95; transform: translateY(-2px); }
+
+        /* 메인 콘텐츠 영역 */
         main {
+            flex: 1;
+            padding: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
             width: 100%;
-            max-width: 1200px;
-            padding: 0 30px 60px 30px;
         }
-        .section-title {
-            font-size: 22px;
-            font-weight: 700;
+
+        /* 창작 스튜디오 히어로 섹션 */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(255, 42, 109, 0.12) 0%, rgba(5, 217, 232, 0.08) 50%, rgba(18, 18, 34, 0.9) 100%);
+            border: 1px solid rgba(255, 42, 109, 0.3);
+            border-radius: 20px;
+            padding: 60px;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: #000;
+            font-weight: 900;
+            font-size: 12px;
+            padding: 5px 12px;
+            border-radius: 6px;
             margin-bottom: 20px;
-            color: #ffffff;
-            border-left: 4px solid #ff0055;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .hero-title {
+            font-size: 46px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+        .hero-title span { color: var(--accent-creative); text-shadow: 0 0 20px rgba(255, 42, 109, 0.5); }
+        .hero-desc {
+            font-size: 17px;
+            color: var(--text-sub);
+            max-width: 750px;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+        }
+        .play-btn {
+            background: var(--accent-creative);
+            color: #fff;
+            font-weight: 800;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 0 25px rgba(255, 42, 109, 0.6);
+            transition: transform 0.2s;
+        }
+        .play-btn:hover { transform: scale(1.03); }
+        
+        .info-btn {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--accent-cyan);
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .info-btn:hover { background: rgba(5, 217, 232, 0.1); }
+
+        /* 작품 라인업 그리드 */
+        .section-title {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--accent-creative);
             padding-left: 12px;
-            text-shadow: 0 0 10px rgba(255, 0, 85, 0.6);
+            letter-spacing: 0.5px;
         }
         .movie-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
         }
         .movie-card {
-            background-color: rgba(22, 10, 38, 0.9);
-            border-radius: 10px;
+            background: var(--surface-color);
+            border-radius: 14px;
             overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid #4a1f8c;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
         .movie-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 0 30px rgba(0, 255, 204, 0.5);
-            border-color: #00ffcc;
+            transform: translateY(-6px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 10px 25px rgba(5, 217, 232, 0.15);
         }
-        .movie-poster {
-            width: 100%;
-            height: 280px;
-            background: linear-gradient(135deg, #120524, #261242);
+        .movie-thumb {
+            height: 180px;
+            background: linear-gradient(135deg, #1f1f3a, #3a1f3a);
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 45px;
-            color: #ff0055;
-            position: relative;
-            text-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
+            font-size: 18px;
+            color: var(--accent-cyan);
+            font-weight: 800;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .movie-info {
-            padding: 15px;
+            padding: 22px;
         }
         .movie-title {
-            font-size: 16px;
+            font-size: 19px;
             font-weight: 700;
-            margin-bottom: 5px;
-            color: #00ffcc;
-            text-shadow: 0 0 8px rgba(0, 255, 204, 0.4);
+            margin-bottom: 8px;
         }
-        .movie-genre {
+        .movie-meta {
             font-size: 13px;
-            color: #ff88ff;
-            text-shadow: 0 0 5px rgba(255, 136, 255, 0.3);
+            color: var(--text-sub);
         }
-        /* 푸터 스타일 */
+
+        /* 푸터 */
         footer {
-            width: 100%;
-            background-color: #080212;
-            border-top: 1px solid #33145a;
-            padding: 40px 20px;
-            margin-top: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             text-align: center;
-            gap: 15px;
-        }
-        .footer-links {
-            display: flex;
-            gap: 25px;
-            font-size: 15px;
-        }
-        .footer-links a {
-            color: #25f4ee;
-            text-decoration: none;
-            transition: color 0.3s, text-shadow 0.3s;
-            font-weight: 600;
-        }
-        .footer-links a:hover {
-            color: #fe2c55;
-            text-shadow: 0 0 10px rgba(254, 44, 85, 0.8);
-        }
-        .support-email {
+            padding: 40px;
+            background: rgba(7, 7, 17, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-sub);
             font-size: 14px;
-            color: #9b72cf;
-        }
-        /* 모달 스타일 */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(13, 2, 26, 0.9);
-            z-index: 100;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .modal-content {
-            background-color: #1a0b2e;
-            border: 1px solid #7928ca;
-            border-radius: 12px;
-            width: 100%;
-            max-width: 850px;
-            padding: 30px;
-            position: relative;
-            box-shadow: 0 0 40px rgba(121, 40, 202, 0.6);
-        }
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 28px;
-            cursor: pointer;
-            color: #ff0055;
-            text-shadow: 0 0 10px rgba(255, 0, 85, 0.6);
-        }
-        .close-btn:hover {
-            color: #00ffcc;
-        }
-        .video-container {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background-color: #000;
-            border-radius: 8px;
-            margin-top: 15px;
-            overflow: hidden;
-            border: 1px solid #4a1f8c;
-        }
-        .video-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        .login-box input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            background-color: #0d021a;
-            border: 1px solid #7928ca;
-            border-radius: 6px;
-            color: #00ffcc;
-            outline: none;
-        }
-        .login-submit {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #fe2c55, #25f4ee);
-            color: #0d021a;
-            border: none;
-            border-radius: 6px;
-            font-weight: 800;
-            cursor: pointer;
-            margin-top: 10px;
-            box-shadow: 0 0 15px rgba(254, 44, 85, 0.5);
+            margin-top: 60px;
         }
     </style>
 </head>
 <body>
 
-    <div class="top-container">
-        <select class="lang-select" id="langDropdown" onchange="switchLang(this.value)">
-            <option value="ko">🇰🇷 한국어</option>
-            <option value="en">🇺🇸 영어</option>
-            <option value="zh">🇨🇳 중국어</option>
-            <option value="ar">🇸🇦 아랍어</option>
-            <option value="hi">🇮🇳 인도어</option>
-            <option value="es">🇪🇸 스페인어</option>
-            <option value="br">🇧🇷 브라질어</option>
-            <option value="uk">🇺🇦 우크라이나어</option>
-            <option value="ja">🇯🇵 일본어</option>
-            <option value="ru">🇷🇺 러시아어</option>
-            <option value="vi">🇻🇳 베트남어</option>
-            <option value="th">🇹🇭 태국어</option>
-            <option value="id">🇮🇩 인도네시아어</option>
-            <option value="ps">🇵🇸 팔레스타인어</option>
-            <option value="de">🇩🇪 독일어</option>
-            <option value="it">🇮🇹 이태리어</option>
-            <option value="fr">🇫🇷 프랑스어</option>
-            <option value="ng">🇳🇬 나이지리아</option>
-            <option value="cm">🇨🇲 카메룬</option>
-            <option value="za">🇿🇦 남아공</option>
-            <option value="sd">🇸🇩 수단</option>
-            <option value="et">🇪🇹 에티오피아</option>
-        </select>
-        <button class="login-btn" onclick="openLoginModal()">웹3 로그인</button>
-    </div>
-
-    <div class="hero-container">
-        <div class="logo">HK-MOVIE</div>
-    </div>
-
-    <div class="welcome-box-container">
-        <div id="welcome-msg" class="welcome-content">HK-MOVIE에 오신 것을 환영합니다. 전 세계의 다양한 영화와 콘텐츠를 최첨단 웹3 인프라로 즐겨보세요.</div>
-    </div>
+    <header>
+        <div class="logo">HK-<span>MOVIE</span></div>
+        <div class="header-right">
+            <!-- 60개국 글로벌 언어 셀렉터 -->
+            <select class="lang-select" id="languageSelect">
+                <option value="ko">🇰🇷 한국어 (Korean)</option>
+                <option value="en">🇺🇸 English (US)</option>
+                <option value="zh">🇨🇳 中文 (Chinese)</option>
+                <option value="ja">🇯🇵 日本語 (Japanese)</option>
+                <option value="es">🇪🇸 Español (Spanish)</option>
+                <option value="fr">🇫🇷 Français (French)</option>
+                <option value="de">🇩🇪 Deutsch (German)</option>
+                <option value="ar">🇸🇦 العربية (Arabic)</option>
+                <option value="hi">🇮🇳 हिन्दी (Hindi)</option>
+                <option value="ru">🇷🇺 Русский (Russian)</option>
+                <option value="pt">🇧🇷 Português (Portuguese)</option>
+                <option value="it">🇮🇹 Italiano (Italian)</option>
+                <option value="vi">🇻🇳 Tiếng Việt (Vietnamese)</option>
+                <option value="th">🇹🇭 ไทย (Thai)</option>
+                <option value="id">🇮🇩 Bahasa Indonesia</option>
+                <option value="tr">🇹🇷 Türkçe (Turkish)</option>
+                <option value="pl">🇵🇱 Polski (Polish)</option>
+                <option value="nl">🇳🇱 Nederlands (Dutch)</option>
+                <option value="sv">🇸🇪 Svenska (Swedish)</option>
+                <option value="uk">🇺🇦 Українська (Ukrainian)</option>
+                <option value="ms">🇲🇾 Bahasa Melayu</option>
+                <option value="fil">🇵🇭 Tagalog (Filipino)</option>
+                <option value="el">🇬🇷 Ελληνικά (Greek)</option>
+                <option value="cs">🇨🇿 Čeština (Czech)</option>
+                <option value="ro">🇷🇴 Română (Romanian)</option>
+                <option value="hu">🇭🇺 Magyar (Hungarian)</option>
+                <option value="he">🇮🇱 עברית (Hebrew)</option>
+                <option value="da">🇩🇰 Dansk (Danish)</option>
+                <option value="fi">🇫🇮 Suomi (Finnish)</option>
+                <option value="no">🇳🇴 Norsk (Norwegian)</option>
+                <option value="bn">🇧🇩 বাংলা (Bengali)</option>
+                <option value="fa">🇮🇷 فارسی (Persian)</option>
+                <option value="ur">🇵🇰 اردو (Urdu)</option>
+                <option value="sw">🇰🇪 Kiswahili (Swahili)</option>
+                <option value="ta">🇮🇳 தமிழ் (Tamil)</option>
+                <option value="te">🇮🇳 తెలుగు (Telugu)</option>
+                <option value="mr">🇮🇳 मराठी (Marathi)</option>
+                <option value="gu">🇮🇳 ગુજરાતી (Gujarati)</option>
+                <option value="kn">🇮🇳 ಕನ್ನಡ (Kannada)</option>
+                <option value="ml">🇮🇳 മലയാളം (Malayalam)</option>
+                <option value="pa">🇵🇰 ਪੰਜਾਬੀ (Punjabi)</option>
+                <option value="kk">🇰🇿 Қазақ тілі (Kazakh)</option>
+                <option value="uz">🇺🇿 O'zbekcha (Uzbek)</option>
+                <option value="az">🇦🇿 Azərbaycanca (Azerbaijani)</option>
+                <option value="hy">🇦🇲 Հայերեն (Armenian)</option>
+                <option value="ka">🇬🇪 ქართული (Georgian)</option>
+                <option value="am">🇪🇹 አማርኛ (Amharic)</option>
+                <option value="my">🇲🇲 မြန်မာဘာသာ (Burmese)</option>
+                <option value="km">🇰🇭 ភាសាខ្មែរ (Khmer)</option>
+                <option value="lo">🇱🇦 ພາສາລາວ (Lao)</option>
+                <option value="si">🇱🇰 සිංහල (Sinhala)</option>
+                <option value="ne">🇳🇵 नेपाली (Nepali)</option>
+                <option value="sq">🇦🇱 Shqip (Albanian)</option>
+                <option value="bs">🇧🇦 Bosanski (Bosnian)</option>
+                <option value="hr">🇭🇷 Hrvatski (Croatian)</option>
+                <option value="sr">🇷🇸 Српски (Serbian)</option>
+                <option value="sk">🇸🇰 Slovenčina (Slovak)</option>
+                <option value="sl">🇸🇮 Slovenščina (Slovenian)</option>
+                <option value="et">🇪🇪 Eesti (Estonian)</option>
+                <option value="lv">🇱🇻 Latviešu (Latvian)</option>
+                <option value="lt">🇱🇹 Lietuvių (Lithuanian)</option>
+            </select>
+            <button class="wallet-btn" onclick="alert('Web3 지갑 연동 완료!')">Web3 지갑 연동</button>
+        </div>
+    </header>
 
     <main>
-        <div id="section-title" class="section-title">실시간 추천 마스터피스</div>
+        <!-- 크리에이티브 히어로 섹션 -->
+        <section class="hero-section">
+            <div class="hero-badge">Global Masterpiece Premiere</div>
+            <h1 class="hero-title">[NEON <span>ODYSSEY</span>]</h1>
+            <p class="hero-desc">
+                네온 빛으로 물든 거대한 사이버 시티 속, 양자 시공간의 문을 여는 주인공의 압도적인 3분간의 오디세이. HK-MOVIE의 창작 스튜디오 인프라를 통해 60개국 언어로 전 세계 동시 상영됩니다.
+            </p>
+            <div class="hero-actions">
+                <button class="play-btn" onclick="alert('[NEON ODYSSEY] 글로벌 상영을 시작합니다!')">▶ 지금 바로 감상하기</button>
+                <button class="info-btn" onclick="alert('작품 스토리 및 Web3 펀딩 참여 안내')">크리에이터 노트</button>
+            </div>
+        </section>
+
+        <!-- 작품 큐레이션 라인업 -->
+        <h2 class="section-title">HK-MOVIE 크리에이티브 라인업</h2>
         <div class="movie-grid">
-            <div class="movie-card" onclick="openVideoModal(currentMovieTitles.m1, 'https://www.youtube.com/embed/zSWdZVtXT7E')">
-                <div class="movie-poster">🌌<span id="badge-1">인터스텔라</span></div>
+            <div class="movie-card">
+                <div class="movie-thumb">CYBER SEOUL 2088</div>
                 <div class="movie-info">
-                    <div id="title-1" class="movie-title">인터스텔라</div>
-                    <div id="genre-1" class="movie-genre">SF / 모험 / 드라마</div>
+                    <h3 class="movie-title">사이버 서울 2088</h3>
+                    <p class="movie-meta">AI 시네마틱 • 글로벌 조회수 1.2M</p>
                 </div>
             </div>
-            <div class="movie-card" onclick="openVideoModal(currentMovieTitles.m2, 'https://www.youtube.com/embed/YoHD9XEInc0')">
-                <div class="movie-poster">🌀<span id="badge-2">인셉션</span></div>
+            <div class="movie-card">
+                <div class="movie-thumb">QUANTUM GENESIS</div>
                 <div class="movie-info">
-                    <div id="title-2" class="movie-title">인셉션</div>
-                    <div id="genre-2" class="movie-genre">액션 / SF / 스릴러</div>
+                    <h3 class="movie-title">양자 제네시스</h3>
+                    <p class="movie-meta">SF 스릴러 • 글로벌 조회수 850K</p>
                 </div>
             </div>
-            <div class="movie-card" onclick="openVideoModal(currentMovieTitles.m3, 'https://www.youtube.com/embed/d9MyW72ELq0')">
-                <div class="movie-poster">🌊<span id="badge-3">아바타 2</span></div>
+            <div class="movie-card">
+                <div class="movie-thumb">PI NETWORK CHRONICLES</div>
                 <div class="movie-info">
-                    <div id="title-3" class="movie-title">아바타: 물의 길</div>
-                    <div id="genre-3" class="movie-genre">SF / 액션 / 판타지</div>
-                </div>
-            </div>
-            <div class="movie-card" onclick="openVideoModal(currentMovieTitles.m4, 'https://www.youtube.com/embed/uYPbbksJxIg')">
-                <div class="movie-poster">⚛️<span id="badge-4">오펜하이머</span></div>
-                <div class="movie-info">
-                    <div id="title-4" class="movie-title">오펜하이머</div>
-                    <div id="genre-4" class="movie-genre">전기 / 드라마 / 역사</div>
+                    <h3 class="movie-title">파이 네트워크 크로니클</h3>
+                    <p class="movie-meta">Web3 다큐멘터리 • 글로벌 조회수 2.4M</p>
                 </div>
             </div>
         </div>
     </main>
 
     <footer>
-        <div class="footer-links">
-            <a href="https://www.youtube.com/@Hyekong2026" target="_blank">YouTube (@Hyekong2026)</a>
-            <a href="https://www.tiktok.com/@hyekong2026" target="_blank">TikTok (@hyekong2026)</a>
-        </div>
-        <div class="support-email">support@hkwb.world</div>
+        <p>&copy; 2026 HK GROUP. All Rights Reserved. Powered by Web3 Global Cinema Infrastructure.</p>
     </footer>
 
-    <div id="videoModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeVideoModal()">&times;</span>
-            <div id="modalTitle" class="section-title" style="margin-bottom: 10px; border-left-color: #00ffcc;">재생 중</div>
-            <div class="video-container">
-                <iframe id="modalIframe" src="" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-
-    <div id="loginModal" class="modal">
-        <div class="modal-content" style="max-width: 400px;">
-            <span class="close-btn" onclick="closeLoginModal()">&times;</span>
-            <div class="section-title" style="margin-bottom: 20px; border-left-color: #25f4ee;">HK 웹3 지갑 로그인</div>
-            <div class="login-box">
-                <input type="text" placeholder="지갑 주소 또는 HK ID 입력">
-                <input type="password" placeholder="비밀번호 또는 보안키">
-                <button class="login-submit" onclick="alert('로그인되었습니다 형님!'); closeLoginModal();">접속하기</button>
-            </div>
-        </div>
-    </div>
-
     <script>
-        const langData = {
-            ko: {
-                welcome: "HK-MOVIE에 오신 것을 환영합니다. 전 세계의 다양한 영화와 콘텐츠를 최첨단 웹3 인프라로 즐겨보세요.",
-                section: "실시간 추천 마스터피스",
-                m1: "인터스텔라", g1: "SF / 모험 / 드라마",
-                m2: "인셉션", g2: "액션 / SF / 스릴러",
-                m3: "아바타: 물의 길", g3: "SF / 액션 / 판타지",
-                m4: "오펜하이머", g4: "전기 / 드라마 / 역사"
-            },
-            en: {
-                welcome: "Welcome to HK-MOVIE. Enjoy global movies and contents powered by cutting-edge Web3 infrastructure.",
-                section: "Real-time Recommended Masterpieces",
-                m1: "Interstellar", g1: "Sci-Fi / Adventure / Drama",
-                m2: "Inception", g2: "Action / Sci-Fi / Thriller",
-                m3: "Avatar: The Way of Water", g3: "Sci-Fi / Action / Fantasy",
-                m4: "Oppenheimer", g4: "Biography / Drama / History"
-            },
-            zh: {
-                welcome: "欢迎来到 HK-MOVIE。体验由尖端 Web3 基础设施驱动的全球电影和内容。",
-                section: "实时推荐杰作",
-                m1: "星际穿越", g1: "科幻 / 冒险 / 剧情",
-                m2: "盗梦空间", g2: "动作 / 科幻 / 惊悚",
-                m3: "阿凡达：水之道", g3: "科幻 / 动作 / 奇幻",
-                m4: "奥本海默", g4: "传记 / 剧情 / 历史"
-            },
-            ar: {
-                welcome: "أهلاً بك في HK-MOVIE. استمتع بالأفلام والمحتويات العالمية مدعومة ببنية تحتية متطورة لـ Web3.",
-                section: "الروائع الموصى بها في الوقت الفعلي",
-                m1: "إنترستستلار", g1: "خيال علمي / مغامرة / دراما",
-                m2: "إنسبشن", g2: "حركة / خيال علمي / إثارة",
-                m3: "أفاتار: طريق الماء", g3: "خيال علمي / حركة / خيال",
-                m4: "أوبنهايمر", g4: "سيرة ذاتية / دراما / تاريخ"
-            },
-            hi: {
-                welcome: "HK-MOVIE में आपका स्वागत है। अत्याधुनिक वेब3 बुनियादी ढांचे द्वारा संचालित वैश्विक फिल्मों और सामग्री का आनंद लें।",
-                section: "री얼-टाइम अनुशंसित मास्टरपीस",
-                m1: "इंटర్ स्टेलर", g1: "साइंस फिक्शन / एडवेंचर / ड्रामा",
-                m2: "इंसेप्शन", g2: "एक्शन / साइंस फिक्शन / थ्रिलर",
-                m3: "अवतार: द वे ऑफ़ वॉटर", g3: "साइंस फिक्शन / एक्शन / फेंटेसी",
-                m4: "ओपेनहाइमर", g4: "बायोग्राफी / ड्रामा / इतिहास"
-            },
-            es: {
-                welcome: "Bienvenido a HK-MOVIE. Disfruta de películas y contenidos globales impulsados por infraestructura Web3 de vanguardia.",
-                section: "Obras Maestras Recomendadas en Tiempo Real",
-                m1: "Interstellar", g1: "Ciencia ficción / Aventura / Drama",
-                m2: "Inception", g2: "Acción / Ciencia ficción / Suspenso",
-                m3: "Avatar: El camino del agua", g3: "Ciencia ficción / Acción / Fantasía",
-                m4: "Oppenheimer", g4: "Biografía / Drama / Historia"
-            },
-            br: {
-                welcome: "Bem-vindo ao HK-MOVIE. Desfrute de filmes e conteúdos globais alimentados por infraestrutura Web3 de ponta.",
-                section: "Obras-Primas Recomendadas em Tempo Real",
-                m1: "Interstellar", g1: "Ficção Científica / Aventura / Drama",
-                m2: "A Origem", g2: "Ação / Ficção Científica / Suspense",
-                m3: "Avatar: O Caminho da Água", g3: "Ficção Científica / Ação / Fantasia",
-                m4: "Oppenheimer", g4: "Biografia / Drama / História"
-            },
-            uk: {
-                welcome: "Ласкаво просимо до HK-MOVIE. Насладжуйтесь світовими фільмами та контентом на базі передової інфраструктури Web3.",
-                section: "Рекомендовані шедеври в реальному часі",
-                m1: "Інтерстеллар", g1: "Фантастика / Пригоди / Драматичний",
-                m2: "Початок", g2: "Бойовик / Фантастика / Трилер",
-                m3: "Аватар: Шлях води", g3: "Фантастика / Бойовик / Фентезі",
-                m4: "Оппенгеймер", g4: "Біографія / Драма / Історія"
-            },
-            ja: {
-                welcome: "HK-MOVIEへようこそ。最先端のWeb3インフラによる世界中の映画やコンテンツをお楽しみください。",
-                section: "リアルタイムおすすめマスターピース",
-                m1: "インターステラー", g1: "SF / アドベンチャー / ドラマ",
-                m2: "インception", g2: "アクション / SF / スリラー",
-                m3: "アバター：ウェイ・オブ・ウォーター", g3: "SF / アクション / ファンタジー",
-                m4: "オッペンハイマー", g4: "伝記 / ドラマ / 歴史"
-            },
-            ru: {
-                welcome: "Добро пожаловать в HK-MOVIE. Наслаждайтесь мировыми фильмами и контентом на базе передовой инфраструктуры Web3.",
-                section: "Рекомендуемые шедевры в реальном времени",
-                m1: "Интерстеллар", g1: "Фантастика / Приключения / Драма",
-                m2: "Начало", g2: "Боевик / Фантастика / Триллер",
-                m3: "Аватар: Путь воды", g3: "Фантастика / Боевик / Фэнтези",
-                m4: "Оппенгеймер", g4: "Биография / Драма / История"
-            },
-            vi: {
-                welcome: "Chào mừng bạn đến với HK-MOVIE. Tận hưởng các bộ phim và nội dung toàn cầu được cung cấp bởi cơ sở hạ tầng Web3 tiên tiến.",
-                section: "Kiệt tác được đề xuất thời gian thực",
-                m1: "Hố Đen Tử Thần", g1: "Khoa học viễn tưởng / Phiêu lưu / Tâm lý",
-                m2: "Kẻ Đánh Cắp Giấc Mơ", g2: "Hành động / Khoa học viễn tưởng / Giật gân",
-                m3: "Avatar: Dòng Chảy Của Nước", g3: "Khoa học viễn tưởng / Hành động / Giả tưởng",
-                m4: "Oppenheimer", g4: "Tiểu sử / Chính kịch / Lịch sử"
-            },
-            th: {
-                welcome: "ยินดีต้อนรับสู่ HK-MOVIE เพลิดเพลินกับภาพยนตร์และเนื้อหาระดับโลกที่ขับเคลื่อนด้วยโครงสร้างพื้นฐาน Web3 ที่ล้ำสมัย",
-                section: "ผลงานชิ้นเอกแนะนำแบบเรียลไทม์",
-                m1: "อินเตอร์стелลาร์", g1: "ไซไฟ / ผจญภัย / ดราม่า",
-                m2: "อินเซปชัน", g2: "แอคชั่น / ไซไฟ / ระทึกขวัญ",
-                m3: "อวตาร: วิถีแห่งสายน้ำ", g3: "ไซไฟ / แอคชั่น / แฟนตาซี",
-                m4: "ออป펜하이머", g4: "ชีวประวัติ / ดราม่า / ประวัติศาสตร์"
-            },
-            id: {
-                welcome: "Selamat datang di HK-MOVIE. Nikmati film dan konten global yang didukung oleh infrastruktur Web3 canggih.",
-                section: "Mahakarya Rekomendasi Waktu Nyata",
-                m1: "Interstellar", g1: "Fiksi Ilmiah / Petualangan / Drama",
-                m2: "Inception", g2: "Aksi / Fiksi Ilmiah / Thriller",
-                m3: "Avatar: The Way of Water", g3: "Fiksi Ilmiah / Aksi / Fantasi",
-                m4: "Oppenheimer", g4: "Biografi / Drama / Sejarah"
-            },
-            ps: {
-                welcome: "أهلاً فيك بـ HK-MOVIE. استمتع بالأفلام والمحتوى العالمي المدعوم ببنية Web3 الرقمية.",
-                section: "شاهکار های وړاندیز شوي",
-                m1: "انټرستیلر", g1: "ساینسي / پېښه / ډرامه",
-                m2: "انسیپشن", g2: "عمل / ساینسي / تریلر",
-                m3: "أفاتار: لار د اوبو", g3: "ساینسي / عمل / خیالي",
-                m4: "اوپنهایمر", g4: "ژوندلیک / ډرامه / تاریخ"
-            },
-            de: {
-                welcome: "Willkommen bei HK-MOVIE. Genießen Sie globale Filme und Inhalte, die auf modernster Web3-Infrastruktur basieren.",
-                section: "Echtzeit-Empfohlene Meisterwerke",
-                m1: "Interstellar", g1: "Sci-Fi / Abenteuer / Drama",
-                m2: "Inception", g2: "Action / Sci-Fi / Thriller",
-                m3: "Avatar: The Way of Water", g3: "Sci-Fi / Action / Fantasy",
-                m4: "Oppenheimer", g4: "Biografie / Drama / Geschichte"
-            },
-            it: {
-                welcome: "Benvenuto su HK-MOVIE. Goditi film e contenuti globali supportati da un'infrastruttura Web3 all'avanguardia.",
-                section: "Capolavori consigliati in tempo reale",
-                m1: "Interstellar", g1: "Fantascienza / Avventura / Drammatico",
-                m2: "Inception", g2: "Azione / Fantascienza / Thriller",
-                m3: "Avatar: La via dell'acqua", g3: "Fantascienza / Azione / Fantasy",
-                m4: "Oppenheimer", g4: "Biografico / Drammatico / Storico"
-            },
-            fr: {
-                welcome: "Bienvenue sur HK-MOVIE. Profitez de films et de contenus mondiaux propulsés par une infrastructure Web3 de pointe.",
-                section: "Chefs-d'œuvre recommandés en temps réel",
-                m1: "Interstellar", g1: "Science-fiction / Aventure / Drame",
-                m2: "Inception", g2: "Action / Science-fiction / Thriller",
-                m3: "Avatar : La Voie de l'eau", g3: "Science-fiction / Action / Fantastique",
-                m4: "Oppenheimer", g4: "Biographique / Drame / Historique"
-            },
-            ng: {
-                welcome: "Welcome to HK-MOVIE. Enjoy global film and entertainment powered by top Web3 tech.",
-                section: "Hot Masterpieces We Recommend",
-                m1: "Interstellar", g1: "Sci-Fi / Adventure / Drama",
-                m2: "Inception", g2: "Action / Sci-Fi / Thriller",
-                m3: "Avatar: The Way of Water", g3: "Sci-Fi / Action / Fantasy",
-                m4: "Oppenheimer", g4: "Biography / Drama / History"
-            },
-            cm: {
-                welcome: "Bienvenue na HK-MOVIE. Enjoy beta films and contents wey Web3 network dey carry.",
-                section: "Better Masterpieces Wey We Recommend",
-                m1: "Interstellar", g1: "Sci-Fi / Adventure / Drama",
-                m2: "Inception", g2: "Action / Sci-Fi / Thriller",
-                m3: "Avatar: The Way of Water", g3: "Sci-Fi / Action / Fantasy",
-                m4: "Oppenheimer", g4: "Biography / Drama / History"
-            },
-            za: {
-                welcome: "Wamkelekile ku HK-MOVIE. Jabulela amafilimu nemikhiqizo yomhlaba wonke nge-Web3 esezingeni eliphezulu.",
-                section: "Ama-Masterpieces Enconywayo",
-                m1: "Interstellar", g1: "Sci-Fi / Adventure / Drama",
-                m2: "Inception", g2: "Action / Sci-Fi / Thriller",
-                m3: "Avatar: The Way of Water", g3: "Sci-Fi / Action / Fantasy",
-                m4: "Oppenheimer", g4: "Biography / Drama / History"
-            },
-            sd: {
-                welcome: "مرحباً بك في HK-MOVIE. استمتع بالأفلام والمحتوى العالمي مدعوم بأحدث تقنيات الويب 3.",
-                section: "الروائع الموصى بها",
-                m1: "إنترستيلر", g1: "خيال علمي / مغامرة / دراما",
-                m2: "إنسبشن", g2: "حركة / خيال علمي / إثارة",
-                m3: "أفاتار: طريق الماء", g3: "خيال علمي / حركة / خيال",
-                m4: "أوبنهايمر", g4: "سيرة ذاتية / دراما / تاريخ"
-            },
-            et: {
-                welcome: "እንኳን ወደ HK-MOVIE በደህና መጡ። በዘመናዊ የዌብ3 መሠረተ ልማት የተደገፉ ዓለም አቀፍ ፊልሞችን እና ይዘቶችን ይደሰቱ።",
-                section: "የተመከሩ ድንቅ ስራዎች",
-                m1: "ኢንተርስቴላር", g1: "ሳይንስ ፍiction / ጀብዱ / ድራማ",
-                m2: "ኢንሴፕሽን", g2: "እርምጃ / ሳይንስ ፍiction / thriller",
-                m3: "አቫታር: የውሃው መንገድ", g3: "ሳይንስ ፍiction / እርምጃ / ቅዠት",
-                m4: "ኦፔን하이መር", g4: "የህይወት ታሪክ / ድራማ / ታሪክ"
-            }
-        };
-
-        let currentMovieTitles = { m1: "인터스텔라", m2: "인셉션", m3: "아바타: 물의 길", m4: "오펜하이머" };
-
-        function switchLang(langCode) {
-            const data = langData[langCode];
-            if (!data) return;
-
-            document.getElementById('welcome-msg').innerText = data.welcome;
-            document.getElementById('section-title').innerText = data.section;
-
-            document.getElementById('badge-1').innerText = data.m1;
-            document.getElementById('title-1').innerText = data.m1;
-            document.getElementById('genre-1').innerText = data.g1;
-
-            document.getElementById('badge-2').innerText = data.m2;
-            document.getElementById('title-2').innerText = data.m2;
-            document.getElementById('genre-2').innerText = data.g2;
-
-            document.getElementById('badge-3').innerText = data.m3;
-            document.getElementById('title-3').innerText = data.m3;
-            document.getElementById('genre-3').innerText = data.g3;
-
-            document.getElementById('badge-4').innerText = data.m4;
-            document.getElementById('title-4').innerText = data.m4;
-            document.getElementById('genre-4').innerText = data.g4;
-
-            currentMovieTitles = { m1: data.m1, m2: data.m2, m3: data.m3, m4: data.m4 };
-        }
-
-        function openVideoModal(title, url) {
-            document.getElementById('modalTitle').innerText = title + ' 재생 중';
-            document.getElementById('modalIframe').src = url + '?autoplay=1';
-            document.getElementById('videoModal').style.display = 'flex';
-        }
-
-        function closeVideoModal() {
-            document.getElementById('videoModal').style.display = 'none';
-            document.getElementById('modalIframe').src = '';
-        }
-
-        function openLoginModal() {
-            document.getElementById('loginModal').style.display = 'flex';
-        }
-
-        function closeLoginModal() {
-            document.getElementById('loginModal').style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-                document.getElementById('modalIframe').src = '';
-            }
-        }
+        document.getElementById('languageSelect').addEventListener('change', function(e) {
+            const selectedLang = e.target.value;
+            console.log("선택된 글로벌 언어 코드: " + selectedLang);
+        });
     </script>
+
 </body>
 </html>

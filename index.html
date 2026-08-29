@@ -78,6 +78,7 @@
         <div>
             <select name="language" id="language-select" class="language-select" aria-label="언어 선택" onchange="changeLanguage(this.value)">
                 <option value="" disabled selected>언어 선택 / Select Language</option>
+                <option value="ko">한국어 (Korean)</option>
                 <option value="en">영어 (English)</option>
                 <option value="zh">중국어 (中文)</option>
                 <option value="ar">아랍어 (العربية)</option>
@@ -102,8 +103,18 @@
     </header>
 
     <main>
-        <!-- 1. 영어 -->
-        <div id="content-en" class="language-content-section active">
+        <!-- 1. 한국어 -->
+        <div id="content-ko" class="language-content-section active">
+            <div class="lang-block">
+                <p>HK-MOVIE에 오신 것을 환영합니다. 전 세계의 다양한 영화와 콘텐츠를 즐길 수 있는 최고의 글로벌 스트리밍 플랫폼입니다.</p>
+                <p>블록버스터 대작부터 독립영화, 그리고 오직 HK-MOVIE에서만 만나볼 수 있는 독창적인 오리지널 작품들을 지금 바로 탐색해 보세요.</p>
+                <p>자신의 취향에 맞추어 원하는 자막 언어, 오디오 트랙, 그리고 최적의 고화질 해상도 옵션을 손쉽게 설정하실 수 있습니다.</p>
+                <p>최첨단 디지털 웹3 인프라를 바탕으로 끊김 없이 매끄럽고 몰입감 넘치는 최고의 시네마 경험을 만끽하시기 바랍니다.</p>
+            </div>
+        </div>
+
+        <!-- 2. 영어 -->
+        <div id="content-en" class="language-content-section">
             <div class="lang-block">
                 <p>Welcome to HK-MOVIE, your ultimate global streaming and entertainment destination.</p>
                 <p>Explore a vast library of blockbusters, indie films, and exclusive original content from around the world.</p>
@@ -112,7 +123,7 @@
             </div>
         </div>
 
-        <!-- 2. 중국어 -->
+        <!-- 3. 중국어 -->
         <div id="content-zh" class="language-content-section">
             <div class="lang-block">
                 <p>欢迎来到 HK-MOVIE，您的顶级全球流媒体与娱乐殿堂。</p>
@@ -122,7 +133,7 @@
             </div>
         </div>
 
-        <!-- 3. 아랍어 -->
+        <!-- 4. 아랍어 -->
         <div id="content-ar" class="language-content-section" dir="rtl">
             <div class="lang-block">
                 <p>أهلاً بك في HK-MOVIE، وجهتك العالمية المثلى للبث والترفيه.</p>
@@ -132,17 +143,17 @@
             </div>
         </div>
 
-        <!-- 4. 인도어 -->
+        <!-- 5. 인도어 -->
         <div id="content-hi" class="language-content-section">
             <div class="lang-block">
                 <p>HK-MOVIE में आपका स्वागत है, जो आपका परम वैश्विक स्ट्रीमिंग और मनोरंजन गंतव्य है।</p>
                 <p>दुनिया भर से ब्लॉकबस्टर, स्वतंत्र फिल्मों और अनन्य मूल सामग्री की एक विशाल लाइब्रेरी का अन्वेषण करें।</p>
                 <p>अपनी पसंदीदा उपशीर्षक और ऑडियो ट्रैक विकल्पों को आसानी से कॉन्फ़िगर करें।</p>
-                <p>अत्याधुनिक डिजिटल बुनियादी ढांचे द्वारा संचालित निर्बाध और शानदार सिनेमाई अनुभव का आनंद लें।</p>
+                <p>अत्याधुनिक डिजिटल बुनियादी ढांचे द्वारा संचालित निर्बाध और शानदार सिनेमाई अनुभव का आनंद लें。</p>
             </div>
         </div>
 
-        <!-- 5. 스페인어 -->
+        <!-- 6. 스페인어 -->
         <div id="content-es" class="language-content-section">
             <div class="lang-block">
                 <p>Bienvenido a HK-MOVIE, tu destino definitivo de streaming y entretenimiento global.</p>
@@ -152,7 +163,7 @@
             </div>
         </div>
 
-        <!-- 6. 브라질어 -->
+        <!-- 7. 브라질어 -->
         <div id="content-pt" class="language-content-section">
             <div class="lang-block">
                 <p>Bem-vindo ao HK-MOVIE, o seu destino global definitivo de streaming e entretenimento.</p>
@@ -162,7 +173,7 @@
             </div>
         </div>
 
-        <!-- 7. 우크라이나어 -->
+        <!-- 8. 우크라이나어 -->
         <div id="content-uk" class="language-content-section">
             <div class="lang-block">
                 <p>Ласкаво просимо до HK-MOVIE, вашого головного світового стрімінгового та розважального порталу.</p>
@@ -172,7 +183,7 @@
             </div>
         </div>
 
-        <!-- 8. 일본어 -->
+        <!-- 9. 일본어 -->
         <div id="content-ja" class="language-content-section">
             <div class="lang-block">
                 <p>HK-MOVIEへようこそ。ここは最高のグローバルストリーミングおよびエンターテインメントの目的地です。</p>
@@ -182,7 +193,7 @@
             </div>
         </div>
 
-        <!-- 9. 러시아어 -->
+        <!-- 10. 러시아어 -->
         <div id="content-ru" class="language-content-section">
             <div class="lang-block">
                 <p>Добро пожаловать в HK-MOVIE, ваш главный мировой потоковый и развлекательный портал.</p>
@@ -192,7 +203,7 @@
             </div>
         </div>
 
-        <!-- 10. 베트남어 -->
+        <!-- 11. 베트남어 -->
         <div id="content-vi" class="language-content-section">
             <div class="lang-block">
                 <p>Chào mừng bạn đến với HK-MOVIE, nền tảng phát trực tuyến và giải trí toàn cầu hàng đầu.</p>
@@ -202,7 +213,7 @@
             </div>
         </div>
 
-        <!-- 11. 태국어 -->
+        <!-- 12. 태국어 -->
         <div id="content-th" class="language-content-section">
             <div class="lang-block">
                 <p>ยินดีต้อนรับสู่ HK-MOVIE แหล่งรวมความบันเทิงและการสตรีมระดับโลกที่ดีที่สุดของคุณ</p>
@@ -212,7 +223,7 @@
             </div>
         </div>
 
-        <!-- 12. 인도네시아어 -->
+        <!-- 13. 인도네시아어 -->
         <div id="content-id" class="language-content-section">
             <div class="lang-block">
                 <p>Selamat datang di HK-MOVIE, destinasi streaming dan hiburan global utama Anda.</p>
@@ -222,7 +233,7 @@
             </div>
         </div>
 
-        <!-- 13. 팔레스타인어 -->
+        <!-- 14. 팔레스타인어 -->
         <div id="content-ps" class="language-content-section" dir="rtl">
             <div class="lang-block">
                 <p>أهلاً فيك بـ HK-MOVIE، وجهتك العالمية الأولى للترفيه والأفلام.</p>
@@ -232,7 +243,7 @@
             </div>
         </div>
 
-        <!-- 14. 독일어 -->
+        <!-- 15. 독일어 -->
         <div id="content-de" class="language-content-section">
             <div class="lang-block">
                 <p>Willkommen bei HK-MOVIE, Ihrer ultimativen globalen Streaming- und Entertainment-Plattform.</p>
@@ -242,7 +253,7 @@
             </div>
         </div>
 
-        <!-- 15. 이태리어 -->
+        <!-- 16. 이태리어 -->
         <div id="content-it" class="language-content-section">
             <div class="lang-block">
                 <p>Benvenuto su HK-MOVIE, la tua destinazione globale definitiva per streaming e intrattenimento.</p>
@@ -252,7 +263,7 @@
             </div>
         </div>
 
-        <!-- 16. 프랑스어 -->
+        <!-- 17. 프랑스어 -->
         <div id="content-fr" class="language-content-section">
             <div class="lang-block">
                 <p>Bienvenue sur HK-MOVIE, votre destination mondiale ultime pour le streaming et le divertissement.</p>
@@ -262,7 +273,7 @@
             </div>
         </div>
 
-        <!-- 17. 나이지리아 -->
+        <!-- 18. 나이지리아 -->
         <div id="content-ng" class="language-content-section">
             <div class="lang-block">
                 <p>Welcome to HK-MOVIE, your number one plug for global entertainment and streaming.</p>
@@ -272,7 +283,7 @@
             </div>
         </div>
 
-        <!-- 18. 카메룬 -->
+        <!-- 19. 카메룬 -->
         <div id="content-cm" class="language-content-section">
             <div class="lang-block">
                 <p>Bienvenue na HK-MOVIE, place wey go give you beta entertainment for ground.</p>
@@ -282,7 +293,7 @@
             </div>
         </div>
 
-        <!-- 19. 남아공 -->
+        <!-- 20. 남아공 -->
         <div id="content-za" class="language-content-section">
             <div class="lang-block">
                 <p>Wamkelekile ku HK-MOVIE, your ultimate global streaming and entertainment home.</p>

@@ -20,25 +20,28 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
+            padding: 15px 20px;
             background-color: #1a1a1a;
             border-bottom: 1px solid #333;
+            flex-wrap: nowrap;
         }
         .logo {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             color: #e50914;
             letter-spacing: 1px;
+            white-space: nowrap;
         }
         .language-select {
-            padding: 10px 16px;
-            font-size: 14px;
+            padding: 8px 12px;
+            font-size: 13px;
             background-color: #2b2b2b;
             color: #ffffff;
             border: 1px solid #444;
             border-radius: 6px;
             cursor: pointer;
             outline: none;
+            max-width: 160px;
         }
         .language-select option {
             background-color: #1f1f1f;
@@ -46,7 +49,7 @@
             padding: 10px;
         }
         main {
-            padding: 40px;
+            padding: 20px;
             max-width: 900px;
             margin: 0 auto;
         }
@@ -55,19 +58,19 @@
             background-color: #181818;
             border: 1px solid #2a2a2a;
             border-radius: 8px;
-            padding: 30px;
-            margin-top: 20px;
+            padding: 20px;
+            margin-top: 15px;
         }
         .language-content-section.active {
             display: block;
         }
         .lang-block {
-            line-height: 1.8;
-            font-size: 16px;
+            line-height: 1.7;
+            font-size: 15px;
             color: #e0e0e0;
         }
         .lang-block p {
-            margin: 0 0 12px 0;
+            margin: 0 0 10px 0;
         }
     </style>
 </head>
@@ -77,7 +80,7 @@
         <div class="logo">HK-MOVIE</div>
         <div>
             <select name="language" id="language-select" class="language-select" aria-label="언어 선택" onchange="changeLanguage(this.value)">
-                <option value="" disabled selected>언어 선택 / Select Language</option>
+                <option value="" disabled selected>언어 선택</option>
                 <option value="ko">한국어 (Korean)</option>
                 <option value="en">영어 (English)</option>
                 <option value="zh">중국어 (中文)</option>
@@ -179,7 +182,7 @@
                 <p>Ласкаво просимо до HK-MOVIE, вашого головного світового стрімінгового та розважального порталу.</p>
                 <p>Досліджуйте величезну бібліотеку блокбастерів, незалежних фільмів та ексклюзивного контенту.</p>
                 <p>Зручно налаштовуйте улюблені субтитри, аудіодоріжки та параметри роздільної здатності.</p>
-                <p>Насолоджуйтеся неперервними кінематографічними враженнями на базі передової платформи.</p>
+                <p>Наслалоджуйтеся неперервними кінематографічними враженнями на базі передової платформи.</p>
             </div>
         </div>
 

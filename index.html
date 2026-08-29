@@ -48,7 +48,7 @@
         .hero-container {
             width: 100%;
             max-width: 900px;
-            padding: 110px 20px 20px 20px;
+            padding: 110px 20px 10px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -60,6 +60,75 @@
             color: #e50914;
             letter-spacing: 3px;
             text-shadow: 0 4px 20px rgba(229, 9, 20, 0.4);
+        }
+        /* 다국어 선택 바 스타일 */
+        .language-bar-container {
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 30px;
+            margin: 20px 0 30px 0;
+        }
+        .language-bar {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scrollbar-width: thin;
+            scrollbar-color: #e50914 #1a1a1a;
+        }
+        .language-bar::-webkit-scrollbar {
+            height: 6px;
+        }
+        .language-bar::-webkit-scrollbar-thumb {
+            background-color: #e50914;
+            border-radius: 3px;
+        }
+        .lang-tab {
+            background-color: #1a1a1a;
+            color: #aaa;
+            border: 1px solid #333;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+        .lang-tab:hover {
+            color: #fff;
+            border-color: #777;
+        }
+        .lang-tab.active {
+            background-color: #e50914;
+            color: #fff;
+            border-color: #e50914;
+            box-shadow: 0 0 12px rgba(229, 9, 20, 0.5);
+        }
+        /* 언어별 환영 메시지 박스 */
+        .welcome-box-container {
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 30px;
+            margin-bottom: 40px;
+        }
+        .welcome-content {
+            display: none;
+            background-color: #161616;
+            border: 1px solid #262626;
+            border-radius: 12px;
+            padding: 20px 25px;
+            font-size: 15px;
+            color: #d1d1d1;
+            line-height: 1.6;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .welcome-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         main {
             width: 100%;
@@ -228,6 +297,60 @@
         <div class="logo">HK-MOVIE</div>
     </div>
 
+    <!-- 국가별 언어 선택 바 -->
+    <div class="language-bar-container">
+        <div class="language-bar">
+            <button class="lang-tab active" onclick="switchLang('ko', this)">🇰🇷 한국어</button>
+            <button class="lang-tab" onclick="switchLang('en', this)">🇺🇸 영어</button>
+            <button class="lang-tab" onclick="switchLang('zh', this)">🇨🇳 중국어</button>
+            <button class="lang-tab" onclick="switchLang('ar', this)">🇸🇦 아랍어</button>
+            <button class="lang-tab" onclick="switchLang('hi', this)">🇮🇳 인도어</button>
+            <button class="lang-tab" onclick="switchLang('es', this)">🇪🇸 스페인어</button>
+            <button class="lang-tab" onclick="switchLang('br', this)">🇧🇷 브라질어</button>
+            <button class="lang-tab" onclick="switchLang('uk', this)">🇺🇦 우크라이나어</button>
+            <button class="lang-tab" onclick="switchLang('ja', this)">🇯🇵 일본어</button>
+            <button class="lang-tab" onclick="switchLang('ru', this)">🇷🇺 러시아어</button>
+            <button class="lang-tab" onclick="switchLang('vi', this)">🇻🇳 베트남어</button>
+            <button class="lang-tab" onclick="switchLang('th', this)">🇹🇭 태국어</button>
+            <button class="lang-tab" onclick="switchLang('id', this)">🇮🇩 인도네시아어</button>
+            <button class="lang-tab" onclick="switchLang('ps', this)">🇵🇸 팔레스타인어</button>
+            <button class="lang-tab" onclick="switchLang('de', this)">🇩🇪 독일어</button>
+            <button class="lang-tab" onclick="switchLang('it', this)">🇮🇹 이태리어</button>
+            <button class="lang-tab" onclick="switchLang('fr', this)">🇫🇷 프랑스어</button>
+            <button class="lang-tab" onclick="switchLang('ng', this)">🇳🇬 나이지리아</button>
+            <button class="lang-tab" onclick="switchLang('cm', this)">🇨🇲 카메룬</button>
+            <button class="lang-tab" onclick="switchLang('za', this)">🇿🇦 남아공</button>
+            <button class="lang-tab" onclick="switchLang('sd', this)">🇸🇩 수단</button>
+            <button class="lang-tab" onclick="switchLang('et', this)">🇪🇹 에티오피아</button>
+        </div>
+    </div>
+
+    <!-- 국가별 언어 환영 메시지 박스 -->
+    <div class="welcome-box-container">
+        <div id="msg-ko" class="welcome-content active">HK-MOVIE에 오신 것을 환영합니다. 전 세계의 다양한 영화와 콘텐츠를 최첨단 웹3 인프라로 즐겨보세요.</div>
+        <div id="msg-en" class="welcome-content">Welcome to HK-MOVIE. Enjoy global movies and contents powered by cutting-edge Web3 infrastructure.</div>
+        <div id="msg-zh" class="welcome-content">欢迎来到 HK-MOVIE。体验由尖端 Web3 基础设施驱动的全球电影和内容。</div>
+        <div id="msg-ar" class="welcome-content" dir="rtl">أهلاً بك في HK-MOVIE. استمتع بالأفلام والمحتويات العالمية مدعومة ببنية تحتية متطورة لـ Web3.</div>
+        <div id="msg-hi" class="welcome-content">HK-MOVIE मेंआपकास्वागतहै। अत्याधुनिक वेब3 बुनियादी ढांचे द्वारा संचालित वैश्विक फिल्मों और सामग्री का आनंद लें।</div>
+        <div id="msg-es" class="welcome-content">Bienvenido a HK-MOVIE. Disfruta de películas y contenidos globales impulsados por infraestructura Web3 de vanguardia.</div>
+        <div id="msg-br" class="welcome-content">Bem-vindo ao HK-MOVIE. Desfrute de filmes e conteúdos globais alimentados por infraestrutura Web3 de ponta.</div>
+        <div id="msg-uk" class="welcome-content">Ласкаво просимо до HK-MOVIE. Насолоджуйтесь світовими фільмами та контентом на базі передової інфраструктури Web3.</div>
+        <div id="msg-ja" class="welcome-content">HK-MOVIEへようこそ。最先端のWeb3インフラストラク처による世界中の映画やコンテンツをお楽しみください。</div>
+        <div id="msg-ru" class="welcome-content">Добро пожаловать в HK-MOVIE. Наслаждайтесь мировыми фильмами и контентом на базе передовой инфраструктуры Web3.</div>
+        <div id="msg-vi" class="welcome-content">Chào mừng bạn đến với HK-MOVIE. Tận hưởng các bộ phim và nội dung toàn cầu được cung cấp bởi cơ sở hạ tầng Web3 tiên tiến.</div>
+        <div id="msg-th" class="welcome-content">ยินดีต้อนรับสู่ HK-MOVIE เพลิดเพลินกับภาพยนตร์และเนื้อหาระดับโลกที่ขับเคลื่อนด้วยโครงสร้างพื้นฐาน Web3 ที่ล้ำสมัย</div>
+        <div id="msg-id" class="welcome-content">Selamat datang di HK-MOVIE. Nikmati film dan konten global yang didukung oleh infrastruktur Web3 canggih.</div>
+        <div id="msg-ps" class="welcome-content" dir="rtl">أهلاً فيك بـ HK-MOVIE. استمتع بالأفلام والمحتوى العالمي المدعوم ببنية Web3 الرقمية.</div>
+        <div id="msg-de" class="welcome-content">Willkommen bei HK-MOVIE. Genießen Sie globale Filme und Inhalte, die auf modernster Web3-Infrastruktur basieren.</div>
+        <div id="msg-it" class="welcome-content">Benvenuto su HK-MOVIE. Goditi film e contenuti globali supportati da un'infrastruttura Web3 all'avanguardia.</div>
+        <div id="msg-fr" class="welcome-content">Bienvenue sur HK-MOVIE. Profitez de films et de contenus mondiaux propulsés par une infrastructure Web3 de pointe.</div>
+        <div id="msg-ng" class="welcome-content">Welcome to HK-MOVIE. Enjoy global film and entertainment powered by top Web3 tech.</div>
+        <div id="msg-cm" class="welcome-content">Bienvenue na HK-MOVIE. Enjoy beta films and contents wey Web3 network dey carry.</div>
+        <div id="msg-za" class="welcome-content">Wamkelekile ku HK-MOVIE. Jabulela amafilimu nemikhiqizo yomhlaba wonke nge-Web3 esezingeni eliphezulu.</div>
+        <div id="msg-sd" class="welcome-content" dir="rtl">مرحباً بك في HK-MOVIE. استمتع بالأفلام والمحتوى العالمي مدعوم بأحدث تقنيات الويب 3.</div>
+        <div id="msg-et" class="welcome-content">እንኳን ወደ HK-MOVIE በደህና መጡ። በዘመናዊ የዌብ3 መሠረተ ልማት የተደገፉ ዓለም አቀፍ ፊልሞችን እና ይዘቶችን ይደሰቱ።</div>
+    </div>
+
     <main>
         <!-- 실질 영화 추천 포스터 그리드 -->
         <div class="section-title">실시간 추천 마스터피스</div>
@@ -297,6 +420,23 @@
     </div>
 
     <script>
+        function switchLang(langCode, btnElement) {
+            // 모든 환영 메시지 숨기기
+            const messages = document.querySelectorAll('.welcome-content');
+            messages.forEach(msg => msg.classList.remove('active'));
+
+            // 선택한 언어 메시지 보이기
+            const targetMsg = document.getElementById('msg-' + langCode);
+            if (targetMsg) {
+                targetMsg.classList.add('active');
+            }
+
+            // 모든 탭에서 active 제거 후 클릭한 탭에 추가
+            const tabs = document.querySelectorAll('.lang-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            btnElement.classList.add('active');
+        }
+
         function openVideoModal(title, url) {
             document.getElementById('modalTitle').innerText = title + ' 재생 중';
             document.getElementById('modalIframe').src = url + '?autoplay=1';
@@ -305,7 +445,7 @@
 
         function closeVideoModal() {
             document.getElementById('videoModal').style.display = 'none';
-            document.getElementById('modalIframe').src = 말('');
+            document.getElementById('modalIframe').src = '';
         }
 
         function openLoginModal() {

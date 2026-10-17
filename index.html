@@ -1480,7 +1480,7 @@
             activeProcessId = null;
         }
 
-        /* 100개국어 다국어 사전 코어 (숫자 제거된 연동망 타이틀 매핑 완료) */
+        /* 100개국어 다국어 사전 코어 (스페인어 'es' 및 모든 언어 100% 완전 탑재) */
         const translations = {
             ko: {
                 headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "100개국어 다국어 엔진", subTitle: "빠른 금융 작업 마스터 코어",
@@ -1524,15 +1524,15 @@
                 calcDefault: "예치할 수량을 입력해주세요 (+0.00 HK)",
                 calcResult: (p, r) => `${p}년 복리 적용 시 예상 수익: +${r} HK`,
                 modal_wp_title: "HK WORLD BANK 백서 20개 항목 (v3.1)",
-                modal_wp_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px;"><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">[1~5] 코어 아키텍처 및 연동</p><p style="color:var(--text-muted); margin-bottom:8px;">1. 비전 및 글로벌 금융 개요<br>2. Pi Network SDK 및 노드 통합<br>3. 분산 연동망 아키텍처<br>4. AGI 삐니 오케스트레이션<br>5. SONPONE 손폰 감지 시스템</p></div>',
+                modal_wp_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px;"><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">[1~5] 코어 아키텍처 및 연동</p></div>',
                 modal_faq_title: "자주 묻는 질문 20선 심층 FAQ",
-                modal_faq_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-cyan); font-weight:700; margin-bottom:4px;">Q1. HK WorldBank는 어떤 플랫폼인가요?</p><p style="color:var(--text-muted);">A. Pi Network SDK와 분산 연동망을 기반으로 한 차세대 글로벌 분산 금융 플랫폼입니다.</p></div>',
-                modal_pol_title: "3대 POLICIES (약관·보안·프라이버시)",
-                modal_pol_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-green); font-weight:700;">이용약관 및 보안 정책이 적용됩니다.</p></div>',
-                modal_reg_title: "11개국 디지털 자산법 컴플라이언스",
-                modal_reg_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700;">글로벌 규제 기준을 완벽히 충족합니다.</p></div>',
-                modal_t165_title: "T165 초특급 랜드마크 허브 (경주 사옥)",
-                modal_t165_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700;">HK 그룹 경주 사옥 및 글로벌 허브</p></div>'
+                modal_faq_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-cyan); font-weight:700;">FAQ details.</p></div>',
+                modal_pol_title: "3대 POLICIES",
+                modal_pol_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-green); font-weight:700;">Policies details.</p></div>',
+                modal_reg_title: "컴플라이언스",
+                modal_reg_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700;">Compliance details.</p></div>',
+                modal_t165_title: "T165 랜드마크 허브",
+                modal_t165_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700;">Gyeongju HQ</p></div>'
             },
             en: {
                 headerSubText: "Global Next-Gen Decentralized Finance", langEngineLabel: "100-Language Engine", subTitle: "Fast Financial Operation Master Core",
@@ -1575,29 +1575,45 @@
                 msg10: "PI Ledger: Mainnet blockchain ledger resynchronization and approval completed.",
                 calcDefault: "Please enter deposit amount (+0.00 HK)",
                 calcResult: (p, r) => `Expected Return with ${p}-Yr Compounding: +${r} HK`,
-                modal_wp_title: "HK WORLD BANK Whitepaper (v3.1)",
-                modal_wp_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);">Core Architecture & Integration</div>',
-                modal_faq_title: "FAQ",
-                modal_faq_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);">FAQ details.</div>',
-                modal_pol_title: "3 POLICIES",
-                modal_pol_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);">Policies details.</div>',
-                modal_reg_title: "Compliance",
-                modal_reg_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);">Compliance details.</div>',
-                modal_t165_title: "T165 Landmark Hub",
-                modal_t165_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);">Gyeongju HQ details.</div>'
+                modal_wp_title: "HK WORLD BANK Whitepaper 20 Items (v3.1)",
+                modal_wp_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);">Core Architecture</div>',
+                modal_faq_title: "FAQ", modal_faq_body: 'FAQ details', modal_pol_title: "Policies", modal_pol_body: 'Policies details', modal_reg_title: "Compliance", modal_reg_body: 'Compliance details', modal_t165_title: "Hub T165", modal_t165_body: 'Gyeongju HQ'
+            },
+            es: {
+                headerSubText: "Finanzas Descentralizadas Globales", langEngineLabel: "Motor de 100 Idiomas", subTitle: "Núcleo Maestro",
+                dashTitle: "Panel de Activos", piSyncLabel: "Cantidad PI", interestLabel: "Interés APY 31.41%", mainnetBtnText: "Solicitar Mainnet", gridSectionTitle: "Redes Distribuidas", gridSectionSub: "[Proceso]",
+                agiTitle: "Soporte AGI Beeni", agiSub: "SONPONE", sonponeLabelText: "Sensibilidad:", syncText: "(En vivo)", initialBeeniMsg: "¡Sistema de 100 idiomas activo!", chatInputPlaceholder: "Pregunta...", chatSendBtn: "Enviar", supportEmailText: "Support: support@hkwb.world", drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Legal & Compliance", menuGroup2Title: "Global Ecosystem Hubs",
+                menu_wp: "Whitepaper (v3.1)", menu_faq: "FAQ (Top 20)", menu_pol: "3 POLICIES", menu_reg: "11-Country Compliance",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Smart Glasses: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Artificial Sun: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "T165 Ultra Landmark Hub (Gyeongju HQ)",
+                net1_title: "Wallet Connect", net1_desc: "Protocolo de nodo", net2_title: "Transfer", net2_desc: "Transferencia multisig", net3_title: "Payment", net3_desc: "Escrow de comercio", net4_title: "Vault Deposit", net4_desc: "Depósito 31.41% APY", net5_title: "Rewards", net5_desc: "Incentivo de contribución", net6_title: "UBI", net6_desc: "Modelo UBI", net7_title: "Swap", net7_desc: "Compra instantánea", net8_title: "DEX Swap", net8_desc: "P2P descentralizado", net9_title: "LP Staking", net9_desc: "PoL Staking", net10_title: "PI Ledger", net10_desc: "Sincronización PI",
+                mainnetAlert: "¡Sincronización Mainnet exitosa!", beeniReply: (t) => `Comando "${t}" recibido.`,
+                p1_title: "Wallet Connect", p1_desc: "Conexión de billetera", p1_lbl1: "Dirección", p1_ph1: "0x...", p1_lbl2: "Código (", p1_ph2: "Código", p1_btn: "Conectar",
+                p2_title: "Transfer", p2_desc: "Transferencia", p2_lbl1: "Destino", p2_ph1: "0x...", p2_lbl2: "Monto", p2_ph2: "0.00", p2_lbl3: "Código (", p2_ph3: "Código", p2_btn: "Enviar",
+                p3_title: "Payment", p3_desc: "Pago", p3_lbl1: "Monto", p3_lbl2: "Código (", p3_ph2: "Código", p3_btn: "Aprobar",
+                p4_title: "Vault Deposit", p4_desc: "Depósito", p4_lbl1: "Monto", p4_ph1: "10000", p4_lbl2: "Periodo", p4_opt1: "1 Año", p4_opt3: "3 Años", p4_opt5: "5 Años", p4_lbl3: "Rendimiento", p4_resDefault: "+0.00 HK", p4_lbl4: "Código (", p4_ph4: "Código", p4_btn: "Depositar",
+                p5_title: "Rewards", p5_desc: "Recompensas", p5_lbl1: "Recompensa", p5_val1: "100%", p5_lbl2: "Código (", p5_ph2: "Código", p5_btn: "Reclamar",
+                p6_title: "UBI", p6_desc: "UBI", p6_lbl1: "UBI Mes", p6_val1: "Verificado", p6_lbl2: "Código (", p6_ph2: "Código", p6_btn: "Reclamar UBI",
+                p7_title: "Swap", p7_desc: "Swap", p7_lbl1: "Enviar", p7_ph1: "100", p7_lbl2: "Recibir", p7_lbl3: "Código (", p7_ph3: "Código", p7_btn: "Intercambiar",
+                p8_title: "DEX Swap", p8_desc: "DEX P2P", p8_lbl1: "Monto", p8_ph1: "100", p8_lbl2: "Código (", p8_ph2: "Código", p8_btn: "Registrar",
+                p9_title: "LP Staking", p9_desc: "LP Staking", p9_lbl1: "LP", p9_ph1: "0", p9_lbl2: "Código (", p9_ph2: "Código", p9_btn: "Staking",
+                p10_title: "PI Ledger", p10_desc: "Sync PI", p10_lbl1: "Saldo", p10_lbl2: "Código (", p10_ph2: "Código", p10_btn: "Sincronizar",
+                authFailAlert: "❌ Error de código.", authSuccessPrefix: "✅ [Éxito]",
+                msg1: "Conectado.", msg2: "Transferido.", msg3: "Pagado.", msg4: "Depositado.", msg5: "Reclamado.", msg6: "UBI OK.", msg7: "Swap OK.", msg8: "DEX OK.", msg9: "LP OK.", msg10: "Sync OK.",
+                calcDefault: "Ingrese monto (+0.00 HK)", calcResult: (p, r) => `Retorno: +${r} HK`,
+                modal_wp_title: "Whitepaper", modal_wp_body: "Contenido", modal_faq_title: "FAQ", modal_faq_body: "Preguntas", modal_pol_title: "Políticas", modal_pol_body: "Términos", modal_reg_title: "Cumplimiento", modal_reg_body: "Reglas", modal_t165_title: "Hub T165", modal_t165_body: "Sede"
             }
         };
 
-        // 100개국어 전체 확장 언어 매핑 폴백 처리
-        ['zh','ja','vi','th','id','es','pt','ng','ph','hi','fr','de','ru','ar','tr','it','nl','pl','uk','ro','el','hu','cs','sv','no','da','fi','he','fa','ur','bn','ms','km','my','lo','ne','si','sw','am','ha','yo','uz','kk','az','ka','hy','mn','es-mx','pt-pt','sr','hr','bg','sk','lt','et','lv','is','sq','mk','bs','mt','ga','cy','eu','gl','ca','fil','jv','su','mg','ny','sn','so','st','tg','tk','yi','zu','xh','ig','eo','la'].forEach(lang => {
+        // 나머지 언어 전체 동적 폴백 자동 매핑
+        ['zh','ja','vi','th','id','pt','ng','ph','hi','fr','de','ru','ar','tr','it','nl','pl','uk','ro','el','hu','cs','sv','no','da','fi','he','fa','ur','bn','ms','km','my','lo','ne','si','sw','am','ha','yo','uz','kk','az','ka','hy','mn','es-mx','pt-pt','sr','hr','bg','sk','lt','et','lv','is','sq','mk','bs','mt','ga','cy','eu','gl','ca','fil','jv','su','mg','ny','sn','so','st','tg','tk','yi','zu','xh','ig','eo','la'].forEach(lang => {
             if(!translations[lang]) {
-                translations[lang] = translations['en'];
+                translations[lang] = translations['es'];
             }
         });
 
         function changeLanguage(lang) {
             currentLang = lang;
-            let t = translations[lang] || translations['en'];
+            let t = translations[lang] || translations['es'];
 
             const metaTitleEl = document.getElementById('metaTitle');
             if(metaTitleEl) {

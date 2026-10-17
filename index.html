@@ -994,7 +994,7 @@
         </footer>
     </div>
 
-    <!-- Slide-out Navigation Drawer (네비게이터 100% 번역 동기화) -->
+    <!-- Slide-out Navigation Drawer (네비게이터 메뉴 100% 동기화) -->
     <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawerOutside(event)">
         <div class="drawer-content">
             <div class="drawer-header">
@@ -1404,7 +1404,7 @@
             activeProcessId = null;
         }
 
-        /* 뼈속까지 60개국어 지원 다국어 엔진 사전 데이터 */
+        /* 60개국어 지원 다국어 엔진 사전 데이터 (숫자 제거 및 완벽 번역) */
         const translations = {
             ko: {
                 headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "60개국어 다국어 엔진", subTitle: "빠른 금융 작업 마스터 코어",
@@ -1448,11 +1448,11 @@
                 calcDefault: "예치할 수량을 입력해주세요 (+0.00 HK)",
                 calcResult: (p, r) => `${p}년 복리 적용 시 예상 수익: +${r} HK`,
                 modal_wp_title: "HK WORLD BANK 백서 상세",
-                modal_wp_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700;">[핵심 아키텍처]</p><p style="color:var(--text-muted);">1. 비전 및 글로벌 금융 개요<br>2. Pi Network SDK 및 노드 통합<br>3. 분산 연동망 아키텍처<br>4. AGI 삐니 오케스트레이션</p></div>',
+                modal_wp_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700;">[핵심 아키텍처]</p><p style="color:var(--text-muted);">비전 및 글로벌 금융 개요<br>Pi Network SDK 및 노드 통합<br>분산 연동망 아키텍처<br>AGI 삐니 오케스트레이션</p></div>',
                 modal_faq_title: "자주 묻는 질문 FAQ",
                 modal_faq_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-cyan); font-weight:700;">Q. HK WorldBank는 어떤 플랫폼인가요?</p><p style="color:var(--text-muted);">A. Pi Network SDK 기반 차세대 분산 금융 플랫폼입니다.</p></div>',
                 modal_pol_title: "보안 및 약관",
-                modal_pol_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-green); font-weight:700;">1. 이용약관 및 보안</p><p style="color:var(--text-muted);">24시간 AGI 실시간 방어막 가동 중입니다.</p></div>',
+                modal_pol_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-green); font-weight:700;">이용약관 및 보안</p><p style="color:var(--text-muted);">24시간 AGI 실시간 방어막 가동 중입니다.</p></div>',
                 modal_reg_title: "디지털 자산법 컴플라이언스",
                 modal_reg_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700;">✔ 글로벌 규제 준수</p><p style="color:var(--text-muted);">전 세계 규제 기준 충족 및 경주 사옥 연동 완료.</p></div>',
                 modal_t165_title: "랜드마크 허브 (경주 사옥)",
@@ -1539,23 +1539,23 @@
                 net9_title: "流動性預金", net9_desc: "流動性供給証明(PoL)および高配当権利", net10_title: "パイコイン数量", net10_desc: "PI資産メインネット台帳リアルタイム同期",
                 mainnetAlert: "PIメインネット台帳同期が完了しました！", beeniReply: (txt) => `[AGI 삐니]: "${txt}" の命令を受信しました。`,
                 p1_title: "ウォレット接続", p1_desc: "アドレスとコードを入力してください。", p1_lbl1: "ウォレットアドレス", p1_ph1: "アドレスを入力", p1_lbl2: "認証コード", p1_ph2: "コードを入力", p1_btn: "承認して接続",
-                p2_title: "送金", p2_desc: "暗号化転送プロセス。", p2_lbl1: "受信者アドレス", p2_ph1: "アドレスを入力", p2_lbl2: "送信数量", p2_ph2: "数量を入力", p2_lbl3: "セキュリティコード", p2_ph3: "コード 입력", p2_btn: "送金要求",
+                p2_title: "送金", p2_desc: "暗号化転送プロセス。", p2_lbl1: "受信者アドレス", p2_ph1: "アドレスを入力", p2_lbl2: "送信数量", p2_ph2: "数量を入力", p2_lbl3: "セキュリティコード", p2_ph3: "コード入力", p2_btn: "送金要求",
                 p3_title: "決済", p3_desc: "エスクロー決済プロセス。", p3_lbl1: "決済金額", p3_ph1: "金額を入力", p3_lbl2: "承認コード", p3_ph2: "コードを入力", p3_btn: "エスクロー承認",
                 p4_title: "預金ボルト", p4_desc: "資産信託ボルト預金プロセス。", p4_lbl1: "預金数量", p4_ph1: "数量を入力", p4_lbl2: "預金期間", p4_opt1: "1年 (APY 15.5%)", p4_opt3: "3年 (APY 31.41%)", p4_opt5: "5年 (APY 45.0%)", p4_lbl3: "予想収益", p4_resDefault: "予想収益: +0.00 HK", p4_lbl4: "セキュリティコード", p4_ph4: "コードを入力", p4_btn: "預金承認",
-                p5_title: "報酬ボルト", p5_desc: "貢献度報酬受령プロセス。", p5_lbl1: "報酬状況", p5_val1: "貢献度 100%", p5_lbl2: "承認コード", p5_ph2: "コードを入力", p5_btn: "報酬受領",
+                p5_title: "報酬ボルト", p5_desc: "貢献度報酬受領プロセス。", p5_lbl1: "報酬状況", p5_val1: "貢献度 100%", p5_lbl2: "承認コード", p5_ph2: "コードを入力", p5_btn: "報酬受領",
                 p6_title: "ベーシックインカム", p6_desc: "UBI分配請求プロセス。", p6_lbl1: "UBI状況", p6_val1: "資格確認済み", p6_lbl2: "受給コード", p6_ph2: "コードを入力", p6_btn: "UBI請求",
                 p7_title: "スワップ", p7_desc: "即時コイン購入システム。", p7_lbl1: "送信資産", p7_ph1: "資産を入力", p7_lbl2: "受信資産", p7_ph2: "資産を入力", p7_lbl3: "承認コード", p7_ph3: "コードを入力", p7_btn: "スワップ実行",
                 p8_title: "分散型スワップ", p8_desc: "P2P流動性自動マッチング。", p8_lbl1: "P2P数量", p8_ph1: "数量を入力", p8_lbl2: "DEXコード", p8_ph2: "コードを入力", p8_btn: "P2P注文登録",
                 p9_title: "流動性預金", p9_desc: "流動性供給証明権限。", p9_lbl1: "LP数量", p9_ph1: "数量を入力", p9_lbl2: "LPコード", p9_ph2: "コードを入力", p9_btn: "流動性預金登録",
                 p10_title: "パイコイン数量", p10_desc: "台帳同期プロセス。", p10_lbl1: "同期する残高", p10_ph1: "残高を入力", p10_lbl2: "同期コード", p10_ph2: "コードを入力", p10_btn: "台帳同期実行",
                 authFailAlert: "❌ 認証コードを正確に入力してください。", authSuccessPrefix: "✅ [認証成功]",
-                msg1: "ウォレットが接続されました。", msg2: "送금要求が処理されました。", msg3: "決済が承認されました。", msg4: "ボルトに預金されました。", msg5: "報酬を受領しました。", msg6: "UBIが支給されました。", msg7: "スワップが完了しました。", msg8: "P2Pマッチングが完了しました。", msg9: "預金が登録されました。", msg10: "台帳が同期されました。",
+                msg1: "ウォレットが接続されました。", msg2: "送金要求が処理されました。", msg3: "決済が承認されました。", msg4: "ボルトに預金されました。", msg5: "報酬を受領しました。", msg6: "UBIが支給されました。", msg7: "スワップが完了しました。", msg8: "P2Pマッチングが完了しました。", msg9: "預金が登録されました。", msg10: "台帳が同期されました。",
                 calcDefault: "預金数量を入力してください (+0.00 HK)", calcResult: (p, r) => `予想収益 (${p}年): +${r} HK`,
-                modal_wp_title: "白書", modal_wp_body: "白書内容詳細", modal_faq_title: "よくある質問", modal_faq_body: "FAQ詳細", modal_pol_title: "規約とセキュリティ", modal_pol_body: " security policy", modal_reg_title: "コンプライアンス", modal_reg_body: "デジタル資産法", modal_t165_title: "ランドマークハブ", modal_t165_body: "慶州本社"
+                modal_wp_title: "白書", modal_wp_body: "白書内容詳細", modal_faq_title: "よくある質問", modal_faq_body: "FAQ詳細", modal_pol_title: "規約とセキュリティ", modal_pol_body: "security policy", modal_reg_title: "コンプライアンス", modal_reg_body: "デジタル資産法", modal_t165_title: "ランドマークハブ", modal_t165_body: "慶州本社"
             }
         };
 
-        /* 뼈속까지 변환하는 언어 변경 함수 */
+        /* 언어 선택 시 실시간 동기화 함수 */
         function changeLanguage(lang) {
             currentLang = lang;
             let t = translations[lang] || translations['en'];
@@ -1565,7 +1565,7 @@
                 metaTitleEl.innerText = t.dashTitle ? `HK WORLD BANK | ${t.dashTitle}` : "HK WORLD BANK";
             }
            
-            // 1. 모든 HTML 태그 내 data-i18n 텍스트 즉각 교체 (네비게이터 메뉴 포함)
+            // 1. 모든 HTML 요소 텍스트 실시간 반영 (네비게이터 메뉴 포함)
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -1576,7 +1576,7 @@
                 }
             });
 
-            // 2. 플레이스홀더 교체
+            // 2. 입력 박스 힌트 문구 반영
             const inputs = document.querySelectorAll('[data-i18n-placeholder]');
             inputs.forEach(input => {
                 const key = input.getAttribute('data-i18n-placeholder');
@@ -1593,7 +1593,7 @@
                 updateSonpone(slider.value);
             }
 
-            // 3. 열려있는 모달 창 텍스트 실시간 재초기화
+            // 3. 열려있는 모달창 텍스트 실시간 동기화
             if (activeProcessId) {
                 renderProcessModalContent();
             } else if (activeModalType) {

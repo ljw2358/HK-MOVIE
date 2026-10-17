@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title id="metaTitle">HK WORLD BANK | 글로벌 차세대 분산 금융 플랫폼 (2000 Lines Master Edition)</title>
+    <title id="metaTitle">HK WORLD BANK | 글로벌 차세대 분산 금융 플랫폼</title>
     <!-- FontAwesome Icons & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -819,7 +819,7 @@
             </button>
             <div class="header-center-title">
                 <h2>HK WORLD BANK</h2>
-                <p data-i18n="headerSubText">글로벌 차세대 분산 금융 플랫폼</p>
+                <p data-i18n="headerSubText">글로벌 차세대 분산 금융</p>
             </div>
             <div class="profile-badge">HK</div>
         </header>
@@ -1137,7 +1137,7 @@
         </div>
     </div>
 
-    <!-- JavaScript Platform Logic & True 60-Country Universal Translation Engine (2000 Lines Master Block) -->
+    <!-- JavaScript Platform Logic & True 60-Country Universal Translation Engine -->
     <script>
         let baseInterest = 12450892.600000;
         let currentWalletBalance = 314159.000000;
@@ -1225,6 +1225,13 @@
             }
         }
 
+        function autoLoadWalletAddress() {
+            const walletInput = document.getElementById('nodeWalletAddress');
+            if(walletInput) {
+                walletInput.value = "GBX7QZ4HKWB2026PISTTNETNODEUSER";
+            }
+        }
+
         function renderProcessModalContent() {
             const processId = activeProcessId;
             if (!processId) return;
@@ -1242,7 +1249,7 @@
                 content.innerHTML = `
                     <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p1_desc}</div>
                     <div class="input-group">
-                        <label class="input-label">${t.p1_lbl1}</label>
+                        <label class="input-label"><span>${t.p1_lbl1}</span> <button class="max-btn" onclick="autoLoadWalletAddress()">자동 연동</button></label>
                         <input class="form-control" id="nodeWalletAddress" placeholder="${t.p1_ph1}">
                     </div>
                     <div class="input-group">
@@ -1565,14 +1572,14 @@
                 agiTitle: "AGI 삐니 고객센터", agiSub: "손폰(SONPONE) 자동 반응 및 AI 오케스트레이션", sonponeLabelText: "손폰(SONPONE) 감지 감도:", syncText: "(실시간 싱크)",
                 initialBeeniMsg: "[AGI 삐니]: 테스트 파이 환경 및 60개국어 실시간 교차 추론 시스템이 완벽하게 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!",
                 chatInputPlaceholder: "삐니에게 질문 입력...", chatSendBtn: "전송", supportEmailText: "Support: support@hkwb.world",
-                net1_title: "지갑연결", net1_desc: "테스트넷 지갑 프로토콜 연동 및 인증", net2_title: "송금", net2_desc: "테스트 파이 초고속 멀티시그 암호화 전송",
+                net1_title: "지갑연결", net1_desc: "테스트넷 지갑 프로토콜 연동 및 자동 연동", net2_title: "송금", net2_desc: "테스트 파이 초고속 멀티시그 암호화 전송",
                 net3_title: "결재", net3_desc: "테스트 파이 상거래 실시간 에스크로", net4_title: "예치", net4_desc: "3년 만기 31.41% APY 자산 신탁 볼트",
                 net5_title: "보상", net5_desc: "테스트 기여도 기반 인센티브 적립 엔진", net6_title: "기본소득", net6_desc: "HK 사회 재단 테스트 UBI 분배 모델",
                 net7_title: "스왑", net7_desc: "테스트 파이 즉각 코인 구매 및 교환 스왑", net8_title: "DEX 스왑", net8_desc: "탈중앙화 오더레스 P2P 유동성 자동매칭",
                 net9_title: "LP 스테이킹", net9_desc: "유동성 공급 증명(PoL) 및 고배당 권한", net10_title: "파이 수량", net10_desc: "테스트 파이 자산 메인넷 원장 동기화",
                 mainnetAlert: "테스트 파이(Testnet Pi) 원장 동기화 및 테스트넷 전송 신청이 정상적으로 완료되었습니다!",
                 beeniReply: (txt) => `[AGI 삐니]: "${txt}" 명령을 수신했습니다. 테스트 파이 연동망 및 AGI 백엔드에서 실시간 처리 중입니다.`,
-                p1_title: "지갑연결", p1_desc: "테스트 파이 지갑 주소를 직접 입력하고 보안 인증을 진행하세요.", p1_lbl1: "테스트넷 지갑 주소", p1_ph1: "G...로 시작하는 테스트넷 지갑 주소를 입력하세요", p1_lbl2: "인증번호 (발급됨:", p1_ph2: "6자리 인증번호를 입력하세요", p1_btn: "인증번호 승인 및 지갑 연결",
+                p1_title: "지갑연결", p1_desc: "자동 연동 버튼을 눌러 테스트 파이 지갑 주소를 즉시 불러오세요.", p1_lbl1: "테스트넷 지갑 주소", p1_ph1: "자동 연동 버튼을 누르세요", p1_lbl2: "인증번호 (발급됨:", p1_ph2: "6자리 인증번호를 입력하세요", p1_btn: "인증번호 승인 및 지갑 연결",
                 p2_title: "송금", p2_desc: "테스트 파이 초고속 멀티시그 암호화 전송을 실행합니다.", p2_lbl1: "수신자 테스트넷 지갑 주소", p2_ph1: "G... 또는 Pi Test ID", p2_lbl2: "전송 수량 (Test Pi)", p2_ph2: "보낼 수량을 입력하세요", p2_lbl3: "보안 인증번호 (발급됨:", p2_ph3: "6자리 인증번호 입력", p2_btn: "테스트 송금 실행",
                 p3_title: "결재", p3_desc: "실시간 에스크로 안전 결재 테스트를 진행합니다.", p3_lbl1: "결재할 수량 및 금액", p3_lbl2: "결재 승인 인증번호 (발급됨:", p3_ph2: "6자리 인증번호 입력", p3_btn: "에스크로 결재 승인",
                 p4_title: "예치", p4_desc: "3년 만기 31.41% APY 자산 신탁 볼트 예치를 진행합니다.", p4_lbl1: "예치할 테스트 파이 수량", p4_ph1: "예치할 수량을 입력하세요", p4_lbl2: "예치 기간", p4_opt1: "1년 (APY 15.5%)", p4_opt3: "3년 (APY 31.41%)", p4_opt5: "5년 (APY 45.0%)", p4_lbl3: "예상 수익금 및 이자", p4_resDefault: "예상 수익: +0.00 Test Pi", p4_lbl4: "볼트 보안 인증번호 (발급됨:", p4_ph4: "6자리 인증번호 입력", p4_btn: "볼트 예치 승인",
@@ -1584,7 +1591,7 @@
                 p10_title: "파이 수량", p10_desc: "테스트 파이 자산 원장 수량을 직접 관리하고 동기화합니다.", p10_lbl1: "파이 보유 수량 입력", p10_lbl2: "동기화 인증번호 (발급됨:", p10_ph2: "6자리 인증번호 입력", p10_btn: "원장 동기화 실행",
                 authFailAlert: "❌ 인증번호가 일치하지 않습니다. 발급된 6자리 인증번호를 정확히 입력해 주세요.",
                 authSuccessPrefix: "✅ [테스트 인증 성공]",
-                msg1: "지갑연결: 테스트넷 지갑 주소 인증이 완료되어 안전하게 연결되었습니다.",
+                msg1: "지갑연결: 테스트넷 지갑 주소 자동 연동 및 인증이 완료되었습니다.",
                 msg2: "송금: 테스트 파이 멀티시그 암호화 전송 및 승인이 완료되었습니다.",
                 msg3: "결재: 에스크로 결제 및 인증이 정상 승인되었습니다.",
                 msg4: "예치: 자산 신탁 볼트 예치 및 복리 이자 설정이 완료되었습니다.",
@@ -1620,14 +1627,14 @@
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
                 menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Policies", menu_reg: "11-Nation Compliance",
                 hub_robot: "Robot: HK-ROBOT", hub_nexus: "Smart Glasses: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Artificial Sun: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "T165 Landmark Hub (Gyeongju HQ)",
-                net1_title: "Wallet Connect", net1_desc: "Testnet wallet protocol link & auth", net2_title: "Transfer", net2_desc: "Testnet multisig encrypted transfer",
+                net1_title: "Wallet Connect", net1_desc: "Testnet wallet auto-link & auth", net2_title: "Transfer", net2_desc: "Testnet multisig encrypted transfer",
                 net3_title: "Payment", net3_desc: "Testnet commerce escrow", net4_title: "Vault Deposit", net4_desc: "3-Year 31.41% APY trust vault",
                 net5_title: "Rewards", net5_desc: "Contribution incentive vault", net6_title: "UBI", net6_desc: "HK Social Foundation UBI model",
                 net7_title: "Swap", net7_desc: "Instant test coin purchase swap", net8_title: "DEX Swap", net8_desc: "Decentralized P2P liquidity matching",
                 net9_title: "LP Staking", net9_desc: "Proof of Liquidity (PoL)", net10_title: "Pi Ledger", net10_desc: "Testnet Pi asset ledger sync",
                 mainnetAlert: "Testnet Pi ledger synchronization and transmission request completed!",
                 beeniReply: (txt) => `[AGI Beeni]: Received command "${txt}". Processing in testnet environment.`,
-                p1_title: "Wallet Connect", p1_desc: "Enter your testnet wallet address and security auth.", p1_lbl1: "Testnet Wallet Address", p1_ph1: "Enter testnet wallet address (e.g., G...)", p1_lbl2: "Auth Code (Issued:", p1_ph2: "Enter 6-digit code", p1_btn: "Approve & Connect",
+                p1_title: "Wallet Connect", p1_desc: "Click Auto-Link to load your testnet wallet address instantly.", p1_lbl1: "Testnet Wallet Address", p1_ph1: "Click Auto-Link button", p1_lbl2: "Auth Code (Issued:", p1_ph2: "Enter 6-digit code", p1_btn: "Approve & Connect",
                 p2_title: "Transfer", p2_desc: "Execute testnet multisig encrypted transfer.", p2_lbl1: "Recipient Testnet Address", p2_ph1: "G... or Pi Test ID", p2_lbl2: "Transfer Amount (Test Pi)", p2_ph2: "Enter amount", p2_lbl3: "Security Auth Code (Issued:", p2_ph3: "Enter 6-digit code", p2_btn: "Execute Test Transfer",
                 p3_title: "Payment", p3_desc: "Proceed with real-time escrow secure payment.", p3_lbl1: "Payment Amount", p3_lbl2: "Approval Auth Code (Issued:", p3_ph2: "Enter 6-digit code", p3_btn: "Approve Payment",
                 p4_title: "Vault Deposit", p4_desc: "Deposit into asset trust vault.", p4_lbl1: "Deposit Amount", p4_ph1: "Enter amount", p4_lbl2: "Deposit Period", p4_opt1: "1 Year (APY 15.5%)", p4_opt3: "3 Years (APY 31.41%)", p4_opt5: "5 Years (APY 45.0%)", p4_lbl3: "Expected Return", p4_resDefault: "Expected Return: +0.00 Test Pi", p4_lbl4: "Vault Auth Code (Issued:", p4_ph4: "Enter 6-digit code", p4_btn: "Approve Deposit",
@@ -1636,7 +1643,7 @@
                 p7_title: "Swap", p7_desc: "Instantly purchase and exchange coins.", p7_lbl1: "Send Amount", p7_ph1: "10 Test Pi", p7_lbl2: "Receive Asset", p7_lbl3: "Auth Code (Issued:", p7_ph3: "Enter 6-digit code", p7_btn: "Execute Swap",
                 p8_title: "DEX Swap", p8_desc: "Decentralized P2P liquidity matching.", p8_lbl1: "P2P Amount", p8_ph1: "Enter amount", p8_lbl2: "Auth Code (Issued:", p8_ph2: "Enter 6-digit code", p8_btn: "Approve Order",
                 p9_title: "LP Staking", p9_desc: "Register proof of liquidity.", p9_lbl1: "LP Amount", p9_ph1: "Enter amount", p9_lbl2: "Auth Code (Issued:", p9_ph2: "Enter 6-digit code", p9_btn: "Register Staking",
-                p10_title: "Pi Ledger", p10_desc: "Synchronize testnet Pi ledger quantity.", p10_lbl1: "Pi Amount", p10_lbl2: "Auth Code (Issued:", p9_ph2: "Enter 6-digit code", p9_btn: "Execute Sync",
+                p10_title: "Pi Ledger", p10_desc: "Synchronize testnet Pi ledger quantity.", p10_lbl1: "Pi Amount", p10_lbl2: "Auth Code (Issued:", p9_ph2: "Enter 6-digit code", p10_btn: "Execute Sync",
                 authFailAlert: "❌ Auth code does not match.", authSuccessPrefix: "✅ [Test Auth Successful]",
                 msg1: "Wallet Connect: Node wallet securely connected.", msg2: "Transfer: Multisig transfer processed.", msg3: "Payment: Escrow approved.", msg4: "Vault Deposit: Deposited successfully.", msg5: "Rewards claimed.", msg6: "UBI claimed.", msg7: "Swap completed.", msg8: "DEX order approved.", msg9: "LP Staking registered.", msg10: "Pi ledger synchronized.",
                 calcDefault: "Enter deposit amount (+0.00 Test Pi)",

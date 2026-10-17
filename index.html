@@ -809,7 +809,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="initAppStartup()">
 
     <div class="app-container">
         <!-- Sticky Header Nav Bar -->
@@ -850,7 +850,7 @@
                 <option value="tr">🇹🇷 Türkçe</option>
                 <option value="it">🇮🇹 Italiano</option>
                 <option value="nl">🇳🇱 Nederlands</option>
-                <option value="pl">🇵🇱 Polski</option>
+                <option value="pl">🇳🇱 Polski</option>
                 <option value="uk">🇺🇦 Українська</option>
                 <option value="ro">🇷🇴 Română</option>
                 <option value="el">🇬🇷 Ελληνικά</option>
@@ -944,7 +944,7 @@
                     <div class="card-top-center"><i class="fa-solid fa-link card-icon-1"></i></div>
                     <div>
                         <div class="card-title" data-i18n="net1_title">지갑연결</div>
-                        <div class="card-desc" data-i18n="net1_desc">노드 지갑 프로토콜 연동 및 자동 인증</div>
+                        <div class="card-desc" data-i18n="net1_desc">노드 지갑 프로토콜 연동 및 자동 연동</div>
                     </div>
                 </div>
 
@@ -1145,6 +1145,11 @@
         let generatedAuthCode = "123456";
         let activeProcessId = null;
         let activeModalType = null;
+
+        // 접속 시 자동으로 지갑연결 팝업 띄우기
+        function initAppStartup() {
+            openProcessModal('wallet');
+        }
 
         setInterval(() => {
             baseInterest += 0.001250;
@@ -1579,7 +1584,7 @@
                 net9_title: "LP 스테이킹", net9_desc: "유동성 공급 증명(PoL) 및 고배당 권한", net10_title: "파이 수량", net10_desc: "테스트 파이 자산 메인넷 원장 동기화",
                 mainnetAlert: "테스트 파이(Testnet Pi) 원장 동기화 및 테스트넷 전송 신청이 정상적으로 완료되었습니다!",
                 beeniReply: (txt) => `[AGI 삐니]: "${txt}" 명령을 수신했습니다. 테스트 파이 연동망 및 AGI 백엔드에서 실시간 처리 중입니다.`,
-                p1_title: "지갑연결", p1_desc: "자동 연동 버튼을 눌러 테스트 파이 지갑 주소를 즉시 불러오세요.", p1_lbl1: "테스트넷 지갑 주소", p1_ph1: "자동 연동 버튼을 누르세요", p1_lbl2: "인증번호 (발급됨:", p1_ph2: "6자리 인증번호를 입력하세요", p1_btn: "인증번호 승인 및 지갑 연결",
+                p1_title: "지갑연결", p1_desc: "접속 시 자동 실행: 자동 연동 버튼을 눌러 테스트 파이 지갑 주소를 즉시 불러오세요.", p1_lbl1: "테스트넷 지갑 주소", p1_ph1: "자동 연동 버튼을 누르세요", p1_lbl2: "인증번호 (발급됨:", p1_ph2: "6자리 인증번호를 입력하세요", p1_btn: "인증번호 승인 및 지갑 연결",
                 p2_title: "송금", p2_desc: "테스트 파이 초고속 멀티시그 암호화 전송을 실행합니다.", p2_lbl1: "수신자 테스트넷 지갑 주소", p2_ph1: "G... 또는 Pi Test ID", p2_lbl2: "전송 수량 (Test Pi)", p2_ph2: "보낼 수량을 입력하세요", p2_lbl3: "보안 인증번호 (발급됨:", p2_ph3: "6자리 인증번호 입력", p2_btn: "테스트 송금 실행",
                 p3_title: "결재", p3_desc: "실시간 에스크로 안전 결재 테스트를 진행합니다.", p3_lbl1: "결재할 수량 및 금액", p3_lbl2: "결재 승인 인증번호 (발급됨:", p3_ph2: "6자리 인증번호 입력", p3_btn: "에스크로 결재 승인",
                 p4_title: "예치", p4_desc: "3년 만기 31.41% APY 자산 신탁 볼트 예치를 진행합니다.", p4_lbl1: "예치할 테스트 파이 수량", p4_ph1: "예치할 수량을 입력하세요", p4_lbl2: "예치 기간", p4_opt1: "1년 (APY 15.5%)", p4_opt3: "3년 (APY 31.41%)", p4_opt5: "5년 (APY 45.0%)", p4_lbl3: "예상 수익금 및 이자", p4_resDefault: "예상 수익: +0.00 Test Pi", p4_lbl4: "볼트 보안 인증번호 (발급됨:", p4_ph4: "6자리 인증번호 입력", p4_btn: "볼트 예치 승인",
@@ -1588,7 +1593,7 @@
                 p7_title: "스왑", p7_desc: "테스트 파이로 즉각 코인을 구매하고 교환합니다.", p7_lbl1: "보낼 자산 및 수량", p7_ph1: "예: 10 Test Pi", p7_lbl2: "받을 자산", p7_lbl3: "스왑 승인 인증번호 (발급됨:", p7_ph3: "6자리 인증번호 입력", p7_btn: "즉시 스왑 실행",
                 p8_title: "DEX 스왑", p8_desc: "탈중앙화 오더레스 P2P 유동성을 자동 매칭합니다.", p8_lbl1: "P2P 매수/매도 수량", p8_ph1: "수량을 입력하세요", p8_lbl2: "DEX 인증번호 (발급됨:", p8_ph2: "6자리 인증번호 입력", p8_btn: "P2P 주문 등록 승인",
                 p9_title: "LP 스테이킹", p9_desc: "유동성 공급 증명(PoL) 및 고배당 권한을 등록합니다.", p9_lbl1: "스테이킹할 LP 토큰 수량", p9_ph1: "LP 수량을 입력하세요", p9_lbl2: "LP 인증번호 (발급됨:", p9_ph2: "6자리 인증번호 입력", p9_btn: "LP 스테이킹 등록 승인",
-                p10_title: "파이 수량", p10_desc: "테스트 파이 자산 원장 수량을 직접 관리하고 동기화합니다.", p10_lbl1: "파이 보유 수량 입력", p10_lbl2: "동기화 인증번호 (발급됨:", p10_ph2: "6자리 인증번호 입력", p10_btn: "원장 동기화 실행",
+                p10_title: "파이 수량", p10_desc: "테스트 파이 자산 원장 수량을 직접 관리하고 동기화합니다.", p10_lbl1: "파이 보유 수량 입력", p10_lbl2: "동기화 인증번호 (발급됨:", p9_ph2: "6자리 인증번호 입력", p10_btn: "원장 동기화 실행",
                 authFailAlert: "❌ 인증번호가 일치하지 않습니다. 발급된 6자리 인증번호를 정확히 입력해 주세요.",
                 authSuccessPrefix: "✅ [테스트 인증 성공]",
                 msg1: "지갑연결: 테스트넷 지갑 주소 자동 연동 및 인증이 완료되었습니다.",
@@ -1634,7 +1639,7 @@
                 net9_title: "LP Staking", net9_desc: "Proof of Liquidity (PoL)", net10_title: "Pi Ledger", net10_desc: "Testnet Pi asset ledger sync",
                 mainnetAlert: "Testnet Pi ledger synchronization and transmission request completed!",
                 beeniReply: (txt) => `[AGI Beeni]: Received command "${txt}". Processing in testnet environment.`,
-                p1_title: "Wallet Connect", p1_desc: "Click Auto-Link to load your testnet wallet address instantly.", p1_lbl1: "Testnet Wallet Address", p1_ph1: "Click Auto-Link button", p1_lbl2: "Auth Code (Issued:", p1_ph2: "Enter 6-digit code", p1_btn: "Approve & Connect",
+                p1_title: "Wallet Connect", p1_desc: "Auto-launch on startup: Click Auto-Link to load your testnet wallet address instantly.", p1_lbl1: "Testnet Wallet Address", p1_ph1: "Click Auto-Link button", p1_lbl2: "Auth Code (Issued:", p1_ph2: "Enter 6-digit code", p1_btn: "Approve & Connect",
                 p2_title: "Transfer", p2_desc: "Execute testnet multisig encrypted transfer.", p2_lbl1: "Recipient Testnet Address", p2_ph1: "G... or Pi Test ID", p2_lbl2: "Transfer Amount (Test Pi)", p2_ph2: "Enter amount", p2_lbl3: "Security Auth Code (Issued:", p2_ph3: "Enter 6-digit code", p2_btn: "Execute Test Transfer",
                 p3_title: "Payment", p3_desc: "Proceed with real-time escrow secure payment.", p3_lbl1: "Payment Amount", p3_lbl2: "Approval Auth Code (Issued:", p3_ph2: "Enter 6-digit code", p3_btn: "Approve Payment",
                 p4_title: "Vault Deposit", p4_desc: "Deposit into asset trust vault.", p4_lbl1: "Deposit Amount", p4_ph1: "Enter amount", p4_lbl2: "Deposit Period", p4_opt1: "1 Year (APY 15.5%)", p4_opt3: "3 Years (APY 31.41%)", p4_opt5: "5 Years (APY 45.0%)", p4_lbl3: "Expected Return", p4_resDefault: "Expected Return: +0.00 Test Pi", p4_lbl4: "Vault Auth Code (Issued:", p4_ph4: "Enter 6-digit code", p4_btn: "Approve Deposit",

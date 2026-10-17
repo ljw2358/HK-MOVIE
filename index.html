@@ -747,6 +747,34 @@
             cursor: pointer;
             margin-top: 10px;
         }
+
+        .test-pi-bar {
+            background: rgba(247, 147, 26, 0.15);
+            border: 1px dashed var(--pi-color);
+            padding: 10px 14px;
+            border-radius: 10px;
+            margin-bottom: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .test-pi-bar span {
+            font-size: 11px;
+            color: var(--pi-color);
+            font-weight: 700;
+        }
+
+        .test-pi-fill-btn {
+            background: var(--pi-color);
+            color: #fff;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -873,15 +901,15 @@
                 </button>
             </div>
 
-            <!-- Distributed Networks Grid Section (프로세스 번호 완벽 삭제) -->
+            <!-- 10 Distributed Networks Grid Section (No Numbers & All Korean Words) -->
             <div class="section-header">
-                <h2 class="section-title" data-i18n="gridSectionTitle">분산 연동망</h2>
-                <span class="section-sub" data-i18n="gridSectionSub">[개별 프로세스 작동]</span>
+                <h2 class="section-title" data-i18n="gridSectionTitle">분산 연동망 프로세스</h2>
+                <span class="section-sub" data-i18n="gridSectionSub">[고객 직접 입력 테스트 지원]</span>
             </div>
 
             <div class="network-grid">
                 <!-- 지갑연결 -->
-                <div class="network-card" onclick="openProcessModal(1)">
+                <div class="network-card" onclick="openProcessModal('wallet')">
                     <div class="card-top-center">
                         <i class="fa-solid fa-link card-icon-1"></i>
                     </div>
@@ -892,7 +920,7 @@
                 </div>
 
                 <!-- 송금 -->
-                <div class="network-card" onclick="openProcessModal(2)">
+                <div class="network-card" onclick="openProcessModal('transfer')">
                     <div class="card-top-center">
                         <i class="fa-solid fa-paper-plane card-icon-2"></i>
                     </div>
@@ -903,7 +931,7 @@
                 </div>
 
                 <!-- 결재 -->
-                <div class="network-card" onclick="openProcessModal(3)">
+                <div class="network-card" onclick="openProcessModal('payment')">
                     <div class="card-top-center">
                         <i class="fa-solid fa-credit-card card-icon-3"></i>
                     </div>
@@ -914,18 +942,18 @@
                 </div>
 
                 <!-- 예치 -->
-                <div class="network-card" onclick="openProcessModal(4)">
+                <div class="network-card" onclick="openProcessModal('deposit')">
                     <div class="card-top-center">
                         <i class="fa-solid fa-vault card-icon-4"></i>
                     </div>
                     <div>
                         <div class="card-title" data-i18n="net4_title">예치</div>
-                        <div class="card-desc" data-i18n="net4_desc">자산 신탁 볼트 예치 및 복리 운용</div>
+                        <div class="card-desc" data-i18n="net4_desc">3년 만기 31.41% APY 자산 신탁 볼트</div>
                     </div>
                 </div>
 
                 <!-- 보상 -->
-                <div class="network-card" onclick="openProcessModal(5)">
+                <div class="network-card" onclick="openProcessModal('reward')">
                     <div class="card-top-center">
                         <i class="fa-solid fa-gift card-icon-5"></i>
                     </div>
@@ -936,7 +964,7 @@
                 </div>
 
                 <!-- 기본소득 -->
-                <div class="network-card" onclick="openProcessModal(6)">
+                <div class="network-card" onclick="openProcessModal('ubi')">
                     <div class="card-top-center">
                         <i class="fa-solid fa-hand-holding-dollar card-icon-6"></i>
                     </div>
@@ -947,7 +975,7 @@
                 </div>
 
                 <!-- 스왑 -->
-                <div class="network-card" onclick="openProcessModal(7)">
+                <div class="network-card" onclick="openProcessModal('swap')">
                     <div class="card-top-center">
                         <i class="fa-solid fa-right-left card-icon-7"></i>
                     </div>
@@ -958,7 +986,7 @@
                 </div>
 
                 <!-- DEX 스왑 -->
-                <div class="network-card" onclick="openProcessModal(8)">
+                <div class="network-card" onclick="openProcessModal('dex')">
                     <div class="card-top-center">
                         <i class="fa-solid fa-bolt card-icon-8"></i>
                     </div>
@@ -969,7 +997,7 @@
                 </div>
 
                 <!-- LP 스테이킹 -->
-                <div class="network-card" onclick="openProcessModal(9)">
+                <div class="network-card" onclick="openProcessModal('lp')">
                     <div class="card-top-center">
                         <i class="fa-solid fa-layer-group card-icon-9"></i>
                     </div>
@@ -980,7 +1008,7 @@
                 </div>
 
                 <!-- PI 수량 -->
-                <div class="network-card" onclick="openProcessModal(10)">
+                <div class="network-card" onclick="openProcessModal('pi')">
                     <div class="card-top-center">
                         <span class="pi-logo-icon" style="width: 26px; height: 26px; font-size: 15px;">π</span>
                     </div>
@@ -1113,7 +1141,8 @@
     <script>
         let baseInterest = 12450892.600000;
         let currentLang = 'ko';
-        let activeProcessId = null;
+        let generatedAuthCode = "123456";
+        let activeProcessKey = null;
         let activeModalType = null;
 
         setInterval(() => {
@@ -1140,7 +1169,7 @@
             const t = translations[currentLang] || translations['en'];
             const sonponeValEl = document.getElementById('sonponeVal');
             if(sonponeValEl) {
-                sonponeValEl.innerText = val + "% " + (t.syncText || "(실시간 싱크)");
+                sonponeValEl.innerText = val + "% " + (t.syncText || "(Live Sync)");
             }
         }
 
@@ -1179,157 +1208,266 @@
             if (e.key === 'Enter') sendChatMessage();
         }
 
-        /* 10대 분산 연동망 프로세스 모달 렌더링 (프로세스 내 숫자/번호 완벽 제거, 고객 전용 숫자 입력창 완벽 보존) */
-        function openProcessModal(processId) {
-            activeProcessId = processId;
+        /* 테스트 파이(Test Pi) 값 자동 채우기 기능 */
+        function fillTestPi(inputId) {
+            const inputField = document.getElementById(inputId);
+            if(inputField) {
+                // 테스트용 파이(Test Pi) 314.159 개 자동 입력
+                inputField.value = "314.159";
+                if(inputId === 'depositAmount') {
+                    updateDepositCalc();
+                }
+            }
+        }
+
+        /* 프로세스 모달 렌더링 (숫자 제거, 고객이 숫자 직접 입력, 60개국어 변환) */
+        function openProcessModal(processKey) {
+            activeProcessKey = processKey;
             activeModalType = null;
             renderProcessModalContent();
         }
 
         function renderProcessModalContent() {
-            const processId = activeProcessId;
-            if (!processId) return;
+            const key = activeProcessKey;
+            if (!key) return;
 
             const modal = document.getElementById('appModal');
             const title = document.getElementById('modalTitle');
             const content = document.getElementById('modalContent');
             const t = translations[currentLang] || translations['en'];
 
-            if (processId === 1) {
-                title.innerText = t.p1_title;
+            generatedAuthCode = Math.floor(100000 + Math.random() * 900000).toString();
+
+            let testPiBarHtml = `
+                <div class="test-pi-bar">
+                    <span>🧪 [테스트 파이] 버튼을 눌러 테스트해 보세요!</span>
+                    <button class="test-pi-fill-btn" onclick="fillTestPi('testPiInput')">테스트 파이 입력</button>
+                </div>
+            `;
+
+            if (key === 'wallet') {
+                title.innerText = t.p_wallet_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p1_desc}</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p_wallet_desc}</div>
                     <div class="input-group">
-                        <label class="input-label">${t.p1_lbl1}</label>
-                        <input class="form-control" id="nodeWalletAddress" placeholder="${t.p1_ph1}">
+                        <label class="input-label">${t.p_wallet_lbl1}</label>
+                        <input class="form-control" id="nodeWalletAddress" placeholder="${t.p_wallet_ph1}">
                     </div>
                     <div class="input-group">
-                        <label class="input-label">${t.p1_lbl2}</label>
-                        <input class="form-control" id="userInputNumber" type="number" placeholder="${t.p1_ph2}">
+                        <label class="input-label">${t.p_wallet_lbl2} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p_wallet_ph2}" maxlength="6">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute(1)">${t.p1_btn}</button>
+                    <button class="action-btn" onclick="verifyAndExecute('wallet')">${t.p_wallet_btn}</button>
                 `;
-            } else if (processId === 2) {
-                title.innerText = t.p2_title;
+            } else if (key === 'transfer') {
+                title.innerText = t.p_transfer_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p2_desc}</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p_transfer_desc}</div>
+                    ${testPiBarHtml}
                     <div class="input-group">
-                        <label class="input-label">${t.p2_lbl1}</label>
-                        <input class="form-control" placeholder="${t.p2_ph1}">
+                        <label class="input-label">${t.p_transfer_lbl1}</label>
+                        <input class="form-control" placeholder="${t.p_transfer_ph1}">
                     </div>
                     <div class="input-group">
-                        <label class="input-label">${t.p2_lbl2}</label>
-                        <input class="form-control" id="userInputNumber" type="number" placeholder="${t.p2_ph2}">
+                        <label class="input-label">${t.p_transfer_lbl2}</label>
+                        <input class="form-control" id="testPiInput" placeholder="${t.p_transfer_ph2}">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute(2)">${t.p2_btn}</button>
+                    <div class="input-group">
+                        <label class="input-label">${t.p_transfer_lbl3} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p_transfer_ph3}" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('transfer')">${t.p_transfer_btn}</button>
                 `;
-            } else if (processId === 3) {
-                title.innerText = t.p3_title;
+            } else if (key === 'payment') {
+                title.innerText = t.p_payment_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p3_desc}</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p_payment_desc}</div>
+                    ${testPiBarHtml}
                     <div class="input-group">
-                        <label class="input-label">${t.p3_lbl1}</label>
-                        <input class="form-control" id="userInputNumber" type="number" placeholder="${t.p3_ph1}">
+                        <label class="input-label">${t.p_payment_lbl1}</label>
+                        <input class="form-control" id="testPiInput" placeholder="고객 결제 수량 직접 입력 (예: 1,250.00 HK)">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute(3)">${t.p3_btn}</button>
+                    <div class="input-group">
+                        <label class="input-label">${t.p_payment_lbl2} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p_payment_ph2}" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('payment')">${t.p_payment_btn}</button>
                 `;
-            } else if (processId === 4) {
-                title.innerText = t.p4_title;
+            } else if (key === 'deposit') {
+                title.innerText = t.p_deposit_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p4_desc}</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p_deposit_desc}</div>
+                    ${testPiBarHtml}
                     <div class="input-group">
-                        <label class="input-label">${t.p4_lbl1}</label>
-                        <input class="form-control" id="userInputNumber" type="number" placeholder="${t.p4_ph1}">
+                        <label class="input-label">${t.p_deposit_lbl1}</label>
+                        <input class="form-control" id="depositAmount" placeholder="${t.p_deposit_ph1}" oninput="updateDepositCalc()">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute(4)">${t.p4_btn}</button>
+                    <div class="input-group">
+                        <label class="input-label">${t.p_deposit_lbl2}</label>
+                        <select class="form-control" id="depositPeriod" onchange="updateDepositCalc()" style="background:var(--bg-card); color:var(--text-main);">
+                            <option value="1">${t.p_deposit_opt1}</option>
+                            <option value="3" selected>${t.p_deposit_opt3}</option>
+                            <option value="5">${t.p_deposit_opt5}</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">${t.p_deposit_lbl3}</label>
+                        <input class="form-control" id="depositExpectedResult" value="${t.p_deposit_resDefault}" readonly style="color:var(--accent-green); font-weight:700;">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">${t.p_deposit_lbl4} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p_deposit_ph4}" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('deposit')">${t.p_deposit_btn}</button>
                 `;
-            } else if (processId === 5) {
-                title.innerText = t.p5_title;
+            } else if (key === 'reward') {
+                title.innerText = t.p_reward_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p5_desc}</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p_reward_desc}</div>
+                    ${testPiBarHtml}
                     <div class="input-group">
-                        <label class="input-label">${t.p5_lbl1}</label>
-                        <input class="form-control" id="userInputNumber" type="number" placeholder="${t.p5_ph1}">
+                        <label class="input-label">${t.p_reward_lbl1}</label>
+                        <input class="form-control" id="testPiInput" placeholder="고객 수령 기여 수량 직접 입력">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute(5)">${t.p5_btn}</button>
+                    <div class="input-group">
+                        <label class="input-label">${t.p_reward_lbl2} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p_reward_ph2}" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('reward')">${t.p_reward_btn}</button>
                 `;
-            } else if (processId === 6) {
-                title.innerText = t.p6_title;
+            } else if (key === 'ubi') {
+                title.innerText = t.p_ubi_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p6_desc}</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p_ubi_desc}</div>
+                    ${testPiBarHtml}
                     <div class="input-group">
-                        <label class="input-label">${t.p6_lbl1}</label>
-                        <input class="form-control" id="userInputNumber" type="number" placeholder="${t.p6_ph1}">
+                        <label class="input-label">${t.p_ubi_lbl1}</label>
+                        <input class="form-control" id="testPiInput" placeholder="고객 기본소득 수급 청구 수량 직접 입력">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute(6)">${t.p6_btn}</button>
+                    <div class="input-group">
+                        <label class="input-label">${t.p_ubi_lbl2} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p_ubi_ph2}" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('ubi')">${t.p_ubi_btn}</button>
                 `;
-            } else if (processId === 7) {
-                title.innerText = t.p7_title;
+            } else if (key === 'swap') {
+                title.innerText = t.p_swap_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p7_desc}</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p_swap_desc}</div>
+                    ${testPiBarHtml}
                     <div class="input-group">
-                        <label class="input-label">${t.p7_lbl1}</label>
-                        <input class="form-control" id="userInputNumber" type="number" placeholder="${t.p7_ph1}">
+                        <label class="input-label">${t.p_swap_lbl1}</label>
+                        <input class="form-control" id="testPiInput" placeholder="${t.p_swap_ph1}">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute(7)">${t.p7_btn}</button>
+                    <div class="input-group">
+                        <label class="input-label">${t.p_swap_lbl2}</label>
+                        <input class="form-control" value="고객 입력 환산 수량 실시간 적용" readonly style="color:var(--accent-gold);">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">${t.p_swap_lbl3} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p_swap_ph3}" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('swap')">${t.p_swap_btn}</button>
                 `;
-            } else if (processId === 8) {
-                title.innerText = t.p8_title;
+            } else if (key === 'dex') {
+                title.innerText = t.p_dex_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p8_desc}</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p_dex_desc}</div>
+                    ${testPiBarHtml}
                     <div class="input-group">
-                        <label class="input-label">${t.p8_lbl1}</label>
-                        <input class="form-control" id="userInputNumber" type="number" placeholder="${t.p8_ph1}">
+                        <label class="input-label">${t.p_dex_lbl1}</label>
+                        <input class="form-control" id="testPiInput" placeholder="${t.p_dex_ph1}">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute(8)">${t.p8_btn}</button>
+                    <div class="input-group">
+                        <label class="input-label">${t.p_dex_lbl2} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p_dex_ph2}" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('dex')">${t.p_dex_btn}</button>
                 `;
-            } else if (processId === 9) {
-                title.innerText = t.p9_title;
+            } else if (key === 'lp') {
+                title.innerText = t.p_lp_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p9_desc}</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p_lp_desc}</div>
+                    ${testPiBarHtml}
                     <div class="input-group">
-                        <label class="input-label">${t.p9_lbl1}</label>
-                        <input class="form-control" id="userInputNumber" type="number" placeholder="${t.p9_ph1}">
+                        <label class="input-label">${t.p_lp_lbl1}</label>
+                        <input class="form-control" id="testPiInput" placeholder="${t.p_lp_ph1}">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute(9)">${t.p9_btn}</button>
+                    <div class="input-group">
+                        <label class="input-label">${t.p_lp_lbl2} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p_lp_ph2}" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('lp')">${t.p_lp_btn}</button>
                 `;
-            } else if (processId === 10) {
-                title.innerText = t.p10_title;
+            } else if (key === 'pi') {
+                title.innerText = t.p_pi_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p10_desc}</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p_pi_desc}</div>
+                    ${testPiBarHtml}
                     <div class="input-group">
-                        <label class="input-label">${t.p10_lbl1}</label>
-                        <input class="form-control" id="userInputNumber" type="number" placeholder="${t.p10_ph1}">
+                        <label class="input-label">${t.p_pi_lbl1}</label>
+                        <input class="form-control" id="testPiInput" placeholder="고객 동기화 PI 수량 직접 입력" style="color:var(--accent-gold); font-weight:700;">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute(10)">${t.p10_btn}</button>
+                    <div class="input-group">
+                        <label class="input-label">${t.p_pi_lbl2} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p_pi_ph2}" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('pi')">${t.p_pi_btn}</button>
                 `;
             }
 
             modal.classList.add('active');
         }
 
-        function verifyAndExecute(processId) {
-            const inputEl = document.getElementById('userInputNumber');
-            const userEntered = inputEl ? inputEl.value.trim() : "";
+        function verifyAndExecute(processKey) {
+            const codeInput = document.getElementById('userInputCode');
+            const userEntered = codeInput ? codeInput.value.trim() : "";
             const t = translations[currentLang] || translations['en'];
 
-            if(!userEntered) {
-                alert(t.inputRequiredAlert);
+            if(userEntered !== generatedAuthCode) {
+                alert(t.authFailAlert);
                 return;
             }
            
             const messages = {
-                1: t.msg1, 2: t.msg2, 3: t.msg3, 4: t.msg4, 5: t.msg5,
-                6: t.msg6, 7: t.msg7, 8: t.msg8, 9: t.msg9, 10: t.msg10
+                wallet: t.msg_wallet, transfer: t.msg_transfer, payment: t.msg_payment, deposit: t.msg_deposit, reward: t.msg_reward,
+                ubi: t.msg_ubi, swap: t.msg_swap, dex: t.msg_dex, lp: t.msg_lp, pi: t.msg_pi
             };
            
-            alert(t.authSuccessPrefix + " (입력 수량: " + userEntered + ") " + messages[processId]);
+            alert(t.authSuccessPrefix + " " + messages[processKey]);
             closeModal();
+        }
+
+        function updateDepositCalc() {
+            const amountInput = document.getElementById('depositAmount');
+            const periodSelect = document.getElementById('depositPeriod');
+            const resultInput = document.getElementById('depositExpectedResult');
+            const t = translations[currentLang] || translations['en'];
+
+            if (!amountInput || !periodSelect || !resultInput) return;
+
+            let rawVal = amountInput.value.replace(/,/g, '').trim();
+            let amount = parseFloat(rawVal);
+
+            if (isNaN(amount) || amount <= 0) {
+                resultInput.value = t.calcDefault;
+                return;
+            }
+
+            let period = parseInt(periodSelect.value);
+            let apy = 0.155;
+
+            if (period === 3) apy = 0.3141;
+            else if (period === 5) apy = 0.45;
+
+            let totalReturn = amount * Math.pow((1 + apy), period) - amount;
+
+            resultInput.value = t.calcResult(period, totalReturn.toLocaleString('en-US', {maximumFractionDigits: 2}));
         }
 
         function openInfoModal(type) {
             activeModalType = type;
-            activeProcessId = null;
+            activeProcessKey = null;
             toggleDrawer();
             renderInfoModalContent();
         }
@@ -1371,123 +1509,168 @@
         function closeModal() {
             document.getElementById('appModal').classList.remove('active');
             activeModalType = null;
-            activeProcessId = null;
+            activeProcessKey = null;
         }
 
-        /* 60개국어 다국어 사전 (프로세스 내 번호/숫자 완전 삭제 및 한글 단어화) */
+        /* 60개국어 다국어 사전 (프로세스 번호 제거 및 고객 직접 입력 완벽 지원) */
         const translations = {
             ko: {
-                headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "60개국어 다국어 엔진 (뼈속까지 변환)", subTitle: "빠른 금융 작업 마스터 코어",
+                headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "60개국어 다국어 엔진", subTitle: "빠른 금융 작업 마스터 코어",
                 dashTitle: "개인 자산 대시보드", piSyncLabel: "보유 수량 (PI 수량 원장 동기화)", interestLabel: "실시간 누적 이자 (3년 31.41% APY 복리)",
-                mainnetBtnText: "코어팀에게 메인넷 즉시 신청하기", gridSectionTitle: "분산 연동망", gridSectionSub: "[개별 프로세스 작동]",
+                mainnetBtnText: "코어팀에게 메인넷 즉시 신청하기", gridSectionTitle: "분산 연동망 프로세스", gridSectionSub: "[고객 직접 입력 테스트 지원]",
                 agiTitle: "AGI 삐니 고객센터", agiSub: "손폰(SONPONE) 자동 반응 및 AI 오케스트레이션", sonponeLabelText: "손폰(SONPONE) 감지 감도:", syncText: "(실시간 싱크)",
                 initialBeeniMsg: "[AGI 삐니]: 정식 60개국어 실시간 교차 추론 및 손폰 자동 반응 시스템이 완벽하게 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!",
                 chatInputPlaceholder: "삐니에게 질문 입력...", chatSendBtn: "전송", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
                 menu_wp: "백서 (Whitepaper v3.1 상세)", menu_faq: "자주 묻는 질문 (FAQ 20선 심층)", menu_pol: "3대 POLICIES (약관·보안·프라이버시)", menu_reg: "11개국 디지털 자산법 컴플라이언스",
-                hub_robot: "로봇: HK-ROBOT", hub_nexus: "스마트 글래스: HK-NEXUS", hub_uam: "도심항공교통: HK-UAM", hub_fusion: "인공태양: HK-FUSION", hub_bio: "퀀텀바이오: HK-QUANTUMBIO", hub_space: "우주모빌리티: HK-SPACE", hub_parts: "부품뱅크: HK-PARTSBANK", hub_defence: "국방기술: HK-DEFENCE-HUB", hub_t165: "T165 초특급 랜드마크 허브 (경주 사옥)",
+                hub_robot: "로봇: HK-ROBOT", hub_nexus: "스마트 글래스: HK-NEXUS", hub_uam: "도심항공교통: HK-UAM", hub_fusion: "인공태양: HK-FUSION", hub_quantum: "퀀텀바이오: HK-QUANTUMBIO", hub_space: "우주모빌리티: HK-SPACE", hub_parts: "부품뱅크: HK-PARTSBANK", hub_defence: "국방기술: HK-DEFENCE-HUB", hub_t165: "T165 초특급 랜드마크 허브 (경주 사옥)",
                 net1_title: "지갑연결", net1_desc: "노드 지갑 프로토콜 연동 및 자동 인증", net2_title: "송금", net2_desc: "대륙간 초고속 멀티시그 암호화 전송 시스템",
-                net3_title: "결재", net3_desc: "현금·카드·타코인 실시간 상거래 에스크로", net4_title: "예치", net4_desc: "자산 신탁 볼트 예치 및 복리 운용",
+                net3_title: "결재", net3_desc: "현금·카드·타코인 실시간 상거래 에스크로", net4_title: "예치", net4_desc: "3년 만기 31.41% APY 자산 신탁 볼트",
                 net5_title: "보상", net5_desc: "기여도 기반 인센티브 볼트 적립 엔진", net6_title: "기본소득", net6_desc: "HK 사회 재단 & 지자체 UBI 분배 모델",
                 net7_title: "스왑", net7_desc: "현금/카드/타코인 입금 즉각 코인 구매 스왑", net8_title: "DEX 스왑", net8_desc: "탈중앙화 오더레스 P2P 유동성 자동매칭",
                 net9_title: "LP 스테이킹", net9_desc: "유동성 공급 증명(PoL) 및 고배당 권한", net10_title: "PI 수량", net10_desc: "PI 자산 메인넷 원장 실시간 동기화",
                 mainnetAlert: "PI 메인넷 원장 동기화 및 코어팀 전송 신청이 정상적으로 완료되었습니다!",
-                beeniReply: (txt) => `[AGI 삐니]: "${txt}" 명령을 수신했습니다. 분산 연동망 및 AGI 백엔드 코어 프로세스에서 실시간 조율을 실행합니다.`,
-                p1_title: "지갑연결 (Wallet Connect)", p1_desc: "본인의 노드 지갑 주소를 입력하고 고객 전용 숫자를 입력하세요.", p1_lbl1: "노드 지갑 주소", p1_ph1: "지갑 주소를 입력하세요", p1_lbl2: "고객 설정 숫자 입력", p1_ph2: "숫자를 입력해 주세요", p1_btn: "지갑 연결 및 실행",
-                p2_title: "송금 (Transfer)", p2_desc: "대륙간 초고속 멀티시그 암호화 전송 프로세스입니다.", p2_lbl1: "수신자 지갑 주소", p2_ph1: "지갑 주소 입력", p2_lbl2: "고객 전용 전송 수량 숫자 입력", p2_ph2: "전송할 수량 숫자를 입력하세요", p2_btn: "송금 및 승인 요청",
-                p3_title: "결재 (Payment & Escrow)", p3_desc: "실시간 에스크로 안전 결재 프로세스입니다.", p3_lbl1: "고객 전용 결재 금액 숫자 입력", p3_ph1: "결재 금액 숫자를 입력하세요", p3_btn: "에스크로 결재 승인",
-                p4_title: "예치 (Vault Deposit)", p4_desc: "자산 신탁 볼트 예치 프로세스입니다.", p4_lbl1: "고객 전용 예치 수량 숫자 입력", p4_ph1: "예치 수량 숫자를 입력하세요", p4_btn: "예치 승인 및 진행",
-                p5_title: "보상 (Rewards Vault)", p5_desc: "기여도 기반 인센티브 볼트 적립 및 수령 프로세스입니다.", p5_lbl1: "고객 전용 보상 수령 숫자 입력", p5_ph1: "수령할 수량 숫자를 입력하세요", p5_btn: "보상 수령 승인",
-                p6_title: "기본소득 (UBI Vault)", p6_desc: "HK 사회 재단 및 지자체 UBI 분배 청구 프로세스입니다.", p6_lbl1: "고객 전용 기본소득 청구 숫자 입력", p6_ph1: "청구할 금액 숫자를 입력하세요", p6_btn: "기본소득 청구 및 승인",
-                p7_title: "스왑 (Instant Swap)", p7_desc: "현금/카드/타코인 입금 즉각 코인 구매 및 교환 시스템입니다.", p7_lbl1: "고객 전용 스왑 수량 숫자 입력", p7_ph1: "스왑 수량 숫자를 입력하세요", p7_btn: "즉시 스왑 실행",
-                p8_title: "DEX 스왑 (Orderbook P2P)", p8_desc: "탈중앙화 오더레스 P2P 유동성 자동 매칭 시스템입니다.", p8_lbl1: "고객 전용 주문 수량 숫자 입력", p8_ph1: "주문 수량 숫자를 입력하세요", p8_btn: "P2P 주문 등록 및 승인",
-                p9_title: "LP 스테이킹 (PoL Staking)", p9_desc: "유동성 공급 증명(PoL) 및 고배당 거버넌스 권한 부여입니다.", p9_lbl1: "고객 전용 LP 스테이킹 수량 숫자 입력", p9_ph1: "스테이킹 수량 숫자를 입력하세요", p9_btn: "LP 스테이킹 등록",
-                p10_title: "PI 수량 (Pi Mainnet Sync)", p10_desc: "PI 자산 메인넷 원장 실시간 동기화 프로세스입니다.", p10_lbl1: "고객 전용 동기화 수량 숫자 입력", p10_ph1: "동기화 수량 숫자를 입력하세요", p10_btn: "원장 동기화 실행",
-                inputRequiredAlert: "❌ 고객 전용 숫자를 입력해 주세요.",
-                authSuccessPrefix: "✅ [테스트 성공]",
-                msg1: "지갑연결: 노드 지갑이 안전하게 연결되었습니다.",
-                msg2: "송금: 멀티시그 암호화 전송 및 승인이 처리되었습니다.",
-                msg3: "결재: 에스크로 상거래 결제가 정상 승인되었습니다.",
-                msg4: "예치: 자산 신탁 볼트 예치가 정상 처리되었습니다.",
-                msg5: "보상: 기여도 보상 청구 및 승인이 완료되었습니다.",
-                msg6: "기본소득: UBI 수급 자격 확인 및 승인이 처리되었습니다.",
-                msg7: "스왑: 즉시 코인 구매 및 스왑 승인이 완료되었습니다.",
-                msg8: "DEX 스왑: P2P 유동성 자동매칭 및 승인이 완료되었습니다.",
-                msg9: "LP 스테이킹: 유동성 공급 및 승인이 완료되었습니다.",
-                msg10: "PI 수량: 메인넷 블록체인 원장 재동기화가 완료되었습니다.",
+                beeniReply: (txt) => `[AGI 삐니]: "${txt}" 명령을 수신했습니다. 분산 연동망 프로세스에서 고객 맞춤형 실시간 조율을 실행합니다.`,
+                p_wallet_title: "지갑연결 (Wallet Connect)", p_wallet_desc: "본인의 노드 지갑 주소를 입력하고 보안 인증을 진행하세요.", p_wallet_lbl1: "노드 지갑 주소", p_wallet_ph1: "본인의 지갑 주소를 입력하세요 (예: 0x...)", p_wallet_lbl2: "인증번호 (발급됨:", p_wallet_ph2: "위의 6자리 인증번호를 입력하세요", p_wallet_btn: "인증번호 승인 및 연결",
+                p_transfer_title: "송금 (Transfer)", p_transfer_desc: "고객이 직접 송금 수량을 입력하여 대륙간 초고속 전송을 진행합니다.", p_transfer_lbl1: "수신자 지갑 주소", p_transfer_ph1: "0x... 또는 Pi 아이디", p_transfer_lbl2: "고객 송금 수량 (PI / HK)", p_transfer_ph2: "수량을 직접 입력하세요 (예: 100.00)", p_transfer_lbl3: "보안 인증번호 (발급됨:", p_transfer_ph3: "6자리 인증번호 입력", p_transfer_btn: "송금 및 승인 요청",
+                p_payment_title: "결재 (Payment & Escrow)", p_payment_desc: "고객이 직접 결재 금액을 입력하여 안전 에스크로 결재를 진행합니다.", p_payment_lbl1: "고객 결재 금액 입력 (HKD / USDT)", p_payment_lbl2: "결재 승인 인증번호 (발급됨:", p_payment_ph2: "6자리 인증번호 입력", p_payment_btn: "에스크로 결재 승인",
+                p_deposit_title: "예치 (Vault Deposit)", p_deposit_desc: "고객이 직접 예치 수량을 입력하는 자산 신탁 볼트 예치 프로세스입니다.", p_deposit_lbl1: "고객 예치 수량 입력 (PI / HK)", p_deposit_ph1: "예치할 수량을 직접 입력하세요 (예: 10,000)", p_deposit_lbl2: "예치 기간", p_deposit_opt1: "1년 (APY 15.5%)", p_deposit_opt3: "3년 (APY 31.41%)", p_deposit_opt5: "5년 (APY 45.0%)", p_deposit_lbl3: "예상 수익금 및 이자", p_deposit_resDefault: "3년 복리 적용 시 예상 수익: +0.00 HK", p_deposit_lbl4: "볼트 보안 인증번호 (발급됨:", p_deposit_ph4: "6자리 인증번호 입력", p_deposit_btn: "예치 및 인증 승인",
+                p_reward_title: "보상 (Rewards Vault)", p_reward_desc: "고객이 직접 기여 보상 수량을 입력하고 수령하는 프로세스입니다.", p_reward_lbl1: "고객 수령 보상 수량 입력", p_reward_lbl2: "보상 승인 인증번호 (발급됨:", p_reward_ph2: "6자리 인증번호 입력", p_reward_btn: "보상 수령 승인",
+                p_ubi_title: "기본소득 (UBI Vault)", p_ubi_desc: "고객이 직접 UBI 청구 수량을 입력하는 분배 청구 프로세스입니다.", p_ubi_lbl1: "고객 UBI 청구 수량 입력", p_ubi_lbl2: "UBI 수급 인증번호 (발급됨:", p_ubi_ph2: "6자리 인증번호 입력", p_ubi_btn: "기본소득 청구 및 승인",
+                p_swap_title: "스왑 (Instant Swap)", p_swap_desc: "고객이 직접 스왑할 자산 수량을 입력하여 즉시 교환하는 시스템입니다.", p_swap_lbl1: "고객 보낼 자산 수량 입력", p_swap_ph1: "수량을 직접 입력하세요 (예: 100 USDT)", p_swap_lbl2: "받을 자산 (실시간 환산)", p_swap_lbl3: "스왑 승인 인증번호 (발급됨:", p_swap_ph3: "6자리 인증번호 입력", p_swap_btn: "즉시 스왑 실행",
+                p_dex_title: "DEX 스왑 (Orderbook P2P)", p_dex_desc: "고객이 직접 P2P 매수/매도 수량을 입력하는 자동매칭 시스템입니다.", p_dex_lbl1: "고객 P2P 매수/매도 수량 입력", p_dex_ph1: "수량을 직접 입력하세요", p_dex_lbl2: "DEX 보안 인증번호 (발급됨:", p_dex_ph2: "6자리 인증번호 입력", p_dex_btn: "P2P 주문 등록 및 승인",
+                p_lp_title: "LP 스테이킹 (PoL Staking)", p_lp_desc: "고객이 직접 LP 토큰 수량을 입력하여 스테이킹하는 프로세스입니다.", p_lp_lbl1: "고객 스테이킹 LP 수량 입력", p_lp_ph1: "수량을 직접 입력하세요 (예: 50.00 LP)", p_lp_lbl2: "LP 승인 인증번호 (발급됨:", p_lp_ph2: "6자리 인증번호 입력", p_lp_btn: "LP 스테이킹 등록",
+                p_pi_title: "PI 수량 (Pi Mainnet Sync)", p_pi_desc: "고객이 직접 PI 수량을 입력하여 메인넷 원장과 동기화하는 프로세스입니다.", p_pi_lbl1: "고객 동기화 Pi 수량 직접 입력", p_pi_lbl2: "동기화 승인 인증번호 (발급됨:", p_pi_ph2: "6자리 인증번호 입력", p_pi_btn: "원장 동기화 실행",
+                authFailAlert: "❌ 인증번호가 일치하지 않습니다. 발급된 6자리 인증번호를 정확히 입력해 주세요.",
+                authSuccessPrefix: "✅ [인증 성공]",
+                msg_wallet: "지갑연결 프로세스: 6자리 인증번호 검증 완료 및 노드 지갑이 안전하게 연결되었습니다.",
+                msg_transfer: "송금 프로세스: 고객 입력 수량에 대한 멀티시그 암호화 전송 및 승인이 처리되었습니다.",
+                msg_payment: "결재 프로세스: 고객 입력 금액 에스크로 상거래 결제 및 인증이 정상 승인되었습니다.",
+                msg_deposit: "예치 프로세스: 고객 입력 수량, 기간 및 예상수익 설정과 인증이 완료되어 자산 신탁 볼트에 예치되었습니다.",
+                msg_reward: "보상 프로세스: 고객 입력 기여도 보상 청구 및 인증 승인이 완료되었습니다.",
+                msg_ubi: "기본소득 프로세스: 고객 입력 UBI 수급 자격 확인 및 인증 승인이 처리되었습니다.",
+                msg_swap: "스왑 프로세스: 고객 입력 수량 즉시 코인 구매 및 스왑 승인이 완료되었습니다.",
+                msg_dex: "DEX 스왑 프로세스: 고객 입력 P2P 유동성 자동매칭 및 인증 승인이 완료되었습니다.",
+                msg_lp: "LP 스테이킹 프로세스: 고객 입력 유동성 공급 및 인증 승인이 완료되었습니다.",
+                msg_pi: "PI 수량 프로세스: 고객 입력 잔액 기준 메인넷 블록체인 원장 재동기화 및 승인이 완료되었습니다.",
+                calcDefault: "예치할 수량을 입력해주세요 (+0.00 HK)",
+                calcResult: (p, r) => `${p}년 복리 적용 시 예상 수익: +${r} HK`,
                 modal_wp_title: "HK WORLD BANK 백서 20개 항목 (v3.1)",
-                modal_wp_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px;"><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">[코어 아키텍처 및 연동]</p><p style="color:var(--text-muted); margin-bottom:8px;">1. 비전 및 글로벌 금융 개요<br>2. Pi Network SDK 및 노드 통합<br>3. 분산 연동망 아키텍처<br>4. AGI 삐니 오케스트레이션<br>5. SONPONE 손폰 감지 시스템</p><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">[경제 모델 및 유동성]</p><p style="color:var(--text-muted); margin-bottom:8px;">6. 복리 운용 모델<br>7. 유동성풀 지갑 시스템<br>8. 60개국어 유니버설 번역 엔진<br>9. UBI 재단 분배 모델<br>10. DEX 오더레스 P2P 스왑</p><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">[보안 및 컴플라이언스]</p><p style="color:var(--text-muted); margin-bottom:8px;">11. 멀티시그 암호화 전송<br>12. 상거래 에스크로 시스템<br>13. LP 스테이킹 및 PoL<br>14. 11개국 디지털 자산법 컴플라이언스<br>15. 지갑 자동 인증 프로토콜</p><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">[생태계 및 로드맵]</p><p style="color:var(--text-muted);">16. 에너지 및 인프라 연계<br>17. 탈중앙화 거버넌스<br>18. 24시간 실시간 보안 방어막<br>19. 웨어러블 최적화 (경주 사옥 연동)<br>20. 글로벌 허브 확장 계획</p></div>',
+                modal_wp_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px;"><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">[1~5] 코어 아키텍처 및 연동</p><p style="color:var(--text-muted); margin-bottom:8px;">1. 비전 및 글로벌 금융 개요<br>2. Pi Network SDK 및 노드 통합<br>3. 분산 연동망 아키텍처<br>4. AGI 삐니 오케스트레이션<br>5. SONPONE 손폰 감지 시스템</p><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">[6~10] 경제 모델 및 유동성</p><p style="color:var(--text-muted); margin-bottom:8px;">6. 3년 31.41% APY 복리 모델<br>7. 유동성풀 지갑 시스템<br>8. 60개국어 유니버설 번역 엔진<br>9. UBI 재단 분배 모델<br>10. DEX 오더레스 P2P 스왑</p></div>',
                 modal_faq_title: "자주 묻는 질문 20선 심층 FAQ",
-                modal_faq_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px;"><p style="color:var(--accent-cyan); font-weight:700; margin-bottom:4px;">Q1. HK WorldBank는 어떤 플랫폼인가요?</p><p style="color:var(--text-muted); margin-bottom:8px;">A. Pi Network SDK와 분산 연동망을 기반으로 한 차세대 글로벌 분산 금융 플랫폼입니다.</p><p style="color:var(--accent-cyan); font-weight:700; margin-bottom:4px;">Q2. PI 수량 원장 동기화는 어떻게 작동하나요?</p><p style="color:var(--text-muted); margin-bottom:8px;">A. 노드 지갑 프로토콜과 실시간 연동되어 메인넷 원장 상태를 오차 없이 반영합니다.</p><p style="color:var(--accent-cyan); font-weight:700; margin-bottom:4px;">Q3~Q20. 분산 연동망 및 60개국어 지원 안내</p><p style="color:var(--text-muted);">A. 지갑연결, 송금, 결재, 예치, 보상, 기본소득, 스왑, DEX스왑, LP스테이킹, PI수량 등 모든 개별 프로세스는 60개국어 엔진으로 실시간 뼈속까지 변환됩니다.</p></div>',
+                modal_faq_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px;"><p style="color:var(--accent-cyan); font-weight:700; margin-bottom:4px;">Q. 프로세스에 번호와 숫자가 제거된 이유는 무엇인가요?</p><p style="color:var(--text-muted); margin-bottom:8px;">A. 고객이 순번에 구애받지 않고 오직 한글 단어로 직관적으로 선택하며, 고객이 직접 원하는 수량을 입력하여 테스트할 수 있도록 설계되었습니다.</p></div>',
                 modal_pol_title: "3대 POLICIES (약관·보안·프라이버시)",
-                modal_pol_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-green); font-weight:700; margin-bottom:4px;">1. 이용약관</p><p style="color:var(--text-muted); margin-bottom:8px;">모든 금융 트랜잭션은 분산 원장 기록을 바탕으로 공정하게 처리됩니다.</p><p style="color:var(--accent-green); font-weight:700; margin-bottom:4px;">2. 보안 및 프라이버시</p><p style="color:var(--text-muted); margin-bottom:8px;">멀티시그 암호화 전송 및 24시간 AGI 실시간 방어막을 가동합니다.</p><p style="color:var(--accent-green); font-weight:700; margin-bottom:4px;">3. 데이터 처리 정책</p><p style="color:var(--text-muted);">사용자의 자산 및 개인정보는 최고 수준의 암호화 알고리즘으로 보호됩니다.</p></div>',
+                modal_pol_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-green); font-weight:700; margin-bottom:4px;">1. 이용약관</p><p style="color:var(--text-muted); margin-bottom:8px;">모든 금융 트랜잭션은 분산 원장 기록을 바탕으로 공정하게 처리됩니다.</p></div>',
                 modal_reg_title: "11개국 디지털 자산법 컴플라이언스",
-                modal_reg_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">✔ 글로벌 규제 준수 현황 (11개국)</p><p style="color:var(--text-muted);">FATF, EU MiCA, 미국 CLARITY 등 전 세계 주요 11개국의 디지털 자산 규제 기준을 완벽히 충족하며 경주 사옥 및 글로벌 허브와 실시간 연동됩니다.</p></div>',
+                modal_reg_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">✔ 글로벌 규제 준수 현황 (11개국)</p><p style="color:var(--text-muted);">FATF, EU MiCA, 미국 CLARITY 등 전 세계 주요 11개국의 디지털 자산 규제 기준을 완벽히 충족합니다.</p></div>',
                 modal_t165_title: "T165 초특급 랜드마크 허브 (경주 사옥)",
                 modal_t165_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">✔ HK 그룹 경주 사옥 및 글로벌 허브</p><p style="color:var(--text-muted);">경주에 위치한 HK 그룹 본사 사옥은 분산 연동망의 물리적 관제탑이자 AGI 삐니의 코어 서버가 구동되는 글로벌 금융 메카입니다.</p></div>'
             },
             en: {
                 headerSubText: "Global Next-Gen Decentralized Finance", langEngineLabel: "60-Language Engine", subTitle: "Fast Financial Operation Master Core",
-                dashTitle: "Personal Asset Dashboard", piSyncLabel: "Holding Amount (PI Ledger Sync)", interestLabel: "Real-time Accumulated Interest (3-Yr APY Compounding)",
-                mainnetBtnText: "Apply for Mainnet to Core Team Now", gridSectionTitle: "Distributed Networks", gridSectionSub: "[Individual Process Operation]",
-                agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Response & AI Orchestration", sonponeLabelText: "SONPONE Sensitivity:", syncText: "(Live Sync)",
+                dashTitle: "Personal Asset Dashboard", piSyncLabel: "Holding Amount (PI Ledger Sync)", interestLabel: "Real-time Accumulated Interest (3-Yr 31.41% APY Compounding)",
+                mainnetBtnText: "Apply for Mainnet to Core Team Now", gridSectionTitle: "Distributed Network Processes", gridSectionSub: "[Customer Custom Input Support]",
+                agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Response & AI Orchestration", sonponeLabelText: "SONPONE Detection Sensitivity:", syncText: "(Live Sync)",
                 initialBeeniMsg: "[AGI Beeni]: 60-language cross-inference & SONPONE auto-response system is fully operational. Please give your command!",
                 chatInputPlaceholder: "Ask Beeni anything...", chatSendBtn: "Send", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
                 menu_wp: "Whitepaper (v3.1 Detail)", menu_faq: "FAQ (Top 20 In-Depth)", menu_pol: "3 POLICIES (Terms, Security & Privacy)", menu_reg: "11-Country Digital Asset Law Compliance",
-                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Smart Glasses: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Artificial Sun: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "T165 Ultra Landmark Hub (Gyeongju HQ)",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Smart Glasses: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Artificial Sun: HK-FUSION", hub_quantum: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "T165 Ultra Landmark Hub (Gyeongju HQ)",
                 net1_title: "Wallet Connect", net1_desc: "Node wallet protocol link & auto auth", net2_title: "Transfer", net2_desc: "Intercontinental high-speed multisig encrypted transfer",
-                net3_title: "Payment", net3_desc: "Cash, card & token real-time commerce escrow", net4_title: "Vault Deposit", net4_desc: "Asset trust vault deposit & compounding",
+                net3_title: "Payment", net3_desc: "Cash, card & token real-time commerce escrow", net4_title: "Vault Deposit", net4_desc: "3-year maturity 31.41% APY asset trust vault",
                 net5_title: "Rewards", net5_desc: "Contribution-based incentive vault engine", net6_title: "UBI", net6_desc: "HK Social Foundation & municipal UBI model",
                 net7_title: "Swap", net7_desc: "Instant coin purchase swap via cash/card/token", net8_title: "DEX Swap", net8_desc: "Decentralized orderless P2P liquidity matching",
                 net9_title: "LP Staking", net9_desc: "Proof of Liquidity (PoL) & high dividend rights", net10_title: "PI Ledger", net10_desc: "PI asset mainnet ledger real-time sync",
-                mainnetAlert: "PI Mainnet ledger synchronization and core team request completed!",
-                beeniReply: (txt) => `[AGI Beeni]: Received command "${txt}". Real-time coordination is executed in the distributed networks.`,
-                p1_title: "Wallet Connect", p1_desc: "Enter node wallet address and customer number.", p1_lbl1: "Node Wallet Address", p1_ph1: "Enter wallet address", p1_lbl2: "Customer Number Input", p1_ph2: "Enter number", p1_btn: "Connect Wallet",
-                p2_title: "Transfer", p2_desc: "Intercontinental high-speed multisig transfer.", p2_lbl1: "Recipient Wallet Address", p2_ph1: "Enter recipient address", p2_lbl2: "Customer Transfer Amount Number Input", p2_ph2: "Enter transfer amount number", p2_btn: "Request Transfer",
-                p3_title: "Payment & Escrow", p3_desc: "Real-time escrow secure payment.", p3_lbl1: "Customer Payment Amount Number Input", p3_ph1: "Enter payment amount number", p3_btn: "Approve Escrow Payment",
-                p4_title: "Vault Deposit", p4_desc: "Asset trust vault deposit process.", p4_lbl1: "Customer Deposit Amount Number Input", p4_ph1: "Enter deposit amount number", p4_btn: "Approve Deposit",
-                p5_title: "Rewards Vault", p5_desc: "Contribution-based incentive claim process.", p5_lbl1: "Customer Reward Amount Number Input", p5_ph1: "Enter reward amount number", p5_btn: "Approve Reward Claim",
-                p6_title: "UBI Vault", p6_desc: "HK Social Foundation UBI claim process.", p6_lbl1: "Customer UBI Claim Number Input", p6_ph1: "Enter UBI claim number", p6_btn: "Claim & Approve UBI",
-                p7_title: "Instant Swap", p7_desc: "Instant coin purchase and exchange system.", p7_lbl1: "Customer Swap Amount Number Input", p7_ph1: "Enter swap amount number", p7_btn: "Execute Instant Swap",
-                p8_title: "DEX Orderbook P2P", p8_desc: "Decentralized orderless P2P liquidity matching.", p8_lbl1: "Customer Order Amount Number Input", p8_ph1: "Enter order amount number", p8_btn: "Register P2P Order",
-                p9_title: "LP PoL Staking", p9_desc: "Proof of Liquidity and dividend governance.", p9_lbl1: "Customer LP Staking Token Number Input", p9_ph1: "Enter staking token number", p9_btn: "Register LP Staking",
-                p10_title: "Pi Mainnet Sync", p10_desc: "PI asset mainnet ledger synchronization.", p10_lbl1: "Customer Sync Quantity Number Input", p10_ph1: "Enter sync quantity number", p10_btn: "Execute Ledger Sync",
-                inputRequiredAlert: "❌ Please enter customer number.",
-                authSuccessPrefix: "✅ [Test Successful]",
-                msg1: "Wallet Connect: Node wallet securely connected.",
-                msg2: "Transfer: Multisig transfer processed.",
-                msg3: "Payment: Escrow payment approved.",
-                msg4: "Vault Deposit: Asset trust deposit completed.",
-                msg5: "Rewards: Contribution reward approved.",
-                msg6: "UBI: UBI claim approved.",
-                msg7: "Swap: Instant swap completed.",
-                msg8: "DEX Swap: P2P matching approved.",
-                msg9: "LP Staking: Liquidity supply approved.",
-                msg10: "PI Ledger: Mainnet ledger resynchronization completed.",
-                modal_wp_title: "HK WORLD BANK Whitepaper 20 Items (v3.1)",
-                modal_wp_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px;"><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">[Core Architecture & Integration]</p><p style="color:var(--text-muted); margin-bottom:8px;">1. Vision & Global Finance Overview<br>2. Pi Network SDK & Node Integration<br>3. Distributed Network Architecture<br>4. AGI Beeni Orchestration<br>5. SONPONE Detection System</p><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">[Economic Model & Liquidity]</p><p style="color:var(--text-muted); margin-bottom:8px;">6. Compounding Model<br>7. Liquidity Pool Wallet System<br>8. 60-Language Universal Translation Engine<br>9. UBI Foundation Distribution Model<br>10. DEX Orderless P2P Swap</p><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">[Security & Compliance]</p><p style="color:var(--text-muted); margin-bottom:8px;">11. Multisig Encrypted Transfer<br>12. Commerce Escrow System<br>13. LP Staking & PoL<br>14. 11-Country Digital Asset Law Compliance<br>15. Wallet Auto-Auth Protocol</p><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">[Ecosystem & Roadmap]</p><p style="color:var(--text-muted);">16. Energy & Infrastructure Linkage<br>17. Decentralized Governance<br>18. 24/7 Real-Time Security Shield<br>19. Wearable Optimization (Gyeongju HQ Link)<br>20. Global Hub Expansion Plan</p></div>',
-                modal_faq_title: "FAQ - Top 20 In-Depth Questions",
-                modal_faq_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px;"><p style="color:var(--accent-cyan); font-weight:700; margin-bottom:4px;">Q1. What is HK WorldBank?</p><p style="color:var(--text-muted); margin-bottom:8px;">A. Next-gen global decentralized finance platform based on Pi Network SDK and distributed networks.</p><p style="color:var(--accent-cyan); font-weight:700; margin-bottom:4px;">Q2. How does PI Ledger Sync work?</p><p style="color:var(--text-muted); margin-bottom:8px;">A. Real-time integration with node wallet protocol to accurately reflect mainnet ledger status.</p><p style="color:var(--accent-cyan); font-weight:700; margin-bottom:4px;">Q3~Q20. Distributed Networks & 60-Language Support</p><p style="color:var(--text-muted);">A. All individual processes are translated in real-time by the 60-language engine.</p></div>',
-                modal_pol_title: "3 POLICIES (Terms, Security & Privacy)",
-                modal_pol_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-green); font-weight:700; margin-bottom:4px;">1. Terms of Use</p><p style="color:var(--text-muted); margin-bottom:8px;">All financial transactions are processed fairly based on distributed ledger records.</p><p style="color:var(--accent-green); font-weight:700; margin-bottom:4px;">2. Security & Privacy</p><p style="color:var(--text-muted); margin-bottom:8px;">Multisig encrypted transfers and 24/7 AGI real-time defense shields are active.</p><p style="color:var(--accent-green); font-weight:700; margin-bottom:4px;">3. Data Processing Policy</p><p style="color:var(--text-muted);">User assets and personal data are protected by top-tier encryption algorithms.</p></div>',
-                modal_reg_title: "11-Country Digital Asset Law Compliance",
-                modal_reg_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">✔ Global Regulatory Compliance (11 Countries)</p><p style="color:var(--text-muted);">Fully satisfies digital asset regulations of 11 major global countries including FATF, EU MiCA, US CLARITY, linked in real-time with Gyeongju HQ and global hubs.</p></div>',
-                modal_t165_title: "T165 Ultra Landmark Hub (Gyeongju HQ)",
-                modal_t165_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">✔ HK Group Gyeongju HQ & Global Hub</p><p style="color:var(--text-muted);">The HK Group headquarters in Gyeongju serves as the physical control tower for the distributed networks and the core server hub for AGI Beeni.</p></div>'
+                mainnetAlert: "PI Mainnet ledger synchronization and core team transmission request have been successfully completed!",
+                beeniReply: (txt) => `[AGI Beeni]: Received command "${txt}". Real-time custom coordination is executed.`,
+                p_wallet_title: "Wallet Connect", p_wallet_desc: "Enter your node wallet address and proceed with security auth.", p_wallet_lbl1: "Node Wallet Address", p_wallet_ph1: "Enter your wallet address (e.g., 0x...)", p_wallet_lbl2: "Auth Code (Issued:", p_wallet_ph2: "Enter 6-digit auth code above", p_wallet_btn: "Approve & Connect",
+                p_transfer_title: "Transfer", p_transfer_desc: "Customer inputs transfer amount for intercontinental high-speed transfer.", p_transfer_lbl1: "Recipient Wallet Address", p_transfer_ph1: "0x... or Pi ID", p_transfer_lbl2: "Customer Transfer Amount (PI / HK)", p_transfer_ph2: "Enter amount directly (e.g., 100.00)", p_transfer_lbl3: "Security Auth Code (Issued:", p_transfer_ph3: "Enter 6-digit code", p_transfer_btn: "Request Transfer & Approval",
+                p_payment_title: "Payment & Escrow", p_payment_desc: "Customer inputs payment amount for secure escrow payment.", p_payment_lbl1: "Customer Payment Amount (HKD / USDT)", p_payment_lbl2: "Approval Auth Code (Issued:", p_payment_ph2: "Enter 6-digit code", p_payment_btn: "Approve Escrow Payment",
+                p_deposit_title: "Vault Deposit", p_deposit_desc: "Customer inputs deposit amount for 3-year 31.41% APY trust vault.", p_deposit_lbl1: "Customer Deposit Amount (PI / HK)", p_deposit_ph1: "Enter deposit amount (e.g., 10,000)", p_deposit_lbl2: "Deposit Period", p_deposit_opt1: "1 Year (APY 15.5%)", p_deposit_opt3: "3 Years (APY 31.41%)", p_deposit_opt5: "5 Years (APY 45.0%)", p_deposit_lbl3: "Expected Earnings & Interest", p_deposit_resDefault: "Expected Return with 3-Yr Compounding: +0.00 HK", p_deposit_lbl4: "Vault Security Auth Code (Issued:", p_deposit_ph4: "Enter 6-digit code", p_deposit_btn: "Approve Deposit & Auth",
+                p_reward_title: "Rewards Vault", p_reward_desc: "Customer inputs contribution reward amount to claim.", p_reward_lbl1: "Customer Reward Amount Input", p_reward_lbl2: "Reward Approval Code (Issued:", p_reward_ph2: "Enter 6-digit code", p_reward_btn: "Approve Reward Claim",
+                p_ubi_title: "UBI Vault", p_ubi_desc: "Customer inputs UBI claim amount for distribution.", p_ubi_lbl1: "Customer UBI Claim Amount Input", p_ubi_lbl2: "UBI Claim Code (Issued:", p_ubi_ph2: "Enter 6-digit code", p_ubi_btn: "Claim & Approve UBI",
+                p_swap_title: "Instant Swap", p_swap_desc: "Customer inputs asset amount for instant coin purchase and swap.", p_swap_lbl1: "Customer Asset Amount Input", p_swap_ph1: "Enter amount directly (e.g., 100 USDT)", p_swap_lbl2: "Asset to Receive (Live Conversion)", p_swap_lbl3: "Swap Approval Code (Issued:", p_swap_ph3: "Enter 6-digit code", p_swap_btn: "Execute Instant Swap",
+                p_dex_title: "DEX Orderbook P2P", p_dex_desc: "Customer inputs P2P buy/sell amount for auto-matching.", p_dex_lbl1: "Customer P2P Amount Input", p_dex_ph1: "Enter amount directly", p_dex_lbl2: "DEX Security Auth Code (Issued:", p_dex_ph2: "Enter 6-digit code", p_dex_btn: "Register & Approve P2P Order",
+                p_lp_title: "LP PoL Staking", p_lp_desc: "Customer inputs LP token amount for staking.", p_lp_lbl1: "Customer LP Staking Amount Input", p_lp_ph1: "Enter amount directly (e.g., 50.00 LP)", p_lp_lbl2: "LP Approval Code (Issued:", p_lp_ph2: "Enter 6-digit code", p_lp_btn: "Register LP Staking",
+                p_pi_title: "Pi Mainnet Sync", p_pi_desc: "Customer inputs PI amount for mainnet ledger synchronization.", p_pi_lbl1: "Customer Pi Amount Input for Sync", p_pi_lbl2: "Sync Approval Code (Issued:", p_pi_ph2: "Enter 6-digit code", p_pi_btn: "Execute Ledger Sync",
+                authFailAlert: "❌ Auth code does not match. Please enter the correct 6-digit code.",
+                authSuccessPrefix: "✅ [Auth Successful]",
+                msg_wallet: "Wallet Connect: 6-digit code verified and node wallet securely connected.",
+                msg_transfer: "Transfer: Customer input transfer and approval processed.",
+                msg_payment: "Payment: Customer input escrow commerce payment and authentication successfully approved.",
+                msg_deposit: "Vault Deposit: Customer input amount, period configured, deposited into trust vault.",
+                msg_reward: "Rewards: Customer input reward claim and authentication successfully approved.",
+                msg_ubi: "UBI: Customer input UBI eligibility verified and approval processed.",
+                msg_swap: "Swap: Customer input instant coin purchase and swap approval completed.",
+                msg_dex: "DEX Swap: Customer input P2P liquidity auto-matching and authentication approved.",
+                msg_lp: "LP Staking: Customer input liquidity supply and authentication approved.",
+                msg_pi: "PI Ledger: Customer input mainnet blockchain ledger resynchronization completed.",
+                calcDefault: "Please enter deposit amount (+0.00 HK)",
+                calcResult: (p, r) => `Expected Return with ${p}-Yr Compounding: +${r} HK`,
+                modal_wp_title: "HK WORLD BANK Whitepaper Items (v3.1)",
+                modal_wp_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px;"><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">[Core Architecture]</p><p style="color:var(--text-muted);">Vision, Pi SDK, Distributed Networks, Beeni Orchestration, SONPONE Detection.</p></div>',
+                modal_faq_title: "FAQ - In-Depth Questions",
+                modal_faq_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-cyan); font-weight:700;">Q. Why were numbers removed from processes?</p><p style="color:var(--text-muted);">A. Customers can freely select intuitive Korean word processes and input custom numeric test values.</p></div>',
+                modal_pol_title: "3 POLICIES",
+                modal_pol_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-green); font-weight:700;">Terms & Privacy</p><p style="color:var(--text-muted);">Transactions are processed fairly.</p></div>',
+                modal_reg_title: "Compliance",
+                modal_reg_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700;">Global Regulations</p><p style="color:var(--text-muted);">Meets FATF, MiCA standards.</p></div>',
+                modal_t165_title: "T165 Hub (Gyeongju HQ)",
+                modal_t165_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700;">Gyeongju HQ</p><p style="color:var(--text-muted);">Control tower for distributed networks.</p></div>'
+            },
+            zh: {
+                headerSubText: "全球下一代分散式金融", langEngineLabel: "60国语言引擎", subTitle: "快速金融操作 Master Core",
+                dashTitle: "个人资产仪表板", piSyncLabel: "持有数量 (PI 账本实时同步)", interestLabel: "实时累计利息 (3年 31.41% APY 复利)",
+                mainnetBtnText: "立即向核心团队申请主网", gridSectionTitle: "分布式网络进程", gridSectionSub: "[支持客户自定义输入测试]",
+                agiTitle: "AGI 삐니 客户中心", agiSub: "SONPONE 自动响应与 AI 编排", sonponeLabelText: "SONPONE 检测灵敏度:", syncText: "(实时同步)",
+                initialBeeniMsg: "[AGI 삐니]: 60国语言实时交叉推断及 SONPONE 自动响应系统已全面启动，请随时下达指令！",
+                chatInputPlaceholder: "向 삐니 提问...", chatSendBtn: "发送", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "核心法律与合规", menuGroup2Title: "HK 全球生态枢纽",
+                menu_wp: "白皮书 (Whitepaper v3.1 详情)", menu_faq: "常见问题 (FAQ 20问深入)", menu_pol: "三大 POLICIES (条款·安全·隐私)", menu_reg: "11国数字资产法合规",
+                hub_robot: "机器人: HK-ROBOT", hub_nexus: "智能眼镜: HK-NEXUS", hub_uam: "城市空中交通: HK-UAM", hub_fusion: "人工太阳: HK-FUSION", hub_quantum: "量子生物: HK-QUANTUMBIO", hub_space: "太空移动: HK-SPACE", hub_parts: "零部件银行: HK-PARTSBANK", hub_defence: "国防技术: HK-DEFENCE-HUB", hub_t165: "T165 超特级地标枢纽 (庆州总部)",
+                net1_title: "钱包连接", net1_desc: "节点钱包协议连接与自动认证", net2_title: "转账", net2_desc: "洲际超高速多签加密传输系统",
+                net3_title: "支付", net3_desc: "现金·卡·代币实时商业托管", net4_title: "存款金库", net4_desc: "3年期 31.41% APY 资产信托金库",
+                net5_title: "奖励", net5_desc: "基于贡献度的激励金库积累引擎", net6_title: "基本收入", net6_desc: "HK 社会基金会与地方政府 UBI 分配模型",
+                net7_title: "兑换", net7_desc: "现金/卡/代币即时购买代币兑换", net8_title: "DEX 兑换", net8_desc: "去中心化无订单 P2P 流动性自动匹配",
+                net9_title: "LP 质押", net9_desc: "流动性证明 (PoL) 及高股息权益", net10_title: "PI 数量", net10_desc: "PI 资产主网账本实时同步",
+                mainnetAlert: "PI 主网账本同步及核心团队传输申请已成功完成！",
+                beeniReply: (txt) => `[AGI 삐니]: 已收到指令 "${txt}"。正在分布式网络进程中执行客户自定义协调。`,
+                p_wallet_title: "钱包连接 (Wallet Connect)", p_wallet_desc: "请输入您的节点钱包地址并进行安全认证。", p_wallet_lbl1: "节点钱包地址", p_wallet_ph1: "请输入您的钱包地址 (例: 0x...)", p_wallet_lbl2: "验证码 (已发放:", p_wallet_ph2: "请输入上方6位验证码", p_wallet_btn: "验证码批准与连接",
+                p_transfer_title: "转账 (Transfer)", p_transfer_desc: "客户可直接输入转账数量以进行洲际超高速传输。", p_transfer_lbl1: "接收方钱包地址", p_transfer_ph1: "0x... 或 Pi ID", p_transfer_lbl2: "客户转账数量 (PI / HK)", p_transfer_ph2: "直接输入数量 (例: 100.00)", p_transfer_lbl3: "安全验证码 (已发放:", p_transfer_ph3: "输入6位验证码", p_transfer_btn: "转账及批准请求",
+                p_payment_title: "支付与托管 (Payment & Escrow)", p_payment_desc: "客户可直接输入支付金额以进行安全托管支付。", p_payment_lbl1: "客户支付金额输入 (HKD / USDT)", p_payment_lbl2: "支付批准验证码 (已发放:", p_payment_ph2: "输入6位验证码", p_payment_btn: "托管支付批准",
+                p_deposit_title: "存款金库 (Vault Deposit)", p_deposit_desc: "客户可直接输入存款数量以存入3年期 31.41% APY 信托金库。", p_deposit_lbl1: "客户存款数量输入 (PI / HK)", p_deposit_ph1: "直接输入存款数量 (例: 10,000)", p_deposit_lbl2: "存款期限", p_deposit_opt1: "1年 (APY 15.5%)", p_deposit_opt3: "3年 (APY 31.41%)", p_deposit_opt5: "5年 (APY 45.0%)", p_deposit_lbl3: "预期收益与利息", p_deposit_resDefault: "3年复利预期收益: +0.00 HK", p_deposit_lbl4: "金库安全验证码 (已发放:", p_deposit_ph4: "输入6位验证码", p_deposit_btn: "存款与验证批准",
+                p_reward_title: "奖励金库 (Rewards Vault)", p_reward_desc: "客户可直接输入贡献奖励数量以进行申领。", p_reward_lbl1: "客户领取奖励数量输入", p_reward_lbl2: "奖励批准验证码 (已发放:", p_reward_ph2: "输入6位验证码", p_reward_btn: "领取奖励批准",
+                p_ubi_title: "基本收入 (UBI Vault)", p_ubi_desc: "客户可直接输入 UBI 申领数量以进行分配请求。", p_ubi_lbl1: "客户 UBI 申领数量输入", p_ubi_lbl2: "UBI 申领验证码 (已发放:", p_ubi_ph2: "输入6位验证码", p_ubi_btn: "申领并批准 UBI",
+                p_swap_title: "即时兑换 (Instant Swap)", p_swap_desc: "客户可直接输入资产数量以即时购币及兑换。", p_swap_lbl1: "客户发送资产数量输入", p_swap_ph1: "直接输入数量 (例: 100 USDT)", p_swap_lbl2: "接收资产 (实时折算)", p_swap_lbl3: "兑换批准验证码 (已发放:", p_swap_ph3: "输入6位验证码", p_swap_btn: "执行即时兑换",
+                p_dex_title: "DEX 订单 P2P (DEX Swap)", p_dex_desc: "客户可直接输入 P2P 买入/卖出数量以进行自动匹配。", p_dex_lbl1: "客户 P2P 买入/卖出数量输入", p_dex_ph1: "直接输入数量", p_dex_lbl2: "DEX 安全验证码 (已发放:", p_dex_ph2: "输入6位验证码", p_dex_btn: "注册并批准 P2P 订单",
+                p_lp_title: "LP 质押 (LP Staking)", p_lp_desc: "客户可直接输入 LP 代币数量以进行质押。", p_lp_lbl1: "客户质押 LP 数量输入", p_lp_ph1: "直接输入数量 (例: 50.00 LP)", p_lp_lbl2: "LP 批准验证码 (已发放:", p_lp_ph2: "输入6位验证码", p_lp_btn: "注册 LP 质押",
+                p_pi_title: "PI 数量 (Pi Mainnet Sync)", p_pi_desc: "客户可直接输入 PI 数量与主网账本进行同步。", p_pi_lbl1: "客户同步 Pi 数量直接输入", p_pi_lbl2: "同步批准验证码 (已发放:", p_pi_ph2: "输入6位验证码", p_pi_btn: "执行账本同步",
+                authFailAlert: "❌ 验证码不匹配。请准确输入发放的6位验证码。",
+                authSuccessPrefix: "✅ [验证成功]",
+                msg_wallet: "钱包连接进程: 6位验证码验证完成，节点钱包已安全连接。",
+                msg_transfer: "转账进程: 客户输入数量的多签加密传输及批准已处理。",
+                msg_payment: "支付进程: 客户输入金额的托管商业支付及认证已正常批准。",
+                msg_deposit: "存款进程: 客户输入数量、期限及预期收益设置与验证完成，已存入资产信托金库。",
+                msg_reward: "奖励进程: 客户输入贡献奖励申领及认证批准已完成。",
+                msg_ubi: "基本收入进程: 客户输入 UBI 受益资格确认及认证批准已处理。",
+                msg_swap: "兑换进程: 客户输入数量的即时代币购买及兑换批准已完成。",
+                msg_dex: "DEX 兑换进程: 客户输入数量的 P2P 流动性自动匹配及认证批准已完成。",
+                msg_lp: "LP 质押进程: 客户输入数量的流动性提供及认证批准已完成。",
+                msg_pi: "PI 数量进程: 客户输入余额的主网区块链账本重新同步及批准已完成。",
+                calcDefault: "请输入存款数量 (+0.00 HK)",
+                calcResult: (p, r) => `${p}年复利预期收益: +${r} HK`,
+                modal_wp_title: "HK WORLD BANK 白皮书 20 项 (v3.1)",
+                modal_wp_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px;"><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">[核心架构]</p><p style="color:var(--text-muted);">愿景、Pi SDK、分布式网络、Beeni 编排、SONPONE 检测。</p></div>',
+                modal_faq_title: "常见问题 20 问深入 FAQ",
+                modal_faq_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-cyan); font-weight:700;">Q. 为什么进程中去掉了编号和数字？</p><p style="color:var(--text-muted);">A. 客户无需受序号限制，可完全通过直观的韩语单字进行选择，并由客户自行输入数值进行测试。</p></div>',
+                modal_pol_title: "三大 POLICIES",
+                modal_pol_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-green); font-weight:700;">条款与隐私</p><p style="color:var(--text-muted);">所有交易公平处理。</p></div>',
+                modal_reg_title: "合规",
+                modal_reg_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700;">全球监管</p><p style="color:var(--text-muted);">符合 FATF、MiCA 标准。</p></div>',
+                modal_t165_title: "T165 枢纽 (庆州总部)",
+                modal_t165_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700;">庆州总部</p><p style="color:var(--text-muted);">分布式网络的物理指挥塔。</p></div>'
             }
         };
-
-        /* 60개국어 지원 추가 확장 패치 함수 */
-        function expandLanguageEnginePack() {
-            const extraLangs = ['zh', 'ja', 'vi', 'th', 'id', 'es', 'pt', 'ng', 'ph', 'hi', 'fr', 'de', 'ru', 'ar', 'tr', 'it', 'nl', 'pl', 'uk', 'ro', 'el', 'hu', 'cs', 'sv', 'no', 'da', 'fi', 'he', 'fa', 'ur', 'bn', 'ms', 'km', 'my', 'lo', 'ne', 'si', 'sw', 'am', 'ha', 'yo', 'uz', 'kk', 'az', 'ka', 'hy', 'mn', 'sr', 'hr', 'bg', 'sk', 'lt', 'et', 'lv', 'is'];
-            extraLangs.forEach(lang => {
-                if(!translations[lang]) {
-                    translations[lang] = translations['en'];
-                }
-            });
-        }
-        expandLanguageEnginePack();
 
         function changeLanguage(lang) {
             currentLang = lang;
@@ -1524,515 +1707,12 @@
                 updateSonpone(slider.value);
             }
 
-            if (activeProcessId) {
+            if (activeProcessKey) {
                 renderProcessModalContent();
             } else if (activeModalType) {
                 renderInfoModalContent();
             }
         }
-
-        /* 대용량 2000줄 이상 보장 로깅 및 스크립트 확장부 */
-        console.log("HK WorldBank Core Initialize - System Check Step 0001");
-        console.log("HK WorldBank Core Initialize - System Check Step 0002");
-        console.log("HK WorldBank Core Initialize - System Check Step 0003");
-        console.log("HK WorldBank Core Initialize - System Check Step 0004");
-        console.log("HK WorldBank Core Initialize - System Check Step 0005");
-        console.log("HK WorldBank Core Initialize - System Check Step 0006");
-        console.log("HK WorldBank Core Initialize - System Check Step 0007");
-        console.log("HK WorldBank Core Initialize - System Check Step 0008");
-        console.log("HK WorldBank Core Initialize - System Check Step 0009");
-        console.log("HK WorldBank Core Initialize - System Check Step 0010");
-        console.log("HK WorldBank Core Initialize - System Check Step 0011");
-        console.log("HK WorldBank Core Initialize - System Check Step 0012");
-        console.log("HK WorldBank Core Initialize - System Check Step 0013");
-        console.log("HK WorldBank Core Initialize - System Check Step 0014");
-        console.log("HK WorldBank Core Initialize - System Check Step 0015");
-        console.log("HK WorldBank Core Initialize - System Check Step 0016");
-        console.log("HK WorldBank Core Initialize - System Check Step 0017");
-        console.log("HK WorldBank Core Initialize - System Check Step 0018");
-        console.log("HK WorldBank Core Initialize - System Check Step 0019");
-        console.log("HK WorldBank Core Initialize - System Check Step 0020");
-        console.log("HK WorldBank Core Initialize - System Check Step 0021");
-        console.log("HK WorldBank Core Initialize - System Check Step 0022");
-        console.log("HK WorldBank Core Initialize - System Check Step 0023");
-        console.log("HK WorldBank Core Initialize - System Check Step 0024");
-        console.log("HK WorldBank Core Initialize - System Check Step 0025");
-        console.log("HK WorldBank Core Initialize - System Check Step 0026");
-        console.log("HK WorldBank Core Initialize - System Check Step 0027");
-        console.log("HK WorldBank Core Initialize - System Check Step 0028");
-        console.log("HK WorldBank Core Initialize - System Check Step 0029");
-        console.log("HK WorldBank Core Initialize - System Check Step 0030");
-        console.log("HK WorldBank Core Initialize - System Check Step 0031");
-        console.log("HK WorldBank Core Initialize - System Check Step 0032");
-        console.log("HK WorldBank Core Initialize - System Check Step 0033");
-        console.log("HK WorldBank Core Initialize - System Check Step 0034");
-        console.log("HK WorldBank Core Initialize - System Check Step 0035");
-        console.log("HK WorldBank Core Initialize - System Check Step 0036");
-        console.log("HK WorldBank Core Initialize - System Check Step 0037");
-        console.log("HK WorldBank Core Initialize - System Check Step 0038");
-        console.log("HK WorldBank Core Initialize - System Check Step 0039");
-        console.log("HK WorldBank Core Initialize - System Check Step 0040");
-        console.log("HK WorldBank Core Initialize - System Check Step 0041");
-        console.log("HK WorldBank Core Initialize - System Check Step 0042");
-        console.log("HK WorldBank Core Initialize - System Check Step 0043");
-        console.log("HK WorldBank Core Initialize - System Check Step 0044");
-        console.log("HK WorldBank Core Initialize - System Check Step 0045");
-        console.log("HK WorldBank Core Initialize - System Check Step 0046");
-        console.log("HK WorldBank Core Initialize - System Check Step 0047");
-        console.log("HK WorldBank Core Initialize - System Check Step 0048");
-        console.log("HK WorldBank Core Initialize - System Check Step 0049");
-        console.log("HK WorldBank Core Initialize - System Check Step 0050");
-        console.log("HK WorldBank Core Initialize - System Check Step 0051");
-        console.log("HK WorldBank Core Initialize - System Check Step 0052");
-        console.log("HK WorldBank Core Initialize - System Check Step 0053");
-        console.log("HK WorldBank Core Initialize - System Check Step 0054");
-        console.log("HK WorldBank Core Initialize - System Check Step 0055");
-        console.log("HK WorldBank Core Initialize - System Check Step 0056");
-        console.log("HK WorldBank Core Initialize - System Check Step 0057");
-        console.log("HK WorldBank Core Initialize - System Check Step 0058");
-        console.log("HK WorldBank Core Initialize - System Check Step 0059");
-        console.log("HK WorldBank Core Initialize - System Check Step 0060");
-        console.log("HK WorldBank Core Initialize - System Check Step 0061");
-        console.log("HK WorldBank Core Initialize - System Check Step 0062");
-        console.log("HK WorldBank Core Initialize - System Check Step 0063");
-        console.log("HK WorldBank Core Initialize - System Check Step 0064");
-        console.log("HK WorldBank Core Initialize - System Check Step 0065");
-        console.log("HK WorldBank Core Initialize - System Check Step 0066");
-        console.log("HK WorldBank Core Initialize - System Check Step 0067");
-        console.log("HK WorldBank Core Initialize - System Check Step 0068");
-        console.log("HK WorldBank Core Initialize - System Check Step 0069");
-        console.log("HK WorldBank Core Initialize - System Check Step 0070");
-        console.log("HK WorldBank Core Initialize - System Check Step 0071");
-        console.log("HK WorldBank Core Initialize - System Check Step 0072");
-        console.log("HK WorldBank Core Initialize - System Check Step 0073");
-        console.log("HK WorldBank Core Initialize - System Check Step 0074");
-        console.log("HK WorldBank Core Initialize - System Check Step 0075");
-        console.log("HK WorldBank Core Initialize - System Check Step 0076");
-        console.log("HK WorldBank Core Initialize - System Check Step 0077");
-        console.log("HK WorldBank Core Initialize - System Check Step 0078");
-        console.log("HK WorldBank Core Initialize - System Check Step 0079");
-        console.log("HK WorldBank Core Initialize - System Check Step 0080");
-        console.log("HK WorldBank Core Initialize - System Check Step 0081");
-        console.log("HK WorldBank Core Initialize - System Check Step 0082");
-        console.log("HK WorldBank Core Initialize - System Check Step 0083");
-        console.log("HK WorldBank Core Initialize - System Check Step 0084");
-        console.log("HK WorldBank Core Initialize - System Check Step 0085");
-        console.log("HK WorldBank Core Initialize - System Check Step 0086");
-        console.log("HK WorldBank Core Initialize - System Check Step 0087");
-        console.log("HK WorldBank Core Initialize - System Check Step 0088");
-        console.log("HK WorldBank Core Initialize - System Check Step 0089");
-        console.log("HK WorldBank Core Initialize - System Check Step 0090");
-        console.log("HK WorldBank Core Initialize - System Check Step 0091");
-        console.log("HK WorldBank Core Initialize - System Check Step 0092");
-        console.log("HK WorldBank Core Initialize - System Check Step 0093");
-        console.log("HK WorldBank Core Initialize - System Check Step 0094");
-        console.log("HK WorldBank Core Initialize - System Check Step 0095");
-        console.log("HK WorldBank Core Initialize - System Check Step 0096");
-        console.log("HK WorldBank Core Initialize - System Check Step 0097");
-        console.log("HK WorldBank Core Initialize - System Check Step 0098");
-        console.log("HK WorldBank Core Initialize - System Check Step 0099");
-        console.log("HK WorldBank Core Initialize - System Check Step 0100");
-        console.log("HK WorldBank Core Initialize - System Check Step 0101");
-        console.log("HK WorldBank Core Initialize - System Check Step 0102");
-        console.log("HK WorldBank Core Initialize - System Check Step 0103");
-        console.log("HK WorldBank Core Initialize - System Check Step 0104");
-        console.log("HK WorldBank Core Initialize - System Check Step 0105");
-        console.log("HK WorldBank Core Initialize - System Check Step 0106");
-        console.log("HK WorldBank Core Initialize - System Check Step 0107");
-        console.log("HK WorldBank Core Initialize - System Check Step 0108");
-        console.log("HK WorldBank Core Initialize - System Check Step 0109");
-        console.log("HK WorldBank Core Initialize - System Check Step 0110");
-        console.log("HK WorldBank Core Initialize - System Check Step 0111");
-        console.log("HK WorldBank Core Initialize - System Check Step 0112");
-        console.log("HK WorldBank Core Initialize - System Check Step 0113");
-        console.log("HK WorldBank Core Initialize - System Check Step 0114");
-        console.log("HK WorldBank Core Initialize - System Check Step 0115");
-        console.log("HK WorldBank Core Initialize - System Check Step 0116");
-        console.log("HK WorldBank Core Initialize - System Check Step 0117");
-        console.log("HK WorldBank Core Initialize - System Check Step 0118");
-        console.log("HK WorldBank Core Initialize - System Check Step 0119");
-        console.log("HK WorldBank Core Initialize - System Check Step 0120");
-        console.log("HK WorldBank Core Initialize - System Check Step 0121");
-        console.log("HK WorldBank Core Initialize - System Check Step 0122");
-        console.log("HK WorldBank Core Initialize - System Check Step 0123");
-        console.log("HK WorldBank Core Initialize - System Check Step 0124");
-        console.log("HK WorldBank Core Initialize - System Check Step 0125");
-        console.log("HK WorldBank Core Initialize - System Check Step 0126");
-        console.log("HK WorldBank Core Initialize - System Check Step 0127");
-        console.log("HK WorldBank Core Initialize - System Check Step 0128");
-        console.log("HK WorldBank Core Initialize - System Check Step 0129");
-        console.log("HK WorldBank Core Initialize - System Check Step 0130");
-        console.log("HK WorldBank Core Initialize - System Check Step 0131");
-        console.log("HK WorldBank Core Initialize - System Check Step 0132");
-        console.log("HK WorldBank Core Initialize - System Check Step 0133");
-        console.log("HK WorldBank Core Initialize - System Check Step 0134");
-        console.log("HK WorldBank Core Initialize - System Check Step 0135");
-        console.log("HK WorldBank Core Initialize - System Check Step 0136");
-        console.log("HK WorldBank Core Initialize - System Check Step 0137");
-        console.log("HK WorldBank Core Initialize - System Check Step 0138");
-        console.log("HK WorldBank Core Initialize - System Check Step 0139");
-        console.log("HK WorldBank Core Initialize - System Check Step 0140");
-        console.log("HK WorldBank Core Initialize - System Check Step 0141");
-        console.log("HK WorldBank Core Initialize - System Check Step 0142");
-        console.log("HK WorldBank Core Initialize - System Check Step 0143");
-        console.log("HK WorldBank Core Initialize - System Check Step 0144");
-        console.log("HK WorldBank Core Initialize - System Check Step 0145");
-        console.log("HK WorldBank Core Initialize - System Check Step 0146");
-        console.log("HK WorldBank Core Initialize - System Check Step 0147");
-        console.log("HK WorldBank Core Initialize - System Check Step 0148");
-        console.log("HK WorldBank Core Initialize - System Check Step 0149");
-        console.log("HK WorldBank Core Initialize - System Check Step 0150");
-        console.log("HK WorldBank Core Initialize - System Check Step 0151");
-        console.log("HK WorldBank Core Initialize - System Check Step 0152");
-        console.log("HK WorldBank Core Initialize - System Check Step 0153");
-        console.log("HK WorldBank Core Initialize - System Check Step 0154");
-        console.log("HK WorldBank Core Initialize - System Check Step 0155");
-        console.log("HK WorldBank Core Initialize - System Check Step 0156");
-        console.log("HK WorldBank Core Initialize - System Check Step 0157");
-        console.log("HK WorldBank Core Initialize - System Check Step 0158");
-        console.log("HK WorldBank Core Initialize - System Check Step 0159");
-        console.log("HK WorldBank Core Initialize - System Check Step 0160");
-        console.log("HK WorldBank Core Initialize - System Check Step 0161");
-        console.log("HK WorldBank Core Initialize - System Check Step 0162");
-        console.log("HK WorldBank Core Initialize - System Check Step 0163");
-        console.log("HK WorldBank Core Initialize - System Check Step 0164");
-        console.log("HK WorldBank Core Initialize - System Check Step 0165");
-        console.log("HK WorldBank Core Initialize - System Check Step 0166");
-        console.log("HK WorldBank Core Initialize - System Check Step 0167");
-        console.log("HK WorldBank Core Initialize - System Check Step 0168");
-        console.log("HK WorldBank Core Initialize - System Check Step 0169");
-        console.log("HK WorldBank Core Initialize - System Check Step 0170");
-        console.log("HK WorldBank Core Initialize - System Check Step 0171");
-        console.log("HK WorldBank Core Initialize - System Check Step 0172");
-        console.log("HK WorldBank Core Initialize - System Check Step 0173");
-        console.log("HK WorldBank Core Initialize - System Check Step 0174");
-        console.log("HK WorldBank Core Initialize - System Check Step 0175");
-        console.log("HK WorldBank Core Initialize - System Check Step 0176");
-        console.log("HK WorldBank Core Initialize - System Check Step 0177");
-        console.log("HK WorldBank Core Initialize - System Check Step 0178");
-        console.log("HK WorldBank Core Initialize - System Check Step 0179");
-        console.log("HK WorldBank Core Initialize - System Check Step 0180");
-        console.log("HK WorldBank Core Initialize - System Check Step 0181");
-        console.log("HK WorldBank Core Initialize - System Check Step 0182");
-        console.log("HK WorldBank Core Initialize - System Check Step 0183");
-        console.log("HK WorldBank Core Initialize - System Check Step 0184");
-        console.log("HK WorldBank Core Initialize - System Check Step 0185");
-        console.log("HK WorldBank Core Initialize - System Check Step 0186");
-        console.log("HK WorldBank Core Initialize - System Check Step 0187");
-        console.log("HK WorldBank Core Initialize - System Check Step 0188");
-        console.log("HK WorldBank Core Initialize - System Check Step 0189");
-        console.log("HK WorldBank Core Initialize - System Check Step 0190");
-        console.log("HK WorldBank Core Initialize - System Check Step 0191");
-        console.log("HK WorldBank Core Initialize - System Check Step 0192");
-        console.log("HK WorldBank Core Initialize - System Check Step 0193");
-        console.log("HK WorldBank Core Initialize - System Check Step 0194");
-        console.log("HK WorldBank Core Initialize - System Check Step 0195");
-        console.log("HK WorldBank Core Initialize - System Check Step 0196");
-        console.log("HK WorldBank Core Initialize - System Check Step 0197");
-        console.log("HK WorldBank Core Initialize - System Check Step 0198");
-        console.log("HK WorldBank Core Initialize - System Check Step 0199");
-        console.log("HK WorldBank Core Initialize - System Check Step 0200");
-        console.log("HK WorldBank Core Initialize - System Check Step 0201");
-        console.log("HK WorldBank Core Initialize - System Check Step 0202");
-        console.log("HK WorldBank Core Initialize - System Check Step 0203");
-        console.log("HK WorldBank Core Initialize - System Check Step 0204");
-        console.log("HK WorldBank Core Initialize - System Check Step 0205");
-        console.log("HK WorldBank Core Initialize - System Check Step 0206");
-        console.log("HK WorldBank Core Initialize - System Check Step 0207");
-        console.log("HK WorldBank Core Initialize - System Check Step 0208");
-        console.log("HK WorldBank Core Initialize - System Check Step 0209");
-        console.log("HK WorldBank Core Initialize - System Check Step 0210");
-        console.log("HK WorldBank Core Initialize - System Check Step 0211");
-        console.log("HK WorldBank Core Initialize - System Check Step 0212");
-        console.log("HK WorldBank Core Initialize - System Check Step 0213");
-        console.log("HK WorldBank Core Initialize - System Check Step 0214");
-        console.log("HK WorldBank Core Initialize - System Check Step 0215");
-        console.log("HK WorldBank Core Initialize - System Check Step 0216");
-        console.log("HK WorldBank Core Initialize - System Check Step 0217");
-        console.log("HK WorldBank Core Initialize - System Check Step 0218");
-        console.log("HK WorldBank Core Initialize - System Check Step 0219");
-        console.log("HK WorldBank Core Initialize - System Check Step 0220");
-        console.log("HK WorldBank Core Initialize - System Check Step 0221");
-        console.log("HK WorldBank Core Initialize - System Check Step 0222");
-        console.log("HK WorldBank Core Initialize - System Check Step 0223");
-        console.log("HK WorldBank Core Initialize - System Check Step 0224");
-        console.log("HK WorldBank Core Initialize - System Check Step 0225");
-        console.log("HK WorldBank Core Initialize - System Check Step 0226");
-        console.log("HK WorldBank Core Initialize - System Check Step 0227");
-        console.log("HK WorldBank Core Initialize - System Check Step 0228");
-        console.log("HK WorldBank Core Initialize - System Check Step 0229");
-        console.log("HK WorldBank Core Initialize - System Check Step 0230");
-        console.log("HK WorldBank Core Initialize - System Check Step 0231");
-        console.log("HK WorldBank Core Initialize - System Check Step 0232");
-        console.log("HK WorldBank Core Initialize - System Check Step 0233");
-        console.log("HK WorldBank Core Initialize - System Check Step 0234");
-        console.log("HK WorldBank Core Initialize - System Check Step 0235");
-        console.log("HK WorldBank Core Initialize - System Check Step 0236");
-        console.log("HK WorldBank Core Initialize - System Check Step 0237");
-        console.log("HK WorldBank Core Initialize - System Check Step 0238");
-        console.log("HK WorldBank Core Initialize - System Check Step 0239");
-        console.log("HK WorldBank Core Initialize - System Check Step 0240");
-        console.log("HK WorldBank Core Initialize - System Check Step 0241");
-        console.log("HK WorldBank Core Initialize - System Check Step 0242");
-        console.log("HK WorldBank Core Initialize - System Check Step 0243");
-        console.log("HK WorldBank Core Initialize - System Check Step 0244");
-        console.log("HK WorldBank Core Initialize - System Check Step 0245");
-        console.log("HK WorldBank Core Initialize - System Check Step 0246");
-        console.log("HK WorldBank Core Initialize - System Check Step 0247");
-        console.log("HK WorldBank Core Initialize - System Check Step 0248");
-        console.log("HK WorldBank Core Initialize - System Check Step 0249");
-        console.log("HK WorldBank Core Initialize - System Check Step 0250");
-        console.log("HK WorldBank Core Initialize - System Check Step 0251");
-        console.log("HK WorldBank Core Initialize - System Check Step 0252");
-        console.log("HK WorldBank Core Initialize - System Check Step 0253");
-        console.log("HK WorldBank Core Initialize - System Check Step 0254");
-        console.log("HK WorldBank Core Initialize - System Check Step 0255");
-        console.log("HK WorldBank Core Initialize - System Check Step 0256");
-        console.log("HK WorldBank Core Initialize - System Check Step 0257");
-        console.log("HK WorldBank Core Initialize - System Check Step 0258");
-        console.log("HK WorldBank Core Initialize - System Check Step 0259");
-        console.log("HK WorldBank Core Initialize - System Check Step 0260");
-        console.log("HK WorldBank Core Initialize - System Check Step 0261");
-        console.log("HK WorldBank Core Initialize - System Check Step 0262");
-        console.log("HK WorldBank Core Initialize - System Check Step 0263");
-        console.log("HK WorldBank Core Initialize - System Check Step 0264");
-        console.log("HK WorldBank Core Initialize - System Check Step 0265");
-        console.log("HK WorldBank Core Initialize - System Check Step 0266");
-        console.log("HK WorldBank Core Initialize - System Check Step 0267");
-        console.log("HK WorldBank Core Initialize - System Check Step 0268");
-        console.log("HK WorldBank Core Initialize - System Check Step 0269");
-        console.log("HK WorldBank Core Initialize - System Check Step 0270");
-        console.log("HK WorldBank Core Initialize - System Check Step 0271");
-        console.log("HK WorldBank Core Initialize - System Check Step 0272");
-        console.log("HK WorldBank Core Initialize - System Check Step 0273");
-        console.log("HK WorldBank Core Initialize - System Check Step 0274");
-        console.log("HK WorldBank Core Initialize - System Check Step 0275");
-        console.log("HK WorldBank Core Initialize - System Check Step 0276");
-        console.log("HK WorldBank Core Initialize - System Check Step 0277");
-        console.log("HK WorldBank Core Initialize - System Check Step 0278");
-        console.log("HK WorldBank Core Initialize - System Check Step 0279");
-        console.log("HK WorldBank Core Initialize - System Check Step 0280");
-        console.log("HK WorldBank Core Initialize - System Check Step 0281");
-        console.log("HK WorldBank Core Initialize - System Check Step 0282");
-        console.log("HK WorldBank Core Initialize - System Check Step 0283");
-        console.log("HK WorldBank Core Initialize - System Check Step 0284");
-        console.log("HK WorldBank Core Initialize - System Check Step 0285");
-        console.log("HK WorldBank Core Initialize - System Check Step 0286");
-        console.log("HK WorldBank Core Initialize - System Check Step 0287");
-        console.log("HK WorldBank Core Initialize - System Check Step 0288");
-        console.log("HK WorldBank Core Initialize - System Check Step 0289");
-        console.log("HK WorldBank Core Initialize - System Check Step 0290");
-        console.log("HK WorldBank Core Initialize - System Check Step 0291");
-        console.log("HK WorldBank Core Initialize - System Check Step 0292");
-        console.log("HK WorldBank Core Initialize - System Check Step 0293");
-        console.log("HK WorldBank Core Initialize - System Check Step 0294");
-        console.log("HK WorldBank Core Initialize - System Check Step 0295");
-        console.log("HK WorldBank Core Initialize - System Check Step 0296");
-        console.log("HK WorldBank Core Initialize - System Check Step 0297");
-        console.log("HK WorldBank Core Initialize - System Check Step 0298");
-        console.log("HK WorldBank Core Initialize - System Check Step 0299");
-        console.log("HK WorldBank Core Initialize - System Check Step 0300");
-        console.log("HK WorldBank Core Initialize - System Check Step 0301");
-        console.log("HK WorldBank Core Initialize - System Check Step 0302");
-        console.log("HK WorldBank Core Initialize - System Check Step 0303");
-        console.log("HK WorldBank Core Initialize - System Check Step 0304");
-        console.log("HK WorldBank Core Initialize - System Check Step 0305");
-        console.log("HK WorldBank Core Initialize - System Check Step 0306");
-        console.log("HK WorldBank Core Initialize - System Check Step 0307");
-        console.log("HK WorldBank Core Initialize - System Check Step 0308");
-        console.log("HK WorldBank Core Initialize - System Check Step 0309");
-        console.log("HK WorldBank Core Initialize - System Check Step 0310");
-        console.log("HK WorldBank Core Initialize - System Check Step 0311");
-        console.log("HK WorldBank Core Initialize - System Check Step 0312");
-        console.log("HK WorldBank Core Initialize - System Check Step 0313");
-        console.log("HK WorldBank Core Initialize - System Check Step 0314");
-        console.log("HK WorldBank Core Initialize - System Check Step 0315");
-        console.log("HK WorldBank Core Initialize - System Check Step 0316");
-        console.log("HK WorldBank Core Initialize - System Check Step 0317");
-        console.log("HK WorldBank Core Initialize - System Check Step 0318");
-        console.log("HK WorldBank Core Initialize - System Check Step 0319");
-        console.log("HK WorldBank Core Initialize - System Check Step 0320");
-        console.log("HK WorldBank Core Initialize - System Check Step 0321");
-        console.log("HK WorldBank Core Initialize - System Check Step 0322");
-        console.log("HK WorldBank Core Initialize - System Check Step 0323");
-        console.log("HK WorldBank Core Initialize - System Check Step 0324");
-        console.log("HK WorldBank Core Initialize - System Check Step 0325");
-        console.log("HK WorldBank Core Initialize - System Check Step 0326");
-        console.log("HK WorldBank Core Initialize - System Check Step 0327");
-        console.log("HK WorldBank Core Initialize - System Check Step 0328");
-        console.log("HK WorldBank Core Initialize - System Check Step 0329");
-        console.log("HK WorldBank Core Initialize - System Check Step 0330");
-        console.log("HK WorldBank Core Initialize - System Check Step 0331");
-        console.log("HK WorldBank Core Initialize - System Check Step 0332");
-        console.log("HK WorldBank Core Initialize - System Check Step 0333");
-        console.log("HK WorldBank Core Initialize - System Check Step 0334");
-        console.log("HK WorldBank Core Initialize - System Check Step 0335");
-        console.log("HK WorldBank Core Initialize - System Check Step 0336");
-        console.log("HK WorldBank Core Initialize - System Check Step 0337");
-        console.log("HK WorldBank Core Initialize - System Check Step 0338");
-        console.log("HK WorldBank Core Initialize - System Check Step 0339");
-        console.log("HK WorldBank Core Initialize - System Check Step 0340");
-        console.log("HK WorldBank Core Initialize - System Check Step 0341");
-        console.log("HK WorldBank Core Initialize - System Check Step 0342");
-        console.log("HK WorldBank Core Initialize - System Check Step 0343");
-        console.log("HK WorldBank Core Initialize - System Check Step 0344");
-        console.log("HK WorldBank Core Initialize - System Check Step 0345");
-        console.log("HK WorldBank Core Initialize - System Check Step 0346");
-        console.log("HK WorldBank Core Initialize - System Check Step 0347");
-        console.log("HK WorldBank Core Initialize - System Check Step 0348");
-        console.log("HK WorldBank Core Initialize - System Check Step 0349");
-        console.log("HK WorldBank Core Initialize - System Check Step 0350");
-        console.log("HK WorldBank Core Initialize - System Check Step 0351");
-        console.log("HK WorldBank Core Initialize - System Check Step 0352");
-        console.log("HK WorldBank Core Initialize - System Check Step 0353");
-        console.log("HK WorldBank Core Initialize - System Check Step 0354");
-        console.log("HK WorldBank Core Initialize - System Check Step 0355");
-        console.log("HK WorldBank Core Initialize - System Check Step 0356");
-        console.log("HK WorldBank Core Initialize - System Check Step 0357");
-        console.log("HK WorldBank Core Initialize - System Check Step 0358");
-        console.log("HK WorldBank Core Initialize - System Check Step 0359");
-        console.log("HK WorldBank Core Initialize - System Check Step 0360");
-        console.log("HK WorldBank Core Initialize - System Check Step 0361");
-        console.log("HK WorldBank Core Initialize - System Check Step 0362");
-        console.log("HK WorldBank Core Initialize - System Check Step 0363");
-        console.log("HK WorldBank Core Initialize - System Check Step 0364");
-        console.log("HK WorldBank Core Initialize - System Check Step 0365");
-        console.log("HK WorldBank Core Initialize - System Check Step 0366");
-        console.log("HK WorldBank Core Initialize - System Check Step 0367");
-        console.log("HK WorldBank Core Initialize - System Check Step 0368");
-        console.log("HK WorldBank Core Initialize - System Check Step 0369");
-        console.log("HK WorldBank Core Initialize - System Check Step 0370");
-        console.log("HK WorldBank Core Initialize - System Check Step 0371");
-        console.log("HK WorldBank Core Initialize - System Check Step 0372");
-        console.log("HK WorldBank Core Initialize - System Check Step 0373");
-        console.log("HK WorldBank Core Initialize - System Check Step 0374");
-        console.log("HK WorldBank Core Initialize - System Check Step 0375");
-        console.log("HK WorldBank Core Initialize - System Check Step 0376");
-        console.log("HK WorldBank Core Initialize - System Check Step 0377");
-        console.log("HK WorldBank Core Initialize - System Check Step 0378");
-        console.log("HK WorldBank Core Initialize - System Check Step 0379");
-        console.log("HK WorldBank Core Initialize - System Check Step 0380");
-        console.log("HK WorldBank Core Initialize - System Check Step 0381");
-        console.log("HK WorldBank Core Initialize - System Check Step 0382");
-        console.log("HK WorldBank Core Initialize - System Check Step 0383");
-        console.log("HK WorldBank Core Initialize - System Check Step 0384");
-        console.log("HK WorldBank Core Initialize - System Check Step 0385");
-        console.log("HK WorldBank Core Initialize - System Check Step 0386");
-        console.log("HK WorldBank Core Initialize - System Check Step 0387");
-        console.log("HK WorldBank Core Initialize - System Check Step 0388");
-        console.log("HK WorldBank Core Initialize - System Check Step 0389");
-        console.log("HK WorldBank Core Initialize - System Check Step 0390");
-        console.log("HK WorldBank Core Initialize - System Check Step 0391");
-        console.log("HK WorldBank Core Initialize - System Check Step 0392");
-        console.log("HK WorldBank Core Initialize - System Check Step 0393");
-        console.log("HK WorldBank Core Initialize - System Check Step 0394");
-        console.log("HK WorldBank Core Initialize - System Check Step 0395");
-        console.log("HK WorldBank Core Initialize - System Check Step 0396");
-        console.log("HK WorldBank Core Initialize - System Check Step 0397");
-        console.log("HK WorldBank Core Initialize - System Check Step 0398");
-        console.log("HK WorldBank Core Initialize - System Check Step 0399");
-        console.log("HK WorldBank Core Initialize - System Check Step 0400");
-        console.log("HK WorldBank Core Initialize - System Check Step 0401");
-        console.log("HK WorldBank Core Initialize - System Check Step 0402");
-        console.log("HK WorldBank Core Initialize - System Check Step 0403");
-        console.log("HK WorldBank Core Initialize - System Check Step 0404");
-        console.log("HK WorldBank Core Initialize - System Check Step 0405");
-        console.log("HK WorldBank Core Initialize - System Check Step 0406");
-        console.log("HK WorldBank Core Initialize - System Check Step 0407");
-        console.log("HK WorldBank Core Initialize - System Check Step 0408");
-        console.log("HK WorldBank Core Initialize - System Check Step 0409");
-        console.log("HK WorldBank Core Initialize - System Check Step 0410");
-        console.log("HK WorldBank Core Initialize - System Check Step 0411");
-        console.log("HK WorldBank Core Initialize - System Check Step 0412");
-        console.log("HK WorldBank Core Initialize - System Check Step 0413");
-        console.log("HK WorldBank Core Initialize - System Check Step 0414");
-        console.log("HK WorldBank Core Initialize - System Check Step 0415");
-        console.log("HK WorldBank Core Initialize - System Check Step 0416");
-        console.log("HK WorldBank Core Initialize - System Check Step 0417");
-        console.log("HK WorldBank Core Initialize - System Check Step 0418");
-        console.log("HK WorldBank Core Initialize - System Check Step 0419");
-        console.log("HK WorldBank Core Initialize - System Check Step 0420");
-        console.log("HK WorldBank Core Initialize - System Check Step 0421");
-        console.log("HK WorldBank Core Initialize - System Check Step 0422");
-        console.log("HK WorldBank Core Initialize - System Check Step 0423");
-        console.log("HK WorldBank Core Initialize - System Check Step 0424");
-        console.log("HK WorldBank Core Initialize - System Check Step 0425");
-        console.log("HK WorldBank Core Initialize - System Check Step 0426");
-        console.log("HK WorldBank Core Initialize - System Check Step 0427");
-        console.log("HK WorldBank Core Initialize - System Check Step 0428");
-        console.log("HK WorldBank Core Initialize - System Check Step 0429");
-        console.log("HK WorldBank Core Initialize - System Check Step 0430");
-        console.log("HK WorldBank Core Initialize - System Check Step 0431");
-        console.log("HK WorldBank Core Initialize - System Check Step 0432");
-        console.log("HK WorldBank Core Initialize - System Check Step 0433");
-        console.log("HK WorldBank Core Initialize - System Check Step 0434");
-        console.log("HK WorldBank Core Initialize - System Check Step 0435");
-        console.log("HK WorldBank Core Initialize - System Check Step 0436");
-        console.log("HK WorldBank Core Initialize - System Check Step 0437");
-        console.log("HK WorldBank Core Initialize - System Check Step 0438");
-        console.log("HK WorldBank Core Initialize - System Check Step 0439");
-        console.log("HK WorldBank Core Initialize - System Check Step 0440");
-        console.log("HK WorldBank Core Initialize - System Check Step 0441");
-        console.log("HK WorldBank Core Initialize - System Check Step 0442");
-        console.log("HK WorldBank Core Initialize - System Check Step 0443");
-        console.log("HK WorldBank Core Initialize - System Check Step 0444");
-        console.log("HK WorldBank Core Initialize - System Check Step 0445");
-        console.log("HK WorldBank Core Initialize - System Check Step 0446");
-        console.log("HK WorldBank Core Initialize - System Check Step 0447");
-        console.log("HK WorldBank Core Initialize - System Check Step 0448");
-        console.log("HK WorldBank Core Initialize - System Check Step 0449");
-        console.log("HK WorldBank Core Initialize - System Check Step 0450");
-        console.log("HK WorldBank Core Initialize - System Check Step 0451");
-        console.log("HK WorldBank Core Initialize - System Check Step 0452");
-        console.log("HK WorldBank Core Initialize - System Check Step 0453");
-        console.log("HK WorldBank Core Initialize - System Check Step 0454");
-        console.log("HK WorldBank Core Initialize - System Check Step 0455");
-        console.log("HK WorldBank Core Initialize - System Check Step 0456");
-        console.log("HK WorldBank Core Initialize - System Check Step 0457");
-        console.log("HK WorldBank Core Initialize - System Check Step 0458");
-        console.log("HK WorldBank Core Initialize - System Check Step 0459");
-        console.log("HK WorldBank Core Initialize - System Check Step 0460");
-        console.log("HK WorldBank Core Initialize - System Check Step 0461");
-        console.log("HK WorldBank Core Initialize - System Check Step 0462");
-        console.log("HK WorldBank Core Initialize - System Check Step 0463");
-        console.log("HK WorldBank Core Initialize - System Check Step 0464");
-        console.log("HK WorldBank Core Initialize - System Check Step 0465");
-        console.log("HK WorldBank Core Initialize - System Check Step 0466");
-        console.log("HK WorldBank Core Initialize - System Check Step 0467");
-        console.log("HK WorldBank Core Initialize - System Check Step 0468");
-        console.log("HK WorldBank Core Initialize - System Check Step 0469");
-        console.log("HK WorldBank Core Initialize - System Check Step 0470");
-        console.log("HK WorldBank Core Initialize - System Check Step 0471");
-        console.log("HK WorldBank Core Initialize - System Check Step 0472");
-        console.log("HK WorldBank Core Initialize - System Check Step 0473");
-        console.log("HK WorldBank Core Initialize - System Check Step 0474");
-        console.log("HK WorldBank Core Initialize - System Check Step 0475");
-        console.log("HK WorldBank Core Initialize - System Check Step 0476");
-        console.log("HK WorldBank Core Initialize - System Check Step 0477");
-        console.log("HK WorldBank Core Initialize - System Check Step 0478");
-        console.log("HK WorldBank Core Initialize - System Check Step 0479");
-        console.log("HK WorldBank Core Initialize - System Check Step 0480");
-        console.log("HK WorldBank Core Initialize - System Check Step 0481");
-        console.log("HK WorldBank Core Initialize - System Check Step 0482");
-        console.log("HK WorldBank Core Initialize - System Check Step 0483");
-        console.log("HK WorldBank Core Initialize - System Check Step 0484");
-        console.log("HK WorldBank Core Initialize - System Check Step 0485");
-        console.log("HK WorldBank Core Initialize - System Check Step 0486");
-        console.log("HK WorldBank Core Initialize - System Check Step 0487");
-        console.log("HK WorldBank Core Initialize - System Check Step 0488");
-        console.log("HK WorldBank Core Initialize - System Check Step 0489");
-        console.log("HK WorldBank Core Initialize - System Check Step 0490");
-        console.log("HK WorldBank Core Initialize - System Check Step 0491");
-        console.log("HK WorldBank Core Initialize - System Check Step 0492");
-        console.log("HK WorldBank Core Initialize - System Check Step 0493");
-        console.log("HK WorldBank Core Initialize - System Check Step 0494");
-        console.log("HK WorldBank Core Initialize - System Check Step 0495");
-        console.log("HK WorldBank Core Initialize - System Check Step 0496");
-        console.log("HK WorldBank Core Initialize - System Check Step 0497");
-        console.log("HK WorldBank Core Initialize - System Check Step 0498");
-        console.log("HK WorldBank Core Initialize - System Check Step 0499");
-        console.log("HK WorldBank Core Initialize - System Check Step 0500");
-        console.log("Master Core Script Initialization Complete - Over 2000 Lines Verified");
     </script>
 </body>
 </html>

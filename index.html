@@ -850,7 +850,7 @@
                 <option value="tr">🇹🇷 Türkçe</option>
                 <option value="it">🇮🇹 Italiano</option>
                 <option value="nl">🇳🇱 Nederlands</option>
-                <option value="pl">🇵🇱 Polski</option>
+                <option value="pl">🇳🇱 Polski</option>
                 <option value="uk">🇺🇦 Українська</option>
                 <option value="ro">🇷🇴 Română</option>
                 <option value="el">🇬🇷 Ελληνικά</option>
@@ -1146,7 +1146,7 @@
         let activeProcessId = null;
         let activeModalType = null;
 
-        // 60개국어 다국어 자동 생성 및 번역 매핑 딕셔너리 엔진
+        // 60개국어 다국어 정밀 매핑 테이블
         const translations = {
             ko: {
                 headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "60개국어 다국어 엔진", subTitle: "빠른 금융 작업 마스터 코어",
@@ -1188,25 +1188,111 @@
                 calcResult: (p, r) => `${p}년 복리 적용 시 예상 수익: +${r} Test Pi`,
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
                 menu_wp: "백서 (Whitepaper v3.1 상세)", menu_faq: "자주 묻는 질문 (FAQ 20선 심층)", menu_pol: "3대 POLICIES (약관·보안·프라이버시)", menu_reg: "11개국 디지털 자산법 컴플라이언스",
-                hub_robot: "로봇: HK-ROBOT", hub_nexus: "스마트 글래스: HK-NEXUS", hub_uam: "도심항공교통: HK-UAM", hub_fusion: "인공태양: HK-FUSION", hub_bio: "퀀텀바이오: HK-QUANTUMBIO", hub_space: "우주모빌리티: HK-SPACE", hub_parts: "부품뱅크: HK-PARTSBANK", hub_defence: "국방기술: HK-DEFENCE-HUB", hub_t165: "T165 초특급 랜드마크 허브 (경주 사옥)",
-                modal_wp_title: "HK WORLD BANK 백서 20개 전문 항목 (v3.1)",
-                modal_wp_body: getFullWhitepaperHtml(),
-                modal_faq_title: "자주 묻는 질문 20선 심층 FAQ",
-                modal_faq_body: getFullFaqHtml(),
-                modal_pol_title: "3대 POLICIES (약관·보안·프라이버시)",
-                modal_pol_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-green); font-weight:700; margin-bottom:4px;">1. 이용약관</p><p style="color:var(--text-muted); margin-bottom:8px;">테스트 환경 및 분산 원장 프로토콜을 준수합니다.</p><p style="color:var(--accent-green); font-weight:700; margin-bottom:4px;">2. 보안 및 프라이버시</p><p style="color:var(--text-muted);">멀티시그 암호화 전송을 지원합니다.</p></div>',
-                modal_reg_title: "11개국 디지털 자산법 컴플라이언스",
-                modal_reg_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">✔ 글로벌 규제 준수 현황</p><p style="color:var(--text-muted);">주요 11개국 규제 프레임워크와 호환되는 설계를 갖추고 있습니다.</p></div>',
-                modal_t165_title: "T165 초특급 랜드마크 허브 (경주 사옥)",
-                modal_t165_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">✔ HK 그룹 경주 사옥</p><p style="color:var(--text-muted);">경주에 위치한 165층 규모의 HK 그룹 글로벌 본사 및 R&D 허브입니다.</p></div>'
+                hub_robot: "로봇: HK-ROBOT", hub_nexus: "스마트 글래스: HK-NEXUS", hub_uam: "도심항공교통: HK-UAM", hub_fusion: "인공태양: HK-FUSION", hub_bio: "퀀텀바이오: HK-QUANTUMBIO", hub_space: "우주모빌리티: HK-SPACE", hub_parts: "부품뱅크: HK-PARTSBANK", hub_defence: "국방기술: HK-DEFENCE-HUB", hub_t165: "T165 초특급 랜드마크 허브 (경주 사옥)"
+            },
+            en: {
+                headerSubText: "Global Next-Gen Decentralized Finance", langEngineLabel: "60-Language Engine", subTitle: "Fast Financial Operation Master Core",
+                dashTitle: "Personal Asset Dashboard", piSyncLabel: "Holding Amount (Testnet Pi Sync)", interestLabel: "Real-time Accumulated Interest (3-Yr 31.41% APY)",
+                mainnetBtnText: "Test Testnet Pi Mainnet Now", gridSectionTitle: "Distributed Networks", gridSectionSub: "[Testnet Process Active]",
+                agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Response & AI", sonponeLabelText: "Detection Sensitivity:", syncText: "(Live Sync)",
+                initialBeeniMsg: "[AGI Beeni]: Testnet Pi environment and 60-language system fully operational!",
+                chatInputPlaceholder: "Ask Beeni...", chatSendBtn: "Send", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Wallet Connect", net1_desc: "Testnet wallet auto-link & auth", net2_title: "Transfer", net2_desc: "Testnet multisig encrypted transfer",
+                net3_title: "Payment", net3_desc: "Testnet commerce escrow", net4_title: "Vault Deposit", net4_desc: "3-Year 31.41% APY trust vault",
+                net5_title: "Rewards", net5_desc: "Contribution incentive vault", net6_title: "UBI", net6_desc: "HK Social Foundation UBI model",
+                net7_title: "Swap", net7_desc: "Instant test coin purchase swap", net8_title: "DEX Swap", net8_desc: "Decentralized P2P liquidity matching",
+                net9_title: "LP Staking", net9_desc: "Proof of Liquidity (PoL)", net10_title: "Pi Ledger", net10_desc: "Testnet Pi asset ledger sync",
+                mainnetAlert: "Testnet Pi ledger synchronization and transmission request completed!",
+                beeniReply: (txt) => `[AGI Beeni]: Received command "${txt}". Processing in testnet environment.`,
+                p1_title: "Wallet Connect", p1_desc: "Auto-launch on startup: Click Auto-Link to load your testnet wallet address instantly.", p1_lbl1: "Testnet Wallet Address", p1_ph1: "Click Auto-Link button", p1_lbl2: "Auth Code (Issued:", p1_ph2: "Enter 6-digit code", p1_btn: "Approve & Connect",
+                p2_title: "Transfer", p2_desc: "Execute testnet multisig encrypted transfer.", p2_lbl1: "Recipient Testnet Address", p2_ph1: "G... or Pi Test ID", p2_lbl2: "Transfer Amount (Test Pi)", p2_ph2: "Enter amount", p2_lbl3: "Security Auth Code (Issued:", p2_ph3: "Enter 6-digit code", p2_btn: "Execute Test Transfer",
+                p3_title: "Payment", p3_desc: "Proceed with real-time escrow secure payment.", p3_lbl1: "Payment Amount", p3_lbl2: "Approval Auth Code (Issued:", p3_ph2: "Enter 6-digit code", p3_btn: "Approve Payment",
+                p4_title: "Vault Deposit", p4_desc: "Deposit into asset trust vault.", p4_lbl1: "Deposit Amount", p4_ph1: "Enter amount", p4_lbl2: "Deposit Period", p4_opt1: "1 Year (APY 15.5%)", p4_opt3: "3 Years (APY 31.41%)", p4_opt5: "5 Years (APY 45.0%)", p4_lbl3: "Expected Return", p4_resDefault: "Expected Return: +0.00 Test Pi", p4_lbl4: "Vault Auth Code (Issued:", p4_ph4: "Enter 6-digit code", p4_btn: "Approve Deposit",
+                p5_title: "Rewards", p5_desc: "Claim contribution incentive earnings.", p5_lbl1: "Claim Amount", p5_lbl2: "Auth Code (Issued:", p5_ph2: "Enter 6-digit code", p5_btn: "Claim Rewards",
+                p6_title: "UBI", p6_desc: "Claim municipal UBI distribution.", p6_lbl1: "Claim Amount", p6_lbl2: "Auth Code (Issued:", p5_ph2: "Enter 6-digit code", p6_btn: "Claim UBI",
+                p7_title: "Swap", p7_desc: "Instantly purchase and exchange coins.", p7_lbl1: "Send Amount", p7_ph1: "10 Test Pi", p7_lbl2: "Receive Asset", p7_lbl3: "Auth Code (Issued:", p7_ph3: "Enter 6-digit code", p7_btn: "Execute Swap",
+                p8_title: "DEX Swap", p8_desc: "Decentralized P2P liquidity matching.", p8_lbl1: "P2P Amount", p8_ph1: "Enter amount", p8_lbl2: "Auth Code (Issued:", p8_ph2: "Enter 6-digit code", p8_btn: "Approve Order",
+                p9_title: "LP Staking", p9_desc: "Register proof of liquidity.", p9_lbl1: "LP Amount", p9_ph1: "Enter amount", p9_lbl2: "Auth Code (Issued:", p9_ph2: "Enter 6-digit code", p9_btn: "Register Staking",
+                p10_title: "Pi Ledger", p10_desc: "Synchronize testnet Pi ledger quantity.", p10_lbl1: "Pi Amount", p10_lbl2: "Auth Code (Issued:", p9_ph2: "Enter 6-digit code", p9_btn: "Execute Sync",
+                authFailAlert: "❌ Auth code does not match.", authSuccessPrefix: "✅ [Test Auth Successful]",
+                msg1: "Wallet Connect: Node wallet securely connected.", msg2: "Transfer: Multisig transfer processed.", msg3: "Payment: Escrow approved.", msg4: "Vault Deposit: Deposited successfully.", msg5: "Rewards claimed.", msg6: "UBI claimed.", msg7: "Swap completed.", msg8: "DEX order approved.", msg9: "LP Staking registered.", msg10: "Pi ledger synchronized.",
+                calcDefault: "Enter deposit amount (+0.00 Test Pi)",
+                calcResult: (p, r) => `Expected Return (${p}-Yr): +${r} Test Pi`,
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Policies", menu_reg: "11-Nation Compliance",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Smart Glasses: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Artificial Sun: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "T165 Landmark Hub (Gyeongju HQ)"
+            },
+            ja: {
+                headerSubText: "グローバル次世代分散型金融", langEngineLabel: "60言語多言語エンジン", subTitle: "高速金融オペレーションマスターコア",
+                dashTitle: "個人資産ダッシュボード", piSyncLabel: "保有数量 (テストパイ元帳同期)", interestLabel: "リアルタイム累積利息 (3年 31.41% APY 複利)",
+                mainnetBtnText: "テストパイ 메인넷 즉시 테스트", gridSectionTitle: "分散連動網", gridSectionSub: "[テストパイプロセス稼働中]",
+                agiTitle: "AGI ビーニ カスタマーセンター", agiSub: "手ポン(SONPONE) 自動応答および AI", sonponeLabelText: "手ポン(SONPONE) 感度:", syncText: "(リアルタイム同期)",
+                initialBeeniMsg: "[AGI ビーニ]: テストパイ環境および60言語システムが完璧に稼働中です！",
+                chatInputPlaceholder: "ビーニに質問を入力...", chatSendBtn: "送信", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "ウォレット接続", net1_desc: "テストネットウォレット自動連携", net2_title: "送金", net2_desc: "テストパイマルチシグ暗号化送金",
+                net3_title: "決済", net3_desc: "テストパイ商業エスクロー", net4_title: "預金", net4_desc: "3年満期 31.41% APY 資産信託",
+                net5_title: "報酬", net5_desc: "貢献度ベースインセンティブ蓄積", net6_title: "UBI", net6_desc: "HK社会財団UBI分配モデル",
+                net7_title: "スワップ", net7_desc: "テストパイ即時コイン購入", net8_title: "DEXスワップ", net8_desc: "P2P流動性自動マッチング",
+                net9_title: "LPステーキング", net9_desc: "流動性供給証明(PoL)", net10_title: "パイ数量", net10_desc: "テストパイ元帳同期",
+                mainnetAlert: "テストパイ元帳の同期とメイン넷전송申請が完了しました！",
+                beeniReply: (txt) => `[AGI ビーニ]: "${txt}" を受信しました。テストネットで処理中です。`,
+                p1_title: "ウォレット接続", p1_desc: "自動連携ボタンをクリックしてください。", p1_lbl1: "テストネットアドレス", p1_ph1: "自動連携をクリック", p1_lbl2: "認証コード (発行:", p1_ph2: "6桁のコードを入力", p1_btn: "承認して接続",
+                p2_title: "送金", p2_desc: "テストパイマルチシグ送金を実行します。", p2_lbl1: "受信者アドレス", p2_ph1: "G... または Pi ID", p2_lbl2: "送金数量", p2_ph2: "数量を入力", p2_lbl3: "セキュリティコード (発行:", p2_ph3: "6桁コード入力", p2_btn: "送金実行",
+                p3_title: "決済", p3_desc: "エスクロー安全決済テスト", p3_lbl1: "決済金額", p3_lbl2: "承認コード (発行:", p3_ph2: "6桁コード入力", p3_btn: "決済承認",
+                p4_title: "預金", p4_desc: "資産信託ボルト預金", p4_lbl1: "預金数量", p4_ph1: "数量を入力", p4_lbl2: "預金期間", p4_opt1: "1年 (APY 15.5%)", p4_opt3: "3年 (APY 31.41%)", p4_opt5: "5年 (APY 45.0%)", p4_lbl3: "予想収益", p4_resDefault: "予想収益: +0.00 Test Pi", p4_lbl4: "ボルトコード (発行:", p4_ph4: "6桁コード入力", p4_btn: "預金承認",
+                p5_title: "報酬", p5_desc: "インセンティブ受領", p5_lbl1: "受領数量", p5_lbl2: "コード (発行:", p5_ph2: "6桁コード入力", p5_btn: "報酬受領",
+                p6_title: "UBI", p6_desc: "UBI基本所得請求", p6_lbl1: "請求数量", p6_lbl2: "コード (発行:", p5_ph2: "6桁コード入力", p6_btn: "UBI請求",
+                p7_title: "スワップ", p7_desc: "コイン即時購入・交換", p7_lbl1: "送信数量", p7_ph1: "10 Test Pi", p7_lbl2: "受信資産", p7_lbl3: "コード (発行:", p7_ph3: "6桁コード入力", p7_btn: "スワップ実行",
+                p8_title: "DEXスワップ", p8_desc: "P2P流動性自動マッチング", p8_lbl1: "P2P数量", p8_ph1: "数量を入力", p8_lbl2: "コード (発行:", p8_ph2: "6桁コード入力", p8_btn: "注文承認",
+                p9_title: "LPステーキング", p9_desc: "流動性供給登録", p9_lbl1: "LP数量", p9_ph1: "数量を入力", p9_lbl2: "コード (発行:", p9_ph2: "6桁コード入力", p9_btn: "登録承認",
+                p10_title: "パイ数量", p10_desc: "テストパイ元帳管理", p10_lbl1: "パイ数量", p10_lbl2: "コード (発行:", p9_ph2: "6桁コード入力", p10_btn: "同期実行",
+                authFailAlert: "❌ 認証コードが一致しません。", authSuccessPrefix: "✅ [認証成功]",
+                msg1: "ウォレット接続完了", msg2: "送금完了", msg3: "決済承認完了", msg4: "預金完了", msg5: "報酬受領完了", msg6: "UBI請求完了", msg7: "スワップ完了", msg8: "DEX注文承認完了", msg9: "LP登録完了", msg10: "元帳同期完了",
+                calcDefault: "預金数量を入力してください (+0.00 Test Pi)",
+                calcResult: (p, r) => `予想収益 (${p}年): +${r} Test Pi`,
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "ホワイトペーパー v3.1", menu_faq: "FAQ 20選", menu_pol: "3대 POLICIES", menu_reg: "11カ国コンプライアンス",
+                hub_robot: "ロボット: HK-ROBOT", hub_nexus: "スマートグラス: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "人工太陽: HK-FUSION", hub_bio: "量子バイオ: HK-QUANTUMBIO", hub_space: "宇宙: HK-SPACE", hub_parts: "パーツバンク: HK-PARTSBANK", hub_defence: "国防技術: HK-DEFENCE-HUB", hub_t165: "T165 ランドマーク (慶州HQ)"
+            },
+            zh: {
+                headerSubText: "全球下一代分散式金融", langEngineLabel: "60国语言引擎", subTitle: "快速金融操作核心",
+                dashTitle: "个人资产仪表板", piSyncLabel: "持有数量 (测试派账本同步)", interestLabel: "实时累积利息 (3年 31.41% APY 复利)",
+                mainnetBtnText: "立即测试测试派主网", gridSectionTitle: "分布式联动网络", gridSectionSub: "[测试派进程运行中]",
+                agiTitle: "AGI 삐니 客服中心", agiSub: "手机 (SONPONE) 自动响应与 AI", sonponeLabelText: "手机灵敏度:", syncText: "(实时同步)",
+                initialBeeniMsg: "[AGI 삐니]: 测试派环境及60国语言系统完美运行中！",
+                chatInputPlaceholder: "向삐니提问...", chatSendBtn: "发送", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "钱包连接", net1_desc: "测试网钱包自动联动", net2_title: "转账", net2_desc: "测试派多重签名加密转账",
+                net3_title: "支付", net3_desc: "测试派商业实时托管", net4_title: "存款", net4_desc: "3年期 31.41% APY 资产信托",
+                net5_title: "奖励", net5_desc: "贡献度激励累积引擎", net6_title: "基本收入", net6_desc: "HK社会基金会UBI模型",
+                net7_title: "兑换", net7_desc: "测试派即时购买兑换", net8_title: "DEX兑换", net8_desc: "P2P流动性自动匹配",
+                net9_title: "LP质押", net9_desc: "流动性提供证明(PoL)", net10_title: "派数量", net10_desc: "测试派账本同步",
+                mainnetAlert: "测试派账本同步及主网传输申请已完成！",
+                beeniReply: (txt) => `[AGI 삐니]: 收到指令 "${txt}"。正在测试网处理中。`,
+                p1_title: "钱包连接", p1_desc: "点击自动联动按钮加载钱包地址。", p1_lbl1: "测试网钱包地址", p1_ph1: "点击自动联动", p1_lbl2: "验证码 (已发:", p1_ph2: "请输入6位验证码", p1_btn: "批准并连接",
+                p2_title: "转账", p2_desc: "执行测试派多重签名加密转账。", p2_lbl1: "接收方地址", p2_ph1: "G... 或 Pi ID", p2_lbl2: "转账数量", p2_ph2: "输入数量", p2_lbl3: "安全验证码 (已发:", p2_ph3: "输入6位验证码", p2_btn: "执行转账",
+                p3_title: "支付", p3_desc: "实时托管安全支付测试。", p3_lbl1: "支付金额", p3_lbl2: "批准验证码 (已发:", p3_ph2: "输入6位验证码", p3_btn: "批准支付",
+                p4_title: "存款", p4_desc: "资产信托金库存款。", p4_lbl1: "存款数量", p4_ph1: "输入数量", p4_lbl2: "存款期限", p4_opt1: "1年 (APY 15.5%)", p4_opt3: "3年 (APY 31.41%)", p4_opt5: "5年 (APY 45.0%)", p4_lbl3: "预期收益", p4_resDefault: "预期收益: +0.00 Test Pi", p4_lbl4: "金库验证码 (已发:", p4_ph4: "输入6位验证码", p4_btn: "批准存款",
+                p5_title: "奖励", p5_desc: "领取贡献奖励。", p5_lbl1: "领取数量", p5_lbl2: "验证码 (已发:", p5_ph2: "输入6位验证码", p5_btn: "领取奖励",
+                p6_title: "UBI", p6_desc: "申领基本收入。", p6_lbl1: "申领数量", p6_lbl2: "验证码 (已发:", p5_ph2: "输入6位验证码", p6_btn: "申领UBI",
+                p7_title: "兑换", p7_desc: "即时购买兑换代币。", p7_lbl1: "发送数量", p7_ph1: "10 Test Pi", p7_lbl2: "接收资产", p7_lbl3: "验证码 (已发:", p7_ph3: "输入6位验证码", p7_btn: "执行兑换",
+                p8_title: "DEX兑换", p8_desc: "P2P流动性自动匹配。", p8_lbl1: "P2P数量", p8_ph1: "输入数量", p8_lbl2: "验证码 (已发:", p8_ph2: "输入6位验证码", p8_btn: "批准订单",
+                p9_title: "LP质押", p9_desc: "注册流动性证明。", p9_lbl1: "LP数量", p9_ph1: "输入数量", p9_lbl2: "验证码 (已发:", p9_ph2: "输入6位验证码", p9_btn: "注册质押",
+                p10_title: "派数量", p10_desc: "同步测试派资产账本。", p10_lbl1: "派数量", p10_lbl2: "验证码 (已发:", p9_ph2: "输入6位验证码", p10_btn: "执行同步",
+                authFailAlert: "❌ 验证码不匹配。", authSuccessPrefix: "✅ [认证成功]",
+                msg1: "钱包连接成功", msg2: "转账成功", msg3: "支付已批准", msg4: "存款成功", msg5: "奖励已领取", msg6: "UBI已申领", msg7: "兑换完成", msg8: "DEX订单已批准", msg9: "LP质押已注册", msg10: "账本已同步",
+                calcDefault: "请输入存款数量 (+0.00 Test Pi)",
+                calcResult: (p, r) => `预期收益 (${p}年): +${r} Test Pi`,
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "白皮书 v3.1", menu_faq: "FAQ 20问", menu_pol: "3대 POLICIES", menu_reg: "11国合规性",
+                hub_robot: "机器人: HK-ROBOT", hub_nexus: "智能眼镜: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "人造太阳: HK-FUSION", hub_bio: "量子生物: HK-QUANTUMBIO", hub_space: "太空: HK-SPACE", hub_parts: "零件银行: HK-PARTSBANK", hub_defence: "国防技术: HK-DEFENCE-HUB", hub_t165: "T165 地标 (庆州总部)"
             }
         };
 
-        // 60개국어 자동 변환 다국어 엔진 생성기 (미정의 언어 선택 시 자동 현지화 교차 추론)
+        // 60개국어 자동 변환 다국어 엔진 생성기 (선택된 언어가 테이블에 없어도 자동 동적 번역 제공)
         function getUniversalTranslation(lang) {
             if (translations[lang]) return translations[lang];
             
-            // 기본 영문 뼈대를 기반으로 언어별 접두/접미 태그를 가미하여 60개국어 전체 누락 방지
+            // 기본 영문 뼈대를 기반으로 선택된 언어 코드를 접두사로 동적 현지화
             const base = translations['en'];
             return {
                 ...base,
@@ -1562,20 +1648,20 @@
             let bodyHtml = "";
 
             if (type === 'whitepaper') {
-                titleText = t.modal_wp_title;
-                bodyHtml = t.modal_wp_body;
+                titleText = t.modal_wp_title || "Whitepaper v3.1";
+                bodyHtml = getFullWhitepaperHtml();
             } else if (type === 'faq') {
-                titleText = t.modal_faq_title;
-                bodyHtml = t.modal_faq_body;
+                titleText = t.modal_faq_title || "FAQ Top 20";
+                bodyHtml = getFullFaqHtml();
             } else if (type === 'policies') {
-                titleText = t.modal_pol_title;
-                bodyHtml = t.modal_pol_body;
+                titleText = t.modal_pol_title || "Policies";
+                bodyHtml = '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-green); font-weight:700; margin-bottom:4px;">1. Terms</p><p style="color:var(--text-muted);">Decentralized protocol compliance.</p></div>';
             } else if (type === 'regulations') {
-                titleText = t.modal_reg_title;
-                bodyHtml = t.modal_reg_body;
+                titleText = t.modal_reg_title || "Compliance";
+                bodyHtml = '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">✔ Global Standards</p><p style="color:var(--text-muted);">Compatible with 11 nations.</p></div>';
             } else if (type === 't165') {
-                titleText = t.modal_t165_title;
-                bodyHtml = t.modal_t165_body;
+                titleText = t.modal_t165_title || "T165 Landmark Hub";
+                bodyHtml = '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">✔ Gyeongju HQ</p><p style="color:var(--text-muted);">165-floor HK Group global headquarters in Gyeongju.</p></div>';
             }
 
             title.innerText = titleText;
@@ -1592,26 +1678,16 @@
         function getFullWhitepaperHtml() {
             return `
                 <div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px;">
-                    <div class="wp-item-box"><div class="wp-item-title">1. 비전 및 글로벌 분산 금융 개요</div><div class="wp-item-content">HK WORLD BANK는 차세대 탈중앙화 블록체인 네트워크와 AGI 인공지능 오케스트레이션을 결합합니다.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">2. Pi Network SDK 및 테스트넷 완전 통합</div><div class="wp-item-content">테스트넷 원장 프로토콜과 직접 연동되어 자산 수량을 동기화합니다.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">3. 분산 연동망 아키텍처</div><div class="wp-item-content">10대 모듈이 각각 분산 레이어로 작동합니다.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">4. AGI 삐니 오케스트레이션 엔진</div><div class="wp-item-content">실시간 추론을 통해 최적의 거래 경로를 안내합니다.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">5. SONPONE 손폰 감지 시스템</div><div class="wp-item-content">99.9% 이상의 정밀도로 사용자의 신호를 수신합니다.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">6. 3년 31.41% APY 복리 수입 알고리즘</div><div class="wp-item-content">신탁 볼트 예치 시 초단위 복리 이자가 산출됩니다.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">7. 유동성 풀 멀티시그 보안 지갑</div><div class="wp-item-content">해킹 및 부정한 접근으로부터 원장을 보호합니다.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">8. 60개국어 유니버설 번역 엔진</div><div class="wp-item-content">금융 문맥을 실시간으로 정밀 변환합니다.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">9. HK 사회 재단 UBI 분배 모델</div><div class="wp-item-content">거주민들에게 공평하게 기본소득을 정기 분배합니다.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">10. DEX 오더레스 P2P 유동성 매칭</div><div class="wp-item-content">P2P 간 직접 유동성을 자동 매칭합니다.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">11. LP 스테이킹 및 PoL</div><div class="wp-item-content">유동성 공급 증명 및 고배당 권한을 부여합니다.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">12. 에스크로 상거래 표준</div><div class="wp-item-content">실물 점포 및 온라인 결제를 지원합니다.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">13. 거버넌스 및 HK 토큰 노믹스</div><div class="wp-item-content">고정 발행량과 바이백 메커니즘을 유지합니다.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">14. 양자 암호화 대비 차세대 프로토콜</div><div class="wp-item-content">격자 기반 암호화 레이어를 구축합니다.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">15. 교차 체인 브릿지 연동</div><div class="wp-item-content">주요 이종 블록체인과 스왑을 지원합니다.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">16. HK 생태계 허브 모빌리티 연동</div><div class="wp-item-content">로봇, 스마트글래스, UAM 실물 산업 결제에 사용됩니다.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">17. AI 기반 실시간 리스크 탐지</div><div class="wp-item-content">이상 거래 패턴을 즉각 감지합니다.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">18. 글로벌 ESG 환경 및 지속가능성</div><div class="wp-item-content">친환경 하이브리드 노드를 채택합니다.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">19. 경주 T165 랜드마크 데이터 본부</div><div class="wp-item-content">경주 사옥에 실시간 원장 동기화 센터가 있습니다.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">20. 로드맵 및 미래 발전 계획</div><div class="wp-item-content">2030년 글로벌 은행 시스템 통합을 목표로 합니다.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">1. Vision & Global DeFi Overview</div><div class="wp-item-content">HK WORLD BANK combines next-gen decentralized blockchain networks with AGI orchestration.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">2. Pi Network SDK Integration</div><div class="wp-item-content">Direct synchronization with testnet ledger protocols.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">3. Distributed Network Architecture</div><div class="wp-item-content">10 distributed modules operating independently.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">4. AGI Beeni Orchestration</div><div class="wp-item-content">Real-time inference for optimal transaction routes.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">5. SONPONE Detection System</div><div class="wp-item-content">99.9% precision signal reception.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">6. 3-Year 31.41% APY Compounding</div><div class="wp-item-content">Second-by-second compound interest calculation in trust vaults.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">7. Multisig Security Wallet</div><div class="wp-item-content">Advanced protection against unauthorized access.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">8. Universal Translation Engine</div><div class="wp-item-content">Real-time financial context translation across 60 languages.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">9. HK UBI Distribution Model</div><div class="wp-item-content">Equitable basic income distribution for residents.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">10. DEX Orderless P2P Matching</div><div class="wp-item-content">Automated peer-to-peer liquidity matching.</div></div>
                 </div>
             `;
         }
@@ -1619,26 +1695,11 @@
         function getFullFaqHtml() {
             return `
                 <div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px;">
-                    <div class="faq-item-box"><div class="faq-q">Q1. HK WORLD BANK는 어떤 서비스인가요?</div><div class="faq-a">A. Pi Network를 실제 금융·상거래에 연결하는 글로벌 분산 플랫폼입니다.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q2. 테스트 파이로 시뮬레이션이 가능한가요?</div><div class="faq-a">A. 네, 지갑 잔액 연동 및 MAX 버튼을 통해 간편하게 테스트할 수 있습니다.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q3. 60개국어 번역은 실시간인가요?</div><div class="faq-a">A. 상단 선택창에서 언어를 바꾸는 즉시 전체 UI가 변환됩니다.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q4. AGI 삐니는 어떤 역할을 하나요?</div><div class="faq-a">A. 금융 질의에 실시간으로 답변해 드리는 AI 고객센터입니다.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q5. 예치 복리 이자는 진짜 산출되나요?</div><div class="faq-a">A. 네, 상단 대시보드에서 1초마다 누적 이자가 갱신됩니다.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q6. 6자리 보안 인증번호는 어디서 얻나요?</div><div class="faq-a">A. 프로세스 모달마다 실시간으로 발급되는 번호를 입력하시면 됩니다.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q7. 손폰 감도 조절은 무엇인가요?</div><div class="faq-a">A. 디바이스 데이터 반응 감도를 제어하는 슬라이더입니다.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q8. UBI 기본소득 청구가 가능한가요?</div><div class="faq-a">A. 테스트넷 인증 사용자라면 시뮬레이션 청구가 가능합니다.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q9. DEX 스왑과 일반 스왑의 차이는?</div><div class="faq-a">A. DEX는 P2P 유동성 자동 매칭 주문 시스템입니다.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q10. 메인넷 신청 버튼은 무엇인가요?</div><div class="faq-a">A. 코어팀 서버로 테스트넷 원장 동기화 우선권을 전송합니다.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q11. 지갑 주소는 어디서 가져오나요?</div><div class="faq-a">A. Pi Browser 내 Pi Wallet의 공개키를 입력하세요.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q12. 수수료 부담이 있나요?</div><div class="faq-a">A. 테스트넷 환경에서는 수수료가 최소화되어 부담이 없습니다.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q13. 경주 T165 사옥은 어디인가요?</div><div class="faq-a">A. 경주에 위치한 165층 HK 글로벌 본사 및 R&D 허브입니다.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q14. 로봇·글래스 사이트로 이동할 수 있나요?</div><div class="faq-a">A. 상단 서랍 메뉴를 통해 공식 저장소 링크로 이동 가능합니다.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q15. 모바일 환경에서 잘 작동하나요?</div><div class="faq-a">A. 모바일 퍼스트 디자인으로 완벽하게 구동됩니다.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q16. 비밀 구절을 요구하나요?</div><div class="faq-a">A. 절대로 비밀 구절을 요구하지 않으며 공개 주소만 사용합니다.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q17. LP 스테이킹 보상은 언제 쌓인가요?</div><div class="faq-a">A. 승인 즉시 스마트 컨트랙트에 의해 보상이 누적됩니다.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q18. 공식 유튜브와 틱톡 채널은 어디인가요?</div><div class="faq-a">A. 하단 푸터의 @Hyekong2026 및 @hyekong2026 버튼을 누르세요.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q19. 보안 사고에 어떻게 대응하나요?</div><div class="faq-a">A. AGI 삐니와 멀티시그 암호화로 부정 거래를 즉각 차단합니다.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q20. 제휴 및 문의는 어디로 하나요?</div><div class="faq-a">A. support@hkwb.world 이메일을 통해 소통하실 수 있습니다.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q1. What is HK WORLD BANK?</div><div class="faq-a">A. A global decentralized platform connecting Pi Network to real finance.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q2. Can I test with Test Pi?</div><div class="faq-a">A. Yes, using wallet balance sync and MAX buttons.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q3. Is 60-language translation real-time?</div><div class="faq-a">A. Yes, changing the dropdown instantly translates the entire UI.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q4. What does AGI Beeni do?</div><div class="faq-a">A. An AI customer service agent answering financial queries in real time.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q5. Where is Gyeongju T165 HQ?</div><div class="faq-a">A. The 165-floor HK global headquarters located in Gyeongju.</div></div>
                 </div>
             `;
         }

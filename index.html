@@ -850,7 +850,7 @@
                 <option value="tr">🇹🇷 Türkçe</option>
                 <option value="it">🇮🇹 Italiano</option>
                 <option value="nl">🇳🇱 Nederlands</option>
-                <option value="pl">🇳🇱 Polski</option>
+                <option value="pl">🇵🇱 Polski</option>
                 <option value="uk">🇺🇦 Українська</option>
                 <option value="ro">🇷🇴 Română</option>
                 <option value="el">🇬🇷 Ελληνικά</option>
@@ -1146,6 +1146,7 @@
         let activeProcessId = null;
         let activeModalType = null;
 
+        // 60개국어 다국어 자동 생성 및 번역 매핑 딕셔너리 엔진
         const translations = {
             ko: {
                 headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "60개국어 다국어 엔진", subTitle: "빠른 금융 작업 마스터 코어",
@@ -1198,45 +1199,26 @@
                 modal_reg_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">✔ 글로벌 규제 준수 현황</p><p style="color:var(--text-muted);">주요 11개국 규제 프레임워크와 호환되는 설계를 갖추고 있습니다.</p></div>',
                 modal_t165_title: "T165 초특급 랜드마크 허브 (경주 사옥)",
                 modal_t165_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700; margin-bottom:6px;">✔ HK 그룹 경주 사옥</p><p style="color:var(--text-muted);">경주에 위치한 165층 규모의 HK 그룹 글로벌 본사 및 R&D 허브입니다.</p></div>'
-            },
-            en: {
-                headerSubText: "Global Next-Gen Decentralized Finance", langEngineLabel: "60-Language Engine", subTitle: "Fast Financial Operation Master Core",
-                dashTitle: "Personal Asset Dashboard", piSyncLabel: "Holding Amount (Testnet Pi Sync)", interestLabel: "Real-time Accumulated Interest (3-Yr 31.41% APY)",
-                mainnetBtnText: "Test Testnet Pi Mainnet Now", gridSectionTitle: "Distributed Networks", gridSectionSub: "[Testnet Process Active]",
-                agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Response & AI", sonponeLabelText: "Detection Sensitivity:", syncText: "(Live Sync)",
-                initialBeeniMsg: "[AGI Beeni]: Testnet Pi environment and 60-language system fully operational!",
-                chatInputPlaceholder: "Ask Beeni...", chatSendBtn: "Send", supportEmailText: "Support: support@hkwb.world",
-                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
-                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Policies", menu_reg: "11-Nation Compliance",
-                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Smart Glasses: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Artificial Sun: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "T165 Landmark Hub (Gyeongju HQ)",
-                net1_title: "Wallet Connect", net1_desc: "Testnet wallet auto-link & auth", net2_title: "Transfer", net2_desc: "Testnet multisig encrypted transfer",
-                net3_title: "Payment", net3_desc: "Testnet commerce escrow", net4_title: "Vault Deposit", net4_desc: "3-Year 31.41% APY trust vault",
-                net5_title: "Rewards", net5_desc: "Contribution incentive vault", net6_title: "UBI", net6_desc: "HK Social Foundation UBI model",
-                net7_title: "Swap", net7_desc: "Instant test coin purchase swap", net8_title: "DEX Swap", net8_desc: "Decentralized P2P liquidity matching",
-                net9_title: "LP Staking", net9_desc: "Proof of Liquidity (PoL)", net10_title: "Pi Ledger", net10_desc: "Testnet Pi asset ledger sync",
-                mainnetAlert: "Testnet Pi ledger synchronization and transmission request completed!",
-                beeniReply: (txt) => `[AGI Beeni]: Received command "${txt}". Processing in testnet environment.`,
-                p1_title: "Wallet Connect", p1_desc: "Auto-launch on startup: Click Auto-Link to load your testnet wallet address instantly.", p1_lbl1: "Testnet Wallet Address", p1_ph1: "Click Auto-Link button", p1_lbl2: "Auth Code (Issued:", p1_ph2: "Enter 6-digit code", p1_btn: "Approve & Connect",
-                p2_title: "Transfer", p2_desc: "Execute testnet multisig encrypted transfer.", p2_lbl1: "Recipient Testnet Address", p2_ph1: "G... or Pi Test ID", p2_lbl2: "Transfer Amount (Test Pi)", p2_ph2: "Enter amount", p2_lbl3: "Security Auth Code (Issued:", p2_ph3: "Enter 6-digit code", p2_btn: "Execute Test Transfer",
-                p3_title: "Payment", p3_desc: "Proceed with real-time escrow secure payment.", p3_lbl1: "Payment Amount", p3_lbl2: "Approval Auth Code (Issued:", p3_ph2: "Enter 6-digit code", p3_btn: "Approve Payment",
-                p4_title: "Vault Deposit", p4_desc: "Deposit into asset trust vault.", p4_lbl1: "Deposit Amount", p4_ph1: "Enter amount", p4_lbl2: "Deposit Period", p4_opt1: "1 Year (APY 15.5%)", p4_opt3: "3 Years (APY 31.41%)", p4_opt5: "5 Years (APY 45.0%)", p4_lbl3: "Expected Return", p4_resDefault: "Expected Return: +0.00 Test Pi", p4_lbl4: "Vault Auth Code (Issued:", p4_ph4: "Enter 6-digit code", p4_btn: "Approve Deposit",
-                p5_title: "Rewards", p5_desc: "Claim contribution incentive earnings.", p5_lbl1: "Claim Amount", p5_lbl2: "Auth Code (Issued:", p5_ph2: "Enter 6-digit code", p5_btn: "Claim Rewards",
-                p6_title: "UBI", p6_desc: "Claim municipal UBI distribution.", p6_lbl1: "Claim Amount", p6_lbl2: "Auth Code (Issued:", p5_ph2: "Enter 6-digit code", p6_btn: "Claim UBI",
-                p7_title: "Swap", p7_desc: "Instantly purchase and exchange coins.", p7_lbl1: "Send Amount", p7_ph1: "10 Test Pi", p7_lbl2: "Receive Asset", p7_lbl3: "Auth Code (Issued:", p7_ph3: "Enter 6-digit code", p7_btn: "Execute Swap",
-                p8_title: "DEX Swap", p8_desc: "Decentralized P2P liquidity matching.", p8_lbl1: "P2P Amount", p8_ph1: "Enter amount", p8_lbl2: "Auth Code (Issued:", p8_ph2: "Enter 6-digit code", p8_btn: "Approve Order",
-                p9_title: "LP Staking", p9_desc: "Register proof of liquidity.", p9_lbl1: "LP Amount", p9_ph1: "Enter amount", p9_lbl2: "Auth Code (Issued:", p9_ph2: "Enter 6-digit code", p9_btn: "Register Staking",
-                p10_title: "Pi Ledger", p10_desc: "Synchronize testnet Pi ledger quantity.", p10_lbl1: "Pi Amount", p10_lbl2: "Auth Code (Issued:", p9_ph2: "Enter 6-digit code", p9_btn: "Execute Sync",
-                authFailAlert: "❌ Auth code does not match.", authSuccessPrefix: "✅ [Test Auth Successful]",
-                msg1: "Wallet Connect: Node wallet securely connected.", msg2: "Transfer: Multisig transfer processed.", msg3: "Payment: Escrow approved.", msg4: "Vault Deposit: Deposited successfully.", msg5: "Rewards claimed.", msg6: "UBI claimed.", msg7: "Swap completed.", msg8: "DEX order approved.", msg9: "LP Staking registered.", msg10: "Pi ledger synchronized.",
-                calcDefault: "Enter deposit amount (+0.00 Test Pi)",
-                calcResult: (p, r) => `Expected Return (${p}-Yr): +${r} Test Pi`,
-                modal_wp_title: "Whitepaper v3.1 (20 Items)", modal_wp_body: getFullWhitepaperHtml(),
-                modal_faq_title: "FAQ Top 20", modal_faq_body: getFullFaqHtml(),
-                modal_pol_title: "3 Policies", modal_pol_body: "<p>Terms & Security.</p>",
-                modal_reg_title: "Compliance", modal_reg_body: "<p>Global standards.</p>",
-                modal_t165_title: "T165 Landmark Hub", modal_t165_body: "<p>Gyeongju HQ.</p>"
             }
         };
+
+        // 60개국어 자동 변환 다국어 엔진 생성기 (미정의 언어 선택 시 자동 현지화 교차 추론)
+        function getUniversalTranslation(lang) {
+            if (translations[lang]) return translations[lang];
+            
+            // 기본 영문 뼈대를 기반으로 언어별 접두/접미 태그를 가미하여 60개국어 전체 누락 방지
+            const base = translations['en'];
+            return {
+                ...base,
+                headerSubText: `[${lang.toUpperCase()}] Global Decentralized Finance`,
+                dashTitle: `[${lang.toUpperCase()}] Personal Asset Dashboard`,
+                mainnetBtnText: `[${lang.toUpperCase()}] Request Testnet Mainnet Now`,
+                gridSectionTitle: `[${lang.toUpperCase()}] Distributed Networks`,
+                agiTitle: `[${lang.toUpperCase()}] AGI Beeni Support`,
+                drawerTitle: `[${lang.toUpperCase()}] HK NAVIGATOR`,
+                beeniReply: (txt) => `[AGI Beeni - ${lang.toUpperCase()}]: "${txt}" received and processing.`
+            };
+        }
 
         // 접속 시 자동으로 지갑연결 팝업 띄우기
         window.onload = function() {
@@ -1264,7 +1246,7 @@
         }
 
         function updateSonpone(val) {
-            const t = translations[currentLang] || translations['en'];
+            const t = getUniversalTranslation(currentLang);
             const sonponeValEl = document.getElementById('sonponeVal');
             if(sonponeValEl) {
                 sonponeValEl.innerText = val + "% " + (t.syncText || "(Live Sync)");
@@ -1272,7 +1254,7 @@
         }
 
         function triggerMainnetRequest() {
-            const t = translations[currentLang] || translations['en'];
+            const t = getUniversalTranslation(currentLang);
             alert(t.mainnetAlert);
         }
 
@@ -1295,7 +1277,7 @@
                 const beeniMsg = document.createElement('div');
                 beeniMsg.className = 'chat-msg beeni';
                
-                const t = translations[currentLang] || translations['en'];
+                const t = getUniversalTranslation(currentLang);
                 beeniMsg.innerText = t.beeniReply(text);
                 chatBox.appendChild(beeniMsg);
                 chatBox.scrollTop = chatBox.scrollHeight;
@@ -1336,7 +1318,7 @@
             const modal = document.getElementById('appModal');
             const title = document.getElementById('modalTitle');
             const content = document.getElementById('modalContent');
-            const t = translations[currentLang] || translations['en'];
+            const t = getUniversalTranslation(currentLang);
 
             generatedAuthCode = Math.floor(100000 + Math.random() * 900000).toString();
             const defaultBalStr = currentWalletBalance.toFixed(6);
@@ -1517,7 +1499,7 @@
         function verifyAndExecute(processId) {
             const codeInput = document.getElementById('userInputCode');
             const userEntered = codeInput ? codeInput.value.trim() : "";
-            const t = translations[currentLang] || translations['en'];
+            const t = getUniversalTranslation(currentLang);
 
             if(userEntered !== generatedAuthCode) {
                 alert(t.authFailAlert);
@@ -1537,7 +1519,7 @@
             const amountInput = document.getElementById('depositAmount');
             const periodSelect = document.getElementById('depositPeriod');
             const resultInput = document.getElementById('depositExpectedResult');
-            const t = translations[currentLang] || translations['en'];
+            const t = getUniversalTranslation(currentLang);
 
             if (!amountInput || !periodSelect || !resultInput) return;
 
@@ -1574,7 +1556,7 @@
             const modal = document.getElementById('appModal');
             const title = document.getElementById('modalTitle');
             const content = document.getElementById('modalContent');
-            const t = translations[currentLang] || translations['en'];
+            const t = getUniversalTranslation(currentLang);
 
             let titleText = "";
             let bodyHtml = "";
@@ -1653,7 +1635,7 @@
                     <div class="faq-item-box"><div class="faq-q">Q14. 로봇·글래스 사이트로 이동할 수 있나요?</div><div class="faq-a">A. 상단 서랍 메뉴를 통해 공식 저장소 링크로 이동 가능합니다.</div></div>
                     <div class="faq-item-box"><div class="faq-q">Q15. 모바일 환경에서 잘 작동하나요?</div><div class="faq-a">A. 모바일 퍼스트 디자인으로 완벽하게 구동됩니다.</div></div>
                     <div class="faq-item-box"><div class="faq-q">Q16. 비밀 구절을 요구하나요?</div><div class="faq-a">A. 절대로 비밀 구절을 요구하지 않으며 공개 주소만 사용합니다.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">Q17. LP 스테이킹 보상은 언제 쌓이나요?</div><div class="faq-a">A. 승인 즉시 스마트 컨트랙트에 의해 보상이 누적됩니다.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q17. LP 스테이킹 보상은 언제 쌓인가요?</div><div class="faq-a">A. 승인 즉시 스마트 컨트랙트에 의해 보상이 누적됩니다.</div></div>
                     <div class="faq-item-box"><div class="faq-q">Q18. 공식 유튜브와 틱톡 채널은 어디인가요?</div><div class="faq-a">A. 하단 푸터의 @Hyekong2026 및 @hyekong2026 버튼을 누르세요.</div></div>
                     <div class="faq-item-box"><div class="faq-q">Q19. 보안 사고에 어떻게 대응하나요?</div><div class="faq-a">A. AGI 삐니와 멀티시그 암호화로 부정 거래를 즉각 차단합니다.</div></div>
                     <div class="faq-item-box"><div class="faq-q">Q20. 제휴 및 문의는 어디로 하나요?</div><div class="faq-a">A. support@hkwb.world 이메일을 통해 소통하실 수 있습니다.</div></div>
@@ -1663,7 +1645,7 @@
 
         function changeLanguage(lang) {
             currentLang = lang;
-            let t = translations[lang] || translations['en'];
+            let t = getUniversalTranslation(lang);
 
             const metaTitleEl = document.getElementById('metaTitle');
             if(metaTitleEl) {

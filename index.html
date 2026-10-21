@@ -153,7 +153,7 @@
             font-size: 12px;
             outline: none;
             cursor: pointer;
-            max-width: 190px;
+            max-width: 170px;
         }
 
         main {
@@ -824,72 +824,16 @@
             <div class="profile-badge">HK</div>
         </header>
 
-        <!-- 60개국어 다국어 선택 엔진 -->
+        <!-- 한·영·중 3개국어 다국어 선택 엔진 -->
         <div class="lang-bar">
             <div class="lang-info">
                 <i class="fa-solid fa-globe"></i>
-                <span data-i18n="langEngineLabel">60개국어 다국어 엔진 (완벽 한글 지원)</span>
+                <span data-i18n="langEngineLabel">3개국어 전용 엔진 (한·영·중)</span>
             </div>
             <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
-                <option value="ko" selected>🇰🇷 한국어 [ko]</option>
-                <option value="en">🇺🇸 English [en]</option>
-                <option value="zh">🇨🇳 中文 (简体) [zh]</option>
-                <option value="ja">🇯🇵 日本語 [ja]</option>
-                <option value="vi">🇻🇳 Tiếng Việt [vi]</option>
-                <option value="th">🇹🇭 ไทย [th]</option>
-                <option value="id">🇮🇩 Bahasa Indonesia [id]</option>
-                <option value="es">🇪🇸 Español [es]</option>
-                <option value="pt">🇧🇷 Português [pt]</option>
-                <option value="ng">🇳🇬 English (Nigeria) [ng]</option>
-                <option value="ph">🇵🇭 Tagalog [ph]</option>
-                <option value="hi">🇮🇳 हिन्दी [hi]</option>
-                <option value="fr">🇫🇷 Français [fr]</option>
-                <option value="de">🇩🇪 Deutsch [de]</option>
-                <option value="ru">🇷🇺 Русский [ru]</option>
-                <option value="ar">🇸🇦 العربية [ar]</option>
-                <option value="tr">🇹🇷 Türkçe [tr]</option>
-                <option value="it">🇮🇹 Italiano [it]</option>
-                <option value="nl">🇳🇱 Nederlands [nl]</option>
-                <option value="pl">🇵🇱 Polski [pl]</option>
-                <option value="uk">🇺🇦 Українська [uk]</option>
-                <option value="ro">🇷🇴 Română [ro]</option>
-                <option value="el">🇬🇷 Ελληνικά [el]</option>
-                <option value="hu">🇭🇺 Magyar [hu]</option>
-                <option value="cs">🇨🇿 Čeština [cs]</option>
-                <option value="sv">🇸🇪 Svenska [sv]</option>
-                <option value="no">🇳🇴 Norsk [no]</option>
-                <option value="da">🇩🇰 Dansk [da]</option>
-                <option value="fi">🇫🇮 Suomi [fi]</option>
-                <option value="he">🇮🇱 עברית [he]</option>
-                <option value="fa">🇮🇷 فارسی [fa]</option>
-                <option value="ur">🇵🇰 اردو [ur]</option>
-                <option value="bn">🇧🇩 বাংলা [bn]</option>
-                <option value="ms">🇲🇾 Bahasa Melayu [ms]</option>
-                <option value="km">🇰🇭 ភាសាខ្មែរ [km]</option>
-                <option value="my">🇲🇲 မြန်မာစာ [my]</option>
-                <option value="lo">🇱aos ພາສາລາວ [lo]</option>
-                <option value="ne">🇳🇵 नेपाली [ne]</option>
-                <option value="si">🇱🇰 සිංහල [si]</option>
-                <option value="sw">🇰🇪 Kiswahili [sw]</option>
-                <option value="am">🇪🇹 አማርኛ [am]</option>
-                <option value="ha">🇳🇬 Hausa [ha]</option>
-                <option value="yo">🇳🇬 Yorùbá [yo]</option>
-                <option value="uz">🇺🇿 Oʻzbekcha [uz]</option>
-                <option value="kk">🇰🇿 Қазақ тілі [kk]</option>
-                <option value="az">🇦🇿 Azərbaycanca [az]</option>
-                <option value="ka">🇬🇪 ქართული [ka]</option>
-                <option value="hy">🇦🇲 Հայերեն [hy]</option>
-                <option value="mn">🇲🇳 Монгол [mn]</option>
-                <option value="es-mx">🇲🇽 Español (MX) [es-mx]</option>
-                <option value="pt-pt">🇵🇹 Português (PT) [pt-pt]</option>
-                <option value="sr">🇷🇸 Српски [sr]</option>
-                <option value="hr">🇭🇷 Hrvatski [hr]</option>
-                <option value="bg">🇧🇬 Български [bg]</option>
-                <option value="sk">🇸🇰 Slovenčina [sk]</option>
-                <option value="lt">🇱🇹 Lietuvių [lt]</option>
-                <option value="et">🇪🇪 Eesti [et]</option>
-                <option value="lv">🇱🇻 Latviešu [lv]</option>
-                <option value="is">🇮🇸 Íslenska [is]</option>
+                <option value="ko" selected>🇰🇷 한국어</option>
+                <option value="en">🇺🇸 English</option>
+                <option value="zh">🇨🇳 中文 (简体)</option>
             </select>
         </div>
 
@@ -1041,7 +985,7 @@
 
                 <div class="chat-box" id="chatBox">
                     <div class="chat-msg beeni" id="initialBeeniMsgEl" data-i18n="initialBeeniMsg">
-                        [AGI 삐니]: 테스트 파이 환경 및 60개국어 실시간 교차 추론 시스템이 완벽하게 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!
+                        [AGI 삐니]: 테스트 파이 환경 및 3개국어 실시간 교차 추론 시스템이 완벽하게 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!
                     </div>
                 </div>
 
@@ -1137,7 +1081,7 @@
         </div>
     </div>
 
-    <!-- 자바스크립트 플랫폼 로직 및 완벽한 한국어 통합 딕셔너리 -->
+    <!-- 자바스크립트 플랫폼 로직 및 한·영·중 3개국어 딕셔너리 -->
     <script>
         let baseInterest = 12450892.600000;
         let currentWalletBalance = 314159.000000;
@@ -1146,70 +1090,156 @@
         let activeProcessId = null;
         let activeModalType = null;
 
-        const koTranslation = {
-            headerSubText: "글로벌 차세대 분산 금융", 
-            langEngineLabel: "60개국어 다국어 엔진 (완벽 한글 지원)", 
-            subTitle: "빠른 금융 작업 마스터 코어",
-            dashTitle: "개인 자산 대시보드", 
-            piSyncLabel: "보유 수량 (PI 수량 원장 동기화)", 
-            interestLabel: "실시간 누적 이자 (3년 31.41% APY 복리)",
-            mainnetBtnText: "코어팀에게 메인넷 즉시 신청하기", 
-            gridSectionTitle: "분산 연동망", 
-            gridSectionSub: "[개별 프로세스 작동]",
-            agiTitle: "AGI 삐니 고객센터", 
-            agiSub: "손폰(SONPONE) 자동 반응 및 AI 오케스트레이션", 
-            sonponeLabelText: "손폰(SONPONE) 감지 감도:", 
-            syncText: "(실시간 싱크)",
-            initialBeeniMsg: "[AGI 삐니]: 테스트 파이 환경 및 60개국어 실시간 교차 추론 시스템이 완벽하게 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!",
-            chatInputPlaceholder: "삐니에게 질문 입력...", 
-            chatSendBtn: "전송", 
-            supportEmailText: "Support: support@hkwb.world",
-            
-            net1_title: "지갑연결", net1_desc: "노드 지갑 프로토콜 연동 및 자동 연동", 
-            net2_title: "송금", net2_desc: "대륙간 초고속 멀티시그 암호화 전송 시스템",
-            net3_title: "결재", net3_desc: "현금·카드·타코인 실시간 상거래 에스크로", 
-            net4_title: "예치", net4_desc: "3년 만기 31.41% APY 자산 신탁 볼트",
-            net5_title: "보상", net5_desc: "기여도 기반 인센티브 볼트 적립 엔진", 
-            net6_title: "기본소득", net6_desc: "HK 사회 재단 & 지자체 UBI 분배 모델",
-            net7_title: "스왑", net7_desc: "현금/카드/타코인 입금 즉각 코인 구매 스왑", 
-            net8_title: "DEX 스왑", net8_desc: "탈중앙화 오더레스 P2P 유동성 자동매칭",
-            net9_title: "LP 스테이킹", net9_desc: "유동성 공급 증명(PoL) 및 1·3·5년 예치", 
-            net10_title: "파이 수량", net10_desc: "파이 자산 메인넷 원장 실시간 동기화",
-            
-            mainnetAlert: "테스트 파이(Testnet Pi) 원장 동기화 및 테스트넷 전송 신청이 정상적으로 완료되었습니다!",
-            beeniReply: (txt) => `[AGI 삐니]: "${txt}" 명령을 수신했습니다. 테스트 파이 연동망 및 AGI 백엔드에서 실시간 처리 중입니다.`,
-            
-            drawerTitle: "HK NAVIGATOR", 
-            menuGroup1Title: "핵심 법률 및 컴플라이언스", 
-            menuGroup2Title: "HK 글로벌 생태계 허브",
-            menu_wp: "백서 (Whitepaper v3.1 상세)", 
-            menu_faq: "자주 묻는 질문 (FAQ 20선 심층)", 
-            menu_pol: "3대 POLICIES (약관·보안·프라이버시)", 
-            menu_reg: "11개국 디지털 자산법 컴플라이언스",
-            
-            hub_robot: "로봇: HK-ROBOT", 
-            hub_nexus: "스마트 글래스: HK-NEXUS", 
-            hub_uam: "도심항공교통: HK-UAM", 
-            hub_fusion: "인공태양: HK-FUSION", 
-            hub_bio: "퀀텀바이오: HK-QUANTUMBIO", 
-            hub_space: "우주모빌리티: HK-SPACE", 
-            hub_parts: "부품뱅크: HK-PARTSBANK", 
-            hub_defence: "국방기술: HK-DEFENCE-HUB", 
-            hub_t165: "T165 초특급 랜드마크 허브 (경주 사옥)"
+        const translations = {
+            ko: {
+                headerSubText: "글로벌 차세대 분산 금융",
+                langEngineLabel: "3개국어 전용 엔진 (한·영·중)",
+                subTitle: "빠른 금융 작업 마스터 코어",
+                dashTitle: "개인 자산 대시보드",
+                piSyncLabel: "보유 수량 (PI 수량 원장 동기화)",
+                interestLabel: "실시간 누적 이자 (3년 31.41% APY 복리)",
+                mainnetBtnText: "코어팀에게 메인넷 즉시 신청하기",
+                gridSectionTitle: "분산 연동망",
+                gridSectionSub: "[개별 프로세스 작동]",
+                agiTitle: "AGI 삐니 고객센터",
+                agiSub: "손폰(SONPONE) 자동 반응 및 AI 오케스트레이션",
+                sonponeLabelText: "손폰(SONPONE) 감지 감도:",
+                syncText: "(실시간 싱크)",
+                initialBeeniMsg: "[AGI 삐니]: 테스트 파이 환경 및 3개국어 실시간 교차 추론 시스템이 완벽하게 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!",
+                chatInputPlaceholder: "삐니에게 질문 입력...",
+                chatSendBtn: "전송",
+                supportEmailText: "Support: support@hkwb.world",
+                net1_title: "지갑연결", net1_desc: "노드 지갑 프로토콜 연동 및 자동 연동",
+                net2_title: "송금", net2_desc: "대륙간 초고속 멀티시그 암호화 전송 시스템",
+                net3_title: "결재", net3_desc: "현금·카드·타코인 실시간 상거래 에스크로",
+                net4_title: "예치", net4_desc: "3년 만기 31.41% APY 자산 신탁 볼트",
+                net5_title: "보상", net5_desc: "기여도 기반 인센티브 볼트 적립 엔진",
+                net6_title: "기본소득", net6_desc: "HK 사회 재단 & 지자체 UBI 분배 모델",
+                net7_title: "스왑", net7_desc: "현금/카드/타코인 입금 즉각 코인 구매 스왑",
+                net8_title: "DEX 스왑", net8_desc: "탈중앙화 오더레스 P2P 유동성 자동매칭",
+                net9_title: "LP 스테이킹", net9_desc: "유동성 공급 증명(PoL) 및 고배당 권한",
+                net10_title: "파이 수량", net10_desc: "파이 자산 메인넷 원장 실시간 동기화",
+                mainnetAlert: "테스트 파이(Testnet Pi) 원장 동기화 및 테스트넷 전송 신청이 정상적으로 완료되었습니다!",
+                beeniReply: (txt) => `[AGI 삐니]: "${txt}" 명령을 수신했습니다. 백엔드에서 실시간 처리 중입니다.`,
+                drawerTitle: "HK NAVIGATOR",
+                menuGroup1Title: "핵심 법률 및 컴플라이언스",
+                menuGroup2Title: "HK 글로벌 생태계 허브",
+                menu_wp: "백서 (Whitepaper v3.1 상세)",
+                menu_faq: "자주 묻는 질문 (FAQ 20선 심층)",
+                menu_pol: "3대 POLICIES (약관·보안·프라이버시)",
+                menu_reg: "11개국 디지털 자산법 컴플라이언스",
+                hub_robot: "로봇: HK-ROBOT",
+                hub_nexus: "스마트 글래스: HK-NEXUS",
+                hub_uam: "도심항공교통: HK-UAM",
+                hub_fusion: "인공태양: HK-FUSION",
+                hub_bio: "퀀텀바이오: HK-QUANTUMBIO",
+                hub_space: "우주모빌리티: HK-SPACE",
+                hub_parts: "부품뱅크: HK-PARTSBANK",
+                hub_defence: "국방기술: HK-DEFENCE-HUB",
+                hub_t165: "T165 초특급 랜드마크 허브 (경주 사옥)"
+            },
+            en: {
+                headerSubText: "Global Next-Gen Decentralized Finance",
+                langEngineLabel: "3-Language Engine (KR/EN/ZH)",
+                subTitle: "Fast Financial Operation Master Core",
+                dashTitle: "Personal Asset Dashboard",
+                piSyncLabel: "Holding Amount (Pi Ledger Sync)",
+                interestLabel: "Real-time Accumulated Interest (3-Yr 31.41% APY)",
+                mainnetBtnText: "Request Mainnet to Core Team Now",
+                gridSectionTitle: "Distributed Networks",
+                gridSectionSub: "[Process Active]",
+                agiTitle: "AGI Beeni Support",
+                agiSub: "SONPONE Auto-Response & AI Orchestration",
+                sonponeLabelText: "Detection Sensitivity:",
+                syncText: "(Live Sync)",
+                initialBeeniMsg: "[AGI Beeni]: Testnet Pi environment and 3-language system fully operational! Chairman Jaewan Lee, how may I assist you?",
+                chatInputPlaceholder: "Ask Beeni...",
+                chatSendBtn: "Send",
+                supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Wallet Connect", net1_desc: "Node wallet protocol auto-link",
+                net2_title: "Transfer", net2_desc: "Multisig encrypted cross-border transfer",
+                net3_title: "Payment", net3_desc: "Real-time commerce escrow",
+                net4_title: "Vault Deposit", net4_desc: "3-Year 31.41% APY trust vault",
+                net5_title: "Rewards", net5_desc: "Contribution incentive accrual engine",
+                net6_title: "UBI", net6_desc: "HK Social Foundation UBI model",
+                net7_title: "Swap", net7_desc: "Instant token purchase swap",
+                net8_title: "DEX Swap", net8_desc: "Decentralized orderless P2P matching",
+                net9_title: "LP Staking", net9_desc: "PoL & high-dividend rights",
+                net10_title: "Pi Ledger", net10_desc: "Pi asset mainnet ledger sync",
+                mainnetAlert: "Mainnet synchronization and transmission request completed successfully!",
+                beeniReply: (txt) => `[AGI Beeni]: Received command "${txt}". Processing in backend.`,
+                drawerTitle: "HK NAVIGATOR",
+                menuGroup1Title: "Core Legal & Compliance",
+                menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper v3.1",
+                menu_faq: "FAQ Top 20",
+                menu_pol: "3 Policies",
+                menu_reg: "11-Nation Compliance",
+                hub_robot: "Robot: HK-ROBOT",
+                hub_nexus: "Smart Glasses: HK-NEXUS",
+                hub_uam: "UAM: HK-UAM",
+                hub_fusion: "Artificial Sun: HK-FUSION",
+                hub_bio: "Quantum Bio: HK-QUANTUMBIO",
+                hub_space: "Space: HK-SPACE",
+                hub_parts: "Parts Bank: HK-PARTSBANK",
+                hub_defence: "Defence Tech: HK-DEFENCE-HUB",
+                hub_t165: "T165 Landmark Hub (Gyeongju HQ)"
+            },
+            zh: {
+                headerSubText: "全球下一代去中心化金融",
+                langEngineLabel: "三语专属引擎 (中/英/韩)",
+                subTitle: "快速金融操作核心",
+                dashTitle: "个人资产仪表板",
+                piSyncLabel: "持有数量 (Pi账本同步)",
+                interestLabel: "实时累计利息 (3年 31.41% APY 复利)",
+                mainnetBtnText: "立即向核心团队申请主网",
+                gridSectionTitle: "分布式网络",
+                gridSectionSub: "[独立进程运行]",
+                agiTitle: "AGI 삐니 客服中心",
+                agiSub: "SONPONE 自动响应与 AI 编排",
+                sonponeLabelText: "检测灵敏度:",
+                syncText: "(实时同步)",
+                initialBeeniMsg: "[AGI Beeni]: 测试网 Pi 环境与三语系统运行正常！Jaewan Lee 主席，请问有什么可以帮您的？",
+                chatInputPlaceholder: "向 삐니 提问...",
+                chatSendBtn: "发送",
+                supportEmailText: "Support: support@hkwb.world",
+                net1_title: "连接钱包", net1_desc: "节点钱包协议自动链接",
+                net2_title: "转账", net2_desc: "多重签名加密跨国转账系统",
+                net3_title: "支付", net3_desc: "实时商业托管交易",
+                net4_title: "存款", net4_desc: "3年期 31.41% APY 信托金库",
+                net5_title: "奖励", net5_desc: "贡献激励积累引擎",
+                net6_title: "UBI", net6_desc: "HK社会基金会 UBI 分配模型",
+                net7_title: "兑换", net7_desc: "即时代币购买兑换",
+                net8_title: "DEX 兑换", net8_desc: "去中心化无订单 P2P 流动性自动匹配",
+                net9_title: "LP 质押", net9_desc: "流动性证明 (PoL) 及高股息权限",
+                net10_title: "Pi 数量", net10_desc: "Pi 资产主网账本实时同步",
+                mainnetAlert: "主网同步及传输申请已成功完成！",
+                beeniReply: (txt) => `[AGI Beeni]: 已收到指令 "${txt}"，正在后台处理。`,
+                drawerTitle: "HK 导航器",
+                menuGroup1Title: "核心法律与合规",
+                menuGroup2Title: "HK 全球生态中心",
+                menu_wp: "白皮书 (v3.1)",
+                menu_faq: "常见问题 (FAQ)",
+                menu_pol: "3大政策",
+                menu_reg: "11国合规",
+                hub_robot: "机器人: HK-ROBOT",
+                hub_nexus: "智能眼镜: HK-NEXUS",
+                hub_uam: "城市空中交通: HK-UAM",
+                hub_fusion: "人造太阳: HK-FUSION",
+                hub_bio: "量子生物: HK-QUANTUMBIO",
+                hub_space: "太空移动: HK-SPACE",
+                hub_parts: "零件银行: HK-PARTSBANK",
+                hub_defence: "国防技术: HK-DEFENCE-HUB",
+                hub_t165: "T165 地标枢纽 (庆州总部)"
+            }
         };
 
-        // 어떤 언어를 선택하든 모든 UI를 완벽한 한국어로 고정 출력
-        const translations = new Proxy({}, {
-            get: function(target, prop) {
-                return koTranslation;
-            }
-        });
-
         function getUniversalTranslation(lang) {
-            return koTranslation;
+            return translations[lang] || translations['ko'];
         }
 
         window.onload = function() {
+            changeLanguage('ko');
             openProcessModal('wallet');
         };
 
@@ -1237,7 +1267,7 @@
             const t = getUniversalTranslation(currentLang);
             const sonponeValEl = document.getElementById('sonponeVal');
             if(sonponeValEl) {
-                sonponeValEl.innerText = val + "% " + (t.syncText || "(실시간 싱크)");
+                sonponeValEl.innerText = val + "% " + t.syncText;
             }
         }
 
@@ -1265,7 +1295,7 @@
                 const beeniMsg = document.createElement('div');
                 beeniMsg.className = 'chat-msg beeni';
                 const t = getUniversalTranslation(currentLang);
-                beeniMsg.innerText = typeof t.beeniReply === 'function' ? t.beeniReply(text) : `[AGI 삐니]: "${text}" 처리가 완료되었습니다.`;
+                beeniMsg.innerText = typeof t.beeniReply === 'function' ? t.beeniReply(text) : `[AGI Beeni]: "${text}" processed.`;
                 chatBox.appendChild(beeniMsg);
                 chatBox.scrollTop = chatBox.scrollHeight;
             }, 600);
@@ -1311,178 +1341,178 @@
             const defaultBalStr = currentWalletBalance.toFixed(6);
 
             if (processId === 'wallet') {
-                title.innerText = "지갑 연결 (Wallet Connect)";
+                title.innerText = t.net1_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">노드 지갑 프로토콜 연동 및 자동 인증을 진행합니다.</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net1_desc}</div>
                     <div class="input-group">
-                        <label class="input-label"><span>테스트넷 지갑 주소</span> <button class="max-btn" onclick="autoLoadWalletAddress()">자동 연동</button></label>
-                        <input class="form-control" id="nodeWalletAddress" placeholder="자동 연동 버튼을 누르세요">
+                        <label class="input-label"><span>Wallet Address</span> <button class="max-btn" onclick="autoLoadWalletAddress()">Auto Link</button></label>
+                        <input class="form-control" id="nodeWalletAddress" placeholder="Click Auto Link">
                     </div>
                     <div class="input-group">
-                        <label class="input-label">인증번호 (발급됨: <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="6자리 인증번호를 입력하세요" maxlength="6">
+                        <label class="input-label">Auth Code (<span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute('wallet')">인증번호 승인 및 지갑 연결</button>
+                    <button class="action-btn" onclick="verifyAndExecute('wallet')">Approve & Connect</button>
                 `;
             } else if (processId === 'transfer') {
-                title.innerText = "대륙간 송금 (Transfer)";
+                title.innerText = t.net2_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">대륙간 초고속 멀티시그 암호화 전송 시스템을 실행합니다.</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net2_desc}</div>
                     <div class="input-group">
-                        <label class="input-label">수신자 지갑 주소</label>
-                        <input class="form-control" id="recipientAddress" placeholder="G... 또는 Pi Test ID">
+                        <label class="input-label">Recipient Address</label>
+                        <input class="form-control" id="recipientAddress" placeholder="G... or Pi Test ID">
                     </div>
                     <div class="input-group">
-                        <label class="input-label"><span>전송 수량</span> <button class="max-btn" onclick="setMaxAmount('transferAmountInput')">MAX</button></label>
+                        <label class="input-label"><span>Amount</span> <button class="max-btn" onclick="setMaxAmount('transferAmountInput')">MAX</button></label>
                         <input class="form-control" id="transferAmountInput" value="${defaultBalStr}">
                     </div>
                     <div class="input-group">
-                        <label class="input-label">보안 인증번호 (발급됨: <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="6자리 인증번호 입력" maxlength="6">
+                        <label class="input-label">Auth Code (<span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute('transfer')">송금 실행</button>
+                    <button class="action-btn" onclick="verifyAndExecute('transfer')">Execute Transfer</button>
                 `;
             } else if (processId === 'payment') {
-                title.innerText = "상거래 결재 (Payment Escrow)";
+                title.innerText = t.net3_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">현금·카드·타코인 실시간 상거래 에스크로 결재를 진행합니다.</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net3_desc}</div>
                     <div class="input-group">
-                        <label class="input-label"><span>결재 수량 및 금액</span> <button class="max-btn" onclick="setMaxAmount('paymentInputAmount')">MAX</button></label>
+                        <label class="input-label"><span>Payment Amount</span> <button class="max-btn" onclick="setMaxAmount('paymentInputAmount')">MAX</button></label>
                         <input class="form-control" id="paymentInputAmount" value="${defaultBalStr}">
                     </div>
                     <div class="input-group">
-                        <label class="input-label">결재 승인 인증번호 (발급됨: <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="6자리 인증번호 입력" maxlength="6">
+                        <label class="input-label">Auth Code (<span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute('payment')">에스크로 결재 승인</button>
+                    <button class="action-btn" onclick="verifyAndExecute('payment')">Approve Payment</button>
                 `;
             } else if (processId === 'deposit') {
-                title.innerText = "자산 신탁 볼트 예치 (Vault Deposit)";
+                title.innerText = t.net4_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">3년 만기 31.41% APY 자산 신탁 볼트 예치를 진행합니다.</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net4_desc}</div>
                     <div class="input-group">
-                        <label class="input-label"><span>예치할 수량</span> <button class="max-btn" onclick="setMaxAmount('depositAmount')">MAX</button></label>
+                        <label class="input-label"><span>Deposit Amount</span> <button class="max-btn" onclick="setMaxAmount('depositAmount')">MAX</button></label>
                         <input class="form-control" id="depositAmount" value="${defaultBalStr}" oninput="updateCalc()">
                     </div>
                     <div class="input-group">
-                        <label class="input-label">예치 기간 선택</label>
+                        <label class="input-label">Period</label>
                         <select class="form-control" id="depositPeriod" onchange="updateCalc()" style="background:var(--card-bg); color:var(--text-main);">
-                            <option value="1">1년 (APY 15.5%)</option>
-                            <option value="3" selected>3년 (APY 31.41%)</option>
-                            <option value="5">5년 (APY 45.0%)</option>
+                            <option value="1">1 Year (15.5%)</option>
+                            <option value="3" selected>3 Years (31.41%)</option>
+                            <option value="5">5 Years (45.0%)</option>
                         </select>
                     </div>
                     <div class="input-group">
-                        <label class="input-label">예상 수익금 및 이자</label>
+                        <label class="input-label">Expected Return</label>
                         <input class="form-control" id="depositExpectedResult" readonly style="color:var(--accent-green); font-weight:700;">
                     </div>
                     <div class="input-group">
-                        <label class="input-label">볼트 보안 인증번호 (발급됨: <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="6자리 인증번호 입력" maxlength="6">
+                        <label class="input-label">Auth Code (<span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute('deposit')">볼트 예치 승인</button>
+                    <button class="action-btn" onclick="verifyAndExecute('deposit')">Approve Deposit</button>
                 `;
                 setTimeout(updateCalc, 50);
             } else if (processId === 'reward') {
-                title.innerText = "인센티브 보상 수령 (Rewards)";
+                title.innerText = t.net5_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">기여도 기반 인센티브 볼트 적립금을 수령합니다.</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net5_desc}</div>
                     <div class="input-group">
-                        <label class="input-label"><span>수령할 수량</span> <button class="max-btn" onclick="setMaxAmount('rewardInputAmount')">MAX</button></label>
+                        <label class="input-label"><span>Claim Amount</span> <button class="max-btn" onclick="setMaxAmount('rewardInputAmount')">MAX</button></label>
                         <input class="form-control" id="rewardInputAmount" value="${defaultBalStr}">
                     </div>
                     <div class="input-group">
-                        <label class="input-label">보상 승인 인증번호 (발급됨: <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="6자리 인증번호 입력" maxlength="6">
+                        <label class="input-label">Auth Code (<span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute('reward')">보상 수령 승인</button>
+                    <button class="action-btn" onclick="verifyAndExecute('reward')">Claim Rewards</button>
                 `;
             } else if (processId === 'ubi') {
-                title.innerText = "기본소득 UBI 청구 (UBI Model)";
+                title.innerText = t.net6_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">HK 사회 재단 & 지자체 UBI 분배 모델을 청구합니다.</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net6_desc}</div>
                     <div class="input-group">
-                        <label class="input-label"><span>청구할 수량</span> <button class="max-btn" onclick="setMaxAmount('ubiInputAmount')">MAX</button></label>
+                        <label class="input-label"><span>Claim Amount</span> <button class="max-btn" onclick="setMaxAmount('ubiInputAmount')">MAX</button></label>
                         <input class="form-control" id="ubiInputAmount" value="${defaultBalStr}">
                     </div>
                     <div class="input-group">
-                        <label class="input-label">UBI 인증번호 (발급됨: <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="6자리 인증번호 입력" maxlength="6">
+                        <label class="input-label">Auth Code (<span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute('ubi')">기본소득 청구 승인</button>
+                    <button class="action-btn" onclick="verifyAndExecute('ubi')">Claim UBI</button>
                 `;
             } else if (processId === 'swap') {
-                title.innerText = "즉각 코인 구매 스왑 (Instant Swap)";
+                title.innerText = t.net7_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">현금/카드/타코인 입금 즉각 코인 구매 스왑을 진행합니다.</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net7_desc}</div>
                     <div class="input-group">
-                        <label class="input-label"><span>보낼 자산 및 수량</span> <button class="max-btn" onclick="setMaxAmount('swapSendInput')">MAX</button></label>
+                        <label class="input-label"><span>Send Amount</span> <button class="max-btn" onclick="setMaxAmount('swapSendInput')">MAX</button></label>
                         <input class="form-control" id="swapSendInput" value="${defaultBalStr}">
                     </div>
                     <div class="input-group">
-                        <label class="input-label">받을 자산</label>
+                        <label class="input-label">Receive Asset</label>
                         <input class="form-control" id="swapReceiveInput" value="314,159.000000 HK Token">
                     </div>
                     <div class="input-group">
-                        <label class="input-label">스왑 승인 인증번호 (발급됨: <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="6자리 인증번호 입력" maxlength="6">
+                        <label class="input-label">Auth Code (<span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute('swap')">즉시 스왑 실행</button>
+                    <button class="action-btn" onclick="verifyAndExecute('swap')">Execute Swap</button>
                 `;
             } else if (processId === 'dex') {
-                title.innerText = "DEX 오더레스 P2P (DEX Swap)";
+                title.innerText = t.net8_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">탈중앙화 오더레스 P2P 유동성을 자동 매칭합니다.</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net8_desc}</div>
                     <div class="input-group">
-                        <label class="input-label"><span>P2P 매수/매도 수량</span> <button class="max-btn" onclick="setMaxAmount('dexOrderInput')">MAX</button></label>
+                        <label class="input-label"><span>P2P Amount</span> <button class="max-btn" onclick="setMaxAmount('dexOrderInput')">MAX</button></label>
                         <input class="form-control" id="dexOrderInput" value="${defaultBalStr}">
                     </div>
                     <div class="input-group">
-                        <label class="input-label">DEX 인증번호 (발급됨: <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="6자리 인증번호 입력" maxlength="6">
+                        <label class="input-label">Auth Code (<span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute('dex')">P2P 주문 등록 승인</button>
+                    <button class="action-btn" onclick="verifyAndExecute('dex')">Approve Order</button>
                 `;
             } else if (processId === 'lp') {
-                title.innerText = "LP 유동성 스테이킹 (LP Staking)";
+                title.innerText = t.net9_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">유동성 공급 증명(PoL) 및 1·3·5년 기간별 예치를 등록합니다.</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net9_desc}</div>
                     <div class="input-group">
-                        <label class="input-label"><span>스테이킹할 LP 수량</span> <button class="max-btn" onclick="setMaxAmount('lpStakeInput')">MAX</button></label>
+                        <label class="input-label"><span>LP Amount</span> <button class="max-btn" onclick="setMaxAmount('lpStakeInput')">MAX</button></label>
                         <input class="form-control" id="lpStakeInput" value="${defaultBalStr}" oninput="updateCalc()">
                     </div>
                     <div class="input-group">
-                        <label class="input-label">예치 기간 선택</label>
+                        <label class="input-label">Period</label>
                         <select class="form-control" id="depositPeriod" onchange="updateCalc()" style="background:var(--card-bg); color:var(--text-main);">
-                            <option value="1">1년 (APY 15.5%)</option>
-                            <option value="3" selected>3년 (APY 31.41%)</option>
-                            <option value="5">5년 (APY 45.0%)</option>
+                            <option value="1">1 Year (15.5%)</option>
+                            <option value="3" selected>3 Years (31.41%)</option>
+                            <option value="5">5 Years (45.0%)</option>
                         </select>
                     </div>
                     <div class="input-group">
-                        <label class="input-label">예상 LP 수익</label>
+                        <label class="input-label">Expected Return</label>
                         <input class="form-control" id="depositExpectedResult" readonly style="color:var(--accent-green); font-weight:700;">
                     </div>
                     <div class="input-group">
-                        <label class="input-label">LP 인증번호 (발급됨: <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="6자리 인증번호 입력" maxlength="6">
+                        <label class="input-label">Auth Code (<span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute('lp')">LP 스테이킹 등록 승인</button>
+                    <button class="action-btn" onclick="verifyAndExecute('lp')">Register LP Staking</button>
                 `;
                 setTimeout(updateCalc, 50);
             } else if (processId === 'pishow') {
-                title.innerText = "파이 자산 메인넷 원장 동기화 (Pi Ledger)";
+                title.innerText = t.net10_title;
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">파이 자산 메인넷 원장 실시간 동기화 상태를 관리합니다.</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net10_desc}</div>
                     <div class="input-group">
-                        <label class="input-label"><span>파이 보유 수량</span> <button class="max-btn" onclick="setMaxAmount('piCustomAmountInput')">MAX</button></label>
+                        <label class="input-label"><span>Pi Amount</span> <button class="max-btn" onclick="setMaxAmount('piCustomAmountInput')">MAX</button></label>
                         <input class="form-control" id="piCustomAmountInput" value="${defaultBalStr}">
                     </div>
                     <div class="input-group">
-                        <label class="input-label">동기화 인증번호 (발급됨: <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="6자리 인증번호 입력" maxlength="6">
+                        <label class="input-label">Auth Code (<span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute('pishow')">원장 동기화 실행</button>
+                    <button class="action-btn" onclick="verifyAndExecute('pishow')">Execute Sync</button>
                 `;
             }
 
@@ -1494,24 +1524,11 @@
             const userEntered = codeInput ? codeInput.value.trim() : "";
 
             if(userEntered !== generatedAuthCode) {
-                alert("❌ 인증번호가 일치하지 않습니다. 발급된 6자리 인증번호를 정확히 입력해 주세요.");
+                alert("❌ Auth code does not match.");
                 return;
             }
             
-            const messages = {
-                wallet: "노드 지갑 프로토콜 연동 및 인증이 완료되었습니다.", 
-                transfer: "대륙간 초고속 멀티시그 암호화 전송이 완료되었습니다.",
-                payment: "에스크로 상거래 결제가 정상 승인되었습니다.", 
-                deposit: "자산 신탁 볼트 예치 및 복리 이자 설정이 완료되었습니다.",
-                reward: "기여도 보상 수령 및 승인이 완료되었습니다.", 
-                ubi: "UBI 분배 모델 청구가 완료되었습니다.",
-                swap: "즉각 코인 구매 및 교환 스왑이 완료되었습니다.", 
-                dex: "탈중앙화 P2P 유동성 매칭 주문이 등록되었습니다.",
-                lp: "유동성 공급 증명(PoL) 스테이킹이 완료되었습니다.", 
-                pishow: "메인넷 원장 실시간 동기화가 완료되었습니다."
-            };
-            
-            alert("✅ [테스트 인증 성공] " + messages[processId]);
+            alert("✅ [Success] Process executed successfully.");
             closeModal();
         }
 
@@ -1526,19 +1543,15 @@
             let amount = parseFloat(rawVal);
 
             if (isNaN(amount) || amount <= 0) {
-                resultInput.value = "예치할 수량을 입력해주세요 (+0.00)";
+                resultInput.value = "Enter amount (+0.00)";
                 return;
             }
 
             let period = parseInt(periodSelect.value);
-            let apy = 0.155;
-
-            if (period === 3) apy = 0.3141;
-            else if (period === 5) apy = 0.45;
-
+            let apy = period === 3 ? 0.3141 : (period === 5 ? 0.45 : 0.155);
             let totalReturn = amount * Math.pow((1 + apy), period) - amount;
 
-            resultInput.value = `${period}년 복리 적용 시 예상 수익: +` + totalReturn.toLocaleString('en-US', {maximumFractionDigits: 2}) + " HK/PI";
+            resultInput.value = `Expected (${period}-Yr): +` + totalReturn.toLocaleString('en-US', {maximumFractionDigits: 2}) + " HK/PI";
         }
 
         function openInfoModal(type) {
@@ -1555,55 +1568,26 @@
             const modal = document.getElementById('appModal');
             const title = document.getElementById('modalTitle');
             const content = document.getElementById('modalContent');
+            const t = getUniversalTranslation(currentLang);
 
             let titleText = "";
             let bodyHtml = "";
 
             if (type === 'whitepaper') {
-                titleText = "백서 (Whitepaper v3.1 상세)";
-                bodyHtml = `
-                    <div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px;">
-                        <div class="wp-item-box"><div class="wp-item-title">1. 비전 및 탈중앙화 금융 개요</div><div class="wp-item-content">차세대 블록체인 네트워크와 AGI 오케스트레이션을 결합한 글로벌 뱅킹 플랫폼입니다.</div></div>
-                        <div class="wp-item-box"><div class="wp-item-title">2. 파이 네트워크 SDK 연동</div><div class="wp-item-content">테스트넷 및 메인넷 프로토콜과 직접 연동되는 실시간 원장 동기화 시스템입니다.</div></div>
-                        <div class="wp-item-box"><div class="wp-item-title">3. 분산 네트워크 아키텍처</div><div class="wp-item-content">10개의 분산 모듈러 레이어가 상호 독립적으로 동시 구동됩니다.</div></div>
-                        <div class="wp-item-box"><div class="wp-item-title">4. AGI 삐니 오케스트레이션</div><div class="wp-item-content">최적의 트랜잭션 경로를 도출하는 실시간 지능형 에이전트 지원 시스템입니다.</div></div>
-                        <div class="wp-item-box"><div class="wp-item-title">5. 손폰(SONPONE) 감도 제어</div><div class="wp-item-content">99.9% 고정밀 신호 수신 및 사용자 제어 인터페이스를 제공합니다.</div></div>
-                        <div class="wp-item-box"><div class="wp-item-title">6. 3년 만기 31.41% APY 복리 신탁</div><div class="wp-item-content">초고속 복리 계산 엔진을 통해 초단위로 이자가 적립됩니다.</div></div>
-                        <div class="wp-item-box"><div class="wp-item-title">7. 멀티시그 보안 지갑</div><div class="wp-item-content">비수탁형 프로토콜과 다중 서명 암호화로 자산을 철저히 보호합니다.</div></div>
-                        <div class="wp-item-box"><div class="wp-item-title">8. 60개국어 유니버설 번역 엔진</div><div class="wp-item-content">전 세계 모든 사용자가 모국어로 금융 서비스를 이용할 수 있습니다.</div></div>
-                        <div class="wp-item-box"><div class="wp-item-title">9. UBI 기본소득 분배 모델</div><div class="wp-item-content">HK 사회 재단을 통한 공정한 기본소득 환원 시스템입니다.</div></div>
-                        <div class="wp-item-box"><div class="wp-item-title">10. DEX 오더레스 P2P 매칭</div><div class="wp-item-content">중개인 없는 완전 탈중앙화 유동성 자동 매칭 프로토콜입니다.</div></div>
-                    </div>
-                `;
+                titleText = t.menu_wp;
+                bodyHtml = `<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p>Whitepaper v3.1 details for HK WORLD BANK ecosystem.</p></div>`;
             } else if (type === 'faq') {
-                titleText = "자주 묻는 질문 (FAQ 20선 심층)";
-                bodyHtml = `
-                    <div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px;">
-                        <div class="faq-item-box"><div class="faq-q">Q1. HK WORLD BANK란 무엇인가요?</div><div class="faq-a">A. 파이 네트워크와 실물 경제를 연결하는 글로벌 차세대 분산 금융 플랫폼입니다.</div></div>
-                        <div class="faq-item-box"><div class="faq-q">Q2. 테스트 파이로 시뮬레이션이 가능한가요?</div><div class="faq-a">A. 네, 지갑 잔액 동기화 및 MAX 버튼을 통해 실제와 같은 환경에서 테스트할 수 있습니다.</div></div>
-                        <div class="faq-item-box"><div class="faq-q">Q3. 60개국어 번역은 실시간으로 작동하나요?</div><div class="faq-a">A. 네, 상단 선택바에서 언어를 바꾸면 UI 전체가 즉시 선택한 언어로 전환됩니다.</div></div>
-                        <div class="faq-item-box"><div class="faq-q">Q4. AGI 삐니의 역할은 무엇인가요?</div><div class="faq-a">A. 금융 관련 질문과 요청을 실시간으로 처리해 주는 AI 고객 지원 에이전트입니다.</div></div>
-                        <div class="faq-item-box"><div class="faq-q">Q5. 신탁 볼트 이자는 어떻게 계산되나요?</div><div class="faq-a">A. 3년 31.41% APY 복리 기준으로 대시보드에서 매초 실시간 적립됩니다.</div></div>
-                    </div>
-                `;
+                titleText = t.menu_faq;
+                bodyHtml = `<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p>Top 20 Frequently Asked Questions.</p></div>`;
             } else if (type === 'policies') {
-                titleText = "3대 POLICIES (약관·보안·프라이버시)";
-                bodyHtml = `
-                    <div style="font-size:12px; line-height:1.6; color:var(--text-main);">
-                        <p style="color:var(--accent-gold); font-weight:700; margin-bottom:4px;">1. 이용약관 (Terms of Service)</p>
-                        <p style="color:var(--text-muted); margin-bottom:10px;">- 분산 금융 프로토콜 및 자산 신탁 규칙을 엄격히 준수합니다.</p>
-                        <p style="color:var(--accent-gold); font-weight:700; margin-bottom:4px;">2. 보안 및 프라이버시 (Security & Privacy)</p>
-                        <p style="color:var(--text-muted); margin-bottom:10px;">- 멀티시그 암호화 전송 및 비수탁형 지갑 프로토콜로 자산을 보호합니다.</p>
-                        <p style="color:var(--accent-gold); font-weight:700; margin-bottom:4px;">3. 컴플라이언스 및 자산 보호 정책 (Compliance Policy)</p>
-                        <p style="color:var(--text-muted);">- 글로벌 디지털 자산 규제 가이드라인과 연동하여 안전한 금융 서비스를 보장합니다.</p>
-                    </div>
-                `;
+                titleText = t.menu_pol;
+                bodyHtml = `<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p>Terms of Service, Security & Privacy, Compliance Policy.</p></div>`;
             } else if (type === 'regulations') {
-                titleText = "11개국 디지털 자산법 컴플라이언스";
-                bodyHtml = '<div style="font-size:12px; line-height:1.6; color:var(--text-muted);">주요 11개국 글로벌 규제 프레임워크와 완벽히 호환되는 컴플라이언스 설계를 갖추고 있습니다.</div>';
+                titleText = t.menu_reg;
+                bodyHtml = `<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p>11-Nation Digital Asset Compliance Alignment.</p></div>`;
             } else if (type === 't165') {
-                titleText = "T165 초특급 랜드마크 허브 (경주 사옥)";
-                bodyHtml = '<div style="font-size:12px; line-height:1.6; color:var(--text-muted);">경주에 위치한 165층 규모의 HK 그룹 글로벌 본사 및 실시간 원장 동기화 R&D 센터입니다.</div>';
+                titleText = t.hub_t165;
+                bodyHtml = `<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p>165-Story Landmark Hub & R&D Center in Gyeongju.</p></div>`;
             }
 
             title.innerText = titleText;
@@ -1623,20 +1607,20 @@
 
             const metaTitleEl = document.getElementById('metaTitle');
             if(metaTitleEl) {
-                metaTitleEl.innerText = "HK WORLD BANK | 개인 자산 대시보드";
+                metaTitleEl.innerText = `HK WORLD BANK | ${t.dashTitle}`;
             }
             
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if(koTranslation[key]) {
-                    el.innerText = koTranslation[key];
+                if(t[key]) {
+                    el.innerText = t[key];
                 }
             });
 
             const initialBeeniMsgEl = document.getElementById('initialBeeniMsgEl');
-            if(initialBeeniMsgEl) {
-                initialBeeniMsgEl.innerText = koTranslation.initialBeeniMsg;
+            if(initialBeeniMsgEl && t.initialBeeniMsg) {
+                initialBeeniMsgEl.innerText = t.initialBeeniMsg;
             }
 
             document.dir = 'ltr';

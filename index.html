@@ -1130,7 +1130,7 @@
     <div class="modal" id="appModal">
         <div class="modal-body">
             <div class="modal-header">
-                <h3 class="modal-title" id="modalTitle" data-i18n="modalProcessTitle">프로세스 구동</h3>
+                <h3 class="modal-title" id="modalTitle">프로세스 구동</h3>
                 <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div id="modalContent"></div>
@@ -1146,7 +1146,7 @@
         let activeProcessId = null;
         let activeModalType = null;
 
-        // 60개국어 다국어 전체 사전 데이터베이스 (선택 즉시 뼈속까지 완벽 변환)
+        // 60개국어 다국어 전체 사전 데이터베이스 (주요 거점 및 글로벌 표준 언어 완벽 탑재)
         const translations = {
             ko: {
                 headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "60개국어 다국어 엔진", subTitle: "빠른 금융 작업 마스터 코어",
@@ -1168,8 +1168,7 @@
                 authFailAlert: "❌ 인증번호가 일치하지 않습니다. 발급된 6자리 인증번호를 정확히 입력해 주세요.",
                 authSuccessPrefix: "✅ [테스트 인증 성공]",
                 calcDefault: "예치할 수량을 입력해주세요 (+0.00)",
-                calcResult: (p, r) => `${p}년 복리 적용 시 예상 수익: +${r} HK/PI`,
-                modalProcessTitle: "프로세스 구동"
+                calcResult: (p, r) => `${p}년 복리 적용 시 예상 수익: +${r} HK/PI`
             },
             en: {
                 headerSubText: "Global Next-Gen Decentralized Finance", langEngineLabel: "60-Language Universal Engine", subTitle: "Fast Financial Operation Master Core",
@@ -1190,8 +1189,7 @@
                 beeniReply: (txt) => `[AGI Beeni]: Received command "${txt}". Processing in decentralized backend.`,
                 authFailAlert: "❌ Auth code does not match.", authSuccessPrefix: "✅ [Auth Successful]",
                 calcDefault: "Enter deposit amount (+0.00)",
-                calcResult: (p, r) => `Expected Return (${p}-Yr): +${r}`,
-                modalProcessTitle: "Process Execution"
+                calcResult: (p, r) => `Expected Return (${p}-Yr): +${r}`
             },
             zh: {
                 headerSubText: "全球下一代去中心化金融", langEngineLabel: "60国语言引擎", subTitle: "快捷金融操作主核心",
@@ -1211,8 +1209,7 @@
                 mainnetAlert: "测试派账本同步及测试网传输申请已正常完成！",
                 beeniReply: (txt) => `[AGI 币妮]: 已接收命令 "${txt}"。`,
                 authFailAlert: "❌ 验证码不匹配。", authSuccessPrefix: "✅ [认证成功]",
-                calcDefault: "请输入存款数量", calcResult: (p, r) => `${p}年复利预期收益: +${r}`,
-                modalProcessTitle: "进程执行"
+                calcDefault: "请输入存款数量", calcResult: (p, r) => `${p}年复利预期收益: +${r}`
             },
             ja: {
                 headerSubText: "グローバル次世代分散型金融", langEngineLabel: "60言語エンジン", subTitle: "高速金融作業マスターコア",
@@ -1232,8 +1229,7 @@
                 mainnetAlert: "テストパイ台帳同期およびテストネット転送申請が正常に完了しました！",
                 beeniReply: (txt) => `[AGI ぴーに]: "${txt}"命令を受信しました。`,
                 authFailAlert: "❌ 認証番号が一致しません。", authSuccessPrefix: "✅ [認証成功]",
-                calcDefault: "預金する数量を入力してください", calcResult: (p, r) => `${p}年複利予想収益: +${r}`,
-                modalProcessTitle: "プロセス駆動"
+                calcDefault: "預金する数量を入力してください", calcResult: (p, r) => `${p}年複利予想収益: +${r}`
             },
             es: {
                 headerSubText: "Finanzas Descentralizadas de Próxima Generación", langEngineLabel: "Motor de 60 Idiomas", subTitle: "Núcleo Maestro de Operaciones",
@@ -1249,8 +1245,7 @@
                 net9_title: "Staking LP", net9_desc: "Prueba de liquidez (PoL)", net10_title: "Cantidad Pi", net10_desc: "Sincronización del libro mayor",
                 mainnetAlert: "¡Solicitud de red principal completada!", beeniReply: (txt) => `[AGI Beeni]: Comando "${txt}" recibido.`,
                 authFailAlert: "❌ Código incorrecto.", authSuccessPrefix: "✅ [Éxito]",
-                calcDefault: "Ingrese cantidad", calcResult: (p, r) => `Retorno Esperado (${p} Años): +${r}`,
-                modalProcessTitle: "Ejecución de Proceso"
+                calcDefault: "Ingrese cantidad", calcResult: (p, r) => `Retorno Esperado (${p} Años): +${r}`
             },
             pt: {
                 headerSubText: "Finanças Descentralizadas de Próxima Geração", langEngineLabel: "Motor de 60 Idiomas", subTitle: "Núcleo Mestre de Operações",
@@ -1266,8 +1261,7 @@
                 net9_title: "Staking LP", net9_desc: "Prova de liquidez (PoL)", net10_title: "Quantidade Pi", net10_desc: "Sincronização do razão Pi",
                 mainnetAlert: "¡Solicitud de red principal completada!", beeniReply: (txt) => `[AGI Beeni]: Comando "${txt}" recebido.`,
                 authFailAlert: "❌ Código incorreto.", authSuccessPrefix: "✅ [Sucesso]",
-                calcDefault: "Digite a quantidade", calcResult: (p, r) => `Retorno Esperado (${p} Anos): +${r}`,
-                modalProcessTitle: "Execução do Processo"
+                calcDefault: "Digite a quantidade", calcResult: (p, r) => `Retorno Esperado (${p} Anos): +${r}`
             },
             vi: {
                 headerSubText: "Tài chính phi tập trung thế hệ mới", langEngineLabel: "Công cụ đa ngôn ngữ 60 quốc gia", subTitle: "Lõi điều khiển tài chính nhanh",
@@ -1283,8 +1277,7 @@
                 net9_title: "Staking LP", net9_desc: "Chứng minh thanh khoản (PoL)", net10_title: "Số lượng Pi", net10_desc: "Đồng bộ sổ cái chính Pi",
                 mainnetAlert: "Yêu cầu đồng bộ Mainnet thành công!", beeniReply: (txt) => `[AGI Beeni]: Đã nhận lệnh "${txt}".`,
                 authFailAlert: "❌ Mã xác thực không khớp.", authSuccessPrefix: "✅ [Thành công]",
-                calcDefault: "Nhập số lượng gửi", calcResult: (p, r) => `Lợi nhuận dự kiến (${p} năm) : +${r}`,
-                modalProcessTitle: "Thực thi tiến trình"
+                calcDefault: "Nhập số lượng gửi", calcResult: (p, r) => `Lợi nhuận dự kiến (${p} năm): +${r}`
             },
             id: {
                 headerSubText: "Keuangan Terdesentralisasi Generasi Baru", langEngineLabel: "Mesin Multi-Bahasa", subTitle: "Inti Operasi Keuangan Cepat",
@@ -1300,8 +1293,7 @@
                 net9_title: "Staking LP", net9_desc: "Bukti Likuiditas (PoL)", net10_title: "Jumlah Pi", net10_desc: "Sinkronisasi buku besar utama Pi",
                 mainnetAlert: "Permintaan sinkronisasi Mainnet berhasil!", beeniReply: (txt) => `[AGI Beeni]: Perintah "${txt}" diterima.`,
                 authFailAlert: "❌ Kode otentikasi tidak cocok.", authSuccessPrefix: "✅ [Berhasil]",
-                calcDefault: "Masukkan jumlah deposit", calcResult: (p, r) => `Hasil Harapan (${p} Tahun): +${r}`,
-                modalProcessTitle: "Eksekusi Proses"
+                calcDefault: "Masukkan jumlah deposit", calcResult: (p, r) => `Hasil Harapan (${p} Tahun): +${r}`
             },
             th: {
                 headerSubText: "การเงินกระจายอำนาจยุคใหม่", langEngineLabel: "เครื่องมือหลายภาษา", subTitle: "แกนหลักการดำเนินงานทางการเงิน",
@@ -1317,8 +1309,7 @@
                 net9_title: "LP Staking", net9_desc: "พิสูจน์สภาพคล่อง (PoL)", net10_title: "จำนวน Pi", net10_desc: "ซิงค์บัญชีหลักทรัพย์ Pi",
                 mainnetAlert: "ส่งคำขอซิงค์ Mainnet สำเร็จ!", beeniReply: (txt) => `[AGI Beeni]: ได้รับคำสั่ง "${txt}" แล้ว`,
                 authFailAlert: "❌ รหัสยืนยันไม่ถูกต้อง", authSuccessPrefix: "✅ [สำเร็จ]",
-                calcDefault: "กรอกจำนวนเงินฝาก", calcResult: (p, r) => `ผลตอบแทนคาดการณ์ (${p} ปี): +${r}`,
-                modalProcessTitle: "ดำเนินการกระบวนการ"
+                calcDefault: "กรอกจำนวนเงินฝาก", calcResult: (p, r) => `ผลตอบแทนคาดการณ์ (${p} ปี): +${r}`
             },
             fr: {
                 headerSubText: "Finance décentralisée de nouvelle génération", langEngineLabel: "Moteur multilingue", subTitle: "Noyau d'opérations financières",
@@ -1334,8 +1325,39 @@
                 net9_title: "Staking LP", net9_desc: "Preuve de liquidité (PoL)", net10_title: "Quantité Pi", net10_desc: "Synchronisation du grand livre Pi",
                 mainnetAlert: "Demande de synchronisation Mainnet réussie !", beeniReply: (txt) => `[AGI Beeni]: Commande "${txt}" reçue.`,
                 authFailAlert: "❌ Code d'authentification incorrect.", authSuccessPrefix: "✅ [Succès]",
-                calcDefault: "Entrez le montant du dépôt", calcResult: (p, r) => `Rendement attendu (${p} ans) : +${r}`,
-                modalProcessTitle: "Exécution du processus"
+                calcDefault: "Entrez le montant du dépôt", calcResult: (p, r) => `Rendement attendu (${p} ans) : +${r}`
+            },
+            de: {
+                headerSubText: "Dezentrale Finanzierung der nächsten Generation", langEngineLabel: "60-Sprachen-Universal-Engine", subTitle: "Finanzbetriebs-Master-Kern",
+                dashTitle: "Persönliches Vermögens-Dashboard", piSyncLabel: "Bestand (Pi-Ledger-Synchronisierung)", interestLabel: "Echtzeit-kumulierte Zinsen (3 J. 31.41% APY)",
+                mainnetBtnText: "Mainnet jetzt beim Core-Team anfordern", gridSectionTitle: "Verteilte Netzwerke", gridSectionSub: "[Prozess Aktiv]",
+                agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Antwort & KI-Orchestrierung", sonponeLabelText: "Erkennungsempfindlichkeit:", syncText: "(Live-Sync)",
+                initialBeeniMsg: "[AGI Beeni]: Testnet-Pi-Umgebung und 60-Sprachen-System voll einsatzbereit! Vorsitzender Jaewan Lee, wie kann ich Ihnen helfen?",
+                chatInputPlaceholder: "Beeni fragen...", chatSendBtn: "Senden", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Wallet Connect", net1_desc: "Node-Wallet-Protokoll Auto-Link", net2_title: "Überweisung", net2_desc: "Multisig verschlüsseltes Cross-Border",
+                net3_title: "Zahlung", net3_desc: "Echtzeit-Handels-Escrow", net4_title: "Einzahlung", net4_desc: "3-Jahres 31.41% APY Treuhand-Vault",
+                net5_title: "Belohnungen", net5_desc: "Anreiz-Akkumulations-Engine", net6_title: "BGE", net6_desc: "HK Social Foundation UBI-Modell",
+                net7_title: "Swap", net7_desc: "Sofortiger Tokenkauf-Swap", net8_title: "DEX Swap", net8_desc: "Dezentrales P2P-Liquiditäts-Matching",
+                net9_title: "LP Staking", net9_desc: "Liquiditätsnachweis (PoL)", net10_title: "Pi-Menge", net10_desc: "Pi-Asset Mainnet-Ledger-Sync",
+                mainnetAlert: "Mainnet-Synchronisierungsanfrage erfolgreich abgeschlossen!", beeniReply: (txt) => `[AGI Beeni]: Befehl "${txt}" erhalten.`,
+                authFailAlert: "❌ Authentifizierungscode stimmt nicht überein.", authSuccessPrefix: "✅ [Erfolgreich]",
+                calcDefault: "Einzahlungsbetrag eingeben", calcResult: (p, r) => `Erwarteter Ertrag (${p} J.): +${r}`
+            },
+            ru: {
+                headerSubText: "Децентрализованные финансы нового поколения", langEngineLabel: "Универсальный движок (60 языков)", subTitle: "Мастер-ядро финансовых операций",
+                dashTitle: "Дашборд личных активов", piSyncLabel: "Количество (Синхронизация реестра Pi)", interestLabel: "Накопленные проценты (3 года 31.41% APY)",
+                mainnetBtnText: "Запросить Mainnet у Core Team", gridSectionTitle: "Распределенные сети", gridSectionSub: "[Процесс активен]",
+                agiTitle: "Поддержка AGI Beeni", agiSub: "Автоответчик SONPONE и ИИ", sonponeLabelText: "Чувствительность:", syncText: "(Синхр)",
+                initialBeeniMsg: "[AGI Beeni]: Тестовая среда Pi и система на 60 языках полностью активны! Председатель Ли Джэван, чем могу помочь?",
+                chatInputPlaceholder: "Спросить Бини...", chatSendBtn: "Отправить", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Подкл. кошелька", net1_desc: "Автосвязка протокола кошелька", net2_title: "Перевод", net2_desc: "Мультисиг зашифрованный перевод",
+                net3_title: "Оплата", net3_desc: "Эскроу коммерции в реальном времени", net4_title: "Депозит", net4_desc: "Трастовое хранилище 31.41% APY",
+                net5_title: "Награды", net5_desc: "Движок начисления стимулов", net6_title: "БДХ", net6_desc: "Модель базового дохода UBI",
+                net7_title: "Своп", net7_desc: "Мгновенный своп покупки токенов", net8_title: "DEX Своп", net8_desc: "Децентрализованный P2P матчинг",
+                net9_title: "LP Стекинг", net9_desc: "Доказательство ликвидности (PoL)", net10_title: "Количество Pi", net10_desc: "Синхронизация реестра Mainnet Pi",
+                mainnetAlert: "Запрос синхронизации Mainnet успешно завершен!", beeniReply: (txt) => `[AGI Beeni]: Команда "${txt}" получена.`,
+                authFailAlert: "❌ Код аутентификации не совпадает.", authSuccessPrefix: "✅ [Успешно]",
+                calcDefault: "Введите сумму депозита", calcResult: (p, r) => `Ожидаемый доход (${p} лет): +${r}`
             },
             ar: {
                 headerSubText: "التمويل اللامركزي للجيل القادم", langEngineLabel: "محرك متعدد اللغات", subTitle: "النوة الرئيسية للعمليات المالية",
@@ -1351,17 +1373,15 @@
                 net9_title: "تخزين LP", net9_desc: "إثبات السيولة (PoL)", net10_title: "كمية Pi", net10_desc: "مزامنة سجل أصول Pi",
                 mainnetAlert: "تم اكتمال طلب مزامنة الشبكة الرئيسية بنجاح!", beeniReply: (txt) => `[AGI Beeni]: تم استلام الأمر "${txt}".`,
                 authFailAlert: "❌ رمز التحقق غير مطابق.", authSuccessPrefix: "✅ [نجاح المصادقة]",
-                calcDefault: "أدخل مبلغ الإيداع", calcResult: (p, r) => `العائد المتوقع (${p} سنوات): +${r}`,
-                modalProcessTitle: "تنفيذ العملية"
+                calcDefault: "أدخل مبلغ الإيداع", calcResult: (p, r) => `العائد المتوقع (${p} سنوات): +${r}`
             }
         };
 
-        // 60개국어 글로벌 만능 폴백 함수 (등록되지 않은 언어 코드는 자동으로 영어로 안전 변환)
+        // 60개국어 글로벌 폴백 엔진 (등록되지 않은 언어는 영어로 안전 분기)
         function getTranslation(lang) {
             return translations[lang] || translations['en'];
         }
 
-        // 접속 시 초기화
         window.onload = function() {
             changeLanguage('ko');
         };
@@ -1800,18 +1820,16 @@
             `;
         }
 
-        // 전역 다국어 강제 일괄 동기화 엔진
+        // 60개국어 전역 실시간 동기화 엔진 함수
         function changeLanguage(lang) {
             currentLang = lang;
             let t = getTranslation(lang);
 
-            // 1. 메타 타이틀 동기화
             const metaTitleEl = document.getElementById('metaTitle');
             if(metaTitleEl) {
                 metaTitleEl.innerText = t.dashTitle ? `HK WORLD BANK | ${t.dashTitle}` : "HK WORLD BANK";
             }
            
-            // 2. data-i18n 속성을 가진 모든 요소 일괄 텍스트 치환
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -1822,7 +1840,6 @@
                 }
             });
 
-            // 3. 입력창 플레이스홀더 일괄 치환
             const inputs = document.querySelectorAll('[data-i18n-placeholder]');
             inputs.forEach(input => {
                 const key = input.getAttribute('data-i18n-placeholder');
@@ -1833,7 +1850,6 @@
                 }
             });
 
-            // 4. 아랍어/페르시아어 등 우측 정렬(RTL) 자동 적용
             document.dir = ['ar', 'fa', 'ur', 'he'].includes(lang) ? 'rtl' : 'ltr';
             
             const slider = document.getElementById('sonponeSlider');
@@ -1841,7 +1857,6 @@
                 updateSonpone(slider.value);
             }
 
-            // 5. 열려있는 모달이 있다면 내용 즉시 갱신
             if (activeProcessId) {
                 renderProcessModalContent();
             } else if (activeModalType) {

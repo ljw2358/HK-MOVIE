@@ -153,7 +153,7 @@
             font-size: 12px;
             outline: none;
             cursor: pointer;
-            max-width: 170px;
+            max-width: 190px;
         }
 
         main {
@@ -824,72 +824,72 @@
             <div class="profile-badge">HK</div>
         </header>
 
-        <!-- 60 Languages Dynamic Multi-Language Selector Engine -->
+        <!-- 60 Languages Dynamic Multi-Language Selector Engine (With Explicit Language Codes) -->
         <div class="lang-bar">
             <div class="lang-info">
                 <i class="fa-solid fa-globe"></i>
-                <span data-i18n="langEngineLabel">60개국어 다국어 엔진 (뼈속까지 변환)</span>
+                <span data-i18n="langEngineLabel">60개국어 다국어 엔진 (코드 명시)</span>
             </div>
             <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
-                <option value="ko" selected>🇰🇷 한국어 (대한민국)</option>
-                <option value="en">🇺🇸 English (US)</option>
-                <option value="zh">🇨🇳 中文 (简体)</option>
-                <option value="ja">🇯🇵 日本語</option>
-                <option value="vi">🇻🇳 Tiếng Việt</option>
-                <option value="th">🇹🇭 ไทย</option>
-                <option value="id">🇮🇩 Bahasa Indonesia</option>
-                <option value="es">🇪🇸 Español</option>
-                <option value="pt">🇧🇷 Português</option>
-                <option value="ng">🇳🇬 English (Nigeria)</option>
-                <option value="ph">🇵🇭 Tagalog</option>
-                <option value="hi">🇮🇳 हिन्दी</option>
-                <option value="fr">🇫🇷 Français</option>
-                <option value="de">🇩🇪 Deutsch</option>
-                <option value="ru">🇷🇺 Русский</option>
-                <option value="ar">🇸🇦 العربية</option>
-                <option value="tr">🇹🇷 Türkçe</option>
-                <option value="it">🇮🇹 Italiano</option>
-                <option value="nl">🇳🇱 Nederlands</option>
-                <option value="pl">🇵🇱 Polski</option>
-                <option value="uk">🇺🇦 Українська</option>
-                <option value="ro">🇷🇴 Română</option>
-                <option value="el">🇬🇷 Ελληνικά</option>
-                <option value="hu">🇭🇺 Magyar</option>
-                <option value="cs">🇨🇿 Čeština</option>
-                <option value="sv">🇸🇪 Svenska</option>
-                <option value="no">🇳🇴 Norsk</option>
-                <option value="da">🇩🇰 Dansk</option>
-                <option value="fi">🇫🇮 Suomi</option>
-                <option value="he">🇮🇱 עברית</option>
-                <option value="fa">🇮🇷 فارسی</option>
-                <option value="ur">🇵🇰 اردو</option>
-                <option value="bn">🇧🇩 বাংলা</option>
-                <option value="ms">🇲🇾 Bahasa Melayu</option>
-                <option value="km">🇰🇭 ភាសាខ្មែរ</option>
-                <option value="my">🇲🇲 မြန်မာစာ</option>
-                <option value="lo">🇱aos ພາສາລາວ</option>
-                <option value="ne">🇳🇵 नेपाली</option>
-                <option value="si">🇱🇰 සිංහල</option>
-                <option value="sw">🇰🇪 Kiswahili</option>
-                <option value="am">🇪🇹 አማርኛ</option>
-                <option value="ha">🇳🇬 Hausa</option>
-                <option value="yo">🇳🇬 Yorùbá</option>
-                <option value="uz">🇺🇿 Oʻzbekcha</option>
-                <option value="kk">🇰🇿 Қазақ тілі</option>
-                <option value="az">🇦🇿 Azərbaycanca</option>
-                <option value="ka">🇬🇪 ქართული</option>
-                <option value="hy">🇦🇲 Հայերեն</option>
-                <option value="mn">🇲🇳 Монгол</option>
-                <option value="es-mx">🇲🇽 Español (MX)</option>
-                <option value="pt-pt">🇵🇹 Português (PT)</option>
-                <option value="sr">🇷🇸 Српски</option>
-                <option value="hr">🇭🇷 Hrvatski</option>
-                <option value="bg">🇧🇬 Български</option>
-                <option value="sk">🇸🇰 Slovenčina</option>
-                <option value="lt">🇱🇹 Lietuvių</option>
-                <option value="et">🇪🇪 Eesti</option>
-                <option value="lv">🇱🇻 Latviešu</option>
-                <option value="is">🇮🇸 Íslenska</option>
+                <option value="ko" selected>🇰🇷 한국어 [ko]</option>
+                <option value="en">🇺🇸 English [en]</option>
+                <option value="zh">🇨🇳 中文 (简体) [zh]</option>
+                <option value="ja">🇯🇵 日本語 [ja]</option>
+                <option value="vi">🇻🇳 Tiếng Việt [vi]</option>
+                <option value="th">🇹🇭 ไทย [th]</option>
+                <option value="id">🇮🇩 Bahasa Indonesia [id]</option>
+                <option value="es">🇪🇸 Español [es]</option>
+                <option value="pt">🇧🇷 Português [pt]</option>
+                <option value="ng">🇳🇬 English (Nigeria) [ng]</option>
+                <option value="ph">🇵🇭 Tagalog [ph]</option>
+                <option value="hi">🇮🇳 हिन्दी [hi]</option>
+                <option value="fr">🇫🇷 Français [fr]</option>
+                <option value="de">🇩🇪 Deutsch [de]</option>
+                <option value="ru">🇷🇺 Русский [ru]</option>
+                <option value="ar">🇸🇦 العربية [ar]</option>
+                <option value="tr">🇹🇷 Türkçe [tr]</option>
+                <option value="it">🇮🇹 Italiano [it]</option>
+                <option value="nl">🇳🇱 Nederlands [nl]</option>
+                <option value="pl">🇵🇱 Polski [pl]</option>
+                <option value="uk">🇺🇦 Українська [uk]</option>
+                <option value="ro">🇷🇴 Română [ro]</option>
+                <option value="el">🇬🇷 Ελληνικά [el]</option>
+                <option value="hu">🇭🇺 Magyar [hu]</option>
+                <option value="cs">🇨🇿 Čeština [cs]</option>
+                <option value="sv">🇸🇪 Svenska [sv]</option>
+                <option value="no">🇳🇴 Norsk [no]</option>
+                <option value="da">🇩🇰 Dansk [da]</option>
+                <option value="fi">🇫🇮 Suomi [fi]</option>
+                <option value="he">🇮🇱 עברית [he]</option>
+                <option value="fa">🇮🇷 فارسی [fa]</option>
+                <option value="ur">🇵🇰 اردو [ur]</option>
+                <option value="bn">🇧🇩 বাংলা [bn]</option>
+                <option value="ms">🇲🇾 Bahasa Melayu [ms]</option>
+                <option value="km">🇰🇭 ភាសាខ្មែរ [km]</option>
+                <option value="my">🇲🇲 မြန်မာစာ [my]</option>
+                <option value="lo">🇱aos ພາສາລາວ [lo]</option>
+                <option value="ne">🇳🇵 नेपाली [ne]</option>
+                <option value="si">🇱🇰 සිංහල [si]</option>
+                <option value="sw">🇰🇪 Kiswahili [sw]</option>
+                <option value="am">🇪🇹 አማርኛ [am]</option>
+                <option value="ha">🇳🇬 Hausa [ha]</option>
+                <option value="yo">🇳🇬 Yorùbá [yo]</option>
+                <option value="uz">🇺🇿 Oʻzbekcha [uz]</option>
+                <option value="kk">🇰🇿 Қазақ тілі [kk]</option>
+                <option value="az">🇦🇿 Azərbaycanca [az]</option>
+                <option value="ka">🇬🇪 ქართული [ka]</option>
+                <option value="hy">🇦🇲 Հայերեն [hy]</option>
+                <option value="mn">🇲🇳 Монгол [mn]</option>
+                <option value="es-mx">🇲🇽 Español (MX) [es-mx]</option>
+                <option value="pt-pt">🇵🇹 Português (PT) [pt-pt]</option>
+                <option value="sr">🇷🇸 Српски [sr]</option>
+                <option value="hr">🇭🇷 Hrvatski [hr]</option>
+                <option value="bg">🇧🇬 Български [bg]</option>
+                <option value="sk">🇸🇰 Slovenčina [sk]</option>
+                <option value="lt">🇱🇹 Lietuvių [lt]</option>
+                <option value="et">🇪🇪 Eesti [et]</option>
+                <option value="lv">🇱🇻 Latviešu [lv]</option>
+                <option value="is">🇮🇸 Íslenska [is]</option>
             </select>
         </div>
 
@@ -1148,7 +1148,7 @@
 
         const translations = {
             ko: {
-                headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "60개국어 다국어 엔진", subTitle: "빠른 금융 작업 마스터 코어",
+                headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "60개국어 다국어 엔진 (코드 명시)", subTitle: "빠른 금융 작업 마스터 코어",
                 dashTitle: "개인 자산 대시보드", piSyncLabel: "보유 수량 (PI 수량 원장 동기화)", interestLabel: "실시간 누적 이자 (3년 31.41% APY 복리)",
                 mainnetBtnText: "코어팀에게 메인넷 즉시 신청하기", gridSectionTitle: "분산 연동망", gridSectionSub: "[개별 프로세스 작동]",
                 agiTitle: "AGI 삐니 고객센터", agiSub: "손폰(SONPONE) 자동 반응 및 AI 오케스트레이션", sonponeLabelText: "손폰(SONPONE) 감지 감도:", syncText: "(실시간 싱크)",
@@ -1198,7 +1198,7 @@
                 modal_t165_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-muted);">경주에 위치한 165층 규모의 HK 그룹 글로벌 본사 및 실시간 원장 동기화 R&D 센터입니다.</div>'
             },
             en: {
-                headerSubText: "Global Next-Gen Decentralized Finance", langEngineLabel: "60-Language Engine", subTitle: "Fast Financial Operation Master Core",
+                headerSubText: "Global Next-Gen Decentralized Finance", langEngineLabel: "60-Language Engine (With Codes)", subTitle: "Fast Financial Operation Master Core",
                 dashTitle: "Personal Asset Dashboard", piSyncLabel: "Holding Amount (Pi Ledger Sync)", interestLabel: "Real-time Accumulated Interest (3-Yr 31.41% APY)",
                 mainnetBtnText: "Request Mainnet to Core Team Now", gridSectionTitle: "Distributed Networks", gridSectionSub: "[Process Active]",
                 agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Response & AI Orchestration", sonponeLabelText: "Detection Sensitivity:", syncText: "(Live Sync)",
@@ -1236,11 +1236,8 @@
             }
         };
 
-        // 다국어 자동 라우터/폴백 엔진 (60개국어 중 누락된 언어가 선택되어도 AI 및 핵심 키가 완벽 번역되도록 자동 생성)
         function getUniversalTranslation(lang) {
             if (translations[lang]) return translations[lang];
-            
-            // 기본 English(en)를 베이스로 삼고, 선택된 언어 코드에 맞춘 동적 번역 템플릿 생성
             let base = JSON.parse(JSON.stringify(translations['en']));
             base.headerSubText = `[${lang.toUpperCase()}] Global Next-Gen Decentralized Finance`;
             base.subTitle = `[${lang.toUpperCase()}] Fast Financial Operation Master Core`;
@@ -1250,7 +1247,6 @@
             return base;
         }
 
-        // 접속 시 자동으로 지갑연결 팝업 띄우기
         window.onload = function() {
             openProcessModal('wallet');
         };
@@ -1306,7 +1302,6 @@
             setTimeout(() => {
                 const beeniMsg = document.createElement('div');
                 beeniMsg.className = 'chat-msg beeni';
-               
                 const t = getUniversalTranslation(currentLang);
                 beeniMsg.innerText = typeof t.beeniReply === 'function' ? t.beeniReply(text) : `[AGI Beeni]: "${text}" processed successfully.`;
                 chatBox.appendChild(beeniMsg);
@@ -1541,7 +1536,7 @@
                 alert(t.authFailAlert || "❌ Auth code does not match.");
                 return;
             }
-           
+            
             const messages = {
                 wallet: t.msg1 || "Wallet connected successfully.", transfer: t.msg2 || "Transfer completed.",
                 payment: t.msg3 || "Payment approved.", deposit: t.msg4 || "Deposit completed.",
@@ -1549,7 +1544,7 @@
                 swap: t.msg7 || "Swap completed.", dex: t.msg8 || "DEX order approved.",
                 lp: t.msg9 || "LP Staking registered.", pishow: t.msg10 || "Ledger synchronized."
             };
-           
+            
             alert((t.authSuccessPrefix || "✅ [Success]") + " " + messages[processId]);
             closeModal();
         }
@@ -1670,14 +1665,13 @@
             if(metaTitleEl) {
                 metaTitleEl.innerText = t.dashTitle ? `HK WORLD BANK | ${t.dashTitle}` : "HK WORLD BANK";
             }
-           
+            
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if(t[key]) {
                     el.innerText = t[key];
                 } else {
-                    // 60개국어 동적 폴백 자동 생성 매핑
                     el.innerText = `[${lang.toUpperCase()}] ` + (translations.en[key] || key);
                 }
             });
@@ -1692,7 +1686,6 @@
                 }
             });
 
-            // AGI 삐니 초기 메시지도 언어에 맞게 실시간 동기화
             const initialBeeniMsgEl = document.getElementById('initialBeeniMsgEl');
             if(initialBeeniMsgEl && t.initialBeeniMsg) {
                 initialBeeniMsgEl.innerText = t.initialBeeniMsg;

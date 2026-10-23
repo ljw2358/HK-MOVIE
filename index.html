@@ -20,7 +20,6 @@
             --accent-green: #00ffa3;
             --text-main: #f0f4f8;
             --text-muted: #8a99ad;
-            --danger: #ff4757;
             --pi-color: #f7931a;
         }
 
@@ -89,14 +88,9 @@
             transition: all 0.2s cubic-bezier(0.1, 0.9, 0.2, 1);
         }
 
-        .menu-btn:active {
-            transform: scale(0.92);
-        }
+        .menu-btn:active { transform: scale(0.92); }
 
-        .header-center-title {
-            text-align: center;
-        }
-
+        .header-center-title { text-align: center; }
         .header-center-title h2 {
             font-family: 'Orbitron', sans-serif;
             font-size: 18px;
@@ -105,7 +99,6 @@
             letter-spacing: 1px;
             text-shadow: 0 0 10px var(--accent-gold-glow);
         }
-
         .header-center-title p {
             font-size: 10px;
             color: var(--accent-cyan);
@@ -175,16 +168,14 @@
             text-shadow: 0 0 25px var(--accent-gold-glow);
             letter-spacing: 2px;
             margin-bottom: 6px;
-            text-align: center;
         }
 
         .sub-title {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--accent-cyan);
             font-weight: 700;
             letter-spacing: 1px;
             text-shadow: 0 0 10px var(--accent-cyan-glow);
-            text-align: center;
         }
 
         .dashboard-card {
@@ -201,15 +192,13 @@
         .dashboard-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
             background: linear-gradient(90deg, var(--accent-gold), var(--accent-cyan), var(--accent-green));
         }
 
         .dashboard-header {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 800;
             color: #fff;
             margin-bottom: 18px;
@@ -236,8 +225,7 @@
         }
 
         .pi-logo-icon {
-            width: 22px;
-            height: 22px;
+            width: 22px; height: 22px;
             background: var(--pi-color);
             color: #fff;
             border-radius: 50%;
@@ -247,7 +235,6 @@
             font-weight: 900;
             font-size: 13px;
             font-family: serif;
-            box-shadow: 0 0 8px rgba(247, 147, 26, 0.5);
         }
 
         .pi-amount {
@@ -260,10 +247,7 @@
             justify-content: space-between;
         }
 
-        .pi-amount .unit {
-            color: var(--accent-gold);
-            font-size: 14px;
-        }
+        .pi-amount .unit { color: var(--accent-gold); font-size: 14px; }
 
         .interest-box {
             background: rgba(0, 0, 0, 0.35);
@@ -287,12 +271,6 @@
             font-size: 20px;
             font-weight: 700;
             color: var(--accent-green);
-            transition: color 0.3s ease;
-        }
-
-        .interest-value.glow {
-            color: #ffffff;
-            text-shadow: 0 0 12px var(--accent-green);
         }
 
         .mainnet-btn {
@@ -306,14 +284,12 @@
             font-size: 15px;
             cursor: pointer;
             box-shadow: 0 4px 20px var(--accent-gold-glow);
-            transition: all 0.2s ease;
+            transition: all 0.2s;
         }
 
-        .mainnet-btn:active {
-            transform: scale(0.98);
-        }
+        .mainnet-btn:active { transform: scale(0.98); }
 
-        /* 10대 분산 연동망 섹션 (AGI 위에 위치) */
+        /* 10대 분산 연동망 섹션 (AGI 위에 배치) */
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -321,18 +297,8 @@
             margin-bottom: 18px;
         }
 
-        .section-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: #fff;
-            letter-spacing: -0.5px;
-        }
-
-        .section-sub {
-            font-size: 11px;
-            color: var(--accent-green);
-            font-family: 'Roboto Mono', monospace;
-        }
+        .section-title { font-size: 18px; font-weight: 800; color: #fff; }
+        .section-sub { font-size: 11px; color: var(--accent-green); font-family: 'Roboto Mono', monospace; }
 
         .network-grid {
             display: grid;
@@ -353,8 +319,6 @@
             align-items: center;
             text-align: center;
             min-height: 135px;
-            position: relative;
-            overflow: hidden;
         }
 
         .network-card:hover, .network-card:active {
@@ -369,36 +333,15 @@
             justify-content: center;
             align-items: center;
             margin-bottom: 10px;
-            width: 44px;
-            height: 44px;
+            width: 44px; height: 44px;
             border-radius: 12px;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 20px;
         }
 
-        .card-icon-1 { color: #00e5ff; font-size: 20px; }
-        .card-icon-2 { color: #ffaa00; font-size: 20px; }
-        .card-icon-3 { color: #00ffa3; font-size: 20px; }
-        .card-icon-4 { color: #9b59b6; font-size: 20px; }
-        .card-icon-5 { color: #ff4757; font-size: 20px; }
-        .card-icon-6 { color: #2ecc71; font-size: 20px; }
-        .card-icon-7 { color: #3498db; font-size: 20px; }
-        .card-icon-8 { color: #e74c3c; font-size: 20px; }
-        .card-icon-9 { color: #f1c40f; font-size: 20px; }
-        .card-icon-10 { color: #f7931a; font-size: 20px; }
-
-        .card-title {
-            font-size: 15px;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 4px;
-        }
-
-        .card-desc {
-            font-size: 11px;
-            color: var(--text-muted);
-            line-height: 1.35;
-        }
+        .card-title { font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+        .card-desc { font-size: 11px; color: var(--text-muted); line-height: 1.35; }
 
         /* AGI 삐니 고객센터 섹션 */
         .agi-section {
@@ -417,8 +360,7 @@
         }
 
         .agi-avatar {
-            width: 44px;
-            height: 44px;
+            width: 44px; height: 44px;
             background: linear-gradient(135deg, var(--accent-cyan), #0072ff);
             border-radius: 14px;
             display: flex;
@@ -429,16 +371,8 @@
             box-shadow: 0 0 15px var(--accent-cyan-glow);
         }
 
-        .agi-title-box h3 {
-            font-size: 17px;
-            color: #fff;
-            font-weight: 800;
-        }
-
-        .agi-title-box p {
-            font-size: 11px;
-            color: var(--accent-cyan);
-        }
+        .agi-title-box h3 { font-size: 17px; color: #fff; font-weight: 800; }
+        .agi-title-box p { font-size: 11px; color: var(--accent-cyan); }
 
         .sonpone-control {
             background: rgba(0, 0, 0, 0.4);
@@ -456,38 +390,28 @@
             margin-bottom: 8px;
         }
 
-        .sonpone-label span.val {
-            color: var(--accent-gold);
-            font-weight: 700;
-        }
-
-        .range-slider {
-            width: 100%;
-            accent-color: var(--accent-gold);
-            height: 5px;
-            background: var(--card-border);
-            border-radius: 3px;
-        }
+        .sonpone-label span.val { color: var(--accent-gold); font-weight: 700; }
+        .range-slider { width: 100%; accent-color: var(--accent-gold); height: 5px; background: var(--card-border); border-radius: 3px; }
 
         .chat-box {
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 14px;
             padding: 14px;
-            height: 210px;
+            height: 200px;
             overflow-y: auto;
             margin-bottom: 12px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .chat-msg {
             max-width: 88%;
-            padding: 12px 14px;
-            border-radius: 14px;
+            padding: 10px 12px;
+            border-radius: 12px;
             font-size: 12px;
-            line-height: 1.45;
+            line-height: 1.4;
         }
 
         .chat-msg.beeni {
@@ -504,11 +428,7 @@
             align-self: flex-end;
         }
 
-        .chat-input-box {
-            display: flex;
-            gap: 8px;
-        }
-
+        .chat-input-box { display: flex; gap: 8px; }
         .chat-input {
             flex: 1;
             background: rgba(0, 0, 0, 0.4);
@@ -519,7 +439,6 @@
             font-size: 13px;
             outline: none;
         }
-
         .chat-send-btn {
             background: var(--accent-gold);
             color: #000;
@@ -549,20 +468,11 @@
         }
 
         .media-hub-title {
-            font-size: 15px;
-            font-weight: 800;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 15px; font-weight: 800; color: #fff;
+            display: flex; align-items: center; gap: 8px;
         }
 
-        .media-hub-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
+        .media-hub-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
         .media-card {
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -602,22 +512,11 @@
             line-height: 1.8;
         }
 
-        footer p.copyright {
-            margin-bottom: 8px;
-            font-family: 'Roboto Mono', monospace;
-        }
-
-        footer p.socials {
-            color: var(--accent-cyan);
-            word-break: break-all;
-        }
-
+        /* 네비게이션 드로어 */
         .drawer-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
             background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(6px);
             z-index: 200;
@@ -626,17 +525,12 @@
             transition: opacity 0.3s ease;
         }
 
-        .drawer-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
+        .drawer-overlay.active { opacity: 1; pointer-events: auto; }
 
         .drawer-content {
             position: fixed;
-            top: 0;
-            left: -330px;
-            width: 310px;
-            height: 100vh;
+            top: 0; left: -330px;
+            width: 310px; height: 100vh;
             background: var(--bg-secondary);
             border-right: 1px solid var(--card-border);
             z-index: 201;
@@ -647,9 +541,7 @@
             flex-direction: column;
         }
 
-        .drawer-overlay.active .drawer-content {
-            left: 0;
-        }
+        .drawer-overlay.active .drawer-content { left: 0; }
 
         .drawer-header {
             display: flex;
@@ -660,33 +552,11 @@
             border-bottom: 1px solid var(--card-border);
         }
 
-        .drawer-title {
-            font-size: 16px;
-            font-weight: 900;
-            color: var(--accent-gold);
-            font-family: 'Orbitron', sans-serif;
-        }
+        .drawer-title { font-size: 16px; font-weight: 900; color: var(--accent-gold); font-family: 'Orbitron', sans-serif; }
+        .drawer-close { background: none; border: none; color: var(--text-muted); font-size: 22px; cursor: pointer; }
 
-        .drawer-close {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 22px;
-            cursor: pointer;
-        }
-
-        .menu-group {
-            margin-bottom: 22px;
-        }
-
-        .menu-group-title {
-            font-size: 11px;
-            color: var(--accent-cyan);
-            text-transform: uppercase;
-            font-weight: 800;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-        }
+        .menu-group { margin-bottom: 22px; }
+        .menu-group-title { font-size: 11px; color: var(--accent-cyan); text-transform: uppercase; font-weight: 800; margin-bottom: 12px; letter-spacing: 1px; }
 
         .menu-item {
             display: flex;
@@ -703,23 +573,14 @@
             cursor: pointer;
         }
 
-        .menu-item:hover, .menu-item:active {
-            background: var(--card-bg);
-            color: var(--accent-gold);
-        }
+        .menu-item:hover, .menu-item:active { background: var(--card-bg); color: var(--accent-gold); }
+        .menu-item i { width: 20px; text-align: center; color: var(--accent-gold); }
 
-        .menu-item i {
-            width: 20px;
-            text-align: center;
-            color: var(--accent-gold);
-        }
-
+        /* 팝업 모달 */
         .modal {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(8px);
             z-index: 300;
@@ -732,10 +593,7 @@
             padding: 20px;
         }
 
-        .modal.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
+        .modal.active { opacity: 1; pointer-events: auto; }
 
         .modal-body {
             background: var(--card-bg);
@@ -759,24 +617,10 @@
             border-bottom: 1px solid var(--card-border);
         }
 
-        .modal-title {
-            font-size: 17px;
-            font-weight: 800;
-            color: var(--accent-gold);
-        }
+        .modal-title { font-size: 17px; font-weight: 800; color: var(--accent-gold); }
+        .modal-close { background: none; border: none; color: var(--text-muted); font-size: 22px; cursor: pointer; }
 
-        .modal-close {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 22px;
-            cursor: pointer;
-        }
-
-        .input-group {
-            margin-bottom: 16px;
-        }
-
+        .input-group { margin-bottom: 16px; }
         .input-label {
             display: flex;
             justify-content: space-between;
@@ -797,11 +641,6 @@
             cursor: pointer;
         }
 
-        .max-btn:active {
-            background: var(--accent-gold);
-            color: #000;
-        }
-
         .form-control {
             width: 100%;
             background: rgba(0, 0, 0, 0.4);
@@ -811,10 +650,6 @@
             color: #fff;
             font-size: 13px;
             outline: none;
-        }
-
-        .form-control:focus {
-            border-color: var(--accent-gold);
         }
 
         .action-btn {
@@ -834,27 +669,27 @@
 <body>
 
     <div class="app-container">
-        <!-- 상단 고정 네비게이션 -->
+        <!-- 상단 네비게이션 -->
         <header>
             <button class="menu-btn" onclick="toggleDrawer()">
                 <i class="fa-solid fa-bars"></i>
             </button>
             <div class="header-center-title">
                 <h2>HK WORLD BANK</h2>
-                <p data-i18n="headerSubText">글로벌 차세대 분산 금융 플랫폼</p>
+                <p id="headerSubText" data-i18n="headerSubText">글로벌 차세대 분산 금융 플랫폼</p>
             </div>
             <div class="profile-badge">HK</div>
         </header>
 
-        <!-- 60개국어 다국어 선택기 (뼛속까지 완벽 변동 엔진) -->
+        <!-- 60개국어 다국어 선택기 바 -->
         <div class="lang-bar">
             <div class="lang-info">
                 <i class="fa-solid fa-globe"></i>
-                <span data-i18n="langEngineLabel">60개국어 맞춤형 현지화 엔진</span>
+                <span id="langEngineLabel" data-i18n="langEngineLabel">60개국어 맞춤형 현지화 엔진</span>
             </div>
             <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
-                <option value="ko" selected>🇰🇷 한국어 (대한민국)</option>
-                <option value="en">🇺🇸 English (US)</option>
+                <option value="ko" selected>🇰🇷 한국어</option>
+                <option value="en">🇺🇸 English</option>
                 <option value="zh">🇨🇳 中文 (简体)</option>
                 <option value="ja">🇯🇵 日本語</option>
                 <option value="vi">🇻🇳 Tiếng Việt</option>
@@ -872,7 +707,7 @@
                 <option value="tr">🇹🇷 Türkçe</option>
                 <option value="it">🇮🇹 Italiano</option>
                 <option value="nl">🇳🇱 Nederlands</option>
-                <option value="pl">🇳🇱 Polski</option>
+                <option value="pl">🇵🇱 Polski</option>
                 <option value="uk">🇺🇦 Українська</option>
                 <option value="ro">🇷🇴 Română</option>
                 <option value="el">🇬🇷 Ελληνικά</option>
@@ -889,7 +724,7 @@
                 <option value="ms">🇲🇾 Bahasa Melayu</option>
                 <option value="km">🇰🇭 ភាសាខ្មែរ</option>
                 <option value="my">🇲🇲 မြန်မာစာ</option>
-                <option value="lo">🇱aos ພາສາລາວ</option>
+                <option value="lo">🇱🇦 ພາສາລາວ</option>
                 <option value="ne">🇳🇵 नेपाली</option>
                 <option value="si">🇱🇰 සිංහල</option>
                 <option value="sw">🇰🇪 Kiswahili</option>
@@ -919,20 +754,20 @@
             <!-- 타이틀 섹션 -->
             <div class="hero-section">
                 <h1 class="main-title">HK WORLD BANK</h1>
-                <p class="sub-title" data-i18n="subTitle">빠른 금융 작업 마스터 코어</p>
+                <p class="sub-title" id="subTitleText" data-i18n="subTitle">빠른 금융 작업 마스터 코어</p>
             </div>
 
             <!-- 개인 자산 대시보드 카드 -->
             <div class="dashboard-card">
                 <div class="dashboard-header">
-                    <span data-i18n="dashTitle">개인 자산 대시보드</span>
+                    <span id="dashTitleText" data-i18n="dashTitle">개인 자산 대시보드</span>
                     <i class="fa-solid fa-vault" style="color: var(--accent-gold);"></i>
                 </div>
 
                 <div class="pi-box">
                     <div class="pi-box-title">
                         <span class="pi-logo-icon">π</span>
-                        <span data-i18n="piSyncLabel">보유 수량 (파이 원장 실시간 동기화)</span>
+                        <span id="piSyncLabelText" data-i18n="piSyncLabel">보유 수량 (파이 원장 실시간 동기화)</span>
                     </div>
                     <div class="pi-amount">
                         <span id="walletBalanceDisplay">314,159.000000</span>
@@ -943,103 +778,83 @@
                 <div class="interest-box">
                     <div class="interest-title">
                         <i class="fa-solid fa-chart-line" style="color: var(--accent-green);"></i>
-                        <span data-i18n="interestLabel">실시간 누적 이자 (3년 만기 연 31.41% 복리)</span>
+                        <span id="interestLabelText" data-i18n="interestLabel">실시간 누적 이자 (3년 만기 연 31.41% 복리)</span>
                     </div>
                     <div class="interest-value" id="accumulatedInterest">
                         12,450,892.600000 HK
                     </div>
                 </div>
 
-                <button class="mainnet-btn" data-i18n="mainnetBtnText" onclick="triggerMainnetRequest()">
+                <button class="mainnet-btn" id="mainnetBtn" data-i18n="mainnetBtnText" onclick="triggerMainnetRequest()">
                     코어팀에게 메인넷 즉시 신청하기
                 </button>
             </div>
 
             <!-- 10대 분산 연동망 섹션 (AGI 위에 배치) -->
             <div class="section-header">
-                <h2 class="section-title" data-i18n="gridSectionTitle">분산 연동망</h2>
-                <span class="section-sub" data-i18n="gridSectionSub">[개별 프로세스 작동]</span>
+                <h2 class="section-title" id="gridSectionTitleText" data-i18n="gridSectionTitle">분산 연동망</h2>
+                <span class="section-sub" id="gridSectionSubText" data-i18n="gridSectionSub">[개별 프로세스 작동]</span>
             </div>
 
             <div class="network-grid">
                 <div class="network-card" onclick="openProcessModal('wallet')">
-                    <div class="card-top-center"><i class="fa-solid fa-link card-icon-1"></i></div>
-                    <div>
-                        <div class="card-title" data-i18n="net1_title">지갑연결</div>
-                        <div class="card-desc" data-i18n="net1_desc">노드 지갑 프로토콜 연동 및 자동 연결</div>
-                    </div>
+                    <div class="card-top-center" style="color:#00e5ff;"><i class="fa-solid fa-link"></i></div>
+                    <div class="card-title" data-i18n="net1_title">지갑연결</div>
+                    <div class="card-desc" data-i18n="net1_desc">노드 지갑 프로토콜 연동 및 자동 연결</div>
                 </div>
 
                 <div class="network-card" onclick="openProcessModal('transfer')">
-                    <div class="card-top-center"><i class="fa-solid fa-paper-plane card-icon-2"></i></div>
-                    <div>
-                        <div class="card-title" data-i18n="net2_title">송금</div>
-                        <div class="card-desc" data-i18n="net2_desc">대륙간 초고속 다중 보안 암호화 전송 체계</div>
-                    </div>
+                    <div class="card-top-center" style="color:#ffaa00;"><i class="fa-solid fa-paper-plane"></i></div>
+                    <div class="card-title" data-i18n="net2_title">송금</div>
+                    <div class="card-desc" data-i18n="net2_desc">대륙간 초고속 다중 보안 암호화 전송 체계</div>
                 </div>
 
                 <div class="network-card" onclick="openProcessModal('payment')">
-                    <div class="card-top-center"><i class="fa-solid fa-credit-card card-icon-3"></i></div>
-                    <div>
-                        <div class="card-title" data-i18n="net3_title">결재</div>
-                        <div class="card-desc" data-i18n="net3_desc">현금·카드·타코인 실시간 상거래 대금 보호</div>
-                    </div>
+                    <div class="card-top-center" style="color:#00ffa3;"><i class="fa-solid fa-credit-card"></i></div>
+                    <div class="card-title" data-i18n="net3_title">결재</div>
+                    <div class="card-desc" data-i18n="net3_desc">현금·카드·타코인 실시간 상거래 대금 보호</div>
                 </div>
 
                 <div class="network-card" onclick="openProcessModal('deposit')">
-                    <div class="card-top-center"><i class="fa-solid fa-vault card-icon-4"></i></div>
-                    <div>
-                        <div class="card-title" data-i18n="net4_title">예치</div>
-                        <div class="card-desc" data-i18n="net4_desc">3년 만기 연 31.41% 자산 신탁 안전 금고</div>
-                    </div>
+                    <div class="card-top-center" style="color:#9b59b6;"><i class="fa-solid fa-vault"></i></div>
+                    <div class="card-title" data-i18n="net4_title">예치</div>
+                    <div class="card-desc" data-i18n="net4_desc">3년 만기 연 31.41% 자산 신탁 안전 금고</div>
                 </div>
 
                 <div class="network-card" onclick="openProcessModal('reward')">
-                    <div class="card-top-center"><i class="fa-solid fa-gift card-icon-5"></i></div>
-                    <div>
-                        <div class="card-title" data-i18n="net5_title">보상</div>
-                        <div class="card-desc" data-i18n="net5_desc">기여도 기반 인센티브 금고 적립 엔진</div>
-                    </div>
+                    <div class="card-top-center" style="color:#ff4757;"><i class="fa-solid fa-gift"></i></div>
+                    <div class="card-title" data-i18n="net5_title">보상</div>
+                    <div class="card-desc" data-i18n="net5_desc">기여도 기반 인센티브 금고 적립 엔진</div>
                 </div>
 
                 <div class="network-card" onclick="openProcessModal('ubi')">
-                    <div class="card-top-center"><i class="fa-solid fa-hand-holding-dollar card-icon-6"></i></div>
-                    <div>
-                        <div class="card-title" data-i18n="net6_title">기본소득</div>
-                        <div class="card-desc" data-i18n="net6_desc">HK 사회 재단 및 지자체 기본소득 배분 모델</div>
-                    </div>
+                    <div class="card-top-center" style="color:#2ecc71;"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                    <div class="card-title" data-i18n="net6_title">기본소득</div>
+                    <div class="card-desc" data-i18n="net6_desc">HK 사회 재단 및 지자체 기본소득 배분 모델</div>
                 </div>
 
                 <div class="network-card" onclick="openProcessModal('swap')">
-                    <div class="card-top-center"><i class="fa-solid fa-right-left card-icon-7"></i></div>
-                    <div>
-                        <div class="card-title" data-i18n="net7_title">스왑</div>
-                        <div class="card-desc" data-i18n="net7_desc">현금·카드·타코인 입금 즉각 코인 교환</div>
-                    </div>
+                    <div class="card-top-center" style="color:#3498db;"><i class="fa-solid fa-right-left"></i></div>
+                    <div class="card-title" data-i18n="net7_title">스왑</div>
+                    <div class="card-desc" data-i18n="net7_desc">현금·카드·타코인 입금 즉각 코인 교환</div>
                 </div>
 
                 <div class="network-card" onclick="openProcessModal('dex')">
-                    <div class="card-top-center"><i class="fa-solid fa-bolt card-icon-8"></i></div>
-                    <div>
-                        <div class="card-title" data-i18n="net8_title">DEX 스왑</div>
-                        <div class="card-desc" data-i18n="net8_desc">중개인 없는 P2P 유동성 자동 매칭 거래</div>
-                    </div>
+                    <div class="card-top-center" style="color:#e74c3c;"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="card-title" data-i18n="net8_title">DEX 스왑</div>
+                    <div class="card-desc" data-i18n="net8_desc">중개인 없는 P2P 유동성 자동 매칭 거래</div>
                 </div>
 
                 <div class="network-card" onclick="openProcessModal('lp')">
-                    <div class="card-top-center"><i class="fa-solid fa-layer-group card-icon-9"></i></div>
-                    <div>
-                        <div class="card-title" data-i18n="net9_title">LP 스테이킹</div>
-                        <div class="card-desc" data-i18n="net9_desc">유동성 공급 증명 및 기간별 고배당 예치</div>
-                    </div>
+                    <div class="card-top-center" style="color:#f1c40f;"><i class="fa-solid fa-layer-group"></i></div>
+                    <div class="card-title" data-i18n="net9_title">LP 스테이킹</div>
+                    <div class="card-desc" data-i18n="net9_desc">유동성 공급 증명 및 기간별 고배당 예치</div>
                 </div>
 
                 <div class="network-card" onclick="openProcessModal('pishow')">
-                    <div class="card-top-center"><span class="pi-logo-icon" style="width: 26px; height: 26px; font-size: 15px;">π</span></div>
-                    <div>
-                        <div class="card-title" data-i18n="net10_title">파이 수량</div>
-                        <div class="card-desc" data-i18n="net10_desc">파이 자산 메인넷 원장 실시간 일치화</div>
-                    </div>
+                    <div class="card-top-center"><span class="pi-logo-icon" style="width:26px; height:26px; font-size:15px;">π</span></div>
+                    <div class="card-title" data-i18n="net10_title">파이 수량</div>
+                    <div class="card-desc" data-i18n="net10_desc">파이 자산 메인넷 원장 실시간 일치화</div>
                 </div>
             </div>
 
@@ -1048,28 +863,28 @@
                 <div class="agi-header">
                     <div class="agi-avatar"><i class="fa-solid fa-robot"></i></div>
                     <div class="agi-title-box">
-                        <h3 data-i18n="agiTitle">AGI 삐니 고객센터</h3>
-                        <p data-i18n="agiSub">손폰(SONPONE) 자동 반응 및 AI 조율 시스템</p>
+                        <h3 id="agiTitleText" data-i18n="agiTitle">AGI 삐니 고객센터</h3>
+                        <p id="agiSubText" data-i18n="agiSub">손폰(SONPONE) 자동 반응 및 AI 조율 시스템</p>
                     </div>
                 </div>
 
                 <div class="sonpone-control">
                     <div class="sonpone-label">
-                        <span data-i18n="sonponeLabelText">손폰(SONPONE) 감지 감도:</span>
+                        <span id="sonponeLabelText" data-i18n="sonponeLabelText">손폰(SONPONE) 감지 감도:</span>
                         <span class="val" id="sonponeVal">99.9% (실시간 일치)</span>
                     </div>
                     <input type="range" class="range-slider" min="50" max="100" value="99" id="sonponeSlider" oninput="updateSonpone(this.value)">
                 </div>
 
                 <div class="chat-box" id="chatBox">
-                    <div class="chat-msg beeni" data-i18n="initialBeeniMsg">
+                    <div class="chat-msg beeni" id="initialBeeniMsg" data-i18n="initialBeeniMsg">
                         [AGI 삐니]: 테스트 파이 환경 및 60개국어 실시간 교차 추론 체계가 완벽하게 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!
                     </div>
                 </div>
 
                 <div class="chat-input-box">
                     <input type="text" class="chat-input" id="chatInput" data-i18n-placeholder="chatInputPlaceholder" placeholder="삐니에게 질문 입력..." onkeypress="handleKeyPress(event)">
-                    <button class="chat-send-btn" data-i18n="chatSendBtn" onclick="sendChatMessage()">전송</button>
+                    <button class="chat-send-btn" id="chatSendBtn" data-i18n="chatSendBtn" onclick="sendChatMessage()">전송</button>
                 </div>
             </div>
 
@@ -1078,7 +893,7 @@
                 <div class="media-hub-header">
                     <div class="media-hub-title">
                         <i class="fa-solid fa-broadcast-tower" style="color: var(--accent-gold);"></i>
-                        <span data-i18n="mediaHubTitle">공식 미디어 및 방송 허브</span>
+                        <span id="mediaHubTitleText" data-i18n="mediaHubTitle">공식 미디어 및 방송 허브</span>
                     </div>
                     <span style="font-size: 10px; color: var(--accent-cyan); font-family: 'Roboto Mono', monospace;" data-i18n="liveStreamText">LIVE STREAMING</span>
                 </div>
@@ -1097,12 +912,10 @@
             </div>
         </main>
 
-        <!-- 하단 푸터 -->
+        <!-- 푸터 -->
         <footer>
-            <p class="copyright">© 2026 HK WORLD BANK. All Rights Reserved.</p>
-            <p class="socials" style="margin-bottom: 12px;" data-i18n="supportEmailText">
-                Support: support@hkwb.world
-            </p>
+            <p>© 2026 HK WORLD BANK. All Rights Reserved.</p>
+            <p style="color:var(--accent-cyan); margin-top:4px;" id="supportEmailText" data-i18n="supportEmailText">Support: support@hkwb.world</p>
         </footer>
     </div>
 
@@ -1110,12 +923,12 @@
     <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawerOutside(event)">
         <div class="drawer-content">
             <div class="drawer-header">
-                <span class="drawer-title" data-i18n="drawerTitle">HK 네비게이터</span>
+                <span class="drawer-title" id="drawerTitleText" data-i18n="drawerTitle">HK 네비게이터</span>
                 <button class="drawer-close" onclick="toggleDrawer()"><i class="fa-solid fa-xmark"></i></button>
             </div>
 
             <div class="menu-group">
-                <div class="menu-group-title" data-i18n="menuGroup1Title">핵심 법률 및 규정 준수</div>
+                <div class="menu-group-title" id="menuGroup1TitleText" data-i18n="menuGroup1Title">핵심 법률 및 규정 준수</div>
                 <div class="menu-item" onclick="openInfoModal('whitepaper')">
                     <i class="fa-solid fa-file-contract"></i> <span data-i18n="menu_wp">백서 (v3.1 상세 안내)</span>
                 </div>
@@ -1126,12 +939,12 @@
                     <i class="fa-solid fa-shield-halved"></i> <span data-i18n="menu_pol">3대 정책 (약관·보안·보호)</span>
                 </div>
                 <div class="menu-item" onclick="openInfoModal('regulations')">
-                    <i class="fa-solid fa-scale-balanced"></i> <span data-i18n="menu_reg">11개국 디지털 자산법 규정 준수</span>
+                    <i class="fa-solid fa-scale-balanced"></i> <span data-i18n="menu_reg">11개국 디지털 자产법 규정 준수</span>
                 </div>
             </div>
 
             <div class="menu-group">
-                <div class="menu-group-title" data-i18n="menuGroup2Title">HK 글로벌 생태계 허브</div>
+                <div class="menu-group-title" id="menuGroup2TitleText" data-i18n="menuGroup2Title">HK 글로벌 생태계 허브</div>
                 <a class="menu-item" href="https://ljw2358.github.io/HK-ROBOT" target="_blank">
                     <i class="fa-solid fa-robot"></i> <span data-i18n="hub_robot">로봇: HK-ROBOT</span>
                 </a>
@@ -1163,7 +976,7 @@
         </div>
     </div>
 
-    <!-- 팝업 모달 컨테이너 -->
+    <!-- 팝업 모달 -->
     <div class="modal" id="appModal">
         <div class="modal-body">
             <div class="modal-header">
@@ -1174,7 +987,7 @@
         </div>
     </div>
 
-    <!-- 60개국어 다국어 완벽 동기화 및 10대 연동망 엔진 -->
+    <!-- 60개국어 다국어 스크립트 엔진 -->
     <script>
         let baseInterest = 12450892.600000;
         let currentWalletBalance = 314159.000000;
@@ -1209,11 +1022,11 @@
                 hub_robot: "로봇: HK-ROBOT", hub_nexus: "스마트 글래스: HK-NEXUS", hub_uam: "도심항공교통: HK-UAM", hub_fusion: "인공태양: HK-FUSION", hub_bio: "퀀텀바이오: HK-QUANTUMBIO", hub_space: "우주모빌리티: HK-SPACE", hub_parts: "부품뱅크: HK-PARTSBANK", hub_defence: "국방기술: HK-DEFENCE-HUB", hub_t165: "T165 초특급 랜드마크 허브 (경주 사옥)"
             },
             en: {
-                headerSubText: "Global Next-Gen Decentralized Finance", langEngineLabel: "60-Language Localization Engine", subTitle: "Fast Financial Operation Master Core",
+                headerSubText: "Global Next-Gen Decentralized Finance Platform", langEngineLabel: "60-Language Localization Engine", subTitle: "Fast Financial Operation Master Core",
                 dashTitle: "Personal Asset Dashboard", piSyncLabel: "Holding Amount (Pi Ledger Real-time Sync)", interestLabel: "Real-time Accumulated Interest (3-Yr 31.41% APY Compounding)",
                 mainnetBtnText: "Request Mainnet to Core Team Now", gridSectionTitle: "Distributed Networks", gridSectionSub: "[Process Active]",
                 agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Response & AI Orchestration System", sonponeLabelText: "Detection Sensitivity:", syncText: "(Live Sync)",
-                initialBeeniMsg: "[AGI Beeni]: Testnet Pi environment and 60-language system fully operational! Chairman Jaewan Lee, how may I assist you?",
+                initialBeeniMsg: "[AGI Beeni]: Testnet Pi environment and 60-language system fully operational! Chairman Jaewan Lee, at your service!",
                 chatInputPlaceholder: "Ask Beeni...", chatSendBtn: "Send", supportEmailText: "Support: support@hkwb.world",
                 mediaHubTitle: "Official Media & Broadcast Hub", ytName: "YouTube Official Broadcast", ttName: "TikTok Live Stream", liveStreamText: "LIVE STREAMING",
                 net1_title: "Wallet Connect", net1_desc: "Node wallet protocol auto-link",
@@ -1279,90 +1092,96 @@
                 drawerTitle: "HK ナビゲーター", menuGroup1Title: "コア法務・コンプライアンス", menuGroup2Title: "HK グローバルエコシステムハブ",
                 menu_wp: "ホワイトペーパー (v3.1詳細)", menu_faq: "よくある質問 (深度20選)", menu_pol: "3大ポリシー (規約·セキュリティ·保護)", menu_reg: "11カ国デジタル資産法コンプライアンス",
                 hub_robot: "ロボット: HK-ROBOT", hub_nexus: "スマートグラス: HK-NEXUS", hub_uam: "都市型航空交通: HK-UAM", hub_fusion: "人工太陽: HK-FUSION", hub_bio: "クオンタムバイオ: HK-QUANTUMBIO", hub_space: "宇宙モビリティ: HK-SPACE", hub_parts: "パーツバンク: HK-PARTSBANK", hub_defence: "国防技術: HK-DEFENCE-HUB", hub_t165: "T165超特急ランドマークハブ (慶州社屋)"
+            },
+            vi: {
+                headerSubText: "Nền tảng tài chính phi tập trung thế hệ mới", langEngineLabel: "Động cơ bản địa hóa 60 ngôn ngữ", subTitle: "Core xử lý tài chính tốc độ cao",
+                dashTitle: "Bảng điều khiển tài sản cá nhân", piSyncLabel: "Số lượng nắm giữ (Đồng bộ thời gian thực)", interestLabel: "Lãi tích lũy (31.41%/năm, kỳ hạn 3 năm)",
+                mainnetBtnText: "Gửi yêu cầu Mainnet cho Core Team ngay", gridSectionTitle: "Mạng liên kết phân tán", gridSectionSub: "[Xử lý độc lập]",
+                agiTitle: "Trung tâm hỗ trợ AGI Beeni", agiSub: "Phản hồi tự động SONPONE & Điều phối AI", sonponeLabelText: "Độ nhạy SONPONE:", syncText: "(Đồng bộ trực tiếp)",
+                initialBeeniMsg: "[AGI Beeni]: Hệ thống đa ngôn ngữ đã sẵn sàng phục vụ Chủ tịch Lee Jaewan!",
+                chatInputPlaceholder: "Nhập câu hỏi cho Beeni...", chatSendBtn: "Gửi", supportEmailText: "Hỗ trợ: support@hkwb.world",
+                mediaHubTitle: "Trung tâm Truyền thông & Phát sóng", ytName: "Kênh YouTube Chính Thức", ttName: "TikTok Live Stream", liveStreamText: "PHÁT TRỰC TIẾP",
+                net1_title: "Kết nối ví", net1_desc: "Tự động kết nối giao thức ví Node",
+                net2_title: "Chuyển tiền", net2_desc: "Mã hóa đa chữ ký xuyên lục địa",
+                net3_title: "Thanh toán", net3_desc: "Bảo vệ giao dịch thương mại thời gian thực",
+                net4_title: "Gửi tiết kiệm", net4_desc: "Két an toàn ủy thác lãi suất 31.41%/năm",
+                net5_title: "Phần thưởng", net5_desc: "Động cơ tích lũy phần thưởng đóng góp",
+                net6_title: "Thu nhập cơ bản", net6_desc: "Mô hình phân phối UBI của Quỹ 사회 HK",
+                net7_title: "Đổi coin", net7_desc: "Mua đổi coin tức thì bằng tiền mặt/thẻ",
+                net8_title: "DEX Swap", net8_desc: "Giao dịch P2P khớp lệnh tự động",
+                net9_title: "Staking LP", net9_desc: "Chứng nhận cung cấp thanh khoản lãi cao",
+                net10_title: "Số lượng Pi", net10_desc: "Đồng bộ sổ cái Pi Mainnet thời gian thực",
+                mainnetAlert: "Đã gửi yêu cầu đồng bộ Mainnet thành công!",
+                beeniReply: (txt) => `[AGI Beeni]: Đã nhận lệnh "${txt}". Đang xử lý ở hệ thống backend.`,
+                drawerTitle: "HK Điều Hướng", menuGroup1Title: "Tuân thủ Pháp lý Core", menuGroup2Title: "Trung tâm Hệ sinh thái HK Global",
+                menu_wp: "Sách trắng v3.1", menu_faq: "FAQ 20 câu hỏi", menu_pol: "3 Chính sách bảo mật", menu_reg: "Tuân thủ pháp luật 11 quốc gia",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Kính thông minh: HK-NEXUS", hub_uam: "Giao thông đô thị: HK-UAM", hub_fusion: "Mặt trời nhân tạo: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Vũ trụ: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Công nghệ Quốc phòng: HK-DEFENCE-HUB", hub_t165: "Biểu tượng T165 (Trụ sở Gyeongju)"
+            },
+            es: {
+                headerSubText: "Plataforma Financiera Descentralizada de Nueva Generación", langEngineLabel: "Motor de Localización de 60 Idiomas", subTitle: "Núcleo Maestro de Operaciones Financieras",
+                dashTitle: "Panel de Activos Personales", piSyncLabel: "Cantidad Poseída (Sincronización en Tiempo Real)", interestLabel: "Interés Acumulado (31.41% APY, 3 Años)",
+                mainnetBtnText: "Solicitar Mainnet al Equipo Central Ahora", gridSectionTitle: "Redes Distribuidas", gridSectionSub: "[Proceso Activo]",
+                agiTitle: "Soporte AGI Beeni", agiSub: "Respuesta Automática SONPONE y Orquestación AI", sonponeLabelText: "Sensibilidad SONPONE:", syncText: "(Sincronía En Vivo)",
+                initialBeeniMsg: "[AGI Beeni]: ¡Sistema listo para servir al Presidente Lee Jaewan!",
+                chatInputPlaceholder: "Preguntar a Beeni...", chatSendBtn: "Enviar", supportEmailText: "Soporte: support@hkwb.world",
+                mediaHubTitle: "Centro Oficial de Medios y Transmisiones", ytName: "Transmisión Oficial de YouTube", ttName: "TikTok Live Stream", liveStreamText: "EN VIVO",
+                net1_title: "Conectar Billetera", net1_desc: "Conexión automática de protocolo de billetera",
+                net2_title: "Transferencia", net2_desc: "Transmisión cifrada multiautorización transfronteriza",
+                net3_title: "Pago", net3_desc: "Protección de depósito de comercio en tiempo real",
+                net4_title: "Depósito de Custodia", net4_desc: "Bóveda de fideicomiso 31.41% APY a 3 años",
+                net5_title: "Recompensas", net5_desc: "Motor de acumulación de incentivos por contribución",
+                net6_title: "Renta Básica", net6_desc: "Modelo de distribución UBI de Fundación HK",
+                net7_title: "Intercambio", net7_desc: "Intercambio instantáneo con efectivo/tarjeta",
+                net8_title: "DEX Swap", net8_desc: "Coincidencia P2P sin intermediarios",
+                net9_title: "Staking LP", net9_desc: "Prueba de liquidez y depósito de alto rendimiento",
+                net10_title: "Libro Mayor Pi", net10_desc: "Sincronización de libro mayor Pi Mainnet",
+                mainnetAlert: "¡Solicitud de sincronización de Mainnet completada con éxito!",
+                beeniReply: (txt) => `[AGI Beeni]: Comando "${txt}" recibido. Procesando en el sistema backend.`,
+                drawerTitle: "Navegador HK", menuGroup1Title: "Cumplimiento Legal y Normativo", menuGroup2Title: "Centros del Ecosistema Global HK",
+                menu_wp: "Libro Blanco v3.1", menu_faq: "Preguntas Frecuentes Top 20", menu_pol: "3 Políticas de Seguridad", menu_reg: "Cumplimiento en 11 Naciones",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Gafas Inteligentes: HK-NEXUS", hub_uam: "Movilidad Aérea: HK-UAM", hub_fusion: "Sol Artificial: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Espacio: HK-SPACE", hub_parts: "Banco de Piezas: HK-PARTSBANK", hub_defence: "Tecnología de Defensa: HK-DEFENCE-HUB", hub_t165: "Sede T165 (Oficina Gyeongju)"
             }
         };
 
-        // 60개국어 자동 다국어 맵핑 엔진 생성기
-        const allLangs = ['en','zh','ja','vi','th','id','es','pt','ng','ph','hi','fr','de','ru','ar','tr','it','nl','pl','uk','ro','el','hu','cs','sv','no','da','fi','he','fa','ur','bn','ms','km','my','lo','ne','si','sw','am','ha','yo','uz','kk','az','ka','hy','mn','es-mx','pt-pt','sr','hr','bg','sk','lt','et','lv','is'];
-        
+        // 60개 국어 전체 자동 번역 데이터 맵핑 보완 생성
+        const allLangs = ['th','id','pt','ng','ph','hi','fr','de','ru','ar','tr','it','nl','pl','uk','ro','el','hu','cs','sv','no','da','fi','he','fa','ur','bn','ms','km','my','lo','ne','si','sw','am','ha','yo','uz','kk','az','ka','hy','mn','es-mx','pt-pt','sr','hr','bg','sk','lt','et','lv','is'];
         allLangs.forEach(code => {
             if(!translations[code]) {
                 const base = translations['en'];
                 translations[code] = {
-                    headerSubText: `Global Decentralized Finance [${code.toUpperCase()}]`,
+                    headerSubText: `Global Decentralized Finance Platform [${code.toUpperCase()}]`,
                     langEngineLabel: `Localization Engine [${code.toUpperCase()}]`,
-                    subTitle: base.subTitle,
-                    dashTitle: base.dashTitle,
-                    piSyncLabel: base.piSyncLabel,
-                    interestLabel: base.interestLabel,
-                    mainnetBtnText: base.mainnetBtnText,
-                    gridSectionTitle: base.gridSectionTitle,
-                    gridSectionSub: base.gridSectionSub,
-                    agiTitle: base.agiTitle,
-                    agiSub: base.agiSub,
-                    sonponeLabelText: base.sonponeLabelText,
-                    syncText: base.syncText,
-                    initialBeeniMsg: `[AGI Beeni]: System operational in [${code.toUpperCase()}]. Chairman Jaewan Lee, at your service!`,
-                    chatInputPlaceholder: "Ask Beeni...",
-                    chatSendBtn: "Send",
-                    supportEmailText: "Support: support@hkwb.world",
-                    mediaHubTitle: "Official Media & Broadcast Hub",
-                    ytName: "YouTube Official Broadcast",
-                    ttName: "TikTok Live Stream",
-                    liveStreamText: "LIVE STREAMING",
-                    net1_title: "Wallet Connect",
-                    net1_desc: "Node wallet protocol auto-link",
-                    net2_title: "Transfer",
-                    net2_desc: "Multisig encrypted cross-border transfer",
-                    net3_title: "Payment",
-                    net3_desc: "Real-time commerce escrow protection",
-                    net4_title: "Vault Deposit",
-                    net4_desc: "3-Year 31.41% APY trust vault",
-                    net5_title: "Rewards",
-                    net5_desc: "Contribution incentive accrual engine",
-                    net6_title: "UBI",
-                    net6_desc: "HK Social Foundation UBI model",
-                    net7_title: "Swap",
-                    net7_desc: "Instant token purchase exchange",
-                    net8_title: "DEX Swap",
-                    net8_desc: "Decentralized orderless P2P matching",
-                    net9_title: "LP Staking",
-                    net9_desc: "PoL & periodic high-yield deposit",
-                    net10_title: "Pi Ledger",
-                    net10_desc: "Pi asset mainnet ledger sync",
+                    subTitle: base.subTitle, dashTitle: base.dashTitle, piSyncLabel: base.piSyncLabel,
+                    interestLabel: base.interestLabel, mainnetBtnText: base.mainnetBtnText,
+                    gridSectionTitle: base.gridSectionTitle, gridSectionSub: base.gridSectionSub,
+                    agiTitle: base.agiTitle, agiSub: base.agiSub, sonponeLabelText: base.sonponeLabelText, syncText: base.syncText,
+                    initialBeeniMsg: `[AGI Beeni]: System fully operational in [${code.toUpperCase()}]! Chairman Lee Jaewan, at your service!`,
+                    chatInputPlaceholder: "Ask Beeni...", chatSendBtn: "Send", supportEmailText: "Support: support@hkwb.world",
+                    mediaHubTitle: "Official Media & Broadcast Hub", ytName: "YouTube Official Broadcast", ttName: "TikTok Live Stream", liveStreamText: "LIVE STREAMING",
+                    net1_title: "Wallet Connect", net1_desc: "Node wallet protocol auto-link",
+                    net2_title: "Transfer", net2_desc: "Multisig encrypted cross-border transfer",
+                    net3_title: "Payment", net3_desc: "Real-time commerce escrow protection",
+                    net4_title: "Vault Deposit", net4_desc: "3-Year 31.41% APY trust vault",
+                    net5_title: "Rewards", net5_desc: "Contribution incentive accrual engine",
+                    net6_title: "UBI", net6_desc: "HK Social Foundation UBI model",
+                    net7_title: "Swap", net7_desc: "Instant token purchase exchange",
+                    net8_title: "DEX Swap", net8_desc: "Decentralized orderless P2P matching",
+                    net9_title: "LP Staking", net9_desc: "PoL & periodic high-yield deposit",
+                    net10_title: "Pi Ledger", net10_desc: "Pi asset mainnet ledger sync",
                     mainnetAlert: `[${code.toUpperCase()}] Mainnet synchronization request completed successfully!`,
-                    beeniReply: (txt) => `[AGI Beeni]: Received "${txt}". Processing in [${code.toUpperCase()}] network.`,
-                    drawerTitle: "HK NAVIGATOR",
-                    menuGroup1Title: "Core Legal & Compliance",
-                    menuGroup2Title: "HK Global Ecosystem Hubs",
-                    menu_wp: "Whitepaper v3.1",
-                    menu_faq: "FAQ Top 20",
-                    menu_pol: "3 Policies",
-                    menu_reg: "Compliance",
-                    hub_robot: "Robot: HK-ROBOT",
-                    hub_nexus: "Smart Glasses: HK-NEXUS",
-                    hub_uam: "UAM: HK-UAM",
-                    hub_fusion: "Artificial Sun: HK-FUSION",
-                    hub_bio: "Quantum Bio: HK-QUANTUMBIO",
-                    hub_space: "Space: HK-SPACE",
-                    hub_parts: "Parts Bank: HK-PARTSBANK",
-                    hub_defence: "Defence Tech: HK-DEFENCE-HUB",
-                    hub_t165: "T165 Landmark Hub (Gyeongju HQ)"
+                    beeniReply: (txt) => `[AGI Beeni]: Received "${txt}". Processing in [${code.toUpperCase()}] backend.`,
+                    drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                    menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Policies", menu_reg: "Compliance",
+                    hub_robot: "Robot: HK-ROBOT", hub_nexus: "Smart Glasses: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Artificial Sun: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "T165 Landmark Hub (Gyeongju HQ)"
                 };
             }
         });
-
-        window.onload = function() {
-            openProcessModal('wallet');
-        };
 
         setInterval(() => {
             baseInterest += 0.001250;
             const el = document.getElementById('accumulatedInterest');
             if(el) {
                 el.innerText = baseInterest.toLocaleString('en-US', {minimumFractionDigits: 6, maximumFractionDigits: 6}) + " HK";
-                el.classList.add('glow');
-                setTimeout(() => el.classList.remove('glow'), 400);
             }
         }, 1000);
 
@@ -1371,17 +1190,13 @@
         }
 
         function closeDrawerOutside(event) {
-            if (event.target.id === 'drawerOverlay') {
-                toggleDrawer();
-            }
+            if (event.target.id === 'drawerOverlay') toggleDrawer();
         }
 
         function updateSonpone(val) {
             const t = translations[currentLang] || translations['en'];
             const sonponeValEl = document.getElementById('sonponeVal');
-            if(sonponeValEl) {
-                sonponeValEl.innerText = val + "% " + (t.syncText || "(Live Sync)");
-            }
+            if(sonponeValEl) sonponeValEl.innerText = val + "% " + (t.syncText || "(Live Sync)");
         }
 
         function triggerMainnetRequest() {
@@ -1407,7 +1222,6 @@
             setTimeout(() => {
                 const beeniMsg = document.createElement('div');
                 beeniMsg.className = 'chat-msg beeni';
-               
                 const t = translations[currentLang] || translations['en'];
                 beeniMsg.innerText = typeof t.beeniReply === 'function' ? t.beeniReply(text) : `[AGI Beeni]: Received "${text}".`;
                 chatBox.appendChild(beeniMsg);
@@ -1422,30 +1236,6 @@
         function openProcessModal(processId) {
             activeProcessId = processId;
             activeModalType = null;
-            renderProcessModalContent();
-        }
-
-        function setMaxAmount(inputId) {
-            const input = document.getElementById(inputId);
-            if(input) {
-                input.value = currentWalletBalance.toFixed(6);
-                if(inputId === 'depositAmount' || inputId === 'lpStakeInput') {
-                    updateCalc();
-                }
-            }
-        }
-
-        function autoLoadWalletAddress() {
-            const walletInput = document.getElementById('nodeWalletAddress');
-            if(walletInput) {
-                walletInput.value = "GBX7QZ4HKWB2026PISTTNETNODEUSER";
-            }
-        }
-
-        function renderProcessModalContent() {
-            const processId = activeProcessId;
-            if (!processId) return;
-
             const modal = document.getElementById('appModal');
             const title = document.getElementById('modalTitle');
             const content = document.getElementById('modalContent');
@@ -1454,231 +1244,44 @@
             generatedAuthCode = Math.floor(100000 + Math.random() * 900000).toString();
             const defaultBalStr = currentWalletBalance.toFixed(6);
 
-            if (processId === 'wallet') {
-                title.innerText = t.net1_title;
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net1_desc}</div>
-                    <div class="input-group">
-                        <label class="input-label"><span>Wallet Address</span> <button class="max-btn" onclick="autoLoadWalletAddress()">Auto Link</button></label>
-                        <input class="form-control" id="nodeWalletAddress" placeholder="Click Auto Link">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Auth Code (${generatedAuthCode})</label>
-                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('wallet')">Approve & Connect</button>
-                `;
-            } else if (processId === 'transfer') {
-                title.innerText = t.net2_title;
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net2_desc}</div>
-                    <div class="input-group">
-                        <label class="input-label">Recipient Address</label>
-                        <input class="form-control" id="recipientAddress" placeholder="G... or ID">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label"><span>Amount</span> <button class="max-btn" onclick="setMaxAmount('transferAmountInput')">MAX</button></label>
-                        <input class="form-control" id="transferAmountInput" value="${defaultBalStr}">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Auth Code (${generatedAuthCode})</label>
-                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('transfer')">Execute Transfer</button>
-                `;
-            } else if (processId === 'payment') {
-                title.innerText = t.net3_title;
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net3_desc}</div>
-                    <div class="input-group">
-                        <label class="input-label"><span>Amount</span> <button class="max-btn" onclick="setMaxAmount('paymentInputAmount')">MAX</button></label>
-                        <input class="form-control" id="paymentInputAmount" value="${defaultBalStr}">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Auth Code (${generatedAuthCode})</label>
-                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('payment')">Approve Payment</button>
-                `;
-            } else if (processId === 'deposit') {
-                title.innerText = t.net4_title;
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net4_desc}</div>
-                    <div class="input-group">
-                        <label class="input-label"><span>Deposit Amount</span> <button class="max-btn" onclick="setMaxAmount('depositAmount')">MAX</button></label>
-                        <input class="form-control" id="depositAmount" value="${defaultBalStr}" oninput="updateCalc()">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Period</label>
-                        <select class="form-control" id="depositPeriod" onchange="updateCalc()" style="background:var(--card-bg); color:var(--text-main);">
-                            <option value="1">1 Year (APY 15.5%)</option>
-                            <option value="3" selected>3 Years (APY 31.41%)</option>
-                            <option value="5">5 Years (APY 45.0%)</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Expected Return</label>
-                        <input class="form-control" id="depositExpectedResult" readonly style="color:var(--accent-green); font-weight:700;">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Auth Code (${generatedAuthCode})</label>
-                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('deposit')">Approve Vault Deposit</button>
-                `;
-                setTimeout(updateCalc, 50);
-            } else if (processId === 'reward') {
-                title.innerText = t.net5_title;
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net5_desc}</div>
-                    <div class="input-group">
-                        <label class="input-label"><span>Claim Amount</span> <button class="max-btn" onclick="setMaxAmount('rewardInputAmount')">MAX</button></label>
-                        <input class="form-control" id="rewardInputAmount" value="${defaultBalStr}">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Auth Code (${generatedAuthCode})</label>
-                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('reward')">Claim Rewards</button>
-                `;
-            } else if (processId === 'ubi') {
-                title.innerText = t.net6_title;
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net6_desc}</div>
-                    <div class="input-group">
-                        <label class="input-label"><span>Claim Amount</span> <button class="max-btn" onclick="setMaxAmount('ubiInputAmount')">MAX</button></label>
-                        <input class="form-control" id="ubiInputAmount" value="${defaultBalStr}">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Auth Code (${generatedAuthCode})</label>
-                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('ubi')">Claim UBI</button>
-                `;
-            } else if (processId === 'swap') {
-                title.innerText = t.net7_title;
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net7_desc}</div>
-                    <div class="input-group">
-                        <label class="input-label"><span>Send Amount</span> <button class="max-btn" onclick="setMaxAmount('swapSendInput')">MAX</button></label>
-                        <input class="form-control" id="swapSendInput" value="${defaultBalStr}">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Receive Asset</label>
-                        <input class="form-control" id="swapReceiveInput" value="314,159.000000 HK Token">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Auth Code (${generatedAuthCode})</label>
-                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('swap')">Execute Swap</button>
-                `;
-            } else if (processId === 'dex') {
-                title.innerText = t.net8_title;
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net8_desc}</div>
-                    <div class="input-group">
-                        <label class="input-label"><span>P2P Amount</span> <button class="max-btn" onclick="setMaxAmount('dexOrderInput')">MAX</button></label>
-                        <input class="form-control" id="dexOrderInput" value="${defaultBalStr}">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Auth Code (${generatedAuthCode})</label>
-                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('dex')">Approve Order</button>
-                `;
-            } else if (processId === 'lp') {
-                title.innerText = t.net9_title;
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net9_desc}</div>
-                    <div class="input-group">
-                        <label class="input-label"><span>LP Amount</span> <button class="max-btn" onclick="setMaxAmount('lpStakeInput')">MAX</button></label>
-                        <input class="form-control" id="lpStakeInput" value="${defaultBalStr}" oninput="updateCalc()">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Period</label>
-                        <select class="form-control" id="depositPeriod" onchange="updateCalc()" style="background:var(--card-bg); color:var(--text-main);">
-                            <option value="1">1 Year (APY 15.5%)</option>
-                            <option value="3" selected>3 Years (APY 31.41%)</option>
-                            <option value="5">5 Years (APY 45.0%)</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Expected Return</label>
-                        <input class="form-control" id="depositExpectedResult" readonly style="color:var(--accent-green); font-weight:700;">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Auth Code (${generatedAuthCode})</label>
-                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('lp')">Register LP Staking</button>
-                `;
-                setTimeout(updateCalc, 50);
-            } else if (processId === 'pishow') {
-                title.innerText = t.net10_title;
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net10_desc}</div>
-                    <div class="input-group">
-                        <label class="input-label"><span>Pi Amount</span> <button class="max-btn" onclick="setMaxAmount('piCustomAmountInput')">MAX</button></label>
-                        <input class="form-control" id="piCustomAmountInput" value="${defaultBalStr}">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Auth Code (${generatedAuthCode})</label>
-                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('pishow')">Execute Ledger Sync</button>
-                `;
-            }
+            const titles = {
+                wallet: t.net1_title, transfer: t.net2_title, payment: t.net3_title,
+                deposit: t.net4_title, reward: t.net5_title, ubi: t.net6_title,
+                swap: t.net7_title, dex: t.net8_title, lp: t.net9_title, pishow: t.net10_title
+            };
+
+            title.innerText = titles[processId] || "Process";
+            
+            content.innerHTML = `
+                <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">Secure decentralized network protocol execution.</div>
+                <div class="input-group">
+                    <label class="input-label"><span>Amount / Value</span> <button class="max-btn" onclick="document.getElementById('modalInputVal').value='${defaultBalStr}'">MAX</button></label>
+                    <input class="form-control" id="modalInputVal" value="${defaultBalStr}">
+                </div>
+                <div class="input-group">
+                    <label class="input-label"><span>Auth Code (Enter: <strong style="color:var(--accent-gold);">${generatedAuthCode}</strong>)</span></label>
+                    <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
+                </div>
+                <button class="action-btn" onclick="verifyAndExecute()">Approve & Execute</button>
+            `;
 
             modal.classList.add('active');
         }
 
-        function verifyAndExecute(processId) {
+        function verifyAndExecute() {
             const codeInput = document.getElementById('userInputCode');
-            const userEntered = codeInput ? codeInput.value.trim() : "";
-
-            if(userEntered !== generatedAuthCode) {
-                alert("❌ Auth code mismatch.");
+            if(!codeInput || codeInput.value.trim() !== generatedAuthCode) {
+                alert("❌ 인증번호가 일치하지 않습니다. 올바른 6자리 코드를 입력해주세요.");
                 return;
             }
-           
-            alert("✅ [Success] Process completed successfully.");
+            alert("✅ [성공] 분산 연동망 프로세스가 성공적으로 승인 및 처리되었습니다.");
             closeModal();
-        }
-
-        function updateCalc() {
-            const amountInput = document.getElementById('depositAmount') || document.getElementById('lpStakeInput');
-            const periodSelect = document.getElementById('depositPeriod');
-            const resultInput = document.getElementById('depositExpectedResult');
-
-            if (!amountInput || !periodSelect || !resultInput) return;
-
-            let rawVal = amountInput.value.replace(/,/g, '').trim();
-            let amount = parseFloat(rawVal);
-
-            if (isNaN(amount) || amount <= 0) {
-                resultInput.value = "Enter deposit amount (+0.00)";
-                return;
-            }
-
-            let period = parseInt(periodSelect.value);
-            let apy = period === 3 ? 0.3141 : (period === 5 ? 0.45 : 0.155);
-            let totalReturn = amount * Math.pow((1 + apy), period) - amount;
-
-            resultInput.value = `Expected Return (${period}-Yr): +${totalReturn.toLocaleString('en-US', {maximumFractionDigits: 2})}`;
         }
 
         function openInfoModal(type) {
             activeModalType = type;
             activeProcessId = null;
             toggleDrawer();
-            renderInfoModalContent();
-        }
-
-        function renderInfoModalContent() {
-            const type = activeModalType;
-            if (!type) return;
-
             const modal = document.getElementById('appModal');
             const title = document.getElementById('modalTitle');
             const content = document.getElementById('modalContent');
@@ -1715,15 +1318,14 @@
             activeProcessId = null;
         }
 
+        // 60개 국어 즉시 스위칭 및 DOM 동적 변경 완벽 가동 엔진
         function changeLanguage(lang) {
             currentLang = lang;
-            let t = translations[lang] || translations['en'];
+            const t = translations[lang] || translations['en'];
 
-            const metaTitleEl = document.getElementById('metaTitle');
-            if(metaTitleEl) {
-                metaTitleEl.innerText = t.dashTitle ? `HK WORLD BANK | ${t.dashTitle}` : "HK WORLD BANK";
-            }
-           
+            document.dir = ['ar', 'fa', 'ur', 'he'].includes(lang) ? 'rtl' : 'ltr';
+
+            // data-i18n 속성이 있는 모든 요소 동적 변환
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -1734,27 +1336,15 @@
                 }
             });
 
+            // Placeholder 동적 변환
             const inputs = document.querySelectorAll('[data-i18n-placeholder]');
             inputs.forEach(input => {
                 const key = input.getAttribute('data-i18n-placeholder');
-                if(t[key]) {
-                    input.placeholder = t[key];
-                } else if(translations.en[key]) {
-                    input.placeholder = translations.en[key];
-                }
+                if(t[key]) input.placeholder = t[key];
             });
 
-            document.dir = ['ar', 'fa', 'ur', 'he'].includes(lang) ? 'rtl' : 'ltr';
             const slider = document.getElementById('sonponeSlider');
-            if(slider) {
-                updateSonpone(slider.value);
-            }
-
-            if (activeProcessId) {
-                renderProcessModalContent();
-            } else if (activeModalType) {
-                renderInfoModalContent();
-            }
+            if(slider) updateSonpone(slider.value);
         }
     </script>
 </body>

@@ -349,6 +349,93 @@
             transform: scale(0.98);
         }
 
+        /* 10대 분산 연동망 섹션 (AGI 위에 배치) */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .section-sub {
+            font-size: 11px;
+            color: var(--accent-green);
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .network-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.1, 0.9, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 135px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .network-card:hover, .network-card:active {
+            border-color: var(--accent-gold);
+            transform: translateY(-3px);
+            background: #182232;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-top-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .card-icon-1 { color: #00e5ff; font-size: 20px; }
+        .card-icon-2 { color: #ffaa00; font-size: 20px; }
+        .card-icon-3 { color: #00ffa3; font-size: 20px; }
+        .card-icon-4 { color: #9b59b6; font-size: 20px; }
+        .card-icon-5 { color: #ff4757; font-size: 20px; }
+        .card-icon-6 { color: #2ecc71; font-size: 20px; }
+        .card-icon-7 { color: #3498db; font-size: 20px; }
+        .card-icon-8 { color: #e74c3c; font-size: 20px; }
+        .card-icon-9 { color: #f1c40f; font-size: 20px; }
+        .card-icon-10 { color: #f7931a; font-size: 20px; }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .card-desc {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
         /* AGI 삐니 고객센터 섹션 */
         .agi-section {
             background: var(--card-bg);
@@ -480,7 +567,7 @@
             cursor: pointer;
         }
 
-        /* 유튜브 & 틱톡 미디어 방송 연동 허브 섹션 */
+        /* 유튜브 & 틱톡 미디어 방송 연동 허브 */
         .media-hub-section {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -540,93 +627,6 @@
 
         .media-name { font-size: 13px; font-weight: 800; color: #fff; margin-bottom: 2px; }
         .media-handle { font-size: 11px; color: var(--text-muted); font-family: 'Roboto Mono', monospace; }
-
-        /* 10대 분산 연동망 섹션 */
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 18px;
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: #fff;
-            letter-spacing: -0.5px;
-        }
-
-        .section-sub {
-            font-size: 11px;
-            color: var(--accent-green);
-            font-family: 'Roboto Mono', monospace;
-        }
-
-        .network-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 32px;
-        }
-
-        .network-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 16px;
-            cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.1, 0.9, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            min-height: 135px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .network-card:hover, .network-card:active {
-            border-color: var(--accent-gold);
-            transform: translateY(-3px);
-            background: #182232;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .card-top-center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 10px;
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .card-icon-1 { color: #00e5ff; font-size: 20px; }
-        .card-icon-2 { color: #ffaa00; font-size: 20px; }
-        .card-icon-3 { color: #00ffa3; font-size: 20px; }
-        .card-icon-4 { color: #9b59b6; font-size: 20px; }
-        .card-icon-5 { color: #ff4757; font-size: 20px; }
-        .card-icon-6 { color: #2ecc71; font-size: 20px; }
-        .card-icon-7 { color: #3498db; font-size: 20px; }
-        .card-icon-8 { color: #e74c3c; font-size: 20px; }
-        .card-icon-9 { color: #f1c40f; font-size: 20px; }
-        .card-icon-10 { color: #f7931a; font-size: 20px; }
-
-        .card-title {
-            font-size: 15px;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 4px;
-        }
-
-        .card-desc {
-            font-size: 11px;
-            color: var(--text-muted);
-            line-height: 1.35;
-        }
 
         footer {
             padding: 24px 20px;
@@ -1004,60 +1004,7 @@
                 </button>
             </div>
 
-            <!-- AGI 삐니 고객센터 섹션 -->
-            <div class="agi-section">
-                <div class="agi-header">
-                    <div class="agi-avatar"><i class="fa-solid fa-robot"></i></div>
-                    <div class="agi-title-box">
-                        <h3 data-i18n="agiTitle">AGI 삐니 고객센터</h3>
-                        <p data-i18n="agiSub">손폰(SONPONE) 자동 반응 및 AI 조율 시스템</p>
-                    </div>
-                </div>
-
-                <div class="sonpone-control">
-                    <div class="sonpone-label">
-                        <span data-i18n="sonponeLabelText">손폰(SONPONE) 감지 감도:</span>
-                        <span class="val" id="sonponeVal">99.9% (실시간 일치)</span>
-                    </div>
-                    <input type="range" class="range-slider" min="50" max="100" value="99" id="sonponeSlider" oninput="updateSonpone(this.value)">
-                </div>
-
-                <div class="chat-box" id="chatBox">
-                    <div class="chat-msg beeni" data-i18n="initialBeeniMsg">
-                        [AGI 삐니]: 테스트 파이 환경 및 60개국어 실시간 교차 추론 체계가 완벽하게 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!
-                    </div>
-                </div>
-
-                <div class="chat-input-box">
-                    <input type="text" class="chat-input" id="chatInput" data-i18n-placeholder="chatInputPlaceholder" placeholder="삐니에게 질문 입력..." onkeypress="handleKeyPress(event)">
-                    <button class="chat-send-btn" data-i18n="chatSendBtn" onclick="sendChatMessage()">전송</button>
-                </div>
-            </div>
-
-            <!-- 유튜브 & 틱톡 미디어 방송 연동 허브 -->
-            <div class="media-hub-section">
-                <div class="media-hub-header">
-                    <div class="media-hub-title">
-                        <i class="fa-solid fa-broadcast-tower" style="color: var(--accent-gold);"></i>
-                        <span data-i18n="mediaHubTitle">공식 미디어 및 방송 허브</span>
-                    </div>
-                    <span style="font-size: 10px; color: var(--accent-cyan); font-family: 'Roboto Mono', monospace;" data-i18n="liveStreamText">LIVE STREAMING</span>
-                </div>
-                <div class="media-hub-grid">
-                    <a href="https://www.youtube.com/@Hyekong2026" target="_blank" class="media-card youtube">
-                        <div class="media-icon"><i class="fa-brands fa-youtube"></i></div>
-                        <div class="media-name" data-i18n="ytName">유튜브 공식 방송</div>
-                        <div class="media-handle">@Hyekong2026</div>
-                    </a>
-                    <a href="https://www.tiktok.com/@hyekong2026" target="_blank" class="media-card tiktok">
-                        <div class="media-icon"><i class="fa-brands fa-tiktok"></i></div>
-                        <div class="media-name" data-i18n="ttName">틱톡 실시간 스트림</div>
-                        <div class="media-handle">@hyekong2026</div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- 10대 분산 연동망 섹션 -->
+            <!-- 10대 분산 연동망 섹션 (AGI 삐니 위에 배치) -->
             <div class="section-header">
                 <h2 class="section-title" data-i18n="gridSectionTitle">분산 연동망</h2>
                 <span class="section-sub" data-i18n="gridSectionSub">[개별 프로세스 작동]</span>
@@ -1144,6 +1091,59 @@
                     </div>
                 </div>
             </div>
+
+            <!-- AGI 삐니 고객센터 섹션 -->
+            <div class="agi-section">
+                <div class="agi-header">
+                    <div class="agi-avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div class="agi-title-box">
+                        <h3 data-i18n="agiTitle">AGI 삐니 고객센터</h3>
+                        <p data-i18n="agiSub">손폰(SONPONE) 자동 반응 및 AI 조율 시스템</p>
+                    </div>
+                </div>
+
+                <div class="sonpone-control">
+                    <div class="sonpone-label">
+                        <span data-i18n="sonponeLabelText">손폰(SONPONE) 감지 감도:</span>
+                        <span class="val" id="sonponeVal">99.9% (실시간 일치)</span>
+                    </div>
+                    <input type="range" class="range-slider" min="50" max="100" value="99" id="sonponeSlider" oninput="updateSonpone(this.value)">
+                </div>
+
+                <div class="chat-box" id="chatBox">
+                    <div class="chat-msg beeni" data-i18n="initialBeeniMsg">
+                        [AGI 삐니]: 테스트 파이 환경 및 60개국어 실시간 교차 추론 체계가 완벽하게 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!
+                    </div>
+                </div>
+
+                <div class="chat-input-box">
+                    <input type="text" class="chat-input" id="chatInput" data-i18n-placeholder="chatInputPlaceholder" placeholder="삐니에게 질문 입력..." onkeypress="handleKeyPress(event)">
+                    <button class="chat-send-btn" data-i18n="chatSendBtn" onclick="sendChatMessage()">전송</button>
+                </div>
+            </div>
+
+            <!-- 유튜브 & 틱톡 미디어 방송 연동 허브 -->
+            <div class="media-hub-section">
+                <div class="media-hub-header">
+                    <div class="media-hub-title">
+                        <i class="fa-solid fa-broadcast-tower" style="color: var(--accent-gold);"></i>
+                        <span data-i18n="mediaHubTitle">공식 미디어 및 방송 허브</span>
+                    </div>
+                    <span style="font-size: 10px; color: var(--accent-cyan); font-family: 'Roboto Mono', monospace;" data-i18n="liveStreamText">LIVE STREAMING</span>
+                </div>
+                <div class="media-hub-grid">
+                    <a href="https://www.youtube.com/@Hyekong2026" target="_blank" class="media-card youtube">
+                        <div class="media-icon"><i class="fa-brands fa-youtube"></i></div>
+                        <div class="media-name" data-i18n="ytName">유튜브 공식 방송</div>
+                        <div class="media-handle">@Hyekong2026</div>
+                    </a>
+                    <a href="https://www.tiktok.com/@hyekong2026" target="_blank" class="media-card tiktok">
+                        <div class="media-icon"><i class="fa-brands fa-tiktok"></i></div>
+                        <div class="media-name" data-i18n="ttName">틱톡 실시간 스트림</div>
+                        <div class="media-handle">@hyekong2026</div>
+                    </a>
+                </div>
+            </div>
         </main>
 
         <!-- 하단 푸터 -->
@@ -1223,7 +1223,7 @@
         </div>
     </div>
 
-    <!-- 60개국어 완벽 현지화 다국어 엔진 스크립트 -->
+    <!-- 60개국어 다국어 자동 동기화 엔진 스크립트 -->
     <script>
         let baseInterest = 12450892.600000;
         let currentWalletBalance = 314159.000000;
@@ -1335,22 +1335,78 @@
             }
         };
 
-        // 60개국어 자동 확장 딕셔너리 빌더 (영문 기본 fallback 제공)
+        // 60개국어 자동 다국어 맵핑 엔진 생성기
         const allLangs = ['en','zh','ja','vi','th','id','es','pt','ng','ph','hi','fr','de','ru','ar','tr','it','nl','pl','uk','ro','el','hu','cs','sv','no','da','fi','he','fa','ur','bn','ms','km','my','lo','ne','si','sw','am','ha','yo','uz','kk','az','ka','hy','mn','es-mx','pt-pt','sr','hr','bg','sk','lt','et','lv','is'];
         
         allLangs.forEach(code => {
             if(!translations[code]) {
-                translations[code] = JSON.parse(JSON.stringify(translations['en']));
-                translations[code].headerSubText = `Global Decentralized Finance [${code.toUpperCase()}]`;
-                translations[code].subTitle = "Fast Financial Operation Master Core";
-                translations[code].dashTitle = "Personal Asset Dashboard";
-                translations[code].mainnetBtnText = "Request Mainnet Now";
-                translations[code].gridSectionTitle = "Distributed Networks";
-                translations[code].agiTitle = "AGI Beeni Support";
-                translations[code].mediaHubTitle = "Official Media & Broadcast Hub";
-                translations[code].ytName = "YouTube Official Broadcast";
-                translations[code].ttName = "TikTok Live Stream";
-                translations[code].initialBeeniMsg = `[AGI Beeni]: System fully operational in [${code.toUpperCase()}]. Chairman Jaewan Lee, how may I assist you?`;
+                const base = translations['en'];
+                translations[code] = {
+                    headerSubText: `Global Decentralized Finance [${code.toUpperCase()}]`,
+                    langEngineLabel: `Localization Engine [${code.toUpperCase()}]`,
+                    subTitle: base.subTitle,
+                    dashTitle: base.dashTitle,
+                    piSyncLabel: base.piSyncLabel,
+                    interestLabel: base.interestLabel,
+                    mainnetBtnText: base.mainnetBtnText,
+                    gridSectionTitle: base.gridSectionTitle,
+                    gridSectionSub: base.gridSectionSub,
+                    agiTitle: base.agiTitle,
+                    agiSub: base.agiSub,
+                    sonponeLabelText: base.sonponeLabelText,
+                    syncText: base.syncText,
+                    initialBeeniMsg: `[AGI Beeni]: System operational in [${code.toUpperCase()}]. Chairman Jaewan Lee, at your service!`,
+                    chatInputPlaceholder: "Ask Beeni...",
+                    chatSendBtn: "Send",
+                    supportEmailText: "Support: support@hkwb.world",
+                    mediaHubTitle: "Official Media & Broadcast Hub",
+                    ytName: "YouTube Official Broadcast",
+                    ttName: "TikTok Live Stream",
+                    liveStreamText: "LIVE STREAMING",
+                    mailEdit: "Edit",
+                    mailFwd: "Forward",
+                    mailRead: "Read",
+                    mailDel: "Delete",
+                    mailMove: "Move",
+                    net1_title: "Wallet Connect",
+                    net1_desc: "Node wallet protocol auto-link",
+                    net2_title: "Transfer",
+                    net2_desc: "Multisig encrypted cross-border transfer",
+                    net3_title: "Payment",
+                    net3_desc: "Real-time commerce escrow protection",
+                    net4_title: "Vault Deposit",
+                    net4_desc: "3-Year 31.41% APY trust vault",
+                    net5_title: "Rewards",
+                    net5_desc: "Contribution incentive accrual engine",
+                    net6_title: "UBI",
+                    net6_desc: "HK Social Foundation UBI model",
+                    net7_title: "Swap",
+                    net7_desc: "Instant token purchase exchange",
+                    net8_title: "DEX Swap",
+                    net8_desc: "Decentralized orderless P2P matching",
+                    net9_title: "LP Staking",
+                    net9_desc: "PoL & periodic high-yield deposit",
+                    net10_title: "Pi Ledger",
+                    net10_desc: "Pi asset mainnet ledger sync",
+                    mainnetAlert: `[${code.toUpperCase()}] Mainnet synchronization request completed successfully!`,
+                    beeniReply: (txt) => `[AGI Beeni]: Received "${txt}". Processing in [${code.toUpperCase()}] network.`,
+                    drawerTitle: "HK NAVIGATOR",
+                    menuGroup1Title: "Core Legal & Compliance",
+                    menuGroup2Title: "HK Global Ecosystem Hubs",
+                    menu_wp: "Whitepaper v3.1",
+                    menu_faq: "FAQ Top 20",
+                    menu_pol: "3 Policies",
+                    menu_reg: "Compliance",
+                    hub_robot: "Robot: HK-ROBOT",
+                    hub_nexus: "Smart Glasses: HK-NEXUS",
+                    hub_uam: "UAM: HK-UAM",
+                    hub_fusion: "Artificial Sun: HK-FUSION",
+                    hub_bio: "Quantum Bio: HK-QUANTUMBIO",
+                    hub_space: "Space: HK-SPACE",
+                    hub_parts: "Parts Bank: HK-PARTSBANK",
+                    hub_defence: "Defence Tech: HK-DEFENCE-HUB",
+                    hub_t165: "T165 Landmark Hub (Gyeongju HQ)"
+                };
             }
         });
 
@@ -1381,17 +1437,17 @@
         function handleMailAction(actionType) {
             const t = translations[currentLang] || translations['en'];
             if (actionType === 'edit') {
-                alert("📝 " + (t.mailEdit || "수정") + ": 백엔드에서 해당 문서 원본 에디터를 엽니다.");
+                alert("📝 " + (t.mailEdit || "Edit") + ": Open document source editor.");
             } else if (actionType === 'forward') {
-                alert("📤 " + (t.mailFwd || "전달") + ": 지정된 수신처로 이메일 전달 암호화 체계를 실행합니다.");
+                alert("📤 " + (t.mailFwd || "Forward") + ": Execute encrypted email forwarding.");
             } else if (actionType === 'read') {
-                alert("👁️ " + (t.mailRead || "읽음") + ": 본 메일이 '읽음' 상태로 원장에 즉시 일치화되었습니다.");
+                alert("👁️ " + (t.mailRead || "Read") + ": Marked as read in the ledger.");
             } else if (actionType === 'delete') {
-                if(confirm("🗑️ 이 메일을 정말 삭제하시겠습니까? (휴지통으로 이동)")) {
-                    alert("메일이 안전하게 삭제 처리되었습니다.");
+                if(confirm("🗑️ Delete this email? (Move to trash)")) {
+                    alert("Email deleted successfully.");
                 }
             } else if (actionType === 'move') {
-                alert("📁 " + (t.mailMove || "이동") + ": 이동할 타겟 보관함 또는 프로젝트함을 선택하세요.");
+                alert("📁 " + (t.mailMove || "Move") + ": Select destination folder.");
             }
         }
 
@@ -1399,7 +1455,7 @@
             const t = translations[currentLang] || translations['en'];
             const sonponeValEl = document.getElementById('sonponeVal');
             if(sonponeValEl) {
-                sonponeValEl.innerText = val + "% " + (t.syncText || "(실시간 일치)");
+                sonponeValEl.innerText = val + "% " + (t.syncText || "(Live Sync)");
             }
         }
 
@@ -1428,7 +1484,7 @@
                 beeniMsg.className = 'chat-msg beeni';
                
                 const t = translations[currentLang] || translations['en'];
-                beeniMsg.innerText = typeof t.beeniReply === 'function' ? t.beeniReply(text) : `[AGI Beeni]: Received "${text}". Processing successfully.`;
+                beeniMsg.innerText = typeof t.beeniReply === 'function' ? t.beeniReply(text) : `[AGI Beeni]: Received "${text}".`;
                 chatBox.appendChild(beeniMsg);
                 chatBox.scrollTop = chatBox.scrollHeight;
             }, 600);
@@ -1474,7 +1530,7 @@
             const defaultBalStr = currentWalletBalance.toFixed(6);
 
             if (processId === 'wallet') {
-                title.innerText = t.net1_title || "지갑연결";
+                title.innerText = t.net1_title;
                 content.innerHTML = `
                     <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net1_desc}</div>
                     <div class="input-group">
@@ -1488,7 +1544,7 @@
                     <button class="action-btn" onclick="verifyAndExecute('wallet')">Approve & Connect</button>
                 `;
             } else if (processId === 'transfer') {
-                title.innerText = t.net2_title || "송금";
+                title.innerText = t.net2_title;
                 content.innerHTML = `
                     <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net2_desc}</div>
                     <div class="input-group">
@@ -1506,7 +1562,7 @@
                     <button class="action-btn" onclick="verifyAndExecute('transfer')">Execute Transfer</button>
                 `;
             } else if (processId === 'payment') {
-                title.innerText = t.net3_title || "결재";
+                title.innerText = t.net3_title;
                 content.innerHTML = `
                     <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net3_desc}</div>
                     <div class="input-group">
@@ -1520,7 +1576,7 @@
                     <button class="action-btn" onclick="verifyAndExecute('payment')">Approve Payment</button>
                 `;
             } else if (processId === 'deposit') {
-                title.innerText = t.net4_title || "예치";
+                title.innerText = t.net4_title;
                 content.innerHTML = `
                     <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net4_desc}</div>
                     <div class="input-group">
@@ -1547,7 +1603,7 @@
                 `;
                 setTimeout(updateCalc, 50);
             } else if (processId === 'reward') {
-                title.innerText = t.net5_title || "보상";
+                title.innerText = t.net5_title;
                 content.innerHTML = `
                     <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net5_desc}</div>
                     <div class="input-group">
@@ -1561,7 +1617,7 @@
                     <button class="action-btn" onclick="verifyAndExecute('reward')">Claim Rewards</button>
                 `;
             } else if (processId === 'ubi') {
-                title.innerText = t.net6_title || "기본소득";
+                title.innerText = t.net6_title;
                 content.innerHTML = `
                     <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net6_desc}</div>
                     <div class="input-group">
@@ -1575,7 +1631,7 @@
                     <button class="action-btn" onclick="verifyAndExecute('ubi')">Claim UBI</button>
                 `;
             } else if (processId === 'swap') {
-                title.innerText = t.net7_title || "스왑";
+                title.innerText = t.net7_title;
                 content.innerHTML = `
                     <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net7_desc}</div>
                     <div class="input-group">
@@ -1593,7 +1649,7 @@
                     <button class="action-btn" onclick="verifyAndExecute('swap')">Execute Swap</button>
                 `;
             } else if (processId === 'dex') {
-                title.innerText = t.net8_title || "DEX 스왑";
+                title.innerText = t.net8_title;
                 content.innerHTML = `
                     <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net8_desc}</div>
                     <div class="input-group">
@@ -1607,7 +1663,7 @@
                     <button class="action-btn" onclick="verifyAndExecute('dex')">Approve Order</button>
                 `;
             } else if (processId === 'lp') {
-                title.innerText = t.net9_title || "LP 스테이킹";
+                title.innerText = t.net9_title;
                 content.innerHTML = `
                     <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net9_desc}</div>
                     <div class="input-group">
@@ -1634,7 +1690,7 @@
                 `;
                 setTimeout(updateCalc, 50);
             } else if (processId === 'pishow') {
-                title.innerText = t.net10_title || "파이 수량";
+                title.innerText = t.net10_title;
                 content.innerHTML = `
                     <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.net10_desc}</div>
                     <div class="input-group">
@@ -1655,7 +1711,6 @@
         function verifyAndExecute(processId) {
             const codeInput = document.getElementById('userInputCode');
             const userEntered = codeInput ? codeInput.value.trim() : "";
-            const t = translations[currentLang] || translations['en'];
 
             if(userEntered !== generatedAuthCode) {
                 alert("❌ Auth code mismatch.");
@@ -1708,19 +1763,19 @@
             let bodyHtml = "";
 
             if (type === 'whitepaper') {
-                titleText = t.menu_wp || "Whitepaper";
+                titleText = t.menu_wp;
                 bodyHtml = '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700;">Whitepaper v3.1</p><p style="color:var(--text-muted); margin-top:8px;">Combining decentralized finance protocols with AGI Beeni orchestration across 60 global languages.</p></div>';
             } else if (type === 'faq') {
-                titleText = t.menu_faq || "FAQ";
+                titleText = t.menu_faq;
                 bodyHtml = '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-cyan); font-weight:700;">FAQ Top 20</p><p style="color:var(--text-muted); margin-top:8px;">All testnet transactions and ledger synchronization operate in real-time securely.</p></div>';
             } else if (type === 'policies') {
-                titleText = t.menu_pol || "3 Policies";
+                titleText = t.menu_pol;
                 bodyHtml = '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700;">Policies</p><p style="color:var(--text-muted); margin-top:8px;">Terms of Service, Security & Privacy, Compliance Policy.</p></div>';
             } else if (type === 'regulations') {
-                titleText = t.menu_reg || "Compliance";
-                bodyHtml = '<div style="font-size:12px; line-height:1.6; color:var(--text-muted);">Aligned with 11-nation digital asset regulatory frameworks.</div>';
+                titleText = t.menu_reg;
+                bodyHtml = '<div style="font-size:12px; line-height:1.6; color:var(--text-muted);">Aligned with global digital asset regulatory frameworks.</div>';
             } else if (type === 't165') {
-                titleText = t.hub_t165 || "T165 Landmark Hub";
+                titleText = t.hub_t165;
                 bodyHtml = '<div style="font-size:12px; line-height:1.6; color:var(--text-muted);">165-story HK Group global headquarters located in Gyeongju.</div>';
             }
 

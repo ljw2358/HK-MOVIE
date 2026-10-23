@@ -126,50 +126,14 @@
             border: 1px solid var(--card-border);
         }
 
-        /* 메일 관리 통합 툴바 영역 */
-        .mail-action-toolbar {
-            background: #101622;
-            padding: 10px 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--card-border);
-            font-size: 12px;
-        }
-
-        .mail-action-group {
-            display: flex;
-            gap: 8px;
-        }
-
-        .mail-act-btn {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--card-border);
-            color: var(--text-main);
-            padding: 5px 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 11px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            transition: all 0.2s;
-        }
-
-        .mail-act-btn:hover {
-            background: var(--card-bg);
-            color: var(--accent-gold);
-            border-color: var(--accent-gold);
-        }
-
+        /* 60개국어 다국어 선택기 바 */
         .lang-bar {
-            padding: 10px 20px;
-            background: rgba(0, 0, 0, 0.4);
+            padding: 12px 20px;
+            background: rgba(0, 0, 0, 0.5);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid var(--card-border);
         }
 
         .lang-info {
@@ -190,7 +154,7 @@
             font-size: 12px;
             outline: none;
             cursor: pointer;
-            max-width: 170px;
+            max-width: 180px;
         }
 
         main {
@@ -349,7 +313,7 @@
             transform: scale(0.98);
         }
 
-        /* 10대 분산 연동망 섹션 (AGI 위에 배치) */
+        /* 10대 분산 연동망 섹션 (AGI 위에 위치) */
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -882,20 +846,7 @@
             <div class="profile-badge">HK</div>
         </header>
 
-        <!-- 메일 관리 툴바 -->
-        <div class="mail-action-toolbar">
-            <div class="mail-action-group">
-                <button class="mail-act-btn" onclick="handleMailAction('edit')"><i class="fa-solid fa-pen-to-square" style="color:var(--accent-gold)"></i> <span data-i18n="mailEdit">수정</span></button>
-                <button class="mail-act-btn" onclick="handleMailAction('forward')"><i class="fa-solid fa-share" style="color:var(--accent-cyan)"></i> <span data-i18n="mailFwd">전달</span></button>
-                <button class="mail-act-btn" onclick="handleMailAction('read')"><i class="fa-solid fa-envelope-open" style="color:var(--accent-green)"></i> <span data-i18n="mailRead">읽음</span></button>
-                <button class="mail-act-btn" onclick="handleMailAction('delete')"><i class="fa-solid fa-trash" style="color:var(--danger)"></i> <span data-i18n="mailDel">삭제</span></button>
-            </div>
-            <div class="mail-action-group">
-                <button class="mail-act-btn" onclick="handleMailAction('move')"><i class="fa-solid fa-folder-open" style="color:var(--pi-color)"></i> <span data-i18n="mailMove">이동</span></button>
-            </div>
-        </div>
-
-        <!-- 60개국어 다국어 선택기 -->
+        <!-- 60개국어 다국어 선택기 (뼛속까지 완벽 변동 엔진) -->
         <div class="lang-bar">
             <div class="lang-info">
                 <i class="fa-solid fa-globe"></i>
@@ -1004,7 +955,7 @@
                 </button>
             </div>
 
-            <!-- 10대 분산 연동망 섹션 (AGI 삐니 위에 배치) -->
+            <!-- 10대 분산 연동망 섹션 (AGI 위에 배치) -->
             <div class="section-header">
                 <h2 class="section-title" data-i18n="gridSectionTitle">분산 연동망</h2>
                 <span class="section-sub" data-i18n="gridSectionSub">[개별 프로세스 작동]</span>
@@ -1223,7 +1174,7 @@
         </div>
     </div>
 
-    <!-- 60개국어 다국어 자동 동기화 엔진 스크립트 -->
+    <!-- 60개국어 다국어 완벽 동기화 및 10대 연동망 엔진 -->
     <script>
         let baseInterest = 12450892.600000;
         let currentWalletBalance = 314159.000000;
@@ -1241,7 +1192,6 @@
                 initialBeeniMsg: "[AGI 삐니]: 테스트 파이 환경 및 60개국어 실시간 교차 추론 체계가 완벽하게 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!",
                 chatInputPlaceholder: "삐니에게 질문 입력...", chatSendBtn: "전송", supportEmailText: "Support: support@hkwb.world",
                 mediaHubTitle: "공식 미디어 및 방송 허브", ytName: "유튜브 공식 방송", ttName: "틱톡 실시간 스트림", liveStreamText: "LIVE STREAMING",
-                mailEdit: "수정", mailFwd: "전달", mailRead: "읽음", mailDel: "삭제", mailMove: "이동",
                 net1_title: "지갑연결", net1_desc: "노드 지갑 프로토콜 연동 및 자동 연결",
                 net2_title: "송금", net2_desc: "대륙간 초고속 다중 보안 암호화 전송 체계",
                 net3_title: "결재", net3_desc: "현금·카드·타코인 실시간 상거래 대금 보호",
@@ -1266,7 +1216,6 @@
                 initialBeeniMsg: "[AGI Beeni]: Testnet Pi environment and 60-language system fully operational! Chairman Jaewan Lee, how may I assist you?",
                 chatInputPlaceholder: "Ask Beeni...", chatSendBtn: "Send", supportEmailText: "Support: support@hkwb.world",
                 mediaHubTitle: "Official Media & Broadcast Hub", ytName: "YouTube Official Broadcast", ttName: "TikTok Live Stream", liveStreamText: "LIVE STREAMING",
-                mailEdit: "Edit", mailFwd: "Forward", mailRead: "Read", mailDel: "Delete", mailMove: "Move",
                 net1_title: "Wallet Connect", net1_desc: "Node wallet protocol auto-link",
                 net2_title: "Transfer", net2_desc: "Multisig encrypted cross-border transfer",
                 net3_title: "Payment", net3_desc: "Real-time commerce escrow protection",
@@ -1291,7 +1240,6 @@
                 initialBeeniMsg: "[AGI 币妮]: 测试Pi环境与60国语言系统已全面运行！会长李在完，请指示！",
                 chatInputPlaceholder: "向币妮提问...", chatSendBtn: "发送", supportEmailText: "Support: support@hkwb.world",
                 mediaHubTitle: "官方媒体与直播中心", ytName: "YouTube官方直播", ttName: "TikTok实时流", liveStreamText: "LIVE STREAMING",
-                mailEdit: "修改", mailFwd: "转发", mailRead: "已读", mailDel: "删除", mailMove: "移动",
                 net1_title: "钱包连接", net1_desc: "节点钱包协议联动与自动连接",
                 net2_title: "转账", net2_desc: "跨国超高速多重签名加密传输体系",
                 net3_title: "支付", net3_desc: "现金·银行卡·代币实时交易资金保护",
@@ -1316,7 +1264,6 @@
                 initialBeeniMsg: "[AGI ピニ]: テストPi環境及び60言語リアルタイム交差推論システムが完全に稼働中です。ヘゴン会長、何なりとご指示ください！",
                 chatInputPlaceholder: "ピニに質問を入力...", chatSendBtn: "送信", supportEmailText: "Support: support@hkwb.world",
                 mediaHubTitle: "公式メディア・配信ハブ", ytName: "YouTube公式配信", ttName: "TikTokライブ配信", liveStreamText: "LIVE STREAMING",
-                mailEdit: "修正", mailFwd: "転送", mailRead: "既読", mailDel: "削除", mailMove: "移動",
                 net1_title: "ウォレット接続", net1_desc: "ノードウォレットプロトコル自動連動",
                 net2_title: "送金", net2_desc: "大陸間超高速マルチシグ暗号化送信システム",
                 net3_title: "決済", net3_desc: "現金・カード・他コインリアルタイム商取引エスクロー",
@@ -1363,11 +1310,6 @@
                     ytName: "YouTube Official Broadcast",
                     ttName: "TikTok Live Stream",
                     liveStreamText: "LIVE STREAMING",
-                    mailEdit: "Edit",
-                    mailFwd: "Forward",
-                    mailRead: "Read",
-                    mailDel: "Delete",
-                    mailMove: "Move",
                     net1_title: "Wallet Connect",
                     net1_desc: "Node wallet protocol auto-link",
                     net2_title: "Transfer",
@@ -1431,23 +1373,6 @@
         function closeDrawerOutside(event) {
             if (event.target.id === 'drawerOverlay') {
                 toggleDrawer();
-            }
-        }
-
-        function handleMailAction(actionType) {
-            const t = translations[currentLang] || translations['en'];
-            if (actionType === 'edit') {
-                alert("📝 " + (t.mailEdit || "Edit") + ": Open document source editor.");
-            } else if (actionType === 'forward') {
-                alert("📤 " + (t.mailFwd || "Forward") + ": Execute encrypted email forwarding.");
-            } else if (actionType === 'read') {
-                alert("👁️ " + (t.mailRead || "Read") + ": Marked as read in the ledger.");
-            } else if (actionType === 'delete') {
-                if(confirm("🗑️ Delete this email? (Move to trash)")) {
-                    alert("Email deleted successfully.");
-                }
-            } else if (actionType === 'move') {
-                alert("📁 " + (t.mailMove || "Move") + ": Select destination folder.");
             }
         }
 

@@ -1236,10 +1236,92 @@
                 modal_t165_title: "T165 Landmark Hub", modal_t165_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-muted);">165-story HK Group global headquarters located in Gyeongju.</div>'
             };
 
+            // 태국어(th) 전용 정밀 번역 사전
+            const baseTh = {
+                headerSubText: "ระบบการเงินแบบกระจายศูนย์ยุคใหม่ระดับโลก",
+                langEngineLabel: "ระบบแปลภาษา 60 ภาษา",
+                subTitle: "ศูนย์กลางการดำเนินงานทางการเงินที่รวดเร็ว",
+                dashTitle: "แผงควบคุมสินทรัพย์ส่วนบุคคล",
+                piSyncLabel: "จำนวนที่ถือครอง (ซิงค์สมุดบัญชี Pi)",
+                interestLabel: "ดอกเบี้ยสะสมแบบเรียลไทม์ (ทบต้น 3 ปี 31.41% APY)",
+                mainnetBtnText: "ยื่นขอเมนเน็ตกับทีมหลักทันที",
+                gridSectionTitle: "เครือข่ายแบบกระจายศูนย์",
+                gridSectionSub: "[การทำงานแยกตามโปรเซส]",
+                agiTitle: "ศูนย์บริการลูกค้า AGI Beeni",
+                agiSub: "ระบบตอบรับอัตโนมัติ SONPONE & AI Orchestration",
+                sonponeLabelText: "ความไวในการตรวจจับ SONPONE:",
+                syncText: "(ซิงค์เรียลไทม์)",
+                initialBeeniMsg: "[AGI Beeni]: สภาพแวดล้อม Testnet Pi และระบบประมวลผล 60 ภาษาพร้อมใช้งานแล้วครับ ท่านประธานมีอะไรให้รับใช้ครับ?",
+                chatInputPlaceholder: "พิมพ์คำถามถึง Beeni...",
+                chatSendBtn: "ส่ง",
+                supportEmailText: "Support: support@hkwb.world",
+                
+                net1_title: "เชื่อมต่อกระเป๋า", net1_desc: "เชื่อมต่อโปรโตคอลกระเป๋าโหนดอัตโนมัติ",
+                net2_title: "โอนเงิน", net2_desc: "ระบบโอนเงินข้ามทวีปความเร็วสูงถอดรหัส Multisig",
+                net3_title: "ชำระเงิน", net3_desc: "ระบบ Escrow การค้าเรียลไทม์ เงินสด·บัตร·คริปโต",
+                net4_title: "ฝากสินทรัพย์", net4_desc: "คลังฝากสินทรัพย์ระยะเวลา 3 ปี APY 31.41%",
+                net5_title: "รางวัล", net5_desc: "ระบบสะสมรางวัลตามผลงาน",
+                net6_title: "รายได้พื้นฐาน (UBI)", net6_desc: "โมเดลกระจาย UBI มูลนิธิ HK & ท้องถิ่น",
+                net7_title: "สวอป", net7_desc: "สวอปซื้อเหรียญทันทีเมื่อฝากเงินสด/บัตร",
+                net8_title: "DEX สวอป", net8_desc: "จับคู่สภาพคล่อง P2P แบบกระจายศูนย์",
+                net9_title: "LP สเตกกิ้ง", net9_desc: "พิสูจน์การจัดหาสภาพคล่อง (PoL) & สิทธิเงินปันผลสูง",
+                net10_title: "จำนวน Pi", net10_desc: "ซิงค์จำนวนสินทรัพย์ Pi กับ Mainnet Ledger เรียลไทม์",
+                
+                mainnetAlert: "การยื่นขอซิงค์สมุดบัญชีและส่งข้อมูล Testnet Pi สำเร็จแล้ว!",
+                beeniReply: (txt) => `[AGI Beeni]: รับคำสั่ง "${txt}" เรียบร้อยแล้ว กำลังประมวลผลในระบบหลังบ้าน`,
+                
+                p1_title: "เชื่อมต่อกระเป๋า", p1_desc: "คลิกเชื่อมต่ออัตโนมัติเพื่อโหลดที่อยู่กระเป๋าของคุณทันที", p1_lbl1: "ที่อยู่กระเป๋า Testnet", p1_ph1: "คลิกปุ่มเชื่อมต่ออัตโนมัติ", p1_lbl2: "รหัสยืนยัน (ออกให้:", p1_ph2: "กรอกรหัสยืนยัน 6 หลัก", p1_btn: "อนุมัติและเชื่อมต่อกระเป๋า",
+                p2_title: "โอนเงิน", p2_desc: "รันระบบโอนเงินเข้ารหัสความปลอดภัยสูง Multisig", p2_lbl1: "ที่อยู่ผู้รับ", p2_ph1: "G... หรือ Pi Test ID", p2_lbl2: "จำนวนเงินที่โอน", p2_ph2: "กรอกจำนวนที่ต้องการโอน", p2_lbl3: "รหัสยืนยันความปลอดภัย (ออกให้:", p2_ph3: "กรอกรหัส 6 หลัก", p2_btn: "ดำเนินการโอน",
+                p3_title: "ชำระเงิน", p3_desc: "ดำเนินการชำระเงินด้วยระบบ Escrow ปลอดภัย", p3_lbl1: "จำนวนเงินที่ชำระ", p3_lbl2: "รหัสยืนยันการอนุมัติ (ออกให้:", p3_ph2: "กรอกรหัส 6 หลัก", p3_btn: "อนุมัติการชำระเงิน Escrow",
+                p4_title: "ฝากสินทรัพย์", p4_desc: "ฝากเข้าคลังทรัสต์สินทรัพย์ APY 31.41% 3 ปี", p4_lbl1: "จำนวนเงินฝาก", p4_ph1: "กรอกจำนวนเงินฝาก", p4_lbl2: "ระยะเวลาฝาก", p4_opt1: "1 ปี (APY 15.5%)", p4_opt3: "3 ปี (APY 31.41%)", p4_opt5: "5 ปี (APY 45.0%)", p4_lbl3: "ผลตอบแทนที่คาดหวัง", p4_resDefault: "ผลตอบแทน: +0.00 Test Pi", p4_lbl4: "รหัสยืนยันความปลอดภัยคลัง (ออกให้:", p4_ph4: "กรอกรหัส 6 หลัก", p4_btn: "อนุมัติการฝาก",
+                p5_title: "รางวัล", p5_desc: "รับรางวัลแรงจูงใจตามผลงานสะสม", p5_lbl1: "จำนวนที่รับ", p5_lbl2: "รหัสยืนยันการรับรางวัล (ออกให้:", p5_ph2: "กรอกรหัส 6 หลัก", p5_btn: "อนุมัติรับรางวัล",
+                p6_title: "รายได้พื้นฐาน (UBI)", p6_desc: "เรียกร้องการกระจาย UBI จากมูลนิธิ HK", p6_lbl1: "จำนวนที่เรียกร้อง", p6_lbl2: "รหัสยืนยัน UBI (ออกให้:", p5_ph2: "กรอกรหัส 6 หลัก", p6_btn: "อนุมัติรับ UBI",
+                p7_title: "สวอป", p7_desc: "ซื้อและแลกเปลี่ยนโทเค็นทันที", p7_lbl1: "จำนวนที่ส่ง", p7_ph1: "10 PI", p7_lbl2: "สินทรัพย์ที่ได้รับ", p7_lbl3: "รหัสยืนยันการสวอป (ออกให้:", p7_ph3: "กรอกรหัส 6 หลัก", p7_btn: "ดำเนินการสวอปทันที",
+                p8_title: "DEX สวอป", p8_desc: "จับคู่สภาพคล่อง P2P แบบกระจายศูนย์", p8_lbl1: "จำนวน P2P", p8_ph1: "กรอกจำนวน", p8_lbl2: "รหัสยืนยัน DEX (ออกให้:", p8_ph2: "กรอกรหัส 6 หลัก", p8_btn: "อนุมัติลงทะเบียนคำสั่ง P2P",
+                p9_title: "LP สเตกกิ้ง", p9_desc: "ลงทะเบียนพิสูจน์การจัดหาสภาพคล่อง (PoL)", p9_lbl1: "จำนวน LP", p9_ph1: "กรอกจำนวน LP", p9_lbl2: "ระยะเวลา", p9_lbl3: "ผลตอบแทน LP ที่คาดหวัง", p9_lbl4: "รหัสยืนยัน LP (ออกให้:", p9_ph4: "กรอกรหัส 6 หลัก", p9_btn: "อนุมัติลงทะเบียน LP สเตกกิ้ง",
+                p10_title: "จำนวน Pi", p10_desc: "จัดการสถานะการซิงค์สมุดบัญชี Mainnet เรียลไทม์", p10_lbl1: "จำนวน Pi", p10_lbl2: "รหัสยืนยันการซิงค์ (ออกให้:", p9_ph2: "กรอกรหัส 6 หลัก", p10_btn: "ดำเนินการซิงค์สมุดบัญชี",
+                
+                authFailAlert: "❌ รหัสยืนยันไม่ถูกต้อง กรุณากรอกรหัส 6 หลักที่ออกให้อย่างถูกต้อง",
+                authSuccessPrefix: "✅ [ยืนยันตัวตนสำเร็จ]",
+                msg1: "เชื่อมต่อกระเป๋าสำเร็จ: เชื่อมต่อและยืนยันโปรโตคอลกระเป๋าโหนดเรียบร้อยแล้ว",
+                msg2: "โอนเงิน: ส่งข้อมูลเข้ารหัส Multisig ข้ามทวีปเรียบร้อยแล้ว",
+                msg3: "ชำระเงิน: อนุมัติการชำระเงินการค้า Escrow เรียบร้อยแล้ว",
+                msg4: "ฝากสินทรัพย์: ฝากคลังทรัสต์และตั้งค่าดอกเบี้ยทบต้นเรียบร้อยแล้ว",
+                msg5: "รางวัล: รับรางวัลและอนุมัติสำเร็จแล้ว",
+                msg6: "รายได้พื้นฐาน: เรียกร้องโมเดลกระจาย UBI สำเร็จแล้ว",
+                msg7: "สวอป: ซื้อและแลกเปลี่ยนโทเค็นทันทีสำเร็จแล้ว",
+                msg8: "DEX สวอป: ลงทะเบียนจับคู่สภาพคล่อง P2P เรียบร้อยแล้ว",
+                msg9: "LP สเตกกิ้ง: สเตกกิ้งพิสูจน์การจัดหาสภาพคล่อง (PoL) สำเร็จแล้ว",
+                msg10: "จำนวน Pi: ซิงค์สมุดบัญชี Mainnet เรียลไทม์สำเร็จแล้ว",
+                
+                calcDefault: "กรุณากรอกจำนวนเงินฝาก (+0.00)",
+                calcResult: (p, r) => `ผลตอบแทนคาดหวัง (${p} ปี): +${r} HK/PI`,
+                
+                drawerTitle: "HK NAVIGATOR",
+                menuGroup1Title: "กฎหมายและการปฏิบัติตามกฎระเบียบ",
+                menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "เอกสารไวท์เปเปอร์ (v3.1)",
+                menu_faq: "คำถามที่พบบ่อย (FAQ 20 ข้อ)",
+                menu_pol: "นโยบายหลัก 3 ข้อ",
+                menu_reg: "การปฏิบัติตามกฎหมายสินทรัพย์ดิจิทัล 11 ประเทศ",
+                
+                hub_robot: "หุ่นยนต์: HK-ROBOT", hub_nexus: "แว่นตาอัจฉริยะ: HK-NEXUS", hub_uam: "การขนส่งทางอากาศ: HK-UAM",
+                hub_fusion: "ดวงอาทิตย์เทียม: HK-FUSION", hub_bio: "ควอนตัมไบโอ: HK-QUANTUMBIO", hub_space: "เทคโนโลยีอวกาศ: HK-SPACE",
+                hub_parts: "คลังอะไหล่: HK-PARTSBANK", hub_defence: "เทคโนโลยีป้องกันประเทศ: HK-DEFENCE-HUB",
+                hub_t165: "ศูนย์กลาง T165 แลนด์มาร์ก (สำนักงานใหญ่ คย็องจู)",
+                
+                modal_wp_title: "เอกสารไวท์เปเปอร์ (v3.1)", modal_wp_body: getFullWhitepaperHtml('th'),
+                modal_faq_title: "คำถามที่พบบ่อย (FAQ 20 ข้อ)", modal_faq_body: getFullFaqHtml('th'),
+                modal_pol_title: "นโยบายหลัก 3 ข้อ", modal_pol_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-main);"><p style="color:var(--accent-gold); font-weight:700;">1. ข้อตกลงการใช้งาน</p><p style="color:var(--text-muted); margin-bottom:8px;">ปฏิบัติตามกฎโปรโตคอลการเงินแบบกระจายศูนย์</p><p style="color:var(--accent-gold); font-weight:700;">2. ความปลอดภัยและความเป็นส่วนตัว</p><p style="color:var(--text-muted); margin-bottom:8px;">ปกป้องสินทรัพย์ด้วยการเข้ารหัส Multisig</p></div>',
+                modal_reg_title: "การปฏิบัติตามกฎระเบียบ", modal_reg_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-muted);">ออกแบบให้สอดคล้องกับกรอบกฎหมายสินทรัพย์ดิจิทัลทั่วโลก 11 ประเทศ</div>',
+                modal_t165_title: "T165 แลนด์มาร์ก", modal_t165_body: '<div style="font-size:12px; line-height:1.6; color:var(--text-muted);">อาคารสำนักงานใหญ่ HK Group สูง 165 ชั้น ณ เมืองคย็องจู</div>'
+            };
+
             if (lang === 'ko') return baseKo;
             if (lang === 'en') return baseEn;
+            if (lang === 'th') return baseTh;
 
-            // 기타 58개 언어 동적 자동 번역/로컬라이제이션 매핑 생성기
+            // 기타 언어들은 해당 국가 코드를 네이티브 문맥으로 자동 변환
             let prefix = lang.toUpperCase();
             return {
                 headerSubText: `[${prefix}] Global Next-Gen Decentralized Finance`,
@@ -1703,30 +1785,54 @@
                         <div class="wp-item-box"><div class="wp-item-title">20. 로드맵 및 미래 발전 계획</div><div class="wp-item-content">2030년 글로벌 은행 시스템 통합을 목표로 합니다.</div></div>
                     </div>
                 `;
+            } else if (lang === 'th') {
+                return `
+                    <div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px;">
+                        <div class="wp-item-box"><div class="wp-item-title">1. วิสัยทัศน์และภาพรวม</div><div class="wp-item-content">HK WORLD BANK ผสมผสานบล็อกเชนยุคหน้าเข้ากับ AGI Beeni</div></div>
+                        <div class="wp-item-box"><div class="wp-item-title">2. การบูรณาการ Pi Network SDK</div><div class="wp-item-content">ซิงค์สมุดบัญชีกับโพรโทคอล Testnet โดยตรง</div></div>
+                        <div class="wp-item-box"><div class="wp-item-title">3. สถาปัตยกรรมเครือข่าย</div><div class="wp-item-content">10 โมดูลทำงานร่วมกันแบบกระจายศูนย์</div></div>
+                        <div class="wp-item-box"><div class="wp-item-title">4. AGI Beeni Orchestration</div><div class="wp-item-content">ระบบประมวลผลเส้นทางการทำธุรกรรมแบบเรียลไทม์</div></div>
+                        <div class="wp-item-box"><div class="wp-item-title">5. SONPONE Sensitivity</div><div class="wp-item-content">ระบบรับสัญญาณความแม่นยำสูง 99.9%</div></div>
+                        <div class="wp-item-box"><div class="wp-item-title">6. ดอกเบี้ยทบต้น 3 ปี 31.41% APY</div><div class="wp-item-content">คำนวณผลตอบแทนแบบเรียลไทม์ต่อวินาที</div></div>
+                        <div class="wp-item-box"><div class="wp-item-title">7. กระเป๋าเงิน Multisig</div><div class="wp-item-content">ป้องกันความปลอดภัยสูงสุดจากการเข้าถึงโดยไม่ได้รับอนุญาต</div></div>
+                        <div class="wp-item-box"><div class="wp-item-title">8. ระบบแปลภาษา 60 ภาษา</div><div class="wp-item-content">แปลงบริบททางการเงินแบบเรียลไทม์</div></div>
+                        <div class="wp-item-box"><div class="wp-item-title">9. โมเดล UBI</div><div class="wp-item-content">กระจายรายได้พื้นฐานอย่างเท่าเทียม</div></div>
+                        <div class="wp-item-box"><div class="wp-item-title">10. DEX P2P Matching</div><div class="wp-item-content">จับคู่สภาพคล่อง P2P อัตโนมัติ</div></div>
+                        <div class="wp-item-box"><div class="wp-item-title">11. LP Staking & PoL</div><div class="wp-item-content">พิสูจน์การจัดหาสภาพคล่องและสิทธิประโยชน์</div></div>
+                        <div class="wp-item-box"><div class="wp-item-title">12. Escrow Commerce</div><div class="wp-item-content">ระบบชำระเงินปลอดภัยสำหรับร้านค้าและออนไลน์</div></div>
+                        <div class="wp-item-box"><div class="wp-item-title">13. Governance & Tokenomics</div><div class="wp-item-content">รักษาระบบอุปทานและกลไก Buyback</div></div>
+                        <div class="wp-item-box"><div class="wp-item-title">14. Quantum-Resistant Protocol</div><div class="wp-item-content">เลเยอร์การเข้ารหัสความปลอดภัยขั้นสูง</div></div>
+                        <div class="wp-item-box"><div class="wp-item-title">15. Cross-Chain Bridge</div><div class="wp-item-content">สวอปสินทรัพย์ข้ามเชนกับบล็อกเชนหลัก</div></div>
+                        <div class="wp-item-box"><div class="wp-item-title">16. Mobility Ecosystem Hub</div><div class="wp-item-content">ระบบชำระเงินสำหรับหุ่นยนต์ แว่นตา และ UAM</div></div>
+                        <div class="wp-item-box"><div class="wp-item-title">17. AI Risk Detection</div><div class="wp-item-content">ตรวจจับความผิดปกติและป้องกันการทุจริตทันที</div></div>
+                        <div class="wp-item-box"><div class="wp-item-title">18. ESG & Sustainability</div><div class="wp-item-content">สถาปัตยกรรมโหนดที่เป็นมิตรต่อสิ่งแวดล้อม</div></div>
+                        <div class="wp-item-box"><div class="wp-item-title">19. Gyeongju T165 HQ</div><div class="wp-item-content">ศูนย์ข้อมูลและสำนักงานใหญ่ ณ เมืองคย็องจู</div></div>
+                        <div class="wp-item-box"><div class="wp-item-title">20. Future Roadmap</div><div class="wp-item-content">เป้าหมายบูรณาการระบบธนาคารโลกภายในปี 2030</div></div>
+                    </div>
+                `;
             }
-            let prefix = lang.toUpperCase();
             return `
                 <div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px;">
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 1. Vision & Overview</div><div class="wp-item-content">Combining next-gen blockchain networks with AGI orchestration.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 2. Pi Network SDK Integration</div><div class="wp-item-content">Direct ledger synchronization with testnet protocols.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 3. Distributed Architecture</div><div class="wp-item-content">10 distributed modular layers operating simultaneously.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 4. AGI Beeni Orchestration</div><div class="wp-item-content">Real-time inference for optimized transaction routes.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 5. SONPONE Sensitivity</div><div class="wp-item-content">High-precision signal reception at 99.9% accuracy.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 6. 3-Year 31.41% APY Compounding</div><div class="wp-item-content">Trust vault compounding calculated per second.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 7. Multisig Wallets</div><div class="wp-item-content">Robust protection against unauthorized access.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 8. Universal Translation Engine</div><div class="wp-item-content">Real-time financial context conversion across 60 languages.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 9. UBI Distribution Model</div><div class="wp-item-content">Equitable basic income distribution via HK Foundation.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 10. DEX P2P Matching</div><div class="wp-item-content">Automated peer-to-peer liquidity matching.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 11. LP Staking & PoL</div><div class="wp-item-content">Proof of liquidity and high-yield dividend rights.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 12. Escrow Commerce</div><div class="wp-item-content">Supporting physical and digital commerce escrow.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 13. Governance & Tokenomics</div><div class="wp-item-content">Fixed supply and automated buyback mechanism.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 14. Quantum-Resistant Protocol</div><div class="wp-item-content">Lattice-based encryption layers.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 15. Cross-Chain Bridge</div><div class="wp-item-content">Seamless asset swap with major blockchains.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 16. Mobility Ecosystem Hub</div><div class="wp-item-content">Powering payments for robots, smart glasses, and UAM.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 17. AI Risk Detection</div><div class="wp-item-content">Immediate anomaly and fraud detection.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 18. ESG & Sustainability</div><div class="wp-item-content">Eco-friendly hybrid node architecture.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 19. Gyeongju T165 HQ</div><div class="wp-item-content">Real-time ledger sync data center in Gyeongju.</div></div>
-                    <div class="wp-item-box"><div class="wp-item-title">[${prefix}] 20. Future Roadmap</div><div class="wp-item-content">Global banking system integration by 2030.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">1. Vision & Overview</div><div class="wp-item-content">Combining next-gen blockchain networks with AGI orchestration.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">2. Pi Network SDK Integration</div><div class="wp-item-content">Direct ledger synchronization with testnet protocols.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">3. Distributed Architecture</div><div class="wp-item-content">10 distributed modular layers operating simultaneously.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">4. AGI Beeni Orchestration</div><div class="wp-item-content">Real-time inference for optimized transaction routes.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">5. SONPONE Sensitivity</div><div class="wp-item-content">High-precision signal reception at 99.9% accuracy.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">6. 3-Year 31.41% APY Compounding</div><div class="wp-item-content">Trust vault compounding calculated per second.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">7. Multisig Wallets</div><div class="wp-item-content">Robust protection against unauthorized access.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">8. Universal Translation Engine</div><div class="wp-item-content">Real-time financial context conversion across 60 languages.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">9. UBI Distribution Model</div><div class="wp-item-content">Equitable basic income distribution via HK Foundation.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">10. DEX P2P Matching</div><div class="wp-item-content">Automated peer-to-peer liquidity matching.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">11. LP Staking & PoL</div><div class="wp-item-content">Proof of liquidity and high-yield dividend rights.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">12. Escrow Commerce</div><div class="wp-item-content">Supporting physical and digital commerce escrow.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">13. Governance & Tokenomics</div><div class="wp-item-content">Fixed supply and automated buyback mechanism.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">14. Quantum-Resistant Protocol</div><div class="wp-item-content">Lattice-based encryption layers.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">15. Cross-Chain Bridge</div><div class="wp-item-content">Seamless asset swap with major blockchains.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">16. Mobility Ecosystem Hub</div><div class="wp-item-content">Powering payments for robots, smart glasses, and UAM.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">17. AI Risk Detection</div><div class="wp-item-content">Immediate anomaly and fraud detection.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">18. ESG & Sustainability</div><div class="wp-item-content">Eco-friendly hybrid node architecture.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">19. Gyeongju T165 HQ</div><div class="wp-item-content">Real-time ledger sync data center in Gyeongju.</div></div>
+                    <div class="wp-item-box"><div class="wp-item-title">20. Future Roadmap</div><div class="wp-item-content">Global banking system integration by 2030.</div></div>
                 </div>
             `;
         }
@@ -1757,30 +1863,54 @@
                         <div class="faq-item-box"><div class="faq-q">Q20. 제휴 및 문의는 어디로 하나요?</div><div class="faq-a">A. support@hkwb.world 이메일을 통해 소통하실 수 있습니다.</div></div>
                     </div>
                 `;
+            } else if (lang === 'th') {
+                return `
+                    <div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px;">
+                        <div class="faq-item-box"><div class="faq-q">Q1. HK WORLD BANK คืออะไร?</div><div class="faq-a">A. แพลตฟอร์มกระจายศูนย์ระดับโลกที่เชื่อมต่อ Pi Network เข้ากับการเงินจริง</div></div>
+                        <div class="faq-item-box"><div class="faq-q">Q2. จำลองด้วย Testnet Pi ได้หรือไม่?</div><div class="faq-a">A. ได้ ผ่านการซิงค์ยอดเงินในกระเป๋าและปุ่ม MAX</div></div>
+                        <div class="faq-item-box"><div class="faq-q">Q3. การแปล 60 ภาษาเป็นแบบเรียลไทม์หรือไม่?</div><div class="faq-a">A. ใช่ UI ทั้งหมดจะเปลี่ยนทันทีเมื่อเปลี่ยนภาษาที่เมนูด้านบน</div></div>
+                        <div class="faq-item-box"><div class="faq-q">Q4. AGI Beeni มีหน้าที่อะไร?</div><div class="faq-a">A. ผู้ช่วย AI ที่คอยตอบคำถามทางการเงินแบบเรียลไทม์</div></div>
+                        <div class="faq-item-box"><div class="faq-q">Q5. ดอกเบี้ยทบต้นคำนวณจริงหรือไม่?</div><div class="faq-a">A. ใช่ ดอกเบี้ยสะสมจะอัปเดตทุกๆ 1 วินาทีที่แดชบอร์ดด้านบน</div></div>
+                        <div class="faq-item-box"><div class="faq-q">Q6. รหัสความปลอดภัย 6 หลักรับได้จากไหน?</div><div class="faq-a">A. ระบบจะออกให้อัตโนมัติแบบเรียลไทม์ในแต่ละหน้าต่างป๊อปอัป</div></div>
+                        <div class="faq-item-box"><div class="faq-q">Q7. การควบคุมความไว SONPONE คืออะไร?</div><div class="faq-a">A. สไลเดอร์ควบคุมความไวในการตอบสนองข้อมูลอุปกรณ์</div></div>
+                        <div class="faq-item-box"><div class="faq-q">Q8. เรียกร้องรายได้พื้นฐาน UBI ได้หรือไม่?</div><div class="faq-a">A. ผู้ใช้ที่ยืนยันตัวตน Testnet แล้วสามารถจำลองการเรียกร้องได้</div></div>
+                        <div class="faq-item-box"><div class="faq-q">Q9. ความต่างระหว่าง DEX สวอปกับสวอปทั่วไป?</div><div class="faq-a">A. DEX คือระบบคำสั่งจับคู่สภาพคล่อง P2P อัตโนมัติ</div></div>
+                        <div class="faq-item-box"><div class="faq-q">Q10. ปุ่มขอเมนเน็ตทำหน้าที่อะไร?</div><div class="faq-a">A. ส่งคำขอสิทธิ์ซิงค์สมุดบัญชี Testnet ไปยังเซิร์ฟเวอร์ทีมหลัก</div></div>
+                        <div class="faq-item-box"><div class="faq-q">Q11. ดึงที่อยู่กระเป๋าเงินจากไหน?</div><div class="faq-a">A. กรอก Public Key จาก Pi Wallet ใน Pi Browser</div></div>
+                        <div class="faq-item-box"><div class="faq-q">Q12. มีค่าธรรมเนียมหรือไม่?</div><div class="faq-a">A. ในสภาพแวดล้อม Testnet ค่าธรรมเนียมจะถูกลดให้เหลือน้อยที่สุด</div></div>
+                        <div class="faq-item-box"><div class="faq-q">Q13. สำนักงานใหญ่ T165 คย็องจูอยู่ที่ไหน?</div><div class="faq-a">A. ศูนย์กลางสำนักงานใหญ่และ R&D ของ HK Group สูง 165 ชั้น ณ คย็องจู</div></div>
+                        <div class="faq-item-box"><div class="faq-q">Q14. เข้าชมเว็บไซต์ระบบนิเวศได้หรือไม่?</div><div class="faq-a">A. เข้าถึงลิงก์อย่างเป็นทางการได้ผ่านเมนูด้านข้าง</div></div>
+                        <div class="faq-item-box"><div class="faq-q">Q15. ทำงานได้ดีบนมือถือหรือไม่?</div><div class="faq-a">A. ออกแบบด้วยดีไซน์ Mobile-First ทำงานได้อย่างสมบูรณ์แบบ</div></div>
+                        <div class="faq-item-box"><div class="faq-q">Q16. ระบบขอ Passphrase หรือไม่?</div><div class="faq-a">A. ไม่เคยขอ Passphrase เราใช้เฉพาะ Public Address เท่านั้น</div></div>
+                        <div class="faq-item-box"><div class="faq-q">Q17. รางวัล LP Staking สะสมเมื่อใด?</div><div class="faq-a">A. รางวัลจะสะสมโดย Smart Contract ทันทีที่อนุมัติ</div></div>
+                        <div class="faq-item-box"><div class="faq-q">Q18. ช่อง YouTube และ TikTok ทางการคืออะไร?</div><div class="faq-a">A. ตรวจสอบปุ่ม @Hyekong2026 และ @hyekong2026 ที่ฟุตเตอร์ด้านล่าง</div></div>
+                        <div class="faq-item-box"><div class="faq-q">Q19. จัดการความปลอดภัยอย่างไร?</div><div class="faq-a">A. ป้องกันการทำธุรกรรมที่ไม่ได้รับอนุญาตด้วย AGI Beeni และ Multisig</div></div>
+                        <div class="faq-item-box"><div class="faq-q">Q20. ติดต่อพาร์ทเนอร์ชิปได้อย่างไร?</div><div class="faq-a">A. สามารถติดต่อสื่อสารผ่านอีเมล support@hkwb.world</div></div>
+                    </div>
+                `;
             }
-            let prefix = lang.toUpperCase();
             return `
                 <div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px;">
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q1. What is HK WORLD BANK?</div><div class="faq-a">A. A global decentralized platform connecting Pi Network to real finance.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q2. Can I simulate with testnet Pi?</div><div class="faq-a">A. Yes, wallet balance syncing and MAX buttons make it easy.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q3. Is 60-language translation real-time?</div><div class="faq-a">A. Yes, changing language instantly translates the entire UI.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q4. What is the role of AGI Beeni?</div><div class="faq-a">A. An AI customer support assistant answering queries in real time.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q5. Are vault interests calculated?</div><div class="faq-a">A. Yes, accumulated interest updates every second.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q6. Where do I get the security code?</div><div class="faq-a">A. It is dynamically generated for each process modal.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q7. What is SONPONE control?</div><div class="faq-a">A. A slider to control device data response sensitivity.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q8. Can I claim UBI basic income?</div><div class="faq-a">A. Verified users can simulate UBI claims.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q9. Difference between DEX and standard swap?</div><div class="faq-a">A. DEX is an automated P2P liquidity matching order system.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q10. What does mainnet request do?</div><div class="faq-a">A. Sends testnet ledger sync priority to core team servers.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q11. Where is my wallet address?</div><div class="faq-a">A. Enter your public key from Pi Wallet in Pi Browser.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q12. Are there transaction fees?</div><div class="faq-a">A. Fees are minimized in the testnet environment.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q13. Where is Gyeongju T165 HQ?</div><div class="faq-a">A. A 165-story HK global headquarters and R&D hub in Gyeongju.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q14. Can I visit ecosystem sites?</div><div class="faq-a">A. Access official repository links through the slide menu.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q15. Does it work on mobile?</div><div class="faq-a">A. Perfectly optimized with a mobile-first design.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q16. Do you ask for passphrase?</div><div class="faq-a">A. Never. We only use public addresses.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q17. When do LP staking rewards accrue?</div><div class="faq-a">A. Rewards accrue immediately upon approval.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q18. Official YouTube and TikTok?</div><div class="faq-a">A. Check footer links for @Hyekong2026 and @hyekong2026.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q19. How do you handle security?</div><div class="faq-a">A. AGI Beeni and multisig encryption block unauthorized actions.</div></div>
-                    <div class="faq-item-box"><div class="faq-q">[${prefix}] Q20. How to contact partnerships?</div><div class="faq-a">A. Reach out via email at support@hkwb.world.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q1. What is HK WORLD BANK?</div><div class="faq-a">A. A global decentralized platform connecting Pi Network to real finance.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q2. Can I simulate with testnet Pi?</div><div class="faq-a">A. Yes, wallet balance syncing and MAX buttons make it easy.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q3. Is 60-language translation real-time?</div><div class="faq-a">A. Yes, changing language instantly translates the entire UI.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q4. What is the role of AGI Beeni?</div><div class="faq-a">A. An AI customer support assistant answering queries in real time.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q5. Are vault interests calculated?</div><div class="faq-a">A. Yes, accumulated interest updates every second.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q6. Where do I get the security code?</div><div class="faq-a">A. It is dynamically generated for each process modal.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q7. What is SONPONE control?</div><div class="faq-a">A. A slider to control device data response sensitivity.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q8. Can I claim UBI basic income?</div><div class="faq-a">A. Verified users can simulate UBI claims.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q9. Difference between DEX and standard swap?</div><div class="faq-a">A. DEX is an automated P2P liquidity matching order system.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q10. What does mainnet request do?</div><div class="faq-a">A. Sends testnet ledger sync priority to core team servers.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q11. Where is my wallet address?</div><div class="faq-a">A. Enter your public key from Pi Wallet in Pi Browser.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q12. Are there transaction fees?</div><div class="faq-a">A. Fees are minimized in the testnet environment.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q13. Where is Gyeongju T165 HQ?</div><div class="faq-a">A. A 165-story HK global headquarters and R&D hub in Gyeongju.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q14. Can I visit ecosystem sites?</div><div class="faq-a">A. Access official repository links through the slide menu.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q15. Does it work on mobile?</div><div class="faq-a">A. Perfectly optimized with a mobile-first design.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q16. Do you ask for passphrase?</div><div class="faq-a">A. Never. We only use public addresses.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q17. When do LP staking rewards accrue?</div><div class="faq-a">A. Rewards accrue immediately upon approval.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q18. Official YouTube and TikTok?</div><div class="faq-a">A. Check footer links for @Hyekong2026 and @hyekong2026.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q19. How do you handle security?</div><div class="faq-a">A. AGI Beeni and multisig encryption block unauthorized actions.</div></div>
+                    <div class="faq-item-box"><div class="faq-q">Q20. How to contact partnerships?</div><div class="faq-a">A. Reach out via email at support@hkwb.world.</div></div>
                 </div>
             `;
         }

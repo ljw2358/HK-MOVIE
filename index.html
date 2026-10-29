@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -126,7 +127,7 @@
             border: 1px solid var(--card-border);
         }
 
-        /* 12대 글로벌 언어 선택 바 */
+        /* 19대 글로벌 언어 선택 바 */
         .lang-bar {
             padding: 12px 20px;
             background: rgba(0, 229, 255, 0.05);
@@ -156,7 +157,7 @@
             outline: none;
             cursor: pointer;
             font-weight: 700;
-            max-width: 175px;
+            max-width: 185px;
         }
 
         main {
@@ -827,25 +828,32 @@
             <div class="profile-badge">HK</div>
         </header>
 
-        <!-- 🌐 12대 글로벌 언어 선택 바 -->
+        <!-- 🌐 19대 글로벌 언어 선택 바 -->
         <div class="lang-bar">
             <div class="lang-info">
                 <i class="fa-solid fa-globe"></i>
-                <span data-i18n="langEngineLabel">12대 글로벌 언어 선택</span>
+                <span data-i18n="langEngineLabel">19대 글로벌 언어 선택</span>
             </div>
             <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
-                <option value="ko" selected>🇰🇷 한국어 (Korean)</option>
-                <option value="en">🇺🇸 English (US)</option>
-                <option value="zh">🇨🇳 中文 (Chinese)</option>
-                <option value="ja">🇯🇵 日本語 (Japanese)</option>
-                <option value="es">🇪🇸 Español (Spanish)</option>
-                <option value="fr">🇫🇷 Français (French)</option>
-                <option value="de">🇩🇪 Deutsch (German)</option>
-                <option value="ru">🇷🇺 Русский (Russian)</option>
-                <option value="ar">🇸🇦 العربية (Arabic)</option>
-                <option value="vi">🇻🇳 Tiếng Việt (Vietnamese)</option>
+                <option value="ko" selected>🇰🇷 한국어</option>
+                <option value="en">🇺🇸 English</option>
+                <option value="zh">🇨🇳 中文</option>
+                <option value="ja">🇯🇵 日本語</option>
+                <option value="es">🇪🇸 Español</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="de">🇩🇪 Deutsch</option>
+                <option value="ru">🇷🇺 Русский</option>
+                <option value="ar">🇸🇦 العربية</option>
+                <option value="vi">🇻🇳 Tiếng Việt</option>
                 <option value="id">🇮🇩 Bahasa Indonesia</option>
-                <option value="pt">🇧🇷 Português (Portuguese)</option>
+                <option value="pt">🇧🇷 Português</option>
+                <option value="it">🇮🇹 Italiano</option>
+                <option value="tr">🇹🇷 Türkçe</option>
+                <option value="hi">🇮🇳 हिन्दी</option>
+                <option value="th">🇹🇭 ไทย</option>
+                <option value="nl">🇳🇱 Nederlands</option>
+                <option value="pl">🇵🇱 Polski</option>
+                <option value="uk">🇺🇦 Українська</option>
             </select>
         </div>
 
@@ -997,7 +1005,7 @@
 
                 <div class="chat-box" id="chatBox">
                     <div class="chat-msg beeni" data-i18n="initialBeeniMsg">
-                        [AGI 삐니]: 테스트 파이 환경 및 12대 글로벌 언어 실시간 교차 추론 시스템이 완벽하게 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!
+                        [AGI 삐니]: 테스트 파이 환경 및 19대 글로벌 언어 실시간 교차 추론 시스템이 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!
                     </div>
                 </div>
 
@@ -1093,7 +1101,7 @@
         </div>
     </div>
 
-    <!-- JavaScript 플랫폼 로직 및 12대 글로벌 언어 번역 엔진 -->
+    <!-- JavaScript 플랫폼 로직 및 19대 글로벌 언어 번역 엔진 -->
     <script>
         let baseInterest = 12450892.600000;
         let currentWalletBalance = 314159.000000;
@@ -1104,11 +1112,11 @@
 
         const translations = {
             ko: {
-                headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "12대 글로벌 언어 선택", subTitle: "빠른 금융 작업 마스터 코어",
+                headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "19대 글로벌 언어 선택", subTitle: "빠른 금융 작업 마스터 코어",
                 dashTitle: "개인 자산 대시보드", piSyncLabel: "보유 수량 (PI 수량 원장 동기화)", interestLabel: "실시간 누적 이자 (3년 31.41% APY 복리)",
                 mainnetBtnText: "코어팀에게 메인넷 즉시 신청하기", gridSectionTitle: "분산 연동망", gridSectionSub: "[개별 프로세스 작동]",
                 agiTitle: "AGI 삐니 고객센터", agiSub: "손폰(SONPONE) 자동 반응 및 AI 오케스트레이션", sonponeLabelText: "손폰(SONPONE) 감지 감도:", syncText: "(실시간 싱크)",
-                initialBeeniMsg: "[AGI 삐니]: 테스트 파이 환경 및 12대 글로벌 언어 실시간 교차 추론 시스템이 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!",
+                initialBeeniMsg: "[AGI 삐니]: 테스트 파이 환경 및 19대 글로벌 언어 실시간 교차 추론 시스템이 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!",
                 chatInputPlaceholder: "삐니에게 질문 입력...", chatSendBtn: "전송", supportEmailText: "Support: support@hkwb.world",
                 net1_title: "지갑연결", net1_desc: "노드 지갑 프로토콜 연동 및 자동 연동", net2_title: "송금", net2_desc: "대륙간 초고속 멀티시그 암호화 전송 시스템",
                 net3_title: "결재", net3_desc: "현금·카드·타코인 실시간 상거래 에스크로", net4_title: "예치", net4_desc: "3년 만기 31.41% APY 자산 신탁 볼트",
@@ -1122,11 +1130,11 @@
                 hub_robot: "로봇: HK-ROBOT", hub_nexus: "스마트 글래스: HK-NEXUS", hub_uam: "도심항공교통: HK-UAM", hub_fusion: "인공태양: HK-FUSION", hub_bio: "퀀텀바이오: HK-QUANTUMBIO", hub_space: "우주모빌리티: HK-SPACE", hub_parts: "부품뱅크: HK-PARTSBANK", hub_defence: "국방기술: HK-DEFENCE-HUB", hub_t165: "T165 초특급 랜드마크 허브 (경주 사옥)"
             },
             en: {
-                headerSubText: "Global Next-Gen Decentralized Finance", langEngineLabel: "12 Global Languages", subTitle: "Fast Financial Operation Master Core",
+                headerSubText: "Global Next-Gen Decentralized Finance", langEngineLabel: "19 Global Languages", subTitle: "Fast Financial Operation Master Core",
                 dashTitle: "Personal Asset Dashboard", piSyncLabel: "Balance (PI Ledger Synchronization)", interestLabel: "Real-Time Accumulated Interest (3-Yr 31.41% APY Compounding)",
                 mainnetBtnText: "Apply for Mainnet to Core Team Immediately", gridSectionTitle: "Distributed Networks", gridSectionSub: "[Individual Process Execution]",
                 agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Response & AI Orchestration", sonponeLabelText: "SONPONE Sensitivity:", syncText: "(Live Sync)",
-                initialBeeniMsg: "[AGI Beeni]: Test Pi environment & 12 global language cross-inference system are active. Chairman Hyekong, please give your command!",
+                initialBeeniMsg: "[AGI Beeni]: Test Pi environment & 19 global language cross-inference system are active. Chairman Hyekong, please give your command!",
                 chatInputPlaceholder: "Ask Beeni...", chatSendBtn: "Send", supportEmailText: "Support: support@hkwb.world",
                 net1_title: "Wallet Connect", net1_desc: "Node wallet protocol linking & auto sync", net2_title: "Transfer", net2_desc: "Intercontinental high-speed multisig encrypted transfer",
                 net3_title: "Payment", net3_desc: "Cash, card, & multi-coin real-time commerce escrow", net4_title: "Vault Deposit", net4_desc: "3-year maturity 31.41% APY asset trust vault",
@@ -1140,11 +1148,11 @@
                 hub_robot: "Robotics: HK-ROBOT", hub_nexus: "Smart Glass: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Artificial Sun: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "T165 Landmark Hub (Gyeongju HQ)"
             },
             zh: {
-                headerSubText: "全球下一代去中心化金融", langEngineLabel: "12大全球语言选择", subTitle: "快速金融操作核心",
+                headerSubText: "全球下一代去中心化金融", langEngineLabel: "19大全球语言选择", subTitle: "快速金融操作核心",
                 dashTitle: "个人资产仪表盘", piSyncLabel: "持有数量 (PI账本实时同步)", interestLabel: "实时累计利息 (3年 31.41% APY 复利)",
                 mainnetBtnText: "立即向核心团队申请主网", gridSectionTitle: "分布式联动网", gridSectionSub: "[独立进程运行]",
                 agiTitle: "AGI 币妮客服中心", agiSub: "SONPONE 自动响应与 AI 编排", sonponeLabelText: "SONPONE 灵敏度:", syncText: "(实时同步)",
-                initialBeeniMsg: "[AGI 币妮]: 测试派环境及12大全球语言跨域推理系统已全面运行。惠公兄长，请随时下达指示！",
+                initialBeeniMsg: "[AGI 币妮]: 测试派环境及19大全球语言跨域推理系统已全面运行。惠公兄长，请随时下达指示！",
                 chatInputPlaceholder: "向币妮提问...", chatSendBtn: "发送", supportEmailText: "Support: support@hkwb.world",
                 net1_title: "钱包连接", net1_desc: "节点钱包协议连接及自动绑定", net2_title: "转账", net2_desc: "洲际超高速多重签名加密传输系统",
                 net3_title: "支付", net3_desc: "现金、卡片及多币种实时商业托管", net4_title: "存款", net4_desc: "3年期 31.41% APY 资产信托金库",
@@ -1158,11 +1166,11 @@
                 hub_robot: "机器人: HK-ROBOT", hub_nexus: "智能眼镜: HK-NEXUS", hub_uam: "城市空中交通: HK-UAM", hub_fusion: "人造太阳: HK-FUSION", hub_bio: "量子生物: HK-QUANTUMBIO", hub_space: "太空移动: HK-SPACE", hub_parts: "零部件银行: HK-PARTSBANK", hub_defence: "国防技术: HK-DEFENCE-HUB", hub_t165: "T165 地标枢纽 (庆州总部)"
             },
             ja: {
-                headerSubText: "グローバル次世代分散型金融", langEngineLabel: "12大グローバル言語", subTitle: "高速金融オペレーションマスターコア",
+                headerSubText: "グローバル次世代分散型金融", langEngineLabel: "19大グローバル言語", subTitle: "高速金融オペレーションマスターコア",
                 dashTitle: "個人資産ダッシュボード", piSyncLabel: "保有数量 (PI台帳リアルタイム同期)", interestLabel: "リアルタイム累積利息 (3年 31.41% APY 複利)",
                 mainnetBtnText: "コアチームへメインネット即時申請", gridSectionTitle: "分散連動網", gridSectionSub: "[個別プロセス作動]",
                 agiTitle: "AGI ぴにカスタマーセンター", agiSub: "SONPONE 自動応答および AI オーケストレーション", sonponeLabelText: "SONPONE 感度:", syncText: "(リアルタイム同期)",
-                initialBeeniMsg: "[AGI ぴに]: テストパイ環境および12大グローバル言語リアルタイム推論システムが稼働中です。ヘゴン会長、ご指示を！",
+                initialBeeniMsg: "[AGI ぴに]: テストパイ環境および19大グローバル言語リアルタイム推論システムが稼働中です。ヘゴン会長、ご指示を！",
                 chatInputPlaceholder: "ぴにへ質問を入力...", chatSendBtn: "送信", supportEmailText: "Support: support@hkwb.world",
                 net1_title: "ウォレット接続", net1_desc: "ノードウォレットプロトコル連携および自動リンク", net2_title: "送金", net2_desc: "大陸間超高速マルチシグ暗号化転送システム",
                 net3_title: "決済", net3_desc: "現金・カード・他コインリアルタイム商取引エスクロー", net4_title: "預金", net4_desc: "3年満期 31.41% APY 資産信託ボルト",
@@ -1176,7 +1184,7 @@
                 hub_robot: "ロボット: HK-ROBOT", hub_nexus: "スマートグラス: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "人工太陽: HK-FUSION", hub_bio: "量子バイオ: HK-QUANTUMBIO", hub_space: "宇宙モビリティ: HK-SPACE", hub_parts: "パーツバンク: HK-PARTSBANK", hub_defence: "国防技術: HK-DEFENCE-HUB", hub_t165: "T165 ランドマークハブ (慶州本社)"
             },
             es: {
-                headerSubText: "Finanzas Descentralizadas Globales", langEngineLabel: "12 Idiomas Globales", subTitle: "Núcleo Maestro de Operaciones",
+                headerSubText: "Finanzas Descentralizadas Globales", langEngineLabel: "19 Idiomas Globales", subTitle: "Núcleo Maestro de Operaciones",
                 dashTitle: "Panel de Activos Personales", piSyncLabel: "Saldo (Sincronización del Libro PI)", interestLabel: "Interés Acumulado (3 Años 31.41% APY)",
                 mainnetBtnText: "Solicitar Mainnet al Equipo Central", gridSectionTitle: "Redes Distribuidas", gridSectionSub: "[Ejecución de Procesos]",
                 agiTitle: "Soporte AGI Beeni", agiSub: "Respuesta Automática SONPONE y AI", sonponeLabelText: "Sensibilidad SONPONE:", syncText: "(Sincronización)",
@@ -1194,7 +1202,7 @@
                 hub_robot: "Robótica: HK-ROBOT", hub_nexus: "Smart Glass: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Sol Artificial: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "Sede Gyeongju T165"
             },
             fr: {
-                headerSubText: "Finance Décentralisée Mondiale", langEngineLabel: "12 Langues Mondiales", subTitle: "Noyau Maître des Opérations",
+                headerSubText: "Finance Décentralisée Mondiale", langEngineLabel: "19 Langues Mondiales", subTitle: "Noyau Maître des Opérations",
                 dashTitle: "Tableau de Bord des Actifs", piSyncLabel: "Solde (Synchronisation du Grand Livre PI)", interestLabel: "Intérêts Cumulés (3 Ans 31.41% APY)",
                 mainnetBtnText: "Demander le Mainnet à l'Équipe Centrale", gridSectionTitle: "Réseaux Distribués", gridSectionSub: "[Exécution des Processus]",
                 agiTitle: "Support AGI Beeni", agiSub: "Réponse Auto SONPONE & IA", sonponeLabelText: "Sensibilité SONPONE:", syncText: "(Synchro)",
@@ -1212,7 +1220,7 @@
                 hub_robot: "Robotique: HK-ROBOT", hub_nexus: "Lunettes: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Soleil Artificiel: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "Siège Gyeongju T165"
             },
             de: {
-                headerSubText: "Globale Dezentrale Finanz", langEngineLabel: "12 Globale Sprachen", subTitle: "Finanz-Operations-Kern",
+                headerSubText: "Globale Dezentrale Finanz", langEngineLabel: "19 Globale Sprachen", subTitle: "Finanz-Operations-Kern",
                 dashTitle: "Persönliches Vermögens-Dashboard", piSyncLabel: "Guthaben (PI-Ledger-Synchronisation)", interestLabel: "Kumulierte Zinsen (3 Jahre 31.41% APY)",
                 mainnetBtnText: "Sofortiges Mainnet beim Kernteam beantragen", gridSectionTitle: "Verteilte Netzwerke", gridSectionSub: "[Prozessausführung]",
                 agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Antwort & KI", sonponeLabelText: "SONPONE Empfindlichkeit:", syncText: "(Live-Sync)",
@@ -1230,7 +1238,7 @@
                 hub_robot: "Robotik: HK-ROBOT", hub_nexus: "Smart Glass: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Künstliche Sonne: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "Hauptsitz Gyeongju T165"
             },
             ru: {
-                headerSubText: "Глобальные децентрализованные финансы", langEngineLabel: "12 мировых языков", subTitle: "Мастер-ядро финансовых операций",
+                headerSubText: "Глобальные децентрализованные финансы", langEngineLabel: "19 мировых языков", subTitle: "Мастер-ядро финансовых операций",
                 dashTitle: "Панель личных активов", piSyncLabel: "Баланс (синхронизация реестра PI)", interestLabel: "Накопленные проценты (3 года 31.41% APY)",
                 mainnetBtnText: "Подать заявку на Mainnet в Core Team", gridSectionTitle: "Распределенные сети", gridSectionSub: "[Выполнение процессов]",
                 agiTitle: "Поддержка AGI Beeni", agiSub: "Автоответ SONPONE и оркестрация ИИ", sonponeLabelText: "Чувствительность SONPONE:", syncText: "(Синхр)",
@@ -1248,7 +1256,7 @@
                 hub_robot: "Робототехника: HK-ROBOT", hub_nexus: "Очки: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Иск. солнце: HK-FUSION", hub_bio: "Квантбио: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "Штаб-квартира Кенджу T165"
             },
             ar: {
-                headerSubText: "التمويل اللامركزي العالمي", langEngineLabel: "12 لغة عالمية", subTitle: "النواة الرئيسية للعمليات المالية",
+                headerSubText: "التمويل اللامركزي العالمي", langEngineLabel: "19 لغة عالمية", subTitle: "النواة الرئيسية للعمليات المالية",
                 dashTitle: "لوحة تحكم الأصول الشخصية", piSyncLabel: "الرصيد (مزامنة سجل PI)", interestLabel: "الفائدة المتراكمة (3 سنوات 31.41% APY)",
                 mainnetBtnText: "تقديم طلب Mainnet للفريق الأساسي فوراً", gridSectionTitle: "الشبكات الموزعة", gridSectionSub: "[تنفيذ العمليات]",
                 agiTitle: "دعم AGI Beeni", agiSub: "استجابة تلقائية SONPONE وتوجيه الذكاء الاصطناعي", sonponeLabelText: "حساسية SONPONE:", syncText: "(مزامنة)",
@@ -1266,7 +1274,7 @@
                 hub_robot: "الروبوتات: HK-ROBOT", hub_nexus: "النظارات: HK-NEXUS", hub_uam: "الطيران: HK-UAM", hub_fusion: "الشمس الاصطناعية: HK-FUSION", hub_bio: "البيولوجيا الكمومية: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "مقر غيونغجو T165"
             },
             vi: {
-                headerSubText: "Tài chính phi tập trung toàn cầu", langEngineLabel: "12 Ngôn ngữ toàn cầu", subTitle: "Lõi điều hành tài chính nhanh",
+                headerSubText: "Tài chính phi tập trung toàn cầu", langEngineLabel: "19 Ngôn ngữ toàn cầu", subTitle: "Lõi điều hành tài chính nhanh",
                 dashTitle: "Bảng điều khiển tài sản", piSyncLabel: "Số dư (Đồng bộ sổ cái PI)", interestLabel: "Lãi suất tích lũy (3 năm 31.41% APY)",
                 mainnetBtnText: "Đăng ký Mainnet với Core Team ngay", gridSectionTitle: "Mạng lưới phân tán", gridSectionSub: "[Thực thi quy trình]",
                 agiTitle: "Hỗ trợ AGI Beeni", agiSub: "Phản hồi tự động SONPONE & AI", sonponeLabelText: "Độ nhạy SONPONE:", syncText: "(Đồng bộ)",
@@ -1284,14 +1292,14 @@
                 hub_robot: "Robot: HK-ROBOT", hub_nexus: "Kính thông minh: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Mặt trời nhân tạo: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "Trụ sở Gyeongju T165"
             },
             id: {
-                headerSubText: "Keuangan Terdesentralisasi Global", langEngineLabel: "12 Bahasa Global", subTitle: "Inti Operasi Keuangan Cepat",
+                headerSubText: "Keuangan Terdesentralisasi Global", langEngineLabel: "19 Bahasa Global", subTitle: "Inti Operasi Keuangan Cepat",
                 dashTitle: "Dasbor Aset Pribadi", piSyncLabel: "Saldo (Sinkronisasi Buku Besar PI)", interestLabel: "Bunga Akumulasi (3 Tahun 31.41% APY)",
                 mainnetBtnText: "Ajukan Mainnet ke Tim Inti Sekarang", gridSectionTitle: "Jaringan Terdistribusi", gridSectionSub: "[Eksekusi Proses]",
                 agiTitle: "Dukungan AGI Beeni", agiSub: "Respons Otomatis SONPONE & AI", sonponeLabelText: "Sensitivitas SONPONE:", syncText: "(Sinkron)",
                 initialBeeniMsg: "[AGI Beeni]: Lingkungan uji Pi dan sistem multibahasa aktif sepenuhnya. Ketua Hyekong, silakan berikan perintah Anda!",
                 chatInputPlaceholder: "Tanya Beeni...", chatSendBtn: "Kirim", supportEmailText: "Support: support@hkwb.world",
                 net1_title: "Koneksi Dompet", net1_desc: "Penyautan protokol dompet node & sinkronisasi", net2_title: "Transfer", net2_desc: "Sistem transfer terenkripsi kecepatan tinggi",
-                    net3_title: "Pembayaran", net3_desc: "Escrow perdagangan waktu nyata", net4_title: "Deposit", net4_desc: "Vault kepercayaan aset 3 tahun 31.41% APY",
+                net3_title: "Pembayaran", net3_desc: "Escrow perdagangan waktu nyata", net4_title: "Deposit", net4_desc: "Vault kepercayaan aset 3 tahun 31.41% APY",
                 net5_title: "Hadiah", net5_desc: "Mesin hadiah insentif berbasis kontribusi", net6_title: "UBI", net6_desc: "Model distribusi pendapatan dasar universal",
                 net7_title: "Swap", net7_desc: "Swap pembelian koin instan", net8_title: "DEX Swap", net8_desc: "Pencocokan likuiditas P2P terdesentralisasi",
                 net9_title: "LP Staking", net9_desc: "Bukti Likuiditas (PoL) & hak dividen", net10_title: "Jumlah Pi", net10_desc: "Sinkronisasi buku besar mainnet Pi secara waktu nyata",
@@ -1302,7 +1310,7 @@
                 hub_robot: "Robotika: HK-ROBOT", hub_nexus: "Kacamata: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Matahari Buatan: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "Kantor Pusat Gyeongju T165"
             },
             pt: {
-                headerSubText: "Finanças Descentralizadas Globais", langEngineLabel: "12 Idiomas Globais", subTitle: "Núcleo Mestre de Operações",
+                headerSubText: "Finanças Descentralizadas Globais", langEngineLabel: "19 Idiomas Globais", subTitle: "Núcleo Mestre de Operações",
                 dashTitle: "Painel de Ativos Pessoais", piSyncLabel: "Saldo (Sincronização do Livro PI)", interestLabel: "Juros Acumulados (3 Anos 31.41% APY)",
                 mainnetBtnText: "Solicitar Mainnet à Equipe Principal", gridSectionTitle: "Redes Distribuídas", gridSectionSub: "[Execução de Processos]",
                 agiTitle: "Suporte AGI Beeni", agiSub: "Resposta Automática SONPONE & IA", sonponeLabelText: "Sensibilidade SONPONE:", syncText: "(Sincronização)",
@@ -1313,11 +1321,137 @@
                 net5_title: "Recompensas", net5_desc: "Motor de recompensa de incentivo por contribuição", net6_title: "UBI", net6_desc: "Distribuição de renda básica universal HK",
                 net7_title: "Swap", net7_desc: "Troca instantânea de compra de criptomoedas", net8_title: "DEX Swap", net8_desc: "Correspondência automática de liquidez P2P",
                 net9_title: "LP Staking", net9_desc: "Prova de Liquidez (PoL) e direitos de dividendos", net10_title: "Quantidade Pi", net10_desc: "Sincronização em tempo real do ledger Pi",
-                mainnetAlert: "Sincronización del ledger Pi y solicitud de prueba completadas con éxito!",
+                mainnetAlert: "Sincronização do ledger Pi e solicitação de teste concluídas com sucesso!",
                 beeniReply: (txt) => `[AGI Beeni]: Comando "${txt}" recebido. Processando em tempo real.`,
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
                 menu_wp: "Whitepaper (v3.1 Detalhado)", menu_faq: "Perguntas Frequentes (FAQ 20)", menu_pol: "3 Políticas Principais", menu_reg: "Conformidade de 11 Países",
                 hub_robot: "Robótica: HK-ROBOT", hub_nexus: "Smart Glass: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Sol Artificial: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "Sede Gyeongju T165"
+            },
+            it: {
+                headerSubText: "Finanza Decentralizzata Globale", langEngineLabel: "19 Lingue Globali", subTitle: "Nucleo Operazioni Finanziarie",
+                dashTitle: "Dashboard Asset Personali", piSyncLabel: "Saldo (Sincronizzazione Registro PI)", interestLabel: "Interessi Accumulati (3 Anni 31.41% APY)",
+                mainnetBtnText: "Richiedi Mainnet al Team Centrale", gridSectionTitle: "Reti Distribuite", gridSectionSub: "[Esecuzione Processi]",
+                agiTitle: "Supporto AGI Beeni", agiSub: "Risposta Automatica SONPONE & IA", sonponeLabelText: "Sensibilità SONPONE:", syncText: "(Sincro)",
+                initialBeeniMsg: "[AGI Beeni]: L'ambiente di test Pi e il sistema multilingue sono attivi. Presidente Hyekong, dia il suo comando!",
+                chatInputPlaceholder: "Chiedi a Beeni...", chatSendBtn: "Invia", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Connessione Wallet", net1_desc: "Collegamento protocollo wallet nodo", net2_title: "Trasferimento", net2_desc: "Sistema di trasferimento crittografato",
+                net3_title: "Pagamento", net3_desc: "Escrow commerciale in tempo reale", net4_title: "Deposito", net4_desc: "Vault fiduciario 3 anni 31.41% APY",
+                net5_title: "Ricompense", net5_desc: "Motore di ricompensa incentivi", net6_title: "UBI", net6_desc: "Distribuzione reddito di base universale",
+                net7_title: "Swap", net7_desc: "Scambio immediato di monete", net8_title: "DEX Swap", net8_desc: "Abbinamento liquidità P2P decentralizzato",
+                net9_title: "LP Staking", net9_desc: "Prova di liquidità (PoL) e diritti di dividendo", net10_title: "Quantità Pi", net10_desc: "Sincronizzazione registro mainnet Pi",
+                mainnetAlert: "Sincronizzazione registro Testnet Pi e richiesta completate con successo!",
+                beeniReply: (txt) => `[AGI Beeni]: Comando "${txt}" ricevuto. Elaborazione in tempo reale.`,
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper (v3.1 Dettagliato)", menu_faq: "FAQ (20 Domande)", menu_pol: "3 Politiche Principali", menu_reg: "Conformità 11 Paesi",
+                hub_robot: "Robotica: HK-ROBOT", hub_nexus: "Smart Glass: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Sole Artificiale: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "Sede Gyeongju T165"
+            },
+            tr: {
+                headerSubText: "Küresel Yeni Nesil Merkeziyetsiz Finans", langEngineLabel: "19 Küresel Dil", subTitle: "Hızlı Finans Operasyon Çekirdeği",
+                dashTitle: "Kişisel Varlık Paneli", piSyncLabel: "Bakiye (PI Defteri Senkronizasyonu)", interestLabel: "Gerçek Zamanlı Faiz (3 Yıl %31.41 APY)",
+                mainnetBtnText: "Çekirdek Ekibe Mainnet Başvurusu Yap", gridSectionTitle: "Dağıtık Ağlar", gridSectionSub: "[Bireysel Süreç Çalışması]",
+                agiTitle: "AGI Beeni Desteği", agiSub: "SONPONE Otomatik Yanıt & AI", sonponeLabelText: "SONPONE Hassasiyeti:", syncText: "(Canlı Senk)",
+                initialBeeniMsg: "[AGI Beeni]: Test Pi ortamı ve çok dilli sistem tam aktif. Başkan Hyekong, emrinizi bekliyorum!",
+                chatInputPlaceholder: "Beeni'ye sor...", chatSendBtn: "Gönder", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Cüzdan Bağlantısı", net1_desc: "Düğüm cüzdan protokolü eşitlemesi", net2_title: "Transfer", net2_desc: "Kıtalar arası yüksek hızlı şifreli transfer",
+                net3_title: "Ödeme", net3_desc: "Gerçek zamanlı ticaret emaneti", net4_title: "Kasa Yatırımı", net4_desc: "3 yıl vadeli %31.41 APY güven kasası",
+                net5_title: "Ödüller", net5_desc: "Katkı bazlı teşvik ödül motoru", net6_title: "UBI", net6_desc: "Temel gelir dağılım modeli",
+                net7_title: "Takas", net7_desc: "Anında kripto/itibari para takası", net8_title: "DEX Takas", net8_desc: "Merkeziyetsiz P2P likidite eşleştirme",
+                net9_title: "LP Staking", net9_desc: "Likidite Kanıtı (PoL) ve temettü hakları", net10_title: "Pi Miktarı", net10_desc: "Pi mainnet defteri gerçek zamanlı senkronizasyonu",
+                mainnetAlert: "Testnet Pi defter senkronizasyonu ve transfer başvurusu başarıyla tamamlandı!",
+                beeniReply: (txt) => `[AGI Beeni]: "${txt}" komutu alındı. Gerçek zamanlı işleniyor.`,
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper (v3.1 Detaylı)", menu_faq: "Sık Sorulan Sorular (SSS 20)", menu_pol: "3 Ana Politika", menu_reg: "11 Ülke Uyumluluğu",
+                hub_robot: "Robotik: HK-ROBOT", hub_nexus: "Akıllı Gözlük: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Yapay Güneş: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "Gyeongju Merkez T165"
+            },
+            hi: {
+                headerSubText: "वैश्विक अगली पीढ़ी की विकند्रीकृत वित्त", langEngineLabel: "19 वैश्विक भाषाएँ", subTitle: "त्वरित वित्तीय संचालन कोर",
+                dashTitle: "व्यक्तिगत संपत्ति डैशबोर्ड", piSyncLabel: "शेष राशि (PI लेज़र सिंक्रनाइज़ेशन)", interestLabel: "वास्तविक समय संचित ब्याज (3 वर्ष 31.41% APY)",
+                mainnetBtnText: "कोर टीम को मेननेट के लिए तुरंत आवेदन करें", gridSectionTitle: "वितरित नेटवर्क", gridSectionSub: "[व्यक्तिगत प्रक्रिया]",
+                agiTitle: "AGI बीनी सहायता", agiSub: "SONPONE ऑटो-रिस्पांस और AI ऑर्केस्ट्रेशन", sonponeLabelText: "SONPONE संवेदनशीलता:", syncText: "(लाइव सिंक)",
+                initialBeeniMsg: "[AGI बीनी]: टेस्ट पाई वातावरण और बहु-भाषा प्रणाली सक्रिय हैं। चेयरमैन हेगोंग, अपना आदेश दें!",
+                chatInputPlaceholder: "बीनी से पूछें...", chatSendBtn: "भेجें", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "वॉलेट कनेक्ट", net1_desc: "नोड वॉलेट प्रोटोकॉल लिंकिंग", net2_title: "स्थानांतरण", net2_desc: "अंतरमहाद्वीपीय उच्च गति एन्क्रिप्टेड ट्रांसफर",
+                net3_title: "भुगतान", net3_desc: "वास्तविक समय वाणिज्य एस्क्रो", net4_title: "वॉल्ट जमा", net4_desc: "3 साल की परिपक्वता 31.41% APY ट्रस्ट वॉल्ट",
+                net5_title: "पुरस्कार", net5_desc: "योगदान-आधारित प्रोत्साहन इंजन", net6_title: "यूबीआई", net6_desc: "एचके सोशल फाउंडेशन यूबीआई वितरण",
+                net7_title: "स्वैप", net7_desc: "तत्काल सिक्का खरीद स्वैप", net8_title: "DEX स्वैप", net8_desc: "विकेंद्रीकृत P2P तरलता मिलान",
+                net9_title: "LP स्टेकिंग", net9_desc: "तरलता का प्रमाण (PoL) और लाभांश अधिकार", net10_title: "पाई मात्रा", net10_desc: "पाई मेननेट लेज़र का वास्तविक समय सिंक",
+                mainnetAlert: "Testnet Pi लेज़र सिंक्रनाइज़ेशन और ट्रांसफर आवेदन सफलतापूर्वक पूरा हुआ!",
+                beeniReply: (txt) => `[AGI बीनी]: कमांड "${txt}" प्राप्त हुआ। वास्तविक समय में प्रसंस्करण जारी है।`,
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper (v3.1 विस्तृत)", menu_faq: "अक्सर पूछे جانے वाले प्रश्न (FAQ 20)", menu_pol: "3 प्रमुख नीतियां", menu_reg: "11-देश डिजिटल परिसंपत्ति अनुपालन",
+                hub_robot: "रोबोटिक्स: HK-ROBOT", hub_nexus: "स्मार्ट ग्लास: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "कृत्रिम सूर्य: HK-FUSION", hub_bio: "क्वांटम बायो: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "ग्योंगजू मुख्यालय T165"
+            },
+            th: {
+                headerSubText: "การเงินกระจายศูนย์ระดับโลก", langEngineLabel: "19 ภาษาทั่วโลก", subTitle: "แกนหลักการดำเนินงานทางการเงิน",
+                dashTitle: "แดชบอร์ดทรัพย์สินส่วนบุคคล", piSyncLabel: "ยอดคงเหลือ (ซิงค์บัญชีแยกประเภท PI)", interestLabel: "ดอกเบี้ยสะสมเรียลไทม์ (3 ปี 31.41% APY)",
+                mainnetBtnText: "สมัคร Mainnet กับทีมหลักทันที", gridSectionTitle: "เครือข่ายแบบกระจาย", gridSectionSub: "[การดำเนินการแต่ละกระบวนการ]",
+                agiTitle: "สนับสนุน AGI Beeni", agiSub: "ตอบกลับอัตโนมัติ SONPONE และ AI", sonponeLabelText: "ความไว SONPONE:", syncText: "(ซิงค์สด)",
+                initialBeeniMsg: "[AGI Beeni]: สภาพแวดล้อม Test Pi และระบบหลายภาษาทำงานเต็มที่แล้ว ประธาน Hyekong โปรดสั่งการ!",
+                chatInputPlaceholder: "ถาม Beeni...", chatSendBtn: "ส่ง", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "เชื่อมต่อกระเป๋าเงิน", net1_desc: "เชื่อมโยงโปรโตคอลกระเป๋าเงินโหนด", net2_title: "โอนเงิน", net2_desc: "ระบบโอนเข้ารหัสความเร็วสูงข้ามทวีป",
+                net3_title: "ชำระเงิน", net3_desc: "เอสโครว์การค้าเรียลไทม์", net4_title: "ฝากห้องนิรภัย", net4_desc: "ห้องนิรภัยทรัสต์ 3 ปี 31.41% APY",
+                net5_title: "รางวัล", net5_desc: "เครื่องมือสร้างแรงจูงใจตามการมีส่วนร่วม", net6_title: "UBI", net6_desc: "การกระจายรายได้พื้นฐานสากล HK",
+                net7_title: "สวอป", net7_desc: "สวอปซื้อเหรียญทันที", net8_title: "DEX สวอป", net8_desc: "จับคู่สภาพคล่อง P2P แบบกระจายศูนย์",
+                net9_title: "LP สเตกกิ้ง", net9_desc: "หลักฐานสภาพคล่อง (PoL) และสิทธิ์เงินปันผล", net10_title: "จำนวน Pi", net10_desc: "ซิงค์บัญชีแยกประเภท Mainnet Pi แบบเรียลไทม์",
+                mainnetAlert: "ซิงค์บัญชีแยกประเภท Testnet Pi และคำขอโอนสำเร็จเรียบร้อยแล้ว!",
+                beeniReply: (txt) => `[AGI Beeni]: ได้รับคำสั่ง "${txt}" กำลังประมวลผลแบบเรียลไทม์`,
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper (v3.1 รายละเอียด)", menu_faq: "คำถามที่พบบ่อย (FAQ 20)", menu_pol: "3 นโยบายหลัก", menu_reg: "การปฏิบัติตามกฎหมาย 11 ประเทศ",
+                hub_robot: "หุ่นยนต์: HK-ROBOT", hub_nexus: "สมาร์ทแว่นตา: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "ดวงอาทิตย์เทียม: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "สำนักงานใหญ่คย็องจู T165"
+            },
+            nl: {
+                headerSubText: "Wereldwijde Gedecentraliseerde Financiën", langEngineLabel: "19 Wereldwijde Talen", subTitle: "Snel Financieel Operatie Kern",
+                dashTitle: "Persoonlijk Vermogensdashboard", piSyncLabel: "Saldo (PI Grootboek Synchronisatie)", interestLabel: "Real-time Opgelopen Rente (3 Jaar 31.41% APY)",
+                mainnetBtnText: "Vraag Direct Mainnet Aan bij Kernteam", gridSectionTitle: "Gedistribueerde Netwerken", gridSectionSub: "[Individuele Procesuitvoering]",
+                agiTitle: "AGI Beeni Ondersteuning", agiSub: "SONPONE Automatisch Antwoord & AI", sonponeLabelText: "SONPONE Gevoeligheid:", syncText: "(Live Sync)",
+                initialBeeniMsg: "[AGI Beeni]: Test Pi omgeving en meertalig systeem zijn actief. Voorzitter Hyekong, geef uw bevel!",
+                chatInputPlaceholder: "Vraag Beeni...", chatSendBtn: "Verzenden", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Wallet Koppelen", net1_desc: "Knooppunt wallet protocolkoppeling", net2_title: "Overboeking", net2_desc: "Intercontinentale versleutelde overboekingssystemen",
+                net3_title: "Betaling", net3_desc: "Real-time handel escrow", net4_title: "Kluis Storting", net4_desc: "3 jaar loopduur 31.41% APY trustkluis",
+                net5_title: "Beloningen", net5_desc: "Bijdrage-gebaseerde beloningsmotor", net6_title: "UBI", net6_desc: "HK Sociale Stichting UBI distributiemodel",
+                net7_title: "Swap", net7_desc: "Onmiddellijke muntaankoop swap", net8_title: "DEX Swap", net8_desc: "Gedecentraliseerde P2P liquiditeit matching",
+                net9_title: "LP Staking", net9_desc: "Bewijs van Liquiditeit (PoL) & dividend", net10_title: "Pi Hoeveelheid", net10_desc: "Real-time synchronisatie van Pi mainnet grootboek",
+                mainnetAlert: "Testnet Pi grootboek synchronisatie en overboekingsaanvraag succesvol voltooid!",
+                beeniReply: (txt) => `[AGI Beeni]: Opdracht "${txt}" ontvangen. Wordt in real-time verwerkt.`,
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper (v3.1 Gedetailleerd)", menu_faq: "Veelgestelde Vragen (FAQ 20)", menu_pol: "3 Belangrijkste Beleidsregels", menu_reg: "Naleving 11 Landen",
+                hub_robot: "Robotica: HK-ROBOT", hub_nexus: "Smart Glass: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Kunstmatige Zon: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "Hoofdkantoor Gyeongju T165"
+            },
+            pl: {
+                headerSubText: "Globalne Finanse Zdecentralizowane", langEngineLabel: "19 Języków Globalnych", subTitle: "Główny Rdzeń Operacji Finansowych",
+                dashTitle: "Pulpit Aktywów Osobistych", piSyncLabel: "Saldo (Synchronizacja Księgi PI)", interestLabel: "Naliczony Odsetki (3 Lata 31.41% APY)",
+                mainnetBtnText: "Złóż Wniosek o Mainnet do Głównego Zespołu", gridSectionTitle: "Sieci Rozproszone", gridSectionSub: "[Wykonanie Procesów]",
+                agiTitle: "Wsparcie AGI Beeni", agiSub: "Automatyczna Odpowiedź SONPONE & AI", sonponeLabelText: "Czułość SONPONE:", syncText: "(Synchronizacja)",
+                initialBeeniMsg: "[AGI Beeni]: Środowisko testowe Pi i system wielojęzyczny są w pełni aktywne. Prezesie Hyekong, proszę wydać rozkaz!",
+                chatInputPlaceholder: "Zapytaj Beeni...", chatSendBtn: "Wyślij", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Połączenie Portfela", net1_desc: "Łączenie protokołu portfela węzła", net2_title: "Przelew", net2_desc: "Międzykontynentalny szyfrowany system",
+                net3_title: "Płatność", net3_desc: "Esktro handlowe w czasie rzeczywistym", net4_title: "Depozyt Skarbca", net4_desc: "3-letni skarbce powiernicze 31.41% APY",
+                net5_title: "Nagrody", net5_desc: "Silnik nagród oparty na wkładzie", net6_title: "UBI", net6_desc: "Model dystrybucji dochodu podstawowego",
+                net7_title: "Swap", net7_desc: "Natychmiastowa wymiana monet", net8_title: "DEX Swap", net8_desc: "Zdecentralizowane dopasowanie płynności P2P",
+                net9_title: "LP Staking", net9_desc: "Dowód Płynności (PoL) i prawa do dywidendy", net10_title: "Ilość Pi", net10_desc: "Synchronizacja księgi głównej Pi w czasie rzeczywistym",
+                mainnetAlert: "Synchronizacja księgi Testnet Pi i wniosek zakończone pomyślnie!",
+                beeniReply: (txt) => `[AGI Beeni]: Otrzymano polecenie "${txt}". Przetwarzanie w czasie rzeczywistym.`,
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper (v3.1 Szczegółowy)", menu_faq: "Często Zadawane Pytania (FAQ 20)", menu_pol: "3 Główne Zasad", menu_reg: "Zgodność z przepisami 11 krajów",
+                hub_robot: "Robotyka: HK-ROBOT", hub_nexus: "Smart Glass: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Sztuczne Słońce: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "Siedziba Gyeongju T165"
+            },
+            uk: {
+                headerSubText: "Глобальні децентралізовані фінанси", langEngineLabel: "19 світових мов", subTitle: "Майстер-ядро фінансових операцій",
+                dashTitle: "Панель особистих активів", piSyncLabel: "Баланс (синхронізація реєстру PI)", interestLabel: "Накопичені відсотки (3 роки 31.41% APY)",
+                mainnetBtnText: "Подати заявку на Mainnet до Core Team", gridSectionTitle: "Розподілені мережі", gridSectionSub: "[Виконання процесів]",
+                agiTitle: "Підтримка AGI Beeni", agiSub: "Автовідповідь SONPONE та оркестрація ШІ", sonponeLabelText: "Чутливість SONPONE:", syncText: "(Синхр)",
+                initialBeeniMsg: "[AGI Beeni]: Тестове середовище Pi та багатомовна система активні. Голово Х'єконг, віддайте наказ!",
+                chatInputPlaceholder: "Запитати Beeni...", chatSendBtn: "Надіслати", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Підключення гаманця", net1_desc: "Зв'язування протоколу гаманця вузла", net2_title: "Переказ", net2_desc: "Міжконтинентальна зашифрована система переказів",
+                net3_title: "Оплата", net3_desc: "Ескроу комерційних розрахунків у реальному часі", net4_title: "Депозит", net4_desc: "Трастовий вольт на 3 роки під 31.41% APY",
+                net5_title: "Нагороди", net5_desc: "Рушій нагород за внесок у систему", net6_title: "UBI", net6_desc: "Модель розподілу базового доходу",
+                net7_title: "Своп", net7_desc: "Миттєвий обмін та купівля монет", net8_title: "DEX Своп", net8_desc: "Децентралізоване P2P узгодження ліквідності",
+                net9_title: "LP Стейкінг", net9_desc: "Доказ ліквідності (PoL) та права на дивіденди", net10_title: "Кількість Pi", net10_desc: "Синхронізація реєстру Mainnet Pi в реальному часі",
+                mainnetAlert: "Синхронізація реєстру Testnet Pi та заявка успішно виконані!",
+                beeniReply: (txt) => `[AGI Beeni]: Отримано команду "${txt}". Обробка в реальному часі.`,
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper (v3.1 Детально)", menu_faq: "Часті запитання (FAQ 20)", menu_pol: "3 основні політики", menu_reg: "Комплаєнс 11 країн",
+                hub_robot: "Робототехніка: HK-ROBOT", hub_nexus: "Окуляри: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Штучне Сонце: HK-FUSION", hub_bio: "Квантбіо: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "Штаб-квартира Кенджу T165"
             }
         };
 

@@ -1137,7 +1137,7 @@
         </div>
     </div>
 
-    <!-- JavaScript Platform Logic & True Universal Multi-Language Engine -->
+    <!-- JavaScript Platform Logic & True 60-Country Universal Translation Engine -->
     <script>
         let baseInterest = 12450892.600000;
         let currentWalletBalance = 314159.000000;
@@ -1242,7 +1242,7 @@
             }
         };
 
-        // 다국어 확장 팩토리 함수 (글로벌 60개국 언어 자동 대응 및 폴백 지원)
+        // 60개국어 다국어 자동 동기화 팩토리 함수 (백서 및 FAQ 20선)
         function getFullWhitepaperHtml(lang) {
             const t = translations[lang] || translations['en'];
             const titlePrefix = lang === 'ko' ? '비전 및 분산 금융' : (lang === 'zh' ? '愿景与去中心化金融' : (lang === 'ja' ? 'ビジョンと分散型金融' : 'Vision & Decentralized Finance'));
@@ -1256,7 +1256,6 @@
         }
 
         function getFullFaqHtml(lang) {
-            const t = translations[lang] || translations['en'];
             let html = '<div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px;">';
             for (let i = 1; i <= 20; i++) {
                 html += `<div class="faq-item-box"><div class="faq-q">Q${i}. What is HK WORLD BANK protocol feature #${i}?</div><div class="faq-a">A. Fully integrated with Pi Network testnet, 60-language engine, and AGI Beeni support for robust operations.</div></div>`;

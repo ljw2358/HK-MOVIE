@@ -694,7 +694,7 @@
 <body>
 
     <div class="app-container">
-        <!-- 뷰 모드 전환 바 (관리자 모드: 한국어 고정 / 고객 모드: 20개국 언어 선택 작동) -->
+        <!-- 뷰 모드 전환 바 (관리자 모드: 한국어 고정 / 고객 모드: 30개국 언어 선택 작동) -->
         <div class="mode-switcher-bar">
             <span class="mode-title"><i class="fa-solid fa-shield-halved"></i> 뷰 모드 제어</span>
             <div class="mode-btns">
@@ -715,11 +715,11 @@
             <div class="profile-badge">HK</div>
         </header>
 
-        <!-- 핵심 20개국 언어 드롭다운 바 (고객용 모드에서만 노출) -->
+        <!-- 핵심 30개국 언어 드롭다운 바 (고객용 모드에서만 노출) -->
         <div class="lang-bar admin-hidden" id="langBar">
             <div class="lang-info">
                 <i class="fa-solid fa-globe"></i>
-                <span data-i18n="langLabel">글로벌 20개국 언어 엔진</span>
+                <span data-i18n="langLabel">글로벌 30개국 언어 엔진</span>
             </div>
             <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
                 <option value="ko" selected>🇰🇷 한국어 (Korean)</option>
@@ -742,6 +742,16 @@
                 <option value="pl">🇵🇱 Polski (Polish)</option>
                 <option value="uk">🇺🇦 Українська (Ukrainian)</option>
                 <option value="sv">🇸🇪 Svenska (Swedish)</option>
+                <option value="mn">🇲🇳 Монгол (Mongolian)</option>
+                <option value="kk">🇰🇿 Қазақ тілі (Kazakh)</option>
+                <option value="uz">🇺🇿 Oʻzbekcha (Uzbek)</option>
+                <option value="ms">🇲🇾 Bahasa Melayu (Malay)</option>
+                <option value="tl">🇵🇭 Tagalog (Filipino)</option>
+                <option value="km">🇰🇭 ភាសាខ្មែរ (Khmer)</option>
+                <option value="my">🇲🇲 မြန်မာစာ (Burmese)</option>
+                <option value="lo">🇱🇦 ພາສາລາວ (Lao)</option>
+                <option value="el">🇬🇷 Ελληνικά (Greek)</option>
+                <option value="cs">🇨🇿 Čeština (Czech)</option>
             </select>
         </div>
 
@@ -787,7 +797,7 @@
 
             <!-- Distributed Networks Grid Section -->
             <div class="section-header">
-                <h2 class="section-title" data-i18n="gridSectionTitle">분산 연동망</h2>
+                <h2 class="section-title" data-i18n="gridSectionTitle">10대 분산 연동망</h2>
                 <span class="section-sub" data-i18n="gridSectionSub">[개별 프로세스 작동]</span>
             </div>
 
@@ -811,7 +821,7 @@
                 <div class="network-card">
                     <div class="card-top-center"><i class="fa-solid fa-credit-card card-icon-3"></i></div>
                     <div>
-                        <div class="card-title" data-i18n="net3_title">결재</div>
+                        <div class="card-title" data-i18n="net3_title">결제</div>
                         <div class="card-desc" data-i18n="net3_desc">현금·카드·타코인 실시간 상거래 에스크로</div>
                     </div>
                 </div>
@@ -893,7 +903,7 @@
 
                 <div class="chat-box" id="chatBox">
                     <div class="chat-msg beeni" data-i18n="initialBeeniMsg">
-                        [AGI 삐니]: 글로벌 20개국 언어 엔진이 완벽하게 가동 중입니다. 혜공 형님, 지시해 주십시오!
+                        [AGI 삐니]: 글로벌 30개국 언어 엔진이 완벽하게 가동 중입니다. 혜공 형님, 지시해 주십시오!
                     </div>
                 </div>
 
@@ -921,7 +931,7 @@
         </footer>
     </div>
 
-    <!-- Drawer Overlay -->
+    <!-- Drawer Overlay (Navigator) -->
     <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawerOutside(event)">
         <div class="drawer-content">
             <div class="drawer-header">
@@ -943,16 +953,16 @@
 
         const i18nDict = {
             ko: {
-                headerSub: "글로벌 차세대 분산 금융", langLabel: "글로벌 20개국 언어 엔진", subTitle: "빠른 금융 작업 마스터 코어",
+                headerSub: "글로벌 차세대 분산 금융", langLabel: "글로벌 30개국 언어 엔진", subTitle: "빠른 금융 작업 마스터 코어",
                 dashTitle: "개인 자산 대시보드", piSyncLabel: "보유 수량 (PI 수량 원장 동기화)", interestLabel: "실시간 누적 이자 (3년 31.41% APY 복리)",
-                mainnetBtnText: "코어팀에게 메인넷 즉시 신청하기", gridSectionTitle: "분산 연동망", gridSectionSub: "[개별 프로세스 작동]",
+                mainnetBtnText: "코어팀에게 메인넷 즉시 신청하기", gridSectionTitle: "10대 분산 연동망", gridSectionSub: "[개별 프로세스 작동]",
                 agiTitle: "AGI 삐니 고객센터", agiSub: "손폰(SONPONE) 자동 반응 및 AI 오케스트레이션", sonponeLabelText: "손폰(SONPONE) 감지 감도:",
-                initialBeeniMsg: "[AGI 삐니]: 글로벌 20개국 언어 엔진이 완벽하게 가동 중입니다. 혜공 형님, 지시해 주십시오!",
+                initialBeeniMsg: "[AGI 삐니]: 글로벌 30개국 언어 엔진이 완벽하게 가동 중입니다. 혜공 형님, 지시해 주십시오!",
                 chatInputPlaceholder: "삐니에게 질문 입력...", chatSendBtn: "전송", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "핵심 법률 및 컴플라이언스", menu_wp: "백서 (100선 상세)", menu_faq: "자주 묻는 질문 (FAQ)",
                 net1_title: "지갑연결", net1_desc: "노드 지갑 프로토콜 연동 및 자동 연동",
                 net2_title: "송금", net2_desc: "대륙간 초고속 멀티시그 암호화 전송 시스템",
-                net3_title: "결재", net3_desc: "현금·카드·타코인 실시간 상거래 에스크로",
+                net3_title: "결제", net3_desc: "현금·카드·타코인 실시간 상거래 에스크로",
                 net4_title: "예치", net4_desc: "3년 만기 31.41% APY 자산 신탁 볼트",
                 net5_title: "보상", net5_desc: "기여도 기반 인센티브 볼트 적립 엔진",
                 net6_title: "기본소득", net6_desc: "HK 사회 재단 & 지자체 UBI 분배 모델",
@@ -964,11 +974,11 @@
                 beeniReply: (txt) => `[AGI 삐니]: "${txt}" 명령을 수신했습니다. 실시간 처리 중입니다.`
             },
             en: {
-                headerSub: "Global Next-Gen Decentralized Finance", langLabel: "Global 20-Country Engine", subTitle: "Fast Financial Operation Master Core",
+                headerSub: "Global Next-Gen Decentralized Finance", langLabel: "Global 30-Country Engine", subTitle: "Fast Financial Operation Master Core",
                 dashTitle: "Personal Asset Dashboard", piSyncLabel: "Holding Amount (Pi Ledger Sync)", interestLabel: "Real-time Accumulated Interest (3-Yr 31.41% APY)",
-                mainnetBtnText: "Request Mainnet to Core Team Now", gridSectionTitle: "Distributed Networks", gridSectionSub: "[Process Active]",
+                mainnetBtnText: "Request Mainnet to Core Team Now", gridSectionTitle: "Top 10 Distributed Networks", gridSectionSub: "[Process Active]",
                 agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Response & AI Orchestration", sonponeLabelText: "Detection Sensitivity:",
-                initialBeeniMsg: "[AGI Beeni]: Global 20-country language engine operational! Welcome to HK World Bank.",
+                initialBeeniMsg: "[AGI Beeni]: Global 30-country language engine operational! Welcome to HK World Bank.",
                 chatInputPlaceholder: "Ask Beeni...", chatSendBtn: "Send", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menu_wp: "Whitepaper (100 Items)", menu_faq: "FAQ Top 20",
                 net1_title: "Wallet Connect", net1_desc: "Node wallet protocol auto-link",
@@ -985,11 +995,11 @@
                 beeniReply: (txt) => `[AGI Beeni]: Received command "${txt}". Processing successfully.`
             },
             zh: {
-                headerSub: "全球下一代去中心化金融", langLabel: "全球20国语言引擎", subTitle: "快捷金融操作主核心",
+                headerSub: "全球下一代去中心化金融", langLabel: "全球30国语言引擎", subTitle: "快捷金融操作主核心",
                 dashTitle: "个人资产仪表板", piSyncLabel: "持有数量 (Pi账本同步)", interestLabel: "实时累计利息 (3年 31.41% APY复利)",
-                mainnetBtnText: "立即向核心团队申请主网", gridSectionTitle: "分布式互联网络", gridSectionSub: "[单个进程运行]",
+                mainnetBtnText: "立即向核心团队申请主网", gridSectionTitle: "十大分布式互联网络", gridSectionSub: "[单个进程运行]",
                 agiTitle: "AGI 币妮客服", agiSub: "SONPONE 自动响应与 AI 编排", sonponeLabelText: "侦测灵敏度:",
-                initialBeeniMsg: "[AGI 币妮]: 全球20国语言引擎运行正常！欢迎使用 HK World Bank。",
+                initialBeeniMsg: "[AGI 币妮]: 全球30国语言引擎运行正常！欢迎使用 HK World Bank。",
                 chatInputPlaceholder: "向币妮提问...", chatSendBtn: "发送", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "核心法律与合规", menu_wp: "白皮书 (100项详情)", menu_faq: "常见问题",
                 net1_title: "钱包连接", net1_desc: "节点钱包协议联动及自动连接",
@@ -1006,16 +1016,16 @@
                 beeniReply: (txt) => `[AGI 币妮]: 已接收命令 "${txt}"。正在处理中。`
             },
             ja: {
-                headerSub: "グローバル次世代分散型金融", langLabel: "グローバル20カ国言語エンジン", subTitle: "高速金融作業マスターコア",
+                headerSub: "グローバル次世代分散型金融", langLabel: "グローバル30カ国言語エンジン", subTitle: "高速金融作業マスターコア",
                 dashTitle: "個人資産ダッシュボード", piSyncLabel: "保有数量 (Pi台帳同期)", interestLabel: "リアルタイム累積利息 (3年 31.41% APY複利)",
-                mainnetBtnText: "コアチームへメインネットを即時申請", gridSectionTitle: "分散連動網", gridSectionSub: "[個別プロセス稼働]",
+                mainnetBtnText: "コアチームへメインネットを即時申請", gridSectionTitle: "10大分散連動網", gridSectionSub: "[個別プロセス稼働]",
                 agiTitle: "AGI ぴーにカスタマー", agiSub: "SONPONE自動応答＆AIオーケストレーション", sonponeLabelText: "検出感度:",
-                initialBeeniMsg: "[AGI ぴーに]: グローバル20カ国言語エンジンが稼働中です。HK World Bankへようこそ。",
+                initialBeeniMsg: "[AGI ぴーに]: グローバル30カ国言語エンジンが稼働中です。HK World Bankへようこそ。",
                 chatInputPlaceholder: "ぴーにへ質問を入力...", chatSendBtn: "送信", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "コア法務・コンプライアンス", menu_wp: "ホワイトペーパー (100選)", menu_faq: "よくある質問",
                 net1_title: "ウォレット接続", net1_desc: "ノードウォレットプロトコル連動および自動連動",
                 net2_title: "送金", net2_desc: "大陸間超高速マルチシグ暗号化転送システム",
-                net3_title: "決済", net3_desc: "現金·카드·他コインリアルタイム商取引エスクロー",
+                net3_title: "決済", net3_desc: "現金·カード·他コインリアルタイム商取引エスクロー",
                 net4_title: "預金", net4_desc: "3年満期 31.41% APY資産信託ボルト",
                 net5_title: "報酬", net5_desc: "貢献度ベースインセンティブボルト積立エンジン",
                 net6_title: "基本所得", net6_desc: "HK社会財団＆自治体 UBI分配モデル",
@@ -1027,11 +1037,11 @@
                 beeniReply: (txt) => `[AGI ぴーに]: "${txt}"命令を受信しました。`
             },
             vi: {
-                headerSub: "Tài chính phi tập trung thế hệ mới toàn cầu", langLabel: "Động cơ 20 quốc gia", subTitle: "Cốt lõi vận hành tài chính nhanh",
+                headerSub: "Tài chính phi tập trung thế hệ mới toàn cầu", langLabel: "Động cơ 30 quốc gia", subTitle: "Cốt lõi vận hành tài chính nhanh",
                 dashTitle: "Bảng điều khiển tài sản cá nhân", piSyncLabel: "Số lượng nắm giữ (Đồng bộ sổ cái Pi)", interestLabel: "Lãi suất tích lũy thời gian thực (3 năm 31.41% APY)",
-                mainnetBtnText: "Yêu cầu Mainnet ngay lập tức", gridSectionTitle: "Mạng lưới phân tán", gridSectionSub: "[Hoạt động quy trình riêng]",
+                mainnetBtnText: "Yêu cầu Mainnet ngay lập tức", gridSectionTitle: "10 Mạng lưới phân tán", gridSectionSub: "[Hoạt động quy trình riêng]",
                 agiTitle: "CSKH AGI Beeni", agiSub: "Phản hồi tự động SONPONE & Điều phối AI", sonponeLabelText: "Độ nhạy phát hiện:",
-                initialBeeniMsg: "[AGI Beeni]: Động cơ ngôn ngữ 20 quốc gia đang hoạt động đầy đủ. Chào mừng đến với HK World Bank!",
+                initialBeeniMsg: "[AGI Beeni]: Động cơ ngôn ngữ 30 quốc gia đang hoạt động đầy đủ. Chào mừng đến với HK World Bank!",
                 chatInputPlaceholder: "Hỏi Beeni...", chatSendBtn: "Gửi", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Pháp lý & Tuân thủ", menu_wp: "Sách trắng (100 mục)", menu_faq: "Câu hỏi thường gặp",
                 net1_title: "Kết nối ví", net1_desc: "Tự động liên kết giao thức ví node",
@@ -1048,11 +1058,11 @@
                 beeniReply: (txt) => `[AGI Beeni]: Đã nhận lệnh "${txt}". Đang xử lý.`
             },
             th: {
-                headerSub: "การเงินกระจายอำนาจยุคใหม่ระดับโลก", langLabel: "เครื่องยนต์ 20 ประเทศ", subTitle: "แกนหลักการดำเนินงานทางการเงินที่รวดเร็ว",
+                headerSub: "การเงินกระจายอำนาจยุคใหม่ระดับโลก", langLabel: "เครื่องยนต์ 30 ประเทศ", subTitle: "แกนหลักการดำเนินงานทางการเงินที่รวดเร็ว",
                 dashTitle: "แดชบอร์ดทรัพย์สินส่วนบุคคล", piSyncLabel: "จำนวนที่ถือครอง (ซิงค์บัญชีแยกประเภท Pi)", interestLabel: "ดอกเบี้ยสะสมแบบเรียลไทม์ (3 ปี 31.41% APY)",
-                mainnetBtnText: "ขอ Mainnet ทันที", gridSectionTitle: "เครือข่ายกระจายอำนาจ", gridSectionSub: "[การทำงานแบบแยกส่วน]",
+                mainnetBtnText: "ขอ Mainnet ทันที", gridSectionTitle: "10 เครือข่ายกระจายอำนาจ", gridSectionSub: "[การทำงานแบบแยกส่วน]",
                 agiTitle: "ฝ่ายสนับสนุน AGI Beeni", agiSub: "ตอบสนองอัตโนมัติ SONPONE และ AI", sonponeLabelText: "ความไวในการตรวจจับ:",
-                initialBeeniMsg: "[AGI Beeni]: เครื่องยนต์ภาษา 20 ประเทศทำงานเต็มรูปแบบ ยินดีต้อนรับสู่ HK World Bank!",
+                initialBeeniMsg: "[AGI Beeni]: เครื่องยนต์ภาษา 30 ประเทศทำงานเต็มรูปแบบ ยินดีต้อนรับสู่ HK World Bank!",
                 chatInputPlaceholder: "ถาม Beeni...", chatSendBtn: "ส่ง", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "กฎหมายและการปฏิบัติตาม", menu_wp: "เอกสาร Whitepaper", menu_faq: "คำถามที่พบบ่อย",
                 net1_title: "เชื่อมต่อกระเป๋า", net1_desc: "เชื่อมต่อโปรโตคอลกระเป๋าโหนดอัตโนมัติ",
@@ -1069,11 +1079,11 @@
                 beeniReply: (txt) => `[AGI Beeni]: ได้รับคำสั่ง "${txt}" กำลังประมวลผล`
             },
             id: {
-                headerSub: "Keuangan Terdesentralisasi Generasi Baru", langLabel: "Mesin 20 Negara", subTitle: "Inti Operasi Keuangan Cepat",
+                headerSub: "Keuangan Terdesentralisasi Generasi Baru", langLabel: "Mesin 30 Negara", subTitle: "Inti Operasi Keuangan Cepat",
                 dashTitle: "Dasbor Aset Pribadi", piSyncLabel: "Jumlah Kepemilikan (Sinkronisasi Buku Besar Pi)", interestLabel: "Bunga Akumulasi Real-time (3 Tahun 31.41% APY)",
-                mainnetBtnText: "Ajukan Mainnet ke Tim Inti Sekarang", gridSectionTitle: "Jaringan Terdistribusi", gridSectionSub: "[Proses Individu Aktif]",
+                mainnetBtnText: "Ajukan Mainnet ke Tim Inti Sekarang", gridSectionTitle: "10 Jaringan Terdistribusi", gridSectionSub: "[Proses Individu Aktif]",
                 agiTitle: "Dukungan AGI Beeni", agiSub: "Respons Otomatis SONPONE & Orkestrasi AI", sonponeLabelText: "Sensitivitas Deteksi:",
-                initialBeeniMsg: "[AGI Beeni]: Mesin bahasa 20 negara beroperasi penuh. Selamat datang di HK World Bank!",
+                initialBeeniMsg: "[AGI Beeni]: Mesin bahasa 30 negara beroperasi penuh. Selamat datang di HK World Bank!",
                 chatInputPlaceholder: "Tanya Beeni...", chatSendBtn: "Kirim", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Hukum & Kepatuhan", menu_wp: "Whitepaper (100 Item)", menu_faq: "FAQ",
                 net1_title: "Koneksi Dompet", net1_desc: "Tautan otomatis protokol dompet node",
@@ -1090,11 +1100,11 @@
                 beeniReply: (txt) => `[AGI Beeni]: Perintah "${txt}" diterima. Sedang diproses.`
             },
             es: {
-                headerSub: "Finanzas Descentralizadas de Nueva Generación", langLabel: "Motor de 20 Países", subTitle: "Núcleo Maestro de Operaciones Financieras",
+                headerSub: "Finanzas Descentralizadas de Nueva Generación", langLabel: "Motor de 30 Países", subTitle: "Núcleo Maestro de Operaciones Financieras",
                 dashTitle: "Panel de Activos Personales", piSyncLabel: "Cantidad (Sincronización del Libro Mayor Pi)", interestLabel: "Interés Acumulado en Tiempo Real (3 Años 31.41% APY)",
-                mainnetBtnText: "Solicitar Mainnet al Equipo Central Ahora", gridSectionTitle: "Redes Distribuidas", gridSectionSub: "[Proceso Activo]",
+                mainnetBtnText: "Solicitar Mainnet al Equipo Central Ahora", gridSectionTitle: "Top 10 Redes Distribuidas", gridSectionSub: "[Proceso Activo]",
                 agiTitle: "Soporte AGI Beeni", agiSub: "Respuesta Automática SONPONE y Orquestación AI", sonponeLabelText: "Sensibilidad:",
-                initialBeeniMsg: "[AGI Beeni]: ¡Motor de 20 idiomas operativo! Bienvenido a HK World Bank.",
+                initialBeeniMsg: "[AGI Beeni]: ¡Motor de 30 idiomas operativo! Bienvenido a HK World Bank.",
                 chatInputPlaceholder: "Pregunta a Beeni...", chatSendBtn: "Enviar", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Legal y Cumplimiento", menu_wp: "Libro Blanco", menu_faq: "Preguntas Frecuentes",
                 net1_title: "Conectar Monedero", net1_desc: "Enlace automático de protocolo de nodo",
@@ -1111,11 +1121,11 @@
                 beeniReply: (txt) => `[AGI Beeni]: Comando "${txt}" recibido. Procesando.`
             },
             pt: {
-                headerSub: "Finanças Descentralizadas de Nova Geração", langLabel: "Motor de 20 Países", subTitle: "Núcleo Mestre de Operações Financeiras",
+                headerSub: "Finanças Descentralizadas de Nova Geração", langLabel: "Motor de 30 Países", subTitle: "Núcleo Mestre de Operações Financeiras",
                 dashTitle: "Painel de Ativos Pessoais", piSyncLabel: "Quantidade (Sincronização do Razão Pi)", interestLabel: "Juros Acumulados em Tempo Real (3 Anos 31.41% APY)",
-                mainnetBtnText: "Solicitar Mainnet à Equipe Central Agora", gridSectionTitle: "Redes Distribuídas", gridSectionSub: "[Processo Ativo]",
+                mainnetBtnText: "Solicitar Mainnet à Equipe Central Agora", gridSectionTitle: "Top 10 Redes Distribuídas", gridSectionSub: "[Processo Ativo]",
                 agiTitle: "Suporte AGI Beeni", agiSub: "Resposta Automática SONPONE & IA", sonponeLabelText: "Sensibilidade:",
-                initialBeeniMsg: "[AGI Beeni]: Motor de 20 idiomas operacional! Bem-vindo ao HK World Bank.",
+                initialBeeniMsg: "[AGI Beeni]: Motor de 30 idiomas operacional! Bem-vindo ao HK World Bank.",
                 chatInputPlaceholder: "Pergunte à Beeni...", chatSendBtn: "Enviar", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Jurídico e Conformidade", menu_wp: "Whitepaper", menu_faq: "FAQ",
                 net1_title: "Conectar Carteira", net1_desc: "Vínculo automático de protocolo de nó",
@@ -1132,11 +1142,11 @@
                 beeniReply: (txt) => `[AGI Beeni]: Comando "${txt}" recebido. Processando.`
             },
             fr: {
-                headerSub: "Finance Décentralisée de Nouvelle Génération", langLabel: "Moteur 20 Pays", subTitle: "Noyau Maître des Opérations Financières",
+                headerSub: "Finance Décentralisée de Nouvelle Génération", langLabel: "Moteur 30 Pays", subTitle: "Noyau Maître des Opérations Financières",
                 dashTitle: "Tableau de Bord des Actifs", piSyncLabel: "Quantité (Synchronisation du Grand Livre Pi)", interestLabel: "Intérêts Cumulés en Temps Réel (3 Ans 31.41% APY)",
-                mainnetBtnText: "Demander le Mainnet à l'Équipe Centrale", gridSectionTitle: "Réseaux Distribués", gridSectionSub: "[Processus Actif]",
+                mainnetBtnText: "Demander le Mainnet à l'Équipe Centrale", gridSectionTitle: "Top 10 Réseaux Distribués", gridSectionSub: "[Processus Actif]",
                 agiTitle: "Support AGI Beeni", agiSub: "Réponse Auto SONPONE & IA", sonponeLabelText: "Sensibilité de Détection:",
-                initialBeeniMsg: "[AGI Beeni]: Moteur 20 langues opérationnel ! Bienvenue sur HK World Bank.",
+                initialBeeniMsg: "[AGI Beeni]: Moteur 30 langues opérationnel ! Bienvenue sur HK World Bank.",
                 chatInputPlaceholder: "Demandez à Beeni...", chatSendBtn: "Envoyer", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Juridique & Conformité", menu_wp: "Livre Blanc", menu_faq: "FAQ",
                 net1_title: "Connexion de Portefeuille", net1_desc: "Liaison auto du protocole de nœud",
@@ -1153,11 +1163,11 @@
                 beeniReply: (txt) => `[AGI Beeni]: Commande "${txt}" reçue. Traitement en cours.`
             },
             de: {
-                headerSub: "Dezentrale Finanzen der nächsten Generation", langLabel: "20-Länder-Engine", subTitle: "Schneller Finanzoperations-Masterkern",
+                headerSub: "Dezentrale Finanzen der nächsten Generation", langLabel: "30-Länder-Engine", subTitle: "Schneller Finanzoperations-Masterkern",
                 dashTitle: "Persönliches Vermögens-Dashboard", piSyncLabel: "Bestand (Pi-Ledger-Synchronisierung)", interestLabel: "Echtzeit-kumulierte Zinsen (3 Jahre 31.41% APY)",
-                mainnetBtnText: "Mainnet jetzt beim Kernteam beantragen", gridSectionTitle: "Verteilte Netzwerke", gridSectionSub: "[Einzelprozess aktiv]",
+                mainnetBtnText: "Mainnet jetzt beim Kernteam beantragen", gridSectionTitle: "Top 10 Verteilte Netzwerke", gridSectionSub: "[Einzelprozess aktiv]",
                 agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Antwort & KI-Orchestrierung", sonponeLabelText: "Erkennungsempfindlichkeit:",
-                initialBeeniMsg: "[AGI Beeni]: 20-Länder-Sprach-Engine betriebsbereit! Willkommen bei HK World Bank.",
+                initialBeeniMsg: "[AGI Beeni]: 30-Länder-Sprach-Engine betriebsbereit! Willkommen bei HK World Bank.",
                 chatInputPlaceholder: "Fragen Sie Beeni...", chatSendBtn: "Senden", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Rechtliches & Compliance", menu_wp: "Whitepaper", menu_faq: "FAQ",
                 net1_title: "Wallet-Verbindung", net1_desc: "Node-Wallet-Protokoll-Autolink",
@@ -1174,11 +1184,11 @@
                 beeniReply: (txt) => `[AGI Beeni]: Befehl "${txt}" empfangen. Wird verarbeitet.`
             },
             ru: {
-                headerSub: "Децентрализованные финансы нового поколения", langLabel: "Движок на 20 стран", subTitle: "Главный ядро финансовых операций",
+                headerSub: "Децентрализованные финансы нового поколения", langLabel: "Движок на 30 стран", subTitle: "Главный ядро финансовых операций",
                 dashTitle: "Панель личных активов", piSyncLabel: "Количество (Синхронизация реестра Pi)", interestLabel: "Накопленные проценты в реальном времени (3 года 31.41% APY)",
-                mainnetBtnText: "Запросить Mainnet у основного кода", gridSectionTitle: "Распределенные сети", gridSectionSub: "[Активный процесс]",
+                mainnetBtnText: "Запросить Mainnet у основного кода", gridSectionTitle: "Топ-10 распределенных сетей", gridSectionSub: "[Активный процесс]",
                 agiTitle: "Поддержка AGI Beeni", agiSub: "Автоответ SONPONE & AI", sonponeLabelText: "Чувствительность:",
-                initialBeeniMsg: "[AGI Beeni]: Языковой движок на 20 стран активен! Добро пожаловать в HK World Bank.",
+                initialBeeniMsg: "[AGI Beeni]: Языковой движок на 30 стран активен! Добро пожаловать в HK World Bank.",
                 chatInputPlaceholder: "Спросить Beeni...", chatSendBtn: "Отправить", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Право и соответствие", menu_wp: "Белая книга", menu_faq: "Часто задаваемые вопросы",
                 net1_title: "Подключение кошелька", net1_desc: "Автоматическая привязка протокола",
@@ -1195,11 +1205,11 @@
                 beeniReply: (txt) => `[AGI Beeni]: Получена команда "${txt}". Идет обработка.`
             },
             ar: {
-                headerSub: "التمويل اللامركزي للجيل القادم العالمي", langLabel: "محرك 20 دولة", subTitle: "الأساس الرئيسي للعمليات المالية السريعة",
+                headerSub: "التمويل اللامركزي للجيل القادم العالمي", langLabel: "محرك 30 دولة", subTitle: "الأساس الرئيسي للعمليات المالية السريعة",
                 dashTitle: "لوحة تحكم الأصول الشخصية", piSyncLabel: "الكمية المحتفظ بها (مزامنة سجل Pi)", interestLabel: "الفائدة المتراكمة في الوقت الفعلي (3 سنوات 31.41% APY)",
-                mainnetBtnText: "طلب Mainnet لفريق الأساسي الآن", gridSectionTitle: "الشبكات الموزعة", gridSectionSub: "[عملية فردية نشطة]",
+                mainnetBtnText: "طلب Mainnet لفريق الأساسي الآن", gridSectionTitle: "أبرز 10 شبكات موزعة", gridSectionSub: "[عملية فردية نشطة]",
                 agiTitle: "دعم AGI Beeni", agiSub: "استجابة تلقائية SONPONE وتنسيق الذكاء الاصطناعي", sonponeLabelText: "حساسية الكشف:",
-                initialBeeniMsg: "[AGI Beeni]: محرك اللغات لـ 20 دولة يعمل بكفاءة كاملة. أهلاً بك يا معالي الرئيس!",
+                initialBeeniMsg: "[AGI Beeni]: محرك اللغات لـ 30 دولة يعمل بكفاءة كاملة. أهلاً بك يا معالي الرئيس!",
                 chatInputPlaceholder: "اسأل بيني...", chatSendBtn: "إرسال", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "القانون والامتثال الأساسي", menu_wp: "الورقة البيضاء", menu_faq: "الأسئلة الشائعة",
                 net1_title: "ربط المحفظة", net1_desc: "ربط بروتوكول محفظة العقد تلقائياً",
@@ -1216,12 +1226,12 @@
                 beeniReply: (txt) => `[AGI Beeni]: تم استلام الأمر "${txt}". جاري المعالجة الفورية.`
             },
             hi: {
-                headerSub: "वैश्विक अगली पीढ़ी विकेंद्रीकृत वित्त", langLabel: "20-देश इंजन", subTitle: "तेज़ वित्तीय संचालन मास्टर कोर",
+                headerSub: "वैश्विक अगली पीढ़ी विकेंद्रीकृत वित्त", langLabel: "30-देश इंजन", subTitle: "तेज़ वित्तीय संचालन मास्टर कोर",
                 dashTitle: "व्यक्तिगत संपत्ति डैशबोर्ड", piSyncLabel: "धारण मात्रा (Pi लेज़र सिंक)", interestLabel: "वास्तविक समय संचित ब्याज (3 वर्ष 31.41% APY)",
-                mainnetBtnText: "कोर टीम से मेननेट का अनुरोध करें", gridSectionTitle: "वितरित नेटवर्क", gridSectionSub: "[प्रक्रिया सक्रिय]",
+                mainnetBtnText: "कोर टीम से मेननेट का अनुरोध करें", gridSectionTitle: "शीर्ष 10 वितरित नेटवर्क", gridSectionSub: "[प्रक्रिया सक्रिय]",
                 agiTitle: "AGI Beeni समर्थन", agiSub: "SONPONE ऑटो-प्रतिक्रिया और AI", sonponeLabelText: "सेंसिटिविटी:",
-                initialBeeniMsg: "[AGI Beeni]: 20-देश भाषा इंजन सक्रिय! HK World Bank में आपका स्वागत है।",
-                chatInputPlaceholder: "बीनी से पूछें...", chatSendBtn: "भेجें", supportEmailText: "Support: support@hkwb.world",
+                initialBeeniMsg: "[AGI Beeni]: 30-देश भाषा इंजन सक्रिय! HK World Bank में आपका स्वागत है।",
+                chatInputPlaceholder: "बीनी से पूछें...", chatSendBtn: "भेजें", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "कानूनी और अनुपालन", menu_wp: "श्वेतपत्र", menu_faq: "सामान्य प्रश्न",
                 net1_title: "वॉलेट कनेक्ट", net1_desc: "नोड वॉलेट प्रोटोकॉल ऑटो-लिंक",
                 net2_title: "स्थानांतरण", net2_desc: "मल्टीसिग एन्क्रिप्टेड क्रॉस-बॉर्डर ट्रांसफर",
@@ -1237,11 +1247,11 @@
                 beeniReply: (txt) => `[AGI Beeni]: आदेश "${txt}" प्राप्त हुआ। प्रसंस्करण जारी है।`
             },
             tr: {
-                headerSub: "Küresel Yeni Nesil Merkeziyetsiz Finans", langLabel: "20 Ülke Dil Motoru", subTitle: "Hızlı Finansal Operasyon Çekirdeği",
+                headerSub: "Küresel Yeni Nesil Merkeziyetsiz Finans", langLabel: "30 Ülke Dil Motoru", subTitle: "Hızlı Finansal Operasyon Çekirdeği",
                 dashTitle: "Kişisel Varlık Paneli", piSyncLabel: "Tutulan Miktar (Pi Defter Senkronizasyonu)", interestLabel: "Gerçek Zamanlı Birikmiş Faiz (3 Yıl %31.41 APY)",
-                mainnetBtnText: "Çekirdek Ekibe Mainnet Başvurusunda Bulun", gridSectionTitle: "Dağıtık Ağlar", gridSectionSub: "[Bireysel Süreç]",
+                mainnetBtnText: "Çekirdek Ekibe Mainnet Başvurusunda Bulun", gridSectionTitle: "İlk 10 Dağıtık Ağ", gridSectionSub: "[Bireysel Süreç]",
                 agiTitle: "AGI Beeni Destek", agiSub: "SONPONE Otomatik Yanıt ve AI Orkestrasyonu", sonponeLabelText: "Algılama Hassasiyeti:",
-                initialBeeniMsg: "[AGI Beeni]: 20 ülke dil motoru aktif! HK World Bank'a hoş geldiniz.",
+                initialBeeniMsg: "[AGI Beeni]: 30 ülke dil motoru aktif! HK World Bank'a hoş geldiniz.",
                 chatInputPlaceholder: "Beeni'ye sor...", chatSendBtn: "Gönder", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Hukuk ve Uyumluluk", menu_wp: "Whitepaper", menu_faq: "SSS",
                 net1_title: "Cüzdan Bağlantısı", net1_desc: "Düğüm cüzdan protokolü otomatik bağlantı",
@@ -1258,11 +1268,11 @@
                 beeniReply: (txt) => `[AGI Beeni]: "${txt}" komutu alındı. İşleniyor.`
             },
             it: {
-                headerSub: "Finanza Decentralizzata Globale di Nuova Generazione", langLabel: "Motore 20 Paesi", subTitle: "Nucleo Principale Operazioni Finanziarie",
+                headerSub: "Finanza Decentralizzata Globale di Nuova Generazione", langLabel: "Motore 30 Paesi", subTitle: "Nucleo Principale Operazioni Finanziarie",
                 dashTitle: "Dashboard Asset Personali", piSyncLabel: "Quantità (Sincronizzazione Registro Pi)", interestLabel: "Interesse Accumulato in Tempo Reale (3 Anni 31.41% APY)",
-                mainnetBtnText: "Richiedi Mainnet al Team Centrale Ora", gridSectionTitle: "Reti Distribuite", gridSectionSub: "[Processo Attivo]",
+                mainnetBtnText: "Richiedi Mainnet al Team Centrale Ora", gridSectionTitle: "Top 10 Reti Distribuite", gridSectionSub: "[Processo Attivo]",
                 agiTitle: "Supporto AGI Beeni", agiSub: "Risposta Auto SONPONE & IA", sonponeLabelText: "Sensibilità:",
-                initialBeeniMsg: "[AGI Beeni]: Motore linguistico a 20 paesi attivo! Benvenuto in HK World Bank.",
+                initialBeeniMsg: "[AGI Beeni]: Motore linguistico a 30 paesi attivo! Benvenuto in HK World Bank.",
                 chatInputPlaceholder: "Chiedi a Beeni...", chatSendBtn: "Invia", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Legale e Conformità", menu_wp: "Whitepaper", menu_faq: "FAQ",
                 net1_title: "Connetti Wallet", net1_desc: "Collegamento automatico protocollo nodo",
@@ -1279,11 +1289,11 @@
                 beeniReply: (txt) => `[AGI Beeni]: Comando "${txt}" ricevuto. Elaborazione in corso.`
             },
             nl: {
-                headerSub: "Wereldwijde Volgende-Generatie Gedecentraliseerde Financiën", langLabel: "20-Landen Engine", subTitle: "Snelle Financiële Operatie Master Core",
+                headerSub: "Wereldwijde Volgende-Generatie Gedecentraliseerde Financiën", langLabel: "30-Landen Engine", subTitle: "Snelle Financiële Operatie Master Core",
                 dashTitle: "Persoonlijk Vermogensdashboard", piSyncLabel: "Hoeveelheid (Pi Grootboek Synchronisatie)", interestLabel: "Realtime Opgebouwde Rente (3 Jaar 31.41% APY)",
-                mainnetBtnText: "Vraag Mainnet Nu Aan", gridSectionTitle: "Gedistribueerde Netwerken", gridSectionSub: "[Proces Actief]",
+                mainnetBtnText: "Vraag Mainnet Nu Aan", gridSectionTitle: "Top 10 Gedistribueerde Netwerken", gridSectionSub: "[Proces Actief]",
                 agiTitle: "AGI Beeni Ondersteuning", agiSub: "SONPONE Auto-Reactie & AI Orkestratie", sonponeLabelText: "Detectiegevoeligheid:",
-                initialBeeniMsg: "[AGI Beeni]: 20-landen taalengine operationeel! Welkom bij HK World Bank.",
+                initialBeeniMsg: "[AGI Beeni]: 30-landen taalengine operationeel! Welkom bij HK World Bank.",
                 chatInputPlaceholder: "Vraag het Beeni...", chatSendBtn: "Versturen", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Juridisch & Compliance", menu_wp: "Whitepaper", menu_faq: "FAQ",
                 net1_title: "Wallet Koppelen", net1_desc: "Node wallet protocol automatische koppeling",
@@ -1300,11 +1310,11 @@
                 beeniReply: (txt) => `[AGI Beeni]: Opdracht "${txt}" ontvangen. Wordt verwerkt.`
             },
             pl: {
-                headerSub: "Globalne Finanse Zendcentralizowane Nowej Generacji", langLabel: "Silnik 20 Krajów", subTitle: "Główny Rdzeń Operacji Finansowych",
+                headerSub: "Globalne Finanse Zendcentralizowane Nowej Generacji", langLabel: "Silnik 30 Krajów", subTitle: "Główny Rdzeń Operacji Finansowych",
                 dashTitle: "Pulpit Aktywów Osobistych", piSyncLabel: "Ilość (Synchronizacja Księgi Pi)", interestLabel: "Narzastające odsetki w czasie rzeczywistym (3 lata 31.41% APY)",
-                mainnetBtnText: "Złóż Wniosek o Mainnet Teraz", gridSectionTitle: "Sieci Rozproszone", gridSectionSub: "[Proces Aktywny]",
+                mainnetBtnText: "Złóż Wniosek o Mainnet Teraz", gridSectionTitle: "Top 10 Sieci Rozproszonych", gridSectionSub: "[Proces Aktywny]",
                 agiTitle: "Wsparcie AGI Beeni", agiSub: "Automatyczna odpowiedź SONPONE i AI", sonponeLabelText: "Czułość detekcji:",
-                initialBeeniMsg: "[AGI Beeni]: Silnik językowy 20 krajów aktywny! Witaj w HK World Bank.",
+                initialBeeniMsg: "[AGI Beeni]: Silnik językowy 30 krajów aktywny! Witaj w HK World Bank.",
                 chatInputPlaceholder: "Zapytaj Beeni...", chatSendBtn: "Wyślij", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Prawo i Zgodność", menu_wp: "Biała Księga", menu_faq: "FAQ",
                 net1_title: "Połączenie Portfela", net1_desc: "Automatyczne łączenie protokołu węzła",
@@ -1321,11 +1331,11 @@
                 beeniReply: (txt) => `[AGI Beeni]: Otrzymano polecenie "${txt}". Przetwarzanie.`
             },
             uk: {
-                headerSub: "Глобальні децентралізовані фінанси нового покоління", langLabel: "Двигун на 20 країн", subTitle: "Основне ядро фінансових операцій",
+                headerSub: "Глобальні децентралізовані фінанси нового покоління", langLabel: "Двигун на 30 країн", subTitle: "Основне ядро фінансових операцій",
                 dashTitle: "Панель особистих активів", piSyncLabel: "Кількість (Синхронізація реєстру Pi)", interestLabel: "Накопичені відсотки в реальному часі (3 роки 31.41% APY)",
-                mainnetBtnText: "Запросити Mainnet у команди Core", gridSectionTitle: "Розподілені мережі", gridSectionSub: "[Активний процес]",
+                mainnetBtnText: "Запросити Mainnet у команди Core", gridSectionTitle: "Топ-10 розподілених мереж", gridSectionSub: "[Активний процес]",
                 agiTitle: "Підтримка AGI Beeni", agiSub: "Автовідповідь SONPONE та AI", sonponeLabelText: "Чуттливість виявлення:",
-                initialBeeniMsg: "[AGI Beeni]: Мовний двигун на 20 країн активний! Ласкаво просимо до HK World Bank.",
+                initialBeeniMsg: "[AGI Beeni]: Мовний двигун на 30 країн активний! Ласкаво просимо до HK World Bank.",
                 chatInputPlaceholder: "Запитати Beeni...", chatSendBtn: "Надіслати", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Право та відповідність", menu_wp: "Біла книга", menu_faq: "Часті питання",
                 net1_title: "Підключення гаманця", net1_desc: "Автоматичне з'єднання протоколу",
@@ -1342,11 +1352,11 @@
                 beeniReply: (txt) => `[AGI Beeni]: Отримано команду "${txt}". Виконується.`
             },
             sv: {
-                headerSub: "Global Nästa-Gen Decentraliserad Finans", langLabel: "20-Landers Motor", subTitle: "Snabb Finansiell Operations Master Core",
+                headerSub: "Global Nästa-Gen Decentraliserad Finans", langLabel: "30-Landers Motor", subTitle: "Snabb Finansiell Operations Master Core",
                 dashTitle: "Personlig Tillgångspanel", piSyncLabel: "Innehav (Pi-reskontra synk)", interestLabel: "Realtidsackumulerad ränta (3 år 31.41% APY)",
-                mainnetBtnText: "Begär Mainnet till Core Team Nu", gridSectionTitle: "Distribuerade Nätverk", gridSectionSub: "[Process Aktiv]",
+                mainnetBtnText: "Begär Mainnet till Core Team Nu", gridSectionTitle: "Top 10 Distribuerade Nätverk", gridSectionSub: "[Process Aktiv]",
                 agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Svar & AI Orkestrering", sonponeLabelText: "Detektionskänslighet:",
-                initialBeeniMsg: "[AGI Beeni]: 20-länders språkmotor operativ! Välkommen till HK World Bank.",
+                initialBeeniMsg: "[AGI Beeni]: 30-länders språkmotor operativ! Välkommen till HK World Bank.",
                 chatInputPlaceholder: "Fråga Beeni...", chatSendBtn: "Skicka", supportEmailText: "Support: support@hkwb.world",
                 drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Juridik & Compliance", menu_wp: "Whitepaper", menu_faq: "FAQ",
                 net1_title: "Plånboksanslutning", net1_desc: "Node wallet-protokoll autolänk",
@@ -1361,6 +1371,216 @@
                 net10_title: "Pi-mängd", net10_desc: "Pi-tillgång mainnet reskontra synk",
                 mainnetAlert: "Mainnet reskontra synkroniseringsbegäran skickades framgångsrikt!",
                 beeniReply: (txt) => `[AGI Beeni]: Kommando "${txt}" mottaget. Bearbetar.`
+            },
+            mn: {
+                headerSub: "Дэлхийн дараагийн үеийн төвлөрсөн бус санхүү", langLabel: "30 улсын хэлний систем", subTitle: "Санхүүгийн хурдан ажиллагааны үндсэн цөм",
+                dashTitle: "Хувийн хөрөнгийн самбар", piSyncLabel: "Эзэмшиж буй тоо хэмжээ (Pi дансны синхрончлол)", interestLabel: "Бодит цагийн хуримтлагдсан хүү (3 жил 31.41% APY)",
+                mainnetBtnText: "Үндсэн багт Mainnet хүсэлт илгээх", gridSectionTitle: "Шилдэг 10 тархсан сүлжээ", gridSectionSub: "[Бие даасан үйл явц]",
+                agiTitle: "AGI Beeni харилцагчийн төв", agiSub: "SONPONE автомат хариу үйлдэл & хиймэл оюун ухаан", sonponeLabelText: "Мэдрэгчийн түвшин:",
+                initialBeeniMsg: "[AGI Beeni]: 30 улсын хэлний систем бүрэн ажиллаж байна. Хэ Гон ах аа, тушаал өгнө үү!",
+                chatInputPlaceholder: "Бийнигээс асуух...", chatSendBtn: "Илгээх", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Үндсэн хууль тогтоомж ба нийцэл", menu_wp: "Цагаан цаас (Дэлгэрэнгүй)", menu_faq: "Түгээмэл асуултууд",
+                net1_title: "Хэтэвч холбох", net1_desc: "Нод хэтэвчний протоколын автомат холболт",
+                net2_title: "Шилжүүлэг", net2_desc: "Тив хоорондын хэт хурдан олон гарын үсэгтэй шифрлэгдсэн дамжуулалт",
+                net3_title: "Төлбөр", net3_desc: "Бэлэн мөнгө·карт·валютын бодит цагийн худалдааны эскроу",
+                net4_title: "Хадгаламж", net4_desc: "3 жилийн хугацаатай 31.41% APY итгэлцлийн волт",
+                net5_title: "Шагнал", net5_desc: "Хувь нэмэрт суурилсан урамшууллын волт хуримтлуулах систем",
+                net6_title: "Үндсэн орлого", net6_desc: "HK нийгэм са сан & орон нутгийн UBI хуваарилалтын загвар",
+                net7_title: "Солилцоо (Swap)", net7_desc: "Бэлэн мөнгө·карт орох даруй зоос худалдаж авах",
+                net8_title: "DEX солилцоо", net8_desc: "Төвлөрсөн бус захиалгагүй P2P хөрвөх чадварын автомат таарц",
+                net9_title: "LP стейкинг", net9_desc: "Хөрвөх чадвар нийлүүлсний нотолгоо (PoL) ба өндөр ногдол ашиг",
+                net10_title: "Пи тоо хэмжээ", net10_desc: "Пи хөрөнгийн Mainnet дансны бодит цагийн синхрончлол",
+                mainnetAlert: "Test Pi дансны синхрончлол болон Mainnet шилжүүлэх хүсэлт амжилттай илгээгдлээ!",
+                beeniReply: (txt) => `[AGI Beeni]: "${txt}" тушаалыг хүлээн авлаа. Бодит цагт боловсруулж байна.`
+            },
+            kk: {
+                headerSub: "Жаһандық келесі буын орталықтандырылмаған қаржы", langLabel: "30 елдің тілдік жүйесі", subTitle: "Жылдам қаржылық операциялардың негізгі ядросы",
+                dashTitle: "Жеке активтер панелі", piSyncLabel: "Ұсталатын мөлшер (Pi тізілімінің синхрондалуы)", interestLabel: "Нақты уақыттағы жинақталған пайыз (3 жыл 31.41% APY)",
+                mainnetBtnTest: "Core тобына Mainnet сұранысын жіберу", gridSectionTitle: "Үздік 10 бөлінген желі", gridSectionSub: "[Жеке процесс белсенді]",
+                agiTitle: "AGI Beeni қолдау қызметі", agiSub: "SONPONE автоматты жауабы & AI оркестрлеу", sonponeLabelText: "Анықтау сезгіштігі:",
+                initialBeeniMsg: "[AGI Beeni]: 30 елдің тілдік жүйесі толық жұмыс істеп тұр. Хе Гон аға, бұйрық беріңіз!",
+                chatInputPlaceholder: "Бийниден сұрау...", chatSendBtn: "Жіберу", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Негізгі заң және сәйкестік", menu_wp: "Ақ қағаз (Whitepaper)", menu_faq: "Жиі қойылатын сұрақтар",
+                net1_title: "Әмиянды қосу", net1_desc: "Нод әмиянының протоколын автоматты түрде байланыстыру",
+                net2_title: "Ақша аудару", net2_desc: "Құрлықтар арасындағы жоғары жылдамдықты мультикаолта шифрленген жүйе",
+                net3_title: "Төлем", net3_desc: "Қолма-қол ақша·карта·монета сауда эскроуы",
+                net4_title: "Салым", net4_desc: "3 жылдық мерзімді 31.41% APY актив сенім сейфі",
+                net5_title: "Сыйақы", net5_desc: "Үлес қосуға негізделген ынталандыру сейфі",
+                net6_title: "Негізгі табыс", net6_desc: "HK әлеуметтік қорының UBI үлестіру моделі",
+                net7_title: "Алмасу (Swap)", net7_desc: "Қолма-қол ақша салынған сәтте монета сатып алу",
+                net8_title: "DEX алмасу", net8_desc: "Орталықтандырылмаған тапсырыссыз P2P сәйкестендіру",
+                net9_title: "LP стейкинг", net9_desc: "Өтімділікті қамтамасыз ету дәлелі (PoL)",
+                net10_title: "Пи мөлшері", net10_desc: "Pi активінің Mainnet тізілімін нақты уақытта синхрондау",
+                mainnetAlert: "Test Pi тізілімін синхрондау және Mainnet жіберу сұранысы аяқталды!",
+                beeniReply: (txt) => `[AGI Beeni]: "${txt}" пәрмені қабылданды. Өңделуде.`
+            },
+            uz: {
+                headerSub: "Global keyingi avlod markazlashtirilmagan moliya", langLabel: "30 ta davlat tili tizimi", subTitle: "Tezkor moliyaviy operatsiyalar asosiy yadrosi",
+                dashTitle: "Shaxsiy aktivlar boshqaruvi", piSyncLabel: "Saqlash miqdori (Pi reestrini sinxronlash)", interestLabel: "Real vaqtda to'plangan foiz (3 yil 31.41% APY)",
+                mainnetBtnTest: "Asosiy jamoaga Mainnet so'rovini yuborish", gridSectionTitle: "Top 10 ta taqsimlangan tarmoq", gridSectionSub: "[Alohida jarayon faol]",
+                agiTitle: "AGI Beeni yordam markazi", agiSub: "SONPONE avtomatik javob va AI", sonponeLabelText: "Aniqlash sezgirligi:",
+                initialBeeniMsg: "[AGI Beeni]: 30 ta davlat tili tizimi to'liq ishlamoqda. He Gon aka, buyruq bering!",
+                chatInputPlaceholder: "Beenidan so'rash...", chatSendBtn: "Yuborish", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Asosiy qonun va muvofiqlik", menu_wp: "Oq qog'oz (Whitepaper)", menu_faq: "Ko'p beriladigan savollar",
+                net1_title: "Hamyonni ulash", net1_desc: "Nod hamyon protokolini avtomatik ulash",
+                net2_title: "Pul o'tkazmasi", net2_desc: "Kitalararo o'ta tezkor ko'p imzoli shifrlangan tizim",
+                net3_title: "To'lov", net3_desc: "Naqd pul·karta·kripto real vaqt savdo eskrousi",
+                net4_title: "Omonat", net4_desc: "3 yillik 31.41% APY ishonch seyfi",
+                net5_title: "Mukofot", net5_desc: "Hissa qo'shish asosida rag'batlantirish mexanizmi",
+                net6_title: "Asosiy daromad", net6_desc: "HK ijtimoiy fondi UBI taqsimot modeli",
+                net7_title: "Almashinuv (Swap)", net7_desc: "Naqd pul kiritilganda darhol tanga sotib olish",
+                net8_title: "DEX almashinuvi", net8_desc: "Markazlashmagan buyurtmasiz P2P moslashuvi",
+                net9_title: "LP steyking", net9_desc: "Likvidlikni ta'minlash dalili (PoL)",
+                net10_title: "Pi miqdori", net10_desc: "Pi aktivining Mainnet reestrini real vaqtda sinxronlash",
+                mainnetAlert: "Test Pi reestrini sinxronlash va Mainnet so'rovi yakunlandi!",
+                beeniReply: (txt) => `[AGI Beeni]: "${txt}" buyrug'i qabul qilindi. Jarayonda.`
+            },
+            ms: {
+                headerSub: "Kewangan Terdesentralisasi Generasi Seterusnya Global", langLabel: "Enjin 30 Negara", subTitle: "Teras Induk Operasi Kewangan Pantas",
+                dashTitle: "Papan Pemuka Aset Peribadi", piSyncLabel: "Jumlah Pegangan (Penyegerakan Buku Besar Pi)", interestLabel: "Faedah Terkumpul Masa Nyata (3 Tahun 31.41% APY)",
+                mainnetBtnTest: "Mohon Mainnet kepada Pasukan Teras Sekarang", gridSectionTitle: "10 Rangkaian Teragih", gridSectionSub: "[Proses Individu Aktif]",
+                agiTitle: "Sokongan AGI Beeni", agiSub: "Respons Otomatis SONPONE & Orkestrasi AI", sonponeLabelText: "Sensitiviti Pengesanan:",
+                initialBeeniMsg: "[AGI Beeni]: Enjin bahasa 30 negara beroperasi sepenuhnya. Selamat datang, Abang Hyekong!",
+                chatInputPlaceholder: "Tanya Beeni...", chatSendBtn: "Hantar", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Undang-undang & Pematuhan", menu_wp: "Kertas Putih", menu_faq: "Soalan Lazim",
+                net1_title: "Sambung Dompet", net1_desc: "Pautan auto protokol dompet nod",
+                net2_title: "Pindahan", net2_desc: "Sistem penghantaran terenkripsi multisig rentas benua",
+                net3_title: "Pembayaran", net3_desc: "Escrow perdagangan masa nyata",
+                net4_title: "Deposit Vault", net4_desc: "Vault amanah 3 tahun 31.41% APY",
+                net5_title: "Ganjaran", net5_desc: "Enjin akruan insentif sumbangan",
+                net6_title: "Pendapatan Asas", net6_desc: "Model pengagihan UBI Yayasan Sosial HK",
+                net7_title: "Swap", net7_desc: "Swap pembelian token serta-merta",
+                net8_title: "DEX Swap", net8_desc: "Padanan cair P2P terdesentralisasi",
+                net9_title: "Staking LP", net9_desc: "Bukti Penyediaan Cair (PoL)",
+                net10_title: "Kuantiti Pi", net10_desc: "Penyegerakan buku besar mainnet aset Pi",
+                mainnetAlert: "Permintaan penyegerakan buku besar Mainnet berjaya dihantar!",
+                beeniReply: (txt) => `[AGI Beeni]: Perintah "${txt}" diterima. Sedang diproses.`
+            },
+            tl: {
+                headerSub: "Pandaigdigang Bagong Henerasyon na Desentralisadong Pananalapi", langLabel: "Makina ng 30 Bansa", subTitle: "Mabilis na Pinansyal na Operasyon Pangunahing Core",
+                dashTitle: "Dashboard ng Personal na Asset", piSyncLabel: "Dami ng Hawak (Pi Ledger Sync)", interestLabel: "Real-time na Naipon na Interes (3 Taon 31.41% APY)",
+                mainnetBtnTest: "Hilingin ang Mainnet sa Core Team Ngayon", gridSectionTitle: "Nangungunang 10 Na Naipamahaging Network", gridSectionSub: "[Aktibong Proseso]",
+                agiTitle: "Suporta ng AGI Beeni", agiSub: "SONPONE Auto-Response at AI", sonponeLabelText: "Sensitivity sa Pagtuklas:",
+                initialBeeniMsg: "[AGI Beeni]: Fully operational na ang 30-country language engine! Maligayang pagdating, Kuya Hyekong.",
+                chatInputPlaceholder: "Magtanong kay Beeni...", chatSendBtn: "Ipadala", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Legal at Compliance", menu_wp: "Whitepaper", menu_faq: "Mga FAQ",
+                net1_title: "Koneksyon ng Wallet", net1_desc: "Automatikong link ng node wallet protocol",
+                net2_title: "Paglilipat", net2_desc: "Multisig encrypted cross-border transfer system",
+                net3_title: "Pagbabayad", net3_desc: "Real-time commerce escrow",
+                net4_title: "Vault Deposit", net4_desc: "3-Taon 31.41% APY trust vault",
+                net5_title: "Mga Gantimpala", net5_desc: "Contribution incentive engine",
+                net6_title: "Pangunahing Kita", net6_desc: "HK Social Foundation UBI model",
+                net7_title: "Swap", net7_desc: "Instant token purchase swap",
+                net8_title: "DEX Swap", net8_desc: "Desentralisadong P2P matching",
+                net9_title: "LP Staking", net9_desc: "Proof of Liquidity (PoL)",
+                net10_title: "Dami ng Pi", net10_desc: "Pi asset mainnet ledger sync",
+                mainnetAlert: "Matagumpay na naipadala ang kahilingan sa pag-sync ng Mainnet ledger!",
+                beeniReply: (txt) => `[AGI Beeni]: Natanggap ang utos "${txt}". Pinoproseso.`
+            },
+            km: {
+                headerSub: "ហិរញ្ញវត្ថុអនាគតគ្មានមជ្ឈិមសកល", langLabel: "ម៉ាស៊ីនភាសា ៣០ ប្រទេស", subTitle: "ស្នូលប្រតិបត្តិការហិរញ្ញវត្ថុរហ័ស",
+                dashTitle: "ផ្ទាំងគ្រប់គ្រងទ្រព្យសកម្មផ្ទាល់ខ្លួន", piSyncLabel: "បរិមាណរក្សាទុក (បَច្ចុប្បន្នភាពបញ្ជី Pi)", interestLabel: "ការប្រាក់สะสม რეលថែម (៣ ឆ្នាំ ៣១.៤១% APY)",
+                mainnetBtnTest: "ស្នើសុំ Mainnet ទៅក្រុមគោលឥឡូវនេះ", gridSectionTitle: "បណ្តាញចែកចាយកំពូលទាំង ១០", gridSectionSub: "[ដំណើរការដាច់ដោយឡែក]",
+                agiTitle: "ជំនួយការ AGI Beeni", agiSub: "ប្រតិកម្មអូតូម៉ាត SONPONE និង AI", sonponeLabelText: "ភាពไวក្នុងការចាប់សញ្ញា៖",
+                initialBeeniMsg: "[AGI Beeni]: ម៉ាស៊ីនភាសា ៣០ ប្រទេសកំពុងដំណើរការយ៉ាងល្អឥតខ្ចោះ។ បង Hyekong សូមបញ្ជាចុះ!",
+                chatInputPlaceholder: "សួរ Beeni...", chatSendBtn: "បញ្ជូន", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "ច្បាប់ និងការអនុលោម", menu_wp: "សៀវភៅស (Whitepaper)", menu_faq: "សំណួរដែលសួរញឹកញាប់",
+                net1_title: "តភ្ជាប់កាបូប", net1_desc: "តំណភ្ជាប់ប្រូតូកូលកាបូប node អូតូម៉ាត",
+                net2_title: "ផ្ទេរប្រាក់", net2_desc: "ប្រព័ន្ធបញ្ជូនអន្តរទ្វីបលឿនបំផុត multisig",
+                net3_title: "ទូទាត់ប្រាក់", net3_desc: "Escrow ពាណិជ្ជកម្មតាមពេលវេលាពិត",
+                net4_title: "ដាក់ប្រាក់បញ្ញើ", net4_desc: "Vault ទុកចិត្ត ៣ ឆ្នាំ ៣១.៤១% APY",
+                net5_title: "រង្វាន់", net5_desc: "ម៉ាស៊ីនប្រមូលកម្លាំងចិត្តផ្អែកលើការរួមចំណែក",
+                net6_title: "ប្រាក់ចំណូលพื้นฐาน", net6_desc: "ម៉ូដែលចែករំលែក UBI មូលនិធិសង្គម HK",
+                net7_title: "ដូរប្រាក់ (Swap)", net7_desc: "ដូរទិញកាក់ភ្លាមៗពេលដាក់ប្រាក់",
+                net8_title: "DEX Swap", net8_desc: "ការផ្គូផ្គងសាច់ប្រាក់ងាយស្រួល P2P គ្មានមជ្ឈិម",
+                net9_title: "LP Staking", net9_desc: "ភស្តុតាងផ្គត់ផ្គង់សាច់ប្រាក់ងាយស្រួល (PoL)",
+                net10_title: "បរិមាណ Pi", net10_desc: "បَច្ចុប្បន្នភាពបញ្ជី Mainnet របស់ Pi តាមពេលវេលាពិត",
+                mainnetAlert: "សំណើសមកាលកម្មបញ្ជី Test Pi និង Mainnet បានជោគជ័យ!",
+                beeniReply: (txt) => `[AGI Beeni]: បានទទួលពាក្យបញ្ជា "${txt}" កំពុងដំណើរការ។`
+            },
+            my: {
+                headerSub: "ကမ္ဘာလုံးဆိုင်ရာ နောက်မျိုးဆက် ဗဟိုချုပ်ကိုင်မှုကင်းသော ငွေကြေး", langLabel: "နိုင်ငံ ၃၀ ဘာသာစကား အင်ဂျင်", subTitle: "မြန်ဆန်သော ငွေကြေးလုပ်ငန်းဆောင်တာ မာစတာ",
+                dashTitle: "ကိုယ်ပိုင် ပိုင်ဆိုင်မှု ဒက်ရှ်ဘုတ်", piSyncLabel: "ပိုင်ဆိုင်သည့် ပမာဏ (Pi စာရင်းရှင်းတမ်း ထပ်တူပြုခြင်း)", interestLabel: "အချိန်နှင့်တပြေးညီ စုสม်အတိုး (၃ နှစ် ၃၁.၄၁% APY)",
+                mainnetBtnTest: "Mainnet သို့ ချက်ချင်း လျှောက်ထားမည်", gridSectionTitle: "ထိပ်တန်း ၁၀ ခုသော ဖြန့်ဝေထားသော ကွန်ရက်", gridSectionSub: "[သီးသန့် လုပ်ငန်းစဉ်]",
+                agiTitle: "AGI Beeni ဖောက်သည်ဝန်ဆောင်မှု", agiSub: "SONPONE အလိုအလျောက် တုံ့ပြန်မှုနှင့် AI", sonponeLabelText: "ရှာဖွေတွေ့ရှိမှု အာရုံခံနိုင်စွမ်း -",
+                initialBeeniMsg: "[AGI Beeni]: နိုင်ငံ ၃၀ ဘာသာစကား အင်ဂျင် အပြည့်အဝ အလုပ်လုပ်နေပါပြီ။ 혜공 အကိုကြီး၊ ညွှန်ကြားပေးပါ။",
+                chatInputPlaceholder: "Beeni ကို မေးရန်...", chatSendBtn: "ပေးပို့", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "ဥပဒေနှင့် လိုက်နာမှု", menu_wp: "အဖြူရောင်စာတမ်း (Whitepaper)", menu_faq: "မေးလေ့ရှိသော မေးခွန်းများ",
+                net1_title: "ပိုက်ဆံအိတ် ချိတ်ဆက်မှု", net1_desc: "Node ပိုက်ဆံအိတ် ပရိုတိုကော အလိုအလျောက် ချိတ်ဆက်မှု",
+                net2_title: "ငွေလွှဲခြင်း", net2_desc: "တိုက်ကြီးများအကြား အလွန်မြန်ဆန်သော multisig စနစ်",
+                net3_title: "ငွေပေးချေမှု", net3_desc: "ငွေသား၊ ကတ်၊ အခြားဒင်္ဂါးပြားများ အချိန်နှင့်တပြေးညီ အက်စခရိုး",
+                net4_title: "အပ်နှံခြင်း", net4_desc: "၃ နှစ်ပြည့် ၃၁.၄၁% APY ပိုင်ဆိုင်မှု ယုံကြည်မှု ဗို့",
+                net5_title: "ဆုလာဘ်", net5_desc: "ပံ့ပိုးမှုအပေါ် မူတည်သော မက်လုံးပေး စုสม်အင်ဂျင်",
+                net6_title: "အခြေခံဝင်ငွေ", net6_desc: "HK လူမှုဖူလုံရေး ဖောင်ဒေးရှင်း UBI ခွဲဝေမှု မော်ဒယ်",
+                net7_title: "ဖလှယ်ခြင်း (Swap)", net7_desc: "ငွေသွင်းပြီးနောက် ချက်ချင်း ဒင်္ဂါးဝယ်ယူဖလှယ်ခြင်း",
+                net8_title: "DEX ဖလှယ်ခြင်း", net8_desc: "ဗဟိုချုပ်ကိုင်မှုကင်းသော P2P အရည်အသွေး လိုက်ဖက်ညီမှု",
+                net9_title: "LP စတိတ်ကင်း", net9_desc: "အရည်အသွေး ထောက်ပံ့မှု သက်သေပြချက် (PoL)",
+                net10_title: "Pi ပမာဏ", net10_desc: "Pi ပိုင်ဆိုင်မှု Mainnet စာရင်းရှင်းတမ်း အချိန်နှင့်တပြေးညီ ထပ်တူပြုခြင်း",
+                mainnetAlert: "Test Pi စာရင်းရှင်းတမ်း ထပ်တူပြုခြင်းနှင့် Mainnet တောင်းဆိုမှု ပြီးစီးပါပြီ!",
+                beeniReply: (txt) => `[AGI Beeni]: "${txt}" အမိန့်ကို လက်ခံရရှိပါသည်။ အချိန်နှင့်တပြေးညီ လုပ်ဆောင်နေပါသည်။`
+            },
+            lo: {
+                headerSub: "ການເງິນກະຈາຍอำนาດรุ่นใหม่ระดับໂລກ", langLabel: "เครื่องยนต์ 30 ປະເທດ", subTitle: "แกນหลักการดำเนินงานทางการเงินที่รวดเร็ว",
+                dashTitle: "ແດຊບອດຊັບສິນສ່ວນຕົວ", piSyncLabel: "ຈຳນວນທີ່ຖືຄອງ (ซิงค์ບັນຊີແຍກປະເພດ Pi)", interestLabel: "ດອກເບັ້ຍสะสมແບບຮຽວໄທມ໌ (3 ປີ 31.41% APY)",
+                mainnetBtnTest: "ຂໍ Mainnet ທັນທີ", gridSectionTitle: "10 ເຄືອຂ່າຍກະຈາຍอำนาດ", gridSectionSub: "[การทำงานແບບແຍກສ່ວນ]",
+                agiTitle: "ฝ่ายສະໜັບສະໜູນ AGI Beeni", agiSub: "ຕອບສະໜອງອັດຕະໂນມັດ SONPONE ແລະ AI", sonponeLabelText: "ຄວາມໄວໃນການກວດຈັບ:",
+                initialBeeniMsg: "[AGI Beeni]: ເຄື່ອງยนต์ພາສາ 30 ປະເທດເຮັດວຽກຢ່າງເຕັມຮູບແບບ. ຍິນດີຕ້ອນຮັບ, ທ່ານ Hyekong!",
+                chatInputPlaceholder: "ຖາມ Beeni...", chatSendBtn: "ສົ່ງ", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "ກົດໝາຍ ແລະ ການປະຕິບັດຕາມ", menu_wp: "Whitepaper", menu_faq: "ຄຳຖາມທີ່ພบบ่อย",
+                net1_title: "ເຊື່ອມຕໍ່ກະເປົາ", net1_desc: "ເຊື່ອມຕໍ່ໂປຣໂຕຄໍກະເປົາໂນດອັດຕະໂນມັດ",
+                net2_title: "ໂອນເງິນ", net2_desc: "ລະບົບສົ່ງຂໍ້ມູນເຂົ້າລະຫັດຫຼາຍລາຍເຊັນຂ້າມທະວີບ",
+                net3_title: "ຊຳລະເງິນ", net3_desc: "Escrow ການຄ້າແບບຮຽວໄທມ໌",
+                net4_title: "ຝາກເງິນ", net4_desc: "ຫ້ອງນິລະໄພทรัสต์ 3 ປີ 31.41% APY",
+                net5_title: "ລາງວັນ", net5_desc: "ເຄື່ອງยนต์สะสมໂບນັດການມີສ່ວນຮ່ວມ",
+                net6_title: "รายได้พื้นฐาน", net6_desc: "ໂມເດວການກະຈາຍ UBI",
+                net7_title: "สวอป", net7_desc: "สวอปຊື້ຫຼຽນທັນທີເມື່ອຝາກເງິນ",
+                net8_title: "DEX สวอป", net8_desc: "ຈັບຄູ່สภาพคล่อง P2P แบบกระจายอำนาจ",
+                net9_title: "LP สเตกกิ้ง", net9_desc: "พิสูจน์การให้สภาพคล่อง (PoL)",
+                net10_title: "ຈຳນວນ Pi", net10_desc: "ซิงค์ບັນຊີແຍກປະເພດ Mainnet ຂອງ Pi แบบเรียลไทม์",
+                mainnetAlert: "คำขอซิงค์บัญชีแยกประเภทและส่ง Mainnet สำเร็จแล้ว!",
+                beeniReply: (txt) => `[AGI Beeni]: ໄດ້ຮັບຄຳສັ່ງ "${txt}" กำลังประมวลผล`
+            },
+            el: {
+                headerSub: "Паγκόσμια Αποκεντρωμένη Χρηματοδότηση Νέας Γενιάς", langLabel: "Μηχανή 30 Χωρών", subTitle: "Βασικός Πυρήνας Γρήγορων Χρηματοοικονομικών Λειτουργιών",
+                dashTitle: "Πίνακας Προσωπικών Περιουσιακών Στοιχείων", piSyncLabel: "Κατείχόμενη Ποσότητα (Συγχρονισμός Καθολικού Pi)", interestLabel: "Συσσωρευμένος τόκος σε πραγματικό χρόνο (3 Έτη 31.41% APY)",
+                mainnetBtnTest: "Αίτηصή Mainnet στην Κεντρική Ομάδα Τώρα", gridSectionTitle: "Κορυφαία 10 Αποκεντρωμένα Δίκτυα", gridSectionSub: "[Ενεργή Διαδικασία]",
+                agiTitle: "Υποστήριξη AGI Beeni", agiSub: "Αυτόματη απάντηση SONPONE & AI", sonponeLabelText: "Ευαισθησία Ανίχνευσης:",
+                initialBeeniMsg: "[AGI Beeni]: Η μηχανή 30 γλωσσών λειτουργεί πλήρως! Καλώς ήρθατε στο HK World Bank.",
+                chatInputPlaceholder: "Ρωτήστε την Beeni...", chatSendBtn: "Αποστολή", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Νομικά & Συμμόρφωση", menu_wp: "Λευκή Βίβλος", menu_faq: "Συχνές Ερωτήσεις",
+                net1_title: "Σύνδεση Πορτοφολιού", net1_desc: "Αυτόματη σύνδεση πρωτοκόλλου κόμβου",
+                net2_title: "Μεταφορά", net2_desc: "Διαηπειρωτικό σύστημα κρυפטografημμένης μεταφοράς",
+                net3_title: "Πληρωμή", net3_desc: "Εscrow εμπορίου σε πραγματικό χρόνο",
+                net4_title: "Κατάθεση σε Θυρίδα", net4_desc: "Θυρίδα καταπιστεύματος 3 ετών 31.41% APY",
+                net5_title: "Ανταμοιβές", net5_desc: "Μηχανή συσσώρευσης κινήτρων",
+                net6_title: "Βασικό Εισόδημα", net6_desc: "Μοντέλο κατανομής UBI",
+                net7_title: "Ανταλλαγή (Swap)", net7_desc: "Άμεση ανταλλαγή αγοράς token",
+                net8_title: "DEX Swap", net8_desc: "Αποκεντρωμένη αντιστοίχιση ρευστότητας P2P",
+                net9_title: "LP Staking", net9_desc: "Απόδειξη παροχής ρευστότητας (PoL)",
+                net10_title: "Ποσότητα Pi", net10_desc: "Συγχρονισμός καθολικού mainnet περιουσιακών στοιχείων Pi",
+                mainnetAlert: "Το αίτημα συγχρονισμού καθολικού Mainnet εστάλη επιτυχώς!",
+                beeniReply: (txt) => `[AGI Beeni]: Ελήφθη η εντολή "${txt}". Σε εξπεξεργασία.`
+            },
+            cs: {
+                headerSub: "Globální decentralizované finance nové generace", langLabel: "30jazykový engine", subTitle: "Hlavní jádro rychlých finančních operцій",
+                dashTitle: "Panel osobních aktiv", piSyncLabel: "Držené množství (Synchronizace účetní knihy Pi)", interestLabel: "Akumulovaný úrok v reálném čase (3 roky 31.41% APY)",
+                mainnetBtnTest: "Požádat hlavní tým o Mainnet ihned", gridSectionTitle: "Top 10 distribuovaných sítí", gridSectionSub: "[Aktivní proces]",
+                agiTitle: "Podpora AGI Beeni", agiSub: "Automatická odpověď SONPONE & AI", sonponeLabelText: "Citlivost detekції:",
+                initialBeeniMsg: "[AGI Beeni]: 30jazykový engine je plně aktivní! Vítejte v HK World Bank.",
+                chatInputPlaceholder: "Zeptejte se Beeni...", chatSendBtn: "Odeslat", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Právo a compliance", menu_wp: "Whitepaper", menu_faq: "Časté dotazy",
+                net1_title: "Připojení peněženky", net1_desc: "Automatické propojení protokolu uzlu",
+                net2_title: "Převod", net2_desc: "Mezikontinentální šifrovaný přenosový systém",
+                net3_title: "Platba", net3_desc: "Obchodní escrow v reálném čase",
+                net4_title: "Vklad do trezoru", net4_desc: "Tříletý 31.41% APY důvěrný trezor",
+                net5_title: "Odměny", net5_desc: "Motor pro kumulaci pobídek za příspěvky",
+                net6_title: "Základní příjem", net6_desc: "Model distribuce UBI",
+                net7_title: "Směna (Swap)", net7_desc: "Okamžitá výměna za tokeny při vkladu",
+                net8_title: "DEX Swap", net8_desc: "Decentralizované P2P párování likvidity",
+                net9_title: "LP Staking", net9_desc: "Důkaz poskytnutí likvidity (PoL)",
+                net10_title: "Množství Pi", net10_desc: "Synchronizace hlavní účetní knihy aktiv Pi",
+                mainnetAlert: "Žádost o synchronizaci hlavní knihy Mainnet byla úspěšně odeslána!",
+                beeniReply: (txt) => `[AGI Beeni]: Příkaz "${txt}" přijat. Zpracovává se.`
             }
         };
 
@@ -1388,7 +1608,7 @@
             } else {
                 customerBtn.classList.add('active');
                 adminBtn.classList.remove('active');
-                langBar.classList.remove('admin-hidden'); // 고객 화면에선 20개국 언어바 노출
+                langBar.classList.remove('admin-hidden'); // 고객 화면에선 30개국 언어바 노출
                 
                 // 고객 브라우저 언어 자동 감지 또는 기본 선택된 언어로 적용
                 const browserLang = navigator.language.slice(0, 2);

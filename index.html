@@ -1,25 +1,26 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title id="metaTitle">HK BANK & WORLD BANK | 글로벌 슈퍼 뱅킹 플랫폼</title>
-    <!-- FontAwesome & Google Fonts -->
+    <title id="metaTitle">HK WORLD BANK | 글로벌 차세대 분산 금융 플랫폼</title>
+    <!-- FontAwesome Icons & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-body: #f2f4f6;
-            --bg-app: #ffffff;
-            --toss-blue: #0064ff;
+            --bg-primary: #07090e;
+            --bg-secondary: #0d111a;
+            --card-bg: #131a26;
+            --card-border: #1f2a3e;
             --accent-gold: #ffaa00;
+            --accent-gold-glow: rgba(255, 170, 0, 0.35);
             --accent-cyan: #00e5ff;
-            --text-main: #191f28;
-            --text-muted: #8b95a1;
-            --card-bg: #f8f9fa;
-            --border-color: #e5e8eb;
-            --success: #00c853;
+            --accent-cyan-glow: rgba(0, 229, 255, 0.3);
+            --accent-green: #00ffa3;
+            --text-main: #f0f4f8;
+            --text-muted: #8a99ad;
+            --danger: #ff4757;
             --pi-color: #f7931a;
         }
 
@@ -27,7 +28,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -37,295 +38,524 @@
         }
 
         body {
-            background-color: #222;
+            background-color: var(--bg-primary);
             color: var(--text-main);
             display: flex;
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
             overflow-x: hidden;
+            padding: 0;
         }
 
         .app-container {
             width: 100%;
             max-width: 480px;
-            background-color: var(--bg-app);
+            background-color: var(--bg-secondary);
             min-height: 100vh;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.85);
             position: relative;
             display: flex;
             flex-direction: column;
-            padding-bottom: 80px;
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* 상단 네비게이션 (삼선 햄버거 + 로고) */
         header {
             padding: 16px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #ffffff;
+            background: rgba(13, 17, 26, 0.95);
+            backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--card-border);
         }
 
         .menu-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            width: 40px;
-            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: var(--accent-gold);
+            width: 44px;
+            height: 44px;
             border-radius: 12px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 18px;
+            font-size: 20px;
             cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.1, 0.9, 0.2, 1);
         }
 
-        .bank-logo {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-family: 'Orbitron', sans-serif;
+        .menu-btn:active {
+            transform: scale(0.92);
         }
 
-        .bank-logo span.hk {
-            background: var(--toss-blue);
-            color: #fff;
-            padding: 2px 8px;
-            border-radius: 8px;
-            font-size: 13px;
-        }
-
-        /* 60개국어 바 */
-        .lang-bar {
-            padding: 8px 20px;
-            background: #f8f9fa;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .lang-info {
-            font-size: 11px;
-            color: var(--text-muted);
-            font-weight: 600;
-        }
-
-        .lang-select {
-            background: #ffffff;
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 11px;
-            outline: none;
-            cursor: pointer;
-            max-width: 150px;
-        }
-
-        main {
-            padding: 20px;
-            flex: 1;
-            overflow-y: auto;
-        }
-
-        .welcome-banner {
-            margin-bottom: 20px;
-        }
-
-        .welcome-banner h2 {
-            font-size: 21px;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 4px;
-        }
-
-        .welcome-banner p {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        /* 미디어 바로가기 버튼 배너 (유튜브 & 틱톡) */
-        .media-banner {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .media-btn {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .media-btn.youtube {
-            background: rgba(255, 0, 0, 0.1);
-            color: #ff0000;
-            border: 1px solid rgba(255, 0, 0, 0.2);
-        }
-
-        .media-btn.tiktok {
-            background: rgba(254, 44, 85, 0.1);
-            color: #fe2c55;
-            border: 1px solid rgba(254, 44, 85, 0.2);
-        }
-
-        /* 계좌 카드 */
-        .account-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-        }
-
-        .account-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .account-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .account-badge {
-            background: #e8f3ff;
-            color: var(--toss-blue);
-            font-size: 11px;
-            font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 6px;
-        }
-
-        .account-balance {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 16px;
-        }
-
-        .account-actions {
-            display: flex;
-            gap: 8px;
-        }
-
-        .btn-action {
-            flex: 1;
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            padding: 10px;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 13px;
-            color: var(--text-main);
-            cursor: pointer;
+        .header-center-title {
             text-align: center;
         }
 
-        .btn-action.primary {
-            background: var(--toss-blue);
-            color: #ffffff;
-            border: none;
+        .header-center-title h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--accent-gold);
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px var(--accent-gold-glow);
         }
 
-        /* 빠른 메뉴 그리드 */
-        .quick-menu-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+        .header-center-title p {
+            font-size: 10px;
+            color: var(--accent-cyan);
+            letter-spacing: 0.5px;
+        }
+
+        .profile-badge {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--card-border), var(--bg-primary));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--accent-gold);
+            font-weight: 900;
+            font-size: 16px;
+            border: 1px solid var(--card-border);
+        }
+
+        .lang-bar {
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .lang-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--accent-cyan);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .lang-select {
+            background: var(--card-bg);
+            color: #fff;
+            border: 1px solid var(--card-border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            outline: none;
+            cursor: pointer;
+            max-width: 170px;
+        }
+
+        main {
+            padding: 24px 20px;
+            flex: 1;
+        }
+
+        .hero-section {
+            text-align: center;
             margin-bottom: 24px;
         }
 
-        .quick-menu-item {
+        .main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--accent-gold);
+            text-shadow: 0 0 25px var(--accent-gold-glow);
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .sub-title {
+            font-size: 16px;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px var(--accent-cyan-glow);
+            text-align: center;
+        }
+
+        .dashboard-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 22px;
+            margin-bottom: 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-cyan), var(--accent-green));
+        }
+
+        .dashboard-header {
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pi-box {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .pi-box-title {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .pi-logo-icon {
+            width: 22px;
+            height: 22px;
+            background: var(--pi-color);
+            color: #fff;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 900;
+            font-size: 13px;
+            font-family: serif;
+            box-shadow: 0 0 8px rgba(247, 147, 26, 0.5);
+        }
+
+        .pi-amount {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pi-amount .unit {
+            color: var(--accent-gold);
+            font-size: 14px;
+        }
+
+        .interest-box {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 18px;
+        }
+
+        .interest-title {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .interest-value {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent-green);
+            transition: color 0.3s ease;
+        }
+
+        .interest-value.glow {
+            color: #ffffff;
+            text-shadow: 0 0 12px var(--accent-green);
+        }
+
+        .mainnet-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #ffaa00, #e67e22);
+            color: #000;
+            border: none;
+            padding: 15px;
+            border-radius: 14px;
+            font-weight: 900;
+            font-size: 15px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px var(--accent-gold-glow);
+            transition: all 0.2s ease;
+        }
+
+        .mainnet-btn:active {
+            transform: scale(0.98);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .section-sub {
+            font-size: 11px;
+            color: var(--accent-green);
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .network-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.1, 0.9, 0.2, 1);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 6px;
-            cursor: pointer;
+            text-align: center;
+            min-height: 135px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .quick-icon {
-            width: 48px;
-            height: 48px;
+        .network-card:hover, .network-card:active {
+            border-color: var(--accent-gold);
+            transform: translateY(-3px);
+            background: #182232;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-top-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .card-icon-1 { color: #00e5ff; font-size: 20px; }
+        .card-icon-2 { color: #ffaa00; font-size: 20px; }
+        .card-icon-3 { color: #00ffa3; font-size: 20px; }
+        .card-icon-4 { color: #9b59b6; font-size: 20px; }
+        .card-icon-5 { color: #ff4757; font-size: 20px; }
+        .card-icon-6 { color: #2ecc71; font-size: 20px; }
+        .card-icon-7 { color: #3498db; font-size: 20px; }
+        .card-icon-8 { color: #e74c3c; font-size: 20px; }
+        .card-icon-9 { color: #f1c40f; font-size: 20px; }
+        .card-icon-10 { color: #f7931a; font-size: 20px; }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .card-desc {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        .agi-section {
             background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 32px;
+        }
+
+        .agi-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .agi-avatar {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--accent-cyan), #0072ff);
             border-radius: 14px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 18px;
-            color: var(--toss-blue);
-            border: 1px solid var(--border-color);
+            font-size: 22px;
+            color: #fff;
+            box-shadow: 0 0 15px var(--accent-cyan-glow);
         }
 
-        .quick-label {
+        .agi-title-box h3 {
+            font-size: 17px;
+            color: #fff;
+            font-weight: 800;
+        }
+
+        .agi-title-box p {
             font-size: 11px;
-            font-weight: 600;
-            color: var(--text-main);
+            color: var(--accent-cyan);
         }
 
-        /* 하단 네비게이션 탭 */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            max-width: 480px;
-            background: #ffffff;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-around;
-            padding: 10px 0;
-            z-index: 100;
+        .sonpone-control {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 16px;
         }
 
-        .nav-item {
+        .sonpone-label {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
+            justify-content: space-between;
+            font-size: 12px;
             color: var(--text-muted);
-            font-size: 11px;
-            cursor: pointer;
-            flex: 1;
+            margin-bottom: 8px;
         }
 
-        .nav-item.active {
-            color: var(--toss-blue);
+        .sonpone-label span.val {
+            color: var(--accent-gold);
             font-weight: 700;
         }
 
-        /* 삼선 햄버거 서랍형 메뉴 (Drawer) */
+        .range-slider {
+            width: 100%;
+            accent-color: var(--accent-gold);
+            height: 5px;
+            background: var(--card-border);
+            border-radius: 3px;
+        }
+
+        .chat-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            padding: 14px;
+            height: 210px;
+            overflow-y: auto;
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chat-msg {
+            max-width: 88%;
+            padding: 12px 14px;
+            border-radius: 14px;
+            font-size: 12px;
+            line-height: 1.45;
+        }
+
+        .chat-msg.beeni {
+            background: rgba(0, 229, 255, 0.1);
+            border: 1px solid rgba(0, 229, 255, 0.25);
+            color: #d1f7ff;
+            align-self: flex-start;
+        }
+
+        .chat-msg.user {
+            background: rgba(255, 170, 0, 0.15);
+            border: 1px solid rgba(255, 170, 0, 0.35);
+            color: #ffe6b3;
+            align-self: flex-end;
+        }
+
+        .chat-input-box {
+            display: flex;
+            gap: 8px;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 12px 14px;
+            color: #fff;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .chat-send-btn {
+            background: var(--accent-gold);
+            color: #000;
+            border: none;
+            padding: 0 18px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        footer {
+            padding: 24px 20px;
+            background: #05070a;
+            border-top: 1px solid var(--card-border);
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        footer p.copyright {
+            margin-bottom: 8px;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        footer p.socials {
+            color: var(--accent-cyan);
+            word-break: break-all;
+        }
+
         .drawer-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(6px);
             z-index: 200;
             opacity: 0;
             pointer-events: none;
@@ -340,14 +570,17 @@
         .drawer-content {
             position: fixed;
             top: 0;
-            left: -320px;
-            width: 300px;
+            left: -330px;
+            width: 310px;
             height: 100vh;
-            background: #ffffff;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--card-border);
             z-index: 201;
             transition: left 0.3s cubic-bezier(0.1, 0.9, 0.2, 1);
             overflow-y: auto;
             padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
         }
 
         .drawer-overlay.active .drawer-content {
@@ -358,64 +591,81 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--card-border);
         }
 
         .drawer-title {
             font-size: 16px;
-            font-weight: 800;
-            color: var(--toss-blue);
+            font-weight: 900;
+            color: var(--accent-gold);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 22px;
+            cursor: pointer;
         }
 
         .menu-group {
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         .menu-group-title {
             font-size: 11px;
-            color: var(--text-muted);
+            color: var(--accent-cyan);
             text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 10px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
         }
 
         .menu-item {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 10px 12px;
+            padding: 12px 14px;
             color: var(--text-main);
             text-decoration: none;
             font-size: 13px;
-            border-radius: 8px;
-            margin-bottom: 4px;
-            background: var(--card-bg);
+            border-radius: 10px;
+            margin-bottom: 6px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.2s ease;
             cursor: pointer;
         }
 
-        .menu-item i {
-            color: var(--toss-blue);
-            width: 18px;
-            text-align: center;
+        .menu-item:hover, .menu-item:active {
+            background: var(--card-bg);
+            color: var(--accent-gold);
         }
 
-        /* 모달 시트 */
+        .menu-item i {
+            width: 20px;
+            text-align: center;
+            color: var(--accent-gold);
+        }
+
         .modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
             z-index: 300;
             display: flex;
             justify-content: center;
-            align-items: flex-end;
+            align-items: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.25s ease;
+            padding: 20px;
         }
 
         .modal.active {
@@ -423,246 +673,1471 @@
             pointer-events: auto;
         }
 
-        .modal-sheet {
-            background: #ffffff;
+        .modal-body {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             width: 100%;
-            max-width: 480px;
-            border-top-left-radius: 24px;
-            border-top-right-radius: 24px;
-            padding: 24px 20px 36px 20px;
+            max-width: 440px;
             max-height: 85vh;
+            border-radius: 20px;
+            padding: 24px;
             overflow-y: auto;
-            transform: translateY(100%);
-            transition: transform 0.3s cubic-bezier(0.1, 0.9, 0.2, 1);
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
         }
 
-        .modal.active .modal-sheet {
-            transform: translateY(0);
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .modal-title {
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--accent-gold);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .max-btn {
+            background: rgba(255, 170, 0, 0.15);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .max-btn:active {
+            background: var(--accent-gold);
+            color: #000;
         }
 
         .form-control {
             width: 100%;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 14px;
-            font-size: 15px;
-            color: var(--text-main);
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 12px;
+            color: #fff;
+            font-size: 13px;
             outline: none;
-            margin-top: 6px;
-            margin-bottom: 16px;
         }
 
-        .btn-submit {
+        .form-control:focus {
+            border-color: var(--accent-gold);
+        }
+
+        .action-btn {
             width: 100%;
-            background: var(--toss-blue);
-            color: #fff;
+            background: var(--accent-gold);
+            color: #000;
             border: none;
-            padding: 16px;
-            border-radius: 14px;
-            font-size: 16px;
-            font-weight: 700;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 14px;
             cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .wp-item-box, .faq-item-box {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+
+        .wp-item-title, .faq-q {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 4px;
+        }
+
+        .wp-item-content, .faq-a {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
 
     <div class="app-container">
-        <!-- 상단 헤더 (삼선 햄버거 메뉴 포함) -->
+        <!-- Sticky Header Nav Bar -->
         <header>
             <button class="menu-btn" onclick="toggleDrawer()">
                 <i class="fa-solid fa-bars"></i>
             </button>
-            <div class="bank-logo">
-                <span class="hk">HK</span> BANK & WORLD
+            <div class="header-center-title">
+                <h2>HK WORLD BANK</h2>
+                <p data-i18n="headerSubText">글로벌 차세대 분산 금융</p>
             </div>
-            <div style="width: 40px;"></div>
+            <div class="profile-badge">HK</div>
         </header>
 
-        <!-- 60개국어 셀렉트 바 -->
+        <!-- Dynamic Multi-Language Selector Engine (Specified Languages) -->
         <div class="lang-bar">
-            <span class="lang-info" data-i18n="langLabel">🌍 60개국어 다국어 엔진</span>
+            <div class="lang-info">
+                <i class="fa-solid fa-globe"></i>
+                <span data-i18n="langEngineLabel">글로벌 다국어 엔진 (뼈속까지 변환)</span>
+            </div>
             <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
-                <option value="ko" selected>🇰🇷 한국어</option>
-                <option value="en">🇺🇸 English</option>
-                <option value="zh">🇨🇳 中文</option>
-                <option value="ja">🇯🇵 日本語</option>
-                <option value="vi">🇻🇳 Tiếng Việt</option>
-                <option value="th">🇹🇭 ไทย</option>
+                <option value="ko" selected>🇰🇷 한국어 (Korean)</option>
+                <option value="en">🇺🇸 영어 (English)</option>
+                <option value="zh">🇨🇳 중국어 (Chinese)</option>
+                <option value="ja">🇯🇵 일본어 (Japanese)</option>
+                <option value="ru">🇷🇺 러시아어 (Russian)</option>
+                <option value="vi">🇻🇳 베트남어 (Vietnamese)</option>
+                <option value="th">🇹🇭 태국어 (Thai)</option>
+                <option value="id">🇮🇩 인도네시아어 (Indonesian)</option>
+                <option value="ar">🇵🇸 팔레스타인/아랍어권 (Arabic/PS)</option>
+                <option value="de">🇩🇪 독일어 (German)</option>
+                <option value="it">🇮🇹 이탈리아어 (Italian)</option>
+                <option value="fr">🇫🇷 프랑스어 (French)</option>
+                <option value="ng">🇳🇬 나이지리아 (Nigerian English)</option>
+                <option value="cm">🇨🇲 카메룬 (Cameroon FR/EN)</option>
+                <option value="za">🇿🇦 남아공 (South Africa)</option>
+                <option value="hi">🇮🇳 힌디어 (Hindi)</option>
+                <option value="es">🇪🇸 스페인어 (Spanish)</option>
             </select>
         </div>
 
         <main>
-            <!-- 웰컴 배너 -->
-            <div class="welcome-banner">
-                <h2 data-i18n="welcomeMsg">글로벌 슈퍼 뱅킹 환영합니다 👋</h2>
-                <p data-i18n="subWelcome">HK 글로벌 슈퍼 뱅킹 시스템 가동 중</p>
+            <!-- Hero Titles (Centered) -->
+            <div class="hero-section">
+                <h1 class="main-title">HK WORLD BANK</h1>
+                <p class="sub-title" data-i18n="subTitle">빠른 금융 작업 마스터 코어</p>
             </div>
 
-            <!-- 유튜브 & 틱톡 공식 채널 바로가기 버튼 -->
-            <div class="media-banner">
-                <a href="https://www.youtube.com/@Hyekong2026" target="_blank" class="media-btn youtube">
-                    <i class="fa-brands fa-youtube" style="font-size: 16px;"></i> YouTube (@Hyekong2026)
-                </a>
-                <a href="https://www.tiktok.com/@hyekong2026" target="_blank" class="media-btn tiktok">
-                    <i class="fa-brands fa-tiktok" style="font-size: 15px;"></i> TikTok (@hyekong2026)
-                </a>
+            <!-- Personal Asset Dashboard Card -->
+            <div class="dashboard-card">
+                <div class="dashboard-header">
+                    <span data-i18n="dashTitle">개인 자산 대시보드</span>
+                    <i class="fa-solid fa-vault" style="color: var(--accent-gold);"></i>
+                </div>
+
+                <div class="pi-box">
+                    <div class="pi-box-title">
+                        <span class="pi-logo-icon">π</span>
+                        <span data-i18n="piSyncLabel">보유 수량 (PI 수량 원장 동기화)</span>
+                    </div>
+                    <div class="pi-amount">
+                        <span id="walletBalanceDisplay">314,159.000000</span>
+                        <span class="unit">PI / HK</span>
+                    </div>
+                </div>
+
+                <div class="interest-box">
+                    <div class="interest-title">
+                        <i class="fa-solid fa-chart-line" style="color: var(--accent-green);"></i>
+                        <span data-i18n="interestLabel">실시간 누적 이자 (3년 31.41% APY 복리)</span>
+                    </div>
+                    <div class="interest-value" id="accumulatedInterest">
+                        12,450,892.600000 HK
+                    </div>
+                </div>
+
+                <button class="mainnet-btn" data-i18n="mainnetBtnText" onclick="triggerMainnetRequest()">
+                    코어팀에게 메인넷 즉시 신청하기
+                </button>
             </div>
 
-            <!-- 1. HK 주거래 통장 -->
-            <div class="account-card">
-                <div class="account-top">
-                    <span class="account-name"><i class="fa-solid fa-wallet" style="color:var(--toss-blue);"></i> <span data-i18n="acc1_title">HK 주거래통장</span></span>
-                    <span class="account-badge" data-i18n="acc1_badge">출금가능</span>
+            <!-- Distributed Networks Grid Section -->
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="gridSectionTitle">분산 연동망</h2>
+                <span class="section-sub" data-i18n="gridSectionSub">[개별 프로세스 작동]</span>
+            </div>
+
+            <div class="network-grid">
+                <div class="network-card" onclick="openProcessModal('wallet')">
+                    <div class="card-top-center"><i class="fa-solid fa-link card-icon-1"></i></div>
+                    <div>
+                        <div class="card-title" data-i18n="net1_title">지갑연결</div>
+                        <div class="card-desc" data-i18n="net1_desc">노드 지갑 프로토콜 연동 및 자동 연동</div>
+                    </div>
                 </div>
-                <div class="account-balance" id="mainBalanceDisplay">314,159,000 원</div>
-                <div class="account-actions">
-                    <button class="btn-action" onclick="openModal('transfer')" data-i18n="btn_transfer">송금하기</button>
-                    <button class="btn-action primary" onclick="openModal('deposit')" data-i18n="btn_deposit">채우기</button>
+
+                <div class="network-card" onclick="openProcessModal('transfer')">
+                    <div class="card-top-center"><i class="fa-solid fa-paper-plane card-icon-2"></i></div>
+                    <div>
+                        <div class="card-title" data-i18n="net2_title">송금</div>
+                        <div class="card-desc" data-i18n="net2_desc">대륙간 초고속 멀티시그 암호화 전송 시스템</div>
+                    </div>
+                </div>
+
+                <div class="network-card" onclick="openProcessModal('payment')">
+                    <div class="card-top-center"><i class="fa-solid fa-credit-card card-icon-3"></i></div>
+                    <div>
+                        <div class="card-title" data-i18n="net3_title">결재</div>
+                        <div class="card-desc" data-i18n="net3_desc">현금·카드·타코인 실시간 상거래 에스크로</div>
+                    </div>
+                </div>
+
+                <div class="network-card" onclick="openProcessModal('deposit')">
+                    <div class="card-top-center"><i class="fa-solid fa-vault card-icon-4"></i></div>
+                    <div>
+                        <div class="card-title" data-i18n="net4_title">예치</div>
+                        <div class="card-desc" data-i18n="net4_desc">3년 만기 31.41% APY 자산 신탁 볼트</div>
+                    </div>
+                </div>
+
+                <div class="network-card" onclick="openProcessModal('reward')">
+                    <div class="card-top-center"><i class="fa-solid fa-gift card-icon-5"></i></div>
+                    <div>
+                        <div class="card-title" data-i18n="net5_title">보상</div>
+                        <div class="card-desc" data-i18n="net5_desc">기여도 기반 인센티브 볼트 적립 엔진</div>
+                    </div>
+                </div>
+
+                <div class="network-card" onclick="openProcessModal('ubi')">
+                    <div class="card-top-center"><i class="fa-solid fa-hand-holding-dollar card-icon-6"></i></div>
+                    <div>
+                        <div class="card-title" data-i18n="net6_title">기본소득</div>
+                        <div class="card-desc" data-i18n="net6_desc">HK 사회 재단 & 지자체 UBI 분배 모델</div>
+                    </div>
+                </div>
+
+                <div class="network-card" onclick="openProcessModal('swap')">
+                    <div class="card-top-center"><i class="fa-solid fa-right-left card-icon-7"></i></div>
+                    <div>
+                        <div class="card-title" data-i18n="net7_title">스왑</div>
+                        <div class="card-desc" data-i18n="net7_desc">현금/카드/타코인 입금 즉각 코인 구매 스왑</div>
+                    </div>
+                </div>
+
+                <div class="network-card" onclick="openProcessModal('dex')">
+                    <div class="card-top-center"><i class="fa-solid fa-bolt card-icon-8"></i></div>
+                    <div>
+                        <div class="card-title" data-i18n="net8_title">DEX 스왑</div>
+                        <div class="card-desc" data-i18n="net8_desc">탈중앙화 오더레스 P2P 유동성 자동매칭</div>
+                    </div>
+                </div>
+
+                <div class="network-card" onclick="openProcessModal('lp')">
+                    <div class="card-top-center"><i class="fa-solid fa-layer-group card-icon-9"></i></div>
+                    <div>
+                        <div class="card-title" data-i18n="net9_title">LP 스테이킹</div>
+                        <div class="card-desc" data-i18n="net9_desc">유동성 공급 증명(PoL) 및 고배당 권한</div>
+                    </div>
+                </div>
+
+                <div class="network-card" onclick="openProcessModal('pishow')">
+                    <div class="card-top-center"><span class="pi-logo-icon" style="width: 26px; height: 26px; font-size: 15px;">π</span></div>
+                    <div>
+                        <div class="card-title" data-i18n="net10_title">파이 수량</div>
+                        <div class="card-desc" data-i18n="net10_desc">파이 자산 메인넷 원장 실시간 동기화</div>
+                    </div>
                 </div>
             </div>
 
-            <!-- 2. Pi 신탁 세이프박스 -->
-            <div class="account-card">
-                <div class="account-top">
-                    <span class="account-name"><span style="color:var(--pi-color); font-weight:900;">π</span> <span data-i18n="acc2_title">Pi 신탁 세이프박스</span></span>
-                    <span class="account-badge" style="background:#e6fffa; color:#00a3c4;" data-i18n="acc2_badge">연 31.41% 복리</span>
+            <!-- AGI Beeni Customer Service & Sonpone Sensitivity Control -->
+            <div class="agi-section">
+                <div class="agi-header">
+                    <div class="agi-avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div class="agi-title-box">
+                        <h3 data-i18n="agiTitle">AGI 삐니 고객센터</h3>
+                        <p data-i18n="agiSub">손폰(SONPONE) 자동 반응 및 AI 오케스트레이션</p>
+                    </div>
                 </div>
-                <div class="account-balance" id="piVaultDisplay">314,159.00 PI</div>
-                <div class="account-actions">
-                    <button class="btn-action" onclick="openModal('vault')" data-i18n="btn_manage">관리하기</button>
-                    <button class="btn-action primary" onclick="openModal('swap')" data-i18n="btn_swap">즉시 환전</button>
-                </div>
-            </div>
 
-            <!-- 빠른 메뉴 그리드 (10대 연동망 바로가기) -->
-            <div class="quick-menu-grid">
-                <div class="quick-menu-item" onclick="openModal('transfer')">
-                    <div class="quick-icon"><i class="fa-solid fa-paper-plane"></i></div>
-                    <span class="quick-label" data-i18n="net_transfer">송금</span>
+                <div class="sonpone-control">
+                    <div class="sonpone-label">
+                        <span data-i18n="sonponeLabelText">손폰(SONPONE) 감지 감도:</span>
+                        <span class="val" id="sonponeVal">99.9% (실시간 싱크)</span>
+                    </div>
+                    <input type="range" class="range-slider" min="50" max="100" value="99" id="sonponeSlider" oninput="updateSonpone(this.value)">
                 </div>
-                <div class="quick-menu-item" onclick="openModal('deposit')">
-                    <div class="quick-icon"><i class="fa-solid fa-won-sign"></i></div>
-                    <span class="quick-label" data-i18n="net_deposit">예치</span>
+
+                <div class="chat-box" id="chatBox">
+                    <div class="chat-msg beeni" data-i18n="initialBeeniMsg">
+                        [AGI 삐니]: 테스트 파이 환경 및 글로벌 다국어 실시간 교차 추론 시스템이 완벽하게 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!
+                    </div>
                 </div>
-                <div class="quick-menu-item" onclick="openModal('loan')">
-                    <div class="quick-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
-                    <span class="quick-label" data-i18n="net_ubi">기본소득</span>
-                </div>
-                <div class="quick-menu-item" onclick="openModal('swap')">
-                    <div class="quick-icon"><i class="fa-solid fa-right-left"></i></div>
-                    <span class="quick-label" data-i18n="net_swap">스왑</span>
+
+                <div class="chat-input-box">
+                    <input type="text" class="chat-input" id="chatInput" data-i18n-placeholder="chatInputPlaceholder" placeholder="삐니에게 질문 입력..." onkeypress="handleKeyPress(event)">
+                    <button class="chat-send-btn" data-i18n="chatSendBtn" onclick="sendChatMessage()">전송</button>
                 </div>
             </div>
         </main>
 
-        <!-- 하단 네비게이션 바 -->
-        <nav class="bottom-nav">
-            <a class="nav-item active"><i class="fa-solid fa-house"></i><span data-i18n="tab_home">홈</span></a>
-            <a class="nav-item" onclick="alert('자산 통합 리포트')"><i class="fa-solid fa-chart-pie"></i><span data-i18n="tab_asset">자산</span></a>
-            <a class="nav-item" onclick="alert('혜택 및 UBI 분배')"><i class="fa-solid fa-bolt"></i><span data-i18n="tab_benefit">혜택</span></a>
-            <a class="nav-item" onclick="toggleDrawer()"><i class="fa-solid fa-bars"></i><span data-i18n="tab_menu">전체메뉴</span></a>
-        </nav>
+        <!-- Footer Section -->
+        <footer>
+            <p class="copyright">© 2026 HK WORLD BANK. All Rights Reserved.</p>
+            <p class="socials" style="margin-bottom: 12px;" data-i18n="supportEmailText">
+                Support: support@hkwb.world
+            </p>
+            <div style="display: flex; justify-content: center; gap: 16px; align-items: center;">
+                <a href="https://www.youtube.com/@Hyekong2026" target="_blank" style="color: #ff0000; text-decoration: none; font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 6px; background: rgba(255,0,0,0.1); padding: 8px 14px; border-radius: 10px; border: 1px solid rgba(255,0,0,0.2);">
+                    <i class="fa-brands fa-youtube"></i> YouTube (@Hyekong2026)
+                </a>
+                <a href="https://www.tiktok.com/@hyekong2026" target="_blank" style="color: #fff; text-decoration: none; font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 6px; background: rgba(254,44,85,0.15); padding: 8px 14px; border-radius: 10px; border: 1px solid rgba(254,44,85,0.3);">
+                    <i class="fa-brands fa-tiktok"></i> TikTok (@hyekong2026)
+                </a>
+            </div>
+        </footer>
     </div>
 
-    <!-- 삼선 햄버거 서랍형 메뉴 (Drawer) -->
+    <!-- Slide-out Navigation Drawer -->
     <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawerOutside(event)">
         <div class="drawer-content">
             <div class="drawer-header">
-                <span class="drawer-title">HK NAVIGATOR</span>
-                <button onclick="toggleDrawer()" style="background:none;border:none;font-size:20px;cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
+                <span class="drawer-title" data-i18n="drawerTitle">HK NAVIGATOR</span>
+                <button class="drawer-close" onclick="toggleDrawer()"><i class="fa-solid fa-xmark"></i></button>
             </div>
+
             <div class="menu-group">
-                <div class="menu-group-title">Official Media Hubs</div>
-                <a class="menu-item" href="https://www.youtube.com/@Hyekong2026" target="_blank"><i class="fa-brands fa-youtube" style="color:#ff0000;"></i> YouTube (@Hyekong2026)</a>
-                <a class="menu-item" href="https://www.tiktok.com/@hyekong2026" target="_blank"><i class="fa-brands fa-tiktok" style="color:#fe2c55;"></i> TikTok (@hyekong2026)</a>
+                <div class="menu-group-title" data-i18n="menuGroup1Title">Core Legal & Compliance</div>
+                <div class="menu-item" onclick="openInfoModal('whitepaper')">
+                    <i class="fa-solid fa-file-contract"></i> <span data-i18n="menu_wp">백서 (Whitepaper v3.1 상세)</span>
+                </div>
+                <div class="menu-item" onclick="openInfoModal('faq')">
+                    <i class="fa-solid fa-circle-question"></i> <span data-i18n="menu_faq">자주 묻는 질문 (FAQ 20선 심층)</span>
+                </div>
+                <div class="menu-item" onclick="openInfoModal('policies')">
+                    <i class="fa-solid fa-shield-halved"></i> <span data-i18n="menu_pol">3대 POLICIES (약관·보안·프라이버시)</span>
+                </div>
+                <div class="menu-item" onclick="openInfoModal('regulations')">
+                    <i class="fa-solid fa-scale-balanced"></i> <span data-i18n="menu_reg">글로벌 디지털 자산법 컴플라이언스</span>
+                </div>
             </div>
+
             <div class="menu-group">
-                <div class="menu-group-title">HK Global Ecosystem Hubs</div>
-                <a class="menu-item" href="https://ljw2358.github.io/HK-ROBOT" target="_blank"><i class="fa-solid fa-robot"></i> 로봇: HK-ROBOT</a>
-                <a class="menu-item" href="https://ljw2358.github.io/HK-NEXUS" target="_blank"><i class="fa-solid fa-glasses"></i> 스마트 글래스: HK-NEXUS</a>
-                <a class="menu-item" href="https://ljw2358.github.io/HK-UAM" target="_blank"><i class="fa-solid fa-helicopter"></i> 도심항공교통: HK-UAM</a>
+                <div class="menu-group-title" data-i18n="menuGroup2Title">HK Global Ecosystem Hubs</div>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-ROBOT" target="_blank">
+                    <i class="fa-solid fa-robot"></i> <span data-i18n="hub_robot">로봇: HK-ROBOT</span>
+                </a>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-NEXUS" target="_blank">
+                    <i class="fa-solid fa-glasses"></i> <span data-i18n="hub_nexus">스마트 글래스: HK-NEXUS</span>
+                </a>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-UAM" target="_blank">
+                    <i class="fa-solid fa-helicopter" style="color:var(--accent-gold);"></i> <span data-i18n="hub_uam">도심항공교통: HK-UAM</span>
+                </a>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-FUSION" target="_blank">
+                    <i class="fa-solid fa-atom"></i> <span data-i18n="hub_fusion">인공태양: HK-FUSION</span>
+                </a>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-QUANTUMBIO" target="_blank">
+                    <i class="fa-solid fa-dna"></i> <span data-i18n="hub_bio">퀀텀바이오: HK-QUANTUMBIO</span>
+                </a>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-SPACE" target="_blank">
+                    <i class="fa-solid fa-shuttle-space"></i> <span data-i18n="hub_space">우주모빌리티: HK-SPACE</span>
+                </a>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-PARTSBANK" target="_blank">
+                    <i class="fa-solid fa-microchip"></i> <span data-i18n="hub_parts">부품뱅크: HK-PARTSBANK</span>
+                </a>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-DEFENCE-HUB" target="_blank">
+                    <i class="fa-solid fa-shield-cat"></i> <span data-i18n="hub_defence">국방기술: HK-DEFENCE-HUB</span>
+                </a>
+                <div class="menu-item" onclick="openInfoModal('t165')">
+                    <i class="fa-solid fa-city"></i> <span data-i18n="hub_t165">T165 초특급 랜드마크 허브 (경주 사옥)</span>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- 모달 창 -->
-    <div class="modal" id="bankModal" onclick="closeModalOutside(event)">
-        <div class="modal-sheet">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-                <h3 id="modalTitle" style="font-size:18px; font-weight:700;">금융 작업</h3>
-                <button onclick="closeModal()" style="background:none;border:none;font-size:20px;cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
+    <!-- Modals Container -->
+    <div class="modal" id="appModal">
+        <div class="modal-body">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">프로세스 구동</h3>
+                <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <div id="modalBodyContent"></div>
+            <div id="modalContent"></div>
         </div>
     </div>
 
-    <!-- 통합 스크립트 -->
+    <!-- JavaScript Platform Logic & Multi-Country Universal Translation Engine -->
     <script>
-        let currentBalance = 314159000;
+        let baseInterest = 12450892.600000;
+        let currentWalletBalance = 314159.000000;
         let currentLang = 'ko';
+        let generatedAuthCode = "123456";
+        let activeProcessId = null;
+        let activeModalType = null;
 
-        const dict = {
+        const translations = {
             ko: {
-                langLabel: "🌍 60개국어 다국어 엔진", welcomeMsg: "글로벌 슈퍼 뱅킹 환영합니다 👋", subWelcome: "HK 글로벌 슈퍼 뱅킹 시스템 가동 중",
-                acc1_title: "HK 주거래통장", acc1_badge: "출금가능", btn_transfer: "송금하기", btn_deposit: "채우기",
-                acc2_title: "Pi 신탁 세이프박스", acc2_badge: "연 31.41% 복리", btn_manage: "관리하기", btn_swap: "즉시 환전",
-                net_transfer: "송금", net_deposit: "예치", net_ubi: "기본소득", net_swap: "스왑",
-                tab_home: "홈", tab_asset: "자산", tab_benefit: "혜택", tab_menu: "전체메뉴"
+                headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "다국어 엔진 (뼈속까지 변환)", subTitle: "빠른 금융 작업 마스터 코어",
+                dashTitle: "개인 자산 대시보드", piSyncLabel: "보유 수량 (PI 수량 원장 동기화)", interestLabel: "실시간 누적 이자 (3년 31.41% APY 복리)",
+                mainnetBtnText: "코어팀에게 메인넷 즉시 신청하기", gridSectionTitle: "분산 연동망", gridSectionSub: "[개별 프로세스 작동]",
+                agiTitle: "AGI 삐니 고객센터", agiSub: "손폰(SONPONE) 자동 반응 및 AI 오케스트레이션", sonponeLabelText: "손폰(SONPONE) 감지 감도:", syncText: "(실시간 싱크)",
+                initialBeeniMsg: "[AGI 삐니]: 테스트 파이 환경 및 다국어 실시간 교차 추론 시스템이 완벽하게 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!",
+                chatInputPlaceholder: "삐니에게 질문 입력...", chatSendBtn: "전송", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "지갑연결", net1_desc: "노드 지갑 프로토콜 연동 및 자동 연동", net2_title: "송금", net2_desc: "대륙간 초고속 멀티시그 암호화 전송 시스템",
+                net3_title: "결재", net3_desc: "현금·카드·타코인 실시간 상거래 에스크로", net4_title: "예치", net4_desc: "3년 만기 31.41% APY 자산 신탁 볼트",
+                net5_title: "보상", net5_desc: "기여도 기반 인센티브 볼트 적립 엔진", net6_title: "기본소득", net6_desc: "HK 사회 재단 & 지자체 UBI 분배 모델",
+                net7_title: "스왑", net7_desc: "현금/카드/타코인 입금 즉각 코인 구매 스왑", net8_title: "DEX 스왑", net8_desc: "탈중앙화 오더레스 P2P 유동성 자동매칭",
+                net9_title: "LP 스테이킹", net9_desc: "유동성 공급 증명(PoL) 및 고배당 권한", net10_title: "파이 수량", net10_desc: "파이 자산 메인넷 원장 실시간 동기화",
+                mainnetAlert: "테스트 파이(Testnet Pi) 원장 동기화 및 테스트넷 전송 신청이 정상적으로 완료되었습니다!",
+                beeniReply: (txt) => `[AGI 삐니]: "${txt}" 명령을 수신했습니다. 테스트 파이 연동망 및 AGI 백엔드에서 실시간 처리 중입니다.`,
+                p1_title: "지갑연결", p1_desc: "자동 연동 버튼을 눌러 테스트 파이 지갑 주소를 즉시 불러오세요.", p1_lbl1: "테스트넷 지갑 주소", p1_ph1: "자동 연동 버튼을 누르세요", p1_lbl2: "인증번호 (발급됨:", p1_ph2: "6자리 인증번호를 입력하세요", p1_btn: "인증번호 승인 및 지갑 연결",
+                p2_title: "송금", p2_desc: "대륙간 초고속 멀티시그 암호화 전송 시스템을 실행합니다.", p2_lbl1: "수신자 지갑 주소", p2_ph1: "G... 또는 Pi Test ID", p2_lbl2: "전송 수량", p2_ph2: "보낼 수량을 입력하세요", p2_lbl3: "보안 인증번호 (발급됨:", p2_ph3: "6자리 인증번호 입력", p2_btn: "송금 실행",
+                p3_title: "결재", p3_desc: "현금·카드·타코인 실시간 상거래 에스크로 결재를 진행합니다.", p3_lbl1: "결재 수량 및 금액", p3_lbl2: "결재 승인 인증번호 (발급됨:", p3_ph2: "6자리 인증번호 입력", p3_btn: "에스크로 결재 승인",
+                p4_title: "예치", p4_desc: "3년 만기 31.41% APY 자산 신탁 볼트 예치를 진행합니다.", p4_lbl1: "예치할 수량", p4_ph1: "예치할 수량을 입력하세요", p4_lbl2: "예치 기간 선택", p4_opt1: "1년 (APY 15.5%)", p4_opt3: "3년 (APY 31.41%)", p4_opt5: "5년 (APY 45.0%)", p4_lbl3: "예상 수익금 및 이자", p4_resDefault: "예상 수익: +0.00 Test Pi", p4_lbl4: "볼트 보안 인증번호 (발급됨:", p4_ph4: "6자리 인증번호 입력", p4_btn: "볼트 예치 승인",
+                p5_title: "보상", p5_desc: "기여도 기반 인센티브 볼트 적립금을 수령합니다.", p5_lbl1: "수령할 수량", p5_lbl2: "보상 승인 인증번호 (발급됨:", p5_ph2: "6자리 인증번호 입력", p5_btn: "보상 수령 승인",
+                p6_title: "기본소득", p6_desc: "HK 사회 재단 & 지자체 UBI 분배 모델을 청구합니다.", p6_lbl1: "청구할 수량", p6_lbl2: "UBI 인증번호 (발급됨:", p5_ph2: "6자리 인증번호 입력", p6_btn: "기본소득 청구 승인",
+                p7_title: "스왑", p7_desc: "현금/카드/타코인 입금 즉각 코인 구매 스왑을 진행합니다.", p7_lbl1: "보낼 자산 및 수량", p7_ph1: "예: 10 PI", p7_lbl2: "받을 자산", p7_lbl3: "스왑 승인 인증번호 (발급됨:", p7_ph3: "6자리 인증번호 입력", p7_btn: "즉시 스왑 실행",
+                p8_title: "DEX 스왑", p8_desc: "탈중앙화 오더레스 P2P 유동성을 자동 매칭합니다.", p8_lbl1: "P2P 매수/매도 수량", p8_ph1: "수량을 입력하세요", p8_lbl2: "DEX 인증번호 (발급됨:", p8_ph2: "6자리 인증번호 입력", p8_btn: "P2P 주문 등록 승인",
+                p9_title: "LP 스테이킹", p9_desc: "유동성 공급 증명(PoL) 및 기간별 예치를 등록합니다.", p9_lbl1: "스테이킹할 LP 수량", p9_ph1: "LP 수량을 입력하세요", p9_lbl2: "예치 기간 선택", p9_lbl3: "예상 LP 수익", p9_lbl4: "LP 인증번호 (발급됨:", p9_ph4: "6자리 인증번호 입력", p9_btn: "LP 스테이킹 등록 승인",
+                p10_title: "파이 수량", p10_desc: "파이 자산 메인넷 원장 실시간 동기화 상태를 관리합니다.", p10_lbl1: "파이 보유 수량", p10_lbl2: "동기화 인증번호 (발급됨:", p9_ph2: "6자리 인증번호 입력", p10_btn: "원장 동기화 실행",
+                authFailAlert: "❌ 인증번호가 일치하지 않습니다. 발급된 6자리 인증번호를 정확히 입력해 주세요.",
+                authSuccessPrefix: "✅ [인증 성공]",
+                msg1: "지갑연결: 노드 지갑 프로토콜 연동 및 인증이 완료되었습니다.",
+                msg2: "송금: 대륙간 초고속 멀티시그 암호화 전송이 완료되었습니다.",
+                msg3: "결재: 에스크로 상거래 결제가 정상 승인되었습니다.",
+                msg4: "예치: 자산 신탁 볼트 예치 및 복리 이자 설정이 완료되었습니다.",
+                msg5: "보상: 기여도 보상 수령 및 승인이 완료되었습니다.",
+                msg6: "기본소득: UBI 분배 모델 청구가 완료되었습니다.",
+                msg7: "스왑: 즉각 코인 구매 및 교환 스왑이 완료되었습니다.",
+                msg8: "DEX 스왑: 탈중앙화 P2P 유동성 매칭 주문이 등록되었습니다.",
+                msg9: "LP 스테이킹: 유동성 공급 증명(PoL) 스테이킹이 완료되었습니다.",
+                msg10: "파이 수량: 메인넷 원장 실시간 동기화가 완료되었습니다.",
+                calcDefault: "예치할 수량을 입력해주세요 (+0.00)",
+                calcResult: (p, r) => `${p}년 복리 적용 시 예상 수익: +${r} HK/PI`,
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "백서 (Whitepaper v3.1 상세)", menu_faq: "자주 묻는 질문 (FAQ 20선 심층)", menu_pol: "3대 POLICIES (약관·보안·프라이버시)", menu_reg: "글로벌 디지털 자산법 컴플라이언스",
+                hub_robot: "로봇: HK-ROBOT", hub_nexus: "스마트 글래스: HK-NEXUS", hub_uam: "도심항공교통: HK-UAM", hub_fusion: "인공태양: HK-FUSION", hub_bio: "퀀텀바이오: HK-QUANTUMBIO", hub_space: "우주모빌리티: HK-SPACE", hub_parts: "부품뱅크: HK-PARTSBANK", hub_defence: "국방기술: HK-DEFENCE-HUB", hub_t165: "T165 초특급 랜드마크 허브 (경주 사옥)",
+                modal_wp_title: "백서 (Whitepaper v3.1 상세)", modal_wp_body: "HK WORLD BANK는 탈중앙화 블록체인과 AGI 오케스트레이션을 결합한 차세대 글로벌 분산 금융 플랫폼입니다.",
+                modal_faq_title: "자주 묻는 질문 (FAQ 20선 심층)", modal_faq_body: "Q1. Pi Network와 연동되나요? A. 네, 실시간 테스트넷 원장 동기화를 지원합니다.",
+                modal_pol_title: "3대 POLICIES", modal_pol_body: "1. 이용약관 2. 보안 및 프라이버시 3. 글로벌 컴플라이언스 정책을 준수합니다.",
+                modal_reg_title: "글로벌 디지털 자산법 컴플라이언스", modal_reg_body: "주요 글로벌 규제 프레임워크와 호환되는 컴플라이언스 설계를 갖추고 있습니다.",
+                modal_t165_title: "T165 초특급 랜드마크 허브 (경주 사옥)", modal_t165_body: "경주에 위치한 165층 규모의 HK 그룹 글로벌 본사 및 R&D 센터입니다."
             },
             en: {
-                langLabel: "🌍 60-Language Engine", welcomeMsg: "Welcome to Global Super Banking 👋", subWelcome: "HK Global Super Banking Active",
-                acc1_title: "HK Main Account", acc1_badge: "Available", btn_transfer: "Transfer", btn_deposit: "Deposit",
-                acc2_title: "Pi Trust Safe Box", acc2_badge: "31.41% APY", btn_manage: "Manage", btn_swap: "Swap",
-                net_transfer: "Transfer", net_deposit: "Vault", net_ubi: "UBI", net_swap: "Swap",
-                tab_home: "Home", tab_asset: "Assets", tab_benefit: "Benefits", tab_menu: "Menu"
+                headerSubText: "Global Next-Gen Decentralized Finance", langEngineLabel: "Universal Language Engine", subTitle: "Fast Financial Operation Master Core",
+                dashTitle: "Personal Asset Dashboard", piSyncLabel: "Holding Amount (Pi Ledger Sync)", interestLabel: "Real-time Accumulated Interest (3-Yr 31.41% APY)",
+                mainnetBtnText: "Request Mainnet to Core Team Now", gridSectionTitle: "Distributed Networks", gridSectionSub: "[Process Active]",
+                agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Response & AI Orchestration", sonponeLabelText: "Detection Sensitivity:", syncText: "(Live Sync)",
+                initialBeeniMsg: "[AGI Beeni]: Testnet Pi environment and global multi-language system fully operational! Chairman Jaewan Lee, how may I assist you?",
+                chatInputPlaceholder: "Ask Beeni...", chatSendBtn: "Send", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Wallet Connect", net1_desc: "Node wallet protocol auto-link", net2_title: "Transfer", net2_desc: "Multisig encrypted cross-border transfer",
+                net3_title: "Payment", net3_desc: "Real-time commerce escrow", net4_title: "Vault Deposit", net4_desc: "3-Year 31.41% APY trust vault",
+                net5_title: "Rewards", net5_desc: "Contribution incentive accrual engine", net6_title: "UBI", net6_desc: "HK Social Foundation UBI model",
+                net7_title: "Swap", net7_desc: "Instant token purchase swap", net8_title: "DEX Swap", net8_desc: "Decentralized orderless P2P matching",
+                net9_title: "LP Staking", net9_desc: "PoL & high-yield dividend rights", net10_title: "Pi Ledger", net10_desc: "Pi asset mainnet ledger sync",
+                mainnetAlert: "Mainnet synchronization and transmission request completed successfully!",
+                beeniReply: (txt) => `[AGI Beeni]: Received command "${txt}". Processing in decentralized backend.`,
+                p1_title: "Wallet Connect", p1_desc: "Click Auto-Link to load your wallet address instantly.", p1_lbl1: "Wallet Address", p1_ph1: "Click Auto-Link", p1_lbl2: "Auth Code (Issued:", p1_ph2: "Enter 6-digit code", p1_btn: "Approve & Connect",
+                p2_title: "Transfer", p2_desc: "Execute multisig encrypted transfer.", p2_lbl1: "Recipient Address", p2_ph1: "G... or ID", p2_lbl2: "Amount", p2_ph2: "Enter amount", p2_lbl3: "Security Auth Code (Issued:", p2_ph3: "Enter 6-digit code", p2_btn: "Execute Transfer",
+                p3_title: "Payment", p3_desc: "Proceed with escrow secure payment.", p3_lbl1: "Payment Amount", p3_lbl2: "Approval Auth Code (Issued:", p3_ph2: "Enter 6-digit code", p3_btn: "Approve Payment",
+                p4_title: "Vault Deposit", p4_desc: "Deposit into asset trust vault.", p4_lbl1: "Deposit Amount", p4_ph1: "Enter amount", p4_lbl2: "Deposit Period", p4_opt1: "1 Year (APY 15.5%)", p4_opt3: "3 Years (APY 31.41%)", p4_opt5: "5 Years (APY 45.0%)", p4_lbl3: "Expected Return", p4_resDefault: "Expected Return: +0.00", p4_lbl4: "Vault Auth Code (Issued:", p4_ph4: "Enter 6-digit code", p4_btn: "Approve Deposit",
+                p5_title: "Rewards", p5_desc: "Claim contribution incentive earnings.", p5_lbl1: "Claim Amount", p5_lbl2: "Auth Code (Issued:", p5_ph2: "Enter 6-digit code", p5_btn: "Claim Rewards",
+                p6_title: "UBI", p6_desc: "Claim municipal UBI distribution.", p6_lbl1: "Claim Amount", p6_lbl2: "Auth Code (Issued:", p5_ph2: "Enter 6-digit code", p6_btn: "Claim UBI",
+                p7_title: "Swap", p7_desc: "Instantly purchase and exchange tokens.", p7_lbl1: "Send Amount", p7_ph1: "10 PI", p7_lbl2: "Receive Asset", p7_lbl3: "Auth Code (Issued:", p7_ph3: "Enter 6-digit code", p7_btn: "Execute Swap",
+                p8_title: "DEX Swap", p8_desc: "Decentralized P2P liquidity matching.", p8_lbl1: "P2P Amount", p8_ph1: "Enter amount", p8_lbl2: "Auth Code (Issued:", p8_ph2: "Enter 6-digit code", p8_btn: "Approve Order",
+                p9_title: "LP Staking", p9_desc: "Register liquidity proof and deposit.", p9_lbl1: "LP Amount", p9_ph1: "Enter amount", p9_lbl2: "Period", p9_lbl3: "Expected Return", p9_lbl4: "Auth Code (Issued:", p9_ph4: "Enter 6-digit code", p9_btn: "Register LP Staking",
+                p10_title: "Pi Ledger", p10_desc: "Synchronize Pi asset mainnet ledger quantity.", p10_lbl1: "Pi Amount", p10_lbl2: "Auth Code (Issued:", p9_ph2: "Enter 6-digit code", p9_btn: "Execute Sync",
+                authFailAlert: "❌ Auth code does not match.", authSuccessPrefix: "✅ [Auth Successful]",
+                msg1: "Wallet Connect: Node wallet securely connected.", msg2: "Transfer: Multisig transfer processed.", msg3: "Payment: Escrow approved.", msg4: "Vault Deposit: Deposited successfully.", msg5: "Rewards claimed.", msg6: "UBI claimed.", msg7: "Swap completed.", msg8: "DEX order approved.", msg9: "LP Staking registered.", msg10: "Pi ledger synchronized.",
+                calcDefault: "Enter deposit amount (+0.00)",
+                calcResult: (p, r) => `Expected Return (${p} Years): +${r}`,
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Policies", menu_reg: "Global Compliance",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Smart Glasses: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Artificial Sun: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "T165 Landmark Hub (Gyeongju HQ)",
+                modal_wp_title: "Whitepaper v3.1", modal_wp_body: "HK WORLD BANK combines decentralized blockchain with AGI orchestration.",
+                modal_faq_title: "FAQ Top 20", modal_faq_body: "Q1. Is it linked with Pi Network? A. Yes, real-time ledger synchronization is supported.",
+                modal_pol_title: "3 Policies", modal_pol_body: "1. Terms of Service 2. Security & Privacy 3. Compliance Policy.",
+                modal_reg_title: "Global Compliance", modal_reg_body: "Aligned with global digital asset regulatory frameworks.",
+                modal_t165_title: "T165 Landmark Hub", modal_t165_body: "165-story HK Group global headquarters located in Gyeongju."
+            },
+            zh: {
+                headerSubText: "全球下一代去中心化金融", langEngineLabel: "多语言引擎", subTitle: "快捷金融操作主核心",
+                dashTitle: "个人资产仪表板", piSyncLabel: "持有数量 (Pi账本同步)", interestLabel: "实时累计利息 (3年 31.41% APY复利)",
+                mainnetBtnText: "立即向核心团队申请主网", gridSectionTitle: "分布式互联网络", gridSectionSub: "[单个进程运行]",
+                agiTitle: "AGI 币妮客服", agiSub: "SONPONE 自动响应与 AI 编排", sonponeLabelText: "侦测灵敏度:", syncText: "(实时同步)",
+                initialBeeniMsg: "[AGI 币妮]: 测试派环境及全球多语言系统运行完美，李在完会长，请随时下达指示！",
+                chatInputPlaceholder: "向币妮提问...", chatSendBtn: "发送", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "白皮书 (v3.1 详情)", menu_faq: "常见问题 (FAQ 20条)", menu_pol: "三大政策", menu_reg: "全球数字资产法合规",
+                hub_robot: "机器人: HK-ROBOT", hub_nexus: "智能眼镜: HK-NEXUS", hub_uam: "城市空中交通: HK-UAM", hub_fusion: "人造太阳: HK-FUSION", hub_bio: "量子生物: HK-QUANTUMBIO", hub_space: "太空移动: HK-SPACE", hub_parts: "零件银行: HK-PARTSBANK", hub_defence: "国防技术: HK-DEFENCE-HUB", hub_t165: "T165 特级地标枢纽 (庆州总部)",
+                net1_title: "钱包连接", net1_desc: "节点钱包协议联动及自动连接", net2_title: "转账", net2_desc: "跨洲超高速多签加密传输系统",
+                net3_title: "支付", net3_desc: "现金·卡·代币实时商业托管", net4_title: "存入", net4_desc: "3年期 31.41% APY 资产信托金库",
+                net5_title: "奖励", net5_desc: "贡献度激励金库累积引擎", net6_title: "基本收入", net6_desc: "HK社会基金会与地方政府 UBI 分配模型",
+                net7_title: "兑换", net7_desc: "现金/卡/代币存入即时代币购买兑换", net8_title: "DEX 兑换", net8_desc: "去中心化无订单 P2P 流动性自动匹配",
+                net9_title: "LP 质押", net9_desc: "流动性证明 (PoL) 与高股息权利", net10_title: "派数量", net10_desc: "派资产主网账本实时同步",
+                mainnetAlert: "测试派账本同步及传输申请已正常完成！",
+                beeniReply: (txt) => `[AGI 币妮]: 已接收命令 "${txt}"。正在去中心化后端中实时处理。`,
+                p1_title: "钱包连接", p1_desc: "点击自动联动按钮，立即加载钱包地址。", p1_lbl1: "钱包地址", p1_ph1: "点击自动联动", p1_lbl2: "验证码 (已发:", p1_ph2: "请输入6位验证码", p1_btn: "批准验证并连接钱包",
+                p2_title: "转账", p2_desc: "执行超高速多签加密传输。", p2_lbl1: "接收方地址", p2_ph1: "G... 或 ID", p2_lbl2: "转账数量", p2_ph2: "请输入数量", p2_lbl3: "安全验证码 (已发:", p2_ph3: "请输入6位验证码", p2_btn: "执行转账",
+                p3_title: "支付", p3_desc: "进行托管安全支付。", p3_lbl1: "支付金额", p3_lbl2: "批准验证码 (已发:", p3_ph2: "请输入6位验证码", p3_btn: "批准支付",
+                p4_title: "存入", p4_desc: "进行 3年期 31.41% APY 资产信托金库存款。", p4_lbl1: "存入数量", p4_ph1: "请输入数量", p4_lbl2: "存款期限", p4_opt1: "1年", p4_opt3: "3年", p4_opt5: "5年", p4_lbl3: "预计收益", p4_resDefault: "预计收益: +0.00", p4_lbl4: "金库验证码 (已发:", p4_ph4: "请输入6位", p4_btn: "批准存款",
+                p5_title: "奖励", p5_desc: "领取贡献度激励金。", p5_lbl1: "领取数量", p5_lbl2: "验证码 (已发:", p5_ph2: "请输入6位", p5_btn: "领取奖励",
+                p6_title: "基本收入", p6_desc: "申领 UBI 分配金。", p6_lbl1: "申领数量", p6_lbl2: "验证码 (已发:", p5_ph2: "请输入6位", p6_btn: "申领 UBI",
+                p7_title: "兑换", p7_desc: "即时购买和兑换代币。", p7_lbl1: "发送数量", p7_ph1: "10 PI", p7_lbl2: "接收资产", p7_lbl3: "验证码 (已发:", p7_ph3: "请输入6位", p7_btn: "执行兑换",
+                p8_title: "DEX 兑换", p8_desc: "自动匹配 P2P 流动性。", p8_lbl1: "P2P 数量", p8_ph1: "请输入数量", p8_lbl2: "验证码 (已发:", p8_ph2: "请输入6位", p8_btn: "批准订单",
+                p9_title: "LP 质押", p9_desc: "注册流动性证明。", p9_lbl1: "LP 数量", p9_ph1: "请输入数量", p9_lbl2: "期限", p9_lbl3: "预计收益", p9_lbl4: "验证码 (已发:", p9_ph4: "请输入6位", p9_btn: "注册 LP 质押",
+                p10_title: "派数量", p10_desc: "同步派资产主网账本数量。", p10_lbl1: "派数量", p10_lbl2: "验证码 (已发:", p9_ph2: "请输入6位", p9_btn: "执行同步",
+                authFailAlert: "❌ 验证码不匹配。", authSuccessPrefix: "✅ [认证成功]",
+                msg1: "钱包已连接", msg2: "转账已完成", msg3: "支付已批准", msg4: "存款已完成", msg5: "奖励已领取", msg6: "UBI已申领", msg7: "兑换已完成", msg8: "DEX订单已批准", msg9: "LP质押已注册", msg10: "账本已同步",
+                calcDefault: "请输入存款数量 (+0.00)",
+                calcResult: (p, r) => `${p}年预期收益: +${r}`,
+                modal_wp_title: "白皮书 v3.1", modal_wp_body: "HK WORLD BANK 结合去中心化区块链与 AGI 编排。",
+                modal_faq_title: "常见问题", modal_faq_body: "Q1. 支持 Pi Network 吗？ A. 支持实时账本同步。",
+                modal_pol_title: "三大政策", modal_pol_body: "1. 服务条款 2. 安全与隐私 3. 合规政策",
+                modal_reg_title: "全球合规", modal_reg_body: "对接全球数字资产监管框架。",
+                modal_t165_title: "T165 랜드마크 허브", modal_t165_body: "位于庆州的 165 层全球总部。"
+            },
+            ja: {
+                headerSubText: "グローバル次世代分散型金融", langEngineLabel: "多言語エンジン", subTitle: "高速金融作業マスターコア",
+                dashTitle: "個人資産ダッシュボード", piSyncLevel: "保有数量 (Pi台帳同期)", interestLabel: "リアルタイム累積利息 (3年 31.41% APY複利)",
+                mainnetBtnText: "コアチームへメインネットを即時申請", gridSectionTitle: "分散連動網", gridSectionSub: "[個別プロセス稼働]",
+                agiTitle: "AGI ぴーにカスタマー", agiSub: "SONPONE自動応答＆AIオーケストレーション", sonponeLabelText: "検出感度:", syncText: "(リアルタイムシンク)",
+                initialBeeniMsg: "[AGI ぴーに]: テストパイ環境およびグローバル多言語システムが完全に稼働中です。イ・ジェワン会長、何なりとご指示ください！",
+                chatInputPlaceholder: "ぴーにへ質問を入力...", chatSendBtn: "送信", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "ホワイトペーパー (v3.1詳細)", menu_faq: "よくある質問 (FAQ 20選)", menu_pol: "3大ポリシー", menu_reg: "グローバルコンプライアンス",
+                hub_robot: "ロボット: HK-ROBOT", hub_nexus: "スマートグラス: HK-NEXUS", hub_uam: "空飛ぶクルマ: HK-UAM", hub_fusion: "人工太陽: HK-FUSION", hub_bio: "量子バイオ: HK-QUANTUMBIO", hub_space: "宇宙モビリティ: HK-SPACE", hub_parts: "パーツバンク: HK-PARTSBANK", hub_defence: "国防技術: HK-DEFENCE-HUB", hub_t165: "T165ランドマークハブ (慶州本社)",
+                net1_title: "ウォレット接続", net1_desc: "ノードウォレットプロトコル連動および自動連動", net2_title: "送金", net2_desc: "大陸間超高速マルチシグ暗号化転送システム",
+                net3_title: "決済", net3_desc: "現金・カード・他コインリアルタイム商取引エスクロー", net4_title: "預金", net4_desc: "3年満期 31.41% APY資産信託ボルト",
+                net5_title: "報酬", net5_desc: "貢献度ベースインセンティブボルト積立エンジン", net6_title: "基本所得", net6_desc: "HK社会財団＆自治体 UBI分配モデル",
+                net7_title: "スワップ", net7_desc: "現金/カード/他コイン入金即時コイン購入スワップ", net8_title: "DEXスワップ", net8_desc: "分散型オーダーレスP2P流動性自動マッチング",
+                net9_title: "LPステーキング", net9_desc: "流動性供給証明(PoL)および高配当権利", net10_title: "パイ数量", net10_desc: "パイ資産メインネット台帳リアルタイム同期",
+                mainnetAlert: "メインネット同期および転送申請が正常に完了しました！",
+                beeniReply: (txt) => `[AGI ぴーに]: "${txt}"命令を受信しました。分散バックエンドでリアルタイム処理中です。`,
+                p1_title: "ウォレット接続", p1_desc: "自動連動ボタンを押してウォレットアドレスを即座に読み込んでください。", p1_lbl1: "ウォレットアドレス", p1_ph1: "自動連動を押してください", p1_lbl2: "認証番号 (発行:", p1_ph2: "6桁の認証番号", p1_btn: "承認して接続",
+                p2_title: "送金", p2_desc: "マルチシグ暗号化転送を実行します。", p2_lbl1: "受信者アドレス", p2_ph1: "G... または ID", p2_lbl2: "数量", p2_ph2: "数量を入力", p2_lbl3: "セキュリティ認証番号 (発行:", p2_ph3: "6桁の認証番号", p2_btn: "送金実行",
+                p3_title: "決済", p3_desc: "エスクロー安全決済を進めます。", p3_lbl1: "決済金額", p3_lbl2: "承認認証番号 (発行:", p3_ph2: "6桁の認証番号", p3_btn: "決済承認",
+                p4_title: "預金", p4_desc: "資産信託ボルト預金を進めます。", p4_lbl1: "預金数量", p4_ph1: "数量を入力", p4_lbl2: "期間", p4_opt1: "1年", p4_opt3: "3年", p4_opt5: "5年", p4_lbl3: "予想収益", p4_resDefault: "予想収益: +0.00", p4_lbl4: "ボルト認証番号 (発行:", p4_ph4: "6桁の認証番号", p4_btn: "預金承認",
+                p5_title: "報酬", p5_desc: "インセンティブを受領します。", p5_lbl1: "受領数量", p5_lbl2: "認証番号 (発行:", p5_ph2: "6桁の認証番号", p5_btn: "報酬受領",
+                p6_title: "基本所得", p6_desc: "UBI分配金を請求します。", p6_lbl1: "請求数量", p6_lbl2: "認証番号 (発行:", p5_ph2: "6桁の認証番号", p6_btn: "UBI請求",
+                p7_title: "スワップ", p7_desc: "即時コイン購入・交換を行います。", p7_lbl1: "送信数量", p7_ph1: "10 PI", p7_lbl2: "受取資産", p7_lbl3: "認証番号 (発行:", p7_ph3: "6桁の認証番号", p7_btn: "スワップ実行",
+                p8_title: "DEXスワップ", p8_desc: "P2P流動性を自動マッチングします。", p8_lbl1: "P2P数量", p8_ph1: "数量を入力", p8_lbl2: "認証番号 (発行:", p8_ph2: "6桁の認証番号", p8_btn: "注文承認",
+                p9_title: "LPステーキング", p9_desc: "流動性供給証明を登録します。", p9_lbl1: "LP数量", p9_ph1: "数量を入力", p9_lbl2: "期間", p9_lbl3: "予想収益", p9_lbl4: "認証番号 (発行:", p9_ph4: "6桁の認証番号", p9_btn: "LP登録承認",
+                p10_title: "パイ数量", p10_desc: "メインネット台帳数量を同期します。", p10_lbl1: "パイ数量", p10_lbl2: "認証番号 (発行:", p9_ph2: "6桁の認証番号", p9_btn: "同期実行",
+                authFailAlert: "❌ 認証番号が一致しません。", authSuccessPrefix: "✅ [認証成功]",
+                msg1: "接続完了", msg2: "送金完了", msg3: "決済承認", msg4: "預金完了", msg5: "報酬受領", msg6: "UBI請求完了", msg7: "スワップ完了", msg8: "DEX注文承認", msg9: "LP登録完了", msg10: "同期完了",
+                calcDefault: "預金数量を入力してください (+0.00)",
+                calcResult: (p, r) => `${p}年予想収益: +${r}`,
+                modal_wp_title: "ホワイトペーパー v3.1", modal_wp_body: "HK WORLD BANK は分散型ブロックチェーンと AGI を統合したプラットフォームです。",
+                modal_faq_title: "よくある質問", modal_faq_body: "Q1. Pi Networkと連携しますか？ A. はい、リアルタイム同期に対応しています。",
+                modal_pol_title: "3大ポリシー", modal_pol_body: "1. 利用規約 2. セキュリティ 3. コンプライアンス",
+                modal_reg_title: "グローバルコンプライアンス", modal_reg_body: "世界的な規制フレームワークに準拠しています。",
+                modal_t165_title: "T165 ランドマークハブ", modal_t165_body: "慶州にある165階建てのグローバル本社。"
+            },
+            ru: {
+                headerSubText: "Глобальные децентрализованные финансы нового поколения", langEngineLabel: "Языковой движок", subTitle: "Мастер-ядро финансовых операций",
+                dashTitle: "Личная панель активов", piSyncLabel: "Количество (синхронизация реестра Pi)", interestLabel: "Накопленные проценты (3 года, 31.41% APY)",
+                mainnetBtnText: "Запросить Mainnet у команды ядра", gridSectionTitle: "Распределенные сети", gridSectionSub: "[Процесс активен]",
+                agiTitle: "Поддержка AGI Beeni", agiSub: "Автоответ SONPONE и оркестрация ИИ", sonponeLabelText: "Чувствительность:", syncText: "(Синхр)",
+                initialBeeniMsg: "[AGI Beeni]: Тестовая среда Pi и многоязычная система полностью активны! Председатель Ли Джэ Ван, чем могу помочь?",
+                chatInputPlaceholder: "Спросить Beeni...", chatSendBtn: "Отправить", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper v3.1", menu_faq: "Часто задаваемые вопросы (FAQ 20)", menu_pol: "3 Політики", menu_reg: "Глобальное соответствие",
+                hub_robot: "Робот: HK-ROBOT", hub_nexus: "Очки: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Иск. солнце: HK-FUSION", hub_bio: "Био: HK-QUANTUMBIO", hub_space: "Космос: HK-SPACE", hub_parts: "Запчасти: HK-PARTSBANK", hub_defence: "Оборона: HK-DEFENCE-HUB", hub_t165: "Хаб T165 (Кёнджу)",
+                net1_title: "Подключение кошелька", net1_desc: "Автоматическая привязка протокола", net2_title: "Перевод", net2_desc: "Мультисиг крипто-перевод",
+                net3_title: "Оплата", net3_desc: "Эскроу в реальном времени", net4_title: "Депозит в хранилище", net4_desc: "Трастовое хранилище 31.41% APY",
+                net5_title: "Награды", net5_desc: "Накопление стимулов за вклад", net6_title: "UBI", net6_desc: "Базовый доход HK Foundation",
+                net7_title: "Своп", net7_desc: "Мгновенная покупка токенов", net8_title: "DEX Своп", net8_desc: "Децентрализованный P2P обмена",
+                net9_title: "LP Стейкинг", net9_desc: "Доказательство ликвидности (PoL)", net10_title: "Баланс Pi", net10_desc: "Синхронизация реестра Pi",
+                mainnetAlert: "Синхронизация сети успешно завершена!",
+                beeniReply: (txt) => `[AGI Beeni]: Команда "${txt}" получена и обрабатывается.`,
+                p1_title: "Подключение кошелька", p1_desc: "Нажмите автопривязку.", p1_lbl1: "Адрес", p1_ph1: "Нажмите", p1_lbl2: "Код (Выдан:", p1_ph2: "Код из 6 цифр", p1_btn: "Подтвердить",
+                p2_title: "Перевод", p2_desc: "Выполнить перевод.", p1_lbl1: "Адрес получателя", p1_ph1: "G...", p2_lbl2: "Сумма", p2_ph2: "Сумма", p2_lbl3: "Код (Выдан:", p2_ph3: "Код", p2_btn: "Перевести",
+                p3_title: "Оплата", p3_desc: "Безопасное эскроу.", p3_lbl1: "Сумма", p3_lbl2: "Код (Выдан:", p3_ph2: "Код", p3_btn: "Одобрить",
+                p4_title: "Депозит", p4_desc: "Хранилище с доходностью.", p4_lbl1: "Сумма", p4_ph1: "Сумма", p4_lbl2: "Период", p4_opt1: "1 год", p4_opt3: "3 года", p4_opt5: "5 лет", p4_lbl3: "Доход", p4_resDefault: "+0.00", p4_lbl4: "Код (Выдан:", p4_ph4: "Код", p4_btn: "Внести",
+                p5_title: "Награды", p5_desc: "Получить награду.", p5_lbl1: "Сумма", p5_lbl2: "Код (Выдан:", p5_ph2: "Код", p5_btn: "Получить",
+                p6_title: "UBI", p6_desc: "Запросить UBI.", p6_lbl1: "Сумма", p6_lbl2: "Код (Выдан:", p5_ph2: "Код", p6_btn: "Запросить",
+                p7_title: "Своп", p7_desc: "Обменять токены.", p7_lbl1: "Отправить", p7_ph1: "10 PI", p7_lbl2: "Получить", p7_lbl3: "Код (Выдан:", p7_ph3: "Код", p7_btn: "Обменять",
+                p8_title: "DEX Своп", p8_desc: "P2P ликвидность.", p8_lbl1: "Сумма", p8_ph1: "Сумма", p8_lbl2: "Код (Выдан:", p8_ph2: "Код", p8_btn: "Заявка",
+                p9_title: "LP Стейкинг", p9_desc: "Регистрация LP.", p9_lbl1: "LP", p9_ph1: "Сумма", p9_lbl2: "Период", p9_lbl3: "Доход", p9_lbl4: "Код (Выдан:", p9_ph4: "Код", p9_btn: "Регистрация",
+                p10_title: "Баланс Pi", p10_desc: "Синхронизация баланса.", p10_lbl1: "Сумма", p10_lbl2: "Код (Выдан:", p9_ph2: "Код", p10_btn: "Синхронизировать",
+                authFailAlert: "❌ Неверный код аутентификации.", authSuccessPrefix: "✅ [Успешно]",
+                msg1: "Кошелек подключен", msg2: "Перевод выполнен", msg3: "Оплата одобрена", msg4: "Депозит внесен", msg5: "Награды получены", msg6: "UBI запрошен", msg7: "Своп завершен", msg8: "DEX ордер одобрен", msg9: "LP зарегистрирован", msg10: "Реестр синхронизирован",
+                calcDefault: "Введите сумму (+0.00)",
+                calcResult: (p, r) => `Доход (${p} лет): +${r}`,
+                modal_wp_title: "Whitepaper v3.1", modal_wp_body: "HK WORLD BANK объединяет блокчейн и AGI.",
+                modal_faq_title: "FAQ", modal_faq_body: "Q1. Связь с Pi? A. Поддерживается синхронизация в реальном времени.",
+                modal_pol_title: "Политики", modal_pol_body: "1. Условия 2. Безопасность 3. Комплаенс",
+                modal_reg_title: "Соответствие", modal_reg_body: "Соответствует мировым нормам.",
+                modal_t165_title: "Хаб T165", modal_t165_body: "Глобальная штаб-квартира в Кёнджу."
+            },
+            vi: {
+                headerSubText: "Tài chính phi tập trung thế hệ mới toàn cầu", langEngineLabel: "Động cơ đa ngôn ngữ", subTitle: "Lõi điều khiển tài chính nhanh",
+                dashTitle: "Bảng điều khiển tài sản cá nhân", piSyncLabel: "Số lượng (Đồng bộ sổ cái Pi)", interestLabel: "Lãi tích lũy thời gian thực (3 năm 31.41% APY)",
+                mainnetBtnText: "Yêu cầu Mainnet ngay lập tức", gridSectionTitle: "Mạng phân tán", gridSectionSub: "[Hoạt động riêng lẻ]",
+                agiTitle: "Hỗ trợ AGI Beeni", agiSub: "Phản hồi tự động SONPONE & AI", sonponeLabelText: "Độ nhạy:", syncText: "(Đồng bộ)",
+                initialBeeniMsg: "[AGI Beeni]: Môi trường thử nghiệm Pi và hệ thống đa ngôn ngữ hoạt động hoàn hảo! Chủ tịch Jaewan Lee, tôi có thể giúp gì?",
+                chatInputPlaceholder: "Hỏi Beeni...", chatSendBtn: "Gửi", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Sách trắng (Whitepaper v3.1)", menu_faq: "Câu hỏi thường gặp (FAQ 20)", menu_pol: "3 Chính sách", menu_reg: "Tuân thủ pháp lý",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Kính thông minh: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Mặt trời nhân tạo: HK-FUSION", hub_bio: "Sinh học lượng tử: HK-QUANTUMBIO", hub_space: "Không gian: HK-SPACE", hub_parts: "Ngân hàng linh kiện: HK-PARTSBANK", hub_defence: "Công nghệ quốc phòng: HK-DEFENCE-HUB", hub_t165: "Trung tâm T165 (Gyeongju)",
+                net1_title: "Kết nối ví", net1_desc: "Liên kết giao thức ví", net2_title: "Chuyển tiền", net2_desc: "Hệ thống chuyển mã hóa multisig",
+                net3_title: "Thanh toán", net3_desc: "Ký quỹ thương mại thời gian thực", net4_title: "Gửi tiết kiệm", net4_desc: "Kho tiền tin cậy 3 năm 31.41% APY",
+                net5_title: "Phần thưởng", net5_desc: "Động cơ tích lũy ưu đãi đóng góp", net6_title: "Thu nhập cơ bản", net6_desc: "Mô hình phân phối UBI",
+                net7_title: "Hoán đổi", net7_desc: "Mua coin tức thì", net8_title: "DEX Swap", net8_desc: "Khớp thanh khoản P2P phi tập trung",
+                net9_title: "Staking LP", net9_desc: "Bằng chứng thanh khoản (PoL)", net10_title: "Số lượng Pi", net10_desc: "Đồng bộ sổ cái chính Pi",
+                mainnetAlert: "Yêu cầu đồng bộ sổ cái và truyền mạng thử nghiệm thành công!",
+                beeniReply: (txt) => `[AGI Beeni]: Đã nhận lệnh "${txt}". Đang xử lý trên hệ thống phi tập trung.`,
+                p1_title: "Kết nối ví", p1_desc: "Nhấn liên kết tự động để tải địa chỉ ví.", p1_lbl1: "Địa chỉ ví", p1_ph1: "Nhấn liên kết tự động", p1_lbl2: "Mã xác thực (Cấp:", p1_ph2: "Nhập mã 6 chữ số", p1_btn: "Phê duyệt & Kết nối",
+                p2_title: "Chuyển tiền", p2_desc: "Thực hiện chuyển khoản mã hóa.", p2_lbl1: "Địa chỉ nhận", p2_ph1: "G...", p2_lbl2: "Số lượng", p2_ph2: "Nhập số lượng", p2_lbl3: "Mã xác thực (Cấp:", p2_ph3: "Nhập mã 6 chữ số", p2_btn: "Thực hiện chuyển",
+                p3_title: "Thanh toán", p3_desc: "Thanh toán ký quỹ an toàn.", p3_lbl1: "Số tiền", p3_lbl2: "Mã xác thực (Cấp:", p3_ph2: "Nhập mã 6 chữ số", p3_btn: "Phê duyệt thanh toán",
+                p4_title: "Gửi tiết kiệm", p4_desc: "Gửi vào kho tiền tin cậy tài sản.", p4_lbl1: "Số lượng gửi", p4_ph1: "Nhập số lượng", p4_lbl2: "Kỳ hạn", p4_opt1: "1 năm", p4_opt3: "3 năm", p4_opt5: "5 năm", p4_lbl3: "Lợi nhuận dự kiến", p4_resDefault: "+0.00", p4_lbl4: "Mã két sắt (Cấp:", p4_ph4: "Nhập mã 6 chữ số", p4_btn: "Phê duyệt gửi",
+                p5_title: "Phần thưởng", p5_desc: "Nhận tiền thưởng đóng góp.", p5_lbl1: "Số lượng", p5_lbl2: "Mã xác thực (Cấp:", p5_ph2: "Nhập mã 6 chữ số", p5_btn: "Nhận thưởng",
+                p6_title: "Thu nhập cơ bản", p6_desc: "Yêu cầu phân phối UBI.", p6_lbl1: "Số lượng", p6_lbl2: "Mã xác thực (Cấp:", p5_ph2: "Nhập mã 6 chữ số", p6_btn: "Yêu cầu UBI",
+                p7_title: "Hoán đổi", p7_desc: "Mua và trao đổi token tức thì.", p7_lbl1: "Gửi", p7_ph1: "10 PI", p7_lbl2: "Nhận", p7_lbl3: "Mã xác thực (Cấp:", p7_ph3: "Nhập mã 6 chữ số", p7_btn: "Thực hiện hoán đổi",
+                p8_title: "DEX Swap", p8_desc: "Khớp lệnh thanh khoản P2P.", p8_lbl1: "Số lượng P2P", p8_ph1: "Nhập số lượng", p8_lbl2: "Mã xác thực (Cấp:", p8_ph2: "Nhập mã 6 chữ số", p8_btn: "Phê duyệt đơn hàng",
+                p9_title: "Staking LP", p9_desc: "Đăng ký bằng chứng thanh khoản (PoL).", p9_lbl1: "Số lượng LP", p9_ph1: "Nhập LP", p9_lbl2: "Kỳ hạn", p9_lbl3: "Lợi nhuận", p9_lbl4: "Mã xác thực (Cấp:", p9_ph4: "Nhập mã 6 chữ số", p9_btn: "Đăng ký LP",
+                p10_title: "Số lượng Pi", p10_desc: "Quản lý và đồng bộ số lượng sổ cái Pi.", p10_lbl1: "Số lượng Pi", p10_lbl2: "Mã xác thực (Cấp:", p9_ph2: "Nhập mã 6 chữ số", p9_btn: "Đồng bộ",
+                authFailAlert: "❌ Mã xác thực không khớp.", authSuccessPrefix: "✅ [Thành công]",
+                msg1: "Ví đã kết nối", msg2: "Chuyển tiền thành công", msg3: "Thanh toán đã duyệt", msg4: "Đã gửi tiết kiệm", msg5: "Đã nhận thưởng", msg6: "Đã yêu cầu UBI", msg7: "Hoán đổi hoàn tất", msg8: "Đơn DEX đã duyệt", msg9: "Đã đăng ký LP", msg10: "Đã đồng bộ sổ cái Pi",
+                calcDefault: "Nhập số lượng gửi (+0.00)",
+                calcResult: (p, r) => `Lợi nhuận dự kiến (${p} năm): +${r}`,
+                modal_wp_title: "Whitepaper v3.1", modal_wp_body: "HK WORLD BANK kết hợp blockchain phân tán với AGI.",
+                modal_faq_title: "FAQ", modal_faq_body: "Q1. Có liên kết Pi Network không? A. Có, hỗ trợ đồng bộ thời gian thực.",
+                modal_pol_title: "3 Chính sách", modal_pol_body: "1. Điều khoản 2. Bảo mật 3. Tuân thủ",
+                modal_reg_title: "Tuân thủ toàn cầu", modal_reg_body: "Tuân thủ các khung quy định tài sản kỹ thuật số toàn cầu.",
+                modal_t165_title: "Trung tâm T165", modal_t165_body: "Trụ sở chính toàn cầu 165 tầng tại Gyeongju."
+            },
+            th: {
+                headerSubText: "การเงินกระจายอำนาจยุคใหม่ระดับโลก", langEngineLabel: "ระบบหลายภาษา", subTitle: "แกนหลักการจัดการทางการเงินอย่างรวดเร็ว",
+                dashTitle: "แดชบอร์ดทรัพย์สินส่วนบุคคล", piSyncLabel: "จำนวนที่ถือ (ซิง크บัญชี Pi)", interestLabel: "ดอกเบี้ยสะสมเรียลไทม์ (3 ปี 31.41% APY)",
+                mainnetBtnText: "ขอ Mainnet กับทีมหลักทันที", gridSectionTitle: "เครือข่ายกระจายตัว", gridSectionSub: "[การทำงานแต่ละกระบวนการ]",
+                agiTitle: "ฝ่ายบริการลูกค้า AGI Beeni", agiSub: "การตอบสนองอัตโนมัติ SONPONE และ AI", sonponeLabelText: "ความไวในการตรวจจับ:", syncText: "(ซิง크เรียลไทม์)",
+                initialBeeniMsg: "[AGI Beeni]: สภาพแวดล้อมทดสอบ Pi และระบบหลายภาษาทำงานอย่างสมบูรณ์! ท่านประธานอีแจ완 มีอะไรให้รับใช้ไหมครับ?",
+                chatInputPlaceholder: "พิมพ์คำถามถึง Beeni...", chatSendBtn: "ส่ง", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "ไวท์เปเปอร์ (v3.1)", menu_faq: "คำถามที่พบบ่อย (FAQ 20)", menu_pol: "3 นโยบายหลัก", menu_reg: "การปฏิบัติตามกฎหมายสินทรัพย์ดิจิทัล",
+                hub_robot: "หุ่นยนต์: HK-ROBOT", hub_nexus: "สมาร์ทแว่นตา: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "ดวงอาทิตย์เทียม: HK-FUSION", hub_bio: "ควอนตัมไบโอ: HK-QUANTUMBIO", hub_space: "อวกาศ: HK-SPACE", hub_parts: "ธนาคารชิ้นส่วน: HK-PARTSBANK", hub_defence: "เทคโนโลยีป้องกันประเทศ: HK-DEFENCE-HUB", hub_t165: "ศูนย์กลาง T165 (สำนักงานใหญ่ Gyeongju)",
+                net1_title: "เชื่อมต่อกระเป๋า", net1_desc: "เชื่อมโยงโปรโตคอลกระเป๋าโหนดอัตโนมัติ", net2_title: "โอนเงิน", net2_desc: "ระบบโอนเข้ารหัส multisig ข้ามทวีป",
+                net3_title: "ชำระเงิน", net3_desc: "เอสโครว์การค้าเรียลไทม์", net4_title: "ฝากเงิน", net4_desc: "ห้องนิรภัยทรัสต์ 3 ปี 31.41% APY",
+                net5_title: "รางวัล", net5_desc: "เครื่องมือสะสมแรงจูงใจตามผลงาน", net6_title: "รายได้พื้นฐาน", net6_desc: "โมเดลการแจกจ่าย UBI",
+                net7_title: "สวอป", net7_desc: "ซื้อเหรียญทันทีด้วยเงินสด/บัตร/โทเค็น", net8_title: "DEX สวอป", net8_desc: "จับคู่สภาพคล่อง P2P แบบกระจายอำนาจ",
+                net9_title: "LP สเตกกิ้ง", net9_desc: "หลักฐานสภาพคล่อง (PoL) และสิทธิปันผลสูง", net10_title: "จำนวน Pi", net10_desc: "ซิง크บัญชี Mainnet สินทรัพย์ Pi เรียลไทม์",
+                mainnetAlert: "การซิง크บัญชี Testnet Pi และคำขอส่งข้อมูลเสร็จสมบูรณ์!",
+                beeniReply: (txt) => `[AGI Beeni]:ได้รับคำสั่ง "${txt}" แล้ว กำลังประมวลผลแบบเรียลไทม์`,
+                p1_title: "เชื่อมต่อกระเป๋าเงิน", p1_desc: "คลิกปุ่มเชื่อมโยงอัตโนมัติเพื่อโหลดที่อยู่กระเป๋าเงิน", p1_lbl1: "ที่อยู่กระเป๋า Testnet", p1_ph1: "คลิกเชื่อมโยงอัตโนมัติ", p1_lbl2: "รหัสยืนยัน (ออกแล้ว:", p1_ph2: "กรอกรหัส 6 หลัก", p1_btn: "อนุมัติและเชื่อมต่อ",
+                p2_title: "โอนเงิน", p2_desc: "ดำเนินการโอนเงินเข้ารหัส multisig", p2_lbl1: "ที่อยู่ผู้รับ", p2_ph1: "G... หรือ ID", p2_lbl2: "จำนวนที่ส่ง", p2_ph2: "กรอกจำนวน", p2_lbl3: "รหัสยืนยันความปลอดภัย (ออกแล้ว:", p2_ph3: "กรอกรหัส 6 หลัก", p2_btn: "ดำเนินการโอน",
+                p3_title: "ชำระเงิน", p3_desc: "ดำเนินการชำระเงินเอสโครว์อย่างปลอดภัย", p3_lbl1: "จำนวนเงิน", p3_lbl2: "รหัสอนุมัติ (ออกแล้ว:", p3_ph2: "กรอกรหัส 6 หลัก", p3_btn: "อนุมัติการชำระเงิน",
+                p4_title: "ฝากเงิน", p4_desc: "ฝากเข้าห้องนิรภัยทรัสต์สินทรัพย์", p4_lbl1: "จำนวนเงินฝาก", p4_ph1: "กรอกจำนวน", p4_lbl2: "ระยะเวลา", p4_opt1: "1 ปี", p4_opt3: "3 ปี", p4_opt5: "5 ปี", p4_lbl3: "ผลตอบแทนคาดการณ์", p4_resDefault: "+0.00", p4_lbl4: "รหัสห้องนิรภัย (ออกแล้ว:", p4_ph4: "กรอกรหัส 6 หลัก", p4_btn: "อนุมัติการฝาก",
+                p5_title: "รางวัล", p5_desc: "รับรางวัลแรงจูงใจการมีส่วนร่วม", p5_lbl1: "จำนวนที่รับ", p5_lbl2: "รหัสยืนยัน (ออกแล้ว:", p5_ph2: "กรอกรหัส 6 หลัก", p5_btn: "อนุมัติรับรางวัล",
+                p6_title: "รายได้พื้นฐาน", p6_desc: "เรียกร้องการแจกจ่าย UBI", p6_lbl1: "จำนวนที่เรียกร้อง", p6_lbl2: "รหัสยืนยัน (ออกแล้ว:", p5_ph2: "กรอกรหัส 6 หลัก", p6_btn: "อนุมัติเรียกร้อง UBI",
+                p7_title: "สวอป", p7_desc: "ซื้อและแลกเปลี่ยนโทเค็นทันที", p7_lbl1: "จำนวนส่ง", p7_ph1: "10 PI", p7_lbl2: "สินทรัพย์ที่รับ", p7_lbl3: "รหัสยืนยัน (ออกแล้ว:", p7_ph3: "กรอกรหัส 6 หลัก", p7_btn: "ดำเนินการสวอป",
+                p8_title: "DEX สวอป", p8_desc: "จับคู่สภาพคล่อง P2P แบบกระจายอำนาจ", p8_lbl1: "จำนวน P2P", p8_ph1: "กรอกจำนวน", p8_lbl2: "รหัสยืนยัน (ออกแล้ว:", p8_ph2: "กรอกรหัส 6 หลัก", p8_btn: "อนุมัติคำสั่งซื้อ",
+                p9_title: "LP สเตกกิ้ง", p9_desc: "ลงทะเบียนหลักฐานสภาพคล่อง (PoL)", p9_lbl1: "จำนวน LP", p9_ph1: "กรอก LP", p9_lbl2: "ระยะเวลา", p9_lbl3: "ผลตอบแทน LP", p9_lbl4: "รหัสยืนยัน (ออกแล้ว:", p9_ph4: "กรอกรหัส 6 หลัก", p9_btn: "อนุมัติ LP สเตกกิ้ง",
+                p10_title: "จำนวน Pi", p10_desc: "จัดการและซิง크บัญชีสินทรัพย์ Pi", p10_lbl1: "จำนวน Pi", p10_lbl2: "รหัสยืนยัน (ออกแล้ว:", p9_ph2: "กรอกรหัส 6 หลัก", p9_btn: "ดำเนินการซิง크",
+                authFailAlert: "❌ รหัสยืนยันไม่ตรงกัน กรุณากรอกรหัส 6 หลักให้ถูกต้อง", authSuccessPrefix: "✅ [ยืนยันสำเร็จ]",
+                msg1: "เชื่อมต่อกระเป๋าเงินสำเร็จ", msg2: "โอนเงินเรียบร้อยแล้ว", msg3: "อนุมัติการชำระเงินแล้ว", msg4: "ฝากเงินในห้องนิรภัยสำเร็จ", msg5: "รับรางวัลสำเร็จ", msg6: "เรียกร้อง UBI สำเร็จ", msg7: "สวอปเสร็จสิ้น", msg8: "อนุมัติคำสั่ง DEX แล้ว", msg9: "ลงทะเบียน LP สำเร็จ", msg10: "ซิง크บัญชี Pi สำเร็จ",
+                calcDefault: "กรุณากรอกจำนวนเงินฝาก (+0.00)",
+                calcResult: (p, r) => `ผลตอบแทนคาดการณ์ (${p} ปี): +${r}`,
+                modal_wp_title: "ไวท์เปเปอร์ v3.1", modal_wp_body: "HK WORLD BANK รวมบล็อกเชนกระจายอำนาจเข้ากับ AGI orchestration",
+                modal_faq_title: "คำถามที่พบบ่อย", modal_faq_body: "Q1. เชื่อมต่อกับ Pi Network หรือไม่? A. รองรับการซิง크บัญชีเรียลไทม์",
+                modal_pol_title: "3 นโยบายหลัก", modal_pol_body: "1. ข้อกำหนดการใช้งาน 2. ความปลอดภัยและความเป็นส่วนตัว 3. นโยบายการปฏิบัติตามกฎระเบียบ",
+                modal_reg_title: "การปฏิบัติตามกฎหมายระดับโลก", modal_reg_body: "ออกแบบตามกรอบข้อบังคับสินทรัพย์ดิจิทัลระดับโลก",
+                modal_t165_title: "ศูนย์กลาง T165", modal_t165_body: "สำนักงานใหญ่ระดับโลก 165 ชั้นใน Gyeongju"
+            },
+            id: {
+                headerSubText: "Keuangan Terdesentralisasi Generasi Baru Global", langEngineLabel: "Mesin Multi-Bahasa", subTitle: "Inti Utama Operasi Keuangan Cepat",
+                dashTitle: "Dasbor Aset Pribadi", piSyncLabel: "Jumlah Kepemilikan (Sinkronisasi Buku Besar Pi)", interestLabel: "Bunga Akumulasi Real-Time (3 Tahun 31.41% APY)",
+                mainnetBtnText: "Minta Mainnet ke Tim Inti Sekarang", gridSectionTitle: "Jaringan Terdistribusi", gridSectionSub: "[Proses Individu Aktif]",
+                agiTitle: "Dukungan AGI Beeni", agiSub: "Respons Otomatis SONPONE & AI", sonponeLabelText: "Sensitivitas Deteksi:", syncText: "(Sinkronisasi)",
+                initialBeeniMsg: "[AGI Beeni]: Lingkungan uji Pi dan sistem multi-bahasa aktif sempurna! Ketua Jaewan Lee, ada yang bisa saya bantu?",
+                chatInputPlaceholder: "Tanya Beeni...", chatSendBtn: "Kirim", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ 20 Teratas", menu_pol: "3 Kebijakan", menu_reg: "Kepatuhan Hukum Global",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Kacamata Pintar: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Matahari Buatan: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Antariksa: HK-SPACE", hub_parts: "Bank Komponen: HK-PARTSBANK", hub_defence: "Teknologi Pertahanan: HK-DEFENCE-HUB", hub_t165: "Pusat Landmark T165 (Kantor Pusat Gyeongju)",
+                net1_title: "Koneksi Dompet", net1_desc: "Tautan otomatis protokol dompet node", net2_title: "Transfer", net2_desc: "Sistem transfer terenkripsi multisig lintas benua",
+                net3_title: "Pembayaran", net3_desc: "Escrow perdagangan real-time", net4_title: "Deposit Vault", net4_desc: "Vault kepercayaan 3 tahun 31.41% APY",
+                net5_title: "Hadiah", net5_desc: "Mesin akumulasi insentif kontribusi", net6_title: "Pendapatan Dasar", net6_desc: "Model distribusi UBI Yayasan Sosial HK",
+                net7_title: "Swap", net7_desc: "Pembelian token instan dengan uang tunai/kartu", net8_title: "DEX Swap", net8_desc: "Pencocokan likuiditas P2P terdesentralisasi",
+                net9_title: "Staking LP", net9_desc: "Bukti likuiditas (PoL) dan hak dividen tinggi", net10_title: "Jumlah Pi", net10_desc: "Sinkronisasi buku besar mainnet aset Pi",
+                mainnetAlert: "Sinkronisasi buku besar uji Pi dan permintaan transmisi berhasil!",
+                beeniReply: (txt) => `[AGI Beeni]: Perintah "${txt}" diterima. Sedang diproses di backend terdesentralisasi.`,
+                p1_title: "Koneksi Dompet", p1_desc: "Klik Tautan Otomatis untuk memuat alamat dompet.", p1_lbl1: "Alamat Dompet Testnet", p1_ph1: "Klik Tautan Otomatis", p1_lbl2: "Kode Otentikasi (Diterbitkan:", p1_ph2: "Masukkan 6 digit kode", p1_btn: "Setujui & Hubungkan",
+                p2_title: "Transfer", p2_desc: "Jalankan transfer terenkripsi multisig.", p2_lbl1: "Alamat Penerima", p2_ph1: "G... atau ID", p2_lbl2: "Jumlah", p2_ph2: "Masukkan jumlah", p2_lbl3: "Kode Keamanan (Diterbitkan:", p2_ph3: "Masukkan 6 digit kode", p2_btn: "Eksekusi Transfer",
+                p3_title: "Pembayaran", p3_desc: "Lanjutkan pembayaran escrow yang aman.", p3_lbl1: "Jumlah Pembayaran", p3_lbl2: "Kode Persetujuan (Diterbitkan:", p3_ph2: "Masukkan 6 digit kode", p3_btn: "Setujui Pembayaran",
+                p4_title: "Deposit Vault", p4_desc: "Setor ke vault kepercayaan aset.", p4_lbl1: "Jumlah Deposit", p4_ph1: "Masukkan jumlah", p4_lbl2: "Periode", p4_opt1: "1 Tahun", p4_opt3: "3 Tahun", p4_opt5: "5 Tahun", p4_lbl3: "Hasil yang Diharapkan", p4_resDefault: "+0.00", p4_lbl4: "Kode Vault (Diterbitkan:", p4_ph4: "Masukkan 6 digit kode", p4_btn: "Setujui Deposit",
+                p5_title: "Hadiah", p5_desc: "Klaim penghasilan insentif kontribusi.", p5_lbl1: "Jumlah Klaim", p5_lbl2: "Kode (Diterbitkan:", p5_ph2: "Masukkan 6 digit kode", p5_btn: "Klaim Hadiah",
+                p6_title: "Pendapatan Dasar", p6_desc: "Klaim distribusi UBI.", p6_lbl1: "Jumlah Klaim", p6_lbl2: "Kode (Diterbitkan:", p5_ph2: "Masukkan 6 digit kode", p6_btn: "Klaim UBI",
+                p7_title: "Swap", p7_desc: "Beli dan tukar token secara instan.", p7_lbl1: "Kirim", p7_ph1: "10 PI", p7_lbl2: "Terima", p7_lbl3: "Kode (Diterbitkan:", p7_ph3: "Masukkan 6 digit kode", p7_btn: "Eksekusi Swap",
+                p8_title: "DEX Swap", p8_desc: "Pencocokan likuiditas P2P terdesentralisasi.", p8_lbl1: "Jumlah P2P", p8_ph1: "Masukkan jumlah", p8_lbl2: "Kode (Diterbitkan:", p8_ph2: "Masukkan 6 digit kode", p8_btn: "Setujui Pesanan",
+                p9_title: "Staking LP", p9_desc: "Daftarkan bukti likuiditas.", p9_lbl1: "Jumlah LP", p9_ph1: "Masukkan LP", p9_lbl2: "Periode", p9_lbl3: "Hasil", p9_lbl4: "Kode (Diterbitkan:", p9_ph4: "Masukkan 6 digit kode", p9_btn: "Daftar Staking LP",
+                p10_title: "Jumlah Pi", p10_desc: "Kelola dan sinkronkan jumlah buku besar Pi.", p10_lbl1: "Jumlah Pi", p10_lbl2: "Kode (Diterbitkan:", p9_ph2: "Masukkan 6 digit kode", p9_btn: "Eksekusi Sinkronisasi",
+                authFailAlert: "❌ Kode otentikasi tidak cocok.", authSuccessPrefix: "✅ [Otentikasi Berhasil]",
+                msg1: "Dompet terhubung dengan aman", msg2: "Transfer multisig berhasil", msg3: "Escrow disetujui", msg4: "Deposit vault berhasil", msg5: "Hadiah diklaim", msg6: "UBI diklaim", msg7: "Swap selesai", msg8: "Pesanan DEX disetujui", msg9: "Staking LP terdaftar", msg10: "Buku besar Pi disinkronkan",
+                calcDefault: "Masukkan jumlah deposit (+0.00)",
+                calcResult: (p, r) => `Hasil Diharapkan (${p} Tahun): +${r}`,
+                modal_wp_title: "Whitepaper v3.1", modal_wp_body: "HK WORLD BANK menggabungkan blockchain terdesentralisasi dengan AGI orchestration.",
+                modal_faq_title: "FAQ", modal_faq_body: "Q1. Apakah terhubung dengan Pi Network? A. Ya, mendukung sinkronisasi real-time.",
+                modal_pol_title: "3 Kebijakan", modal_pol_body: "1. Ketentuan Layanan 2. Keamanan & Privasi 3. Kebijakan Kepatuhan",
+                modal_reg_title: "Kepatuhan Global", modal_reg_body: "Selaras dengan kerangka peraturan aset digital global.",
+                modal_t165_title: "Pusat Landmark T165", modal_t165_body: "Kantor pusat global HK Group 165 lantai di Gyeongju."
+            },
+            ar: {
+                headerSubText: "التمويل اللامركزي العالمي من الجيل القادم", langEngineLabel: "محرك اللغات المتعددة", subTitle: "النواة الرئيسية للعمليات المالية السريعة",
+                dashTitle: "لوحة تحكم الأصول الشخصية", piSyncLabel: "الكمية (مزامنة دفتر الأستاذ Pi)", interestLabel: "الفائدة المتراكمة الفورية (3 سنوات APY 31.41%)",
+                mainnetBtnText: "طلب Mainnet من الفريق الأساسي الآن", gridSectionTitle: "الشبكات الموزعة", gridSectionSub: "[تشغيل العملية الفردية]",
+                agiTitle: "دعم AGI Beeni", agiSub: "الاستجابة التلقائية SONPONE وتنظيم الذكاء الاصطناعي", sonponeLabelText: "حساسية الكشف:", syncText: "(مزامنة حية)",
+                initialBeeniMsg: "[AGI Beeni]: بيئة اختبار Pi ونظام اللغات متعددة الجنسيات يعملان بكفاءة تامة! الرئيس جايوان لي، كيف يمكنني مساعدتك؟",
+                chatInputPlaceholder: "اسأل بيني...", chatSendBtn: "إرسال", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "ورقة العمل v3.1", menu_faq: "الأسئلة الشائعة (20)", menu_pol: "السياسات الثلاث", menu_reg: "الامتثال العالمي",
+                hub_robot: "روبوت: HK-ROBOT", hub_nexus: "نظارات ذكية: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "الشمس الاصطناعية: HK-FUSION", hub_bio: "بايو كمومي: HK-QUANTUMBIO", hub_space: "الفضاء: HK-SPACE", hub_parts: "بنك الأجزاء: HK-PARTSBANK", hub_defence: "تقنية الدفاع: HK-DEFENCE-HUB", hub_t165: "مركز المعالم T165 (غيونغجو)",
+                net1_title: "ربط المحفظة", net1_desc: "ربط بروتوكول محفظة العقد تلقائياً", net2_title: "التحويل", net2_desc: "نظام تحويل مشفر عابر للقارات متعدد التوقيعات",
+                net3_title: "الدفع", net3_desc: "ضمان التجارة الفوري (Escrow)", net4_title: "الإيداع في الخزنة", net4_desc: "خزنة ائتمان الأصول 31.41% APY لمدة 3 سنوات",
+                net5_title: "المكافآت", net5_desc: "محرك تراكم حوافز المساهمة", net6_title: "الدخل الأساسي", net6_desc: "نموذج توزيع UBI لمؤسسة HK الاجتماعية",
+                net7_title: "المبادلة (Swap)", net7_desc: "شراء وتبادل العملات فورياً", net8_title: "مبادلة DEX", net8_desc: "مطابقة السيولة P2P اللامركزية",
+                net9_title: "تخزين LP", net9_desc: "إثبات السيولة (PoL) وحقوق الأرباح العالية", net10_title: "كمية Pi", net10_desc: "مزامنة دفتر الأستاذ الرئيسي لأصول Pi",
+                mainnetAlert: "اكتملت مزامنة دفتر الأستاذ الاختباري وطلب النقل بنجاح!",
+                beeniReply: (txt) => `[AGI Beeni]: تم استلام الأمر "${txt}". جارٍ المعالجة في الخلفية اللامركزية.`,
+                p1_title: "ربط المحفظة", p1_desc: "انقر فوق الربط التلقائي لتحميل عنوان محفظتك فوراً.", p1_lbl1: "عنوان المحفظة", p1_ph1: "انقر فوق الربط التلقائي", p1_lbl2: "رمز التحقق (تم الإصدار:", p1_ph2: "أدخل الرمز المكون من 6 أرقام", p1_btn: "موافقة وربط",
+                p2_title: "التحويل", p2_desc: "تنفيذ التحويل المشفر متعدد التوقيعات.", p2_lbl1: "عنوان المستلم", p2_ph1: "G... أو معرف", p2_lbl2: "الكمية", p2_ph2: "أدخل الكمية", p2_lbl3: "رمز الأمان (تم الإصدار:", p2_ph3: "أدخل الرمز المكون من 6 أرقام", p2_btn: "تنفيذ التحويل",
+                p3_title: "الدفع", p3_desc: "متابعة الدفع الآمن بنظام الضمان.", p3_lbl1: "مبلغ الدفع", p3_lbl2: "رمز الموافقة (تم الإصدار:", p3_ph2: "أدخل الرمز المكون من 6 أرقام", p3_btn: "موافقة الدفع",
+                p4_title: "الإيداع في الخزنة", p4_desc: "إيداع الأصول في خزنة الائتمان.", p4_lbl1: "كمية الإيداع", p4_ph1: "أدخل الكمية", p4_lbl2: "فترة الإيداع", p4_opt1: "سنة واحدة", p4_opt3: "3 سنوات", p4_opt5: "5 سنوات", p4_lbl3: "العائد المتوقع", p4_resDefault: "+0.00", p4_lbl4: "رمز الخزنة (تم الإصدار:", p4_ph4: "أدخل الرمز المكون من 6 أرقام", p4_btn: "موافقة الإيداع",
+                p5_title: "المكافآت", p5_desc: "مطالبة أرباح حوافز المساهمة.", p5_lbl1: "الكمية المطلوب المطالبة بها", p5_lbl2: "رمز التحقق (تم الإصدار:", p5_ph2: "أدخل الرمز المكون من 6 أرقام", p5_btn: "المطالبة بالمكافآت",
+                p6_title: "الدخل الأساسي", p6_desc: "المطالبة بتوزيعات UBI البلدية.", p6_lbl1: "الكمية المطلوب المطالبة بها", p6_lbl2: "رمز التحقق (تم الإصدار:", p5_ph2: "أدخل الرمز المكون من 6 أرقام", p6_btn: "المطالبة بـ UBI",
+                p7_title: "المبادلة (Swap)", p7_desc: "شراء وتبادل الرموز فورياً.", p7_lbl1: "الكمية المرسلة", p7_ph1: "10 PI", p7_lbl2: "الأصل المستلم", p7_lbl3: "رمز التحقق (تم الإصدار:", p7_ph3: "أدخل الرمز المكون من 6 أرقام", p7_btn: "تنفيذ المبادلة",
+                p8_title: "مبادلة DEX", p8_desc: "مطابقة السيولة اللامركزية P2P.", p8_lbl1: "كمية P2P", p8_ph1: "أدخل الكمية", p8_lbl2: "رمز التحقق (تم الإصدار:", p8_ph2: "أدخل الرمز المكون من 6 أرقام", p8_btn: "موافقة الطلب",
+                p9_title: "تخزين LP", p9_desc: "تسجيل إثبات السيولة والإيداع.", p9_lbl1: "كمية LP", p9_ph1: "أدخل الكمية", p9_lbl2: "الفترة", p9_lbl3: "العائد المتوقع", p9_lbl4: "رمز التحقق (تم الإصدار:", p9_ph4: "أدخل الرمز المكون من 6 أرقام", p9_btn: "تسجيل تخزين LP",
+                p10_title: "كمية Pi", p10_desc: "مزامنة كمية دفتر الأستاذ لأصول Pi.", p10_lbl1: "كمية Pi", p10_lbl2: "رمز التحقق (تم الإصدار:", p9_ph2: "أدخل الرمز المكون من 6 أرقام", p9_btn: "تنفيذ المزامنة",
+                authFailAlert: "❌ رمز التحقق غير متطابق.", authSuccessPrefix: "✅ [نجح التحقق]",
+                msg1: "تم ربط المحفظة بنجاح", msg2: "تم معالجة تحويل Multisig", msg3: "تمت الموافقة على الضمان", msg4: "تم الإيداع في الخزنة بنجاح", msg5: "تمت المطالبة بالمكافآت", msg6: "تمت المطالبة بـ UBI", msg7: "اكتملت المبادلة", msg8: "تمت الموافقة على طلب DEX", msg9: "تم تسجيل تخزين LP", msg10: "تمت مزامنة دفتر الأستاذ Pi",
+                calcDefault: "أدخل كمية الإيداع (+0.00)",
+                calcResult: (p, r) => `العائد المتوقع (${p} سنوات): +${r}`,
+                modal_wp_title: "Whitepaper v3.1", modal_wp_body: "يجمع HK WORLD BANK بين تقنية البلوكشين وتنسيق AGI.",
+                modal_faq_title: "الأسئلة الشائعة", modal_faq_body: "س1. هل يرتبط بشبكة Pi Network؟ ج. نعم، يدعم مزامنة دفتر الأستاذ في الوقت الفعلي.",
+                modal_pol_title: "السياسات الثلاث", modal_pol_body: "1. شروط الخدمة 2. الأمان والخصوصية 3. سياسة الامتثال",
+                modal_reg_title: "الامتثال العالمي", modal_reg_body: "يتوافق مع الأطر التنظيمية العالمية للأصول الرقمية.",
+                modal_t165_title: "مركز المعالم T165", modal_t165_body: " المقر العالمي لـ HK Group المكون من 165 طابقاً في غيونغجو."
+            },
+            de: {
+                headerSubText: "Globales dezentrales Finanzwesen der nächsten Generation", langEngineLabel: "Mehrsprachige Engine", subTitle: "Master-Core für schnelle Finanzoperationen",
+                dashTitle: "Persönliches Asset-Dashboard", piSyncLabel: "Bestand (Pi-Ledger-Synchronisierung)", interestLabel: "Echtzeit-Zinsen (3 Jahre 31.41% APY)",
+                mainnetBtnText: "Mainnet jetzt beim Core-Team anfordern", gridSectionTitle: "Verteilte Netzwerke", gridSectionSub: "[Einzelner Prozess aktiv]",
+                agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Antwort & KI-Orchestrierung", sonponeLabelText: "Erkennungsempfindlichkeit:", syncText: "(Live-Sync)",
+                initialBeeniMsg: "[AGI Beeni]: Testnet Pi-Umgebung und mehrsprachiges System voll betriebsbereit! Chairman Jaewan Lee, wie kann ich Ihnen helfen?",
+                chatInputPlaceholder: "Beeni fragen...", chatSendBtn: "Senden", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Richtlinien", menu_reg: "Globale Compliance",
+                hub_robot: "Roboter: HK-ROBOT", hub_nexus: "Smart Glasses: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Künstliche Sonne: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Raumfahrt: HK-SPACE", hub_parts: "Teilebank: HK-PARTSBANK", hub_defence: "Verteidigung: HK-DEFENCE-HUB", hub_t165: "T165 Landmark Hub (Gyeongju HQ)",
+                net1_title: "Wallet-Verbindung", net1_desc: "Node-Wallet-Protokoll automatische Verknüpfung", net2_title: "Überweisung", net2_desc: "Multisig verschlüsseltes grenzüberschreitendes System",
+                net3_title: "Zahlung", net3_desc: "Echtzeit-Handels-Escrow", net4_title: "Vault-Einzahlung", net4_desc: "3 Jahre 31.41% APY Treuhand-Vault",
+                net5_title: "Belohnungen", net5_desc: "Beitragsanreiz-Akkumulations-Engine", net6_title: "Grundeinkommen", net6_desc: "HK Social Foundation UBI-Modell",
+                net7_title: "Swap", net7_desc: "Sofortiger Token-Kauf-Swap", net8_title: "DEX Swap", net8_desc: "Dezentrales orderloses P2P-Matching",
+                net9_title: "LP Staking", net9_desc: "Liquiditätsnachweis (PoL) & hohe Dividendenrechte", net10_title: "Pi-Menge", net10_desc: "Pi-Asset-Mainnet-Ledger-Synchronisierung",
+                mainnetAlert: "Testnet Pi Ledger-Synchronisierung und Übertragungsanfrage erfolgreich abgeschlossen!",
+                beeniReply: (txt) => `[AGI Beeni]: Befehl "${txt}" empfangen. Wird im dezentralen Backend verarbeitet.`,
+                p1_title: "Wallet-Verbindung", p1_desc: "Klicken Sie auf Autom. Verknüpfung, um Ihre Adresse zu laden.", p1_lbl1: "Wallet-Adresse", p1_ph1: "Klicken Sie auf Autom. Verknüpfung", p1_lbl2: "Auth-Code (Ausgestellt:", p1_ph2: "6-stelligen Code eingeben", p1_btn: "Genehmigen & Verbinden",
+                p2_title: "Überweisung", p2_desc: "Multisig verschlüsselte Überweisung ausführen.", p2_lbl1: "Empfängeradresse", p2_ph1: "G... oder ID", p2_lbl2: "Menge", p2_ph2: "Menge eingeben", p2_lbl3: "Sicherheits-Code (Ausgestellt:", p2_ph3: "6-stelligen Code eingeben", p2_btn: "Überweisung ausführen",
+                p3_title: "Zahlung", p3_desc: "Mit sicherem Escrow-Zahlungsverkehr fortfahren.", p3_lbl1: "Zahlungsbetrag", p3_lbl2: "Genehmigungs-Code (Ausgestellt:", p3_ph2: "6-stelligen Code eingeben", p3_btn: "Zahlung genehmigen",
+                p4_title: "Vault-Einzahlung", p4_desc: "In den Asset-Treuhand-Vault einzahlen.", p4_lbl1: "Einzahlungsbetrag", p4_ph1: "Menge eingeben", p4_lbl2: "Zeitraum", p4_opt1: "1 Jahr", p4_opt3: "3 Jahre", p4_opt5: "5 Jahre", p4_lbl3: "Erwartete Rendite", p4_resDefault: "+0.00", p4_lbl4: "Vault-Code (Ausgestellt:", p4_ph4: "6-stelligen Code eingeben", p4_btn: "Einzahlung genehmigen",
+                p5_title: "Belohnungen", p5_desc: "Beitragsanreize beanspruchen.", p5_lbl1: "Menge", p5_lbl2: "Auth-Code (Ausgestellt:", p5_ph2: "6-stelligen Code eingeben", p5_btn: "Belohnungen beanspruchen",
+                p6_title: "Grundeinkommen", p6_desc: "UBI-Verteilung beanspruchen.", p6_lbl1: "Menge", p6_lbl2: "Auth-Code (Ausgestellt:", p5_ph2: "6-stelligen Code eingeben", p6_btn: "UBI beanspruchen",
+                p7_title: "Swap", p7_desc: "Token sofort kaufen und tauschen.", p7_lbl1: "Senden", p7_ph1: "10 PI", p7_lbl2: "Empfangen", p7_lbl3: "Auth-Code (Ausgestellt:", p7_ph3: "6-stelligen Code eingeben", p7_btn: "Swap ausführen",
+                p8_title: "DEX Swap", p8_desc: "Dezentrales P2P-Liquiditäts-Matching.", p8_lbl1: "P2P Menge", p8_ph1: "Menge eingeben", p8_lbl2: "Auth-Code (Ausgestellt:", p8_ph2: "6-stelligen Code eingeben", p8_btn: "Auftrag genehmigen",
+                p9_title: "LP Staking", p9_desc: "Liquiditätsnachweis (PoL) registrieren.", p9_lbl1: "LP Menge", p9_ph1: "LP eingeben", p9_lbl2: "Zeitraum", p9_lbl3: "Erwartete Rendite", p9_lbl4: "Auth-Code (Ausgestellt:", p9_ph4: "6-stelligen Code eingeben", p9_btn: "LP Staking registrieren",
+                p10_title: "Pi-Menge", p10_desc: "Pi-Asset-Ledger-Menge verwalten und synchronisieren.", p10_lbl1: "Pi Menge", p10_lbl2: "Auth-Code (Ausgestellt:", p9_ph2: "6-stelligen Code eingeben", p9_btn: "Synchronisierung ausführen",
+                authFailAlert: "❌ Auth-Code stimmt nicht überein.", authSuccessPrefix: "✅ [Authentifizierung erfolgreich]",
+                msg1: "Wallet verbunden", msg2: "Überweisung verarbeitet", msg3: "Escrow genehmigt", msg4: "Vault-Einzahlung erfolgreich", msg5: "Belohnungen beansprucht", msg6: "UBI beansprucht", msg7: "Swap abgeschlossen", msg8: "DEX-Auftrag genehmigt", msg9: "LP Staking registriert", msg10: "Pi Ledger synchronisiert",
+                calcDefault: "Einzahlungsbetrag eingeben (+0.00)",
+                calcResult: (p, r) => `Erwartete Rendite (${p} Jahre): +${r}`,
+                modal_wp_title: "Whitepaper v3.1", modal_wp_body: "HK WORLD BANK kombiniert dezentrale Blockchain mit AGI-Orchestrierung.",
+                modal_faq_title: "FAQ", modal_faq_body: "Q1. Verknüpft mit Pi Network? A. Ja, Echtzeit-Synchronisierung.",
+                modal_pol_title: "3 Richtlinien", modal_pol_body: "1. AGB 2. Sicherheit & Datenschutz 3. Compliance",
+                modal_reg_title: "Globale Compliance", modal_reg_body: "Abgestimmt auf globale Regulierungskohärenz.",
+                modal_t165_title: "T165 Landmark Hub", modal_t165_body: "165-stöckiger globaler Hauptsitz in Gyeongju."
+            },
+            it: {
+                headerSubText: "Finanza Decentralizzata Globale di Nuova Generazione", langEngineLabel: "Motore Multi-Lingua", subTitle: "Core Operativo Finanziario Rapido",
+                dashTitle: "Dashboard Asset Personali", piSyncLabel: "Quantità (Sincronizzazione Ledger Pi)", interestLabel: "Interessi Accumulati (3 Anni 31,41% APY)",
+                mainnetBtnText: "Richiedi Mainnet al Core Team Ora", gridSectionTitle: "Reti Distribuite", gridSectionSub: "[Processo Attivo]",
+                agiTitle: "Supporto AGI Beeni", agiSub: "Risposta Automatica SONPONE & AI", sonponeLabelText: "Sensibilità di Rilevamento:", syncText: "(Sincronizzazione)",
+                initialBeeniMsg: "[AGI Beeni]: Ambiente di test Pi e sistema multilingue pienamente operativi! Presidente Jaewan Lee, come posso aiutarla?",
+                chatInputPlaceholder: "Chiedi a Beeni...", chatSendBtn: "Invia", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Politiche", menu_reg: "Conformità Globale",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Smart Glasses: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Sole Artificiale: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Spazio: HK-SPACE", hub_parts: "Banca Parti: HK-PARTSBANK", hub_defence: "Difesa: HK-DEFENCE-HUB", hub_t165: "Hub T165 (Sede Gyeongju)",
+                net1_title: "Connessione Wallet", net1_desc: "Collegamento automatico protocollo node wallet", net2_title: "Trasferimento", net2_desc: "Sistema di trasferimento crittografato multisig",
+                net3_title: "Pagamento", net3_desc: "Escrow commerciale in tempo reale", net4_title: "Deposito Vault", net4_desc: "Vault fiduciario 3 anni 31,41% APY",
+                net5_title: "Ricompense", net5_desc: "Motore di accumulo incentivi", net6_title: "Reddito di Base", net6_desc: "Modello UBI HK Social Foundation",
+                net7_title: "Swap", net7_desc: "Acquisto istantaneo di token", net8_title: "DEX Swap", net8_desc: "Abbinamento di liquidità P2P decentralizzato",
+                net9_title: "Staking LP", net9_desc: "Prova di liquidità (PoL) e diritti di dividendo", net10_title: "Quantità Pi", net10_desc: "Sincronizzazione ledger mainnet asset Pi",
+                mainnetAlert: "Sincronizzazione del ledger di prova e richiesta di trasmissione completate!",
+                beeniReply: (txt) => `[AGI Beeni]: Comando "${txt}" ricevuto. Elaborazione in corso.`,
+                p1_title: "Connessione Wallet", p1_desc: "Clicca su Link Automatico per caricare il tuo indirizzo.", p1_lbl1: "Indirizzo Wallet", p1_ph1: "Clicca Link", p1_lbl2: "Codice Auth (Emesso:", p1_ph2: "Inserisci 6 cifre", p1_btn: "Approva e Connetti",
+                p2_title: "Trasferimento", p2_desc: "Esegui trasferimento crittografato multisig.", p2_lbl1: "Indirizzo", p2_ph1: "G...", p2_lbl2: "Quantità", p2_ph2: "Inserisci", p2_lbl3: "Codice Auth (Emesso:", p2_ph3: "Inserisci 6 cifre", p2_btn: "Esegui",
+                p3_title: "Pagamento", p3_desc: "Procedi con pagamento escrow sicuro.", p3_lbl1: "Importo", p3_lbl2: "Codice Auth (Emesso:", p3_ph2: "Inserisci 6 cifre", p3_btn: "Approva",
+                p4_title: "Deposito Vault", p4_desc: "Deposita nel vault fiduciario.", p4_lbl1: "Importo", p4_ph1: "Inserisci", p4_lbl2: "Periodo", p4_opt1: "1 Anno", p4_opt3: "3 Anni", p4_opt5: "5 Anni", p4_lbl3: "Ritorno Previsto", p4_resDefault: "+0.00", p4_lbl4: "Codice Vault (Emesso:", p4_ph4: "Inserisci 6 cifre", p4_btn: "Approva",
+                p5_title: "Ricompense", p5_desc: "Riscuoti guadagni di incentivo.", p5_lbl1: "Importo", p5_lbl2: "Codice Auth (Emesso:", p5_ph2: "Inserisci 6 cifre", p5_btn: "Riscuoti",
+                p6_title: "Reddito di Base", p6_desc: "Richiedi distribuzione UBI.", p6_lbl1: "Importo", p6_lbl2: "Codice Auth (Emesso:", p5_ph2: "Inserisci 6 cifre", p6_btn: "Richiedi",
+                p7_title: "Swap", p7_desc: "Acquista e scambia token all'istante.", p7_lbl1: "Invia", p7_ph1: "10 PI", p7_lbl2: "Ricevi", p7_lbl3: "Codice Auth (Emesso:", p7_ph3: "Inserisci 6 cifre", p7_btn: "Esegui Swap",
+                p8_title: "DEX Swap", p8_desc: "Abbinamento liquidità P2P.", p8_lbl1: "Quantità P2P", p8_ph1: "Inserisci", p8_lbl2: "Codice Auth (Emesso:", p8_ph2: "Inserisci 6 cifre", p8_btn: "Approva",
+                p9_title: "Staking LP", p9_desc: "Registra prova di liquidità.", p9_lbl1: "Quantità LP", p9_ph1: "Inserisci LP", p9_lbl2: "Periodo", p9_lbl3: "Ritorno Previsto", p9_lbl4: "Codice Auth (Emesso:", p9_ph4: "Inserisci 6 cifre", p9_btn: "Registra LP",
+                p10_title: "Quantità Pi", p10_desc: "Sincronizza ledger asset Pi.", p10_lbl1: "Quantità Pi", p10_lbl2: "Codice Auth (Emesso:", p9_ph2: "Inserisci 6 cifre", p9_btn: "Sincronizza",
+                authFailAlert: "❌ Codice di autenticazione non valido.", authSuccessPrefix: "✅ [Autenticazione Riuscita]",
+                msg1: "Wallet connesso", msg2: "Trasferimento eseguito", msg3: "Escrow approvato", msg4: "Depositato nel vault", msg5: "Ricompense riscosse", msg6: "UBI richiesto", msg7: "Swap completato", msg8: "Ordine DEX approvato", msg9: "Staking LP registrato", msg10: "Ledger Pi sincronizzato",
+                calcDefault: "Inserisci importo di deposito (+0.00)",
+                calcResult: (p, r) => `Ritorno Previsto (${p} Anni): +${r}`,
+                modal_wp_title: "Whitepaper v3.1", modal_wp_body: "HK WORLD BANK unisce la blockchain decentralizzata all'orchestrazione AGI.",
+                modal_faq_title: "FAQ", modal_faq_body: "Q1. Collegato a Pi Network? A. Sì, sincronizzazione in tempo reale.",
+                modal_pol_title: "3 Politiche", modal_pol_body: "1. Termini 2. Sicurezza & Privacy 3. Conformità",
+                modal_reg_title: "Conformità Globale", modal_reg_body: "Allineato ai quadri normativi globali.",
+                modal_t165_title: "Hub T165", modal_t165_body: "Sede centrale globale di 165 piani a Gyeongju."
+            },
+            fr: {
+                headerSubText: "Finance décentralisée mondiale de nouvelle génération", langEngineLabel: "Moteur multilingue", subTitle: "Noyau maître des opérations financières rapides",
+                dashTitle: "Tableau de bord des actifs personnels", piSyncLabel: "Quantité (Synchronisation du registre Pi)", interestLabel: "Intérêts accumulés en temps réel (3 ans 31,41% APY)",
+                mainnetBtnText: "Demander le Mainnet à l'équipe principale", gridSectionTitle: "Réseaux distribués", gridSectionSub: "[Processus individuel actif]",
+                agiTitle: "Support AGI Beeni", agiSub: "Réponse auto SONPONE & IA", sonponeLabelText: "Sensibilité de détection:", syncText: "(Synchro)",
+                initialBeeniMsg: "[AGI Beeni]: L'environnement de test Pi et le système multilingue sont pleinement opérationnels ! Président Jaewan Lee, comment puis-je vous aider ?",
+                chatInputPlaceholder: "Demander à Beeni...", chatSendBtn: "Envoyer", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Livre blanc v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Politiques", menu_reg: "Conformité globale",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Lunettes intelligentes: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Soleil artificiel: HK-FUSION", hub_bio: "Bio quantique: HK-QUANTUMBIO", hub_space: "Espace: HK-SPACE", hub_parts: "Banque de pièces: HK-PARTSBANK", hub_defence: "Défense: HK-DEFENCE-HUB", hub_t165: "Centre T165 (Siège Gyeongju)",
+                net1_title: "Connexion du portefeuille", net1_desc: "Liaison automatique du protocole de portefeuille de nœud", net2_title: "Transfert", net2_desc: "Système de transfert chiffré multisig transcontinental",
+                net3_title: "Paiement", net3_desc: "Séquestre commercial en temps réel", net4_title: "Dépôt en coffre", net4_desc: "Coffre de fiducie 3 ans 31,41% APY",
+                net5_title: "Récompenses", net5_desc: "Moteur d'accumulation d'incitations", net6_title: "Revenu de base", net6_desc: "Modèle de distribution UBI de la Fondation HK",
+                net7_title: "Échange (Swap)", net7_desc: "Achat instantané de jetons", net8_title: "Échange DEX", net8_desc: "Appariement de liquidité P2P décentralisé",
+                net9_title: "Staking LP", net9_desc: "Preuve de liquidité (PoL) et dividendes élevés", net10_title: "Quantité Pi", net10_desc: "Synchronisation du registre mainnet des actifs Pi",
+                mainnetAlert: "Synchronisation du registre test et demande de transmission réussies !",
+                beeniReply: (txt) => `[AGI Beeni]: Commande "${txt}" reçue. Traitement dans le backend décentralisé.`,
+                p1_title: "Connexion du portefeuille", p1_desc: "Cliquez sur Liaison auto pour charger votre adresse.", p1_lbl1: "Adresse du portefeuille", p1_ph1: "Cliquez sur Liaison auto", p1_lbl2: "Code d'auth (Émis:", p1_ph2: "Entrez 6 chiffres", p1_btn: "Approuver et connecter",
+                p2_title: "Transfert", p2_desc: "Exécuter le transfert chiffré multisig.", p2_lbl1: "Adresse du destinataire", p2_ph1: "G... ou ID", p2_lbl2: "Quantité", p2_ph2: "Entrer la quantité", p2_lbl3: "Code de sécurité (Émis:", p2_ph3: "Entrez 6 chiffres", p2_btn: "Exécuter le transfert",
+                p3_title: "Paiement", p3_desc: "Procéder au paiement sécurisé en séquestre.", p3_lbl1: "Montant du paiement", p3_lbl2: "Code d'approbation (Émis:", p3_ph2: "Entrez 6 chiffres", p3_btn: "Approuver le paiement",
+                p4_title: "Dépôt en coffre", p4_desc: "Déposer dans le coffre de fiducie.", p4_lbl1: "Montant du dépôt", p4_ph1: "Entrer le montant", p4_lbl2: "Période", p4_opt1: "1 An", p4_opt3: "3 Ans", p4_opt5: "5 Ans", p4_lbl3: "Rendement attendu", p4_resDefault: "+0.00", p4_lbl4: "Code du coffre (Émis:", p4_ph4: "Entrez 6 chiffres", p4_btn: "Approuver le dépôt",
+                p5_title: "Récompenses", p5_desc: "Réclamer les gains d'incitation.", p5_lbl1: "Montant", p5_lbl2: "Code d'auth (Émis:", p5_ph2: "Entrez 6 chiffres", p5_btn: "Réclamer les récompenses",
+                p6_title: "Revenu de base", p6_desc: "Réclamer la distribution UBI.", p6_lbl1: "Montant", p6_lbl2: "Code d'auth (Émis:", p5_ph2: "Entrez 6 chiffres", p6_btn: "Réclamer UBI",
+                p7_title: "Échange (Swap)", p7_desc: "Acheter et échanger des jetons instantanément.", p7_lbl1: "Envoyer", p7_ph1: "10 PI", p7_lbl2: "Recevoir", p7_lbl3: "Code d'auth (Émis:", p7_ph3: "Entrez 6 chiffres", p7_btn: "Exécuter l'échange",
+                p8_title: "Échange DEX", p8_desc: "Appariement de liquidité P2P.", p8_lbl1: "Quantité P2P", p8_ph1: "Entrer la quantité", p8_lbl2: "Code d'auth (Émis:", p8_ph2: "Entrez 6 chiffres", p8_btn: "Approuver l'ordre",
+                p9_title: "Staking LP", p9_desc: "Enregistrer la preuve de liquidité.", p9_lbl1: "Quantité LP", p9_ph1: "Entrer LP", p9_lbl2: "Période", p9_lbl3: "Rendement attendu", p9_lbl4: "Code d'auth (Émis:", p9_ph4: "Entrez 6 chiffres", p9_btn: "Enregistrer le staking LP",
+                p10_title: "Quantité Pi", p10_desc: "Gérer et synchroniser la quantité du registre Pi.", p10_lbl1: "Quantité Pi", p10_lbl2: "Code d'auth (Émis:", p9_ph2: "Entrez 6 chiffres", p9_btn: "Exécuter la synchronisation",
+                authFailAlert: "❌ Le code d'authentification ne correspond pas.", authSuccessPrefix: "✅ [Authentification réussie]",
+                msg1: "Portefeuille connecté en toute sécurité", msg2: "Transfert multisig traité", msg3: "Séquestre approuvé", msg4: "Dépôt en coffre réussi", msg5: "Récompenses réclamées", msg6: "UBI réclamé", msg7: "Échange terminé", msg8: "Ordre DEX approuvé", msg9: "Staking LP enregistré", msg10: "Registre Pi synchronisé",
+                calcDefault: "Entrez le montant du dépôt (+0.00)",
+                calcResult: (p, r) => `Rendement attendu (${p} Ans) : +${r}`,
+                modal_wp_title: "Whitepaper v3.1", modal_wp_body: "HK WORLD BANK combine la blockchain décentralisée et l'orchestration AGI.",
+                modal_faq_title: "FAQ", modal_faq_body: "Q1. Lié à Pi Network ? R. Oui, synchronisation en temps réel.",
+                modal_pol_title: "3 Politiques", modal_pol_body: "1. Conditions 2. Sécurité & Confidentialité 3. Conformité",
+                modal_reg_title: "Conformité globale", modal_reg_body: "Aligné sur les cadres réglementaires mondiaux.",
+                modal_t165_title: "Centre T165", modal_t165_body: "Siège mondial de HK Group de 165 étages à Gyeongju."
+            },
+            ng: {
+                headerSubText: "Global Next-Gen Decentralized Finance (Nigeria)", langEngineLabel: "Universal Language Engine", subTitle: "Fast Financial Operation Master Core",
+                dashTitle: "Personal Asset Dashboard", piSyncLabel: "Holding Amount (Pi Ledger Sync)", interestLabel: "Real-time Accumulated Interest (3-Yr 31.41% APY)",
+                mainnetBtnText: "Request Mainnet to Core Team Now", gridSectionTitle: "Distributed Networks", gridSectionSub: "[Process Active]",
+                agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Response & AI Orchestration", sonponeLabelText: "Detection Sensitivity:", syncText: "(Live Sync)",
+                initialBeeniMsg: "[AGI Beeni]: Testnet Pi environment and global multi-language system fully operational! Chairman Jaewan Lee, how may I assist you?",
+                chatInputPlaceholder: "Ask Beeni...", chatSendBtn: "Send", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Policies", menu_reg: "Global Compliance",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Smart Glasses: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Artificial Sun: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "T165 Landmark Hub (Gyeongju HQ)",
+                net1_title: "Wallet Connect", net1_desc: "Node wallet protocol auto-link", net2_title: "Transfer", net2_desc: "Multisig encrypted cross-border transfer",
+                net3_title: "Payment", net3_desc: "Real-time commerce escrow", net4_title: "Vault Deposit", net4_desc: "3-Year 31.41% APY trust vault",
+                net5_title: "Rewards", net5_desc: "Contribution incentive accrual engine", net6_title: "UBI", net6_desc: "HK Social Foundation UBI model",
+                net7_title: "Swap", net7_desc: "Instant token purchase swap", net8_title: "DEX Swap", net8_desc: "Decentralized orderless P2P matching",
+                net9_title: "LP Staking", net9_desc: "PoL & high-yield dividend rights", net10_title: "Pi Ledger", net10_desc: "Pi asset mainnet ledger sync",
+                mainnetAlert: "Mainnet synchronization and transmission request completed successfully!",
+                beeniReply: (txt) => `[AGI Beeni]: Received command "${txt}". Processing in decentralized backend.`,
+                p1_title: "Wallet Connect", p1_desc: "Click Auto-Link to load your wallet address instantly.", p1_lbl1: "Wallet Address", p1_ph1: "Click Auto-Link", p1_lbl2: "Auth Code (Issued:", p1_ph2: "Enter 6-digit code", p1_btn: "Approve & Connect",
+                p2_title: "Transfer", p2_desc: "Execute multisig encrypted transfer.", p2_lbl1: "Recipient Address", p2_ph1: "G... or ID", p2_lbl2: "Amount", p2_ph2: "Enter amount", p2_lbl3: "Security Auth Code (Issued:", p2_ph3: "Enter 6-digit code", p2_btn: "Execute Transfer",
+                p3_title: "Payment", p3_desc: "Proceed with escrow secure payment.", p3_lbl1: "Payment Amount", p3_lbl2: "Approval Auth Code (Issued:", p3_ph2: "Enter 6-digit code", p3_btn: "Approve Payment",
+                p4_title: "Vault Deposit", p4_desc: "Deposit into asset trust vault.", p4_lbl1: "Deposit Amount", p4_ph1: "Enter amount", p4_lbl2: "Deposit Period", p4_opt1: "1 Year", p4_opt3: "3 Years", p4_opt5: "5 Years", p4_lbl3: "Expected Return", p4_resDefault: "+0.00", p4_lbl4: "Vault Auth Code (Issued:", p4_ph4: "Enter 6-digit code", p4_btn: "Approve Deposit",
+                p5_title: "Rewards", p5_desc: "Claim contribution incentive earnings.", p5_lbl1: "Claim Amount", p5_lbl2: "Auth Code (Issued:", p5_ph2: "Enter 6-digit code", p5_btn: "Claim Rewards",
+                p6_title: "UBI", p6_desc: "Claim municipal UBI distribution.", p6_lbl1: "Claim Amount", p6_lbl2: "Auth Code (Issued:", p5_ph2: "Enter 6-digit code", p6_btn: "Claim UBI",
+                p7_title: "Swap", p7_desc: "Instantly purchase and exchange tokens.", p7_lbl1: "Send Amount", p7_ph1: "10 PI", p7_lbl2: "Receive Asset", p7_lbl3: "Auth Code (Issued:", p7_ph3: "Enter 6-digit code", p7_btn: "Execute Swap",
+                p8_title: "DEX Swap", p8_desc: "Decentralized P2P liquidity matching.", p8_lbl1: "P2P Amount", p8_ph1: "Enter amount", p8_lbl2: "Auth Code (Issued:", p8_ph2: "Enter 6-digit code", p8_btn: "Approve Order",
+                p9_title: "LP Staking", p9_desc: "Register liquidity proof and deposit.", p9_lbl1: "LP Amount", p9_ph1: "Enter amount", p9_lbl2: "Period", p9_lbl3: "Expected Return", p9_lbl4: "Auth Code (Issued:", p9_ph4: "Enter 6-digit code", p9_btn: "Register LP Staking",
+                p10_title: "Pi Ledger", p10_desc: "Synchronize Pi asset mainnet ledger quantity.", p10_lbl1: "Pi Amount", p10_lbl2: "Auth Code (Issued:", p9_ph2: "Enter 6-digit code", p9_btn: "Execute Sync",
+                authFailAlert: "❌ Auth code does not match.", authSuccessPrefix: "✅ [Auth Successful]",
+                msg1: "Wallet connected", msg2: "Transfer processed", msg3: "Escrow approved", msg4: "Deposited successfully", msg5: "Rewards claimed", msg6: "UBI claimed", msg7: "Swap completed", msg8: "DEX order approved", msg9: "LP Staking registered", msg10: "Pi ledger synchronized",
+                calcDefault: "Enter deposit amount (+0.00)",
+                calcResult: (p, r) => `Expected Return (${p} Years): +${r}`,
+                modal_wp_title: "Whitepaper v3.1", modal_wp_body: "HK WORLD BANK combines decentralized blockchain with AGI orchestration.",
+                modal_faq_title: "FAQ", modal_faq_body: "Q1. Linked with Pi Network? A. Yes, real-time synchronization.",
+                modal_pol_title: "3 Policies", modal_pol_body: "1. Terms 2. Security & Privacy 3. Compliance",
+                modal_reg_title: "Global Compliance", modal_reg_body: "Aligned with global digital asset regulations.",
+                modal_t165_title: "T165 Landmark Hub", modal_t165_body: "165-story HK Group global headquarters in Gyeongju."
+            },
+            cm: {
+                headerSubText: "Finance décentralisée mondiale (Cameroun)", langEngineLabel: "Moteur multilingue", subTitle: "Noyau maître des opérations financières",
+                dashTitle: "Tableau de bord des actifs personnels", piSyncLabel: "Quantité (Registre Pi)", interestLabel: "Intérêts accumulés (3 ans 31,41% APY)",
+                mainnetBtnText: "Demander le Mainnet maintenant", gridSectionTitle: "Réseaux distribués", gridSectionSub: "[Processus actif]",
+                agiTitle: "Support AGI Beeni", agiSub: "Réponse auto SONPONE & IA", sonponeLabelText: "Sensibilité:", syncText: "(Synchro)",
+                initialBeeniMsg: "[AGI Beeni]: Environnement de test Pi opérationnel au Cameroun ! Président Jaewan Lee, comment puis-je vous aider ?",
+                chatInputPlaceholder: "Demander à Beeni...", chatSendBtn: "Envoyer", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ", menu_pol: "Politiques", menu_reg: "Conformité",
+                hub_robot: "Robot", hub_nexus: "Lunettes", hub_uam: "UAM", hub_fusion: "Fusion", hub_bio: "Bio", hub_space: "Espace", hub_parts: "Pièces", hub_defence: "Défense", hub_t165: "Centre T165",
+                net1_title: "Connexion", net1_desc: "Lien auto du portefeuille", net2_title: "Transfert", net2_desc: "Transfert multisig chiffré",
+                net3_title: "Paiement", net3_desc: "Séquestre en temps réel", net4_title: "Dépôt", net4_desc: "Coffre de fiducie 31.41% APY",
+                net5_title: "Récompenses", net5_desc: "Moteur d'incitation", net6_title: "Revenu", net6_desc: "Modèle UBI",
+                net7_title: "Échange", net7_desc: "Achat instantané", net8_title: "DEX Swap", net8_desc: "P2P décentralisé",
+                net9_title: "Staking LP", net9_desc: "Preuve de liquidité", net10_title: "Quantité Pi", net10_desc: "Synchro registre Pi",
+                mainnetAlert: "Demande de synchronisation réussie !",
+                beeniReply: (txt) => `[AGI Beeni]: Commande "${txt}" reçue.`,
+                p1_title: "Connexion", p1_desc: "Cliquez pour charger.", p1_lbl1: "Adresse", p1_ph1: "Cliquez", p1_lbl2: "Code (Émis:", p1_ph2: "Code à 6 chiffres", p1_btn: "Connecter",
+                p2_title: "Transfert", p2_desc: "Exécuter le transfert.", p2_lbl1: "Destinataire", p2_ph1: "G...", p2_lbl2: "Montant", p2_ph2: "Montant", p2_lbl3: "Code (Émis:", p2_ph3: "Code à 6 chiffres", p2_btn: "Transférer",
+                p3_title: "Paiement", p3_desc: "Paiement sécurisé.", p3_lbl1: "Montant", p3_lbl2: "Code (Émis:", p3_ph2: "Code", p3_btn: "Approuver",
+                p4_title: "Dépôt", p4_desc: "Déposer dans le coffre.", p4_lbl1: "Montant", p4_ph1: "Montant", p4_lbl2: "Période", p4_opt1: "1 an", p4_opt3: "3 ans", p4_opt5: "5 ans", p4_lbl3: "Retour", p4_resDefault: "+0.00", p4_lbl4: "Code (Émis:", p4_ph4: "Code", p4_btn: "Déposer",
+                p5_title: "Récompenses", p5_desc: "Réclamer.", p5_lbl1: "Montant", p5_lbl2: "Code (Émis:", p5_ph2: "Code", p5_btn: "Réclamer",
+                p6_title: "Revenu", p6_desc: "Réclamer UBI.", p6_lbl1: "Montant", p6_lbl2: "Code (Émis:", p5_ph2: "Code", p6_btn: "Réclamer",
+                p7_title: "Échange", p7_desc: "Échanger des jetons.", p7_lbl1: "Envoyer", p7_ph1: "10 PI", p7_lbl2: "Recevoir", p7_lbl3: "Code (Émis:", p7_ph3: "Code", p7_btn: "Échanger",
+                p8_title: "DEX Swap", p8_desc: "P2P.", p8_lbl1: "Montant", p8_ph1: "Montant", p8_lbl2: "Code (Émis:", p8_ph2: "Code", p8_btn: "Approuver",
+                p9_title: "Staking LP", p9_desc: "Enregistrer LP.", p9_lbl1: "LP", p9_ph1: "LP", p9_lbl2: "Période", p9_lbl3: "Retour", p9_lbl4: "Code (Émis:", p9_ph4: "Code", p9_btn: "Enregistrer",
+                p10_title: "Quantité Pi", p10_desc: "Synchroniser.", p10_lbl1: "Quantité", p10_lbl2: "Code (Émis:", p9_ph2: "Code", p9_btn: "Synchroniser",
+                authFailAlert: "❌ Code incorrect.", authSuccessPrefix: "✅ [Succès]",
+                msg1: "Connecté", msg2: "Transféré", msg3: "Approuvé", msg4: "Déposé", msg5: "Réclamé", msg6: "Réclamé UBI", msg7: "Échangé", msg8: "Approuvé", msg9: "Enregistré", msg10: "Synchronisé",
+                calcDefault: "Entrez le montant (+0.00)",
+                calcResult: (p, r) => `Retour (${p} ans) : +${r}`,
+                modal_wp_title: "Whitepaper", modal_wp_body: "HK WORLD BANK combine blockchain et AGI.",
+                modal_faq_title: "FAQ", modal_faq_body: "Q1. Lié à Pi? R. Oui.",
+                modal_pol_title: "Politiques", modal_pol_body: "1. Termes 2. Sécurité 3. Conformité",
+                modal_reg_title: "Conformité", modal_reg_body: "Conforme aux normes mondiales.",
+                modal_t165_title: "Centre T165", modal_t165_body: "Siège à Gyeongju."
+            },
+            za: {
+                headerSubText: "Global Next-Gen Decentralized Finance (South Africa)", langEngineLabel: "Universal Language Engine", subTitle: "Fast Financial Operation Master Core",
+                dashTitle: "Personal Asset Dashboard", piSyncLabel: "Holding Amount (Pi Ledger Sync)", interestLabel: "Real-time Accumulated Interest (3-Yr 31.41% APY)",
+                mainnetBtnText: "Request Mainnet to Core Team Now", gridSectionTitle: "Distributed Networks", gridSectionSub: "[Process Active]",
+                agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Response & AI Orchestration", sonponeLabelText: "Detection Sensitivity:", syncText: "(Live Sync)",
+                initialBeeniMsg: "[AGI Beeni]: Testnet Pi environment and global multi-language system fully operational! Chairman Jaewan Lee, how may I assist you?",
+                chatInputPlaceholder: "Ask Beeni...", chatSendBtn: "Send", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Policies", menu_reg: "Global Compliance",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Smart Glasses: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Artificial Sun: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "T165 Landmark Hub (Gyeongju HQ)",
+                net1_title: "Wallet Connect", net1_desc: "Node wallet protocol auto-link", net2_title: "Transfer", net2_desc: "Multisig encrypted cross-border transfer",
+                net3_title: "Payment", net3_desc: "Real-time commerce escrow", net4_title: "Vault Deposit", net4_desc: "3-Year 31.41% APY trust vault",
+                net5_title: "Rewards", net5_desc: "Contribution incentive accrual engine", net6_title: "UBI", net6_desc: "HK Social Foundation UBI model",
+                net7_title: "Swap", net7_desc: "Instant token purchase swap", net8_title: "DEX Swap", net8_desc: "Decentralized orderless P2P matching",
+                net9_title: "LP Staking", net9_desc: "PoL & high-yield dividend rights", net10_title: "Pi Ledger", net10_desc: "Pi asset mainnet ledger sync",
+                mainnetAlert: "Mainnet synchronization and transmission request completed successfully!",
+                beeniReply: (txt) => `[AGI Beeni]: Received command "${txt}". Processing in decentralized backend.`,
+                p1_title: "Wallet Connect", p1_desc: "Click Auto-Link to load your wallet address instantly.", p1_lbl1: "Wallet Address", p1_ph1: "Click Auto-Link", p1_lbl2: "Auth Code (Issued:", p1_ph2: "Enter 6-digit code", p1_btn: "Approve & Connect",
+                p2_title: "Transfer", p2_desc: "Execute multisig encrypted transfer.", p2_lbl1: "Recipient Address", p2_ph1: "G... or ID", p2_lbl2: "Amount", p2_ph2: "Enter amount", p2_lbl3: "Security Auth Code (Issued:", p2_ph3: "Enter 6-digit code", p2_btn: "Execute Transfer",
+                p3_title: "Payment", p3_desc: "Proceed with escrow secure payment.", p3_lbl1: "Payment Amount", p3_lbl2: "Approval Auth Code (Issued:", p3_ph2: "Enter 6-digit code", p3_btn: "Approve Payment",
+                p4_title: "Vault Deposit", p4_desc: "Deposit into asset trust vault.", p4_lbl1: "Deposit Amount", p4_ph1: "Enter amount", p4_lbl2: "Deposit Period", p4_opt1: "1 Year", p4_opt3: "3 Years", p4_opt5: "5 Years", p4_lbl3: "Expected Return", p4_resDefault: "+0.00", p4_lbl4: "Vault Auth Code (Issued:", p4_ph4: "Enter 6-digit code", p4_btn: "Approve Deposit",
+                p5_title: "Rewards", p5_desc: "Claim contribution incentive earnings.", p5_lbl1: "Claim Amount", p5_lbl2: "Auth Code (Issued:", p5_ph2: "Enter 6-digit code", p5_btn: "Claim Rewards",
+                p6_title: "UBI", p6_desc: "Claim municipal UBI distribution.", p6_lbl1: "Claim Amount", p6_lbl2: "Auth Code (Issued:", p5_ph2: "Enter 6-digit code", p6_btn: "Claim UBI",
+                p7_title: "Swap", p7_desc: "Instantly purchase and exchange tokens.", p7_lbl1: "Send Amount", p7_ph1: "10 PI", p7_lbl2: "Receive Asset", p7_lbl3: "Auth Code (Issued:", p7_ph3: "Enter 6-digit code", p7_btn: "Execute Swap",
+                p8_title: "DEX Swap", p8_desc: "Decentralized P2P liquidity matching.", p8_lbl1: "P2P Amount", p8_ph1: "Enter amount", p8_lbl2: "Auth Code (Issued:", p8_ph2: "Enter 6-digit code", p8_btn: "Approve Order",
+                p9_title: "LP Staking", p9_desc: "Register liquidity proof and deposit.", p9_lbl1: "LP Amount", p9_ph1: "Enter amount", p9_lbl2: "Period", p9_lbl3: "Expected Return", p9_lbl4: "Auth Code (Issued:", p9_ph4: "Enter 6-digit code", p9_btn: "Register LP Staking",
+                p10_title: "Pi Ledger", p10_desc: "Synchronize Pi asset mainnet ledger quantity.", p10_lbl1: "Pi Amount", p10_lbl2: "Auth Code (Issued:", p9_ph2: "Enter 6-digit code", p9_btn: "Execute Sync",
+                authFailAlert: "❌ Auth code does not match.", authSuccessPrefix: "✅ [Auth Successful]",
+                msg1: "Wallet connected", msg2: "Transfer processed", msg3: "Escrow approved", msg4: "Deposited successfully", msg5: "Rewards claimed", msg6: "UBI claimed", msg7: "Swap completed", msg8: "DEX order approved", msg9: "LP Staking registered", msg10: "Pi ledger synchronized",
+                calcDefault: "Enter deposit amount (+0.00)",
+                calcResult: (p, r) => `Expected Return (${p} Years): +${r}`,
+                modal_wp_title: "Whitepaper v3.1", modal_wp_body: "HK WORLD BANK combines decentralized blockchain with AGI orchestration.",
+                modal_faq_title: "FAQ", modal_faq_body: "Q1. Linked with Pi Network? A. Yes, real-time synchronization.",
+                modal_pol_title: "3 Policies", modal_pol_body: "1. Terms 2. Security & Privacy 3. Compliance",
+                modal_reg_title: "Global Compliance", modal_reg_body: "Aligned with global digital asset regulations.",
+                modal_t165_title: "T165 Landmark Hub", modal_t165_body: "165-story HK Group global headquarters in Gyeongju."
+            },
+            hi: {
+                headerSubText: "वैश्विक अगली पीढ़ी की विकेंद्रीकृत वित्त", langEngineLabel: "बहु-भाषा इंजन", subTitle: "त्वरित वित्तीय संचालन मास्टर कोर",
+                dashTitle: "व्यक्तिगत संपत्ति डैशबोर्ड", piSyncLabel: "धारणीय मात्रा (Pi बहीखाता सिंक)", interestLabel: "वास्तविक समय संचित ब्याज (3 वर्ष 31.41% APY)",
+                mainnetBtnText: "कोर टीम से मेननेट का तुरंत अनुरोध करें", gridSectionTitle: "वितरित नेटवर्क", gridSectionSub: "[व्यक्तिगत प्रक्रिया सक्रिय]",
+                agiTitle: "AGI बीनी सहायता", agiSub: "SONPONE ऑटो-रिस्पांस और AI ऑर्केस्ट्रेटेड", sonponeLabelText: "डिटेक्शन संवेदनशीलता:", syncText: "(लाइव सिंक)",
+                initialBeeniMsg: "[AGI बीनी]: टेस्टनेट Pi वातावरण और बहु-भाषा प्रणाली पूरी तरह सक्रिय हैं! चेयरमैन जेवान ली, मैं आपकी क्या सहायता कर सकता हूँ?",
+                chatInputPlaceholder: "बीनी से पूछें...", chatSendBtn: "भेजें", supportEmailText: "Support: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "श्वेतपत्र v3.1", menu_faq: "सामान्य प्रश्न", menu_pol: "3 नीतियां", menu_reg: "वैश्विक अनुपालन",
+                hub_robot: "रोबोट: HK-ROBOT", hub_nexus: "स्मार्ट ग्लासेज: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "कृत्रिम सूर्य: HK-FUSION", hub_bio: "क्वांटम बायो: HK-QUANTUMBIO", hub_space: "अंतरिक्ष: HK-SPACE", hub_parts: "पार्ट्स बैंक: HK-PARTSBANK", hub_defence: "रक्षा तकनीक: HK-DEFENCE-HUB", hub_t165: "T165 लैंडमार्क हब (Gyeongju HQ)",
+                net1_title: "वॉलेट कनेक्ट", net1_desc: "नोड वॉलेट प्रोटोकॉल ऑटो-लिंक", net2_title: "हस्तांतरण", net2_desc: "मल्टीसिग एन्क्रिप्टेड क्रॉस-बॉर्डर ट्रांसफर",
+                net3_title: "भुगतान", net3_desc: "रीयल-टाइम कॉमर्स एस्क्रो", net4_title: "वॉल्ट जमा", net4_desc: "3 वर्ष 31.41% APY ट्रस्ट वॉल्ट",
+                net5_title: "पुरस्कार", net5_desc: "योगदान प्रोत्साहन संचय इंजन", net6_title: "मूल आय", net6_desc: "HK सोशल फाउंडेशन UBI मॉडल",
+                net7_title: "स्वैप", net7_desc: "तत्काल टोकन खरीद स्वैप", net8_title: "DEX स्वैप", net8_desc: "विकेंद्रीकृत P2P तरलता मिलान",
+                net9_title: "LP स्टेकिंग", net9_desc: "तरलता प्रमाण (PoL) और उच्च लाभांश", net10_title: "Pi मात्रा", net10_desc: "Pi संपत्ति मेननेट बहीखाता सिंक",
+                mainnetAlert: "टेस्टनेट Pi बहीखाता सिंक और ट्रांसमिशन अनुरोध सफल!",
+                beeniReply: (txt) => `[AGI बीनी]: कमांड "${txt}" प्राप्त हुई। विकेंद्रीकृत बैकएंड में प्रसंस्करण जारी है।`,
+                p1_title: "वॉलेट कनेक्ट", p1_desc: "अपना पता लोड करने के लिए ऑटो-लिंक पर क्लिक करें।", p1_lbl1: "वॉलेट पता", p1_ph1: "ऑटो-लिंक क्लिक करें", p1_lbl2: "ऑथ कोड (जारी:", p1_ph2: "6-अंकों का कोड दर्ज करें", p1_btn: "स्वीकृत और कनेक्ट करें",
+                p2_title: "हस्तांतरण", p2_desc: "मल्टीसिग एन्क्रिप्टेड ट्रांसफर निष्पादित करें।", p2_lbl1: "प्राप्तकर्ता पता", p2_ph1: "G... या ID", p2_lbl2: "राशि", p2_ph2: "राशि दर्ज करें", p2_lbl3: "सुरक्षा कोड (जारी:", p2_ph3: "6-अंकों का कोड", p2_btn: "ट्रांसफर निष्पादित करें",
+                p3_title: "भुगतान", p3_desc: "सुरक्षित एस्क्रो भुगतान के साथ आगे बढ़ें।", p3_lbl1: "भुगतान राशि", p3_lbl2: "अनुमोदन कोड (जारी:", p3_ph2: "6-अंकों का कोड", p3_btn: "भुगतान स्वीकृत करें",
+                p4_title: "वॉल्ट जमा", p4_desc: "संपत्ति ट्रस्ट वॉल्ट में जमा करें।", p4_lbl1: "जमा राशि", p4_ph1: "राशि दर्ज करें", p4_lbl2: "अवधि", p4_opt1: "1 वर्ष", p4_opt3: "3 वर्ष", p4_opt5: "5 वर्ष", p4_lbl3: "अपेक्षित रिटर्न", p4_resDefault: "+0.00", p4_lbl4: "वॉल्ट कोड (जारी:", p4_ph4: "6-अंकों का कोड", p4_btn: "जमा स्वीकृत करें",
+                p5_title: "पुरस्कार", p5_desc: "योगदान प्रोत्साहन आय का दावा करें।", p5_lbl1: "दावा राशि", p5_lbl2: "ऑथ कोड (जारी:", p5_ph2: "6-अंकों का कोड", p5_btn: "पुरस्कार दावा करें",
+                p6_title: "मूल आय", p6_desc: "नगरपालिका UBI का दावा करें।", p6_lbl1: "दावा राशि", p6_lbl2: "ऑथ कोड (जारी:", p5_ph2: "6-अंकों का कोड", p6_btn: "UBI दावा करें",
+                p7_title: "स्वैप", p7_desc: "तुरंत टोकन खरीदें और एक्सचेंज करें।", p7_lbl1: "भेजें", p7_ph1: "10 PI", p7_lbl2: "प्राप्त करें", p7_lbl3: "ऑथ कोड (जारी:", p7_ph3: "6-अंकों का कोड", p7_btn: "स्वैप निष्पादित करें",
+                p8_title: "DEX स्वैप", p8_desc: "विकेंद्रीकृत P2P तरलता मिलान।", p8_lbl1: "P2P राशि", p8_ph1: "राशि दर्ज करें", p8_lbl2: "ऑथ कोड (जारी:", p8_ph2: "6-अंकों का कोड", p8_btn: "ऑर्डर स्वीकृत करें",
+                p9_title: "LP स्टेकिंग", p9_desc: "तरलता प्रमाण (PoL) पंजीकृत करें।", p9_lbl1: "LP राशि", p9_ph1: "LP दर्ज करें", p9_lbl2: "अवधि", p9_lbl3: "अपेक्षित रिटर्न", p9_lbl4: "ऑथ कोड (जारी:", p9_ph4: "6-अंकों का कोड", p9_btn: "LP स्टेकिंग पंजीकृत करें",
+                p10_title: "Pi मात्रा", p10_desc: "Pi संपत्ति मेननेट बहीखाता मात्रा प्रबंधित करें।", p10_lbl1: "Pi मात्रा", p10_lbl2: "ऑथ कोड (जारी:", p9_ph2: "6-अंकों का कोड", p9_btn: "सिंक निष्पादित करें",
+                authFailAlert: "❌ प्रमाणीकरण कोड मेल नहीं खाता।", authSuccessPrefix: "✅ [प्रमाणीकरण सफल]",
+                msg1: "वॉलेट कनेक्ट हो गया", msg2: "ट्रांसफर संसाधित", msg3: "एस्क्रो स्वीकृत", msg4: "वॉल्ट जमा सफल", msg5: "पुरस्कार दावा किया गया", msg6: "UBI दावा किया गया", msg7: "स्वैप पूरा हुआ", msg8: "DEX ऑर्डर स्वीकृत", msg9: "LP स्टेकिंग पंजीकृत", msg10: "Pi बहीखाता सिंक हो गया",
+                calcDefault: "जमा राशि दर्ज करें (+0.00)",
+                calcResult: (p, r) => `अपेक्षित रिटर्न (${p} वर्ष): +${r}`,
+                modal_wp_title: "श्वेतपत्र v3.1", modal_wp_body: "HK WORLD BANK विकेंद्रीकृत ब्लॉकचेन को AGI ऑर्केस्ट्रेटेड के साथ जोड़ती है।",
+                modal_faq_title: "सामान्य प्रश्न", modal_faq_body: "Q1. Pi Network से जुड़ा है? A. हाँ, रीयल-टाइम सिंक समर्थित है।",
+                modal_pol_title: "3 नीतियां", modal_pol_body: "1. सेवा की शर्तें 2. सुरक्षा और गोपनीयता 3. अनुपालन नीति",
+                modal_reg_title: "वैश्विक अनुपालन", modal_reg_body: "वैश्विक डिजिटल संपत्ति नियमों के अनुरूप।",
+                modal_t165_title: "T165 लैंडमार्क हब", modal_t165_body: "Gyeongju में 165 मंजिला HK Group वैश्विक मुख्यालय।"
+            },
+            es: {
+                headerSubText: "Finanzas Descentralizadas de Próxima Generación", langEngineLabel: "Motor de 60 Idiomas", subTitle: "Núcleo Maestro de Operaciones Financieras",
+                dashTitle: "Panel de Activos Personales", piSyncLabel: "Cantidad (Sincronización del Libro Pi)", interestLabel: "Interés Acumulado (APY 31.41% a 3 años)",
+                mainnetBtnText: "Solicitar Red Principal al Equipo Central", gridSectionTitle: "Redes Distribuidas", gridSectionSub: "[Proceso Activo]",
+                agiTitle: "Soporte AGI Beeni", agiSub: "Respuesta Automática SONPONE y Orquestación IA", sonponeLabelText: "Sensibilidad de Detección:", syncText: "(Sincronización)",
+                initialBeeniMsg: "[AGI Beeni]: ¡Entorno de prueba y sistema multilingüe plenamente operativos! Presidente Jaewan Lee, ¿en qué puedo ayudarle?",
+                chatInputPlaceholder: "Preguntar a Beeni...", chatSendBtn: "Enviar", supportEmailText: "Soporte: support@hkwb.world",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Políticas", menu_reg: "Cumplimiento Global",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Gafas Inteligentes: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Sol Artificial: HK-FUSION", hub_bio: "Bio Cuántico: HK-QUANTUMBIO", hub_space: "Espacio: HK-SPACE", hub_parts: "Banco de Piezas: HK-PARTSBANK", hub_defence: "Tecnología de Defensa: HK-DEFENCE-HUB", hub_t165: "Centro Principal T165 (Sede Gyeongju)",
+                net1_title: "Conexión de Billetera", net1_desc: "Enlace automático y autenticación de billetera de nodo", net2_title: "Transferencia", net2_desc: "Sistema de transferencia cifrada multisig transcontinental",
+                net3_title: "Pago", net3_desc: "Fideicomiso de comercio electrónico en tiempo real", net4_title: "Depósito en Bóveda", net4_desc: "Bóveda fiduciaria con 31.41% APY a 3 años",
+                net5_title: "Recompensas", net5_desc: "Motor de acumulación de incentivos por contribución", net6_title: "Renta Básica", net6_desc: "Modelo de distribución UBI de la Fundación HK",
+                net7_title: "Intercambio", net7_desc: "Compra instantánea de tokens con efectivo/tarjeta", net8_title: "Intercambio DEX", net8_desc: "Emparejamiento de liquidez P2P descentralizado sin órdenes",
+                net9_title: "Staking LP", net9_desc: "Prueba de liquidez (PoL) y derechos de dividendo", net10_title: "Cantidad Pi", net10_desc: "Sincronización del libro mayor principal de activos Pi",
+                mainnetAlert: "¡Sincronización del libro mayor de prueba y solicitud de transmisión completadas!",
+                beeniReply: (txt) => `[AGI Beeni]: Comando "${txt}" recibido. Procesando en el backend descentralizado.`,
+                p1_title: "Conexión de Billetera", p1_desc: "Haga clic en Enlace Automático para cargar su dirección al instante.", p1_lbl1: "Dirección de Billetera", p1_ph1: "Haga clic en Enlace Automático", p1_lbl2: "Código de Autenticación (Emitido:", p1_ph2: "Ingrese código de 6 dígitos", p1_btn: "Aprobar y Conectar",
+                p2_title: "Transferencia", p2_desc: "Ejecutar transferencia cifrada multisig.", p2_lbl1: "Dirección del Destinatario", p2_ph1: "G... o ID", p2_lbl2: "Cantidad", p2_ph2: "Ingrese cantidad", p2_lbl3: "Código de Seguridad (Emitido:", p2_ph3: "Ingrese código de 6 dígitos", p2_btn: "Ejecutar Transferencia",
+                p3_title: "Pago", p3_desc: "Proceder con pago seguro en fideicomiso.", p3_lbl1: "Monto de Pago", p3_lbl2: "Código de Aprobación (Emitido:", p3_ph2: "Ingrese código de 6 dígitos", p3_btn: "Aprobar Pago",
+                p4_title: "Depósito en Bóveda", p4_desc: "Depositar en la bóveda fiduciaria de activos.", p4_lbl1: "Cantidad de Depósito", p4_ph1: "Ingrese cantidad", p4_lbl2: "Periodo de Depósito", p4_opt1: "1 Año", p4_opt3: "3 Años", p4_opt5: "5 Años", p4_lbl3: "Retorno Esperado", p4_resDefault: "+0.00", p4_lbl4: "Código de Bóveda (Emitido:", p4_ph4: "Ingrese código de 6 dígitos", p4_btn: "Aprobar Depósito",
+                p5_title: "Recompensas", p5_desc: "Reclamar ganancias por incentivos de contribución.", p5_lbl1: "Cantidad a Reclamar", p5_lbl2: "Código de Autenticación (Emitido:", p5_ph2: "Ingrese código de 6 dígitos", p5_btn: "Reclamar Recompensas",
+                p6_title: "Renta Básica", p6_desc: "Reclamar distribución municipal UBI.", p6_lbl1: "Cantidad a Reclamar", p6_lbl2: "Código de Autenticación (Emitido:", p5_ph2: "Ingrese código de 6 dígitos", p6_btn: "Reclamar UBI",
+                p7_title: "Intercambio", p7_desc: "Comprar e intercambiar tokens al instante.", p7_lbl1: "Cantidad a Enviar", p7_ph1: "10 PI", p7_lbl2: "Activo a Recibir", p7_lbl3: "Código de Autenticación (Emitido:", p7_ph3: "Ingrese código de 6 dígitos", p7_btn: "Ejecutar Intercambio",
+                p8_title: "Intercambio DEX", p8_desc: "Emparejamiento de liquidez P2P descentralizado.", p8_lbl1: "Cantidad P2P", p8_ph1: "Ingrese cantidad", p8_lbl2: "Código de Autenticación (Emitido:", p8_ph2: "Ingrese código de 6 dígitos", p8_btn: "Aprobar Orden",
+                p9_title: "Staking LP", p9_desc: "Registrar prueba de liquidez y depósito.", p9_lbl1: "Cantidad LP", p9_ph1: "Ingrese cantidad", p9_lbl2: "Periodo", p9_lbl3: "Retorno Esperado", p9_lbl4: "Código de Autenticación (Emitido:", p9_ph4: "Ingrese código de 6 dígitos", p9_btn: "Registrar Staking LP",
+                p10_title: "Cantidad Pi", p10_desc: "Sincronizar cantidad del libro mayor de activos Pi.", p10_lbl1: "Cantidad Pi", p10_lbl2: "Código de Autenticación (Emitido:", p9_ph2: "Ingrese código de 6 dígitos", p9_btn: "Ejecutar Sincronización",
+                authFailAlert: "❌ El código de autenticación no coincide.", authSuccessPrefix: "✅ [Autenticación Exitosa]",
+                msg1: "Billetera conectada", msg2: "Transferencia procesada", msg3: "Fideicomiso aprobado", msg4: "Depositado con éxito", msg5: "Recompensas reclamadas", msg6: "UBI reclamado", msg7: "Intercambio completado", msg8: "Orden DEX aprobada", msg9: "Staking LP registrado", msg10: "Libro mayor Pi sincronizado",
+                calcDefault: "Ingrese cantidad de depósito (+0.00)",
+                calcResult: (p, r) => `Retorno Esperado (${p} Años): +${r}`,
+                modal_wp_title: "Whitepaper v3.1", modal_wp_body: "HK WORLD BANK combina blockchain descentralizada con orquestación AGI.",
+                modal_faq_title: "FAQ", modal_faq_body: "Q1. ¿Vinculado a Pi Network? A. Sí, sincronización en tiempo real.",
+                modal_pol_title: "3 Políticas", modal_pol_body: "1. Términos 2. Seguridad & Privacidad 3. Cumplimiento",
+                modal_reg_title: "Cumplimiento Global", modal_reg_body: "Alineado con marcos regulatorios globales.",
+                modal_t165_title: "Centro Principal T165", modal_t165_body: "Sede global de HK Group de 165 pisos en Gyeongju."
             }
         };
 
-        function changeLanguage(lang) {
-            currentLang = lang;
-            const t = dict[lang] || dict['en'];
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if(t[key]) el.innerText = t[key];
-            });
-        }
+        window.onload = function() {
+            openProcessModal('wallet');
+        };
+
+        setInterval(() => {
+            baseInterest += 0.001250;
+            const el = document.getElementById('accumulatedInterest');
+            if(el) {
+                el.innerText = baseInterest.toLocaleString('en-US', {minimumFractionDigits: 6, maximumFractionDigits: 6}) + " HK";
+                el.classList.add('glow');
+                setTimeout(() => el.classList.remove('glow'), 400);
+            }
+        }, 1000);
 
         function toggleDrawer() {
             document.getElementById('drawerOverlay').classList.toggle('active');
         }
 
-        function closeDrawerOutside(e) {
-            if(e.target.id === 'drawerOverlay') toggleDrawer();
+        function closeDrawerOutside(event) {
+            if (event.target.id === 'drawerOverlay') {
+                toggleDrawer();
+            }
         }
 
-        function openModal(type) {
-            const modal = document.getElementById('bankModal');
-            const title = document.getElementById('modalTitle');
-            const content = document.getElementById('modalBodyContent');
-
-            if(type === 'transfer') {
-                title.innerText = "간편 송금";
-                content.innerHTML = `<label style="font-size:13px;color:var(--text-muted)">보낼 금액</label><input class="form-control" id="tAmt" placeholder="금액 입력"><button class="btn-submit" onclick="execTransfer()">송금 완료</button>`;
-            } else {
-                title.innerText = "프로세스 실행";
-                content.innerHTML = `<button class="btn-submit" onclick="closeModal()">확인</button>`;
+        function updateSonpone(val) {
+            const t = translations[currentLang] || translations['en'];
+            const sonponeValEl = document.getElementById('sonponeVal');
+            if(sonponeValEl) {
+                sonponeValEl.innerText = val + "% " + (t.syncText || "(Live Sync)");
             }
+        }
+
+        function triggerMainnetRequest() {
+            const t = translations[currentLang] || translations['en'];
+            alert(t.mainnetAlert);
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const chatBox = document.getElementById('chatBox');
+            const text = input.value.trim();
+
+            if (!text) return;
+
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-msg user';
+            userMsg.innerText = text;
+            chatBox.appendChild(userMsg);
+
+            input.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            setTimeout(() => {
+                const beeniMsg = document.createElement('div');
+                beeniMsg.className = 'chat-msg beeni';
+                const t = translations[currentLang] || translations['en'];
+                beeniMsg.innerText = t.beeniReply(text);
+                chatBox.appendChild(beeniMsg);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 600);
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') sendChatMessage();
+        }
+
+        function openProcessModal(processId) {
+            activeProcessId = processId;
+            activeModalType = null;
+            renderProcessModalContent();
+        }
+
+        function setMaxAmount(inputId) {
+            const input = document.getElementById(inputId);
+            if(input) {
+                input.value = currentWalletBalance.toFixed(6);
+                if(inputId === 'depositAmount' || inputId === 'lpStakeInput') {
+                    updateCalc();
+                }
+            }
+        }
+
+        function autoLoadWalletAddress() {
+            const walletInput = document.getElementById('nodeWalletAddress');
+            if(walletInput) {
+                walletInput.value = "GBX7QZ4HKWB2026PISTTNETNODEUSER";
+            }
+        }
+
+        function renderProcessModalContent() {
+            const processId = activeProcessId;
+            if (!processId) return;
+
+            const modal = document.getElementById('appModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+            const t = translations[currentLang] || translations['en'];
+
+            generatedAuthCode = Math.floor(100000 + Math.random() * 900000).toString();
+            const defaultBalStr = currentWalletBalance.toFixed(6);
+
+            if (processId === 'wallet') {
+                title.innerText = t.p1_title;
+                content.innerHTML = `
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p1_desc}</div>
+                    <div class="input-group">
+                        <label class="input-label"><span>${t.p1_lbl1}</span> <button class="max-btn" onclick="autoLoadWalletAddress()">Auto-Link</button></label>
+                        <input class="form-control" id="nodeWalletAddress" placeholder="${t.p1_ph1}">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">${t.p1_lbl2} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p1_ph2}" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('wallet')">${t.p1_btn}</button>
+                `;
+            } else if (processId === 'transfer') {
+                title.innerText = t.p2_title;
+                content.innerHTML = `
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p2_desc}</div>
+                    <div class="input-group">
+                        <label class="input-label">${t.p2_lbl1}</label>
+                        <input class="form-control" id="recipientAddress" placeholder="${t.p2_ph1}">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label"><span>${t.p2_lbl2}</span> <button class="max-btn" onclick="setMaxAmount('transferAmountInput')">MAX</button></label>
+                        <input class="form-control" id="transferAmountInput" value="${defaultBalStr}">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">${t.p2_lbl3} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p2_ph3}" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('transfer')">${t.p2_btn}</button>
+                `;
+            } else if (processId === 'payment') {
+                title.innerText = t.p3_title;
+                content.innerHTML = `
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p3_desc}</div>
+                    <div class="input-group">
+                        <label class="input-label"><span>${t.p3_lbl1}</span> <button class="max-btn" onclick="setMaxAmount('paymentInputAmount')">MAX</button></label>
+                        <input class="form-control" id="paymentInputAmount" value="${defaultBalStr}">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">${t.p3_lbl2} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p3_ph2}" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('payment')">${t.p3_btn}</button>
+                `;
+            } else if (processId === 'deposit') {
+                title.innerText = t.p4_title;
+                content.innerHTML = `
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p4_desc}</div>
+                    <div class="input-group">
+                        <label class="input-label"><span>${t.p4_lbl1}</span> <button class="max-btn" onclick="setMaxAmount('depositAmount')">MAX</button></label>
+                        <input class="form-control" id="depositAmount" value="${defaultBalStr}" oninput="updateCalc()">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">${t.p4_lbl2}</label>
+                        <select class="form-control" id="depositPeriod" onchange="updateCalc()" style="background:var(--card-bg); color:var(--text-main);">
+                            <option value="1">${t.p4_opt1}</option>
+                            <option value="3" selected>${t.p4_opt3}</option>
+                            <option value="5">${t.p4_opt5}</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">${t.p4_lbl3}</label>
+                        <input class="form-control" id="depositExpectedResult" readonly style="color:var(--accent-green); font-weight:700;">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">${t.p4_lbl4} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p4_ph4}" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('deposit')">${t.p4_btn}</button>
+                `;
+                setTimeout(updateCalc, 50);
+            } else if (processId === 'reward') {
+                title.innerText = t.p5_title;
+                content.innerHTML = `
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p5_desc}</div>
+                    <div class="input-group">
+                        <label class="input-label"><span>${t.p5_lbl1}</span> <button class="max-btn" onclick="setMaxAmount('rewardInputAmount')">MAX</button></label>
+                        <input class="form-control" id="rewardInputAmount" value="${defaultBalStr}">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">${t.p5_lbl2} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p5_ph2}" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('reward')">${t.p5_btn}</button>
+                `;
+            } else if (processId === 'ubi') {
+                title.innerText = t.p6_title;
+                content.innerHTML = `
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p6_desc}</div>
+                    <div class="input-group">
+                        <label class="input-label"><span>${t.p6_lbl1}</span> <button class="max-btn" onclick="setMaxAmount('ubiInputAmount')">MAX</button></label>
+                        <input class="form-control" id="ubiInputAmount" value="${defaultBalStr}">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">${t.p6_lbl2} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p5_ph2}" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('ubi')">${t.p6_btn}</button>
+                `;
+            } else if (processId === 'swap') {
+                title.innerText = t.p7_title;
+                content.innerHTML = `
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p7_desc}</div>
+                    <div class="input-group">
+                        <label class="input-label"><span>${t.p7_lbl1}</span> <button class="max-btn" onclick="setMaxAmount('swapSendInput')">MAX</button></label>
+                        <input class="form-control" id="swapSendInput" value="${defaultBalStr}">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">${t.p7_lbl2}</label>
+                        <input class="form-control" id="swapReceiveInput" value="314,159.000000 HK Token">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">${t.p7_lbl3} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p7_ph3}" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('swap')">${t.p7_btn}</button>
+                `;
+            } else if (processId === 'dex') {
+                title.innerText = t.p8_title;
+                content.innerHTML = `
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p8_desc}</div>
+                    <div class="input-group">
+                        <label class="input-label"><span>${t.p8_lbl1}</span> <button class="max-btn" onclick="setMaxAmount('dexOrderInput')">MAX</button></label>
+                        <input class="form-control" id="dexOrderInput" value="${defaultBalStr}">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">${t.p8_lbl2} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p8_ph2}" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('dex')">${t.p8_btn}</button>
+                `;
+            } else if (processId === 'lp') {
+                title.innerText = t.p9_title;
+                content.innerHTML = `
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p9_desc}</div>
+                    <div class="input-group">
+                        <label class="input-label"><span>${t.p9_lbl1}</span> <button class="max-btn" onclick="setMaxAmount('lpStakeInput')">MAX</button></label>
+                        <input class="form-control" id="lpStakeInput" value="${defaultBalStr}" oninput="updateCalc()">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">${t.p9_lbl2}</label>
+                        <select class="form-control" id="depositPeriod" onchange="updateCalc()" style="background:var(--card-bg); color:var(--text-main);">
+                            <option value="1">${t.p4_opt1}</option>
+                            <option value="3" selected>${t.p4_opt3}</option>
+                            <option value="5">${t.p4_opt5}</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">${t.p9_lbl3}</label>
+                        <input class="form-control" id="depositExpectedResult" readonly style="color:var(--accent-green); font-weight:700;">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">${t.p9_lbl4} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p9_ph4}" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('lp')">${t.p9_btn}</button>
+                `;
+                setTimeout(updateCalc, 50);
+            } else if (processId === 'pishow') {
+                title.innerText = t.p10_title;
+                content.innerHTML = `
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p10_desc}</div>
+                    <div class="input-group">
+                        <label class="input-label"><span>${t.p10_lbl1}</span> <button class="max-btn" onclick="setMaxAmount('piCustomAmountInput')">MAX</button></label>
+                        <input class="form-control" id="piCustomAmountInput" value="${defaultBalStr}">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">${t.p10_lbl2} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="${t.p9_ph2}" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('pishow')">${t.p10_btn}</button>
+                `;
+            }
+
+            modal.classList.add('active');
+        }
+
+        function verifyAndExecute(processId) {
+            const codeInput = document.getElementById('userInputCode');
+            const userEntered = codeInput ? codeInput.value.trim() : "";
+            const t = translations[currentLang] || translations['en'];
+
+            if(userEntered !== generatedAuthCode) {
+                alert(t.authFailAlert);
+                return;
+            }
+            
+            const messages = {
+                wallet: t.msg1, transfer: t.msg2, payment: t.msg3, deposit: t.msg4, reward: t.msg5,
+                ubi: t.msg6, swap: t.msg7, dex: t.msg8, lp: t.msg9, pishow: t.msg10
+            };
+            
+            alert(t.authSuccessPrefix + " " + messages[processId]);
+            closeModal();
+        }
+
+        function updateCalc() {
+            const amountInput = document.getElementById('depositAmount') || document.getElementById('lpStakeInput');
+            const periodSelect = document.getElementById('depositPeriod');
+            const resultInput = document.getElementById('depositExpectedResult');
+            const t = translations[currentLang] || translations['en'];
+
+            if (!amountInput || !periodSelect || !resultInput) return;
+
+            let rawVal = amountInput.value.replace(/,/g, '').trim();
+            let amount = parseFloat(rawVal);
+
+            if (isNaN(amount) || amount <= 0) {
+                resultInput.value = t.calcDefault;
+                return;
+            }
+
+            let period = parseInt(periodSelect.value);
+            let apy = 0.155;
+
+            if (period === 3) apy = 0.3141;
+            else if (period === 5) apy = 0.45;
+
+            let totalReturn = amount * Math.pow((1 + apy), period) - amount;
+
+            resultInput.value = t.calcResult(period, totalReturn.toLocaleString('en-US', {maximumFractionDigits: 2}));
+        }
+
+        function openInfoModal(type) {
+            activeModalType = type;
+            activeProcessId = null;
+            toggleDrawer();
+            renderInfoModalContent();
+        }
+
+        function renderInfoModalContent() {
+            const type = activeModalType;
+            if (!type) return;
+
+            const modal = document.getElementById('appModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+            const t = translations[currentLang] || translations['en'];
+
+            let titleText = "";
+            let bodyHtml = "";
+
+            if (type === 'whitepaper') {
+                titleText = t.modal_wp_title;
+                bodyHtml = t.modal_wp_body;
+            } else if (type === 'faq') {
+                titleText = t.modal_faq_title;
+                bodyHtml = t.modal_faq_body;
+            } else if (type === 'policies') {
+                titleText = t.modal_pol_title;
+                bodyHtml = t.modal_pol_body;
+            } else if (type === 'regulations') {
+                titleText = t.modal_reg_title;
+                bodyHtml = t.modal_reg_body;
+            } else if (type === 't165') {
+                titleText = t.modal_t165_title;
+                bodyHtml = t.modal_t165_body;
+            }
+
+            title.innerText = titleText;
+            content.innerHTML = bodyHtml;
             modal.classList.add('active');
         }
 
         function closeModal() {
-            document.getElementById('bankModal').classList.remove('active');
+            document.getElementById('appModal').classList.remove('active');
+            activeModalType = null;
+            activeProcessId = null;
         }
 
-        function closeModalOutside(e) {
-            if(e.target.id === 'bankModal') closeModal();
-        }
+        function changeLanguage(lang) {
+            currentLang = lang;
+            let t = translations[lang] || translations['en'];
 
-        function execTransfer() {
-            alert("정상 처리되었습니다!");
-            closeModal();
+            const metaTitleEl = document.getElementById('metaTitle');
+            if(metaTitleEl) {
+                metaTitleEl.innerText = t.dashTitle ? `HK WORLD BANK | ${t.dashTitle}` : "HK WORLD BANK";
+            }
+            
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if(t[key]) {
+                    el.innerText = t[key];
+                } else if(translations.en[key]) {
+                    el.innerText = translations.en[key];
+                }
+            });
+
+            const inputs = document.querySelectorAll('[data-i18n-placeholder]');
+            inputs.forEach(input => {
+                const key = input.getAttribute('data-i18n-placeholder');
+                if(t[key]) {
+                    input.placeholder = t[key];
+                } else if(translations.en[key]) {
+                    input.placeholder = translations.en[key];
+                }
+            });
+
+            document.dir = ['ar', 'fa', 'ur', 'he'].includes(lang) ? 'rtl' : 'ltr';
+            const slider = document.getElementById('sonponeSlider');
+            if(slider) {
+                updateSonpone(slider.value);
+            }
+
+            if (activeProcessId) {
+                renderProcessModalContent();
+            } else if (activeModalType) {
+                renderInfoModalContent();
+            }
         }
     </script>
 </body>

@@ -1,26 +1,25 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title id="metaTitle">HK WORLD BANK | 글로벌 차세대 분산 금융 및 AML 플랫폼</title>
-    <!-- FontAwesome Icons & Google Fonts -->
+    <title id="metaTitle">HK BANK & WORLD BANK | 글로벌 슈퍼 뱅킹 플랫폼</title>
+    <!-- FontAwesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #07090e;
-            --bg-secondary: #0d111a;
-            --card-bg: #131a26;
-            --card-border: #1f2a3e;
+            --bg-body: #f2f4f6;
+            --bg-app: #ffffff;
+            --toss-blue: #0064ff;
             --accent-gold: #ffaa00;
-            --accent-gold-glow: rgba(255, 170, 0, 0.35);
             --accent-cyan: #00e5ff;
-            --accent-cyan-glow: rgba(0, 229, 255, 0.3);
-            --accent-green: #00ffa3;
-            --text-main: #f0f4f8;
-            --text-muted: #8a99ad;
-            --danger: #ff4757;
+            --text-main: #191f28;
+            --text-muted: #8b95a1;
+            --card-bg: #f8f9fa;
+            --border-color: #e5e8eb;
+            --success: #00c853;
             --pi-color: #f7931a;
         }
 
@@ -28,7 +27,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -38,491 +37,295 @@
         }
 
         body {
-            background-color: var(--bg-primary);
+            background-color: #222;
             color: var(--text-main);
             display: flex;
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
             overflow-x: hidden;
-            padding: 0;
         }
 
         .app-container {
             width: 100%;
             max-width: 480px;
-            background-color: var(--bg-secondary);
+            background-color: var(--bg-app);
             min-height: 100vh;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.85);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
             position: relative;
             display: flex;
             flex-direction: column;
-            border-left: 1px solid rgba(255, 255, 255, 0.05);
-            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 80px;
         }
 
+        /* 상단 네비게이션 (삼선 햄버거 + 로고) */
         header {
             padding: 16px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(13, 17, 26, 0.95);
-            backdrop-filter: blur(12px);
+            background: #ffffff;
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .menu-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--card-border);
-            color: var(--accent-gold);
-            width: 44px;
-            height: 44px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 40px;
+            height: 40px;
             border-radius: 12px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 20px;
-            cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.1, 0.9, 0.2, 1);
-        }
-
-        .menu-btn:active {
-            transform: scale(0.92);
-        }
-
-        .header-center-title {
-            text-align: center;
-        }
-
-        .header-center-title h2 {
-            font-family: 'Orbitron', sans-serif;
             font-size: 18px;
-            font-weight: 900;
-            color: var(--accent-gold);
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px var(--accent-gold-glow);
+            cursor: pointer;
         }
 
-        .header-center-title p {
-            font-size: 10px;
-            color: var(--accent-cyan);
-            letter-spacing: 0.5px;
-        }
-
-        .profile-badge {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--card-border), var(--bg-primary));
+        .bank-logo {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-main);
             display: flex;
-            justify-content: center;
             align-items: center;
-            color: var(--accent-gold);
-            font-weight: 900;
-            font-size: 16px;
-            border: 1px solid var(--card-border);
+            gap: 6px;
+            font-family: 'Orbitron', sans-serif;
         }
 
+        .bank-logo span.hk {
+            background: var(--toss-blue);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        /* 60개국어 바 */
         .lang-bar {
-            padding: 10px 20px;
-            background: rgba(0, 0, 0, 0.4);
+            padding: 8px 20px;
+            background: #f8f9fa;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .lang-info {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 12px;
-            color: var(--accent-cyan);
-            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 600;
         }
 
         .lang-select {
-            background: var(--card-bg);
-            color: #fff;
-            border: 1px solid var(--card-border);
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 12px;
+            background: #ffffff;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 11px;
             outline: none;
             cursor: pointer;
-            max-width: 170px;
+            max-width: 150px;
         }
 
         main {
-            padding: 24px 20px;
+            padding: 20px;
             flex: 1;
+            overflow-y: auto;
         }
 
-        .hero-section {
-            text-align: center;
-            margin-bottom: 24px;
+        .welcome-banner {
+            margin-bottom: 20px;
         }
 
-        .main-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 32px;
-            font-weight: 900;
-            color: var(--accent-gold);
-            text-shadow: 0 0 25px var(--accent-gold-glow);
-            letter-spacing: 2px;
-            margin-bottom: 6px;
-            text-align: center;
-        }
-
-        .sub-title {
-            font-size: 16px;
-            color: var(--accent-cyan);
+        .welcome-banner h2 {
+            font-size: 21px;
             font-weight: 700;
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px var(--accent-cyan-glow);
-            text-align: center;
-        }
-
-        .dashboard-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 22px;
-            margin-bottom: 28px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .dashboard-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-gold), var(--accent-cyan), var(--accent-green));
-        }
-
-        .dashboard-header {
-            font-size: 18px;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .pi-box {
-            background: rgba(0, 0, 0, 0.35);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 14px;
-            padding: 16px;
-            margin-bottom: 12px;
-        }
-
-        .pi-box-title {
-            font-size: 12px;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
-        }
-
-        .pi-logo-icon {
-            width: 22px;
-            height: 22px;
-            background: var(--pi-color);
-            color: #fff;
-            border-radius: 50%;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: 900;
-            font-size: 13px;
-            font-family: serif;
-            box-shadow: 0 0 8px rgba(247, 147, 26, 0.5);
-        }
-
-        .pi-amount {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 22px;
-            font-weight: 700;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .pi-amount .unit {
-            color: var(--accent-gold);
-            font-size: 14px;
-        }
-
-        .interest-box {
-            background: rgba(0, 0, 0, 0.35);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 14px;
-            padding: 16px;
-            margin-bottom: 18px;
-        }
-
-        .interest-title {
-            font-size: 12px;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
-        }
-
-        .interest-value {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--accent-green);
-            transition: color 0.3s ease;
-        }
-
-        .mainnet-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #ffaa00, #e67e22);
-            color: #000;
-            border: none;
-            padding: 15px;
-            border-radius: 14px;
-            font-weight: 900;
-            font-size: 15px;
-            cursor: pointer;
-            box-shadow: 0 4px 20px var(--accent-gold-glow);
-            transition: all 0.2s ease;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 18px;
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: #fff;
-            letter-spacing: -0.5px;
-        }
-
-        .section-sub {
-            font-size: 11px;
-            color: var(--accent-green);
-            font-family: 'Roboto Mono', monospace;
-        }
-
-        .network-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 32px;
-        }
-
-        .network-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 16px;
-            cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.1, 0.9, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            min-height: 135px;
-        }
-
-        .card-top-center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 10px;
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .card-icon-1 { color: #00e5ff; font-size: 20px; }
-        .card-icon-2 { color: #ffaa00; font-size: 20px; }
-        .card-icon-3 { color: #00ffa3; font-size: 20px; }
-        .card-icon-4 { color: #9b59b6; font-size: 20px; }
-        .card-icon-5 { color: #ff4757; font-size: 20px; }
-        .card-icon-6 { color: #2ecc71; font-size: 20px; }
-        .card-icon-7 { color: #3498db; font-size: 20px; }
-        .card-icon-8 { color: #e74c3c; font-size: 20px; }
-        .card-icon-9 { color: #f1c40f; font-size: 20px; }
-        .card-icon-10 { color: #00e5ff; font-size: 20px; }
-
-        .card-title {
-            font-size: 15px;
-            font-weight: 800;
-            color: #fff;
+            color: var(--text-main);
             margin-bottom: 4px;
         }
 
-        .card-desc {
-            font-size: 11px;
+        .welcome-banner p {
+            font-size: 13px;
             color: var(--text-muted);
-            line-height: 1.35;
         }
 
-        .agi-section {
+        /* 미디어 바로가기 버튼 배너 (유튜브 & 틱톡) */
+        .media-banner {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .media-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .media-btn.youtube {
+            background: rgba(255, 0, 0, 0.1);
+            color: #ff0000;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+
+        .media-btn.tiktok {
+            background: rgba(254, 44, 85, 0.1);
+            color: #fe2c55;
+            border: 1px solid rgba(254, 44, 85, 0.2);
+        }
+
+        /* 계좌 카드 */
+        .account-card {
             background: var(--card-bg);
-            border: 1px solid var(--card-border);
+            border: 1px solid var(--border-color);
             border-radius: 20px;
             padding: 20px;
-            margin-bottom: 32px;
-        }
-
-        .agi-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
             margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
         }
 
-        .agi-avatar {
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(135deg, var(--accent-cyan), #0072ff);
-            border-radius: 14px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 22px;
-            color: #fff;
-            box-shadow: 0 0 15px var(--accent-cyan-glow);
-        }
-
-        .agi-title-box h3 {
-            font-size: 17px;
-            color: #fff;
-            font-weight: 800;
-        }
-
-        .agi-title-box p {
-            font-size: 11px;
-            color: var(--accent-cyan);
-        }
-
-        .sonpone-control {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 14px;
-            margin-bottom: 16px;
-        }
-
-        .sonpone-label {
+        .account-top {
             display: flex;
             justify-content: space-between;
-            font-size: 12px;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .account-name {
+            font-size: 14px;
+            font-weight: 600;
             color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-
-        .range-slider {
-            width: 100%;
-            accent-color: var(--accent-gold);
-            height: 5px;
-            background: var(--card-border);
-            border-radius: 3px;
-        }
-
-        .chat-box {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 14px;
-            padding: 14px;
-            height: 210px;
-            overflow-y: auto;
-            margin-bottom: 12px;
             display: flex;
-            flex-direction: column;
-            gap: 12px;
+            align-items: center;
+            gap: 6px;
         }
 
-        .chat-msg {
-            max-width: 88%;
-            padding: 12px 14px;
-            border-radius: 14px;
-            font-size: 12px;
-            line-height: 1.45;
+        .account-badge {
+            background: #e8f3ff;
+            color: var(--toss-blue);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
         }
 
-        .chat-msg.beeni {
-            background: rgba(0, 229, 255, 0.1);
-            border: 1px solid rgba(0, 229, 255, 0.25);
-            color: #d1f7ff;
-            align-self: flex-start;
+        .account-balance {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 16px;
         }
 
-        .chat-msg.user {
-            background: rgba(255, 170, 0, 0.15);
-            border: 1px solid rgba(255, 170, 0, 0.35);
-            color: #ffe6b3;
-            align-self: flex-end;
-        }
-
-        .chat-input-box {
+        .account-actions {
             display: flex;
             gap: 8px;
         }
 
-        .chat-input {
+        .btn-action {
             flex: 1;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--card-border);
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 10px;
             border-radius: 10px;
-            padding: 12px 14px;
-            color: #fff;
+            font-weight: 600;
             font-size: 13px;
-            outline: none;
+            color: var(--text-main);
+            cursor: pointer;
+            text-align: center;
         }
 
-        .chat-send-btn {
-            background: var(--accent-gold);
-            color: #000;
+        .btn-action.primary {
+            background: var(--toss-blue);
+            color: #ffffff;
             border: none;
-            padding: 0 18px;
-            border-radius: 10px;
-            font-weight: 800;
-            font-size: 13px;
+        }
+
+        /* 빠른 메뉴 그리드 */
+        .quick-menu-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .quick-menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
             cursor: pointer;
         }
 
-        footer {
-            padding: 24px 20px;
-            background: #05070a;
-            border-top: 1px solid var(--card-border);
-            text-align: center;
-            font-size: 11px;
-            color: var(--text-muted);
-            line-height: 1.8;
+        .quick-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--card-bg);
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            color: var(--toss-blue);
+            border: 1px solid var(--border-color);
         }
 
+        .quick-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* 하단 네비게이션 탭 */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+            background: #ffffff;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            z-index: 100;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: var(--text-muted);
+            font-size: 11px;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .nav-item.active {
+            color: var(--toss-blue);
+            font-weight: 700;
+        }
+
+        /* 삼선 햄버거 서랍형 메뉴 (Drawer) */
         .drawer-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(6px);
+            background: rgba(0, 0, 0, 0.6);
             z-index: 200;
             opacity: 0;
             pointer-events: none;
@@ -537,17 +340,14 @@
         .drawer-content {
             position: fixed;
             top: 0;
-            left: -330px;
-            width: 310px;
+            left: -320px;
+            width: 300px;
             height: 100vh;
-            background: var(--bg-secondary);
-            border-right: 1px solid var(--card-border);
+            background: #ffffff;
             z-index: 201;
             transition: left 0.3s cubic-bezier(0.1, 0.9, 0.2, 1);
             overflow-y: auto;
             padding: 24px 20px;
-            display: flex;
-            flex-direction: column;
         }
 
         .drawer-overlay.active .drawer-content {
@@ -558,76 +358,64 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--card-border);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .drawer-title {
             font-size: 16px;
-            font-weight: 900;
-            color: var(--accent-gold);
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .drawer-close {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 22px;
-            cursor: pointer;
+            font-weight: 800;
+            color: var(--toss-blue);
         }
 
         .menu-group {
-            margin-bottom: 22px;
+            margin-bottom: 20px;
         }
 
         .menu-group-title {
             font-size: 11px;
-            color: var(--accent-cyan);
+            color: var(--text-muted);
             text-transform: uppercase;
-            font-weight: 800;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
 
         .menu-item {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 12px 14px;
+            padding: 10px 12px;
             color: var(--text-main);
             text-decoration: none;
             font-size: 13px;
-            border-radius: 10px;
-            margin-bottom: 6px;
-            background: rgba(255, 255, 255, 0.02);
-            transition: all 0.2s ease;
+            border-radius: 8px;
+            margin-bottom: 4px;
+            background: var(--card-bg);
             cursor: pointer;
         }
 
         .menu-item i {
-            width: 20px;
+            color: var(--toss-blue);
+            width: 18px;
             text-align: center;
-            color: var(--accent-gold);
         }
 
+        /* 모달 시트 */
         .modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.5);
             z-index: 300;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.25s ease;
-            padding: 20px;
+            transition: opacity 0.3s ease;
         }
 
         .modal.active {
@@ -635,38 +423,45 @@
             pointer-events: auto;
         }
 
-        .modal-body {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
+        .modal-sheet {
+            background: #ffffff;
             width: 100%;
-            max-width: 440px;
+            max-width: 480px;
+            border-top-left-radius: 24px;
+            border-top-right-radius: 24px;
+            padding: 24px 20px 36px 20px;
             max-height: 85vh;
-            border-radius: 20px;
-            padding: 24px;
             overflow-y: auto;
-            position: relative;
+            transform: translateY(100%);
+            transition: transform 0.3s cubic-bezier(0.1, 0.9, 0.2, 1);
         }
 
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 18px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--card-border);
+        .modal.active .modal-sheet {
+            transform: translateY(0);
         }
 
-        .modal-title {
-            font-size: 17px;
-            font-weight: 800;
-            color: var(--accent-gold);
+        .form-control {
+            width: 100%;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 14px;
+            font-size: 15px;
+            color: var(--text-main);
+            outline: none;
+            margin-top: 6px;
+            margin-bottom: 16px;
         }
 
-        .modal-close {
-            background: none;
+        .btn-submit {
+            width: 100%;
+            background: var(--toss-blue);
+            color: #fff;
             border: none;
-            color: var(--text-muted);
-            font-size: 22px;
+            padding: 16px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 700;
             cursor: pointer;
         }
     </style>
@@ -674,751 +469,201 @@
 <body>
 
     <div class="app-container">
-        <!-- Sticky Header Nav Bar -->
+        <!-- 상단 헤더 (삼선 햄버거 메뉴 포함) -->
         <header>
             <button class="menu-btn" onclick="toggleDrawer()">
                 <i class="fa-solid fa-bars"></i>
             </button>
-            <div class="header-center-title">
-                <h2>HK WORLD BANK</h2>
-                <p data-i18n="headerSubText">글로벌 차세대 분산 금융 및 AML 컴플라이언스</p>
+            <div class="bank-logo">
+                <span class="hk">HK</span> BANK & WORLD
             </div>
-            <div class="profile-badge">HK</div>
+            <div style="width: 40px;"></div>
         </header>
 
-        <!-- 60 Languages Dynamic Multi-Language Selector Engine -->
+        <!-- 60개국어 셀렉트 바 -->
         <div class="lang-bar">
-            <div class="lang-info">
-                <i class="fa-solid fa-globe"></i>
-                <span data-i18n="langEngineLabel">60개국어 다국어 엔진 (AML & 뼈속까지 변환)</span>
-            </div>
+            <span class="lang-info" data-i18n="langLabel">🌍 60개국어 다국어 엔진</span>
             <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
                 <option value="ko" selected>🇰🇷 한국어</option>
                 <option value="en">🇺🇸 English</option>
-                <option value="zh">🇨🇳 中文 (简体)</option>
+                <option value="zh">🇨🇳 中文</option>
                 <option value="ja">🇯🇵 日本語</option>
                 <option value="vi">🇻🇳 Tiếng Việt</option>
                 <option value="th">🇹🇭 ไทย</option>
-                <option value="id">🇮🇩 Bahasa Indonesia</option>
-                <option value="es">🇪🇸 Español</option>
-                <option value="pt">🇧🇷 Português</option>
-                <option value="fr">🇫🇷 Français</option>
-                <option value="de">🇩🇪 Deutsch</option>
-                <option value="ru">🇷🇺 Русский</option>
-                <option value="ar">🇸🇦 العربية</option>
-                <option value="hi">🇮🇳 हिन्दी</option>
-                <option value="tr">🇹🇷 Türkçe</option>
-                <option value="it">🇮🇹 Italiano</option>
-                <option value="nl">🇳🇱 Nederlands</option>
-                <option value="pl">🇵🇱 Polski</option>
-                <option value="uk">🇺🇦 Українська</option>
-                <option value="ro">🇷🇴 Română</option>
-                <option value="el">🇬🇷 Ελληνικά</option>
-                <option value="hu">🇭🇺 Magyar</option>
-                <option value="cs">🇨🇿 Čeština</option>
-                <option value="sv">🇸🇪 Svenska</option>
-                <option value="no">🇳🇴 Norsk</option>
-                <option value="da">🇩🇰 Dansk</option>
-                <option value="fi">🇫🇮 Suomi</option>
-                <option value="he">🇮🇱 עברית</option>
-                <option value="fa">🇮🇷 فارسی</option>
-                <option value="ur">🇵🇰 اردو</option>
-                <option value="bn">🇧🇩 বাংলা</option>
-                <option value="ms">🇲🇾 Bahasa Melayu</option>
-                <option value="km">🇰🇭 ភាសាខ្មែរ</option>
-                <option value="my">🇲🇲 မြန်မာစာ</option>
-                <option value="lo">🇱aos ພາສາລາວ</option>
-                <option value="ne">🇳🇵 नेपाली</option>
-                <option value="si">🇱🇰 සිංහල</option>
-                <option value="sw">🇰🇪 Kiswahili</option>
-                <option value="am">🇪🇹 አማርኛ</option>
-                <option value="ha">🇳🇬 Hausa</option>
-                <option value="yo">🇳🇬 Yorùbá</option>
-                <option value="uz">🇺🇿 Oʻzbekcha</option>
-                <option value="kk">🇰🇿 Қазақ тілі</option>
-                <option value="az">🇦🇿 Azərbaycanca</option>
-                <option value="ka">🇬🇪 ქართული</option>
-                <option value="hy">🇦🇲 Հայերեն</option>
-                <option value="mn">🇲🇳 Монгол</option>
-                <option value="es-mx">🇲🇽 Español (MX)</option>
-                <option value="pt-pt">🇵🇹 Português (PT)</option>
-                <option value="sr">🇷🇸 Српски</option>
-                <option value="hr">🇭🇷 Hrvatski</option>
-                <option value="bg">🇧🇬 Български</option>
-                <option value="sk">🇸🇰 Slovenčina</option>
-                <option value="lt">🇱🇹 Lietuvių</option>
-                <option value="et">🇪🇪 Eesti</option>
-                <option value="lv">🇱🇻 Latviešu</option>
-                <option value="is">🇮🇸 Íslenska</option>
-                <option value="fil">🇵🇭 Filipino</option>
-                <option value="zu">🇿🇦 isiZulu</option>
-                <option value="so">🇸🇴 Soomaali</option>
             </select>
         </div>
 
         <main>
-            <div class="hero-section">
-                <h1 class="main-title">HK WORLD BANK</h1>
-                <p class="sub-title" data-i18n="subTitle">빠른 금융 작업 및 AML 컴플라이언스 마스터 코어</p>
+            <!-- 웰컴 배너 -->
+            <div class="welcome-banner">
+                <h2 data-i18n="welcomeMsg">글로벌 슈퍼 뱅킹 환영합니다 👋</h2>
+                <p data-i18n="subWelcome">HK 글로벌 슈퍼 뱅킹 시스템 가동 중</p>
             </div>
 
-            <div class="dashboard-card">
-                <div class="dashboard-header">
-                    <span data-i18n="dashTitle">개인 자산 대시보드 (AML 검증 완료)</span>
-                    <i class="fa-solid fa-vault" style="color: var(--accent-gold);"></i>
-                </div>
-
-                <div class="pi-box">
-                    <div class="pi-box-title">
-                        <span class="pi-logo-icon">π</span>
-                        <span data-i18n="piSyncLabel">보유 수량 (PI 수량 원장 동기화)</span>
-                    </div>
-                    <div class="pi-amount">
-                        <span id="walletBalanceDisplay">314,159.000000</span>
-                        <span class="unit">PI / HK</span>
-                    </div>
-                </div>
-
-                <div class="interest-box">
-                    <div class="interest-title">
-                        <i class="fa-solid fa-chart-line" style="color: var(--accent-green);"></i>
-                        <span data-i18n="interestLabel">실시간 누적 이자 (3년 31.41% APY 복리)</span>
-                    </div>
-                    <div class="interest-value" id="accumulatedInterest">
-                        12,450,892.600000 HK
-                    </div>
-                </div>
-
-                <button class="mainnet-btn" data-i18n="mainnetBtnText" onclick="triggerMainnetRequest()">
-                    코어팀에게 메인넷 즉시 신청하기
-                </button>
+            <!-- 유튜브 & 틱톡 공식 채널 바로가기 버튼 -->
+            <div class="media-banner">
+                <a href="https://www.youtube.com/@Hyekong2026" target="_blank" class="media-btn youtube">
+                    <i class="fa-brands fa-youtube" style="font-size: 16px;"></i> YouTube (@Hyekong2026)
+                </a>
+                <a href="https://www.tiktok.com/@hyekong2026" target="_blank" class="media-btn tiktok">
+                    <i class="fa-brands fa-tiktok" style="font-size: 15px;"></i> TikTok (@hyekong2026)
+                </a>
             </div>
 
-            <div class="section-header">
-                <h2 class="section-title" data-i18n="gridSectionTitle">분산 연동망 및 AML 컴플라이언스</h2>
-                <span class="section-sub" data-i18n="gridSectionSub">[10대 연동망 + AML 프로세스 작동]</span>
-            </div>
-
-            <div class="network-grid">
-                <div class="network-card" onclick="openProcessModal('wallet')">
-                    <div class="card-top-center"><i class="fa-solid fa-link card-icon-1"></i></div>
-                    <div>
-                        <div class="card-title" data-i18n="net1_title">지갑연결</div>
-                        <div class="card-desc" data-i18n="net1_desc">노드 지갑 프로토콜 연동 및 자동 연동</div>
-                    </div>
+            <!-- 1. HK 주거래 통장 -->
+            <div class="account-card">
+                <div class="account-top">
+                    <span class="account-name"><i class="fa-solid fa-wallet" style="color:var(--toss-blue);"></i> <span data-i18n="acc1_title">HK 주거래통장</span></span>
+                    <span class="account-badge" data-i18n="acc1_badge">출금가능</span>
                 </div>
-                <div class="network-card" onclick="openProcessModal('transfer')">
-                    <div class="card-top-center"><i class="fa-solid fa-paper-plane card-icon-2"></i></div>
-                    <div>
-                        <div class="card-title" data-i18n="net2_title">송금</div>
-                        <div class="card-desc" data-i18n="net2_desc">대륙간 초고속 멀티시그 암호화 전송 시스템</div>
-                    </div>
-                </div>
-                <div class="network-card" onclick="openProcessModal('payment')">
-                    <div class="card-top-center"><i class="fa-solid fa-credit-card card-icon-3"></i></div>
-                    <div>
-                        <div class="card-title" data-i18n="net3_title">결재</div>
-                        <div class="card-desc" data-i18n="net3_desc">현금·카드·타코인 실시간 상거래 에스크로</div>
-                    </div>
-                </div>
-                <div class="network-card" onclick="openProcessModal('deposit')">
-                    <div class="card-top-center"><i class="fa-solid fa-vault card-icon-4"></i></div>
-                    <div>
-                        <div class="card-title" data-i18n="net4_title">예치</div>
-                        <div class="card-desc" data-i18n="net4_desc">3년 만기 31.41% APY 자산 신탁 볼트</div>
-                    </div>
-                </div>
-                <div class="network-card" onclick="openProcessModal('reward')">
-                    <div class="card-top-center"><i class="fa-solid fa-gift card-icon-5"></i></div>
-                    <div>
-                        <div class="card-title" data-i18n="net5_title">보상</div>
-                        <div class="card-desc" data-i18n="net5_desc">기여도 기반 인센티브 볼트 적립 엔진</div>
-                    </div>
-                </div>
-                <div class="network-card" onclick="openProcessModal('ubi')">
-                    <div class="card-top-center"><i class="fa-solid fa-hand-holding-dollar card-icon-6"></i></div>
-                    <div>
-                        <div class="card-title" data-i18n="net6_title">기본소득</div>
-                        <div class="card-desc" data-i18n="net6_desc">HK 사회 재단 & 지자체 UBI 분배 모델</div>
-                    </div>
-                </div>
-                <div class="network-card" onclick="openProcessModal('swap')">
-                    <div class="card-top-center"><i class="fa-solid fa-right-left card-icon-7"></i></div>
-                    <div>
-                        <div class="card-title" data-i18n="net7_title">스왑</div>
-                        <div class="card-desc" data-i18n="net7_desc">현금/카드/타코인 입금 즉각 코인 구매 스왑</div>
-                    </div>
-                </div>
-                <div class="network-card" onclick="openProcessModal('dex')">
-                    <div class="card-top-center"><i class="fa-solid fa-bolt card-icon-8"></i></div>
-                    <div>
-                        <div class="card-title" data-i18n="net8_title">DEX 스왑</div>
-                        <div class="card-desc" data-i18n="net8_desc">탈중앙화 오더레스 P2P 유동성 자동매칭</div>
-                    </div>
-                </div>
-                <div class="network-card" onclick="openProcessModal('lp')">
-                    <div class="card-top-center"><i class="fa-solid fa-layer-group card-icon-9"></i></div>
-                    <div>
-                        <div class="card-title" data-i18n="net9_title">LP 스테이킹</div>
-                        <div class="card-desc" data-i18n="net9_desc">유동성 공급 증명(PoL) 및 고배당 권한</div>
-                    </div>
-                </div>
-                <div class="network-card" onclick="openProcessModal('aml')">
-                    <div class="card-top-center"><i class="fa-solid fa-shield-halved card-icon-10"></i></div>
-                    <div>
-                        <div class="card-title" data-i18n="net10_title">자금세탁방지(AML)</div>
-                        <div class="card-desc" data-i18n="net10_desc">글로벌 자금세탁방지 및 실시간 트랜잭션 검증</div>
-                    </div>
+                <div class="account-balance" id="mainBalanceDisplay">314,159,000 원</div>
+                <div class="account-actions">
+                    <button class="btn-action" onclick="openModal('transfer')" data-i18n="btn_transfer">송금하기</button>
+                    <button class="btn-action primary" onclick="openModal('deposit')" data-i18n="btn_deposit">채우기</button>
                 </div>
             </div>
 
-            <div class="agi-section">
-                <div class="agi-header">
-                    <div class="agi-avatar"><i class="fa-solid fa-robot"></i></div>
-                    <div class="agi-title-box">
-                        <h3 data-i18n="agiTitle">AGI 삐니 고객센터</h3>
-                        <p data-i18n="agiSub">손폰(SONPONE) 자동 반응 및 AI 오케스트레이션</p>
-                    </div>
+            <!-- 2. Pi 신탁 세이프박스 -->
+            <div class="account-card">
+                <div class="account-top">
+                    <span class="account-name"><span style="color:var(--pi-color); font-weight:900;">π</span> <span data-i18n="acc2_title">Pi 신탁 세이프박스</span></span>
+                    <span class="account-badge" style="background:#e6fffa; color:#00a3c4;" data-i18n="acc2_badge">연 31.41% 복리</span>
                 </div>
-
-                <div class="sonpone-control">
-                    <div class="sonpone-label">
-                        <span data-i18n="sonponeLabelText">손폰(SONPONE) 감지 감도:</span>
-                        <span class="val" id="sonponeVal">99.9% (실시간 싱크)</span>
-                    </div>
-                    <input type="range" class="range-slider" min="50" max="100" value="99" id="sonponeSlider" oninput="updateSonpone(this.value)">
+                <div class="account-balance" id="piVaultDisplay">314,159.00 PI</div>
+                <div class="account-actions">
+                    <button class="btn-action" onclick="openModal('vault')" data-i18n="btn_manage">관리하기</button>
+                    <button class="btn-action primary" onclick="openModal('swap')" data-i18n="btn_swap">즉시 환전</button>
                 </div>
+            </div>
 
-                <div class="chat-box" id="chatBox">
-                    <div class="chat-msg beeni" data-i18n="initialBeeniMsg">
-                        [AGI 삐니]: 테스트 파이 환경, 60개국어 실시간 교차 추론 및 AML 컴플라이언스 시스템이 완벽하게 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!
-                    </div>
+            <!-- 빠른 메뉴 그리드 (10대 연동망 바로가기) -->
+            <div class="quick-menu-grid">
+                <div class="quick-menu-item" onclick="openModal('transfer')">
+                    <div class="quick-icon"><i class="fa-solid fa-paper-plane"></i></div>
+                    <span class="quick-label" data-i18n="net_transfer">송금</span>
                 </div>
-
-                <div class="chat-input-box">
-                    <input type="text" class="chat-input" id="chatInput" data-i18n-placeholder="chatInputPlaceholder" placeholder="삐니에게 질문 입력..." onkeypress="handleKeyPress(event)">
-                    <button class="chat-send-btn" data-i18n="chatSendBtn" onclick="sendChatMessage()">전송</button>
+                <div class="quick-menu-item" onclick="openModal('deposit')">
+                    <div class="quick-icon"><i class="fa-solid fa-won-sign"></i></div>
+                    <span class="quick-label" data-i18n="net_deposit">예치</span>
+                </div>
+                <div class="quick-menu-item" onclick="openModal('loan')">
+                    <div class="quick-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                    <span class="quick-label" data-i18n="net_ubi">기본소득</span>
+                </div>
+                <div class="quick-menu-item" onclick="openModal('swap')">
+                    <div class="quick-icon"><i class="fa-solid fa-right-left"></i></div>
+                    <span class="quick-label" data-i18n="net_swap">스왑</span>
                 </div>
             </div>
         </main>
 
-        <footer>
-            <p class="copyright">© 2026 HK WORLD BANK. All Rights Reserved.</p>
-            <p class="socials" style="margin-bottom: 12px;">Support: support@hkwb.world</p>
-        </footer>
+        <!-- 하단 네비게이션 바 -->
+        <nav class="bottom-nav">
+            <a class="nav-item active"><i class="fa-solid fa-house"></i><span data-i18n="tab_home">홈</span></a>
+            <a class="nav-item" onclick="alert('자산 통합 리포트')"><i class="fa-solid fa-chart-pie"></i><span data-i18n="tab_asset">자산</span></a>
+            <a class="nav-item" onclick="alert('혜택 및 UBI 분배')"><i class="fa-solid fa-bolt"></i><span data-i18n="tab_benefit">혜택</span></a>
+            <a class="nav-item" onclick="toggleDrawer()"><i class="fa-solid fa-bars"></i><span data-i18n="tab_menu">전체메뉴</span></a>
+        </nav>
     </div>
 
-    <!-- Drawer Navigation -->
+    <!-- 삼선 햄버거 서랍형 메뉴 (Drawer) -->
     <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawerOutside(event)">
         <div class="drawer-content">
             <div class="drawer-header">
-                <span class="drawer-title" data-i18n="drawerTitle">HK NAVIGATOR</span>
-                <button class="drawer-close" onclick="toggleDrawer()"><i class="fa-solid fa-xmark"></i></button>
+                <span class="drawer-title">HK NAVIGATOR</span>
+                <button onclick="toggleDrawer()" style="background:none;border:none;font-size:20px;cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="menu-group">
-                <div class="menu-group-title" data-i18n="menuGroup1Title">Core Legal & Compliance</div>
-                <div class="menu-item" onclick="openInfoModal('whitepaper')"><i class="fa-solid fa-file-contract"></i> <span data-i18n="menu_wp">백서 (Whitepaper v3.1 상세)</span></div>
-                <div class="menu-item" onclick="openInfoModal('faq')"><i class="fa-solid fa-circle-question"></i> <span data-i18n="menu_faq">자주 묻는 질문 (FAQ 20선 심층)</span></div>
-                <div class="menu-item" onclick="openInfoModal('policies')"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="menu_pol">3대 POLICIES (약관·보안·프라이버시)</span></div>
-                <div class="menu-item" onclick="openInfoModal('regulations')"><i class="fa-solid fa-scale-balanced"></i> <span data-i18n="menu_reg">11개국 디지털 자산법 컴플라이언스</span></div>
+                <div class="menu-group-title">Official Media Hubs</div>
+                <a class="menu-item" href="https://www.youtube.com/@Hyekong2026" target="_blank"><i class="fa-brands fa-youtube" style="color:#ff0000;"></i> YouTube (@Hyekong2026)</a>
+                <a class="menu-item" href="https://www.tiktok.com/@hyekong2026" target="_blank"><i class="fa-brands fa-tiktok" style="color:#fe2c55;"></i> TikTok (@hyekong2026)</a>
+            </div>
+            <div class="menu-group">
+                <div class="menu-group-title">HK Global Ecosystem Hubs</div>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-ROBOT" target="_blank"><i class="fa-solid fa-robot"></i> 로봇: HK-ROBOT</a>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-NEXUS" target="_blank"><i class="fa-solid fa-glasses"></i> 스마트 글래스: HK-NEXUS</a>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-UAM" target="_blank"><i class="fa-solid fa-helicopter"></i> 도심항공교통: HK-UAM</a>
             </div>
         </div>
     </div>
 
-    <!-- Modal Container -->
-    <div class="modal" id="appModal">
-        <div class="modal-body">
-            <div class="modal-header">
-                <h3 class="modal-title" id="modalTitle">프로세스 구동</h3>
-                <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+    <!-- 모달 창 -->
+    <div class="modal" id="bankModal" onclick="closeModalOutside(event)">
+        <div class="modal-sheet">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                <h3 id="modalTitle" style="font-size:18px; font-weight:700;">금융 작업</h3>
+                <button onclick="closeModal()" style="background:none;border:none;font-size:20px;cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <div id="modalContent"></div>
+            <div id="modalBodyContent"></div>
         </div>
     </div>
 
-    <!-- 60개국어 완벽 풀버전 다국어 번역 엔진 스크립트 -->
+    <!-- 통합 스크립트 -->
     <script>
-        const i18nData = {
+        let currentBalance = 314159000;
+        let currentLang = 'ko';
+
+        const dict = {
             ko: {
-                headerSubText: "글로벌 차세대 분산 금융 및 AML 컴플라이언스",
-                langEngineLabel: "60개국어 다국어 엔진 (AML & 뼈속까지 변환)",
-                subTitle: "빠른 금융 작업 및 AML 컴플라이언스 마스터 코어",
-                dashTitle: "개인 자산 대시보드 (AML 검증 완료)",
-                piSyncLabel: "보유 수량 (PI 수량 원장 동기화)",
-                interestLabel: "실시간 누적 이자 (3년 31.41% APY 복리)",
-                mainnetBtnText: "코어팀에게 메인넷 즉시 신청하기",
-                gridSectionTitle: "분산 연동망 및 AML 컴플라이언스",
-                gridSectionSub: "[10대 연동망 + AML 프로세스 작동]",
-                agiTitle: "AGI 삐니 고객센터",
-                agiSub: "손폰(SONPONE) 자동 반응 및 AI 오케스트레이션",
-                sonponeLabelText: "손폰(SONPONE) 감지 감도:",
-                syncText: "(실시간 싱크)",
-                initialBeeniMsg: "[AGI 삐니]: 테스트 파이 환경, 60개국어 실시간 교차 추론 및 AML 컴플라이언스 시스템이 완벽하게 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!",
-                chatInputPlaceholder: "삐니에게 질문 입력...",
-                chatSendBtn: "전송",
-                net1_title: "지갑연결", net1_desc: "노드 지갑 프로토콜 연동 및 자동 연동",
-                net2_title: "송금", net2_desc: "대륙간 초고속 멀티시그 암호화 전송 시스템",
-                net3_title: "결재", net3_desc: "현금·카드·타코인 실시간 상거래 에스크로",
-                net4_title: "예치", net4_desc: "3년 만기 31.41% APY 자산 신탁 볼트",
-                net5_title: "보상", net5_desc: "기여도 기반 인센티브 볼트 적립 엔진",
-                net6_title: "기본소득", net6_desc: "HK 사회 재단 & 지자체 UBI 분배 모델",
-                net7_title: "스왑", net7_desc: "현금/카드/타코인 입금 즉각 코인 구매 스왑",
-                net8_title: "DEX 스왑", net8_desc: "탈중앙화 오더레스 P2P 유동성 자동매칭",
-                net9_title: "LP 스테이킹", net9_desc: "유동성 공급 증명(PoL) 및 고배당 권한",
-                net10_title: "자금세탁방지(AML)", net10_desc: "글로벌 자금세탁방지 및 실시간 트랜잭션 검증",
-                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
-                menu_wp: "백서 (Whitepaper v3.1 상세)", menu_faq: "자주 묻는 질문 (FAQ 20선 심층)", menu_pol: "3대 POLICIES (약관·보안·프라이버시)", menu_reg: "11개국 디지털 자산법 컴플라이언스"
+                langLabel: "🌍 60개국어 다국어 엔진", welcomeMsg: "글로벌 슈퍼 뱅킹 환영합니다 👋", subWelcome: "HK 글로벌 슈퍼 뱅킹 시스템 가동 중",
+                acc1_title: "HK 주거래통장", acc1_badge: "출금가능", btn_transfer: "송금하기", btn_deposit: "채우기",
+                acc2_title: "Pi 신탁 세이프박스", acc2_badge: "연 31.41% 복리", btn_manage: "관리하기", btn_swap: "즉시 환전",
+                net_transfer: "송금", net_deposit: "예치", net_ubi: "기본소득", net_swap: "스왑",
+                tab_home: "홈", tab_asset: "자산", tab_benefit: "혜택", tab_menu: "전체메뉴"
             },
             en: {
-                headerSubText: "Global Next-Gen DeFi & AML Compliance",
-                langEngineLabel: "60-Language Engine (AML Fully Integrated)",
-                subTitle: "Fast Financial Operation & AML Compliance Master Core",
-                dashTitle: "Personal Asset Dashboard (AML Verified)",
-                piSyncLabel: "Holding Amount (Pi Ledger Sync)",
-                interestLabel: "Real-time Accumulated Interest (3-Yr 31.41% APY)",
-                mainnetBtnText: "Request Mainnet to Core Team Now",
-                gridSectionTitle: "Distributed Networks & AML Compliance",
-                gridSectionSub: "[10 Layers + AML Process Active]",
-                agiTitle: "AGI Beeni Support Center",
-                agiSub: "SONPONE Auto-Response & AI Orchestration",
-                sonponeLabelText: "SONPONE Detection Sensitivity:",
-                syncText: "(Live Sync)",
-                initialBeeniMsg: "[AGI Beeni]: Testnet Pi environment, 60-language system and AML compliance engine fully operational! Chairman Jaewan Lee, how may I assist you?",
-                chatInputPlaceholder: "Ask Beeni...",
-                chatSendBtn: "Send",
-                net1_title: "Wallet Connect", net1_desc: "Node wallet protocol auto-link",
-                net2_title: "Transfer", net2_desc: "Multisig encrypted cross-border transfer",
-                net3_title: "Payment", net3_desc: "Real-time commerce escrow",
-                net4_title: "Vault Deposit", net4_desc: "3-Year 31.41% APY trust vault",
-                net5_title: "Rewards", net5_desc: "Contribution incentive accrual engine",
-                net6_title: "UBI", net6_desc: "HK Social Foundation UBI model",
-                net7_title: "Swap", net7_desc: "Instant token purchase swap",
-                net8_title: "DEX Swap", net8_desc: "Decentralized orderless P2P matching",
-                net9_title: "LP Staking", net9_desc: "PoL & high-dividend rights",
-                net10_title: "Anti-Money Laundering (AML)", net10_desc: "Global AML & real-time transaction verification",
-                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
-                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Policies", menu_reg: "11-Nation Compliance"
-            },
-            zh: {
-                headerSubText: "全球下一代去中心化金融与AML合规",
-                langEngineLabel: "60国语言引擎 (AML全方位集成)",
-                subTitle: "快捷金融操作与AML合规主核心",
-                dashTitle: "个人资产仪表板 (已通过AML验证)",
-                piSyncLabel: "持有数量 (Pi账本同步)",
-                interestLabel: "实时累计利息 (3年 31.41% APY复利)",
-                mainnetBtnText: "立即向核心团队申请主网",
-                gridSectionTitle: "分布式互联网络与AML合规",
-                gridSectionSub: "[10大连动网 + AML进程运行]",
-                agiTitle: "AGI 币妮客服中心",
-                agiSub: "SONPONE 自动响应与 AI 编排",
-                sonponeLabelText: "SONPONE 侦测灵敏度:",
-                syncText: "(实时同步)",
-                initialBeeniMsg: "[AGI Beeni]: 测试派环境、60国语言系统及AML合规引擎运行完美！李在完会长，请随时下达指示！",
-                chatInputPlaceholder: "向币妮提问...",
-                chatSendBtn: "发送",
-                net1_title: "钱包连接", net1_desc: "节点钱包协议联动及自动连接",
-                net2_title: "转账", net2_desc: "跨洲超高速多签加密传输系统",
-                net3_title: "支付", net3_desc: "现金·卡·代币实时商业托管",
-                net4_title: "存入", net4_desc: "3年期 31.41% APY 资产信托金库",
-                net5_title: "奖励", net5_desc: "贡献度激励金库累积引擎",
-                net6_title: "基本收入", net6_desc: "HK社会基金会与地方政府 UBI 分配模型",
-                net7_title: "兑换", net7_desc: "现金/卡/代币存入即时代币购买兑换",
-                net8_title: "DEX 兑换", net8_desc: "去中心化无订单 P2P 流动性自动匹配",
-                net9_title: "LP 质押", net9_desc: "流动性证明 (PoL) 与高股息权限",
-                net10_title: "反洗钱 (AML)", net10_desc: "全球反洗钱与实时交易验证",
-                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
-                menu_wp: "白皮书 (v3.1详情)", menu_faq: "常见问题 (FAQ 20条)", menu_pol: "三大政策", menu_reg: "11国数字资产法合规"
-            },
-            ja: {
-                headerSubText: "グローバル次世代DeFi & AMLコンプライアンス",
-                langEngineLabel: "60言語エンジン (AML完全統合)",
-                subTitle: "高速金融作業 & AMLコンプライアンスマスターコア",
-                dashTitle: "個人資産ダッシュボード (AML検証完了)",
-                piSyncLabel: "保有数量 (Pi台帳同期)",
-                interestLabel: "リアルタイム累積利息 (3年 31.41% APY複利)",
-                mainnetBtnText: "コアチームへメインネットを即時申請",
-                gridSectionTitle: "分散連動網 & AMLコンプライアンス",
-                gridSectionSub: "[10大レイヤー + AMLプロセス稼働]",
-                agiTitle: "AGI ぴーにカスタマーセンター",
-                agiSub: "SONPONE自動応答＆AIオーケストレーション",
-                sonponeLabelText: "SONPONE検出感度:",
-                syncText: "(リアルタイムシンク)",
-                initialBeeniMsg: "[AGI Beeni]: テストパイ環境、60言語システムおよびAMLコンプライアンスエンジンが完全に稼働中です！イ・ジェワン会長、何なりとご指示ください！",
-                chatInputPlaceholder: "ぴーにへ質問を入力...",
-                chatSendBtn: "送信",
-                net1_title: "ウォレット接続", net1_desc: "ノードウォレットプロトコル連動および自動連動",
-                net2_title: "送金", net2_desc: "大陸間超高速マルチシグ暗号化転送システム",
-                net3_title: "決済", net3_desc: "現金・カード・他コインリアルタイム商取引エスクロー",
-                net4_title: "預金", net4_desc: "3年満期 31.41% APY資産信託ボルト",
-                net5_title: "報酬", net5_desc: "貢献度ベースインセンティブボルト積立エンジン",
-                net6_title: "基本所得", net6_desc: "HK社会財団＆自治体 UBI分配モデル",
-                net7_title: "スワップ", net7_desc: "現金/카드/他コイン入金即時コイン購入スワップ",
-                net8_title: "DEXスワップ", net8_desc: "分散型オーダーレスP2P流動性自動マッチング",
-                net9_title: "LPステーキング", net9_desc: "流動性供給証明(PoL)および高配当権利",
-                net10_title: "資金洗浄対策 (AML)", net10_desc: "グローバルAMLおよびリアルタイムトランザクション検証",
-                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
-                menu_wp: "ホワイトペーパー (v3.1詳細)", menu_faq: "よくある質問 (FAQ 20選)", menu_pol: "3大ポリシー", menu_reg: "11カ国デジタル資産法コンプライアンス"
-            },
-            vi: {
-                headerSubText: "Tuân thủ DeFi & AML Thế hệ mới Toàn cầu",
-                langEngineLabel: "Động cơ 60 ngôn ngữ (Tích hợp AML hoàn chỉnh)",
-                subTitle: "Lõi Vận hành Tài chính Nhanh & Tuân thủ AML",
-                dashTitle: "Bảng điều khiển Tài sản Cá nhân (Đã xác minh AML)",
-                piSyncLabel: "Số lượng Sở hữu (Đồng bộ sổ cái Pi)",
-                interestLabel: "Lãi suất Tích lũy Trực tiếp (3 năm 31.41% APY)",
-                mainnetBtnText: "Yêu cầu Mainnet ngay lập tức",
-                gridSectionTitle: "Mạng Phân tán & Tuân thủ AML",
-                gridSectionSub: "[10 Lớp + Quy trình AML Hoạt động]",
-                agiTitle: "Trung tâm Hỗ trợ AGI Beeni",
-                agiSub: "Phản hồi Tự động SONPONE & Điều phối AI",
-                sonponeLabelText: "Độ nhạy Phát hiện SONPONE:",
-                syncText: "(Đồng bộ Trực tiếp)",
-                initialBeeniMsg: "[AGI Beeni]: Môi trường Testnet Pi, hệ thống 60 ngôn ngữ và AML hoạt động hoàn hảo!",
-                chatInputPlaceholder: "Hỏi Beeni...",
-                chatSendBtn: "Gửi",
-                net1_title: "Kết nối Ví", net1_desc: "Liên kết tự động giao thức ví node",
-                net2_title: "Chuyển tiền", net2_desc: "Chuyển khoản mã hóa multisig xuyên lục địa",
-                net3_title: "Thanh toán", net3_desc: "Ký quỹ thương mại thời gian thực",
-                net4_title: "Gửi tiền Két", net4_desc: "Két ủy thác 3 năm 31.41% APY",
-                net5_title: "Phần thưởng", net5_desc: "Động cơ tích lũy ưu đãi đóng góp",
-                net6_title: "Thu nhập Cơ bản", net6_desc: "Mô hình UBI Quỹ Xã hội HK",
-                net7_title: "Hoán đổi", net7_desc: "Hoán đổi mua token tức thì",
-                net8_title: "DEX Swap", net8_desc: "Khớp lệnh P2P phi tập trung",
-                net9_title: "Staking LP", net9_desc: "Bằng chứng Thanh khoản (PoL) & cổ tức cao",
-                net10_title: "Chống Rửa Tiền (AML)", net10_desc: "AML toàn cầu & xác minh giao dịch",
-                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
-                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Chính sách", menu_reg: "Tuân thủ 11 Quốc gia"
-            },
-            th: {
-                headerSubText: "DeFi ระดับโลกและปฏิบัติตามข้อกำหนด AML รุ่นใหม่",
-                langEngineLabel: "เครื่องมือ 60 ภาษา (บูรณาการ AML เต็มรูปแบบ)",
-                subTitle: "แกนหลักปฏิบัติการทางการเงินอย่างรวดเร็วและ AML",
-                dashTitle: "แดชบอร์ดทรัพย์สินส่วนบุคคล (ตรวจสอบ AML แล้ว)",
-                piSyncLabel: "จำนวนที่ถือครอง (ซิงค์บัญชีแยกประเภท Pi)",
-                interestLabel: "ดอกเบี้ยสะสมเรียลไทม์ (3 ปี 31.41% APY)",
-                mainnetBtnText: "ขอ Mainnet ทันที",
-                gridSectionTitle: "เครือข่ายแบบกระจายและการปฏิบัติตาม AML",
-                gridSectionSub: "[10 เลเยอร์ + กระบวนการ AML ทำงาน]",
-                agiTitle: "ศูนย์สนับสนุน AGI Beeni",
-                agiSub: "การตอบสนองอัตโนมัติ SONPONE และ AI",
-                sonponeLabelText: "ความไวในการตรวจจับ SONPONE:",
-                syncText: "(ซิงค์สด)",
-                initialBeeniMsg: "[AGI Beeni]: สภาพแวดล้อม Testnet Pi, ระบบ 60 ภาษาและ AML พร้อมใช้งานเต็มรูปแบบ!",
-                chatInputPlaceholder: "ถาม Beeni...",
-                chatSendBtn: "ส่ง",
-                net1_title: "เชื่อมต่อกระเป๋า", net1_desc: "เชื่อมต่ออัตโนมัติโปรโตคอลโหนด",
-                net2_title: "โอนเงิน", net2_desc: "การโอนข้ามทวีปเข้ารหัสแบบมัลติซิก",
-                net3_title: "ชำระเงิน", net3_desc: "เอสโครว์การค้าแบบเรียลไทม์",
-                net4_title: "ฝากห้องนิรภัย", net4_desc: "ห้องนิรภัยทรัสต์ 3 ปี 31.41% APY",
-                net5_title: "รางวัล", net5_desc: "เครื่องมือสะสมแรงจูงใจ",
-                net6_title: "รายได้พื้นฐาน", net6_desc: "โมเดล UBI มูลนิธิสังคม HK",
-                net7_title: "สวอป", net7_desc: "สวอปซื้อโทเค็นทันที",
-                net8_title: "DEX สวอป", net8_desc: "การจับคู่ P2P แบบกระจายอำนาจ",
-                net9_title: "LP สเตกกิ้ง", net9_desc: "หลักฐานสภาพคล่อง (PoL)",
-                net10_title: "ป้องกันการฟอกเงิน (AML)", net10_desc: "AML ระดับโลกและการตรวจสอบธุรกรรม",
-                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
-                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 นโยบาย", menu_reg: "การปฏิบัติตามกฎหมาย 11 ประเทศ"
-            },
-            id: {
-                headerSubText: "DeFi Global & Kepatuhan AML Generasi Berikutnya",
-                langEngineLabel: "Mesin 60 Bahasa (AML Terintegrasi Penuh)",
-                subTitle: "Operasi Keuangan Cepat & Inti Kepatuhan AML",
-                dashTitle: "Dasbor Aset Pribadi (AML Terverifikasi)",
-                piSyncLabel: "Jumlah Kepemilikan (Sinkronisasi Buku Besar Pi)",
-                interestLabel: "Bunga Akumulasi Real-time (3 Tahun 31.41% APY)",
-                mainnetBtnText: "Ajukan Mainnet ke Tim Inti Sekarang",
-                gridSectionTitle: "Jaringan Terdistribusi & Kepatuhan AML",
-                gridSectionSub: "[10 Lapisan + Proses AML Aktif]",
-                agiTitle: "Pusat Dukungan AGI Beeni",
-                agiSub: "Respon Otomatis SONPONE & Ornestasi AI",
-                sonponeLabelText: "Sensitivitas Deteksi SONPONE:",
-                syncText: "(Sinkronisasi Langsung)",
-                initialBeeniMsg: "[AGI Beeni]: Lingkungan Testnet Pi, sistem 60 bahasa dan mesin AML beroperasi penuh!",
-                chatInputPlaceholder: "Tanya Beeni...",
-                chatSendBtn: "Kirim",
-                net1_title: "Koneksi Dompet", net1_desc: "Tautan otomatis protokol dompet node",
-                net2_title: "Transfer", net2_desc: "Transfer lintas batas terenkripsi multisig",
-                net3_title: "Pembayaran", net3_desc: "Escrow perdagangan real-time",
-                net4_title: "Deposit Vault", net4_desc: "Vault kepercayaan 3 tahun 31.41% APY",
-                net5_title: "Hadiah", net5_desc: "Mesin akrual insentif kontribusi",
-                net6_title: "UBI", net6_desc: "Model UBI Yayasan Sosial HK",
-                net7_title: "Swap", net7_desc: "Swap pembelian token instan",
-                net8_title: "DEX Swap", net8_desc: "Pencocokan P2P terdesentralisasi",
-                net9_title: "Staking LP", net9_desc: "Bukti Likuiditas (PoL)",
-                net10_title: "Anti Pencucian Uang (AML)", net10_desc: "AML global & verifikasi transaksi",
-                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
-                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Kebijakan", menu_reg: "Kepatuhan 11 Negara"
-            },
-            es: {
-                headerSubText: "DeFi y Cumplimiento AML Global de Nueva Generación",
-                langEngineLabel: "Motor de 60 Idiomas (AML Totalmente Integrado)",
-                subTitle: "Operación Financiera Rápida y Núcleo AML",
-                dashTitle: "Panel de Activos Personales (AML Verificado)",
-                piSyncLabel: "Cantidad Retenida (Sincronización Pi)",
-                interestLabel: "Interés Acumulado (3 Años 31.41% APY)",
-                mainnetBtnText: "Solicitar Red Principal al Equipo Core",
-                gridSectionTitle: "Redes Distribuidas y Cumplimiento AML",
-                gridSectionSub: "[10 Capas + Proceso AML Activo]",
-                agiTitle: "Centro de Soporte AGI Beeni",
-                agiSub: "Auto-respuesta SONPONE y Orquestación IA",
-                sonponeLabelText: "Sensibilidad de Detección SONPONE:",
-                syncText: "(Sincronización en Vivo)",
-                initialBeeniMsg: "[AGI Beeni]: ¡Entorno Testnet Pi, motor de 60 idiomas y motor AML totalmente operativos!",
-                chatInputPlaceholder: "Pregunta a Beeni...",
-                chatSendBtn: "Enviar",
-                net1_title: "Conectar Billetera", net1_desc: "Enlace automático de protocolo",
-                net2_title: "Transferencia", net2_desc: "Transferencia cifrada multisig",
-                net3_title: "Pago", net3_desc: "Fideicomiso de comercio en tiempo real",
-                net4_title: "Depósito", net4_desc: "Bóveda de fideicomiso 3 años 31.41% APY",
-                net5_title: "Recompensas", net5_desc: "Motor de acumulación de incentivos",
-                net6_title: "Ingreso Básico", net6_desc: "Modelo UBI Fundación HK",
-                net7_title: "Intercambio", net7_desc: "Intercambio de compra instantánea",
-                net8_title: "Intercambio DEX", net8_desc: "Coincidencia P2P descentralizada",
-                net9_title: "Staking de LP", net9_desc: "Prueba de Liquidez (PoL)",
-                net10_title: "Antilavado de Dinero (AML)", net10_desc: "AML global y verificación",
-                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
-                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Políticas", menu_reg: "Cumplimiento 11 Naciones"
-            },
-            pt: {
-                headerSubText: "DeFi Global e Conformidade AML de Nova Geração",
-                langEngineLabel: "Motor de 60 Idiomas (AML Totalmente Integrado)",
-                subTitle: "Operação Financeira Rápida e Núcleo AML",
-                dashTitle: "Painel de Ativos Pessoais (AML Verificado)",
-                piSyncLabel: "Quantidade Retida (Sincronização Pi)",
-                interestLabel: "Juros Acumulados (3 Anos 31.41% APY)",
-                mainnetBtnText: "Solicitar Mainnet à Equipe Core Agora",
-                gridSectionTitle: "Redes Distribuídas e Conformidade AML",
-                gridSectionSub: "[10 Camadas + Processo AML Ativo]",
-                agiTitle: "Centro de Suporte AGI Beeni",
-                agiSub: "Resposta Automática SONPONE e IA",
-                sonponeLabelText: "Sensibilidade de Detecção SONPONE:",
-                syncText: "(Sincronización ao Vivo)",
-                initialBeeniMsg: "[AGI Beeni]: Ambiente Testnet Pi, motor de 60 idiomas e AML totalmente operacionais!",
-                chatInputPlaceholder: "Pergunte ao Beeni...",
-                chatSendBtn: "Enviar",
-                net1_title: "Conectar Carteira", net1_desc: "Link automático de protocolo",
-                net2_title: "Transferência", net2_desc: "Transferência criptografada multisig",
-                net3_title: "Pagamento", net3_desc: "Escrow de comércio em tempo real",
-                net4_title: "Depósito em Vault", net4_desc: "Vault de confiança 3 anos 31.41% APY",
-                net5_title: "Recompensas", net5_desc: "Motor de acúmulo de incentivos",
-                net6_title: "UBI", net6_desc: "Modelo UBI Fundação Social HK",
-                net7_title: "Swap", net7_desc: "Swap de compra instantânea de tokens",
-                net8_title: "DEX Swap", net8_desc: "Correspondência P2P descentralizada",
-                net9_title: "Staking LP", net9_desc: "Prova de Liquidez (PoL)",
-                net10_title: "Anti-Lavagem de Dinheiro (AML)", net10_desc: "AML global e verificação",
-                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
-                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Políticas", menu_reg: "Conformidade 11 Nações"
-            },
-            fr: {
-                headerSubText: "DeFi Mondiale et Conformité AML de Nouvelle Génération",
-                langEngineLabel: "Moteur 60 Langues (AML Intégralement Intégré)",
-                subTitle: "Opération Financière Rapide & Cœur AML",
-                dashTitle: "Tableau de Bord des Actifs (AML Vérifié)",
-                piSyncLabel: "Montant Détenu (Synchro Grand Livre Pi)",
-                interestLabel: "Intérêts Cumulés en Direct (3 Ans 31.41% APY)",
-                mainnetBtnText: "Demander le Mainnet à l'Équipe Core",
-                gridSectionTitle: "Réseaux Distribués & Conformité AML",
-                gridSectionSub: "[10 Couches + Processus AML Actif]",
-                agiTitle: "Centre de Support AGI Beeni",
-                agiSub: "Réponse Auto SONPONE & Orchestration IA",
-                sonponeLabelText: "Sensibilité de Détection SONPONE:",
-                syncText: "(Synchro en Direct)",
-                initialBeeniMsg: "[AGI Beeni]: Environnement Testnet Pi, système 60 langues et moteur AML opérationnels!",
-                chatInputPlaceholder: "Demander à Beeni...",
-                chatSendBtn: "Envoyer",
-                net1_title: "Connexion Portefeuille", net1_desc: "Liaison auto du protocole de nœud",
-                net2_title: "Transfert", net2_desc: "Transfert chiffré multisig transcontinental",
-                net3_title: "Paiement", net3_desc: "Séquestre commercial en temps réel",
-                net4_title: "Dépôt en Coffre", net4_desc: "Coffre de fiducie 3 ans 31.41% APY",
-                net5_title: "Récompenses", net5_desc: "Moteur d'accumulation d'incitations",
-                net6_title: "Revenu de Base", net6_desc: "Modèle UBI Fondation Sociale HK",
-                net7_title: "Échange", net7_desc: "Échange d'achat instantané de jetons",
-                net8_title: "Échange DEX", net8_desc: "Correspondance P2P décentralisée",
-                net9_title: "Staking LP", net9_desc: "Preuve de Liquidité (PoL)",
-                net10_title: "Lutte anti-blanchiment (AML)", net10_desc: "AML mondial & vérification",
-                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
-                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Politiques", menu_reg: "Conformité 11 Nations"
-            },
-            de: {
-                headerSubText: "Globales DeFi & AML-Compliance der nächsten Generation",
-                langEngineLabel: "60-Sprachen-Engine (AML Vollständig Integriert)",
-                subTitle: "Schnelle Finanzoperation & AML-Compliance-Kern",
-                dashTitle: "Persönliches Vermögens-Dashboard (AML Verifiziert)",
-                piSyncLabel: "Gehaltene Menge (Pi-Ledger-Synchronisierung)",
-                interestLabel: "Echtzeit-Zinsen (3 Jahre 31.41% APY)",
-                mainnetBtnText: "Mainnet jetzt beim Core-Team beantragen",
-                gridSectionTitle: "Verteilte Netzwerke & AML-Compliance",
-                gridSectionSub: "[10 Schichten + AML-Prozess Aktiv]",
-                agiTitle: "AGI Beeni Support-Center",
-                agiSub: "SONPONE Auto-Antwort & KI-Orchestrierung",
-                sonponeLabelText: "SONPONE Erkennungsempfindlichkeit:",
-                syncText: "(Live-Synchronisierung)",
-                initialBeeniMsg: "[AGI Beeni]: Testnet Pi-Umgebung, 60-Sprachen-System und AML-Engine voll funktionsfähig!",
-                chatInputPlaceholder: "Beeni fragen...",
-                chatSendBtn: "Senden",
-                net1_title: "Wallet Verbinden", net1_desc: "Knoten-Wallet-Protokoll Auto-Link",
-                net2_title: "Überweisung", net2_desc: "Multisig verschlüsselte Überweisung",
-                net3_title: "Zahlung", net3_desc: "Echtzeit-Handels-Treuhand",
-                net4_title: "Tresor-Einzahlung", net4_desc: "3-Jahres 31.41% APY Treuhand-Tresor",
-                net5_title: "Belohnungen", net5_desc: "Beitrags-Anreiz-Akkumulations-Engine",
-                net6_title: "Grundeinkommen", net6_desc: "HK Social Foundation UBI-Modell",
-                net7_title: "Swap", net7_desc: "Sofortiger Token-Kauf-Swap",
-                net8_title: "DEX Swap", net8_desc: "Dezentrales orderloses P2P-Matching",
-                net9_title: "LP Staking", net9_desc: "Liquiditätsnachweis (PoL)",
-                net10_title: "Geldwäschebekämpfung (AML)", net10_desc: "Globales AML & Transaktionsprüfung",
-                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
-                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Richtlinien", menu_reg: "11-Nationen Compliance"
-            },
-            ru: {
-                headerSubText: "Глобальный DeFi и комплаенс AML нового поколения",
-                langEngineLabel: "Движок на 60 языках (AML полностью интегрирован)",
-                subTitle: "Быстрые финансовые операции и ядро AML",
-                dashTitle: "Панель личных активов (AML проверен)",
-                piSyncLabel: "Удерживаемая сумма (синхронизация Pi)",
-                interestLabel: "Накопленные проценты (3 года 31.41% APY)",
-                mainnetBtnText: "Запросить Mainnet у Core Team",
-                gridSectionTitle: "Распределенные сети и комплаенс AML",
-                gridSectionSub: "[10 слоев + активный процесс AML]",
-                agiTitle: "Центр поддержки AGI Beeni",
-                agiSub: "Автоответ SONPONE и оркестровка ИИ",
-                sonponeLabelText: "Чувствительность SONPONE:",
-                syncText: "(Прямая синхронизация)",
-                initialBeeniMsg: "[AGI Beeni]: Окружение Testnet Pi, система из 60 языков и AML полностью активны!",
-                chatInputPlaceholder: "Спросите Beeni...",
-                chatSendBtn: "Отправить",
-                net1_title: "Подключить кошелек", net1_desc: "Автосвязывание протокола узла",
-                net2_title: "Перевод", net2_desc: "Зашифрованный перевод с мультиподписью",
-                net3_title: "Оплата", net3_desc: "Эскроу коммерции в реальном времени",
-                net4_title: "Депозит", net4_desc: "Трастовый сейф на 3 года под 31.41% APY",
-                net5_title: "Награды", net5_desc: "Движок накопления стимулов за вклад",
-                net6_title: "Базовый доход", net6_desc: "Модель UBI социального фонда HK",
-                net7_title: "Своп", net7_desc: "Мгновенный обмен на покупку токенов",
-                net8_title: "DEX Своп", net8_desc: "Децентрализованный P2P-матчинг",
-                net9_title: "LP Стейкинг", net9_desc: "Доказательство ликвидности (PoL)",
-                net10_title: "Борьба с отмыванием денег (AML)", net10_desc: "Глобальный AML и проверка транзакций",
-                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
-                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Политики", menu_reg: "Комплаенс 11 стран"
-            },
-            ar: {
-                headerSubText: "التمويل اللامركزي العالمي والامتثال لمكافحة غسل الأموال",
-                langEngineLabel: "محرك 60 لغة (مدمج بالكامل لمكافحة غسل الأموال)",
-                subTitle: "عمليات مالية سريعة والامتثال لمكافحة غسل الأموال",
-                dashTitle: "لوحة تحكم الأصول الشخصية (تم التحقق من AML)",
-                piSyncLabel: "المبلغ المحتفظ به (مزامنة دفتر أستاذ Pi)",
-                interestLabel: "الفائدة المتراكمة في الوقت الفعلي (3 سنوات 31.41% APY)",
-                mainnetBtnText: "اطلب الشبكة الرئيسية الآن",
-                gridSectionTitle: "الشبكات الموزعة والامتثال لمكافحة غسل الأموال",
-                gridSectionSub: "[10 طبقات + عملية مكافحة غسل الأموال نشطة]",
-                agiTitle: "مركز دعم AGI Beeni",
-                agiSub: "استجابة تلقائية SONPONE وتنسيق الذكاء الاصطناعي",
-                sonponeLabelText: "حساسية اكتشاف SONPONE:",
-                syncText: "(مزامنة مباشرة)",
-                initialBeeniMsg: "[AGI Beeni]: بيئة Testnet Pi ونظام 60 لغة ومحرك AML جاهزة تماماً!",
-                chatInputPlaceholder: "اسأل Beeni...",
-                chatSendBtn: "إرسال",
-                net1_title: "ربط المحفظة", net1_desc: "ربط تلقائي بروتوكول محفظة العقدة",
-                net2_title: "تحويل", net2_desc: "نقل مشفر متعدد التوقيعات عبر القارات",
-                net3_title: "دفع", net3_desc: "ضمان تجاري في الوقت الفعلي",
-                net4_title: "إيداع الخزنة", net4_desc: "خزنة ائتمانية لمدة 3 سنوات 31.41% APY",
-                net5_title: "المكافآت", net5_desc: "محرك تراكم حوافز المساهمة",
-                net6_title: "الدخل الأساسي", net6_desc: "نموذج UBI لمؤسسة HK الاجتماعية",
-                net7_title: "مبادلة", net7_desc: "مبادلة شراء الرموز الفورية",
-                net8_title: "مبادلة DEX", net8_desc: "مطابقة P2P اللامركزية",
-                net9_title: "تثبيت LP", net9_desc: "إثبات السيولة (PoL)",
-                net10_title: "مكافحة غسل الأموال (AML)", net10_desc: "AML العالمية والتحقق من المعاملات",
-                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
-                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 سياسات", menu_reg: "امتثال 11 دولة"
-            },
-            hi: {
-                headerSubText: "वैश्विक अगली पीढ़ी के डीಫाई और एएमएल अनुपालन",
-                langEngineLabel: "60-भाषा इंजन (एएमएल पूरी तरह से एकीकृत)",
-                subTitle: "तेज़ वित्तीय संचालन और एएमएल अनुपालन कोर",
-                dashTitle: "व्यक्तिगत संपत्ति डैशबोर्ड (एएमएल सत्यापित)",
-                piSyncLabel: "धारण राशि (Pi लेज़र सिंक)",
-                interestLabel: "वास्तविक समय संचित ब्याज (3-वर्ष 31.41% APY)",
-                mainnetBtnText: "कोर टीम से मेननेट का अनुरोध करें",
-                gridSectionTitle: "वितरित नेटवर्क और एएमएल अनुपालन",
-                gridSectionSub: "[10 परतें + एएमएल प्रक्रिया सक्रिय]",
-                agiTitle: "AGI Beeni सहायता केंद्र",
-                agiSub: "SONPONE स्वतः-प्रतिक्रिया और एआई",
-                sonponeLabelText: "SONPONE संवेदनशीलता:",
-                syncText: "(लाइव सिंक)",
-                initialBeeniMsg: "[AGI Beeni]: Testnet Pi वातावरण, 60-भाषा प्रणाली और AML इंजन पूरी तरह से चालू हैं!",
-                chatInputPlaceholder: "Beeni से पूछें...",
-                chatSendBtn: "भेजें",
-                net1_title: "वॉलेट कनेक्ट", net1_desc: "नोड वॉलेट प्रोटोकॉल ऑटो-लिंक",
-                net2_title: "स्थानांतरण", net2_desc: "मल्टीसिग एन्क्रिप्टेड क्रॉस-बॉर्डर ट्रांसफर",
-                net3_title: "भुगतान", net3_desc: "रीयल-टाइम कॉमर्स एस्क्रो",
-                net4_title: "वॉल्ट जमा", net4_desc: "3-वर्षीय 31.41% APY ट्रस्ट वॉल्ट",
-                net5_title: "पुरस्कार", net5_desc: "योगदान प्रोत्साहन संचय इंजन",
-                net6_title: "UBI", net6_desc: "HK सोशल फाउंडेशन UBI मॉडल",
-                net7_title: "स्वैप", net7_desc: "त्वरित टोकन खरीद स्वैप",
-                net8_title: "DEX स्वैप", net8_desc: "विकेंद्रीकृत P2P मिलान",
-                net9_title: "LP स्टेकिंग", net9_desc: "तरलता का प्रमाण (PoL)",
-                net10_title: "एंटी-मनी लॉन्ड्रिंग (AML)", net10_desc: "वैश्विक एएमएल और लेनदेन सत्यापन",
-                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
-                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 नीतियां", menu_reg: "11-राष्ट्र अनुपालन"
+                langLabel: "🌍 60-Language Engine", welcomeMsg: "Welcome to Global Super Banking 👋", subWelcome: "HK Global Super Banking Active",
+                acc1_title: "HK Main Account", acc1_badge: "Available", btn_transfer: "Transfer", btn_deposit: "Deposit",
+                acc2_title: "Pi Trust Safe Box", acc2_badge: "31.41% APY", btn_manage: "Manage", btn_swap: "Swap",
+                net_transfer: "Transfer", net_deposit: "Vault", net_ubi: "UBI", net_swap: "Swap",
+                tab_home: "Home", tab_asset: "Assets", tab_benefit: "Benefits", tab_menu: "Menu"
             }
         };
 
-        // 나머지 이탈리아어, 튀르키예어, 네덜란드어 등 60개국어 전체에 대한 완전한 안전 폴백 메커니즘 장착
-        let currentLang = 'ko';
-        let baseInterest = 12450892.600000;
-
-        function getTranslation(lang, key) {
-            const dict = i18nData[lang] || i18nData['en'] || i18nData['ko'];
-            if (dict && dict[key]) return dict[key];
-            if (i18nData['en'] && i18nData['en'][key]) return i18nData['en'][key];
-            if (i18nData['ko'] && i18nData['ko'][key]) return i18nData['ko'][key];
-            return key;
-        }
-
         function changeLanguage(lang) {
             currentLang = lang;
+            const t = dict[lang] || dict['en'];
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                el.innerText = getTranslation(lang, key);
+                if(t[key]) el.innerText = t[key];
             });
-            document.querySelectorAll('[data-i18n-placeholder]').forEach(input => {
-                const key = input.getAttribute('data-i18n-placeholder');
-                input.placeholder = getTranslation(lang, key);
-            });
-            document.dir = ['ar', 'fa', 'ur', 'he'].includes(lang) ? 'rtl' : 'ltr';
         }
 
-        setInterval(() => {
-            baseInterest += 0.001250;
-            const el = document.getElementById('accumulatedInterest');
-            if(el) {
-                el.innerText = baseInterest.toLocaleString('en-US', {minimumFractionDigits: 6, maximumFractionDigits: 6}) + " HK";
+        function toggleDrawer() {
+            document.getElementById('drawerOverlay').classList.toggle('active');
+        }
+
+        function closeDrawerOutside(e) {
+            if(e.target.id === 'drawerOverlay') toggleDrawer();
+        }
+
+        function openModal(type) {
+            const modal = document.getElementById('bankModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalBodyContent');
+
+            if(type === 'transfer') {
+                title.innerText = "간편 송금";
+                content.innerHTML = `<label style="font-size:13px;color:var(--text-muted)">보낼 금액</label><input class="form-control" id="tAmt" placeholder="금액 입력"><button class="btn-submit" onclick="execTransfer()">송금 완료</button>`;
+            } else {
+                title.innerText = "프로세스 실행";
+                content.innerHTML = `<button class="btn-submit" onclick="closeModal()">확인</button>`;
             }
-        }, 1000);
+            modal.classList.add('active');
+        }
 
-        function toggleDrawer() { document.getElementById('drawerOverlay').classList.toggle('active'); }
-        function closeDrawerOutside(e) { if(e.target.id === 'drawerOverlay') toggleDrawer(); }
-        function closeModal() { document.getElementById('appModal').classList.remove('active'); }
-        function triggerMainnetRequest() { alert(currentLang === 'ko' ? '테스트 파이(Testnet Pi) 원장 동기화 및 AML 검증 신청이 완료되었습니다!' : 'Mainnet request submitted successfully!'); }
-        function updateSonpone(val) { document.getElementById('sonponeVal').innerText = val + "% " + getTranslation(currentLang, 'syncText'); }
-        function openProcessModal(id) {
-            document.getElementById('modalTitle').innerText = id.toUpperCase();
-            document.getElementById('modalContent').innerHTML = `<div style="font-size:12px; color:var(--text-muted);">Process initialized for: ${id}</div>`;
-            document.getElementById('appModal').classList.add('active');
+        function closeModal() {
+            document.getElementById('bankModal').classList.remove('active');
         }
-        function openInfoModal(type) {
-            toggleDrawer();
-            document.getElementById('modalTitle').innerText = getTranslation(currentLang, 'menu_' + type);
-            document.getElementById('modalContent').innerHTML = `<div style="font-size:12px; color:var(--text-muted);">${type} documentation loaded.</div>`;
-            document.getElementById('appModal').classList.add('active');
+
+        function closeModalOutside(e) {
+            if(e.target.id === 'bankModal') closeModal();
         }
-        function sendChatMessage() {
-            const input = document.getElementById('chatInput');
-            if(!input.value.trim()) return;
-            const box = document.getElementById('chatBox');
-            box.innerHTML += `<div class="chat-msg user">${input.value}</div>`;
-            input.value = '';
-            box.scrollTop = box.scrollHeight;
+
+        function execTransfer() {
+            alert("정상 처리되었습니다!");
+            closeModal();
         }
-        function handleKeyPress(e) { if(e.key === 'Enter') sendChatMessage(); }
     </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title id="metaTitle">HK WORLD BANK | 글로벌 차세대 분산 금융 플랫폼</title>
+    <title id="metaTitle">HK WORLD BANK | 20개국 글로벌 다국어 금융 시스템</title>
     <!-- FontAwesome Icons & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -154,7 +154,7 @@
             font-size: 12px;
             outline: none;
             cursor: pointer;
-            max-width: 195px;
+            max-width: 210px;
         }
 
         main {
@@ -766,27 +766,6 @@
             cursor: pointer;
             margin-top: 10px;
         }
-
-        .wp-item-box, .faq-item-box {
-            background: rgba(0,0,0,0.3);
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            padding: 12px;
-            margin-bottom: 10px;
-        }
-
-        .wp-item-title, .faq-q {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--accent-gold);
-            margin-bottom: 4px;
-        }
-
-        .wp-item-content, .faq-a {
-            font-size: 11px;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
     </style>
 </head>
 <body>
@@ -804,11 +783,11 @@
             <div class="profile-badge">HK</div>
         </header>
 
-        <!-- Dynamic Multi-Language Selector Engine (21 Nations) -->
+        <!-- 20개국 글로벌 다국어 선택 드롭다운 바 -->
         <div class="lang-bar">
             <div class="lang-info">
                 <i class="fa-solid fa-globe"></i>
-                <span data-i18n="langEngineLabel">21개국 글로벌 다국어 엔진</span>
+                <span data-i18n="langEngineLabel">20개국 글로벌 다국어 엔진</span>
             </div>
             <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
                 <option value="ko" selected>🇰🇷 한국어 (Korean)</option>
@@ -819,7 +798,7 @@
                 <option value="vi">🇻🇳 베트남어 (Vietnamese)</option>
                 <option value="th">🇹🇭 태국어 (Thai)</option>
                 <option value="id">🇮🇩 인도네시아어 (Indonesian)</option>
-                <option value="ar">🇵🇸 팔레스타인/아랍어 (Arabic)</option>
+                <option value="ar">🇵🇸 아랍어 (Arabic)</option>
                 <option value="de">🇩🇪 독일어 (German)</option>
                 <option value="it">🇮🇹 이태리어 (Italian)</option>
                 <option value="fr">🇫🇷 프랑스어 (French)</option>
@@ -828,10 +807,9 @@
                 <option value="za">🇿🇦 남아공 (South Africa)</option>
                 <option value="hi">🇮🇳 힌디어 (Hindi)</option>
                 <option value="es">🇪🇸 스페인어 (Spanish)</option>
+                <option value="br">🇧🇷 브라질어 (Portuguese)</option>
+                <option value="pk">🇵🇰 우르두어 (Urdu)</option>
                 <option value="bn">🇧🇩 벵골어 (Bengali)</option>
-                <option value="ur">🇵🇰 우르두어 (Urdu)</option>
-                <option value="pt">🇧🇷 포르투갈어 (Portuguese)</option>
-                <option value="ua">🇺🇦 우크라이나어 (Ukrainian)</option>
             </select>
         </div>
 
@@ -1032,7 +1010,7 @@
                     <i class="fa-solid fa-shield-halved"></i> <span data-i18n="menu_pol">3대 POLICIES (AML·KYC·철통보안 상세)</span>
                 </div>
                 <div class="menu-item" onclick="openInfoModal('regulations')">
-                    <i class="fa-solid fa-scale-balanced"></i> <span data-i18n="menu_reg">21개국 디지털 자산법 및 해킹 방어 컴플라이언스</span>
+                    <i class="fa-solid fa-scale-balanced"></i> <span data-i18n="menu_reg">디지털 자산법 및 해킹 방어 컴플라이언스</span>
                 </div>
                 <div class="menu-item" onclick="openInfoModal('fatf_travel_rule')">
                     <i class="fa-solid fa-gavel"></i> <span data-i18n="menu_fatf">FATF 트래블룰 & 실시간 제재 리스트 검증 규격</span>
@@ -1083,7 +1061,7 @@
         </div>
     </div>
 
-    <!-- JavaScript Platform Logic & Detailed Content Engines -->
+    <!-- JavaScript Platform Logic & 20-Nation Full Translation Engines -->
     <script>
         let baseInterest = 12450892.600000;
         let currentWalletBalance = 314159.000000;
@@ -1092,47 +1070,14 @@
         let activeProcessId = null;
         let activeModalType = null;
 
-        function getFullWhitepaperHtml(lang) {
-            let isAr = (lang === 'ar');
-            let items = [];
-            for(let i=1; i<=40; i++) {
-                items.push({
-                    title: `${i}. 백서 코어 항목 ${i} (철통 보안 및 탈중앙화 아키텍처)`,
-                    content: `HK WORLD BANK 글로벌 분산 금융 네트워크 프로토콜 및 컴플라이언스 규격 번호 ${i}번 항목입니다.`
-                });
-            }
-            let html = `<div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px; ${isAr ? 'direction:rtl; text-align:right;' : ''}">`;
-            items.forEach(item => {
-                html += `<div class="wp-item-box"><div class="wp-item-title">${item.title}</div><div class="wp-item-content">${item.content}</div></div>`;
-            });
-            html += '</div>';
-            return html;
-        }
-
-        function getFullFaqHtml(lang) {
-            let isAr = (lang === 'ar');
-            let items = [];
-            for(let i=1; i<=20; i++) {
-                items.push({
-                    q: `Q${i}. HK WORLD BANK 관련주요 심층 질문 ${i}번 항목`,
-                    a: `A. 테스트넷 연동 및 해킹 방어 AML 시스템 작동에 관한 FAQ ${i}번 상세 안내입니다.`
-                });
-            }
-            let html = `<div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto; padding-right:6px; ${isAr ? 'direction:rtl; text-align:right;' : ''}">`;
-            items.forEach(item => {
-                html += `<div class="faq-item-box"><div class="faq-q">${item.q}</div><div class="faq-a">${item.a}</div></div>`;
-            });
-            html += '</div>';
-            return html;
-        }
-
+        // 20개국 전체 언어 딕셔너리 DB (공통 구조 및 각 국가별 원어 번역 완벽 탑재)
         const translations = {
             ko: {
-                headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "21개국 글로벌 다국어 엔진", subTitle: "빠른 금융 작업 마스터 코어",
+                headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "20개국 글로벌 다국어 엔진", subTitle: "빠른 금융 작업 마스터 코어",
                 dashTitle: "개인 자산 대시보드", piSyncLabel: "보유 수량 (PI 수량 원장 동기화)", interestLabel: "실시간 누적 이자 (3년 31.41% APY 복리)",
                 mainnetBtnText: "코어팀에게 메인넷 즉시 신청하기", gridSectionTitle: "분산 연동망", gridSectionSub: "[개별 프로세스 작동]",
                 agiTitle: "AGI 삐니 고객센터", agiSub: "손폰(SONPONE) 자동 반응 및 AI 오케스트레이션", sonponeLabelText: "손폰(SONPONE) 감지 감도:", syncText: "(실시간 싱크)",
-                initialBeeniMsg: "[AGI 삐니]: 바이낸스·시중은행 해킹 원천 차단형 AML/KYC 컴플라이언스 시스템이 완벽하게 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!",
+                initialBeeniMsg: "[AGI 삐니]: 바이낸스·시중은행 해킹 원천 차단형 AML/KYC 자금세탁방지 컴플라이언스 시스템이 완벽하게 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!",
                 chatInputPlaceholder: "삐니에게 질문 입력...", chatSendBtn: "전송", supportEmailText: "Support: support@hkwb.world",
                 net1_title: "지갑연결", net1_desc: "노드 지갑 프로토콜 연동 및 자동 연동", net2_title: "송금", net2_desc: "대륙간 초고속 멀티시그 암호화 전송 시스템",
                 net3_title: "결재", net3_desc: "현금·카드·타코인 실시간 상거래 에스크로", net4_title: "예치", net4_desc: "3년 만기 31.41% APY 자산 신탁 볼트",
@@ -1141,43 +1086,353 @@
                 net9_title: "LP 스테이킹", net9_desc: "유동성 공급 증명(PoL) 및 고배당 권한", net10_title: "파이 수량", net10_desc: "파이 자산 메인넷 원장 실시간 동기화",
                 mainnetAlert: "테스트 파이(Testnet Pi) 원장 동기화 및 철통 보안 테스트넷 전송 신청이 정상적으로 완료되었습니다!",
                 beeniReply: (txt) => `[AGI 삐니]: "${txt}" 명령을 수신했습니다. 해킹 방어 백엔드 및 AML 검증을 거쳐 실시간 처리 중입니다.`,
-                p1_title: "지갑연결", p1_desc: "자동 연동 버튼을 눌러 테스트 파이 지갑 주소를 즉시 불러오세요.", p1_lbl1: "테스트넷 지갑 주소", p1_ph1: "자동 연동 버튼을 누르세요", p1_lbl2: "인증번호 (발급됨:", p1_ph2: "6자리 인증번호를 입력하세요", p1_btn: "인증번호 승인 및 지갑 연결",
-                p2_title: "송금", p2_desc: "대륙간 초고속 멀티시그 암호화 전송 시스템을 실행합니다.", p2_lbl1: "수신자 지갑 주소", p2_ph1: "G... 또는 Pi Test ID", p2_lbl2: "전송 수량", p2_ph2: "보낼 수량을 입력하세요", p2_lbl3: "보안 인증번호 (발급됨:", p2_ph3: "6자리 인증번호 입력", p2_btn: "송금 실행",
-                p3_title: "결재", p3_desc: "현금·카드·타코인 실시간 상거래 에스크로 결재를 진행합니다.", p3_lbl1: "결재 수량 및 금액", p3_lbl2: "결재 승인 인증번호 (발급됨:", p3_ph2: "6자리 인증번호 입력", p3_btn: "에스크로 결재 승인",
-                p4_title: "예치", p4_desc: "3년 만기 31.41% APY 자산 신탁 볼트 예치를 진행합니다.", p4_lbl1: "예치할 수량", p4_ph1: "예치할 수량을 입력하세요", p4_lbl2: "예치 기간 선택", p4_opt1: "1년 (APY 15.5%)", p4_opt3: "3년 (APY 31.41%)", p4_opt5: "5년 (APY 45.0%)", p4_lbl3: "예상 수익금 및 이자", p4_resDefault: "예상 수익: +0.00 Test Pi", p4_lbl4: "볼트 보안 인증번호 (발급됨:", p4_ph4: "6자리 인증번호 입력", p4_btn: "볼트 예치 승인",
-                p5_title: "보상", p5_desc: "기여도 기반 인센티브 볼트 적립금을 수령합니다.", p5_lbl1: "수령할 수량", p5_lbl2: "보상 승인 인증번호 (발급됨:", p5_ph2: "6자리 인증번호 입력", p5_btn: "보상 수령 승인",
-                p6_title: "기본소득", p6_desc: "HK 사회 재단 & 지자체 UBI 분배 모델을 청구합니다.", p6_lbl1: "청구할 수량", p6_lbl2: "UBI 인증번호 (발급됨:", p5_ph2: "6자리 인증번호 입력", p6_btn: "기본소득 청구 승인",
-                p7_title: "스왑", p7_desc: "현금/카드/타코인 입금 즉각 코인 구매 스왑을 진행합니다.", p7_lbl1: "보낼 자산 및 수량", p7_ph1: "예: 10 PI", p7_lbl2: "받을 자산", p7_lbl3: "스왑 승인 인증번호 (발급됨:", p7_ph3: "6자리 인증번호 입력", p7_btn: "즉시 스왑 실행",
-                p8_title: "DEX 스왑", p8_desc: "탈중앙화 오더레스 P2P 유동성을 자동 매칭합니다.", p8_lbl1: "P2P 매수/매도 수량", p8_ph1: "수량을 입력하세요", p8_lbl2: "DEX 인증번호 (발급됨:", p8_ph2: "6자리 인증번호 입력", p8_btn: "P2P 주문 등록 승인",
-                p9_title: "LP 스테이킹", p9_desc: "유동성 공급 증명(PoL) 및 기간별 예치를 등록합니다.", p9_lbl1: "스테이킹할 LP 수량", p9_ph1: "LP 수량을 입력하세요", p9_lbl2: "예치 기간 선택", p9_lbl3: "예상 LP 수익", p9_lbl4: "LP 인증번호 (발급됨:", p9_ph4: "6자리 인증번호 입력", p9_btn: "LP 스테이킹 등록 승인",
-                p10_title: "파이 수량", p10_desc: "파이 자산 메인넷 원장 실시간 동기화 상태를 관리합니다.", p10_lbl1: "파이 보유 수량", p10_lbl2: "동기화 인증번호 (발급됨:", p9_ph2: "6자리 인증번호 입력", p10_btn: "원장 동기화 실행",
-                authFailAlert: "❌ 인증번호가 일치하지 않습니다. 발급된 6자리 인증번호를 정확히 입력해 주세요.",
-                authSuccessPrefix: "✅ [철통 보안 인증 성공]",
-                msg1: "지갑연결: 바이낸스 해킹 방어 프로토콜 연동 및 인증이 완료되었습니다.",
-                msg2: "송금: 대륙간 초고속 멀티시그 암호화 전송이 완료되었습니다.",
-                msg3: "결재: 에스크로 상거래 결제가 정상 승인되었습니다.",
-                msg4: "예치: 자산 신탁 볼트 예치 및 복리 이자 설정이 완료되었습니다.",
-                msg5: "보상: 기여도 보상 수령 및 승인이 완료되었습니다.",
-                msg6: "기본소득: UBI 분배 모델 청구가 완료되었습니다.",
-                msg7: "스왑: 즉각 코인 구매 및 교환 스왑이 완료되었습니다.",
-                msg8: "DEX 스왑: 탈중앙화 P2P 유동성 매칭 주문이 등록되었습니다.",
-                msg9: "LP 스테이킹: 유동성 공급 증명(PoL) 스테이킹이 완료되었습니다.",
-                msg10: "파이 수량: 메인넷 원장 실시간 동기화가 완료되었습니다.",
-                calcDefault: "예치할 수량을 입력해주세요 (+0.00)",
-                calcResult: (p, r) => `${p}년 복리 적용 시 예상 수익: +${r} HK/PI`,
-                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
-                menu_wp: "백서 (Whitepaper v3.1 상세 40선)", menu_faq: "자주 묻는 질문 (FAQ 20선 심층)", menu_pol: "3대 POLICIES (AML·KYC·철통보안 상세)", menu_reg: "21개국 디지털 자산법 및 해킹 방어 컴플라이언스", menu_fatf: "FATF 트래블룰 & 실시간 제재 리스트 검증 규격",
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "핵심 법률 및 컴플라이언스", menuGroup2Title: "HK 글로벌 생태계 허브",
+                menu_wp: "백서 (Whitepaper v3.1 상세 40선)", menu_faq: "자주 묻는 질문 (FAQ 20선 심층)", menu_pol: "3대 POLICIES (AML·KYC·철통보안 상세)", menu_reg: "디지털 자산법 및 해킹 방어 컴플라이언스", menu_fatf: "FATF 트래블룰 & 실시간 제재 리스트 검증 규격",
                 hub_robot: "로봇: HK-ROBOT", hub_nexus: "스마트 글래스: HK-NEXUS", hub_uam: "도심항공교통: HK-UAM", hub_fusion: "인공태양: HK-FUSION", hub_bio: "퀀텀바이오: HK-QUANTUMBIO", hub_space: "우주모빌리티: HK-SPACE", hub_parts: "부품뱅크: HK-PARTSBANK", hub_defence: "국방기술: HK-DEFENCE-HUB", hub_t165: "T165 초특급 랜드마크 허브 (경주 사옥)"
+            },
+            en: {
+                headerSubText: "Global Next-Gen Decentralized Finance", langEngineLabel: "20-Nation Universal Language Engine", subTitle: "Fast Financial Operation Master Core",
+                dashTitle: "Personal Asset Dashboard", piSyncLabel: "Holding Amount (Pi Ledger Sync)", interestLabel: "Real-time Accumulated Interest (3-Yr 31.41% APY)",
+                mainnetBtnText: "Request Mainnet to Core Team Now", gridSectionTitle: "Distributed Networks", gridSectionSub: "[Process Active]",
+                agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Response & AI Orchestration", sonponeLabelText: "Detection Sensitivity:", syncText: "(Live Sync)",
+                initialBeeniMsg: "[AGI Beeni]: Binance & Commercial Bank Anti-Hacking AML/KYC system fully operational! Chairman Jaewan Lee, how may I assist you?",
+                chatInputPlaceholder: "Ask Beeni...", chatSendBtn: "Send", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Wallet Connect", net1_desc: "Node wallet protocol auto-link", net2_title: "Transfer", net2_desc: "Multisig encrypted cross-border transfer",
+                net3_title: "Payment", net3_desc: "Real-time commerce escrow", net4_title: "Vault Deposit", net4_desc: "3-Year 31.41% APY trust vault",
+                net5_title: "Rewards", net5_desc: "Contribution incentive accrual engine", net6_title: "UBI", net6_desc: "HK Social Foundation UBI model",
+                net7_title: "Swap", net7_desc: "Instant token purchase swap", net8_title: "DEX Swap", net8_desc: "Decentralized orderless P2P matching",
+                net9_title: "LP Staking", net9_desc: "PoL & high-yield dividend rights", net10_title: "Pi Ledger", net10_desc: "Pi asset mainnet ledger sync",
+                mainnetAlert: "Mainnet synchronization and transmission request completed successfully with anti-hacking security!",
+                beeniReply: (txt) => `[AGI Beeni]: Received command "${txt}". Processing with anti-hacking AML backend.`,
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper v3.1 (40 Core Sections)", menu_faq: "FAQ Top 20", menu_pol: "3 Policies (AML/KYC/Security)", menu_reg: "21-Nation Anti-Hacking Compliance", menu_fatf: "FATF Travel Rule & Sanction Screening",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Smart Glasses: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Artificial Sun: HK-FUSION", hub_bio: "Quantum Bio: HK-QUANTUMBIO", hub_space: "Space Mobility: HK-SPACE", hub_parts: "Parts Bank: HK-PARTSBANK", hub_defence: "Defence Tech: HK-DEFENCE-HUB", hub_t165: "T165 Landmark Hub (Gyeongju HQ)"
+            },
+            zh: {
+                headerSubText: "全球下一代分布式金融", langEngineLabel: "20国通用语言引擎", subTitle: "快速金融操作核心",
+                dashTitle: "个人资产仪表盘", piSyncLabel: "持有数量 (Pi账本同步)", interestLabel: "实时累计利息 (3年 31.41% APY)",
+                mainnetBtnText: "立即向核心团队申请主网", gridSectionTitle: "分布式联动网络", gridSectionSub: "[进程运行中]",
+                agiTitle: "AGI 삐니 客服中心", agiSub: "SONPONE 自动响应与 AI 协同", sonponeLabelText: "检测灵敏度:", syncText: "(实时同步)",
+                initialBeeniMsg: "[AGI 삐니]: 防篡改与反洗钱 AML/KYC 系统已全面启动！Chairman 李在完，请指示！",
+                chatInputPlaceholder: "向 삐니 提问...", chatSendBtn: "发送", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "钱包连接", net1_desc: "节点钱包协议自动绑定", net2_title: "转账", net2_desc: "跨国多重签名加密传输",
+                net3_title: "支付", net3_desc: "实时商业托管支付", net4_title: "金库金押", net4_desc: "3年期 31.41% APY 信托金库",
+                net5_title: "奖励", net5_desc: "贡献度激励累积引擎", net6_title: "全民基本收入", net6_desc: "HK 基金会 UBI 分配模型",
+                net7_title: "闪兑", net7_desc: "即时代币购买与兑换", net8_title: "DEX 闪兑", net8_desc: "去中心化无订单 P2P 匹配",
+                net9_title: "LP 质押", net9_desc: "流动性证明与高分红", net10_title: "Pi 账本", net10_desc: "Pi 资产主网账本同步",
+                mainnetAlert: "主网同步与传输申请已成功提交！",
+                beeniReply: (txt) => `[AGI 삐니]: 已收到指令 "${txt}"。正通过 AML 后台实时处理。`,
+                drawerTitle: "HK 导航器", menuGroup1Title: "核心法律与合规", menuGroup2Title: "HK 全球生态枢纽",
+                menu_wp: "白皮书 v3.1", menu_faq: "常见问题 FAQ", menu_pol: "三大政策 (AML/KYC)", menu_reg: "防黑客合规", menu_fatf: "FATF 反洗钱审查",
+                hub_robot: "机器人: HK-ROBOT", hub_nexus: "智能眼镜: HK-NEXUS", hub_uam: "城市空中交通: HK-UAM", hub_fusion: "人造太阳: HK-FUSION", hub_bio: "量子生物: HK-QUANTUMBIO", hub_space: "太空移动: HK-SPACE", hub_parts: "零件银行: HK-PARTSBANK", hub_defence: "国防技术: HK-DEFENCE-HUB", hub_t165: "T165 地标总部 (庆州)"
+            },
+            ja: {
+                headerSubText: "グローバル次世代分散型金融", langEngineLabel: "20カ国対応言語エンジン", subTitle: "高速金融オペレーションマスター",
+                dashTitle: "個人資産ダッシュボード", piSyncLabel: "保有数量 (Pi台帳同期)", interestLabel: "リアルタイム累積利息 (3年 31.41% APY)",
+                mainnetBtnText: "コアチームへメインネット申請", gridSectionTitle: "分散連携ネットワーク", gridSectionSub: "[プロセス稼働中]",
+                agiTitle: "AGI 삐니 サポート", agiSub: "SONPONE 自動応答＆AIオーケストレーション", sonponeLabelText: "検知感度:", syncText: "(リアルタイム同期)",
+                initialBeeniMsg: "[AGI 삐니]: ハッキング防止・AML/KYCシステムが完全に稼働中です。李在完会長、ご指示をお願いします！",
+                chatInputPlaceholder: "삐니 に質問を入力...", chatSendBtn: "送信", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "ウォレット接続", net1_desc: "ノードウォレット自動連携", net2_title: "送金", net2_desc: "マルチシグ暗号化国際送金",
+                net3_title: "決済", net3_desc: "リアルタイムエスクロー決済", net4_title: "預金ヴォルト", net4_desc: "3年満期 31.41% APY 信託ヴォルト",
+                net5_title: "報酬", net5_desc: "貢献度インセンティブ累積", net6_title: "ベーシックインカム", net6_desc: "HK 財団 UBI 分配モデル",
+                net7_title: "スワップ", net7_desc: "即時トークン購入・交換", net8_title: "DEXスワップ", net8_desc: "分散型 P2P 流動性マッチング",
+                net9_title: "LPステーキング", net9_desc: "PoL 証明＆高配当権利", net10_title: "Pi台帳", net10_desc: "Pi 資産メインネット台帳同期",
+                mainnetAlert: "メインネット同期および送信申請が正常に完了しました！",
+                beeniReply: (txt) => `[AGI 삐니]: 指示 "${txt}" を受信しました。AMLバックエンドでリアルタイム処理中です。`,
+                drawerTitle: "HK ナビゲーター", menuGroup1Title: "コンプライアンス", menuGroup2Title: "HK エコシステムハブ",
+                menu_wp: "ホワイトペーパー v3.1", menu_faq: "よくある質問 FAQ", menu_pol: "3大ポリシー (AML/KYC)", menu_reg: "ハッキング防止規定", menu_fatf: "FATF トラベルルール",
+                hub_robot: "ロボット: HK-ROBOT", hub_nexus: "スマートグラス: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "人工太陽: HK-FUSION", hub_bio: "量子バイオ: HK-QUANTUMBIO", hub_space: "宇宙モビリティ: HK-SPACE", hub_parts: "パーツバンク: HK-PARTSBANK", hub_defence: "国防技術: HK-DEFENCE-HUB", hub_t165: "T165 ランドマーク (慶州本社)"
+            },
+            ru: {
+                headerSubText: "Глобальные децентрализованные финансы", langEngineLabel: "Языковой движок (20 стран)", subTitle: "Магистраль быстрых финансовых операций",
+                dashTitle: "Панель личных активов", piSyncLabel: "Сумма (Синхронизация реестра Pi)", interestLabel: "Накопленные проценты (3 года 31,41% APY)",
+                mainnetBtnText: "Запросить мейнет у основной команды", gridSectionTitle: "Распределенные сети", gridSectionSub: "[Процесс активен]",
+                agiTitle: "Поддержка AGI Beeni", agiSub: "Автоответчик SONPONE и оркестровка ИИ", sonponeLabelText: "Чувствительность обнаружения:", syncText: "(Синхронизация)",
+                initialBeeniMsg: "[AGI Beeni]: Система защиты от взлома и AML/KYC активна! Председатель Ли Джэван, чем могу помочь?",
+                chatInputPlaceholder: "Спросить Beeni...", chatSendBtn: "Отправить", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Подключение кошелька", net1_desc: "Автоматическая привязка протокола", net2_title: "Перевод", net2_desc: "Шифрованная мультисиг транзакция",
+                net3_title: "Оплата", net3_desc: "Эскроу коммерческих платежей в реальном времени", net4_title: "Депозит в хранилище", net4_desc: "Трастовый вольт 31.41% APY",
+                net5_title: "Награды", net5_desc: "Движок накопления стимулов за вклад", net6_title: "БДХ", net6_desc: "Модель UBI Фонда HK",
+                net7_title: "Своп", net7_desc: "Мгновенный обмен токенов", net8_title: "DEX Своп", net8_desc: "Децентрализованный P2P обмен",
+                net9_title: "LP Стейкинг", net9_desc: "Доказательство ликвидности (PoL)", net10_title: "Реестр Pi", net10_desc: "Синхронизация баланса Pi",
+                mainnetAlert: "Запрос на синхронизацию мейнета успешно отправлен!",
+                beeniReply: (txt) => `[AGI Beeni]: Получена команда "${txt}". Обработка через AML бэкенд.`,
+                drawerTitle: "HK НАВИГАТОР", menuGroup1Title: "Юридический комплаенс", menuGroup2Title: "Экосистема HK",
+                menu_wp: "Белая бумага v3.1", menu_faq: "Часто задаваемые вопросы (FAQ)", menu_pol: "3 Политиким (AML/KYC)", menu_reg: "Защита от взлома", menu_fatf: "Правила FATF",
+                hub_robot: "Робот: HK-ROBOT", hub_nexus: "Очки: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Искусственное солнце", hub_bio: "Квантовая био", hub_space: "Космос", hub_parts: "Банк деталей", hub_defence: "Оборона", hub_t165: "T165 Хаб (Кёнджу)"
+            },
+            vi: {
+                headerSubText: "Tài chính phi tập trung toàn cầu", langEngineLabel: "Công cụ đa ngôn ngữ 20 quốc gia", subTitle: "Lõi vận hành tài chính tốc độ cao",
+                dashTitle: "Bảng điều khiển tài sản", piSyncLabel: "Số lượng nắm giữ (Đồng bộ sổ cái Pi)", interestLabel: "Lãi tích lũy thời gian thực (3 năm 31.41% APY)",
+                mainnetBtnText: "Yêu cầu Mainnet ngay lập tức", gridSectionTitle: "Mạng lưới phân tán", gridSectionSub: "[Tiến trình đang hoạt động]",
+                agiTitle: "Hỗ trợ AGI Beeni", agiSub: "Phản hồi tự động SONPONE & AI", sonponeLabelText: "Độ nhạy phát hiện:", syncText: "(Đồng bộ trực tiếp)",
+                initialBeeniMsg: "[AGI Beeni]: Hệ thống chống hack & AML/KYC hoạt động hoàn hảo! Chủ tịch Lee Jaewan, tôi có thể giúp gì?",
+                chatInputPlaceholder: "Hỏi Beeni...", chatSendBtn: "Gửi", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Kết nối ví", net1_desc: "Liên kết giao thức ví node tự động", net2_title: "Chuyển khoản", net2_desc: "Hệ thống truyền tải mã hóa đa chữ ký",
+                net3_title: "Thanh toán", net3_desc: "Ký quỹ thương mại thời gian thực", net4_title: "Gửi tiền Vault", net4_desc: "Kho lưu giữ tín thác 31.41% APY",
+                net5_title: "Phần thưởng", net5_desc: "Động cơ tích lũy ưu đãi đóng góp", net6_title: "Thu nhập cơ bản", net6_desc: "Mô hình UBI Quỹ xã hội HK",
+                net7_title: "Hoán đổi", net7_desc: "Mua token hoán đổi tức thì", net8_title: "DEX Swap", net8_desc: "Khớp lệnh P2P phi tập trung",
+                net9_title: "LP Staking", net9_desc: "Chứng minh thanh khoản (PoL)", net10_title: "Sổ cái Pi", net10_desc: "Đồng bộ hóa sổ cái chính Pi",
+                mainnetAlert: "Yêu cầu đồng bộ Mainnet đã hoàn tất thành công!",
+                beeniReply: (txt) => `[AGI Beeni]: Đã nhận lệnh "${txt}". Đang xử lý qua hệ thống bảo mật AML.`,
+                drawerTitle: "HK ĐIỀU HƯỚNG", menuGroup1Title: "Pháp lý & Tuân thủ", menuGroup2Title: "Trung tâm sinh thái HK",
+                menu_wp: "Sách trắng v3.1", menu_faq: "Câu hỏi thường gặp", menu_pol: "3 Chính sách (AML/KYC)", menu_reg: "Quy định chống hack", menu_fatf: "Quy tắc du lịch FATF",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Kính thông minh: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Mặt trời nhân tạo", hub_bio: "Sinh học lượng tử", hub_space: "Không gian", hub_parts: "Ngân hàng linh kiện", hub_defence: "Công nghệ quốc phòng", hub_t165: "Trung tâm T165 (Gyeongju)"
+            },
+            th: {
+                headerSubText: "การเงินแบบกระจายอำนาจระดับโลก", langEngineLabel: "เครื่องมือภาษา 20 ประเทศ", subTitle: "แกนหลักปฏิบัติการทางการเงิน",
+                dashTitle: "แดชบอร์ดทรัพย์สินส่วนบุคคล", piSyncLabel: "จำนวนคงเหลือ (ซิงค์บัญชี Pi)", interestLabel: "ดอกเบี้ยสะสมแบบเรียลไทม์ (3 ปี 31.41% APY)",
+                mainnetBtnText: "ขอ Mainnet กับทีมงานทันที", gridSectionTitle: "เครือข่ายกระจายอำนาจ", gridSectionSub: "[กระบวนการทำงาน]",
+                agiTitle: "ศูนย์บริการ AGI Beeni", agiSub: "ระบบตอบรับอัตโนมัติ SONPONE และ AI", sonponeLabelText: "ความไวในการตรวจจับ:", syncText: "(ซิงค์สด)",
+                initialBeeniMsg: "[AGI Beeni]: ระบบป้องกันแฮกเกอร์ AML/KYC ทำงานเต็มรูปแบบ! ท่านประธาน Lee Jaewan มีอะไรให้รับใช้ไหมครับ?",
+                chatInputPlaceholder: "ถาม Beeni...", chatSendBtn: "ส่ง", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "เชื่อมต่อกระเป๋าเงิน", net1_desc: "เชื่อมต่อโปรโตคอลกระเป๋าเงินโหนด", net2_title: "โอนเงิน", net2_desc: "ระบบส่งข้อมูลเข้ารหัส Multisig",
+                net3_title: "ชำระเงิน", net3_desc: "ระบบเอสโครว์การค้าเรียลไทม์", net4_title: "ฝากเงิน Vault", net4_desc: "ห้องนิรภัยทรัสต์ 31.41% APY",
+                net5_title: "รางวัล", net5_desc: "เครื่องมือสะสมแรงจูงใจ", net6_title: "รายได้พื้นฐาน", net6_desc: "โมเดลการแจกจ่าย UBI",
+                net7_title: "สวอป", net7_desc: "สวอปซื้อเหรียญทันที", net8_title: "DEX สวอป", net8_desc: "การจับคู่ P2P แบบกระจายศูนย์",
+                net9_title: "LP สเตกกิ้ง", net9_desc: "หลักฐานสภาพคล่อง (PoL)", net10_title: "บัญชี Pi", net10_desc: "ซิงค์บัญชีหลัก Pi แบบเรียลไทม์",
+                mainnetAlert: "ส่งคำขอซิงค์ Mainnet เรียบร้อยแล้ว!",
+                beeniReply: (txt) => `[AGI Beeni]: ได้รับคำสั่ง "${txt}" แล้ว กำลังประมวลผลผ่านระบบความปลอดภัย`,
+                drawerTitle: "HK เนวิเกเตอร์", menuGroup1Title: "กฎหมายและการปฏิบัติตาม", menuGroup2Title: "ศูนย์กลางระบบนิเวศ HK",
+                menu_wp: "ไวท์เพปเปอร์ v3.1", menu_faq: "คำถามที่พบบ่อย (FAQ)", menu_pol: "3 นโยบาย (AML/KYC)", menu_reg: "ข้อกำหนดป้องกันแฮก", menu_fatf: "กฎระเบียบ FATF",
+                hub_robot: "หุ่นยนต์: HK-ROBOT", hub_nexus: "แว่นตาอัจฉริยะ: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "ดวงอาทิตย์เทียม", hub_bio: "ควอนตัมชีววิทยา", hub_space: "อวกาศ", hub_parts: "ธนาคารชิ้นส่วน", hub_defence: "เทคโนโลยีป้องกันประเทศ", hub_t165: "ตึก T165 (คยองจู)"
+            },
+            id: {
+                headerSubText: "Keuangan Terdesentralisasi Global", langEngineLabel: "Mesin Bahasa Universal 20 Negara", subTitle: "Inti Operasi Keuangan Cepat",
+                dashTitle: "Dasbor Aset Pribadi", piSyncLabel: "Jumlah Kepemilikan (Sinkronisasi Buku Besar Pi)", interestLabel: "Bunga Akumulasi Real-time (3 Thn 31.41% APY)",
+                mainnetBtnText: "Ajukan Mainnet ke Tim Inti Sekarang", gridSectionTitle: "Jaringan Terdistribusi", gridSectionSub: "[Proses Aktif]",
+                agiTitle: "Dukungan AGI Beeni", agiSub: "Respons Otomatis SONPONE & AI", sonponeLabelText: "Sensitivitas Deteksi:", syncText: "(Sinkronisasi Langsung)",
+                initialBeeniMsg: "[AGI Beeni]: Sistem AML/KYC anti-peretasan aktif penuh! Ketua Lee Jaewan, ada yang bisa saya bantu?",
+                chatInputPlaceholder: "Tanya Beeni...", chatSendBtn: "Kirim", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Koneksi Dompet", net1_desc: "Tautan otomatis protokol dompet node", net2_title: "Transfer", net2_desc: "Sistem transfer terenkripsi multisig",
+                net3_title: "Pembayaran", net3_desc: "Escrow perdagangan waktu nyata", net4_title: "Deposit Vault", net4_desc: "Vault kepercayaan 3 tahun 31.41% APY",
+                net5_title: "Hadiah", net5_desc: "Mesin akrual insentif kontribusi", net6_title: "UBI", net6_desc: "Model distribusi UBI Yayasan Sosial HK",
+                net7_title: "Swap", net7_desc: "Swap pembelian token instan", net8_title: "DEX Swap", net8_desc: "Pencocokan likuiditas P2P terdesentralisasi",
+                net9_title: "Staking LP", net9_desc: "Bukti Likuiditas (PoL)", net10_title: "Buku Besar Pi", net10_desc: "Sinkronisasi buku besar aset Pi",
+                mainnetAlert: "Permintaan sinkronisasi Mainnet berhasil diselesaikan!",
+                beeniReply: (txt) => `[AGI Beeni]: Perintah "${txt}" diterima. Memproses melalui backend AML.`,
+                drawerTitle: "NAVIGATOR HK", menuGroup1Title: "Hukum & Kepatuhan", menuGroup2Title: "Pusat Ekosistem HK",
+                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ", menu_pol: "3 Kebijakan (AML/KYC)", menu_reg: "Kepatuhan Anti-Peretasan", menu_fatf: "Aturan Perjalanan FATF",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Kacamata: HK-NEXUS", hub_uam: "UAM: HK-UAM", hub_fusion: "Matahari Buatan", hub_bio: "Quantum Bio", hub_space: "Mobilitas Luar Angkasa", hub_parts: "Bank Suku Cadang", hub_defence: "Teknologi Pertahanan", hub_t165: "Markas Besar T165 (Gyeongju)"
+            },
+            ar: {
+                headerSubText: "التمويل اللامركزي العالمي من الجيل القادم", langEngineLabel: "محرك اللغات لـ 20 دولة", subTitle: "النواة الرئيسية للعمليات المالية السريعة",
+                dashTitle: "لوحة تحكم الأصول الشخصية", piSyncLabel: "كمية الحيازة (مزامنة سجل Pi)", interestLabel: "الفائدة المتراكمة الفورية (3 سنوات 31.41% APY)",
+                mainnetBtnText: "طلب Mainnet إلى الفريق الأساسي الآن", gridSectionTitle: "الشبكات الموزعة", gridSectionSub: "[العملية نشطة]",
+                agiTitle: "دعم AGI Beeni", agiSub: "استجابة تلقائية SONPONE وتنسيق الذكاء الاصطناعي", sonponeLabelText: "حساسية الكشف:", syncText: "(مزامنة حية)",
+                initialBeeniMsg: "[AGI Beeni]: نظام مكافحة القرصنة AML/KYC يعمل بكفاءة تامة! الرئيس لي جايوان، كيف يمكنني مساعدتك؟",
+                chatInputPlaceholder: "اسأل بيني...", chatSendBtn: "إرسال", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "ربط المحفظة", net1_desc: "ربط بروتوكول محفظة العقدة تلقائياً", net2_title: "التحويل", net2_desc: "نظام تحويل مشفر متعدد التوقيع",
+                net3_title: "الدفع", net3_desc: "ضمان التجارة في الوقت الفعلي", net4_title: "إيداع الفولت", net4_desc: "خزنة ثقة لمدة 3 سنوات 31.41% APY",
+                net5_title: "المكافآت", net5_desc: "محرك تراكم الحوافز على المساهمة", net6_title: "الدخل الأساسي", net6_desc: "نموذج توزيع UBI لمؤسسة HK",
+                net7_title: "التبديل", net7_desc: "مبادلة لشراء العملات فوراً", net8_title: "DEX تبديل", net8_desc: "مطابقة سيولة P2P اللامركزية",
+                net9_title: "رهان LP", net9_desc: "إثبات السيولة (PoL)", net10_title: "سجل Pi", net10_desc: "مزامنة سجل أصول Pi في الوقت الفعلي",
+                mainnetAlert: "تم إكمال طلب مزامنة وتحويل Mainnet بنجاح مع تأمين ضد الاختراق!",
+                beeniReply: (txt) => `[AGI Beeni]: تم استلام الأمر "${txt}". جارٍ المعالجة عبر نظام حماية AML.`,
+                drawerTitle: "الملاح HK", menuGroup1Title: "القوانين والامتثال", menuGroup2Title: "محاور النظام البيئي",
+                menu_wp: "ورقة العمل v3.1", menu_faq: "الأسئلة الشائعة", menu_pol: "السياسات الثلاث", menu_reg: "امتثال مكافحة القرصنة", menu_fatf: "قواعد FATF",
+                hub_robot: "روبوت: HK-ROBOT", hub_nexus: "نظارات ذكية", hub_uam: "طيران عمودي", hub_fusion: "الشمس الاصطناعية", hub_bio: "بايو كمي", hub_space: "الفضاء", hub_parts: "بنك الأجزاء", hub_defence: "تقنية الدفاع", hub_t165: "برج T165 (غيونغجو)"
+            },
+            de: {
+                headerSubText: "Globales dezentrales Finanzwesen", langEngineLabel: "20-Nationen-Sprach-Engine", subTitle: "Schneller Finanzoperations-Kern",
+                dashTitle: "Persönliches Asset-Dashboard", piSyncLabel: "Bestandsmenge (Pi-Ledger-Sync)", interestLabel: "Echtzeit-kumulierter Zins (3 J. 31,41% APY)",
+                mainnetBtnText: "Mainnet beim Core-Team anfordern", gridSectionTitle: "Verteilte Netzwerke", gridSectionSub: "[Prozess aktiv]",
+                agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Antwort & KI", sonponeLabelText: "Erkennungsempfindlichkeit:", syncText: "(Live-Sync)",
+                initialBeeniMsg: "[AGI Beeni]: Anti-Hacking-AML/KYC-System aktiv! Vorsitzender Lee Jaewan, wie kann ich helfen?",
+                chatInputPlaceholder: "Beeni fragen...", chatSendBtn: "Senden", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Wallet-Verbindung", net1_desc: "Node-Wallet-Autolink", net2_title: "Überweisung", net2_desc: "Multisig-verschlüsselter Transfer",
+                net3_title: "Zahlung", net3_desc: "Echtzeit-Handels-Escrow", net4_title: "Vault-Einzahlung", net4_desc: "3-Jahres 31,41% APY Trust Vault",
+                net5_title: "Belohnungen", net5_desc: "Beitrags-Inzentivierungs-Engine", net6_title: "BGE (UBI)", net6_desc: "HK UBI-Modell",
+                net7_title: "Swap", net7_desc: "Sofortiger Token-Swap", net8_title: "DEX Swap", net8_desc: "Dezentrales P2P-Matching",
+                net9_title: "LP Staking", net9_desc: "Liquiditätsnachweis (PoL)", net10_title: "Pi Ledger", net10_desc: "Pi-Mainnet-Ledger-Sync",
+                mainnetAlert: "Mainnet-Anfrage erfolgreich abgeschlossen!",
+                beeniReply: (txt) => `[AGI Beeni]: Befehl "${txt}" empfangen. Verarbeitung via AML.`,
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Recht & Compliance", menuGroup2Title: "HK Ökosystem-Hubs",
+                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ", menu_pol: "3 Richtlinien", menu_reg: "Anti-Hacking Compliance", menu_fatf: "FATF Travel Rule",
+                hub_robot: "Roboter: HK-ROBOT", hub_nexus: "Smart Glasses", hub_uam: "UAM", hub_fusion: "Künstliche Sonne", hub_bio: "Quantum Bio", hub_space: "Space", hub_parts: "Parts Bank", hub_defence: "Defence Tech", hub_t165: "T165 Hauptsitz (Gyeongju)"
+            },
+            it: {
+                headerSubText: "Finanza decentralizzata globale", langEngineLabel: "Motore linguistico a 20 nazioni", subTitle: "Core operativo finanziario",
+                dashTitle: "Dashboard attività personali", piSyncLabel: "Quantità posseduta (Sincronizzazione Pi)", interestLabel: "Interesse accumulato (3 anni 31,41% APY)",
+                mainnetBtnText: "Richiedi Mainnet al Core Team", gridSectionTitle: "Reti distribuite", gridSectionSub: "[Processo attivo]",
+                agiTitle: "Supporto AGI Beeni", agiSub: "Risposta automatica e IA", sonponeLabelText: "Sensibilità di rilevamento:", syncText: "(Sincronizzazione live)",
+                initialBeeniMsg: "[AGI Beeni]: Sistema anti-hacking AML/KYC operativo! Presidente Lee Jaewan, come posso aiutare?",
+                chatInputPlaceholder: "Chiedi a Beeni...", chatSendBtn: "Invia", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Connessione Wallet", net1_desc: "Collegamento automatico wallet", net2_title: "Trasferimento", net2_desc: "Trasferimento crittografato multisig",
+                net3_title: "Pagamento", net3_desc: "Escrow in tempo reale", net4_title: "Deposito Vault", net4_desc: "Vault fiduciario 3 anni 31,41% APY",
+                net5_title: "Ricompense", net5_desc: "Motore incentivi", net6_title: "Reddito di Base (UBI)", net6_desc: "Modello UBI HK",
+                net7_title: "Swap", net7_desc: "Scambio token istantaneo", net8_title: "DEX Swap", net8_desc: "Abbinamento P2P",
+                net9_title: "Staking LP", net9_desc: "Prova di liquidità (PoL)", net10_title: "Registro Pi", net10_desc: "Sincronizzazione registro Pi",
+                mainnetAlert: "Richiesta Mainnet completata con successo!",
+                beeniReply: (txt) => `[AGI Beeni]: Comando "${txt}" ricevuto. Elaborazione in corso.`,
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Conformità Legale", menuGroup2Title: "Hub dell'Ecosistema",
+                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ", menu_pol: "3 Politiche", menu_reg: "Conformità Anti-Hacking", menu_fatf: "Normativa FATF",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Smart Glasses", hub_uam: "UAM", hub_fusion: "Sole Artificiale", hub_bio: "Quantum Bio", hub_space: "Space", hub_parts: "Parts Bank", hub_defence: "Defence Tech", hub_t165: "Sede T165 (Gyeongju)"
+            },
+            fr: {
+                headerSubText: "Finance décentralisée mondiale", langEngineLabel: "Moteur multilingue 20 nations", subTitle: "Noyau des opérations financières",
+                dashTitle: "Tableau de bord des actifs", piSyncLabel: "Quantité (Synchro du registre Pi)", interestLabel: "Intérêt cumulé (3 ans 31,41% APY)",
+                mainnetBtnText: "Demander le Mainnet", gridSectionTitle: "Réseaux distribués", gridSectionSub: "[Processus actif]",
+                agiTitle: "Support AGI Beeni", agiSub: "Réponse auto & IA", sonponeLabelText: "Sensibilité de détection:", syncText: "(Synchro en direct)",
+                initialBeeniMsg: "[AGI Beeni]: Système anti-piratage AML/KYC actif ! Président Lee Jaewan, comment puis-je aider ?",
+                chatInputPlaceholder: "Demander à Beeni...", chatSendBtn: "Envoyer", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Connexion du portefeuille", net1_desc: "Liaison automatique", net2_title: "Transfert", net2_desc: "Transfert crypté multisig",
+                net3_title: "Paiement", net3_desc: "Séquestre en temps réel", net4_title: "Dépôt en coffre", net4_desc: "Coffre de fiducie 3 ans 31,41% APY",
+                net5_title: "Récompenses", net5_desc: "Moteur d'incitations", net6_title: "Revenu de base (UBI)", net6_desc: "Modèle UBI HK",
+                net7_title: "Swap", net7_desc: "Échange instantané", net8_title: "DEX Swap", net8_desc: "Appariement P2P",
+                net9_title: "Staking LP", net9_desc: "Preuve de liquidité (PoL)", net10_title: "Registre Pi", net10_desc: "Synchronisation registre Pi",
+                mainnetAlert: "Demande de Mainnet réussie !",
+                beeniReply: (txt) => `[AGI Beeni]: Commande "${txt}" reçue. Traitement en cours.`,
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Conformité Légale", menuGroup2Title: "Hubs de l'Écosystème",
+                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ", menu_pol: "3 Politiques", menu_reg: "Conformité Anti-Hacking", menu_fatf: "Règle de voyage FATF",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Smart Glasses", hub_uam: "UAM", hub_fusion: "Soleil Artificiel", hub_bio: "Quantum Bio", hub_space: "Space", hub_parts: "Parts Bank", hub_defence: "Defence Tech", hub_t165: "Siège T165 (Gyeongju)"
+            },
+            ng: {
+                headerSubText: "Global Next-Gen Decentralized Finance", langEngineLabel: "20-Nation Universal Language Engine", subTitle: "Fast Financial Operation Master Core",
+                dashTitle: "Personal Asset Dashboard", piSyncLabel: "Holding Amount (Pi Ledger Sync)", interestLabel: "Real-time Accumulated Interest (3-Yr 31.41% APY)",
+                mainnetBtnText: "Request Mainnet to Core Team Now", gridSectionTitle: "Distributed Networks", gridSectionSub: "[Process Active]",
+                agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Response & AI", sonponeLabelText: "Detection Sensitivity:", syncText: "(Live Sync)",
+                initialBeeniMsg: "[AGI Beeni]: Anti-hacking AML/KYC system fully operational! Chairman Lee Jaewan, how may I help you?",
+                chatInputPlaceholder: "Ask Beeni...", chatSendBtn: "Send", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Wallet Connect", net1_desc: "Node wallet protocol auto-link", net2_title: "Transfer", net2_desc: "Multisig encrypted transfer",
+                net3_title: "Payment", net3_desc: "Real-time commerce escrow", net4_title: "Vault Deposit", net4_desc: "3-Year 31.41% APY trust vault",
+                net5_title: "Rewards", net5_desc: "Contribution incentive engine", net6_title: "UBI", net6_desc: "HK Social Foundation UBI model",
+                net7_title: "Swap", net7_desc: "Instant token purchase swap", net8_title: "DEX Swap", net8_desc: "Decentralized P2P matching",
+                net9_title: "LP Staking", net9_desc: "PoL & high-yield dividend rights", net10_title: "Pi Ledger", net10_desc: "Pi asset mainnet ledger sync",
+                mainnetAlert: "Mainnet synchronization and transmission request completed successfully!",
+                beeniReply: (txt) => `[AGI Beeni]: Received command "${txt}". Processing via AML backend.`,
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Policies", menu_reg: "Anti-Hacking Compliance", menu_fatf: "FATF Travel Rule",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Smart Glasses", hub_uam: "UAM", hub_fusion: "Artificial Sun", hub_bio: "Quantum Bio", hub_space: "Space", hub_parts: "Parts Bank", hub_defence: "Defence Tech", hub_t165: "T165 Hub (Gyeongju)"
+            },
+            cm: {
+                headerSubText: "Finance décentralisée mondiale", langEngineLabel: "Moteur multilingue 20 nations", subTitle: "Noyau des opérations financières",
+                dashTitle: "Tableau de bord des actifs", piSyncLabel: "Quantité (Synchro registre Pi)", interestLabel: "Intérêt cumulé (3 ans 31,41% APY)",
+                mainnetBtnText: "Demander le Mainnet", gridSectionTitle: "Réseaux distribués", gridSectionSub: "[Processus actif]",
+                agiTitle: "Support AGI Beeni", agiSub: "Réponse auto & IA", sonponeLabelText: "Sensibilité de détection:", syncText: "(Synchro en direct)",
+                initialBeeniMsg: "[AGI Beeni]: Système anti-piratage AML/KYC actif ! Président Lee Jaewan, comment puis-je aider ?",
+                chatInputPlaceholder: "Demander à Beeni...", chatSendBtn: "Envoyer", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Connexion du portefeuille", net1_desc: "Liaison automatique", net2_title: "Transfert", net2_desc: "Transfert crypté multisig",
+                net3_title: "Paiement", net3_desc: "Séquestre en temps réel", net4_title: "Dépôt en coffre", net4_desc: "Coffre de fiducie 3 ans 31,41% APY",
+                net5_title: "Récompenses", net5_desc: "Moteur d'incitations", net6_title: "Revenu de base (UBI)", net6_desc: "Modèle UBI HK",
+                net7_title: "Swap", net7_desc: "Échange instantané", net8_title: "DEX Swap", net8_desc: "Appariement P2P",
+                net9_title: "Staking LP", net9_desc: "Preuve de liquidité (PoL)", net10_title: "Registre Pi", net10_desc: "Synchronisation registre Pi",
+                mainnetAlert: "Demande de Mainnet réussie !",
+                beeniReply: (txt) => `[AGI Beeni]: Commande "${txt}" reçue. Traitement en cours.`,
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Conformité Légale", menuGroup2Title: "Hubs de l'Écosystème",
+                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ", menu_pol: "3 Politiques", menu_reg: "Conformité Anti-Hacking", menu_fatf: "Règle de voyage FATF",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Smart Glasses", hub_uam: "UAM", hub_fusion: "Soleil Artificiel", hub_bio: "Quantum Bio", hub_space: "Space", hub_parts: "Parts Bank", hub_defence: "Defence Tech", hub_t165: "Siège T165 (Gyeongju)"
+            },
+            za: {
+                headerSubText: "Global Next-Gen Decentralized Finance", langEngineLabel: "20-Nation Universal Language Engine", subTitle: "Fast Financial Operation Master Core",
+                dashTitle: "Personal Asset Dashboard", piSyncLabel: "Holding Amount (Pi Ledger Sync)", interestLabel: "Real-time Accumulated Interest (3-Yr 31.41% APY)",
+                mainnetBtnText: "Request Mainnet to Core Team Now", gridSectionTitle: "Distributed Networks", gridSectionSub: "[Process Active]",
+                agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Response & AI", sonponeLabelText: "Detection Sensitivity:", syncText: "(Live Sync)",
+                initialBeeniMsg: "[AGI Beeni]: Anti-hacking AML/KYC system fully operational! Chairman Lee Jaewan, how may I assist you?",
+                chatInputPlaceholder: "Ask Beeni...", chatSendBtn: "Send", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Wallet Connect", net1_desc: "Node wallet protocol auto-link", net2_title: "Transfer", net2_desc: "Multisig encrypted transfer",
+                net3_title: "Payment", net3_desc: "Real-time commerce escrow", net4_title: "Vault Deposit", net4_desc: "3-Year 31.41% APY trust vault",
+                net5_title: "Rewards", net5_desc: "Contribution incentive engine", net6_title: "UBI", net6_desc: "HK Social Foundation UBI model",
+                net7_title: "Swap", net7_desc: "Instant token purchase swap", net8_title: "DEX Swap", net8_desc: "Decentralized P2P matching",
+                net9_title: "LP Staking", net9_desc: "PoL & high-yield dividend rights", net10_title: "Pi Ledger", net10_desc: "Pi asset mainnet ledger sync",
+                mainnetAlert: "Mainnet synchronization and transmission request completed successfully!",
+                beeniReply: (txt) => `[AGI Beeni]: Received command "${txt}". Processing via AML backend.`,
+                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs",
+                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ Top 20", menu_pol: "3 Policies", menu_reg: "Anti-Hacking Compliance", menu_fatf: "FATF Travel Rule",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Smart Glasses", hub_uam: "UAM", hub_fusion: "Artificial Sun", hub_bio: "Quantum Bio", hub_space: "Space", hub_parts: "Parts Bank", hub_defence: "Defence Tech", hub_t165: "T165 Hub (Gyeongju)"
+            },
+            hi: {
+                headerSubText: "वैश्विक अगली पीढ़ी की विकेंद्रीकृत वित्त", langEngineLabel: "20-राष्ट्र सार्वभौमिक भाषा इंजन", subTitle: "तेज़ वित्तीय संचालन मास्टर कोर",
+                dashTitle: "व्यक्तिगत परिसंपत्ति डैशबोर्ड", piSyncLabel: "धारण राशि (Pi लेज़र सिंक)", interestLabel: "वास्तविक समय संचित ब्याज (3 वर्ष 31.41% APY)",
+                mainnetBtnText: "मुख्य टीम को मेननेट के लिए तुरंत अनुरोध करें", gridSectionTitle: "वितरित नेटवर्क", gridSectionSub: "[प्रक्रिया सक्रिय]",
+                agiTitle: "AGI बीनी सहायता", agiSub: "SONPONE ऑटो-रिस्पांस और AI", sonponeLabelText: "पहचान संवेदनशीलता:", syncText: "(लाइव सिंक)",
+                initialBeeniMsg: "[AGI Beeni]: एंटी-हैक AML/KYC सिस्टम पूरी तरह से सक्रिय है! चेयरमैन ली जेवान, मैं आपकी क्या सहायता कर सकता हूँ?",
+                chatInputPlaceholder: "बीनी से पूछें...", chatSendBtn: "भेजें", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "वॉलेट कनेक्ट", net1_desc: "नोड वॉलेट प्रोटोकॉल ऑटो-लिंक", net2_title: "हस्तांतरण", net2_desc: "मल्टीसिग एन्क्रिप्टेड ट्रांसफर",
+                net3_title: "भुगतान", net3_desc: "रियल-टाइम कॉमर्स एस्क्रो", net4_title: "वॉल्ट जमा", net4_desc: "3-वर्षीय 31.41% APY ट्रस्ट वॉल्ट",
+                net5_title: "पुरस्कार", net5_desc: "योगदान प्रोत्साहन इंजन", net6_title: "UBI", net6_desc: "HK सोशल फाउंडेशन UBI मॉडल",
+                net7_title: "स्वैप", net7_desc: "तत्काल टोकन खरीद स्वैप", net8_title: "DEX स्वैप", net8_desc: "विकेंद्रीकृत P2P मिलान",
+                net9_title: "LP स्टेकिंग", net9_desc: "तरलता प्रमाण (PoL)", net10_title: "Pi लेज़र", net10_desc: "Pi परिसंपत्ति मेननेट लेज़र सिंक",
+                mainnetAlert: "मेननेट सिंक्रोनाइज़ेशन अनुरोध सफलतापूर्वक पूरा हो गया!",
+                beeniReply: (txt) => `[AGI Beeni]: कमांड "${txt}" प्राप्त हुई। प्रक्रिया जारी है।`,
+                drawerTitle: "HK नेविगेटर", menuGroup1Title: "कानूनी और अनुपालन", menuGroup2Title: "HK पारिस्थितिकी तंत्र केंद्र",
+                menu_wp: "श्वेतपत्र v3.1", menu_faq: "सामान्य प्रश्न", menu_pol: "3 नीतियां", menu_reg: "एंटी-हैक अनुपालन", menu_fatf: "FATF ट्रैवल नियम",
+                hub_robot: "रोबोट: HK-ROBOT", hub_nexus: "स्मार्ट ग्लास", hub_uam: "UAM", hub_fusion: "कृत्रिम सूर्य", hub_bio: "क्वांटम बायो", hub_space: "अंतरिक्ष", hub_parts: "पार्ट्स बैंक", hub_defence: "रक्षा तकनीक", hub_t165: "T165 मुख्यालय (ग्योंगजू)"
+            },
+            es: {
+                headerSubText: "Finanzas descentralizadas globales", langEngineLabel: "Motor de idioma universal de 20 naciones", subTitle: "Núcleo maestro financiero",
+                dashTitle: "Panel de activos personales", piSyncLabel: "Cantidad (Sincronización del libro mayor Pi)", interestLabel: "Interés acumulado (3 años 31.41% APY)",
+                mainnetBtnText: "Solicitar Mainnet al equipo principal", gridSectionTitle: "Redes distribuidas", gridSectionSub: "[Proceso activo]",
+                agiTitle: "Soporte AGI Beeni", agiSub: "Respuesta automática e IA", sonponeLabelText: "Sensibilidad de detección:", syncText: "(Sincronización en vivo)",
+                initialBeeniMsg: "[AGI Beeni]: ¡Sistema anti-hackeo AML/KYC operativo! Presidente Lee Jaewan, ¿cómo puedo ayudarle?",
+                chatInputPlaceholder: "Preguntar a Beeni...", chatSendBtn: "Enviar", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Conexión de billetera", net1_desc: "Enlace automático de nodo", net2_title: "Transferencia", net2_desc: "Transferencia cifrada multisig",
+                net3_title: "Pago", net3_desc: "Fideicomiso comercial en tiempo real", net4_title: "Depósito en bóveda", net4_desc: "Bóveda fiduciaria 3 años 31.41% APY",
+                net5_title: "Recompensas", net5_desc: "Motor de incentivos", net6_title: "Ingreso básico (UBI)", net6_desc: "Modelo UBI HK",
+                net7_title: "Intercambio", net7_desc: "Intercambio instantáneo de tokens", net8_title: "DEX Swap", net8_desc: "Emparejamiento P2P",
+                net9_title: "Staking LP", net9_desc: "Prueba de liquidez (PoL)", net10_title: "Libro mayor Pi", net10_desc: "Sincronización libro mayor Pi",
+                mainnetAlert: "¡Solicitud de Mainnet completada con éxito!",
+                beeniReply: (txt) => `[AGI Beeni]: Comando "${txt}" recibido. Procesando...`,
+                drawerTitle: "HK NAVEGADOR", menuGroup1Title: "Cumplimiento Legal", menuGroup2Title: "Centros del Ecosistema",
+                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ", menu_pol: "3 Políticas", menu_reg: "Cumplimiento Anti-Hacking", menu_fatf: "Regla de viaje FATF",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Smart Glasses", hub_uam: "UAM", hub_fusion: "Sol Artificial", hub_bio: "Quantum Bio", hub_space: "Space", hub_parts: "Parts Bank", hub_defence: "Defence Tech", hub_t165: "Sede T165 (Gyeongju)"
+            },
+            br: {
+                headerSubText: "Finanças descentralizadas globais", langEngineLabel: "Motor de idiomas de 20 países", subTitle: "Núcleo mestre financeiro",
+                dashTitle: "Painel de ativos pessoais", piSyncLabel: "Quantidade (Sincronizzazione Razão Pi)", interestLabel: "Juros acumulados (3 anos 31.41% APY)",
+                mainnetBtnText: "Solicitar Mainnet à Equipe Principal", gridSectionTitle: "Redes Distribuídas", gridSectionSub: "[Processo Ativo]",
+                agiTitle: "Suporte AGI Beeni", agiSub: "Resposta Automática e IA", sonponeLabelText: "Sensibilidade de detecção:", syncText: "(Sincronização ao vivo)",
+                initialBeeniMsg: "[AGI Beeni]: Sistema anti-hack AML/KYC operacional! Presidente Lee Jaewan, como posso ajudar?",
+                chatInputPlaceholder: "Pergunte à Beeni...", chatSendBtn: "Enviar", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "Conectar Carteira", net1_desc: "Vínculo automático de carteira", net2_title: "Transferência", net2_desc: "Transferência criptografada multisig",
+                net3_title: "Pagamento", net3_desc: "Escrow em tempo real", net4_title: "Depósito no Cofre", net4_desc: "Cofre fiduciário 3 anos 31.41% APY",
+                net5_title: "Recompensas", net5_desc: "Motor de incentivos", net6_title: "Renda Básica (UBI)", net6_desc: "Modelo UBI HK",
+                net7_title: "Swap", net7_desc: "Troca instantânea de tokens", net8_title: "DEX Swap", net8_desc: "Correspondência P2P",
+                net9_title: "Staking LP", net9_desc: "Prova de liquidez (PoL)", net10_title: "Razão Pi", net10_desc: "Sincronização razão Pi",
+                mainnetAlert: "Solicitação de Mainnet concluída com sucesso!",
+                beeniReply: (txt) => `[AGI Beeni]: Comando "${txt}" recebido. Processando...`,
+                drawerTitle: "HK NAVEGADOR", menuGroup1Title: "Conformidade Legal", menuGroup2Title: "Hubs do Ecossistema",
+                menu_wp: "Whitepaper v3.1", menu_faq: "FAQ", menu_pol: "3 Políticas", menu_reg: "Conformidade Anti-Hacking", menu_fatf: "Regra de Viagem FATF",
+                hub_robot: "Robot: HK-ROBOT", hub_nexus: "Smart Glasses", hub_uam: "UAM", hub_fusion: "Sol Artificial", hub_bio: "Quantum Bio", hub_space: "Space", hub_parts: "Parts Bank", hub_defence: "Defence Tech", hub_t165: "Sede T165 (Gyeongju)"
+            },
+            pk: {
+                headerSubText: "عالمی غیر مرکوز مالیات", langEngineLabel: "20 ممالک کی لینگویج انجن", subTitle: "فنانس ماسٹر کور",
+                dashTitle: "پرسنل اثاثہ ڈैश بورড", piSyncLabel: "مقدار (Pi لیجر مطابقت)", interestLabel: "سود (3 سال 31.41% APY)",
+                mainnetBtnText: "مین نیٹ کی درخواست کریں", gridSectionTitle: "تقسیم شدہ نیٹ ورکس", gridSectionSub: "[پروسیس فعال]",
+                agiTitle: "AGI بینی سپورٹ", agiSub: "SONPONE آٹو ریسپانس اور AI", sonponeLabelText: "حساسیت:", syncText: "(لائیو مطابقت)",
+                initialBeeniMsg: "[AGI Beeni]: ہیکنگ سے بچاؤ کا AML/KYC سسٹم فعال ہے! چیئرمین لی جے وان، میں کیا مدد کروں؟",
+                chatInputPlaceholder: "بینی سے سوال پوچھیں...", chatSendBtn: "بھیجیں", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "والٹ کنیکٹ", net1_desc: "نوڈ والٹ آٹو لنک", net2_title: "منتقلی", net2_desc: "ملٹی سگ انکرپٹڈ ٹرانسفر",
+                net3_title: "ادائیگی", net3_desc: "ریئل ٹائم کامرس ایسکرو", net4_title: "والٹ ڈپازٹ", net4_desc: "3 سالہ 31.41% APY ٹرسٹ والٹ",
+                net5_title: "انعامات", net5_desc: "ترغیبی انجن", net6_title: "بنیادی آمدنی (UBI)", net6_desc: "HK UBI ماڈل",
+                net7_title: "سواپ", net7_desc: "ٹوکن خریداری سواپ", net8_title: "DEX سواپ", net8_desc: "غیر مرکوز P2P میچنگ",
+                net9_title: "LP اسٹیকিং", net9_desc: "لیکویڈیٹی کا ثبوت (PoL)", net10_title: "Pi لیجر", net10_desc: "Pi اثاثہ مین نیٹ لیجر سنک",
+                mainnetAlert: "مین نیٹ کی درخواست کامیابی کے ساتھ مکمل!",
+                beeniReply: (txt) => `[AGI Beeni]: کمانڈ "${txt}" موصول ہوئی۔ پروسیسنگ جاری ہے۔`,
+                drawerTitle: "HK نیویگیٹر", menuGroup1Title: "قانون اور تعمیل", menuGroup2Title: "ایکوسسٹم ہبز",
+                menu_wp: "وائٹ پیپر v3.1", menu_faq: "عمومی سوالات", menu_pol: "3 پالیسیاں", menu_reg: "اینٹی ہیکنگ تعمیل", menu_fatf: "FATF قوانین",
+                hub_robot: "روبوٹ: HK-ROBOT", hub_nexus: "سمارٹ گلاسز", hub_uam: "UAM", hub_fusion: "مصنوعی سورج", hub_bio: "کوانٹم بائیو", hub_space: "خلا", hub_parts: "پارٹس بینک", hub_defence: "دفاعی ٹیکنالوجی", hub_t165: "T165 ہیڈ کوارٹر (گیونگجو)"
+            },
+            bn: {
+                headerSubText: "গ্লোবাল ডিসেন্ট্রালাইজড ফাইন্যান্স", langEngineLabel: "২০-জাতির ভাষা ইঞ্জিন", subTitle: "দ্রুত আর্থিক অপারেশন কোর",
+                dashTitle: "ব্যক্তিগত সম্পদ ড্যাশবোর্ড", piSyncLabel: "পরিমাণ (Pi লেজার সিঙ্ক)", interestLabel: "সঞ্চিত সুদ (৩ বছর ৩১.৪১% APY)",
+                mainnetBtnText: "মেইননেটের জন্য অনুরোধ করুন", gridSectionTitle: "বিতরণ করা নেটওয়ার্ক", gridSectionSub: "[প্রক্রিয়া সক্রিয়]",
+                agiTitle: "AGI বিনি সহায়তা", agiSub: "स्वयंক্রিয় প্রতিক্রিয়া এবং AI", sonponeLabelText: "শনাক্তকরণ সংবেদনশীলতা:", syncText: "(লাইভ সিঙ্ক)",
+                initialBeeniMsg: "[AGI Beeni]: হ্যাকিং প্রতিরোধক AML/KYC সিস্টেম সচল! চেয়ারম্যান লি জায়েওয়ান, আমি কীভাবে সাহায্য করতে পারি?",
+                chatInputPlaceholder: "বিনিকে প্রশ্ন করুন...", chatSendBtn: "পাঠান", supportEmailText: "Support: support@hkwb.world",
+                net1_title: "ওয়ালেট সংযোগ", net1_desc: "নোড ওয়ালেট অটো-লিংক", net2_title: "স্থানান্তর", net2_desc: "মাল্টিসিগ এনক্রিপ্টেড স্থানান্তর",
+                net3_title: "পেমেন্ট", net3_desc: "রিয়েল-টাইম এসক্রো", net4_title: "ভল্ট ডিপোজিট", net4_desc: "৩ বছরের ৩১.৪১% APY ট্রাস্ট ভল্ট",
+                net5_title: "পুরস্কার", net5_desc: "প্রণোদনা ইঞ্জিন", net6_title: "মৌলিক আয় (UBI)", net6_desc: "HK UBI মডেল",
+                net7_title: "সওয়াপ", net7_desc: "তাত্ক্ষণিক টোকেন ক্রয় সওয়াপ", net8_title: "DEX সওয়াপ", net8_desc: "ডিসেন্ট্রালাইজড P2P ম্যাচিং",
+                net9_title: "LP স্টেকিং", net9_desc: "লিকার্সি প্রুফ (PoL)", net10_title: "Pi লেজার", net10_desc: "Pi সম্পদ মেইননেট সিঙ্ক",
+                mainnetAlert: "মেইননেট অনুরোধ সফলভাবে সম্পন্ন হয়েছে!",
+                beeniReply: (txt) => `[AGI Beeni]: কমান্ড "${txt}" প্রাপ্ত হয়েছে। প্রক্রিয়াধীন।`,
+                drawerTitle: "HK নেভিগেটর", menuGroup1Title: "আইনি ও সম্মতি", menuGroup2Title: "ইকোসিস্টেম হাব",
+                menu_wp: "হোয়াইটপেপার v3.1", menu_faq: "প্রশ্নোত্তর", menu_pol: "৩টি নীতি", menu_reg: "অ্যান্টি-হ্যাকিং সম্মতি", menu_fatf: "FATF নিয়ম",
+                hub_robot: "রোবট: HK-ROBOT", hub_nexus: "স্মার্ট গ্লাস", hub_uam: "UAM", hub_fusion: "কৃত্রিম সূর্য", hub_bio: "কোয়ান্টাম বায়ো", hub_space: "স্পেস", hub_parts: "পার্টস ব্যাংক", hub_defence: "প্রতিরক্ষা প্রযুক্তি", hub_t165: "T165 সদর দফতর (গিয়ংজু)"
             }
         };
-
-        // 다국어 자동 동적 생성기 (영어를 기본값으로 21개국 완벽 지원)
-        const langCodes = ['en', 'zh', 'ja', 'ru', 'vi', 'th', 'id', 'ar', 'de', 'it', 'fr', 'ng', 'cm', 'za', 'hi', 'es', 'bn', 'ur', 'pt', 'ua'];
-        langCodes.forEach(code => {
-            if(!translations[code]) {
-                translations[code] = JSON.parse(JSON.stringify(translations['ko'])); // 안전한 복사 후 필요시 영어/현지화 매핑
-            }
-        });
 
         window.onload = function() {
             openProcessModal('wallet');
@@ -1275,184 +1530,34 @@
             const modal = document.getElementById('appModal');
             const title = document.getElementById('modalTitle');
             const content = document.getElementById('modalContent');
-            const t = translations[currentLang] || translations['ko'];
+            const t = translations[currentLang] || translations['en'];
 
             generatedAuthCode = Math.floor(100000 + Math.random() * 900000).toString();
             const defaultBalStr = currentWalletBalance.toFixed(6);
 
             if (processId === 'wallet') {
-                title.innerText = t.p1_title;
+                title.innerText = t.net1_title || "Wallet Connect";
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p1_desc}</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">Node wallet protocol auto-link ready.</div>
                     <div class="input-group">
-                        <label class="input-label"><span>${t.p1_lbl1}</span> <button class="max-btn" onclick="autoLoadWalletAddress()">Secure Auto-Link</button></label>
-                        <input class="form-control" id="nodeWalletAddress" placeholder="${t.p1_ph1}">
+                        <label class="input-label"><span>Wallet Address</span> <button class="max-btn" onclick="autoLoadWalletAddress()">Secure Auto-Link</button></label>
+                        <input class="form-control" id="nodeWalletAddress" placeholder="Click Auto-Link">
                     </div>
                     <div class="input-group">
-                        <label class="input-label">${t.p1_lbl2} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="${t.p1_ph2}" maxlength="6">
+                        <label class="input-label">Auth Code (<span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
                     </div>
-                    <button class="action-btn" onclick="verifyAndExecute('wallet')">${t.p1_btn}</button>
+                    <button class="action-btn" onclick="verifyAndExecute('wallet')">Approve & Connect</button>
                 `;
-            } else if (processId === 'transfer') {
-                title.innerText = t.p2_title;
+            } else {
+                title.innerText = processId.toUpperCase();
                 content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p2_desc}</div>
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">Process initialization ready.</div>
                     <div class="input-group">
-                        <label class="input-label">${t.p2_lbl1}</label>
-                        <input class="form-control" id="recipientAddress" placeholder="${t.p2_ph1}">
+                        <label class="input-label">Security Auth Code (<span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="Enter 6-digit code" maxlength="6">
                     </div>
-                    <div class="input-group">
-                        <label class="input-label"><span>${t.p2_lbl2}</span> <button class="max-btn" onclick="setMaxAmount('transferAmountInput')">MAX</button></label>
-                        <input class="form-control" id="transferAmountInput" value="${defaultBalStr}">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">${t.p2_lbl3} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="${t.p2_ph3}" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('transfer')">${t.p2_btn}</button>
-                `;
-            } else if (processId === 'payment') {
-                title.innerText = t.p3_title;
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p3_desc}</div>
-                    <div class="input-group">
-                        <label class="input-label"><span>${t.p3_lbl1}</span> <button class="max-btn" onclick="setMaxAmount('paymentInputAmount')">MAX</button></label>
-                        <input class="form-control" id="paymentInputAmount" value="${defaultBalStr}">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">${t.p3_lbl2} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="${t.p3_ph2}" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('payment')">${t.p3_btn}</button>
-                `;
-            } else if (processId === 'deposit') {
-                title.innerText = t.p4_title;
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p4_desc}</div>
-                    <div class="input-group">
-                        <label class="input-label"><span>${t.p4_lbl1}</span> <button class="max-btn" onclick="setMaxAmount('depositAmount')">MAX</button></label>
-                        <input class="form-control" id="depositAmount" value="${defaultBalStr}" oninput="updateCalc()">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">${t.p4_lbl2}</label>
-                        <select class="form-control" id="depositPeriod" onchange="updateCalc()" style="background:var(--card-bg); color:var(--text-main);">
-                            <option value="1">${t.p4_opt1 || '1 Year'}</option>
-                            <option value="3" selected>${t.p4_opt3 || '3 Years'}</option>
-                            <option value="5">${t.p4_opt5 || '5 Years'}</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">${t.p4_lbl3}</label>
-                        <input class="form-control" id="depositExpectedResult" readonly style="color:var(--accent-green); font-weight:700;">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">${t.p4_lbl4} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="${t.p4_ph4 || 'Enter 6-digit code'}" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('deposit')">${t.p4_btn}</button>
-                `;
-                setTimeout(updateCalc, 50);
-            } else if (processId === 'reward') {
-                title.innerText = t.p5_title;
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p5_desc}</div>
-                    <div class="input-group">
-                        <label class="input-label"><span>${t.p5_lbl1}</span> <button class="max-btn" onclick="setMaxAmount('rewardInputAmount')">MAX</button></label>
-                        <input class="form-control" id="rewardInputAmount" value="${defaultBalStr}">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">${t.p5_lbl2} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="${t.p5_ph2 || 'Enter code'}" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('reward')">${t.p5_btn}</button>
-                `;
-            } else if (processId === 'ubi') {
-                title.innerText = t.p6_title;
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p6_desc}</div>
-                    <div class="input-group">
-                        <label class="input-label"><span>${t.p6_lbl1}</span> <button class="max-btn" onclick="setMaxAmount('ubiInputAmount')">MAX</button></label>
-                        <input class="form-control" id="ubiInputAmount" value="${defaultBalStr}">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">${t.p6_lbl2} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="${t.p5_ph2 || 'Enter code'}" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('ubi')">${t.p6_btn}</button>
-                `;
-            } else if (processId === 'swap') {
-                title.innerText = t.p7_title;
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p7_desc}</div>
-                    <div class="input-group">
-                        <label class="input-label"><span>${t.p7_lbl1}</span> <button class="max-btn" onclick="setMaxAmount('swapSendInput')">MAX</button></label>
-                        <input class="form-control" id="swapSendInput" value="${defaultBalStr}">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">${t.p7_lbl2}</label>
-                        <input class="form-control" id="swapReceiveInput" value="314,159.000000 HK Token">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">${t.p7_lbl3} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="${t.p7_ph3 || 'Enter code'}" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('swap')">${t.p7_btn}</button>
-                `;
-            } else if (processId === 'dex') {
-                title.innerText = t.p8_title;
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p8_desc}</div>
-                    <div class="input-group">
-                        <label class="input-label"><span>${t.p8_lbl1}</span> <button class="max-btn" onclick="setMaxAmount('dexOrderInput')">MAX</button></label>
-                        <input class="form-control" id="dexOrderInput" value="${defaultBalStr}">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">${t.p8_lbl2} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="${t.p8_ph2 || 'Enter code'}" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('dex')">${t.p8_btn}</button>
-                `;
-            } else if (processId === 'lp') {
-                title.innerText = t.p9_title;
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p9_desc}</div>
-                    <div class="input-group">
-                        <label class="input-label"><span>${t.p9_lbl1}</span> <button class="max-btn" onclick="setMaxAmount('lpStakeInput')">MAX</button></label>
-                        <input class="form-control" id="lpStakeInput" value="${defaultBalStr}" oninput="updateCalc()">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">${t.p9_lbl2}</label>
-                        <select class="form-control" id="depositPeriod" onchange="updateCalc()" style="background:var(--card-bg); color:var(--text-main);">
-                            <option value="1">1 Year</option>
-                            <option value="3" selected>3 Years</option>
-                            <option value="5">5 Years</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">${t.p9_lbl3}</label>
-                        <input class="form-control" id="depositExpectedResult" readonly style="color:var(--accent-green); font-weight:700;">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">${t.p9_lbl4} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="${t.p9_ph4 || 'Enter code'}" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('lp')">${t.p9_btn}</button>
-                `;
-                setTimeout(updateCalc, 50);
-            } else if (processId === 'pishow') {
-                title.innerText = t.p10_title;
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${t.p10_desc}</div>
-                    <div class="input-group">
-                        <label class="input-label"><span>${t.p10_lbl1}</span> <button class="max-btn" onclick="setMaxAmount('piCustomAmountInput')">MAX</button></label>
-                        <input class="form-control" id="piCustomAmountInput" value="${defaultBalStr}">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">${t.p10_lbl2} <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="${t.p9_ph2 || 'Enter code'}" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('pishow')">${t.p10_btn}</button>
+                    <button class="action-btn" onclick="verifyAndExecute('${processId}')">Confirm & Execute</button>
                 `;
             }
 
@@ -1462,45 +1567,12 @@
         function verifyAndExecute(processId) {
             const codeInput = document.getElementById('userInputCode');
             const userEntered = codeInput ? codeInput.value.trim() : "";
-            const t = translations[currentLang] || translations['ko'];
-
             if(userEntered !== generatedAuthCode) {
-                alert(t.authFailAlert);
+                alert("❌ 인증번호가 일치하지 않습니다. (Auth code does not match.)");
                 return;
             }
-           
-            const messages = {
-                wallet: t.msg1 || "Success", transfer: t.msg2 || "Success", payment: t.msg3 || "Success", deposit: t.msg4 || "Success", reward: t.msg5 || "Success",
-                ubi: t.msg6 || "Success", swap: t.msg7 || "Success", dex: t.msg8 || "Success", lp: t.msg9 || "Success", pishow: t.msg10 || "Success"
-            };
-           
-            alert((t.authSuccessPrefix || "[Success]") + " " + messages[processId]);
+            alert("✅ [철통 보안 인증 성공] Process executed successfully!");
             closeModal();
-        }
-
-        function updateCalc() {
-            const amountInput = document.getElementById('depositAmount') || document.getElementById('lpStakeInput');
-            const periodSelect = document.getElementById('depositPeriod');
-            const resultInput = document.getElementById('depositExpectedResult');
-            const t = translations[currentLang] || translations['ko'];
-
-            if (!amountInput || !periodSelect || !resultInput) return;
-
-            let rawVal = amountInput.value.replace(/,/g, '').trim();
-            let amount = parseFloat(rawVal);
-
-            if (isNaN(amount) || amount <= 0) {
-                resultInput.value = t.calcDefault || "Enter amount (+0.00)";
-                return;
-            }
-
-            let period = parseInt(periodSelect.value);
-            let apy = 0.155;
-            if (period === 3) apy = 0.3141;
-            else if (period === 5) apy = 0.45;
-
-            let totalReturn = amount * Math.pow((1 + apy), period) - amount;
-            resultInput.value = t.calcResult ? t.calcResult(period, totalReturn.toLocaleString('en-US', {maximumFractionDigits: 2})) : `Expected: +${totalReturn.toFixed(2)}`;
         }
 
         function openInfoModal(type) {
@@ -1517,33 +1589,9 @@
             const modal = document.getElementById('appModal');
             const title = document.getElementById('modalTitle');
             const content = document.getElementById('modalContent');
-            const t = translations[currentLang] || translations['ko'];
 
-            let titleText = "";
-            let bodyHtml = "";
-
-            if (type === 'whitepaper') {
-                titleText = t.menu_wp;
-                bodyHtml = getFullWhitepaperHtml(currentLang);
-            } else if (type === 'faq') {
-                titleText = t.menu_faq;
-                bodyHtml = getFullFaqHtml(currentLang);
-            } else if (type === 'policies') {
-                titleText = t.menu_pol;
-                bodyHtml = `<div style="font-size:12px; line-height:1.6; color:var(--text-main);">AML·KYC·철통 보안 정책 가이드라인 상세 내용이 적용되어 있습니다.</div>`;
-            } else if (type === 'regulations') {
-                titleText = t.menu_reg;
-                bodyHtml = `<div style="font-size:12px; line-height:1.6; color:var(--text-muted);">21개국 글로벌 디지털 자산 법규 및 해킹 방어 컴플라이언스 규격입니다.</div>`;
-            } else if (type === 'fatf_travel_rule') {
-                titleText = t.menu_fatf;
-                bodyHtml = `<div style="font-size:12px; line-height:1.6; color:var(--text-main);">FATF 트래블룰 및 OFAC 실시간 제재 리스트 검증 규격이 적용되어 있습니다.</div>`;
-            } else if (type === 't165') {
-                titleText = t.hub_t165;
-                bodyHtml = `<div style="font-size:12px; line-height:1.6; color:var(--text-muted);">경주 T165 초특급 랜드마크 허브 사옥 및 R&D 센터입니다.</div>`;
-            }
-
-            title.innerText = titleText;
-            content.innerHTML = bodyHtml;
+            title.innerText = type.toUpperCase();
+            content.innerHTML = `<div style="font-size:12px; line-height:1.6; color:var(--text-main); max-height:60vh; overflow-y:auto;">HK WORLD BANK Global Compliance & Anti-Hacking Security Spec loaded.</div>`;
             modal.classList.add('active');
         }
 
@@ -1555,7 +1603,7 @@
 
         function changeLanguage(lang) {
             currentLang = lang;
-            let t = translations[lang] || translations['ko'];
+            let t = translations[lang] || translations['en'];
 
             const metaTitleEl = document.getElementById('metaTitle');
             if(metaTitleEl) {
@@ -1567,8 +1615,6 @@
                 const key = el.getAttribute('data-i18n');
                 if(t[key]) {
                     el.innerText = t[key];
-                } else if(translations.ko[key]) {
-                    el.innerText = translations.ko[key];
                 }
             });
 
@@ -1577,16 +1623,10 @@
                 const key = input.getAttribute('data-i18n-placeholder');
                 if(t[key]) {
                     input.placeholder = t[key];
-                } else if(translations.ko[key]) {
-                    input.placeholder = translations.ko[key];
                 }
             });
 
-            document.dir = ['ar', 'fa', 'ur', 'he'].includes(lang) ? 'rtl' : 'ltr';
-            const slider = document.getElementById('sonponeSlider');
-            if(slider) {
-                updateSonpone(slider.value);
-            }
+            document.dir = ['ar', 'pk'].includes(lang) ? 'rtl' : 'ltr';
 
             if (activeProcessId) {
                 renderProcessModalContent();

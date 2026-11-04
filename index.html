@@ -787,7 +787,6 @@
             margin-top: 10px;
         }
 
-        /* 로딩 인디케이터 */
         .loading-spinner {
             display: none;
             width: 14px;
@@ -815,19 +814,17 @@
             <div class="profile-badge">HK</div>
         </header>
 
-        <!-- 60개국 실시간 자동 번역 연동 바 -->
+        <!-- 25개국 핵심 글로벌 언어 선택 바 -->
         <div class="lang-bar">
             <div class="lang-info">
                 <i class="fa-solid fa-globe"></i>
-                <span data-i18n="langEngineLabel">60개국 실시간 다국어 엔진</span>
+                <span data-i18n="langEngineLabel">25개국 핵심 글로벌 언어 엔진</span>
                 <div class="loading-spinner" id="langSpinner"></div>
             </div>
             <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
                 <option value="ko" selected>🇰🇷 한국어 (Korean)</option>
                 <option value="en">🇺🇸 영어 (English)</option>
-                <option value="bn">🇧🇩 벵골어 (Bengali)</option>
-                <option value="ur">🇵🇰 우르두어 (Urdu)</option>
-                <option value="zh-CN">🇨🇳 중국어 (Chinese Simplified)</option>
+                <option value="zh-CN">🇨🇳 중국어 간체 (Chinese)</option>
                 <option value="ja">🇯🇵 일본어 (Japanese)</option>
                 <option value="es">🇪🇸 스페인어 (Spanish)</option>
                 <option value="hi">🇮🇳 힌디어 (Hindi)</option>
@@ -843,46 +840,13 @@
                 <option value="th">🇹🇭 태국어 (Thai)</option>
                 <option value="pl">🇵🇱 폴란드어 (Polish)</option>
                 <option value="nl">🇳🇱 네덜란드어 (Dutch)</option>
-                <option value="fa">🇮🇷 페르시아어 (Persian)</option>
-                <option value="uk">🇺🇦 우크라이나어 (Ukrainian)</option>
                 <option value="ms">🇲🇾 말레이어 (Malay)</option>
                 <option value="tl">🇵🇭 필리핀어 (Filipino)</option>
-                <option value="sw">🇰🇪 스와힐리어 (Swahili)</option>
-                <option value="ro">🇷🇴 루마니아어 (Romanian)</option>
-                <option value="el">🇬🇷 그리스어 (Greek)</option>
-                <option value="cs">🇨🇿 체코어 (Czech)</option>
-                <option value="hu">🇭🇺 헝가리어 (Hungarian)</option>
+                <option value="uk">🇺🇦 우크라이나어 (Ukrainian)</option>
+                <option value="fa">🇮🇷 페르시아어 (Persian)</option>
                 <option value="sv">🇸🇪 스웨덴어 (Swedish)</option>
-                <option value="he">🇮🇱 히브리어 (Hebrew)</option>
-                <option value="da">🇩🇰 덴마크어 (Danish)</option>
-                <option value="fi">🇫🇮 핀란드어 (Finnish)</option>
-                <option value="no">🇳🇴 노르웨이어 (Norwegian)</option>
-                <option value="sk">🇸🇰 슬로바키아어 (Slovak)</option>
-                <option value="bg">🇧🇬 불가리아어 (Bulgarian)</option>
-                <option value="hr">🇭🇷 크로아티아어 (Croatian)</option>
-                <option value="sr">🇷🇸 세르비아어 (Serbian)</option>
-                <option value="lt">🇱🇹 리투아니아어 (Lithuanian)</option>
-                <option value="sl">🇸🇮 슬로베니아어 (Slovenian)</option>
-                <option value="et">🇪🇪 에스토니아어 (Estonian)</option>
-                <option value="lv">🇱🇻 라트비아어 (Latvian)</option>
-                <option value="ka">🇬🇪 조지아어 (Georgian)</option>
-                <option value="hy">🇦🇲 아르메니아어 (Armenian)</option>
-                <option value="az">🇦🇿 아제르바이잔어 (Azerbaijani)</option>
-                <option value="kk">🇰🇿 카자흐어 (Kazakh)</option>
-                <option value="uz">🇺🇿 우즈베크어 (Uzbek)</option>
-                <option value="mn">🇲🇳 몽골어 (Mongolian)</option>
-                <option value="km">🇰🇭 캄보디아어 (Khmer)</option>
-                <option value="lo">🇱🇦 라오스어 (Lao)</option>
-                <option value="my">🇲🇲 미얀마어 (Burmese)</option>
-                <option value="ne">🇳🇵 네팔어 (Nepali)</option>
-                <option value="si">🇱🇰 싱할라어 (Sinhala)</option>
-                <option value="am">🇪🇹 암하라어 (Amharic)</option>
-                <option value="zu">🇿🇦 줄루어 (Zulu)</option>
-                <option value="yo">🇳🇬 요루바어 (Yoruba)</option>
-                <option value="ig">🇳🇬 이보어 (Igbo)</option>
-                <option value="ha">🇳🇬 하우사어 (Hausa)</option>
-                <option value="mg">🇲🇬 마다가스카르어 (Malagasy)</option>
-                <option value="is">🇮🇸 아이슬란드어 (Icelandic)</option>
+                <option value="bn">🇧🇩 벵골어 (Bengali)</option>
+                <option value="ur">🇵🇰 우르두어 (Urdu)</option>
             </select>
         </div>
 
@@ -1082,7 +1046,7 @@
                     <i class="fa-solid fa-shield-halved"></i> <span data-i18n="menu_pol">3대 정책 (자금세탁방지·고객확인·철통보안)</span>
                 </div>
                 <div class="menu-item" onclick="openInfoModal('regulations')">
-                    <i class="fa-solid fa-scale-balanced"></i> <span data-i18n="menu_reg">60개국 디지털 자산법 및 해킹 방어 규격</span>
+                    <i class="fa-solid fa-scale-balanced"></i> <span data-i18n="menu_reg">25개국 디지털 자산법 및 해킹 방어 규격</span>
                 </div>
                 <div class="menu-item" onclick="openInfoModal('fatf_travel_rule')">
                     <i class="fa-solid fa-gavel"></i> <span data-i18n="menu_fatf">국제 자금세탁방지 트래블룰 & 실시간 제재 검증</span>
@@ -1133,7 +1097,7 @@
         </div>
     </div>
 
-    <!-- 60개국 전체 실시간 동적 자동 번역 엔진 (Google Translate API 기반) -->
+    <!-- 25개국어 실시간 다국어 동적 변환 엔진 스크립트 -->
     <script>
         let baseInterest = 12450892.600000;
         let currentWalletBalance = 314159.000000;
@@ -1142,9 +1106,8 @@
         let activeProcessId = null;
         let activeModalType = null;
 
-        // 원본 한국어 데이터베이스 (기준)
         const koSource = {
-            headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "60개국 실시간 다국어 엔진", subTitle: "빠른 금융 작업 마스터 코어",
+            headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "25개국 핵심 글로벌 언어 엔진", subTitle: "빠른 금융 작업 마스터 코어",
             dashTitle: "개인 자산 대시보드", piSyncLabel: "보유 수량 (파이 수량 원장 동기화)", unitText: "파이 / HK",
             interestLabel: "실시간 누적 이자 (3년 31.41% 연복리)", mainnetBtnText: "코어팀에게 메인넷 즉시 신청하기",
             gridSectionTitle: "10대 분산 연동망", gridSectionSub: "[개별 프로세스 구동]",
@@ -1163,16 +1126,14 @@
             net10_title: "파이 수량 동기화", net10_desc: "파이 자산 메인넷 원장 실시간 일치화",
             drawerTitle: "HK 탐색기", menuGroup1Title: "핵심 법률 및 보안 규격", menuGroup2Title: "HK 글로벌 생태계 거점",
             menu_wp: "백서 (Whitepaper v3.1 상세 40선)", menu_faq: "자주 묻는 질문 (FAQ 20선 심층)", menu_pol: "3대 정책 (자금세탁방지·고객확인·철통보안)",
-            menu_reg: "60개국 디지털 자산법 및 해킹 방어 규격", menu_fatf: "국제 자금세탁방지 트래블룰 & 실시간 제재 검증",
+            menu_reg: "25개국 디지털 자산법 및 해킹 방어 규격", menu_fatf: "국제 자금세탁방지 트래블룰 & 실시간 제재 검증",
             hub_robot: "로봇: HK-ROBOT", hub_nexus: "스마트 글래스: HK-NEXUS", hub_uam: "도심항공교통: HK-UAM", hub_fusion: "인공태양: HK-FUSION",
             hub_bio: "퀀텀바이오: HK-QUANTUMBIO", hub_space: "우주모빌리티: HK-SPACE", hub_parts: "부품뱅크: HK-PARTSBANK", hub_defence: "국방기술: HK-DEFENCE-HUB",
             hub_t165: "T165 초특급 랜드마크 허브 (경주 사옥)"
         };
 
-        // 실시간 번역 캐시
         const translationCache = { ko: koSource };
 
-        // 구글 무료 번역 API를 활용한 60개국어 즉각 자동 변환 함수
         async function fetchAutoTranslation(targetLang) {
             if (translationCache[targetLang]) return translationCache[targetLang];
 
@@ -1183,7 +1144,6 @@
             const keys = Object.keys(koSource);
             
             try {
-                // 병렬 연동으로 60개국어 문장 초고속 자동 번역
                 const promises = keys.map(async (key) => {
                     const text = koSource[key];
                     const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=ko&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
@@ -1195,7 +1155,7 @@
                 await Promise.all(promises);
                 translationCache[targetLang] = translatedObj;
             } catch (err) {
-                console.error("Translation API error, falling back to Korean:", err);
+                console.error("Translation API error:", err);
                 return koSource;
             } finally {
                 if (spinner) spinner.style.display = 'none';
@@ -1339,16 +1299,16 @@
             renderInfoModalContent();
         }
 
-        function renderInfoModalContent() {
-            const type = activeModalType;
-            if (!type) return;
-
+        function openInfoModal(type) {
+            activeModalType = type;
+            activeProcessId = null;
+            toggleDrawer();
             const modal = document.getElementById('appModal');
             const title = document.getElementById('modalTitle');
             const content = document.getElementById('modalContent');
 
             title.innerText = "정보 및 보안 규격 문서";
-            content.innerHTML = `<div style="font-size:12px; line-height:1.6; color:var(--text-muted);">HK WORLD BANK 60개국어 지원 및 해킹 방어 컴플라이언스 상세 규격 문서입니다.</div>`;
+            content.innerHTML = `<div style="font-size:12px; line-height:1.6; color:var(--text-muted);">HK WORLD BANK 25개국 핵심 언어 지원 및 해킹 방어 컴플라이언스 상세 규격 문서입니다.</div>`;
             modal.classList.add('active');
         }
 
@@ -1358,7 +1318,6 @@
             activeProcessId = null;
         }
 
-        // 60개국어 선택 시 즉각 전체 텍스트 실시간 변환
         async function changeLanguage(lang) {
             currentLang = lang;
             let t = await fetchAutoTranslation(lang);
@@ -1393,4 +1352,3 @@
     </script>
 </body>
 </html>
-

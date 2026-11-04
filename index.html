@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -549,7 +550,6 @@
             word-break: break-all;
         }
 
-        /* 유튜브 버튼 흰색(White) 전용 디자인 */
         .btn-youtube-white {
             color: #040609 !important;
             text-decoration: none;
@@ -787,26 +787,17 @@
             margin-top: 10px;
         }
 
-        .wp-item-box, .faq-item-box {
-            background: rgba(0,0,0,0.3);
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            padding: 12px;
-            margin-bottom: 10px;
+        /* 로딩 인디케이터 */
+        .loading-spinner {
+            display: none;
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: var(--accent-cyan);
+            animation: spin 0.8s linear infinite;
         }
-
-        .wp-item-title, .faq-q {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--accent-gold);
-            margin-bottom: 4px;
-        }
-
-        .wp-item-content, .faq-a {
-            font-size: 11px;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -824,27 +815,28 @@
             <div class="profile-badge">HK</div>
         </header>
 
-        <!-- 60개국 다국어 변환 엔진 선택 바 (언어 수정 가능 구조) -->
+        <!-- 60개국 실시간 자동 번역 연동 바 -->
         <div class="lang-bar">
             <div class="lang-info">
                 <i class="fa-solid fa-globe"></i>
-                <span data-i18n="langEngineLabel">60개국 글로벌 다국어 엔진</span>
+                <span data-i18n="langEngineLabel">60개국 실시간 다국어 엔진</span>
+                <div class="loading-spinner" id="langSpinner"></div>
             </div>
             <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
                 <option value="ko" selected>🇰🇷 한국어 (Korean)</option>
                 <option value="en">🇺🇸 영어 (English)</option>
-                <option value="zh">🇨🇳 중국어 (Chinese)</option>
+                <option value="bn">🇧🇩 벵골어 (Bengali)</option>
+                <option value="ur">🇵🇰 우르두어 (Urdu)</option>
+                <option value="zh-CN">🇨🇳 중국어 (Chinese Simplified)</option>
                 <option value="ja">🇯🇵 일본어 (Japanese)</option>
                 <option value="es">🇪🇸 스페인어 (Spanish)</option>
                 <option value="hi">🇮🇳 힌디어 (Hindi)</option>
                 <option value="ar">🇸🇦 아랍어 (Arabic)</option>
                 <option value="pt">🇧🇷 포르투갈어 (Portuguese)</option>
-                <option value="bn">🇧🇩 벵골어 (Bengali)</option>
                 <option value="ru">🇷🇺 러시아어 (Russian)</option>
                 <option value="de">🇩🇪 독일어 (German)</option>
                 <option value="fr">🇫🇷 프랑스어 (French)</option>
                 <option value="id">🇮🇩 인도네시아어 (Indonesian)</option>
-                <option value="ur">🇵🇰 우르두어 (Urdu)</option>
                 <option value="it">🇮🇹 이탈리아어 (Italian)</option>
                 <option value="tr">🇹🇷 튀르키예어 (Turkish)</option>
                 <option value="vi">🇻🇳 베트남어 (Vietnamese)</option>
@@ -934,7 +926,7 @@
                 </button>
             </div>
 
-            <!-- 10대 분산 연동망 (지갑연결 복구 및 순수 한글화) -->
+            <!-- 10대 분산 연동망 -->
             <div class="section-header">
                 <h2 class="section-title" data-i18n="gridSectionTitle">10대 분산 연동망</h2>
                 <span class="section-sub" data-i18n="gridSectionSub">[개별 프로세스 구동]</span>
@@ -1042,7 +1034,7 @@
 
                 <div class="chat-box" id="chatBox">
                     <div class="chat-msg beeni" data-i18n="initialBeeniMsg">
-                        [AGI 삐니]: 바이낸스·시중은행 해킹 원천 차단형 자금세탁방지/고객확인 보안 시스템이 완벽하게 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!
+                        [AGI 삐니]: 바이낸스·시중은행 해킹 원천 차단형 자금세탁방지 보안 시스템 가동 중입니다. 혜공 형님, 지시해 주십시오!
                     </div>
                 </div>
 
@@ -1053,7 +1045,7 @@
             </div>
         </main>
 
-        <!-- 푸터 영역 (유튜브 버튼 흰색) -->
+        <!-- 푸터 영역 -->
         <footer>
             <p class="copyright">© 2026 HK WORLD BANK. All Rights Reserved.</p>
             <p class="socials" style="margin-bottom: 12px;" data-i18n="supportEmailText">
@@ -1141,7 +1133,7 @@
         </div>
     </div>
 
-    <!-- 자바스크립트 로직 & 60개국어 다국어 변환 엔진 및 지갑연결 완벽 복구 -->
+    <!-- 60개국 전체 실시간 동적 자동 번역 엔진 (Google Translate API 기반) -->
     <script>
         let baseInterest = 12450892.600000;
         let currentWalletBalance = 314159.000000;
@@ -1150,76 +1142,67 @@
         let activeProcessId = null;
         let activeModalType = null;
 
-        // 60개국어 실시간 번역 딕셔너리 (형님이 언제든지 직접 수정/추가하실 수 있습니다!)
-        const translations = {
-            ko: {
-                headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "60개국 글로벌 다국어 엔진", subTitle: "빠른 금융 작업 마스터 코어",
-                dashTitle: "개인 자산 대시보드", piSyncLabel: "보유 수량 (파이 수량 원장 동기화)", unitText: "파이 / HK", interestLabel: "실시간 누적 이자 (3년 31.41% 연복리)",
-                mainnetBtnText: "코어팀에게 메인넷 즉시 신청하기", gridSectionTitle: "10대 분산 연동망", gridSectionSub: "[개별 프로세스 구동]",
-                agiTitle: "AGI 삐니 고객센터", agiSub: "손폰(SONPONE) 자동 반응 및 AI 종합 제어", sonponeLabelText: "손폰(SONPONE) 감지 감도:", syncText: "(실시간 일치)",
-                initialBeeniMsg: "[AGI 삐니]: 바이낸스·시중은행 해킹 원천 차단형 자금세탁방지/고객확인 보안 시스템이 완벽하게 가동 중입니다. 혜공 형님, 무엇이든 지시해 주십시오!",
-                chatInputPlaceholder: "삐니에게 질문 입력...", chatSendBtn: "전송", supportEmailText: "지원 문의: support@hkwb.world",
-                net1_title: "지갑연결", net1_desc: "노드 지갑 약정 연동 및 자동 연결",
-                net2_title: "송금", net2_desc: "대륙간 초고속 다중서명 암호화 전송 체계",
-                net3_title: "결제", net3_desc: "현금·카드·타코인 실시간 상거래 안전결제",
-                net4_title: "예치", net4_desc: "3년 만기 31.41% 연복리 자산 신탁 금고",
-                net5_title: "보상", net5_desc: "기여도 기반 장려금 금고 적립 엔진",
-                net6_title: "기본소득", net6_desc: "HK 사회 재단 & 지자체 기본소득 분배 모델",
-                net7_title: "교환", net7_desc: "현금·카드·타코인 즉시 맞교환 구매",
-                net8_title: "탈중앙화 교환", net8_desc: "자율 제어 개인 간 직접 거래 유동성 매칭",
-                net9_title: "유동성 예치", net9_desc: "유동성 공급 증명 및 고배당 권한 설정",
-                net10_title: "파이 수량 동기화", net10_desc: "파이 자산 메인넷 원장 실시간 일치화",
-                mainnetAlert: "테스트 파이 원장 동기화 및 철통 보안 테스트넷 전송 신청이 정상적으로 완료되었습니다!",
-                beeniReply: (txt) => `[AGI 삐니]: "${txt}" 지시를 수신했습니다. 해킹 방어 백엔드 검증을 거쳐 실시간 처리 중입니다.`,
-                drawerTitle: "HK 탐색기", menuGroup1Title: "핵심 법률 및 보안 규격", menuGroup2Title: "HK 글로벌 생태계 거점",
-                menu_wp: "백서 (Whitepaper v3.1 상세 40선)", menu_faq: "자주 묻는 질문 (FAQ 20선 심층)", menu_pol: "3대 정책 (자금세탁방지·고객확인·철통보안)", menu_reg: "60개국 디지털 자산법 및 해킹 방어 규격", menu_fatf: "국제 자금세탁방지 트래블룰 & 실시간 제재 검증"
-            },
-            en: {
-                headerSubText: "Global Next-Gen Decentralized Finance", langEngineLabel: "60-Nation Universal Language Engine", subTitle: "Fast Financial Operation Master Core",
-                dashTitle: "Personal Asset Dashboard", piSyncLabel: "Holding Amount (Pi Ledger Sync)", unitText: "Pi / HK", interestLabel: "Real-time Accumulated Interest (3-Yr 31.41% APY)",
-                mainnetBtnText: "Request Mainnet to Core Team Now", gridSectionTitle: "10 Distributed Networks", gridSectionSub: "[Process Active]",
-                agiTitle: "AGI Beeni Support", agiSub: "SONPONE Auto-Response & AI Orchestration", sonponeLabelText: "Detection Sensitivity:", syncText: "(Live Sync)",
-                initialBeeniMsg: "[AGI Beeni]: Binance & Commercial Bank Anti-Hacking AML/KYC system fully operational! Chairman Jaewan Lee, how may I assist you?",
-                chatInputPlaceholder: "Ask Beeni...", chatSendBtn: "Send", supportEmailText: "Support: support@hkwb.world",
-                net1_title: "Wallet Connect", net1_desc: "Node wallet protocol auto-link",
-                net2_title: "Transfer", net2_desc: "Multisig encrypted cross-border transfer",
-                net3_title: "Payment", net3_desc: "Real-time commerce escrow",
-                net4_title: "Vault Deposit", net4_desc: "3-Year 31.41% APY trust vault",
-                net5_title: "Rewards", net5_desc: "Contribution incentive accrual engine",
-                net6_title: "UBI", net6_desc: "HK Social Foundation UBI model",
-                net7_title: "Swap", net7_desc: "Instant token purchase swap",
-                net8_title: "Decentralized Swap", net8_desc: "Autonomous P2P liquidity matching",
-                net9_title: "Liquidity Staking", net9_desc: "PoL & high-yield dividend rights",
-                net10_title: "Pi Ledger Sync", net10_desc: "Pi asset mainnet ledger sync",
-                mainnetAlert: "Mainnet synchronization and transmission request completed successfully!",
-                beeniReply: (txt) => `[AGI Beeni]: Command "${txt}" received. Processing via secure AML backend.`,
-                drawerTitle: "HK NAVIGATOR", menuGroup1Title: "Core Legal & Compliance", menuGroup2Title: "HK Global Ecosystem Hubs"
-            },
-            zh: {
-                headerSubText: "全球下一代分散式金融", langEngineLabel: "60国全球多语言引擎", subTitle: "快速金融操作核心",
-                dashTitle: "个人资产仪表板", piSyncLabel: "持仓数量 (派币账本同步)", unitText: "Pi / HK", interestLabel: "实时累计利息 (3年 31.41% 复利)",
-                mainnetBtnText: "立即向核心团队申请主网", gridSectionTitle: "十大分散式联动网络", gridSectionSub: "[独立进程运行]",
-                agiTitle: "AGI 毕妮客服", agiSub: "SONPONE 自动响应与 AI 综合控制", sonponeLabelText: "感应灵敏度:", syncText: "(实时同步)",
-                initialBeeniMsg: "[AGI 毕妮]: 币安及商业银行防黑客 AML/KYC 安全系统已全面运行！李在万会长，请随时下达指示！",
-                chatInputPlaceholder: "向毕妮提问...", chatSendBtn: "发送", supportEmailText: "支持邮箱: support@hkwb.world",
-                net1_title: "钱包连接", net1_desc: "节点钱包协议自动联动", net2_title: "转账", net2_desc: "多重签名加密跨境传输", net3_title: "支付", net3_desc: "实时商业托管支付", net4_title: "存款", net4_desc: "3年期 31.41% 复利信托金库"
-            },
-            ja: {
-                headerSubText: "グローバル次世代分散型金融", langEngineLabel: "60カ国グローバル多言語エンジン", subTitle: "高速金融作業マスターコア",
-                dashTitle: "個人資産ダッシュボード", piSyncLabel: "保有数量 (パイウォレット元帳同期)", unitText: "Pi / HK", interestLabel: "リアルタイム累積利息 (3年 31.41% 複利)",
-                mainnetBtnText: "コアチームへメインネットを今すぐ申請", gridSectionTitle: "10大分散連動網", gridSectionSub: "[個別プロセス稼働]",
-                agiTitle: "AGI ビニ カスタマーセンター", agiSub: "SONPONE自動反応およびAI総合制御", sonponeLabelText: "感知感度:", syncText: "(リアルタイム同期)",
-                initialBeeniMsg: "[AGI ビニ]: バイナンス・市中銀行ハッキング原点遮断型AML/KYCセキュリティシステムが完璧に稼働中です。イ・ジェワン会長、何なりとご指示ください！",
-                chatInputPlaceholder: "ビニに質問を入力...", chatSendBtn: "送信", supportEmailText: "サポート: support@hkwb.world",
-                net1_title: "ウォレット接続", net1_desc: "ノードウォレットプロトコル自動連動", net2_title: "送金", net2_desc: "マルチシグ暗号化クロスボーダー転送", net3_title: "決済", net3_desc: "リアルタイム商業エスクロー", net4_title: "預金", net4_desc: "3年満期 31.41% 複利信託金庫"
-            }
+        // 원본 한국어 데이터베이스 (기준)
+        const koSource = {
+            headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "60개국 실시간 다국어 엔진", subTitle: "빠른 금융 작업 마스터 코어",
+            dashTitle: "개인 자산 대시보드", piSyncLabel: "보유 수량 (파이 수량 원장 동기화)", unitText: "파이 / HK",
+            interestLabel: "실시간 누적 이자 (3년 31.41% 연복리)", mainnetBtnText: "코어팀에게 메인넷 즉시 신청하기",
+            gridSectionTitle: "10대 분산 연동망", gridSectionSub: "[개별 프로세스 구동]",
+            agiTitle: "AGI 삐니 고객센터", agiSub: "손폰(SONPONE) 자동 반응 및 AI 종합 제어", sonponeLabelText: "손폰(SONPONE) 감지 감도:", syncText: "(실시간 일치)",
+            initialBeeniMsg: "[AGI 삐니]: 바이낸스·시중은행 해킹 원천 차단형 자금세탁방지 보안 시스템 가동 중입니다. 혜공 형님, 지시해 주십시오!",
+            chatInputPlaceholder: "삐니에게 질문 입력...", chatSendBtn: "전송", supportEmailText: "지원 문의: support@hkwb.world",
+            net1_title: "지갑연결", net1_desc: "노드 지갑 약정 연동 및 자동 연결",
+            net2_title: "송금", net2_desc: "대륙간 초고속 다중서명 암호화 전송 체계",
+            net3_title: "결제", net3_desc: "현금·카드·타코인 실시간 상거래 안전결제",
+            net4_title: "예치", net4_desc: "3년 만기 31.41% 연복리 자산 신탁 금고",
+            net5_title: "보상", net5_desc: "기여도 기반 장려금 금고 적립 엔진",
+            net6_title: "기본소득", net6_desc: "HK 사회 재단 & 지자체 기본소득 분배 모델",
+            net7_title: "교환", net7_desc: "현금·카드·타코인 즉시 맞교환 구매",
+            net8_title: "탈중앙화 교환", net8_desc: "자율 제어 개인 간 직접 거래 유동성 매칭",
+            net9_title: "유동성 예치", net9_desc: "유동성 공급 증명 및 고배당 권한 설정",
+            net10_title: "파이 수량 동기화", net10_desc: "파이 자산 메인넷 원장 실시간 일치화",
+            drawerTitle: "HK 탐색기", menuGroup1Title: "핵심 법률 및 보안 규격", menuGroup2Title: "HK 글로벌 생태계 거점",
+            menu_wp: "백서 (Whitepaper v3.1 상세 40선)", menu_faq: "자주 묻는 질문 (FAQ 20선 심층)", menu_pol: "3대 정책 (자금세탁방지·고객확인·철통보안)",
+            menu_reg: "60개국 디지털 자산법 및 해킹 방어 규격", menu_fatf: "국제 자금세탁방지 트래블룰 & 실시간 제재 검증",
+            hub_robot: "로봇: HK-ROBOT", hub_nexus: "스마트 글래스: HK-NEXUS", hub_uam: "도심항공교통: HK-UAM", hub_fusion: "인공태양: HK-FUSION",
+            hub_bio: "퀀텀바이오: HK-QUANTUMBIO", hub_space: "우주모빌리티: HK-SPACE", hub_parts: "부품뱅크: HK-PARTSBANK", hub_defence: "국방기술: HK-DEFENCE-HUB",
+            hub_t165: "T165 초특급 랜드마크 허브 (경주 사옥)"
         };
 
-        // 60개국 전체 자동 폴백 맵핑
-        const langKeys = ['zh', 'ja', 'es', 'hi', 'ar', 'pt', 'bn', 'ru', 'de', 'fr', 'id', 'ur', 'it', 'tr', 'vi', 'th', 'pl', 'nl', 'fa', 'uk', 'ms', 'tl', 'sw', 'ro', 'el', 'cs', 'hu', 'sv', 'he', 'da', 'fi', 'no', 'sk', 'bg', 'hr', 'sr', 'lt', 'sl', 'et', 'lv', 'ka', 'hy', 'az', 'kk', 'uz', 'mn', 'km', 'lo', 'my', 'ne', 'si', 'am', 'zu', 'yo', 'ig', 'ha', 'mg', 'is'];
-        langKeys.forEach(k => {
-            if(!translations[k]) translations[k] = translations['en'];
-        });
+        // 실시간 번역 캐시
+        const translationCache = { ko: koSource };
+
+        // 구글 무료 번역 API를 활용한 60개국어 즉각 자동 변환 함수
+        async function fetchAutoTranslation(targetLang) {
+            if (translationCache[targetLang]) return translationCache[targetLang];
+
+            const spinner = document.getElementById('langSpinner');
+            if (spinner) spinner.style.display = 'inline-block';
+
+            const translatedObj = {};
+            const keys = Object.keys(koSource);
+            
+            try {
+                // 병렬 연동으로 60개국어 문장 초고속 자동 번역
+                const promises = keys.map(async (key) => {
+                    const text = koSource[key];
+                    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=ko&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
+                    const res = await fetch(url);
+                    const data = await res.json();
+                    translatedObj[key] = data[0][0][0];
+                });
+
+                await Promise.all(promises);
+                translationCache[targetLang] = translatedObj;
+            } catch (err) {
+                console.error("Translation API error, falling back to Korean:", err);
+                return koSource;
+            } finally {
+                if (spinner) spinner.style.display = 'none';
+            }
+
+            return translatedObj;
+        }
 
         window.onload = function() {
             openProcessModal('wallet');
@@ -1246,16 +1229,15 @@
         }
 
         function updateSonpone(val) {
-            const t = translations[currentLang] || translations['en'];
             const sonponeValEl = document.getElementById('sonponeVal');
             if(sonponeValEl) {
-                sonponeValEl.innerText = val + "% " + (t.syncText || "(실시간 일치)");
+                const curDict = translationCache[currentLang] || koSource;
+                sonponeValEl.innerText = val + "% " + (curDict.syncText || "(실시간 일치)");
             }
         }
 
         function triggerMainnetRequest() {
-            const t = translations[currentLang] || translations['en'];
-            alert(t.mainnetAlert || "Mainnet request completed!");
+            alert("테스트 파이 원장 동기화 및 철통 보안 테스트넷 전송 신청이 정상 완료되었습니다!");
         }
 
         function sendChatMessage() {
@@ -1276,8 +1258,7 @@
             setTimeout(() => {
                 const beeniMsg = document.createElement('div');
                 beeniMsg.className = 'chat-msg beeni';
-                const t = translations[currentLang] || translations['en'];
-                beeniMsg.innerText = t.beeniReply ? t.beeniReply(text) : `[AGI Beeni]: Received "${text}". Processing...`;
+                beeniMsg.innerText = `[AGI 삐니]: "${text}" 지시를 수신했습니다. 해킹 방어 백엔드 검증을 거쳐 실시간 처리 중입니다.`;
                 chatBox.appendChild(beeniMsg);
                 chatBox.scrollTop = chatBox.scrollHeight;
             }, 600);
@@ -1287,7 +1268,6 @@
             if (e.key === 'Enter') sendChatMessage();
         }
 
-        // 지갑연결 등 10대 연동망 프로세스 모달 복구
         function openProcessModal(processId) {
             activeProcessId = processId;
             activeModalType = null;
@@ -1366,13 +1346,9 @@
             const modal = document.getElementById('appModal');
             const title = document.getElementById('modalTitle');
             const content = document.getElementById('modalContent');
-            const t = translations[currentLang] || translations['en'];
 
-            let titleText = t[`menu_${type}`] || "정보 규격";
-            let bodyHtml = `<div style="font-size:12px; line-height:1.6; color:var(--text-muted);">HK WORLD BANK 60개국어 지원 및 해킹 방어 컴플라이언스 상세 규격 문서입니다.</div>`;
-
-            title.innerText = titleText;
-            content.innerHTML = bodyHtml;
+            title.innerText = "정보 및 보안 규격 문서";
+            content.innerHTML = `<div style="font-size:12px; line-height:1.6; color:var(--text-muted);">HK WORLD BANK 60개국어 지원 및 해킹 방어 컴플라이언스 상세 규격 문서입니다.</div>`;
             modal.classList.add('active');
         }
 
@@ -1382,10 +1358,10 @@
             activeProcessId = null;
         }
 
-        // 60개국어 동적 변환 엔진 실행 함수 (언어 실시간 수정 반영)
-        function changeLanguage(lang) {
+        // 60개국어 선택 시 즉각 전체 텍스트 실시간 변환
+        async function changeLanguage(lang) {
             currentLang = lang;
-            let t = translations[lang] || translations['en'];
+            let t = await fetchAutoTranslation(lang);
 
             const metaTitleEl = document.getElementById('metaTitle');
             if(metaTitleEl) {
@@ -1397,8 +1373,6 @@
                 const key = el.getAttribute('data-i18n');
                 if(t[key]) {
                     el.innerText = t[key];
-                } else if(translations.en[key]) {
-                    el.innerText = translations.en[key];
                 }
             });
 
@@ -1407,8 +1381,6 @@
                 const key = input.getAttribute('data-i18n-placeholder');
                 if(t[key]) {
                     input.placeholder = t[key];
-                } else if(translations.en[key]) {
-                    input.placeholder = translations.en[key];
                 }
             });
 
@@ -1421,3 +1393,4 @@
     </script>
 </body>
 </html>
+

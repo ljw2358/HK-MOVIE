@@ -1754,12 +1754,12 @@
                 alert(t.authFailAlert);
                 return;
             }
-            
+           
             const messages = {
                 wallet: t.msg1, transfer: t.msg2, payment: t.msg3, deposit: t.msg4, reward: t.msg5,
                 ubi: t.msg6, swap: t.msg7, dex: t.msg8, lp: t.msg9, pishow: t.msg10
             };
-            
+           
             alert(t.authSuccessPrefix + " " + messages[processId]);
             closeModal();
         }
@@ -1849,7 +1849,7 @@
             if(metaTitleEl) {
                 metaTitleEl.innerText = t.dashTitle ? `HK WORLD BANK | ${t.dashTitle}` : "HK WORLD BANK";
             }
-            
+           
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-i18n');

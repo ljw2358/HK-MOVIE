@@ -22,6 +22,7 @@
             --text-muted: #8c9cb5;
             --danger: #ff3b30;
             --pi-color: #f7931a;
+            --hkbank-blue: #0066ff;
         }
 
         * {
@@ -75,7 +76,7 @@
         }
 
         .menu-btn {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.08);
             border: 1px solid var(--card-border);
             color: var(--accent-gold);
             width: 44px;
@@ -86,6 +87,7 @@
             align-items: center;
             font-size: 20px;
             cursor: pointer;
+            z-index: 110;
             transition: all 0.2s cubic-bezier(0.1, 0.9, 0.2, 1);
         }
 
@@ -591,7 +593,7 @@
             position: fixed;
             top: 0;
             left: -330px;
-            width: 310px;
+            width: 320px;
             height: 100vh;
             background: var(--bg-secondary);
             border-right: 1px solid var(--card-border);
@@ -670,6 +672,15 @@
             color: var(--accent-gold);
         }
 
+        .menu-item.hk-bank-item {
+            border: 1px solid rgba(0, 102, 255, 0.4);
+            background: rgba(0, 102, 255, 0.1);
+        }
+
+        .menu-item.hk-bank-item i {
+            color: #3385ff;
+        }
+
         .modal {
             position: fixed;
             top: 0;
@@ -730,7 +741,7 @@
         }
 
         .input-group {
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .input-label {
@@ -763,7 +774,7 @@
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid var(--card-border);
             border-radius: 10px;
-            padding: 12px;
+            padding: 10px 12px;
             color: #fff;
             font-size: 13px;
             outline: none;
@@ -771,6 +782,44 @@
 
         .form-control:focus {
             border-color: var(--accent-gold);
+        }
+
+        .process-details-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 16px;
+        }
+
+        .process-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .process-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .process-label {
+            color: var(--text-muted);
+        }
+
+        .process-val {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+
+        .process-val.gold {
+            color: var(--accent-gold);
+        }
+
+        .process-val.green {
+            color: var(--accent-green);
         }
 
         .action-btn {
@@ -783,7 +832,7 @@
             font-weight: 800;
             font-size: 14px;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 6px;
         }
 
         .loading-spinner {
@@ -868,7 +917,7 @@
                 <option value="am">🇪🇹 암하라어 (Amharic)</option>
                 <option value="az">🇦🇿 아제르바이잔어 (Azerbaijani)</option>
                 <option value="ka">🇬🇷 조지아어 (Georgian)</option>
-                <option value="kk">🇰🇿 카자흐어 (Kazakh)</option>
+                <option value="kk">🇰ℤ 카자흐어 (Kazakh)</option>
                 <option value="km">🇰🇭 크메르어 (Khmer)</option>
                 <option value="lo">🇱🇦 라오어 (Lao)</option>
                 <option value="mn">🇲🇳 몽골어 (Mongolian)</option>
@@ -1059,11 +1108,11 @@
         </footer>
     </div>
 
-    <!-- 슬라이드 서랍 메뉴 -->
+    <!-- 슬라이드 서랍 메뉴 (HK BANK 및 생태계 9대 거점 네비게이터 반영) -->
     <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawerOutside(event)">
-        <div class="drawer-content">
+        <div class="drawer-content" onclick="event.stopPropagation()">
             <div class="drawer-header">
-                <span class="drawer-title" data-i18n="drawerTitle">HK 탐색기</span>
+                <span class="drawer-title" data-i18n="drawerTitle">HK BANK NAVIGATOR</span>
                 <button class="drawer-close" onclick="toggleDrawer()"><i class="fa-solid fa-xmark"></i></button>
             </div>
 
@@ -1087,41 +1136,41 @@
             </div>
 
             <div class="menu-group">
-                <div class="menu-group-title" data-i18n="menuGroup2Title">HK 글로벌 생태계 거점</div>
+                <div class="menu-group-title" data-i18n="menuGroup2Title">HK 9대 미래 생태계 거점</div>
+                <a class="menu-item hk-bank-item" href="https://ljw2358.github.io/HK-BANK" target="_blank">
+                    <i class="fa-solid fa-building-columns"></i> <span>1. 웹3 디지털 뱅킹 (HK BANK)</span>
+                </a>
                 <a class="menu-item" href="https://ljw2358.github.io/HK-ROBOT" target="_blank">
-                    <i class="fa-solid fa-robot"></i> <span data-i18n="hub_robot">로봇: HK-ROBOT</span>
+                    <i class="fa-solid fa-robot"></i> <span>2. 휴머노이드 로봇 (HK-ROBOT)</span>
                 </a>
                 <a class="menu-item" href="https://ljw2358.github.io/HK-NEXUS" target="_blank">
-                    <i class="fa-solid fa-glasses"></i> <span data-i18n="hub_nexus">스마트 글래스: HK-NEXUS</span>
+                    <i class="fa-solid fa-glasses"></i> <span>3. AI 스마트 글래스 (HK-NEXUS)</span>
                 </a>
                 <a class="menu-item" href="https://ljw2358.github.io/HK-UAM" target="_blank">
-                    <i class="fa-solid fa-helicopter" style="color:var(--accent-gold);"></i> <span data-i18n="hub_uam">도심항공교통: HK-UAM</span>
-                </a>
-                <a class="menu-item" href="https://ljw2358.github.io/HK-FUSION" target="_blank">
-                    <i class="fa-solid fa-atom"></i> <span data-i18n="hub_fusion">인공태양: HK-FUSION</span>
+                    <i class="fa-solid fa-helicopter" style="color:var(--accent-gold);"></i> <span>4. 도심항공교통 (HK-UAM)</span>
                 </a>
                 <a class="menu-item" href="https://ljw2358.github.io/HK-QUANTUMBIO" target="_blank">
-                    <i class="fa-solid fa-dna"></i> <span data-i18n="hub_bio">퀀텀바이오: HK-QUANTUMBIO</span>
+                    <i class="fa-solid fa-dna"></i> <span>5. 퀀텀 바이오 (HK-QUANTUM)</span>
                 </a>
                 <a class="menu-item" href="https://ljw2358.github.io/HK-SPACE" target="_blank">
-                    <i class="fa-solid fa-shuttle-space"></i> <span data-i18n="hub_space">우주모빌리티: HK-SPACE</span>
+                    <i class="fa-solid fa-shuttle-space"></i> <span>6. 우주항공 (HK-SPACE)</span>
                 </a>
-                <a class="menu-item" href="https://ljw2358.github.io/HK-PARTSBANK" target="_blank">
-                    <i class="fa-solid fa-microchip"></i> <span data-i18n="hub_parts">부품뱅크: HK-PARTSBANK</span>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-FUSION" target="_blank">
+                    <i class="fa-solid fa-atom"></i> <span>7. 인공태양 핵융합 (HK-FUSION)</span>
                 </a>
                 <a class="menu-item" href="https://ljw2358.github.io/HK-DEFENCE-HUB" target="_blank">
-                    <i class="fa-solid fa-shield-cat"></i> <span data-i18n="hub_defence">국방기술: HK-DEFENCE-HUB</span>
+                    <i class="fa-solid fa-shield-cat"></i> <span>8. 첨단 방산산업 (HK-DEFENSE)</span>
                 </a>
                 <div class="menu-item" onclick="openInfoModal('t165')">
-                    <i class="fa-solid fa-city"></i> <span data-i18n="hub_t165">T165 초특급 랜드마크 허브 (경주 사옥)</span>
+                    <i class="fa-solid fa-city"></i> <span>9. 해오름 특별시 (HK-MEGA CITY)</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 모달 팝업 창 -->
-    <div class="modal" id="appModal">
-        <div class="modal-body">
+    <!-- 프로세스 및 정보 모달 팝업 창 -->
+    <div class="modal" id="appModal" onclick="closeModalOutside(event)">
+        <div class="modal-body" onclick="event.stopPropagation()">
             <div class="modal-header">
                 <h3 class="modal-title" id="modalTitle">프로세스 구동</h3>
                 <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
@@ -1130,14 +1179,13 @@
         </div>
     </div>
 
-    <!-- 60개국어 실시간 다국어 동적 변환 엔진 스크립트 -->
+    <!-- 스크립트 엔진 -->
     <script>
         let baseInterest = 12450892.600000;
         let currentWalletBalance = 314159.000000;
         let currentLang = 'ko';
         let generatedAuthCode = "123456";
         let activeProcessId = null;
-        let activeModalType = null;
 
         const koSource = {
             headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "60개국 핵심 글로벌 언어 엔진", subTitle: "빠른 금융 작업 마스터 코어",
@@ -1148,7 +1196,6 @@
             initialBeeniMsg: "[AGI 삐니]: 바이낸스·시중은행 해킹 원천 차단형 자금세탁방지 보안 시스템 가동 중입니다. 혜공 형님, 지시해 주십시오!",
             chatInputPlaceholder: "삐니에게 질문 입력...", chatSendBtn: "전송", supportEmailText: "지원 문의: support@hkwb.world",
             
-            // 10대 연동망 한글화 및 번역 타겟 매핑
             net1_title: "지갑연결", net1_desc: "노드 지갑 약정 연동 및 자동 연결",
             net2_title: "송금", net2_desc: "대륙간 초고속 다중서명 암호화 전송 체계",
             net3_title: "결제", net3_desc: "현금·카드·타코인 실시간 상거래 안전결제",
@@ -1160,12 +1207,19 @@
             net9_title: "유동성 예치", net9_desc: "유동성 공급 증명 및 고배당 권한 설정",
             net10_title: "파이 수량 동기화", net10_desc: "파이 자산 메인넷 원장 실시간 일치화",
 
-            drawerTitle: "HK 탐색기", menuGroup1Title: "핵심 법률 및 보안 규격", menuGroup2Title: "HK 글로벌 생태계 거점",
+            drawerTitle: "HK BANK NAVIGATOR", menuGroup1Title: "핵심 법률 및 보안 규격", menuGroup2Title: "HK 9대 미래 생태계 거점",
             menu_wp: "백서 (Whitepaper v3.1 상세 40선)", menu_faq: "자주 묻는 질문 (FAQ 20선 심층)", menu_pol: "3대 정책 (자금세탁방지·고객확인·철통보안)",
             menu_reg: "60개국 디지털 자산법 및 해킹 방어 규격", menu_fatf: "국제 자금세탁방지 트래블룰 & 실시간 제재 검증",
-            hub_robot: "로봇: HK-ROBOT", hub_nexus: "스마트 글래스: HK-NEXUS", hub_uam: "도심항공교통: HK-UAM", hub_fusion: "인공태양: HK-FUSION",
-            hub_bio: "퀀텀바이오: HK-QUANTUMBIO", hub_space: "우주모빌리티: HK-SPACE", hub_parts: "부품뱅크: HK-PARTSBANK", hub_defence: "국방기술: HK-DEFENCE-HUB",
-            hub_t165: "T165 초특급 랜드마크 허브 (경주 사옥)"
+
+            // 팝업 모달 다국어 뼈속 라벨
+            modal_proc_sub: "철통 보안 프로토콜 및 실시간 원장 검증 정보",
+            modal_wallet_input_label: "테스트넷 노드 지갑 주소",
+            modal_wallet_btn: "자동 연동",
+            modal_auth_label: "인증번호 발급됨",
+            modal_auth_ph: "6자리 인증번호 입력",
+            modal_submit_btn: "승인 및 프로세스 실행",
+            modal_err_code: "❌ 인증번호가 일치하지 않습니다. 발급된 6자리 번호를 정확히 입력해 주세요.",
+            modal_succ_msg: "✅ [철통 보안 인증 성공] 원장 반영과 함께 프로세스가 정상 승인되었습니다."
         };
 
         const translationCache = { ko: koSource };
@@ -1200,9 +1254,17 @@
             return translatedObj;
         }
 
-        window.onload = function() {
-            openProcessModal('wallet');
-        };
+        async function translateDynamicText(text, targetLang) {
+            if (targetLang === 'ko') return text;
+            try {
+                const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=ko&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
+                const res = await fetch(url);
+                const data = await res.json();
+                return data[0][0][0];
+            } catch(e) {
+                return text;
+            }
+        }
 
         setInterval(() => {
             baseInterest += 0.001250;
@@ -1215,7 +1277,8 @@
         }, 1000);
 
         function toggleDrawer() {
-            document.getElementById('drawerOverlay').classList.toggle('active');
+            const drawer = document.getElementById('drawerOverlay');
+            drawer.classList.toggle('active');
         }
 
         function closeDrawerOutside(event) {
@@ -1233,7 +1296,8 @@
         }
 
         function triggerMainnetRequest() {
-            alert("테스트 파이 원장 동기화 및 철통 보안 테스트넷 전송 신청이 정상 완료되었습니다!");
+            const curDict = translationCache[currentLang] || koSource;
+            alert(curDict.mainnetAlert || "테스트 파이 원장 동기화 및 철통 보안 테스트넷 전송 신청이 정상 완료되었습니다!");
         }
 
         function sendChatMessage() {
@@ -1254,7 +1318,7 @@
             setTimeout(() => {
                 const beeniMsg = document.createElement('div');
                 beeniMsg.className = 'chat-msg beeni';
-                beeniMsg.innerText = `[AGI 삐니]: "${text}" 지시를 수신했습니다. 해킹 방어 백엔드 검증을 거쳐 실시간 처리 중입니다.`;
+                beeniMsg.innerText = `[AGI 삐니]: "${text}" 지시를 수신했습니다. 실시간 처리 중입니다.`;
                 chatBox.appendChild(beeniMsg);
                 chatBox.scrollTop = chatBox.scrollHeight;
             }, 600);
@@ -1264,10 +1328,168 @@
             if (e.key === 'Enter') sendChatMessage();
         }
 
-        function openProcessModal(processId) {
+        const processProfiles = {
+            wallet: {
+                title: "노드 지갑 약정 연동 (WALLET)",
+                sub: "분산 노드 서명 네트워크 연결 수신 정보",
+                data: [
+                    { label: "연동 처리 일자", val: "2026-11-05 10:45 (KST)" },
+                    { label: "연동 대상 노드 IP", val: "10.254.108.99 (HK-MainNet)" },
+                    { label: "약정 대기 수량", val: "314,159.000000 파이", style: "gold" },
+                    { label: "네트워크 수수료 (Gas)", val: "0.000000 HK (면제)" },
+                    { label: "예상 노드 가동률", val: "99.99% (초고속 연동)", style: "green" }
+                ]
+            },
+            transfer: {
+                title: "대륙간 초고속 암호화 송금 (TRANSFER)",
+                sub: "다중 서명 AML 트래블룰 보안 전송 정보",
+                data: [
+                    { label: "송금 요청 일시", val: "2026-11-05 10:45 (KST)" },
+                    { label: "송금 신청 수량", val: "50,000.000000 파이", style: "gold" },
+                    { label: "환산 전송 금액", val: "1,980,000.00 HK" },
+                    { label: "실시간 승인 시간", val: "0.03초 (Instant-Finality)", style: "green" },
+                    { label: "FATF 트래블룰 검증", val: "PASSED (자동승인)" }
+                ]
+            },
+            payment: {
+                title: "상거래 안전 결제 (PAYMENT)",
+                sub: "현금·카드·타코인 모바일 실시간 PG 결제",
+                data: [
+                    { label: "결제 승인 일자", val: "2026-11-05 (실시간)" },
+                    { label: "결제 요청 수량", val: "1,250.000000 파이", style: "gold" },
+                    { label: "원화 환산 금액", val: "49,500,000 KRW" },
+                    { label: "가맹점 환급 적립금", val: "+ 1,250.00 HK (Reward)", style: "green" },
+                    { label: "보안 결제 프로토콜", val: "Quantum-Resistant SSL" }
+                ]
+            },
+            deposit: {
+                title: "자산 신탁 예치 (DEPOSIT)",
+                sub: "3년 만기 31.41% 연복리 신탁 금고 계약 정보",
+                data: [
+                    { label: "신탁 시작 일자", val: "2026-11-05 (오늘)" },
+                    { label: "신탁 만기 일자", val: "2029-11-05 (3년)" },
+                    { label: "원금 예치 수량", val: "314,159.000000 파이", style: "gold" },
+                    { label: "적용 약정 금리", val: "연 31.41% (복리)" },
+                    { label: "3년 예상 총 수입", val: "+ 3,912,654.12 HK (Yield)", style: "green" }
+                ]
+            },
+            reward: {
+                title: "기여도 장려금 적립 (REWARD)",
+                sub: "HK 생태계 기여 및 노드 유지 보상 금고",
+                data: [
+                    { label: "보상 정산 일자", val: "2026-11-05 (목)" },
+                    { label: "누적 기여 포인트", val: "895,400 PTS" },
+                    { label: "금일 지급 수량", val: "2,850.000000 파이", style: "gold" },
+                    { label: "지급 환산 가치", val: "112,860.00 HK", style: "green" },
+                    { label: "보상 출금 가용 여부", val: "즉시 출금 가능" }
+                ]
+            },
+            ubi: {
+                title: "기본소득 분배 (BASIC INCOME)",
+                sub: "HK 사회 재단 & 지자체 연계 기본소득 모델",
+                data: [
+                    { label: "소득 배분 일자", val: "2026-11-05 (월간 정산)" },
+                    { label: "수혜 대상 자격", val: "HK WorldBank 인증 사용자" },
+                    { label: "배당 지급 수량", val: "1,000.000000 파이", style: "gold" },
+                    { label: "기초 지원 환산액", val: "39,600.00 HK", style: "green" },
+                    { label: "지출 수수료", val: "0.00 HK (무료 지급)" }
+                ]
+            },
+            swap: {
+                title: "암호화 자산 교환 (SWAP)",
+                sub: "현금·카드·타코인 즉시 맞교환 에스크로",
+                data: [
+                    { label: "교환 신청 일시", val: "2026-11-05 10:45" },
+                    { label: "교환 제휴 자산", val: "USDT / BTC / FIAT" },
+                    { label: "교환 요청 수량", val: "10,000.000000 파이", style: "gold" },
+                    { label: "실시간 체결 고시가", val: "1 파이 = 39.60 HK" },
+                    { label: "예상 교환 수령액", val: "396,000.00 HK", style: "green" }
+                ]
+            },
+            dex: {
+                title: "탈중앙화 P2P 거래 (DEX)",
+                sub: "개인 간 자율 직접 거래 및 자동 유동성 매칭",
+                data: [
+                    { label: "매칭 오더북 일시", val: "2026-11-05 (실시간)" },
+                    { label: "지정 거래 가격", val: "1 파이 = 40.00 HK" },
+                    { label: "매도/매수 수량", val: "25,000.000000 파이", style: "gold" },
+                    { label: "스리피지 (Slippage)", val: "0.01% (최저수준)", style: "green" },
+                    { label: "스마트 컨트랙트", val: "Verified & Audited" }
+                ]
+            },
+            lp: {
+                title: "유동성 공급 예치 (LP STAKING)",
+                sub: "DEX 풀 유동성 공급 증명 및 고배당 설정",
+                data: [
+                    { label: "LP 예치 시작일", val: "2026-11-05" },
+                    { label: "공급 지분율 (Pool Share)", val: "12.45%" },
+                    { label: "LP 공급 예치량", val: "100,000.000000 파이", style: "gold" },
+                    { label: "일일 예상 수수료 수익", val: "+ 850.50 HK / 일", style: "green" },
+                    { label: "배당 지급 주기", val: "매일 00:00 (자동)" }
+                ]
+            },
+            pishow: {
+                title: "파이 수량 메인넷 동기화 (PI SYNC)",
+                sub: "파이 블록체인 메인넷 원장 실시간 검증",
+                data: [
+                    { label: "원장 동기화 일시", val: "2026-11-05 10:45:00" },
+                    { label: "동기화 블록 높이", val: "#18,492,031 Block" },
+                    { label: "메인넷 확정 수량", val: "314,159.000000 파이", style: "gold" },
+                    { label: "원장 일치 상태", val: "100.00% MATCHED", style: "green" },
+                    { label: "무결성 검증 키", val: "SHA256-HKWB9982310" }
+                ]
+            }
+        };
+
+        // 모달 내용 전체를 선택된 60개 국어로 뼈속까지 동적 번역하여 렌더링
+        async function openProcessModal(processId) {
             activeProcessId = processId;
-            activeModalType = null;
-            renderProcessModalContent();
+            const modal = document.getElementById('appModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+
+            generatedAuthCode = Math.floor(100000 + Math.random() * 900000).toString();
+            const profile = processProfiles[processId] || processProfiles['wallet'];
+            const curDict = translationCache[currentLang] || koSource;
+
+            title.innerText = await translateDynamicText(profile.title, currentLang);
+            
+            let translatedRows = await Promise.all(profile.data.map(async item => {
+                let transLabel = await translateDynamicText(item.label, currentLang);
+                let transVal = await translateDynamicText(item.val, currentLang);
+                return `
+                    <div class="process-row">
+                        <span class="process-label">${transLabel}:</span>
+                        <span class="process-val ${item.style || ''}">${transVal}</span>
+                    </div>
+                `;
+            }));
+
+            let translatedSub = await translateDynamicText(profile.sub, currentLang);
+            let translatedWalletLabel = curDict.modal_wallet_input_label || "테스트넷 노드 지갑 주소";
+            let translatedWalletBtn = curDict.modal_wallet_btn || "자동 연동";
+            let translatedAuthLabel = curDict.modal_auth_label || "인증번호 발급됨";
+            let translatedAuthPh = curDict.modal_auth_ph || "6자리 인증번호 입력";
+            let translatedSubmitBtn = curDict.modal_submit_btn || "승인 및 프로세스 실행";
+
+            content.innerHTML = `
+                <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">${translatedSub}</div>
+                
+                <div class="process-details-box">
+                    ${translatedRows.join('')}
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label"><span>${translatedWalletLabel}</span> <button class="max-btn" onclick="autoLoadWalletAddress()">${translatedWalletBtn}</button></label>
+                    <input class="form-control" id="nodeWalletAddress" value="GBX7QZ4HKWB2026AMLKYCSECNODEUSER">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">${translatedAuthLabel} (<span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                    <input class="form-control" id="userInputCode" placeholder="${translatedAuthPh}" maxlength="6">
+                </div>
+                <button class="action-btn" onclick="verifyAndExecute('${processId}')">${translatedSubmitBtn}</button>
+            `;
+            modal.classList.add('active');
         }
 
         function autoLoadWalletAddress() {
@@ -1277,74 +1499,54 @@
             }
         }
 
-        function renderProcessModalContent() {
-            const processId = activeProcessId;
-            if (!processId) return;
-
-            const modal = document.getElementById('appModal');
-            const title = document.getElementById('modalTitle');
-            const content = document.getElementById('modalContent');
-
-            generatedAuthCode = Math.floor(100000 + Math.random() * 900000).toString();
-
-            if (processId === 'wallet') {
-                title.innerText = "노드 지갑 약정 연동";
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">자동 연동 버튼을 눌러 테스트 지갑 주소를 불러오세요.</div>
-                    <div class="input-group">
-                        <label class="input-label"><span>테스트넷 지갑 주소</span> <button class="max-btn" onclick="autoLoadWalletAddress()">자동 연동</button></label>
-                        <input class="form-control" id="nodeWalletAddress" placeholder="자동 연동 버튼을 누르세요">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">인증번호 (발급됨: <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="6자리 인증번호 입력" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('wallet')">인증 승인 및 지갑 연결</button>
-                `;
-            } else {
-                title.innerText = "프로세스 구동 승인 (" + processId.toUpperCase() + ")";
-                content.innerHTML = `
-                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">철통 보안 프로토콜 및 실시간 AML 검증을 진행합니다.</div>
-                    <div class="input-group">
-                        <label class="input-label">인증번호 (발급됨: <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
-                        <input class="form-control" id="userInputCode" placeholder="6자리 인증번호 입력" maxlength="6">
-                    </div>
-                    <button class="action-btn" onclick="verifyAndExecute('${processId}')">승인 및 실행</button>
-                `;
-            }
-            modal.classList.add('active');
-        }
-
         function verifyAndExecute(processId) {
             const codeInput = document.getElementById('userInputCode');
             const userEntered = codeInput ? codeInput.value.trim() : "";
+            const curDict = translationCache[currentLang] || koSource;
 
             if(userEntered !== generatedAuthCode) {
-                alert("❌ 인증번호가 일치하지 않습니다. 발급된 6자리 번호를 정확히 입력해 주세요.");
+                alert(curDict.modal_err_code || "❌ 인증번호가 일치하지 않습니다. 발급된 6자리 번호를 정확히 입력해 주세요.");
                 return;
             }
            
-            alert("✅ [철통 보안 인증 성공] " + processId + " 프로세스가 정상 완료되었습니다.");
+            alert(curDict.modal_succ_msg || "✅ [철통 보안 인증 성공] 원장 반영과 함께 프로세스가 정상 승인되었습니다.");
             closeModal();
         }
 
-        function openInfoModal(type) {
-            activeModalType = type;
-            activeProcessId = null;
+        async function openInfoModal(type) {
             toggleDrawer();
             const modal = document.getElementById('appModal');
             const title = document.getElementById('modalTitle');
             const content = document.getElementById('modalContent');
 
-            title.innerText = "정보 및 보안 규격 문서";
-            content.innerHTML = `<div style="font-size:12px; line-height:1.6; color:var(--text-muted);">HK WORLD BANK 60개국 핵심 언어 지원 및 해킹 방어 컴플라이언스 상세 규격 문서입니다.</div>`;
+            let rawTitle = "정보 및 보안 규격 문서 (" + type.toUpperCase() + ")";
+            title.innerText = await translateDynamicText(rawTitle, currentLang);
+            
+            let label1 = await translateDynamicText("규격 버전", currentLang);
+            let label2 = await translateDynamicText("적용 범위", currentLang);
+            let val2 = await translateDynamicText("60개국 글로벌 실시간 준수", currentLang);
+            let bodyText = await translateDynamicText("HK WORLD BANK는 국제 자금세탁방지(FATF) 트래블룰을 완벽히 준수하며, 바이낸스 및 시중은행 해킹 원천 차단형 분산 노드 인프라를 바탕으로 안전한 디지털 자산 관리 및 기본소득 분배를 보장합니다.", currentLang);
+
+            content.innerHTML = `
+                <div class="process-details-box" style="margin-bottom:16px;">
+                    <div class="process-row"><span class="process-label">${label1}:</span> <span class="process-val">v3.1 Secure-Core</span></div>
+                    <div class="process-row"><span class="process-label">${label2}:</span> <span class="process-val">${val2}</span></div>
+                </div>
+                <div style="font-size:12px; line-height:1.6; color:var(--text-muted);">
+                    ${bodyText}
+                </div>
+            `;
             modal.classList.add('active');
         }
 
         function closeModal() {
             document.getElementById('appModal').classList.remove('active');
-            activeModalType = null;
-            activeProcessId = null;
+        }
+
+        function closeModalOutside(event) {
+            if (event.target.id === 'appModal') {
+                closeModal();
+            }
         }
 
         async function changeLanguage(lang) {
@@ -1381,3 +1583,4 @@
     </script>
 </body>
 </html>
+

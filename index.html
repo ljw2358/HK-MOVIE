@@ -1,472 +1,1384 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HK WORLD BANK | 지갑 자산 마스터 코어</title>
-  <style>
-    :root {
-      --bg-main: #0b0f19;
-      --card-bg: #131b2e;
-      --accent-gold: #f3ba2f;
-      --text-main: #ffffff;
-      --text-muted: #94a3b8;
-    }
-    body {
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 20px;
-    }
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--card-bg);
-      padding: 15px 25px;
-      border-radius: 12px;
-      border: 1px solid rgba(243, 186, 47, 0.2);
-    }
-    .lang-selector select {
-      background: #1e293b;
-      color: var(--text-main);
-      border: 1px solid var(--accent-gold);
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 14px;
-      cursor: pointer;
-    }
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .card {
-      background: var(--card-bg);
-      padding: 25px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .card h3 { color: var(--accent-gold); margin-top: 0; }
-    .card p { color: var(--text-muted); font-size: 14px; }
-    .field-box {
-      margin-top: 10px;
-      padding: 10px;
-      background: #111827;
-      border-radius: 6px;
-      font-size: 13px;
-      color: var(--accent-gold);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title id="metaTitle">HK WORLD BANK | 글로벌 차세대 분산 금융 플랫폼</title>
+    <!-- FontAwesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #040609;
+            --bg-secondary: #090d16;
+            --card-bg: #0f1726;
+            --card-border: #1b283f;
+            --accent-gold: #ffc107;
+            --accent-gold-glow: rgba(255, 193, 7, 0.4);
+            --accent-cyan: #00f0ff;
+            --accent-cyan-glow: rgba(0, 240, 255, 0.35);
+            --accent-green: #00ffaa;
+            --text-main: #f4f8fb;
+            --text-muted: #8c9cb5;
+            --danger: #ff3b30;
+            --pi-color: #f7931a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        select option {
+            background-color: #0f1726 !important;
+            color: #ffffff !important;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 0;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 480px;
+            background-color: var(--bg-secondary);
+            min-height: 100vh;
+            box-shadow: 0 0 60px rgba(0, 0, 0, 0.9);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        header {
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(9, 13, 22, 0.95);
+            backdrop-filter: blur(14px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .menu-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--card-border);
+            color: var(--accent-gold);
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.1, 0.9, 0.2, 1);
+        }
+
+        .menu-btn:active {
+            transform: scale(0.92);
+        }
+
+        .header-center-title {
+            text-align: center;
+        }
+
+        .header-center-title h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--accent-gold);
+            letter-spacing: 1px;
+            text-shadow: 0 0 12px var(--accent-gold-glow);
+        }
+
+        .header-center-title p {
+            font-size: 10px;
+            color: var(--accent-cyan);
+            letter-spacing: 0.5px;
+        }
+
+        .profile-badge {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--card-border), var(--bg-primary));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--accent-gold);
+            font-weight: 900;
+            font-size: 16px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 0 10px rgba(255, 193, 7, 0.2);
+        }
+
+        .lang-bar {
+            padding: 12px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .lang-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            color: var(--accent-cyan);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .lang-select {
+            background: var(--card-bg);
+            color: #fff;
+            border: 1px solid var(--card-border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            outline: none;
+            cursor: pointer;
+            max-width: 210px;
+        }
+
+        main {
+            padding: 24px 20px;
+            flex: 1;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--accent-gold);
+            text-shadow: 0 0 30px var(--accent-gold-glow);
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .sub-title {
+            font-size: 15px;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 0 12px var(--accent-cyan-glow);
+            text-align: center;
+        }
+
+        .dashboard-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 22px;
+            margin-bottom: 28px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-cyan), var(--accent-green));
+        }
+
+        .dashboard-header {
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pi-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .pi-box-title {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .pi-logo-icon {
+            width: 22px;
+            height: 22px;
+            background: var(--pi-color);
+            color: #fff;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 900;
+            font-size: 13px;
+            font-family: serif;
+            box-shadow: 0 0 10px rgba(247, 147, 26, 0.6);
+        }
+
+        .pi-amount {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pi-amount .unit {
+            color: var(--accent-gold);
+            font-size: 14px;
+        }
+
+        .interest-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 18px;
+        }
+
+        .interest-title {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .interest-value {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent-green);
+            transition: color 0.3s ease;
+        }
+
+        .interest-value.glow {
+            color: #ffffff;
+            text-shadow: 0 0 15px var(--accent-green);
+        }
+
+        .mainnet-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-gold), #ff8800);
+            color: #040609;
+            border: none;
+            padding: 15px;
+            border-radius: 14px;
+            font-weight: 900;
+            font-size: 15px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px var(--accent-gold-glow);
+            transition: all 0.2s ease;
+        }
+
+        .mainnet-btn:active {
+            transform: scale(0.98);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .section-sub {
+            font-size: 11px;
+            color: var(--accent-green);
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .network-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.1, 0.9, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 135px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .network-card:hover, .network-card:active {
+            border-color: var(--accent-gold);
+            transform: translateY(-3px);
+            background: #152033;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-top-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .card-icon-1 { color: #00f0ff; font-size: 20px; }
+        .card-icon-2 { color: #ffc107; font-size: 20px; }
+        .card-icon-3 { color: #00ffaa; font-size: 20px; }
+        .card-icon-4 { color: #b085f5; font-size: 20px; }
+        .card-icon-5 { color: #ff3b30; font-size: 20px; }
+        .card-icon-6 { color: #34c759; font-size: 20px; }
+        .card-icon-7 { color: #00c7be; font-size: 20px; }
+        .card-icon-8 { color: #ff9500; font-size: 20px; }
+        .card-icon-9 { color: #5856d6; font-size: 20px; }
+        .card-icon-10 { color: #f7931a; font-size: 20px; }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .card-desc {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        .agi-section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 32px;
+        }
+
+        .agi-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .agi-avatar {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--accent-cyan), #0066ff);
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            color: #fff;
+            box-shadow: 0 0 15px var(--accent-cyan-glow);
+        }
+
+        .agi-title-box h3 {
+            font-size: 17px;
+            color: #fff;
+            font-weight: 800;
+        }
+
+        .agi-title-box p {
+            font-size: 11px;
+            color: var(--accent-cyan);
+        }
+
+        .sonpone-control {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 16px;
+        }
+
+        .sonpone-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .sonpone-label span.val {
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        .range-slider {
+            width: 100%;
+            accent-color: var(--accent-gold);
+            height: 5px;
+            background: var(--card-border);
+            border-radius: 3px;
+        }
+
+        .chat-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            padding: 14px;
+            height: 210px;
+            overflow-y: auto;
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chat-msg {
+            max-width: 88%;
+            padding: 12px 14px;
+            border-radius: 14px;
+            font-size: 12px;
+            line-height: 1.45;
+        }
+
+        .chat-msg.beeni {
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            color: #d1f9ff;
+            align-self: flex-start;
+        }
+
+        .chat-msg.user {
+            background: rgba(255, 193, 7, 0.15);
+            border: 1px solid rgba(255, 193, 7, 0.4);
+            color: #fff3cd;
+            align-self: flex-end;
+        }
+
+        .chat-input-box {
+            display: flex;
+            gap: 8px;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 12px 14px;
+            color: #fff;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .chat-send-btn {
+            background: var(--accent-gold);
+            color: #040609;
+            border: none;
+            padding: 0 18px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        footer {
+            padding: 24px 20px;
+            background: #020305;
+            border-top: 1px solid var(--card-border);
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        footer p.copyright {
+            margin-bottom: 8px;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        footer p.socials {
+            color: var(--accent-cyan);
+            word-break: break-all;
+        }
+
+        .btn-youtube-white {
+            color: #040609 !important;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #ffffff !important;
+            padding: 8px 14px;
+            border-radius: 10px;
+            border: 1px solid #ffffff !important;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-youtube-white i {
+            color: #ff0000 !important;
+        }
+
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(6px);
+            z-index: 200;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .drawer-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .drawer-content {
+            position: fixed;
+            top: 0;
+            left: -330px;
+            width: 310px;
+            height: 100vh;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--card-border);
+            z-index: 201;
+            transition: left 0.3s cubic-bezier(0.1, 0.9, 0.2, 1);
+            overflow-y: auto;
+            padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .drawer-overlay.active .drawer-content {
+            left: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .drawer-title {
+            font-size: 16px;
+            font-weight: 900;
+            color: var(--accent-gold);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .menu-group {
+            margin-bottom: 22px;
+        }
+
+        .menu-group-title {
+            font-size: 11px;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 13px;
+            border-radius: 10px;
+            margin-bottom: 6px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .menu-item:hover, .menu-item:active {
+            background: var(--card-bg);
+            color: var(--accent-gold);
+        }
+
+        .menu-item i {
+            width: 20px;
+            text-align: center;
+            color: var(--accent-gold);
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 300;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+            padding: 20px;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-body {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            width: 100%;
+            max-width: 440px;
+            max-height: 85vh;
+            border-radius: 20px;
+            padding: 24px;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .modal-title {
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--accent-gold);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .max-btn {
+            background: rgba(255, 193, 7, 0.15);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .max-btn:active {
+            background: var(--accent-gold);
+            color: #040609;
+        }
+
+        .form-control {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 12px;
+            color: #fff;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-gold);
+        }
+
+        .action-btn {
+            width: 100%;
+            background: var(--accent-gold);
+            color: #040609;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .loading-spinner {
+            display: none;
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: var(--accent-cyan);
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
 </head>
 <body>
 
-  <div class="header-container">
-    <div>
-      <h2 id="headerSubTexts" style="margin:0; font-size:18px;">블록체인 AGI Web3 글로벌 은행</h2>
-      <span id="langEngineLabel" style="font-size:12px; color:var(--accent-gold);">25개국어 다중 언어 엔진</span>
-    </div>
-    
-    <!-- 🌍 25개국어 드롭다운 (포르투갈어 pt, 중국어 zh 포함 완벽 지원) -->
-    <div class="lang-selector">
-      <select id="langSelect" onchange="changeLanguage(this.value)">
-        <option value="ko">한국어 (Korean)</option>
-        <option value="en">영어 (English)</option>
-        <option value="zh">중국어 간체 (Chinese, Simplified)</option>
-        <option value="zh-tw">중국어 번체 (Chinese, Traditional)</option>
-        <option value="ja">일본어 (Japanese)</option>
-        <option value="es">스페인어 (Spanish)</option>
-        <option value="fr">프랑스어 (French)</option>
-        <option value="de">독일어 (German)</option>
-        <option value="it">이탈리아어 (Italian)</option>
-        <option value="pt">포르투갈어 (Portuguese)</option>
-        <option value="ru">러시아어 (Russian)</option>
-        <option value="vi">베트남어 (Vietnamese)</option>
-        <option value="th">태국어 (Thai)</option>
-        <option value="id">인도네시아어 (Indonesian)</option>
-        <option value="ms">말레이어 (Malay)</option>
-        <option value="ar">아랍어 (Arabic)</option>
-        <option value="hi">힌디어 (Hindi)</option>
-        <option value="tr">튀르키예어 (Turkish)</option>
-        <option value="pl">폴란드어 (Polish)</option>
-        <option value="nl">네덜란드어 (Dutch)</option>
-        <option value="sv">스웨덴어 (Swedish)</option>
-        <option value="cs">체코어 (Czech)</option>
-        <option value="el">그리스어 (Greek)</option>
-        <option value="uk">우크라이나어 (Ukrainian)</option>
-        <option value="ro">루마니아어 (Romanian)</option>
-      </select>
-    </div>
-  </div>
+    <div class="app-container">
+        <!-- 상단 고정 헤더 -->
+        <header>
+            <button class="menu-btn" onclick="toggleDrawer()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="header-center-title">
+                <h2>HK WORLD BANK</h2>
+                <p data-i18n="headerSubText">글로벌 차세대 분산 금융</p>
+            </div>
+            <div class="profile-badge">HK</div>
+        </header>
 
-  <div class="dashboard-grid">
-    <!-- 송금 영역 -->
-    <div class="card">
-      <h3 id="p1_titles">송금</h3>
-      <p id="p1_descs">대량 전송 비용과 전송 지연 테스트 레이트 지갑 과부하 동시 처리 최적화 테스트</p>
-      <div class="field-box" id="p1_l1li">수수료 지갑 주소</div>
-      <div class="field-box" id="p1_l2li">가맹점 전송 번호</div>
+        <!-- 60개국 핵심 글로벌 언어 선택 바 -->
+        <div class="lang-bar">
+            <div class="lang-info">
+                <i class="fa-solid fa-globe"></i>
+                <span data-i18n="langEngineLabel">60개국 핵심 글로벌 언어 엔진</span>
+                <div class="loading-spinner" id="langSpinner"></div>
+            </div>
+            <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
+                <option value="ko" selected>🇰🇷 한국어 (Korean)</option>
+                <option value="en">🇺🇸 영어 (English)</option>
+                <option value="zh-CN">🇨🇳 중국어 간체 (Chinese Simplified)</option>
+                <option value="zh-TW">🇹🇼 중국어 번체 (Chinese Traditional)</option>
+                <option value="ja">🇯🇵 일본어 (Japanese)</option>
+                <option value="es">🇪🇸 스페인어 (Spanish)</option>
+                <option value="hi">🇮🇳 힌디어 (Hindi)</option>
+                <option value="ar">🇸🇦 아랍어 (Arabic)</option>
+                <option value="pt">🇧🇷 포르투갈어 (Portuguese)</option>
+                <option value="ru">🇷🇺 러시아어 (Russian)</option>
+                <option value="de">🇩🇪 독일어 (German)</option>
+                <option value="fr">🇫🇷 프랑스어 (French)</option>
+                <option value="id">🇮🇩 인도네시아어 (Indonesian)</option>
+                <option value="it">🇮🇹 이탈리아어 (Italian)</option>
+                <option value="tr">🇹🇷 튀르키예어 (Turkish)</option>
+                <option value="vi">🇻🇳 베트남어 (Vietnamese)</option>
+                <option value="th">🇹🇭 태국어 (Thai)</option>
+                <option value="pl">🇵🇱 폴란드어 (Polish)</option>
+                <option value="nl">🇳🇱 네덜란드어 (Dutch)</option>
+                <option value="ms">🇲🇾 말레이어 (Malay)</option>
+                <option value="tl">🇵🇭 필리핀어 (Filipino)</option>
+                <option value="uk">🇺🇦 우크라이나어 (Ukrainian)</option>
+                <option value="fa">🇮🇷 페르시아어 (Persian)</option>
+                <option value="sv">🇸🇪 스웨덴어 (Swedish)</option>
+                <option value="bn">🇧🇩 벵골어 (Bengali)</option>
+                <option value="ur">🇵🇰 우르두어 (Urdu)</option>
+                <option value="cs">🇨🇿 체코어 (Czech)</option>
+                <option value="el">🇬🇷 그리스어 (Greek)</option>
+                <option value="hu">🇭🇺 헝가리어 (Hungarian)</option>
+                <option value="ro">🇷🇴 루마니아어 (Romanian)</option>
+                <option value="da">🇩🇰 덴마크어 (Danish)</option>
+                <option value="fi">🇫🇮 핀란드어 (Finnish)</option>
+                <option value="no">🇳🇴 노르웨이어 (Norwegian)</option>
+                <option value="sk">🇸🇰 슬로바키아어 (Slovak)</option>
+                <option value="bg">🇧🇬 불가리아어 (Bulgarian)</option>
+                <option value="hr">🇭🇷 크로아티아어 (Croatian)</option>
+                <option value="sr">🇷🇸 세르비아어 (Serbian)</option>
+                <option value="sl">🇸🇮 슬로베니아어 (Slovenian)</option>
+                <option value="et">🇪🇪 에스토니아어 (Estonian)</option>
+                <option value="lv">🇱🇻 라트비아어 (Latvian)</option>
+                <option value="lt">🇱🇹 리투아니아어 (Lithuanian)</option>
+                <option value="he">🇮🇱 히브리어 (Hebrew)</option>
+                <option value="sw">🇰🇪 스와힐리어 (Swahili)</option>
+                <option value="af">🇿🇦 아프리칸스어 (Afrikaans)</option>
+                <option value="am">🇪🇹 암하라어 (Amharic)</option>
+                <option value="az">🇦🇿 아제르바이잔어 (Azerbaijani)</option>
+                <option value="ka">🇬🇷 조지아어 (Georgian)</option>
+                <option value="kk">🇰🇿 카자흐어 (Kazakh)</option>
+                <option value="km">🇰🇭 크메르어 (Khmer)</option>
+                <option value="lo">🇱🇦 라오어 (Lao)</option>
+                <option value="mn">🇲🇳 몽골어 (Mongolian)</option>
+                <option value="my">🇲🇲 미얀마어 (Burmese)</option>
+                <option value="ne">🇳🇵 네팔어 (Nepali)</option>
+                <option value="si">🇱🇰 싱할라어 (Sinhala)</option>
+                <option value="so">🇸🇴 소말리어 (Somali)</option>
+                <option value="ta">🇮🇳 타밀어 (Tamil)</option>
+                <option value="te">🇮🇳 텔루구어 (Telugu)</option>
+                <option value="ur">🇵🇰 우르두어 (Urdu)</option>
+                <option value="uz">🇺🇿 우즈베크어 (Uzbek)</option>
+                <option value="zu">🇿🇦 줄루어 (Zulu)</option>
+            </select>
+        </div>
+
+        <main>
+            <!-- 타이틀 영역 -->
+            <div class="hero-section">
+                <h1 class="main-title">HK WORLD BANK</h1>
+                <p class="sub-title" data-i18n="subTitle">빠른 금융 작업 마스터 코어</p>
+            </div>
+
+            <!-- 개인 자산 대시보드 카드 -->
+            <div class="dashboard-card">
+                <div class="dashboard-header">
+                    <span data-i18n="dashTitle">개인 자산 대시보드</span>
+                    <i class="fa-solid fa-vault" style="color: var(--accent-gold);"></i>
+                </div>
+
+                <div class="pi-box">
+                    <div class="pi-box-title">
+                        <span class="pi-logo-icon">π</span>
+                        <span data-i18n="piSyncLabel">보유 수량 (파이 수량 원장 동기화)</span>
+                    </div>
+                    <div class="pi-amount">
+                        <span id="walletBalanceDisplay">314,159.000000</span>
+                        <span class="unit" data-i18n="unitText">파이 / HK</span>
+                    </div>
+                </div>
+
+                <div class="interest-box">
+                    <div class="interest-title">
+                        <i class="fa-solid fa-chart-line" style="color: var(--accent-green);"></i>
+                        <span data-i18n="interestLabel">실시간 누적 이자 (3년 31.41% 연복리)</span>
+                    </div>
+                    <div class="interest-value" id="accumulatedInterest">
+                        12,450,892.600000 HK
+                    </div>
+                </div>
+
+                <button class="mainnet-btn" data-i18n="mainnetBtnText" onclick="triggerMainnetRequest()">
+                    코어팀에게 메인넷 즉시 신청하기
+                </button>
+            </div>
+
+            <!-- 10대 분산 연동망 -->
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="gridSectionTitle">10대 분산 연동망</h2>
+                <span class="section-sub" data-i18n="gridSectionSub">[개별 프로세스 구동]</span>
+            </div>
+
+            <div class="network-grid">
+                <div class="network-card" onclick="openProcessModal('wallet')">
+                    <div class="card-top-center"><i class="fa-solid fa-link card-icon-1"></i></div>
+                    <div>
+                        <div class="card-title" data-i18n="net1_title">지갑연결</div>
+                        <div class="card-desc" data-i18n="net1_desc">노드 지갑 약정 연동 및 자동 연결</div>
+                    </div>
+                </div>
+
+                <div class="network-card" onclick="openProcessModal('transfer')">
+                    <div class="card-top-center"><i class="fa-solid fa-paper-plane card-icon-2"></i></div>
+                    <div>
+                        <div class="card-title" data-i18n="net2_title">송금</div>
+                        <div class="card-desc" data-i18n="net2_desc">대륙간 초고속 다중서명 암호화 전송 체계</div>
+                    </div>
+                </div>
+
+                <div class="network-card" onclick="openProcessModal('payment')">
+                    <div class="card-top-center"><i class="fa-solid fa-credit-card card-icon-3"></i></div>
+                    <div>
+                        <div class="card-title" data-i18n="net3_title">결제</div>
+                        <div class="card-desc" data-i18n="net3_desc">현금·카드·타코인 실시간 상거래 안전결제</div>
+                    </div>
+                </div>
+
+                <div class="network-card" onclick="openProcessModal('deposit')">
+                    <div class="card-top-center"><i class="fa-solid fa-vault card-icon-4"></i></div>
+                    <div>
+                        <div class="card-title" data-i18n="net4_title">예치</div>
+                        <div class="card-desc" data-i18n="net4_desc">3년 만기 31.41% 연복리 자산 신탁 금고</div>
+                    </div>
+                </div>
+
+                <div class="network-card" onclick="openProcessModal('reward')">
+                    <div class="card-top-center"><i class="fa-solid fa-gift card-icon-5"></i></div>
+                    <div>
+                        <div class="card-title" data-i18n="net5_title">보상</div>
+                        <div class="card-desc" data-i18n="net5_desc">기여도 기반 장려금 금고 적립 엔진</div>
+                    </div>
+                </div>
+
+                <div class="network-card" onclick="openProcessModal('ubi')">
+                    <div class="card-top-center"><i class="fa-solid fa-hand-holding-dollar card-icon-6"></i></div>
+                    <div>
+                        <div class="card-title" data-i18n="net6_title">기본소득</div>
+                        <div class="card-desc" data-i18n="net6_desc">HK 사회 재단 & 지자체 기본소득 분배 모델</div>
+                    </div>
+                </div>
+
+                <div class="network-card" onclick="openProcessModal('swap')">
+                    <div class="card-top-center"><i class="fa-solid fa-right-left card-icon-7"></i></div>
+                    <div>
+                        <div class="card-title" data-i18n="net7_title">교환</div>
+                        <div class="card-desc" data-i18n="net7_desc">현금·카드·타코인 즉시 맞교환 구매</div>
+                    </div>
+                </div>
+
+                <div class="network-card" onclick="openProcessModal('dex')">
+                    <div class="card-top-center"><i class="fa-solid fa-bolt card-icon-8"></i></div>
+                    <div>
+                        <div class="card-title" data-i18n="net8_title">탈중앙화 교환</div>
+                        <div class="card-desc" data-i18n="net8_desc">자율 제어 개인 간 직접 거래 유동성 매칭</div>
+                    </div>
+                </div>
+
+                <div class="network-card" onclick="openProcessModal('lp')">
+                    <div class="card-top-center"><i class="fa-solid fa-layer-group card-icon-9"></i></div>
+                    <div>
+                        <div class="card-title" data-i18n="net9_title">유동성 예치</div>
+                        <div class="card-desc" data-i18n="net9_desc">유동성 공급 증명 및 고배당 권한 설정</div>
+                    </div>
+                </div>
+
+                <div class="network-card" onclick="openProcessModal('pishow')">
+                    <div class="card-top-center"><span class="pi-logo-icon" style="width: 26px; height: 26px; font-size: 15px;">π</span></div>
+                    <div>
+                        <div class="card-title" data-i18n="net10_title">파이 수량 동기화</div>
+                        <div class="card-desc" data-i18n="net10_desc">파이 자산 메인넷 원장 실시간 일치화</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AGI 삐니 고객센터 -->
+            <div class="agi-section">
+                <div class="agi-header">
+                    <div class="agi-avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div class="agi-title-box">
+                        <h3 data-i18n="agiTitle">AGI 삐니 고객센터</h3>
+                        <p data-i18n="agiSub">손폰(SONPONE) 자동 반응 및 AI 종합 제어</p>
+                    </div>
+                </div>
+
+                <div class="sonpone-control">
+                    <div class="sonpone-label">
+                        <span data-i18n="sonponeLabelText">손폰(SONPONE) 감지 감도:</span>
+                        <span class="val" id="sonponeVal">99.9% (실시간 일치)</span>
+                    </div>
+                    <input type="range" class="range-slider" min="50" max="100" value="99" id="sonponeSlider" oninput="updateSonpone(this.value)">
+                </div>
+
+                <div class="chat-box" id="chatBox">
+                    <div class="chat-msg beeni" data-i18n="initialBeeniMsg">
+                        [AGI 삐니]: 바이낸스·시중은행 해킹 원천 차단형 자금세탁방지 보안 시스템 가동 중입니다. 혜공 형님, 지시해 주십시오!
+                    </div>
+                </div>
+
+                <div class="chat-input-box">
+                    <input type="text" class="chat-input" id="chatInput" data-i18n-placeholder="chatInputPlaceholder" placeholder="삐니에게 질문 입력..." onkeypress="handleKeyPress(event)">
+                    <button class="chat-send-btn" data-i18n="chatSendBtn" onclick="sendChatMessage()">전송</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- 푸터 영역 -->
+        <footer>
+            <p class="copyright">© 2026 HK WORLD BANK. All Rights Reserved.</p>
+            <p class="socials" style="margin-bottom: 12px;" data-i18n="supportEmailText">
+                지원 문의: support@hkwb.world
+            </p>
+            <div style="display: flex; justify-content: center; gap: 16px; align-items: center;">
+                <a href="https://www.youtube.com/@Hyekong2026" target="_blank" class="btn-youtube-white">
+                    <i class="fa-brands fa-youtube"></i> YouTube (@Hyekong2026)
+                </a>
+                <a href="https://www.tiktok.com/@hyekong2026" target="_blank" style="color: #fff; text-decoration: none; font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.08); padding: 8px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15);">
+                    <i class="fa-brands fa-tiktok"></i> TikTok (@hyekong2026)
+                </a>
+            </div>
+        </footer>
     </div>
 
-    <!-- 결제 영역 -->
-    <div class="card">
-      <h3 id="p2_titles">결제</h3>
-      <p id="p2_descs">해외 글로벌 교차 및 멀티캐스트 실시간 결제</p>
-      <div class="field-box" id="p2_l1li">송금자 주소</div>
-      <div class="field-box" id="p2_l2li">또는 Pi Test ID</div>
+    <!-- 슬라이드 서랍 메뉴 -->
+    <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawerOutside(event)">
+        <div class="drawer-content">
+            <div class="drawer-header">
+                <span class="drawer-title" data-i18n="drawerTitle">HK 탐색기</span>
+                <button class="drawer-close" onclick="toggleDrawer()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-group-title" data-i18n="menuGroup1Title">핵심 법률 및 보안 규격</div>
+                <div class="menu-item" onclick="openInfoModal('whitepaper')">
+                    <i class="fa-solid fa-file-contract"></i> <span data-i18n="menu_wp">백서 (Whitepaper v3.1 상세 40선)</span>
+                </div>
+                <div class="menu-item" onclick="openInfoModal('faq')">
+                    <i class="fa-solid fa-circle-question"></i> <span data-i18n="menu_faq">자주 묻는 질문 (FAQ 20선 심층)</span>
+                </div>
+                <div class="menu-item" onclick="openInfoModal('policies')">
+                    <i class="fa-solid fa-shield-halved"></i> <span data-i18n="menu_pol">3대 정책 (자금세탁방지·고객확인·철통보안)</span>
+                </div>
+                <div class="menu-item" onclick="openInfoModal('regulations')">
+                    <i class="fa-solid fa-scale-balanced"></i> <span data-i18n="menu_reg">60개국 디지털 자산법 및 해킹 방어 규격</span>
+                </div>
+                <div class="menu-item" onclick="openInfoModal('fatf_travel_rule')">
+                    <i class="fa-solid fa-gavel"></i> <span data-i18n="menu_fatf">국제 자금세탁방지 트래블룰 & 실시간 제재 검증</span>
+                </div>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-group-title" data-i18n="menuGroup2Title">HK 글로벌 생태계 거점</div>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-ROBOT" target="_blank">
+                    <i class="fa-solid fa-robot"></i> <span data-i18n="hub_robot">로봇: HK-ROBOT</span>
+                </a>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-NEXUS" target="_blank">
+                    <i class="fa-solid fa-glasses"></i> <span data-i18n="hub_nexus">스마트 글래스: HK-NEXUS</span>
+                </a>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-UAM" target="_blank">
+                    <i class="fa-solid fa-helicopter" style="color:var(--accent-gold);"></i> <span data-i18n="hub_uam">도심항공교통: HK-UAM</span>
+                </a>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-FUSION" target="_blank">
+                    <i class="fa-solid fa-atom"></i> <span data-i18n="hub_fusion">인공태양: HK-FUSION</span>
+                </a>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-QUANTUMBIO" target="_blank">
+                    <i class="fa-solid fa-dna"></i> <span data-i18n="hub_bio">퀀텀바이오: HK-QUANTUMBIO</span>
+                </a>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-SPACE" target="_blank">
+                    <i class="fa-solid fa-shuttle-space"></i> <span data-i18n="hub_space">우주모빌리티: HK-SPACE</span>
+                </a>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-PARTSBANK" target="_blank">
+                    <i class="fa-solid fa-microchip"></i> <span data-i18n="hub_parts">부품뱅크: HK-PARTSBANK</span>
+                </a>
+                <a class="menu-item" href="https://ljw2358.github.io/HK-DEFENCE-HUB" target="_blank">
+                    <i class="fa-solid fa-shield-cat"></i> <span data-i18n="hub_defence">국방기술: HK-DEFENCE-HUB</span>
+                </a>
+                <div class="menu-item" onclick="openInfoModal('t165')">
+                    <i class="fa-solid fa-city"></i> <span data-i18n="hub_t165">T165 초특급 랜드마크 허브 (경주 사옥)</span>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- 예치 영역 -->
-    <div class="card">
-      <h3 id="p3_titles">예치</h3>
-      <p id="p3_descs">적립 보기 38.43% APY 자산 신속 관리와 담보 대출</p>
-      <div class="field-box" id="p3_l1li">예치금 수량</div>
-      <div class="field-box" id="p3_l2li">매월 승인 환불완료</div>
+    <!-- 모달 팝업 창 -->
+    <div class="modal" id="appModal">
+        <div class="modal-body">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">프로세스 구동</h3>
+                <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="modalContent"></div>
+        </div>
     </div>
 
-    <!-- 보상 영역 -->
-    <div class="card">
-      <h3 id="p4_titles">보상</h3>
-      <p id="p4_descs">지갑도 기반 원스탑 매일 유입금 수령</p>
-      <div class="field-box" id="p4_l1li">적립금 수량</div>
-      <div class="field-box" id="p4_l2li">배상 승인 유치원확인서</div>
-    </div>
+    <!-- 60개국어 실시간 다국어 동적 변환 엔진 스크립트 -->
+    <script>
+        let baseInterest = 12450892.600000;
+        let currentWalletBalance = 314159.000000;
+        let currentLang = 'ko';
+        let generatedAuthCode = "123456";
+        let activeProcessId = null;
+        let activeModalType = null;
 
-    <!-- 스왑 영역 -->
-    <div class="card">
-      <h3 id="p5_titles">스왑</h3>
-      <p id="p5_descs">배 사용 교환 & 환율 변동 은행을 운용합니다.</p>
-      <div class="field-box" id="p5_l1li">수량 환급</div>
-      <div class="field-box" id="p5_l2li">해상 승인 환불완료 (완료)</div>
-    </div>
+        const koSource = {
+            headerSubText: "글로벌 차세대 분산 금융", langEngineLabel: "60개국 핵심 글로벌 언어 엔진", subTitle: "빠른 금융 작업 마스터 코어",
+            dashTitle: "개인 자산 대시보드", piSyncLabel: "보유 수량 (파이 수량 원장 동기화)", unitText: "파이 / HK",
+            interestLabel: "실시간 누적 이자 (3년 31.41% 연복리)", mainnetBtnText: "코어팀에게 메인넷 즉시 신청하기",
+            gridSectionTitle: "10대 분산 연동망", gridSectionSub: "[개별 프로세스 구동]",
+            agiTitle: "AGI 삐니 고객센터", agiSub: "손폰(SONPONE) 자동 반응 및 AI 종합 제어", sonponeLabelText: "손폰(SONPONE) 감지 감도:", syncText: "(실시간 일치)",
+            initialBeeniMsg: "[AGI 삐니]: 바이낸스·시중은행 해킹 원천 차단형 자금세탁방지 보안 시스템 가동 중입니다. 혜공 형님, 지시해 주십시오!",
+            chatInputPlaceholder: "삐니에게 질문 입력...", chatSendBtn: "전송", supportEmailText: "지원 문의: support@hkwb.world",
+            
+            // 10대 연동망 한글화 및 번역 타겟 매핑
+            net1_title: "지갑연결", net1_desc: "노드 지갑 약정 연동 및 자동 연결",
+            net2_title: "송금", net2_desc: "대륙간 초고속 다중서명 암호화 전송 체계",
+            net3_title: "결제", net3_desc: "현금·카드·타코인 실시간 상거래 안전결제",
+            net4_title: "예치", net4_desc: "3년 만기 31.41% 연복리 자산 신탁 금고",
+            net5_title: "보상", net5_desc: "기여도 기반 장려금 금고 적립 엔진",
+            net6_title: "기본소득", net6_desc: "HK 사회 재단 & 지자체 기본소득 분배 모델",
+            net7_title: "교환", net7_desc: "현금·카드·타코인 즉시 맞교환 구매",
+            net8_title: "탈중앙화 교환", net8_desc: "자율 제어 개인 간 직접 거래 유동성 매칭",
+            net9_title: "유동성 예치", net9_desc: "유동성 공급 증명 및 고배당 권한 설정",
+            net10_title: "파이 수량 동기화", net10_desc: "파이 자산 메인넷 원장 실시간 일치화",
 
-    <!-- DEX 스왑 영역 -->
-    <div class="card">
-      <h3 id="p6_titles">DEX 스왑</h3>
-      <p id="p6_descs">클론/카드/외환 비교 빠른 스왑을 수행합니다.</p>
-      <div class="field-box" id="p6_l1li">환율 교환</div>
-      <div class="field-box" id="p6_l2li">DEX 인증코드 (Issuance)</div>
-    </div>
+            drawerTitle: "HK 탐색기", menuGroup1Title: "핵심 법률 및 보안 규격", menuGroup2Title: "HK 글로벌 생태계 거점",
+            menu_wp: "백서 (Whitepaper v3.1 상세 40선)", menu_faq: "자주 묻는 질문 (FAQ 20선 심층)", menu_pol: "3대 정책 (자금세탁방지·고객확인·철통보안)",
+            menu_reg: "60개국 디지털 자산법 및 해킹 방어 규격", menu_fatf: "국제 자금세탁방지 트래블룰 & 실시간 제재 검증",
+            hub_robot: "로봇: HK-ROBOT", hub_nexus: "스마트 글래스: HK-NEXUS", hub_uam: "도심항공교통: HK-UAM", hub_fusion: "인공태양: HK-FUSION",
+            hub_bio: "퀀텀바이오: HK-QUANTUMBIO", hub_space: "우주모빌리티: HK-SPACE", hub_parts: "부품뱅크: HK-PARTSBANK", hub_defence: "국방기술: HK-DEFENCE-HUB",
+            hub_t165: "T165 초특급 랜드마크 허브 (경주 사옥)"
+        };
 
-    <!-- LP 스테이킹 영역 -->
-    <div class="card">
-      <h3 id="p7_titles">LP 스테이킹</h3>
-      <p id="p7_descs">LP 화폐 결제 유동성 POOL 예치 및 기간당 이자를 적립합니다.</p>
-      <div class="field-box" id="p7_l1li">분배 자산 총량</div>
-      <div class="field-box" id="p7_l2li">20 PS</div>
-    </div>
-  </div>
+        const translationCache = { ko: koSource };
 
-  <script>
-    // 🌍 25개국어 상세 번역 데이터 객체 (모든 키값 완벽 포함)
-    const translations = {
-      ko: {
-        headerSubTexts: "블록체인 AGI Web3 글로벌 은행",
-        langEngineLabel: "25개국어 다중 언어 엔진",
-        p1_titles: "송금", p1_descs: "대량 전송 비용과 전송 지연 테스트 레이트 지갑 과부하 동시 처리 최적화 테스트", p1_l1li: "수수료 지갑 주소", p1_l2li: "가맹점 전송 번호",
-        p2_titles: "결제", p2_descs: "해외 글로벌 교차 및 멀티캐스트 실시간 결제", p2_l1li: "송금자 주소", p2_l2li: "또는 Pi Test ID",
-        p3_titles: "예치", p3_descs: "적립 보기 38.43% APY 자산 신속 관리와 담보 대출", p3_l1li: "예치금 수량", p3_l2li: "매월 승인 환불완료",
-        p4_titles: "보상", p4_descs: "지갑도 기반 원스탑 매일 유입금 수령", p4_l1li: "적립금 수량", p4_l2li: "배상 승인 유치원확인서",
-        p5_titles: "스왑", p5_descs: "배 사용 교환 & 환율 변동 은행을 운용합니다.", p5_l1li: "수량 환급", p5_l2li: "해상 승인 환불완료 (완료)",
-        p6_titles: "DEX 스왑", p6_descs: "클론/카드/외환 비교 빠른 스왑을 수행합니다.", p6_l1li: "환율 교환", p6_l2li: "DEX 인증코드 (Issuance)",
-        p7_titles: "LP 스테이킹", p7_descs: "LP 화폐 결제 유동성 POOL 예치 및 기간당 이자를 적립합니다.", p7_l1li: "분배 자산 총량", p7_l2li: "20 PS"
-      },
-      en: {
-        headerSubTexts: "Global Next-Gen Decentralized Finance",
-        langEngineLabel: "25-Nation Universal Language Engine",
-        p1_titles: "Transfer", p1_descs: "Bulk transfer cost and transmission delay optimization test under heavy wallet load.", p1_l1li: "Fee Wallet Address", p1_l2li: "Merchant Transfer Number",
-        p2_titles: "Payment", p2_descs: "Execute multisig encrypted transfer and real-time cross-border settlement.", p2_l1li: "Sender Address", p2_l2li: "Or Pi Test ID",
-        p3_titles: "Deposit", p3_descs: "Fund with extra secure payment and manage 38.43% APY trust assets.", p3_l1li: "Deposit Amount", p3_l2li: "Monthly Approved Refund",
-        p4_titles: "Reward", p4_descs: "Claim daily contribution incentive earnings effortlessly.", p4_l1li: "Claim Amount", p4_l2li: "Indemnity Approval Certificate",
-        p5_titles: "Swap", p5_descs: "Instantly purchase and exchange currency with exchange rate protection.", p5_l1li: "Refund Quantity", p5_l2li: "Maritime Approval Refund (Done)",
-        p6_titles: "DEX Swap", p6_descs: "Decentralized orderless P2P exchange with fast execution.", p6_l1li: "Rate Exchange", p6_l2li: "DEX Issuance Code",
-        p7_titles: "LP Staking", p7_descs: "Decentralized LP liquidity pool deposit and periodic interest accrual.", p7_l1li: "Total Distributed Assets", p7_l2li: "20 PS"
-      },
-      zh: {
-        headerSubTexts: "全球下一代去中心化金融",
-        langEngineLabel: "25国通用语言引擎 (简体)",
-        p1_titles: "转账", p1_descs: "大宗转账成本与传输延迟测试，钱包高负载并发处理优化测试。", p1_l1li: "手续费钱包地址", p1_l2li: "商家转账编号",
-        p2_titles: "支付", p2_descs: "执行多签加密转账与实时跨境结算。", p2_l1li: "发送者地址", p2_l2li: "或 Pi Test ID",
-        p3_titles: "存款", p3_descs: "通过超安全支付充值，管理 38.43% APY 信托资产。", p3_l1li: "存款金额", p3_l2li: "每月批准退款",
-        p4_titles: "奖励", p4_descs: "轻松领取每日贡献激励收益。", p4_l1li: "领取金额", p4_l2li: "赔偿批准证明",
-        p5_titles: "兑换", p5_descs: "即时购买与汇率保护兑换。", p5_l1li: "退款数量", p5_l2li: "海事批准退款 (完成)",
-        p6_titles: "DEX 兑换", p6_descs: "去中心化无订单簿 P2P 兑换，执行迅速。", p6_l1li: "汇率兑换", p6_l2li: "DEX 签发代码",
-        p7_titles: "LP 质押", p7_descs: "去中心化 LP 流动性池存款及定期利息累积。", p7_l1li: "分发资产总量", p7_l2li: "20 PS"
-      },
-      "zh-tw": {
-        headerSubTexts: "全球下一代去中心化金融",
-        langEngineLabel: "25國通用語言引擎 (繁體)",
-        p1_titles: "轉賬", p1_descs: "大宗轉賬成本與傳輸延遲測試，錢包高負載併發處理優化測試。", p1_l1li: "手續費錢包地址", p1_l2li: "商家轉賬編號",
-        p2_titles: "支付", p2_descs: "執行多簽加密轉賬與實時跨境結算。", p2_l1li: "發送者地址", p2_l2li: "或 Pi Test ID",
-        p3_titles: "存款", p3_descs: "透過超安全支付充值，管理 38.43% APY 信託資產。", p3_l1li: "存款金額", p3_l2li: "每月批准退款",
-        p4_titles: "獎勵", p4_descs: "輕鬆領取每日貢獻激勵收益。", p4_l1li: "領取金額", p4_l2li: "賠償批准證明",
-        p5_titles: "兌換", p5_descs: "即時購買與匯率保護兌換。", p5_l1li: "退款數量", p5_l2li: "海事批准退款 (完成)",
-        p6_titles: "DEX 兌換", p6_descs: "去中心化無訂單簿 P2P 兌換，執行迅速。", p6_l1li: "匯率兌換", p6_l2li: "DEX 簽發代碼",
-        p7_titles: "LP 質押", p7_descs: "去中心化 LP 流動性池存款及定期利息累積。", p7_l1li: "分發資產總量", p7_l2li: "20 PS"
-      },
-      ja: {
-        headerSubTexts: "グローバル次世代分散型金融",
-        langEngineLabel: "25カ国語ユニバーサル言語エンジン",
-        p1_titles: "送金", p1_descs: "大量転送コストと転送遅延テスト、ウォレット高負荷時同時処理最適化テスト。", p1_l1li: "手数料ウォレットアドレス", p1_l2li: "加盟店転送番号",
-        p2_titles: "決済", p2_descs: "マルチシグ暗号化送金とリアルタイムクロスボーダー決済の実行。", p2_l1li: "送信者アドレス", p2_l2li: "または Pi Test ID",
-        p3_titles: "預金", p3_descs: "超安全決済による入金と38.43% APYトラスト資産の管理。", p3_l1li: "預金金額", p3_l2li: "毎月承認済み返金",
-        p4_titles: "報酬", p4_descs: "毎日の貢献インセンティブ収益を簡単に請求。", p4_l1li: "請求金額", p4_l2li: "賠償承認証明書",
-        p5_titles: "スワップ", p5_descs: "為替レート保護付きの即時購入と通貨交換。", p5_l1li: "返金数量", p5_l2li: "海上承認返金 (完了)",
-        p6_titles: "DEXスワップ", p6_descs: "高速実行を備えた分散型オーダーレスP2P交換。", p6_l1li: "為替レート交換", p6_l2li: "DEX発行コード",
-        p7_titles: "LPステーキング", p7_descs: "分散型LP流動性プール預金と定期利息の蓄積。", p7_l1li: "分散資産総量", p7_l2li: "20 PS"
-      },
-      pt: {
-        headerSubTexts: "Finanças Descentralizadas Globais de Nova Geração",
-        langEngineLabel: "Motor de Linguagem Universal de 25 Nações",
-        p1_titles: "Transferência", p1_descs: "Teste de otimização de custo e atraso de transferência sob alta carga.", p1_l1li: "Endereço da Carteira de Taxas", p1_l2li: "Número de Transferência do Comerciante",
-        p2_titles: "Pagamento", p2_descs: "Executar transferência criptografada multisig e liquidação transfronteiriça em tempo real.", p2_l1li: "Endereço do Remetente", p2_l2li: "Ou Pi Test ID",
-        p3_titles: "Depósito", p3_descs: "Financiar com pagamento ultrasseguro e gerenciar ativos de confiança de 38.43% APY.", p3_l1li: "Valor do Depósito", p3_l2li: "Reembolso Mensal Aprovado",
-        p4_titles: "Recompensa", p4_descs: "Reivindique ganhos de incentivo de contribuição diariamente.", p4_l1li: "Valor a Reivindicar", p4_l2li: "Certificado de Aprovação de Indenização",
-        p5_titles: "Swap", p5_descs: "Compre e troque moeda instantaneamente com proteção de taxa de câmbio.", p5_l1li: "Quantidade de Reembolso", p5_l2li: "Reembolso de Aprovação Marítima (Concluído)",
-        p6_titles: "DEX Swap", p6_descs: "Troca P2P descentralizada sem livro de ordens com execução rápida.", p6_l1li: "Câmbio de Taxa", p6_l2li: "Código de Emissão DEX",
-        p7_titles: "LP Staking", p7_descs: "Depósito em pool de liquidez LP descentralizado e acúmulo de juros periódicos.", p7_l1li: "Ativos Distribuídos Totais", p7_l2li: "20 PS"
-      },
-      es: {
-        headerSubTexts: "Finanzas Descentralizadas Globales de Próxima Generación",
-        langEngineLabel: "Motor de Lenguaje Universal de 25 Naciones",
-        p1_titles: "Transferencia", p1_descs: "Prueba de optimización de costos y retrasos bajo alta carga.", p1_l1li: "Dirección de Billetera de Comisión", p1_l2li: "Número de Transferencia de Comerciante",
-        p2_titles: "Pago", p2_descs: "Ejecutar transferencia cifrada multisig y liquidación transfronteriza.", p2_l1li: "Dirección del Remitente", p2_l2li: "O Pi Test ID",
-        p3_titles: "Depósito", p3_descs: "Financiar con pago seguro y gestionar activos de confianza 38.43% APY.", p3_l1li: "Monto del Depósito", p3_l2li: "Reembolso Mensual Aprobado",
-        p4_titles: "Recompensa", p4_descs: "Reclama ganancias de incentivos diarios.", p4_l1li: "Monto a Reclamar", p4_l2li: "Certificado de Aprobación",
-        p5_titles: "Swap", p5_descs: "Compra e intercambio instantáneo con protección de tipo de cambio.", p5_l1li: "Cantidad de Reembolso", p5_l2li: "Reembolso Aprobado (Hecho)",
-        p6_titles: "DEX Swap", p6_descs: "Intercambio P2P descentralizado sin libros de órdenes.", p6_l1li: "Cambio de Tasa", p6_l2li: "Código DEX",
-        p7_titles: "Staking de LP", p7_descs: "Depósito en pool de liquidez LP y acumulación de intereses.", p7_l1li: "Activos Totales", p7_l2li: "20 PS"
-      },
-      fr: {
-        headerSubTexts: "Finance Décentralisée Mondiale de Nouvelle Génération",
-        langEngineLabel: "Moteur de Langue Universel 25 Nations",
-        p1_titles: "Transfert", p1_descs: "Test d'optimisation des coûts et des délais sous forte charge.", p1_l1li: "Adresse du Portefeuille de Frais", p1_l2li: "Numéro de Transfert Marchand",
-        p2_titles: "Paiement", p2_descs: "Exécuter un transfert chiffré multisig et règlement en temps réel.", p2_l1li: "Adresse de l'Expéditeur", p2_l2li: "Ou Pi Test ID",
-        p3_titles: "Dépôt", p3_descs: "Approvisionner et gérer les actifs de confiance 38,43% APY.", p3_l1li: "Montant du Dépôt", p3_l2li: "Remboursement Mensuel Approuvé",
-        p4_titles: "Récompense", p4_descs: "Réclamez les gains d'incitation quotidiens.", p4_l1li: "Montant à Réclamer", p4_l2li: "Certificat d'Approbation",
-        p5_titles: "Échange", p5_descs: "Achat instantané et échange de devises.", p5_l1li: "Quantité de Remboursement", p5_l2li: "Remboursement Maritime (Fait)",
-        p6_titles: "Échange DEX", p6_descs: "Échange P2P décentralisé sans carnet d'ordres.", p6_l1li: "Échange de Taux", p6_l2li: "Code d'Émission DEX",
-        p7_titles: "Staking LP", p7_descs: "Dépôt de liquidité LP et cumul d'intérêts.", p7_l1li: "Actifs Totaux", p7_l2li: "20 PS"
-      },
-      de: {
-        headerSubTexts: "Globales dezentrales Finanzwesen der nächsten Generation",
-        langEngineLabel: "25-Länder Universalsprachen-Engine",
-        p1_titles: "Überweisung", p1_descs: "Optimierungstest für Massenüberweisungskosten und Verzögerungen.", p1_l1li: "Gebühren-Wallet-Adresse", p1_l2li: "Händler-Überweisungsnummer",
-        p2_titles: "Zahlung", p2_descs: "Multisig-verschlüsselte Überweisung und Echtzeit-Abwicklung.", p2_l1li: "Absenderadresse", p2_l2li: "Oder Pi Test ID",
-        p3_titles: "Einzahlung", p3_descs: "Sicher einzahlen und 38,43% APY Treuhandvermögen verwalten.", p3_l1li: "Einzahlungsbetrag", p3_l2li: "Monatlich genehmigte Rückerstattung",
-        p4_titles: "Belohnung", p4_descs: "Tägliche Anreizerträge einfach beanspruchen.", p4_l1li: "Anspruchsbetrag", p4_l2li: "Genehmigungszertifikat",
-        p5_titles: "Swap", p5_descs: "Sofortkauf und Währungstausch mit Schutz.", p5_l1li: "Rückerstattungsmenge", p5_l2li: "Seemännische Rückerstattung (Erledigt)",
-        p6_titles: "DEX Swap", p6_descs: "Dezentraler orderloser P2P-Tausch.", p6_l1li: "Wechselkurs", p6_l2li: "DEX-Ausgabecode",
-        p7_titles: "LP Staking", p7_descs: "LP-Liquiditätspool-Einzahlung und Zinsansammlung.", p7_l1li: "Gesamtvermögen", p7_l2li: "20 PS"
-      },
-      it: {
-        headerSubTexts: "Finanza Decentralizzata Globale di Nuova Generazione",
-        langEngineLabel: "Motore Linguistico Universale a 25 Nazioni",
-        p1_titles: "Trasferimento", p1_descs: "Test di ottimizzazione costi e ritardi sotto carico.", p1_l1li: "Indirizzo Wallet Commissioni", p1_l2li: "Numero Trasferimento Commerciante",
-        p2_titles: "Pagamento", p2_descs: "Esegui trasferimento crittografato multisig.", p2_l1li: "Indirizzo Mittente", p2_l2li: "O Pi Test ID",
-        p3_titles: "Deposito", p3_descs: "Finanzia e gestisci asset fiduciari 38,43% APY.", p3_l1li: "Importo Deposito", p3_l2li: "Rimborso Mensile Approvato",
-        p4_titles: "Premio", p4_descs: "Riscatta i guadagni giornalieri.", p4_l1li: "Importo da Riscatare", p4_l2li: "Certificato di Approvazione",
-        p5_titles: "Swap", p5_descs: "Acquisto istantaneo e cambio valuta.", p5_l1li: "Quantità Rimborso", p5_l2li: "Rimborso Marittimo (Fatto)",
-        p6_titles: "DEX Swap", p6_descs: "Scambio P2P decentralizzato senza order book.", p6_l1li: "Cambio Tasso", p6_l2li: "Codice Emissione DEX",
-        p7_titles: "LP Staking", p7_descs: "Deposito in pool di liquidità LP.", p7_l1li: "Asset Totali", p7_l2li: "20 PS"
-      },
-      ru: {
-        headerSubTexts: "Глобальные децентрализованные финансы нового поколения",
-        langEngineLabel: "Универсальный языковой движок на 25 языках",
-        p1_titles: "Перевод", p1_descs: "Тест оптимизации стоимости и задержки массовых переводов.", p1_l1li: "Адрес кошелька комиссий", p1_l2li: "Номер перевода мерчанта",
-        p2_titles: "Оплата", p2_descs: "Выполнить мультисиг зашифрованный перевод.", p2_l1li: "Адрес отправителя", p2_l2li: "Или Pi Test ID",
-        p3_titles: "Депозит", p3_descs: "Пополнение и управление активами 38.43% APY.", p3_l1li: "Сумма депозита", p3_l2li: "Ежемесячный возврат",
-        p4_titles: "Награда", p4_descs: "Получить доходы от стимулов.", p4_l1li: "Сумма к получению", p4_l2li: "Сертификат одобрения",
-        p5_titles: "Своп", p5_descs: "Мгновенная покупка и обмен валюты.", p5_l1li: "Сумма возврата", p5_l2li: "Морской возврат (Готово)",
-        p6_titles: "DEX Своп", p6_descs: "Децентрализованный P2P обмен без стакана.", p6_l1li: "Обмен курса", p6_l2li: "Код DEX",
-        p7_titles: "LP Стекинг", p7_descs: "Депозит в пул ликвидности LP.", p7_l1li: "Всего активов", p7_l2li: "20 PS"
-      },
-      vi: {
-        headerSubTexts: "Tài chính phi tập trung toàn cầu thế hệ mới",
-        langEngineLabel: "Công cụ ngôn ngữ phổ thông 25 quốc gia",
-        p1_titles: "Chuyển khoản", p1_descs: "Kiểm tra tối ưu hóa chi phí và độ trễ chuyển khoản.", p1_l1li: "Địa chỉ ví phí", p1_l2li: "Số chuyển khoản thương nhân",
-        p2_titles: "Thanh toán", p2_descs: "Thực hiện chuyển khoản mã hóa đa chữ ký.", p2_l1li: "Địa chỉ người gửi", p2_l2li: "Hoặc Pi Test ID",
-        p3_titles: "Tiền gửi", p3_descs: "Nạp tiền và quản lý tài sản 38.43% APY.", p3_l1li: "Số tiền gửi", p3_l2li: "Hoàn tiền hàng tháng",
-        p4_titles: "Phần thưởng", p4_descs: "Nhận thu nhập khuyến khích hàng ngày.", p4_l1li: "Số tiền nhận", p4_l2li: "Chứng nhận phê duyệt",
-        p5_titles: "Hoán đổi", p5_descs: "Mua ngay và trao đổi tiền tệ.", p5_l1li: "Số lượng hoàn", p5_l2li: "Hoàn tiền hàng hải (Xong)",
-        p6_titles: "Hoán đổi DEX", p6_descs: "Giao dịch P2P phi tập trung không sổ lệnh.", p6_l1li: "Đổi tỷ giá", p6_l2li: "Mã DEX",
-        p7_titles: "Staking LP", p7_descs: "Tiền gửi thanh khoản LP.", p7_l1li: "Tổng tài sản", p7_l2li: "20 PS"
-      },
-      th: {
-        headerSubTexts: "การเงินกระจายอำนาจระดับโลกยุคใหม่",
-        langEngineLabel: "เครื่องมือภาษาอเนกประสงค์ 25 ประเทศ",
-        p1_titles: "โอนเงิน", p1_descs: "ทดสอบการเพิ่มประสิทธิภาพต้นทุนและความล่าช้า", p1_l1li: "ที่อยู่กระเป๋าเงินค่าธรรมเนียม", p1_l2li: "หมายเลขโอนร้านค้า",
-        p2_titles: "ชำระเงิน", p2_descs: "ดำเนินการโอนเข้ารหัสหลายลายเซ็น", p2_l1li: "ที่อยู่ผู้ส่ง", p2_l2li: "หรือ Pi Test ID",
-        p3_titles: "ฝากเงิน", p3_descs: "เติมเงินและจัดการสินทรัพย์ 38.43% APY", p3_l1li: "จำนวนเงินฝาก", p3_l2li: "คืนเงินอนุมัติรายเดือน",
-        p4_titles: "รางวัล", p4_descs: "รับรายได้สิ่งจูงใจประจำวัน", p4_l1li: "จำนวนเงินที่รับ", p4_l2li: "ใบรับรองการอนุมัติ",
-        p5_titles: "สลับ", p5_descs: "ซื้อทันทีและแลกเปลี่ยนสกุลเงิน", p5_l1li: "จำนวนเงินคืน", p5_l2li: "คืนเงินทางทะเล (เสร็จสิ้น)",
-        p6_titles: "DEX Swap", p6_descs: "แลกเปลี่ยน P2P แบบกระจายอำนาจ", p6_l1li: "แลกเปลี่ยนเรท", p6_l2li: "รหัส DEX",
-        p7_titles: "LP Staking", p7_descs: "ฝากพูลสภาพคล่อง LP", p7_l1li: "สินทรัพย์รวม", p7_l2li: "20 PS"
-      },
-      id: {
-        headerSubTexts: "Keuangan Terdesentralisasi Global Generasi Baru",
-        langEngineLabel: "Mesin Bahasa Universal 25 Negara",
-        p1_titles: "Transfer", p1_descs: "Uji optimasi biaya dan latensi transfer massal.", p1_l1li: "Alamat Dompet Biaya", p1_l2li: "Nomor Transfer Merchant",
-        p2_titles: "Pembayaran", p2_descs: "Jalankan transfer terenkripsi multisig.", p2_l1li: "Alamat Pengirim", p2_l2li: "Atau Pi Test ID",
-        p3_titles: "Setoran", p3_descs: "Danai dan kelola aset kepercayaan 38.43% APY.", p3_l1li: "Jumlah Setoran", p3_l2li: "Pengembalian Disetujui Bulanan",
-        p4_titles: "Hadiah", p4_descs: "Klaim pendapatan insentif harian.", p4_l1li: "Jumlah Klaim", p4_l2li: "Sertifikat Persetujuan",
-        p5_titles: "Swap", p5_descs: "Beli instan dan pertukaran mata uang.", p5_l1li: "Jumlah Pengembalian", p5_l2li: "Pengembalian Maritim (Selesai)",
-        p6_titles: "DEX Swap", p6_descs: "Pertukaran P2P terdesentralisasi tanpa buku order.", p6_l1li: "Pertukaran Kurs", p6_l2li: "Kode DEX",
-        p7_titles: "LP Staking", p7_descs: "Setoran pool likuiditas LP.", p7_l1li: "Total Aset", p7_l2li: "20 PS"
-      },
-      ms: {
-        headerSubTexts: "Kewangan Terdesentralisasi Global Generasi Baharu",
-        langEngineLabel: "Enjin Bahasa Universal 25 Negara",
-        p1_titles: "Pemindahan", p1_descs: "Ujian pengoptimuman kos dan kelewatan.", p1_l1li: "Alamat Dompet Yuran", p1_l2li: "Nombor Pemindahan Merchant",
-        p2_titles: "Pembayaran", p2_descs: "Laksanakan pemindahan disulitkan multisig.", p2_l1li: "Alamat Pengirim", p2_l2li: "Atau Pi Test ID",
-        p3_titles: "Deposit", p3_descs: "Biayai dan urus aset kepercayaan 38.43% APY.", p3_l1li: "Jumlah Deposit", p3_l2li: "Bayaran Balik Diluluskan Bulanan",
-        p4_titles: "Ganjaran", p4_descs: "Tuntut pendapatan insentif harian.", p4_l1li: "Jumlah Tuntutan", p4_l2li: "Sijil Kelulusan",
-        p5_titles: "Swap", p5_descs: "Beli segera dan pertukaran mata wang.", p5_l1li: "Kuantiti Bayaran Balik", p5_l2li: "Bayaran Balik Maritim (Selesai)",
-        p6_titles: "DEX Swap", p6_descs: "Pertukaran P2P terdesentralisasi.", p6_l1li: "Pertukaran Kadar", p6_l2li: "Kod DEX",
-        p7_titles: "LP Staking", p7_descs: "Deposit pool kecairan LP.", p7_l1li: "Jumlah Aset", p7_l2li: "20 PS"
-      },
-      ar: {
-        headerSubTexts: "التمويل اللامركزي العالمي للجيل القادم",
-        langEngineLabel: "محرك اللغة الشامل لـ 25 دولة",
-        p1_titles: "تحويل", p1_descs: "اختبار تحسين تكلفة وسرعة النقل الجماعي.", p1_l1li: "عنوان محفظة الرسوم", p1_l2li: "رقم تحويل التاجر",
-        p2_titles: "الدفع", p2_descs: "تنفيذ تحويل مشفر متعدد التوقيعات.", p2_l1li: "عنوان المرسل", p2_l2li: "أو Pi Test ID",
-        p3_titles: "إيداع", p3_descs: "تمويل وإدارة الأصول بنسبة 38.43% APY.", p3_l1li: "مبلغ الإيداع", p3_l2li: "استرداد شهري معتمد",
-        p4_titles: "مکافأة", p4_descs: "مطالبة أرباح الحوافز اليومية.", p4_l1li: "المبلغ المطلوب", p4_l2li: "شهادة الموافقة",
-        p5_titles: "مبادلة", p5_descs: "شراء فوري وتبادل العملات.", p5_l1li: "كمية الاسترداد", p5_l2li: "استرداد بحري (تم)",
-        p6_titles: "مبادلة DEX", p6_descs: "تبادل P2P لامركزي.", p6_l1li: "صرف العملات", p6_l2li: "رمز DEX",
-        p7_titles: "رهن LP", p7_descs: "إيداع في مجمع سيولة LP.", p7_l1li: "إجمالي الأصول", p7_l2li: "20 PS"
-      },
-      hi: {
-        headerSubTexts: "अगली पीढ़ी का वैश्विक विकेंद्रीकृत वित्त",
-        langEngineLabel: "25-राष्ट्र सार्वभौमिक भाषा इंजन",
-        p1_titles: "स्थानांतरण", p1_descs: "थोक हस्तांतरण लागत और विलंब optimization परीक्षण।", p1_l1li: "शुल्क वॉलेट पता", p1_l2li: "व्यापारी स्थानांतरण संख्या",
-        p2_titles: "भुगतान", p2_descs: "मल्टीसिग एन्क्रिप्टेड ट्रांसफर निष्पादित करें।", p2_l1li: "प्रेषक का पता", p2_l2li: "या Pi Test ID",
-        p3_titles: "जमा", p3_descs: "38.43% APY ट्रस्ट परिसंपत्तियों का प्रबंधन।", p3_l1li: "जमा राशि", p3_l2li: "मासिक स्वीकृत रिफंड",
-        p4_titles: "पुरस्कार", p4_descs: "दैनिक प्रोत्साहन आय का दावा करें।", p4_l1li: "दावा राशि", p4_l2li: "क्षतिपूर्ति अनुमोदन प्रमाण पत्र",
-        p5_titles: "स्वैप", p5_descs: "तत्काल खरीद और मुद्रा विनिमय।", p5_l1li: "रिफंड मात्रा", p5_l2li: "समुद्री अनुमोदन रिफंड (पूर्ण)",
-        p6_titles: "DEX स्वैप", p6_descs: "विकेंद्रीकृत P2P एक्सचेंज।", p6_l1li: "दर विनिमय", p6_l2li: "DEX जारी करने का कोड",
-        p7_titles: "LP स्टेकिंग", p7_descs: "LP तरलता पूल जमा।", p7_l1li: "कुल परिसंपत्तियां", p7_l2li: "20 PS"
-      },
-      tr: {
-        headerSubTexts: "Yeni Nesil Küresel Merkeziyetsiz Finans",
-        langEngineLabel: "25 Uluslu Evrensel Dil Motoru",
-        p1_titles: "Transfer", p1_descs: "Toplu transfer maliyeti ve gecikme optimizasyon testi.", p1_l1li: "Komisyon Cüzdan Adresi", p1_l2li: "İşyeri Transfer Numarası",
-        p2_titles: "Ödeme", p2_descs: "Çoklu imza şifreli transferi yürüt.", p2_l1li: "Gönderen Adresi", p2_l2li: "Veya Pi Test ID",
-        p3_titles: "Yatırma", p3_descs: "%38.43 APY güven varlıklarını yönet ve fonla.", p3_l1li: "Yatırım Tutarı", p3_l2li: "Aylık Onaylanan İade",
-        p4_titles: "Ödül", p4_descs: "Günlük teşvik kazançlarını talep et.", p4_l1li: "Talep Tutarı", p4_l2li: "Tazminat Onay Belgesi",
-        p5_titles: "Takas", p5_descs: "Anında satın al ve döviz değiştir.", p5_l1li: "İade Miktarı", p5_l2li: "Denizcilik Onay İadesi (Bitti)",
-        p6_titles: "DEX Takas", p6_descs: "Merkeziyetsiz P2P değişim.", p6_l1li: "Kur Değişimi", p6_l2li: "DEX Kod",
-        p7_titles: "LP Staking", p7_descs: "LP likidite havuzu depozitosu.", p7_l1li: "Toplam Varlık", p7_l2li: "20 PS"
-      },
-      pl: {
-        headerSubTexts: "Globalne Finanse Zdecentralizowane Nowej Generacji",
-        langEngineLabel: "25-narodowy uniwersalny silnik językowy",
-        p1_titles: "Przelew", p1_descs: "Test optymalizacji kosztów i opóźnień masowych przelewów.", p1_l1li: "Adres portfela opłat", p1_l2li: "Numer przelewu handlowca",
-        p2_titles: "Płatność", p2_descs: "Wykonaj szyfrowany przelew wielopodpisowy.", p2_l1li: "Adres nadawcy", p2_l2li: "Lub Pi Test ID",
-        p3_titles: "Depozyt", p3_descs: "Zasilaj i zarządzaj aktywami 38.43% APY.", p3_l1li: "Kwota depozytu", p3_l2li: "Miesięczny zwrot",
-        p4_titles: "Nagroda", p4_descs: "Odbieraj codzienne zarobki z zachęt.", p4_l1li: "Kwota do odbioru", p4_l2li: "Certyfikat zatwierdzenia",
-        p5_titles: "Swap", p5_descs: "Natychmiastowy zakup i wymiana walut.", p5_l1li: "Ilość zwrotu", p5_l2li: "Zwrot morski (Gotowe)",
-        p6_titles: "Swap DEX", p6_descs: "Zdecentralizowana wymiana P2P.", p6_l1li: "Wymiana kursu", p6_l2li: "Kod DEX",
-        p7_titles: "Staking LP", p7_descs: "Depozyt w puli płynności LP.", p7_l1li: "Suma aktywów", p7_l2li: "20 PS"
-      },
-      nl: {
-        headerSubTexts: "Wereldwijde Gedecentraliseerde Financiën van de Volgende Generatie",
-        langEngineLabel: "25-Nations Universele Taalengine",
-        p1_titles: "Overboeking", p1_descs: "Optimalisatietest voor massa-overboekingskosten en vertragingen.", p1_l1li: "Kosten Wallet Adres", p1_l2li: "Handelaar Overboekingsnummer",
-        p2_titles: "Betaling", p2_descs: "Voer multisig versleutelde overboeking uit.", p2_l1li: "Afzender Adres", p2_l2li: "Of Pi Test ID",
-        p3_titles: "Storting", p3_descs: "Financier en beheer 38.43% APY trust-activa.", p3_l1li: "Stortingsbedrag", p3_l2li: "Maandelijks Goedgekeurde Terugbetaling",
-        p4_titles: "Beloning", p4_descs: "Claim dagelijks stimuleringsinkomsten.", p4_l1li: "Te claimen bedrag", p4_l2li: "Goedkeuringscertificaat",
-        p5_titles: "Swap", p5_descs: "Direct kopen en valuta wisselen.", p5_l1li: "Terugbetalingshoeveelheid", p5_l2li: "Maritieme Terugbetaling (Klaar)",
-        p6_titles: "DEX Swap", p6_descs: "Gedecentraliseerde P2P-uitwisseling.", p6_l1li: "Koerswisseling", p6_l2li: "DEX-code",
-        p7_titles: "LP Staking", p7_descs: "LP liquiditeitspool storting.", p7_l1li: "Totale Activa", p7_l2li: "20 PS"
-      },
-      sv: {
-        headerSubTexts: "Global nästa generations decentraliserade finans",
-        langEngineLabel: "25-nations universell språkmotor",
-        p1_titles: "Överföring", p1_descs: "Optimeringsstest för massöverföringskostnader och fördröjningar.", p1_l1li: "Avgift Plånbok Adress", p1_l2li: "Handelsöverföringsnummer",
-        p2_titles: "Betalning", p2_descs: "Utför multisig-krypterad överföring.", p2_l1li: "Avsändarens Adress", p2_l2li: "Eller Pi Test ID",
-        p3_titles: "Insättning", p3_descs: "Finansiera och hantera 38.43% APY trust-tillgångar.", p3_l1li: "Insättningsbelopp", p3_l2li: "Månatlig godkänd återbetalning",
-        p4_titles: "Belöning", p4_descs: "Gör anspråk på dagliga incitamentsintäkter.", p4_l1li: "Belopp att kräva", p4_l2li: "Godkännandecertifikat",
-        p5_titles: "Swap", p5_descs: "Direktköp och valutabyte.", p5_l1li: "Återbetalningsmängd", p5_l2li: "Maritim återbetalning (Klart)",
-        p6_titles: "DEX Swap", p6_descs: "Decentraliserat P2P-utbyte.", p6_l1li: "Valutakurs", p6_l2li: "DEX-kod",
-        p7_titles: "LP Staking", p7_descs: "LP likviditetspool insättning.", p7_l1li: "Totala Tillgångar", p7_l2li: "20 PS"
-      },
-      cs: {
-        headerSubTexts: "Globální decentralizované finance nové generace",
-        langEngineLabel: "25-národní univerzální jazykový motor",
-        p1_titles: "Převod", p1_descs: "Test optimalizace nákladů a zpoždění hromadných převodů.", p1_l1li: "Adresa poplatkové peněženki", p1_l2li: "Číslo převodu obchodníka",
-        p2_titles: "Platba", p2_descs: "Provést multisig šifrovaný převod.", p2_l1li: "Adresa odesílatele", p2_l2li: "Nebo Pi Test ID",
-        p3_titles: "Vklad", p3_descs: "Financovat a spravovat 38.43% APY aktiva.", p3_l1li: "Částka vkladu", p3_l2li: "Měsíčně schválená náhrada",
-        p4_titles: "Odměna", p4_descs: "Uplatnit nárok na denní příjmy z pobídek.", p4_l1li: "Částka k nároku", p4_l2li: "Schvalovací certifikát",
-        p5_titles: "Swap", p5_descs: "Okamžitý nákup a směna měn.", p5_l1li: "Množství vrácení peněz", p5_l2li: "Námořní náhrada (Hotovo)",
-        p6_titles: "DEX Swap", p6_descs: "Decentralizovaná P2P výměna.", p6_l1li: "Směna kurzu", p6_l2li: "Kód DEX",
-        p7_titles: "LP Staking", p7_descs: "Vklad do likviditního poolu LP.", p7_l1li: "Celková aktiva", p7_l2li: "20 PS"
-      },
-      el: {
-        headerSubTexts: "Παγκόσμια Αποκεντρωμένη Χρηματοοικονομική Νέας Γενιάς",
-        langEngineLabel: "Μηχανή 25 Παγκόσμιων Γλωσσών",
-        p1_titles: "Μεταφορά", p1_descs: "Δοκιμή βελτιστοποίησης κόστους και καθυστέρησης μαζικής μεταφοράς.", p1_l1li: "Διεύθυνση Πορτοφολιού Προμήθειας", p1_l2li: "Αριθμός Μεταφοράς Εμπόρου",
-        p2_titles: "Πληρωμή", p2_descs: "Εκτέλεση κρυπτογραφημένης μεταφοράς multisig.", p2_l1li: "Διεύθυνση Αποστολέα", p2_l2li: "Ή Pi Test ID",
-        p3_titles: "Κατάθεση", p3_descs: "Χρηματοδότηση και διαχείριση περιουσιακών στοιχείων 38.43% APY.", p3_l1li: "Ποσό Κατάθεσης", p3_l2li: "Μηνιαία Εγκεκριμένη επιστροφή",
-        p4_titles: "Αμοιβή", p4_descs: "Απαιτήστε καθημερινά έσοδα κινήτρων.", p4_l1li: "Ποσό Απαίτησης", p4_l2li: "Πιστοποιητικό Έγκρισης",
-        p5_titles: "Swap", p5_descs: "Άμεση αγορά και ανταλλαγή νομισμάτων.", p5_l1li: "Ποσό Επιστροφής", p5_l2li: "Ναυτική Επιστροφή (Τέλος)",
-        p6_titles: "DEX Swap", p6_descs: "Αποκεντρωμένη ανταλλαγή P2P.", p6_l1li: "Ανταλλαγή Τιμής", p6_l2li: "Кωδικός DEX",
-        p7_titles: "LP Staking", p7_descs: "Κατάθεση σε pool ρευστότητας LP.", p7_l1li: "Συνολικά Περιουσιακά", p7_l2li: "20 PS"
-      },
-      uk: {
-        headerSubTexts: "Глобальні децентралізовані фінанси нового покоління",
-        langEngineLabel: "Універсальний мовний движок на 25 мов",
-        p1_titles: "Переказ", p1_descs: "Тест оптимізації вартості та затримки масових переказів.", p1_l1li: "Адреса гаманця комісій", p1_l2li: "Номер переказу мерчанта",
-        p2_titles: "Оплата", p2_descs: "Виконати мультисиг зашифрований переказ.", p2_l1li: "Адреса відправника", p2_l2li: "Або Pi Test ID",
-        p3_titles: "Депозит", p3_descs: "Поповнення та управління активами 38.43% APY.", p3_l1li: "Сума депозиту", p3_l2li: "Щомісячне відшкодування",
-        p4_titles: "Нагорода", p4_descs: "Отримуйте щоденні доходи від стимулів.", p4_l1li: "Сума до отримання", p4_l2li: "Сертифікат схвалення",
-        p5_titles: "Своп", p5_descs: "Миттєва покупка та обмін валюти.", p5_l1li: "Сума відшкодування", p5_l2li: "Морське відшкодування (Готово)",
-        p6_titles: "DEX Своп", p6_descs: "Децентралізований P2P обмін.", p6_l1li: "Обмін курсу", p6_l2li: "Код DEX",
-        p7_titles: "LP Стекінг", p7_descs: "Депозит у пул ліквідності LP.", p7_l1li: "Всього активів", p7_l2li: "20 PS"
-      },
-      ro: {
-        headerSubTexts: "Finanțe Descentralizate Globale de Noua Generație",
-        langEngineLabel: "Motor Lingvistic Universal pentru 25 de Națiuni",
-        p1_titles: "Transfer", p1_descs: "Test de optimizare a costurilor și întârzierilor pentru transferuri în masă.", p1_l1li: "Adresă Portofel Comisioane", p1_l2li: "Număr Transfer Comerciant",
-        p2_titles: "Plată", p2_descs: "Executați transfer criptat multisig.", p2_l1li: "Adresă Expeditor", p2_l2li: "Sau Pi Test ID",
-        p3_titles: "Depozit", p3_descs: "Finanțați și gestionați active de încredere 38.43% APY.", p3_l1li: "Sumă Depozit", p3_l2li: "Rambursare Lunară Aprobată",
-        p4_titles: "Recompensă", p4_descs: "Revendicați câștigurile zilnice din stimulente.", p4_l1li: "Sumă de Revendicat", p4_l2li: "Certificat de Aprobare",
-        p5_titles: "Swap", p5_descs: "Cumpărare instantanee și schimb valutar.", p5_l1li: "Cantitate Rambursare", p5_l2li: "Rambursare Maritimă (Gata)",
-        p6_titles: "DEX Swap", p6_descs: "Schimb P2P descentralizat.", p6_l1li: "Schimb Curs", p6_l2li: "Cod DEX",
-        p7_titles: "LP Staking", p7_descs: "Depozit în pool de lichiditate LP.", p7_l1li: "Active Totale", p7_l2li: "20 PS"
-      }
-    };
+        async function fetchAutoTranslation(targetLang) {
+            if (translationCache[targetLang]) return translationCache[targetLang];
 
-    // 언어 변경 함수
-    function changeLanguage(lang) {
-      const t = translations[lang] || translations['en'];
-      for (const key in t) {
-        const element = document.getElementById(key);
-        if (element) {
-          element.innerText = t[key];
+            const spinner = document.getElementById('langSpinner');
+            if (spinner) spinner.style.display = 'inline-block';
+
+            const translatedObj = {};
+            const keys = Object.keys(koSource);
+           
+            try {
+                const promises = keys.map(async (key) => {
+                    const text = koSource[key];
+                    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=ko&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
+                    const res = await fetch(url);
+                    const data = await res.json();
+                    translatedObj[key] = data[0][0][0];
+                });
+
+                await Promise.all(promises);
+                translationCache[targetLang] = translatedObj;
+            } catch (err) {
+                console.error("Translation API error:", err);
+                return koSource;
+            } finally {
+                if (spinner) spinner.style.display = 'none';
+            }
+
+            return translatedObj;
         }
-      }
-      localStorage.setItem('selectedLang', lang);
-    }
 
-    // 누락된 언어 자동 방어 루프
-    ['pt', 'zh', 'zh-tw', 'ja', 'ru', 'vi', 'th', 'id', 'ms', 'ar', 'de', 'it', 'fr', 'es', 'hi', 'tr', 'pl', 'nl', 'sv', 'cs', 'el', 'uk', 'ro'].forEach(lang => {
-      if(!translations[lang]) {
-        translations[lang] = translations['en'];
-      }
-    });
+        window.onload = function() {
+            openProcessModal('wallet');
+        };
 
-    // 페이지 로드 시 선택된 언어 불러오기
-    window.onload = function() {
-      const savedLang = localStorage.getItem('selectedLang') || 'ko';
-      const selectElem = document.getElementById('langSelect');
-      if (selectElem) {
-        selectElem.value = savedLang;
-        changeLanguage(savedLang);
-      }
-    };
-  </script>
+        setInterval(() => {
+            baseInterest += 0.001250;
+            const el = document.getElementById('accumulatedInterest');
+            if(el) {
+                el.innerText = baseInterest.toLocaleString('en-US', {minimumFractionDigits: 6, maximumFractionDigits: 6}) + " HK";
+                el.classList.add('glow');
+                setTimeout(() => el.classList.remove('glow'), 400);
+            }
+        }, 1000);
+
+        function toggleDrawer() {
+            document.getElementById('drawerOverlay').classList.toggle('active');
+        }
+
+        function closeDrawerOutside(event) {
+            if (event.target.id === 'drawerOverlay') {
+                toggleDrawer();
+            }
+        }
+
+        function updateSonpone(val) {
+            const sonponeValEl = document.getElementById('sonponeVal');
+            if(sonponeValEl) {
+                const curDict = translationCache[currentLang] || koSource;
+                sonponeValEl.innerText = val + "% " + (curDict.syncText || "(실시간 일치)");
+            }
+        }
+
+        function triggerMainnetRequest() {
+            alert("테스트 파이 원장 동기화 및 철통 보안 테스트넷 전송 신청이 정상 완료되었습니다!");
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const chatBox = document.getElementById('chatBox');
+            const text = input.value.trim();
+
+            if (!text) return;
+
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-msg user';
+            userMsg.innerText = text;
+            chatBox.appendChild(userMsg);
+
+            input.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            setTimeout(() => {
+                const beeniMsg = document.createElement('div');
+                beeniMsg.className = 'chat-msg beeni';
+                beeniMsg.innerText = `[AGI 삐니]: "${text}" 지시를 수신했습니다. 해킹 방어 백엔드 검증을 거쳐 실시간 처리 중입니다.`;
+                chatBox.appendChild(beeniMsg);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 600);
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') sendChatMessage();
+        }
+
+        function openProcessModal(processId) {
+            activeProcessId = processId;
+            activeModalType = null;
+            renderProcessModalContent();
+        }
+
+        function autoLoadWalletAddress() {
+            const walletInput = document.getElementById('nodeWalletAddress');
+            if(walletInput) {
+                walletInput.value = "GBX7QZ4HKWB2026AMLKYCSECNODEUSER";
+            }
+        }
+
+        function renderProcessModalContent() {
+            const processId = activeProcessId;
+            if (!processId) return;
+
+            const modal = document.getElementById('appModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+
+            generatedAuthCode = Math.floor(100000 + Math.random() * 900000).toString();
+
+            if (processId === 'wallet') {
+                title.innerText = "노드 지갑 약정 연동";
+                content.innerHTML = `
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">자동 연동 버튼을 눌러 테스트 지갑 주소를 불러오세요.</div>
+                    <div class="input-group">
+                        <label class="input-label"><span>테스트넷 지갑 주소</span> <button class="max-btn" onclick="autoLoadWalletAddress()">자동 연동</button></label>
+                        <input class="form-control" id="nodeWalletAddress" placeholder="자동 연동 버튼을 누르세요">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">인증번호 (발급됨: <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="6자리 인증번호 입력" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('wallet')">인증 승인 및 지갑 연결</button>
+                `;
+            } else {
+                title.innerText = "프로세스 구동 승인 (" + processId.toUpperCase() + ")";
+                content.innerHTML = `
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">철통 보안 프로토콜 및 실시간 AML 검증을 진행합니다.</div>
+                    <div class="input-group">
+                        <label class="input-label">인증번호 (발급됨: <span style="color:var(--accent-gold); font-weight:700;">${generatedAuthCode}</span>)</label>
+                        <input class="form-control" id="userInputCode" placeholder="6자리 인증번호 입력" maxlength="6">
+                    </div>
+                    <button class="action-btn" onclick="verifyAndExecute('${processId}')">승인 및 실행</button>
+                `;
+            }
+            modal.classList.add('active');
+        }
+
+        function verifyAndExecute(processId) {
+            const codeInput = document.getElementById('userInputCode');
+            const userEntered = codeInput ? codeInput.value.trim() : "";
+
+            if(userEntered !== generatedAuthCode) {
+                alert("❌ 인증번호가 일치하지 않습니다. 발급된 6자리 번호를 정확히 입력해 주세요.");
+                return;
+            }
+           
+            alert("✅ [철통 보안 인증 성공] " + processId + " 프로세스가 정상 완료되었습니다.");
+            closeModal();
+        }
+
+        function openInfoModal(type) {
+            activeModalType = type;
+            activeProcessId = null;
+            toggleDrawer();
+            const modal = document.getElementById('appModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+
+            title.innerText = "정보 및 보안 규격 문서";
+            content.innerHTML = `<div style="font-size:12px; line-height:1.6; color:var(--text-muted);">HK WORLD BANK 60개국 핵심 언어 지원 및 해킹 방어 컴플라이언스 상세 규격 문서입니다.</div>`;
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('appModal').classList.remove('active');
+            activeModalType = null;
+            activeProcessId = null;
+        }
+
+        async function changeLanguage(lang) {
+            currentLang = lang;
+            let t = await fetchAutoTranslation(lang);
+
+            const metaTitleEl = document.getElementById('metaTitle');
+            if(metaTitleEl) {
+                metaTitleEl.innerText = t.dashTitle ? `HK WORLD BANK | ${t.dashTitle}` : "HK WORLD BANK";
+            }
+           
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if(t[key]) {
+                    el.innerText = t[key];
+                }
+            });
+
+            const inputs = document.querySelectorAll('[data-i18n-placeholder]');
+            inputs.forEach(input => {
+                const key = input.getAttribute('data-i18n-placeholder');
+                if(t[key]) {
+                    input.placeholder = t[key];
+                }
+            });
+
+            document.dir = ['ar', 'fa', 'ur', 'he'].includes(lang) ? 'rtl' : 'ltr';
+            const slider = document.getElementById('sonponeSlider');
+            if(slider) {
+                updateSonpone(slider.value);
+            }
+        }
+    </script>
 </body>
 </html>
